@@ -1,0 +1,5 @@
+1] As a beginner, i want to book a private lesson, so that i can be introduced correctly to new exercises.
+
+2] As a personal trainer, i want to increase my customer base, so that i can earn more and increase my visibility.
+
+3] As an active gym enthusiast, i want to know what diet fits best with my workout, so that i can maximise my results.
