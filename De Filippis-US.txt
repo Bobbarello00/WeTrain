@@ -1,0 +1,5 @@
+1] As a user with a hectic schedule, i want online live courses, so that i can squeeze in a convinient workout.
+
+2] As a student on a budget, i want a workout plan, so i can do it myself without paying the extra fee for the live training sessions.
+
+3] As an overweight person, i want to have a diet with related exercises, so i can lose weight fast.
