@@ -1,0 +1,5 @@
+1] The system shall provide three kinds of profile during registration: one for personal trainers, one for nutritionists (could be also a personal trainer) and one for regular users.
+
+2] The system shall provide different payment methods.
+
+3] The system shall provide a private lesson-booking system.
