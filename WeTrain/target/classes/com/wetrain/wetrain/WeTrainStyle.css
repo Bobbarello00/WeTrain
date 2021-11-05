@@ -2,8 +2,13 @@
 
 Pane{
     -fx-font-family: 'ABeeZee', sans-serif;
+    -fx-background-color: rgba(194, 255, 192, 1);
+}
+label {
+    -fx-font-family: 'ABeeZee', sans-serif;
 }
 
-Button{
+button{
     -fx-font-family: 'ABeeZee', sans-serif;
+    -fx-alignment: CENTER;
 }

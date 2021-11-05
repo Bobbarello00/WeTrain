@@ -32,8 +32,30 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources\com\wetrain\wetrain" />
+      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources\fonts" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="WeTrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wetrain.wetrain.WeTrain" />
+      <module name="WeTrain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wetrain.wetrain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.WeTrain" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -48,7 +70,8 @@
       <workItem from="1636106656690" duration="1174000" />
       <workItem from="1636108459244" duration="382000" />
       <workItem from="1636109600258" duration="206000" />
-      <workItem from="1636118975054" duration="666000" />
+      <workItem from="1636118975054" duration="3709000" />
+      <workItem from="1636122771954" duration="1310000" />
     </task>
     <servers />
   </component>

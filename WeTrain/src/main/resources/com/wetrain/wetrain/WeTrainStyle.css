@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
+Pane{
+    -fx-font-family: 'ABeeZee', sans-serif;
+    -fx-background-color: rgba(194, 255, 192, 1);
+}
+label {
+    -fx-font-family: 'ABeeZee', sans-serif;
+}
+
+button{
+    -fx-font-family: 'ABeeZee', sans-serif;
+    -fx-alignment: CENTER;
+}
