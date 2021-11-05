@@ -26,9 +26,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="preferences.externalResources" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -71,7 +74,8 @@
       <workItem from="1636108459244" duration="382000" />
       <workItem from="1636109600258" duration="206000" />
       <workItem from="1636118975054" duration="3709000" />
-      <workItem from="1636122771954" duration="1618000" />
+      <workItem from="1636122771954" duration="2399000" />
+      <workItem from="1636128834399" duration="940000" />
     </task>
     <servers />
   </component>

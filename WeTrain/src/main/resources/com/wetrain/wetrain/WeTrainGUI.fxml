@@ -25,6 +25,6 @@
       <Image url="@../../../Images/group-exercise.png" />
    </ImageView>
    <Button alignment="CENTER" layoutX="535.0" layoutY="257.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="132.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Register" textAlignment="JUSTIFY" textFill="WHITE" />
-   <Text layoutX="496.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" wrappingWidth="156.731689453125" />
+   <Text layoutX="482.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" wrappingWidth="156.731689453125" />
    <Text fill="#189315" layoutX="639.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sing In." wrappingWidth="43.73175048828125" />
 </Pane>
