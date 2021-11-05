@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <Text layoutX="560.0" layoutY="229.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Get Started!" wrappingWidth="81.73178100585938">
-      <font>
-         <Font size="14.0" />
-      </font>
-   </Text>
-   <Text layoutX="215.0" layoutY="70.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to WeTrain." wrappingWidth="195.73175811767578">
-      <font>
-         <Font name="ABeeZee Regular" size="18.0" />
-      </font>
-   </Text>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.WeTrainController">
    <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../../Images/WeTrainLogo.png" />
    </ImageView>
    <ImageView fitHeight="188.0" fitWidth="315.0" layoutX="91.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
       <Image url="@../../../Images/group-exercise.png" />
    </ImageView>
-   <Button alignment="CENTER" layoutX="535.0" layoutY="257.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="132.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Register" textAlignment="JUSTIFY" textFill="WHITE" />
-   <Text layoutX="482.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" wrappingWidth="156.731689453125" />
-   <Text fill="#189315" layoutX="639.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sing In." wrappingWidth="43.73175048828125" />
+   <Button fx:id="regButt" alignment="CENTER" layoutX="495.0" layoutY="257.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="23.0" prefWidth="151.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Register" textAlignment="JUSTIFY" textFill="WHITE">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Button>
+   <Text layoutX="477.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" wrappingWidth="150.731689453125">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font></Text>
+   <Text fx:id="signInText" fill="#189315" layoutX="628.0" layoutY="301.0" onMouseClicked="#signInTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" textAlignment="JUSTIFY" wrappingWidth="43.73175048828125">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></Text>
+   <Text layoutX="534.0" layoutY="230.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Get Started!" wrappingWidth="71.23168945312517">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font></Text>
+   <Text layoutX="243.0" layoutY="69.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to WeTrain." wrappingWidth="125.95396423339844">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font></Text>
 </Pane>
