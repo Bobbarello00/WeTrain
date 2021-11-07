@@ -15,6 +15,7 @@
       <list>
         <option value="CSS File" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -32,7 +33,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="proofread" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -81,6 +82,8 @@
       <workItem from="1636273522245" duration="2358000" />
       <workItem from="1636281028427" duration="1362000" />
       <workItem from="1636282432059" duration="2581000" />
+      <workItem from="1636282189784" duration="8955000" />
+      <workItem from="1636306685797" duration="430000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
 
-Pane{
+BorderPane{
     -fx-font-family: 'ABeeZee', sans-serif;
     -fx-background-color: rgba(194, 255, 192, 1);
 }
-
-

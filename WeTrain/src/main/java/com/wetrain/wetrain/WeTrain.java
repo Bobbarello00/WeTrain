@@ -3,8 +3,10 @@ package com.wetrain.wetrain;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 
 public class WeTrain extends Application {

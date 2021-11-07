@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.WeTrainController">
+<BorderPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.WeTrainController">
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;" BorderPane.alignment="CENTER">
          <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">

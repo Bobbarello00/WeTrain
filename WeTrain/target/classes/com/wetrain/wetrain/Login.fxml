@@ -81,6 +81,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </CheckBox>
+         <PasswordField layoutX="214.0" layoutY="371.0" />
       </Pane>
    </center>
 </BorderPane>
