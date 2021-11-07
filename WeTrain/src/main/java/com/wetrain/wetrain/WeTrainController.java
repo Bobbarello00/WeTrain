@@ -18,4 +18,20 @@ public class WeTrainController {
     protected void signInTextAction(){
         System.out.println("SignIn");
     }
+    @FXML
+    protected void registerButtonEntered(){
+        regButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");
+    }
+    @FXML
+    protected void registerButtonExited(){
+        regButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
+    }
+    /*@FXML
+    protected void signInButtonEntered(){
+        signInText.setStyle("-fx-text-fill: rgb(20, 130, 17)");
+    }
+    @FXML
+    protected void signInButtonExited(){
+        signInText.setStyle("-fx-text-fill: rgba(24, 147, 21, 1);");
+    }*/
 }
