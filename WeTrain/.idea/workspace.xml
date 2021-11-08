@@ -10,6 +10,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -28,11 +31,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/Manenti_Calculator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../jfoenix-9.0.10.jar" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="proofread" />
   </component>
   <component name="RecentsManager">
@@ -84,6 +87,10 @@
       <workItem from="1636282432059" duration="2581000" />
       <workItem from="1636282189784" duration="8955000" />
       <workItem from="1636306685797" duration="430000" />
+      <workItem from="1636307584544" duration="599000" />
+      <workItem from="1636359685519" duration="293000" />
+      <workItem from="1636360016935" duration="2710000" />
+      <workItem from="1636379879223" duration="2885000" />
     </task>
     <servers />
   </component>

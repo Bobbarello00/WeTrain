@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.TrainerRegistrationController">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;" BorderPane.alignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#logoAction" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <Image url="@../../../Images/WeTrainLogo.png" />
+         </ImageView>
+         <ImageView fitHeight="319.0" fitWidth="242.0" layoutX="24.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
+            <Image url="@../../../Images/Trainers.png" />
+         </ImageView>
+         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="360.0" mnemonicParsing="false" onAction="#submitButtonAction" onMouseEntered="#submitButtonEntered" onMouseExited="#submitButtonExited" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <Text layoutX="370.0" layoutY="156.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup your account" wrappingWidth="112.83168792724626">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <Text fx:id="homeButt" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Text>
+         <Text layoutX="216.0" layoutY="69.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="TrainerRegistration" wrappingWidth="112.70948791503906">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <Text layoutX="175.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <TextField layoutX="282.0" layoutY="238.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor>
+         </TextField>
+         <TextField layoutX="282.0" layoutY="294.0" prefHeight="31.0" prefWidth="290.0" promptText="Password:                                                    " style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor>
+         </TextField>
+         <Button layoutX="537.0" layoutY="297.0" mnemonicParsing="false" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-background-radius: 50;" text="👁" textAlignment="JUSTIFY">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <Text layoutX="285.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please submit your certification here:" wrappingWidth="219.90956115722656">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <Button fx:id="attachButt" layoutX="525.0" layoutY="185.0" mnemonicParsing="false" onAction="#attachButtonAction" onMouseEntered="#attachButtonEntered" onMouseExited="#attachButtonExited" prefHeight="15.0" prefWidth="0.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 10;">
+            <graphic>
+               <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../../../Images/attach.png" />
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <Button fx:id="infoButt" layoutX="563.0" layoutY="171.0" mnemonicParsing="false" onAction="#infoButtonAction" prefHeight="0.0" prefWidth="29.0" style="-fx-background-color: rgba(24, 127, 21, 0); -fx-background-radius: 50;" text="ⓘ">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <tooltip>
+               <Tooltip contentDisplay="RIGHT" prefWidth="150.0" style="-fx-background-color: rgba(43,127,31,0.5);" text="attach a copy of: high school diploma or GED,  complete cardiopulmonary resuscitation (CPR) and  automated external defibrillator (AED) " textOverrun="CLIP" wrapText="true">
+                  <font>
+                     <Font name="ABeeZee Regular" size="12.0" />
+                  </font>
+               </Tooltip>
+            </tooltip>
+         </Button>
+         <JFXCheckBox checkedColor="#187f15" layoutX="285.0" layoutY="339.0" text="Save credentials">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </JFXCheckBox>
+      </Pane>
+   </center>
+</BorderPane>

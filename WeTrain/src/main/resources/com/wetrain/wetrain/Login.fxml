@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.WeTrainController">
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.LoginController">
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
-         <ImageView fx:id="Logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#LogoAction" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#logoAction" pickOnBounds="true" preserveRatio="true">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
@@ -21,7 +26,7 @@
          <ImageView fitHeight="188.0" fitWidth="315.0" layoutX="82.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
             <Image url="@../../../Images/User1.png" />
          </ImageView>
-         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" onMouseEntered="#submitButtonEntered" onMouseExited="#submitButtonExited" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -29,12 +34,12 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Button>
-         <Text layoutX="335.0" layoutY="175.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="71.23168945312517">
+         <Text layoutX="339.0" layoutY="174.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="71.23168945312517">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Text>
-         <Text fx:id="HomeButt" layoutX="126.0" layoutY="69.0" onMouseClicked="#HomeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
+         <Text fx:id="homeButt" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -73,14 +78,11 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Button>
-         <CheckBox layoutX="288.0" layoutY="306.0" mnemonicParsing="false" text="Remember me">
+         <JFXCheckBox checkedColor="#187f15" layoutX="286.0" layoutY="314.0" text="Remember me">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </CheckBox>
+         </JFXCheckBox>
       </Pane>
    </center>
 </BorderPane>
