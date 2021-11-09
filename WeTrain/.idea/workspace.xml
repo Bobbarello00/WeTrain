@@ -31,10 +31,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../jfoenix-9.0.10.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ManentiCalculator/trunk/ManentiCalculator" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="proofread" />
   </component>
@@ -90,7 +90,8 @@
       <workItem from="1636307584544" duration="599000" />
       <workItem from="1636359685519" duration="293000" />
       <workItem from="1636360016935" duration="2710000" />
-      <workItem from="1636379879223" duration="2885000" />
+      <workItem from="1636379879223" duration="5887000" />
+      <workItem from="1636466589360" duration="22000" />
     </task>
     <servers />
   </component>
