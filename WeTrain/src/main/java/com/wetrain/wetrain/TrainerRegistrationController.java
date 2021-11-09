@@ -15,6 +15,8 @@ public class TrainerRegistrationController {
     @FXML
     private Text homeButt;
     @FXML
+    private Text profileButt;
+    @FXML
     private Button infoButt;
     @FXML
     private ImageView logo;
@@ -23,13 +25,9 @@ public class TrainerRegistrationController {
     @FXML
     private Button submitButt;
     @FXML
-    protected void attachButtonEntered(){
-        attachButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 10");
-    }
+    protected void attachButtonEntered(){attachButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 10");}
     @FXML
-    protected void attachButtonExited() {
-        attachButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 10");
-    }
+    protected void attachButtonExited() {attachButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 10");}
     @FXML
     void attachButtonAction() {
         System.out.println("attach effettuato!");
@@ -37,6 +35,12 @@ public class TrainerRegistrationController {
     @FXML
     void infoButtonAction() {
         System.out.println("info");
+    }
+    @FXML
+    protected void profileButtonAction() throws IOException {
+        FxmlLoader loader = new FxmlLoader();
+        Pane view = loader.getPage("ProfileSelection");
+        mainPane.setCenter(view);
     }
     @FXML
     protected void homeButtonAction() throws IOException {
@@ -51,11 +55,7 @@ public class TrainerRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonEntered(){
-        submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");
-    }
+    protected void submitButtonEntered(){submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");}
     @FXML
-    protected void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 50");
-    }
+    protected void submitButtonExited() {submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 50");}
 }

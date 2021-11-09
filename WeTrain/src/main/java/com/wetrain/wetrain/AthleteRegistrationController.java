@@ -13,11 +13,19 @@ public class AthleteRegistrationController {
     @FXML
     private Text homeButt;
     @FXML
+    private Text profileButt;
+    @FXML
     private ImageView logo;
     @FXML
     private BorderPane mainPane;
     @FXML
     private Button submitButt;
+    @FXML
+    protected void profileButtonAction() throws IOException {
+        FxmlLoader loader = new FxmlLoader();
+        Pane view = loader.getPage("ProfileSelection");
+        mainPane.setCenter(view);
+    }
     @FXML
     protected void homeButtonAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();
