@@ -17,7 +17,7 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
-         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#logoAction" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>

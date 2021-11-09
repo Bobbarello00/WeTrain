@@ -25,14 +25,10 @@ public class AthleteRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void logoAction() throws IOException {
+    protected void submitButtonAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();
-        Pane view = loader.getPage("WeTrainGUI");
+        Pane view = loader.getPage("AthletesHome");
         mainPane.setCenter(view);
-    }
-    @FXML
-    protected void submitButtonAction() {
-        System.out.println("Submit effettuato!");
     }
     @FXML
     protected void submitButtonEntered(){

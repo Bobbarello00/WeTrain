@@ -25,12 +25,6 @@ public class LoginController {
         mainPane.setCenter(view);
     }
     @FXML
-    void logoAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
-        Pane view = loader.getPage("WeTrainGUI");
-        mainPane.setCenter(view);
-    }
-    @FXML
     void submitButtonAction() {
         System.out.println("Submit effettuato!");
     }
@@ -40,6 +34,6 @@ public class LoginController {
     }
     @FXML
     void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
+        submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 50");
     }
 }

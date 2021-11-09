@@ -45,12 +45,6 @@ public class TrainerRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void logoAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
-        Pane view = loader.getPage("WeTrainGUI");
-        mainPane.setCenter(view);
-    }
-    @FXML
     protected void submitButtonAction() {
         System.out.println("Submit effettuato!");
     }

@@ -37,11 +37,11 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void athletesButtonEntered(){
-        athletesButt.setStyle("-fx-background-color: rgb(21, 127, 24); -fx-background-radius: 25");
+        athletesButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
     protected void athletesButtonExited() {
-        athletesButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.43); -fx-background-radius: 25");
+        athletesButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
     @FXML
     protected void homeButtonAction() throws IOException {
@@ -50,18 +50,12 @@ public class ProfileSelectionController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void logoAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
-        Pane view = loader.getPage("WeTrainGUI");
-        mainPane.setCenter(view);
-    }
-    @FXML
     protected void nutritionistsButtonEntered(){
-        nutritionistsButt.setStyle("-fx-background-color: rgb(21, 127, 24); -fx-background-radius: 25");
+        nutritionistsButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
     protected void nutritionistsButtonExited() {
-        nutritionistsButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.43); -fx-background-radius: 25");
+        nutritionistsButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
     @FXML
     protected void nutritionistButtonAction() throws IOException {
@@ -71,11 +65,11 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void trainersButtonEntered(){
-        trainersButt.setStyle("-fx-background-color: rgb(21, 127, 24); -fx-background-radius: 25");
+        trainersButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
     protected void trainersButtonExited() {
-        trainersButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.43); -fx-background-radius: 25");
+        trainersButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
     @FXML
     protected void trainersButtonAction() throws IOException {
