@@ -45,8 +45,10 @@ public class NutritionistRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() {
-        System.out.println("Submit effettuato!");
+    protected void submitButtonAction() throws IOException {
+        FxmlLoader loader = new FxmlLoader();
+        Pane view = loader.getPage("NutritionistsHome");
+        mainPane.setCenter(view);
     }
     @FXML
     protected void submitButtonEntered(){
