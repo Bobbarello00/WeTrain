@@ -45,8 +45,10 @@ public class TrainerRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() {
-        System.out.println("Submit effettuato!");
+    protected void submitButtonAction() throws IOException {
+        FxmlLoader loader = new FxmlLoader();
+        Pane view = loader.getPage("TrainersHome");
+        mainPane.setCenter(view);
     }
     @FXML
     protected void submitButtonEntered(){
@@ -54,6 +56,6 @@ public class TrainerRegistrationController {
     }
     @FXML
     protected void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
+        submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 50");
     }
 }
