@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXCheckBox?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
@@ -106,11 +106,6 @@
                </Tooltip>
             </tooltip>
          </Button>
-         <JFXCheckBox checkedColor="#187f15" layoutX="285.0" layoutY="339.0" text="Save credentials">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </JFXCheckBox>
          <Text fx:id="profileButt" layoutX="211.0" layoutY="69.0" onMouseClicked="#profileButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
@@ -124,6 +119,11 @@
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Text>
+         <CheckBox layoutX="285.0" layoutY="338.0" mnemonicParsing="false" text="Save Credentials">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </CheckBox>
       </Pane>
    </center>
 </BorderPane>

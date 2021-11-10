@@ -4,3 +4,15 @@ BorderPane{
     -fx-font-family: 'ABeeZee', sans-serif;
     -fx-background-color: rgba(194, 255, 192, 1);
 }
+
+.check-box .box {
+    -fx-background-color: #c2ffc0;
+    -fx-border-color:grey;
+    -fx-border-radius:3px;
+}
+.check-box:selected .mark {
+    -fx-background-color: white;
+}
+.check-box:selected .box {
+    -fx-background-color: rgb(24,147,21);
+}
