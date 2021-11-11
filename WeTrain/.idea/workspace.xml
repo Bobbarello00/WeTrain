@@ -31,7 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ManentiCalculator/trunk/ManentiCalculator" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -104,6 +104,9 @@
       <workItem from="1636539652143" duration="243000" />
       <workItem from="1636628245814" duration="1638000" />
       <workItem from="1636642943998" duration="62000" />
+      <workItem from="1636639588463" duration="88000" />
+      <workItem from="1636643139815" duration="5000" />
+      <workItem from="1636643249122" duration="49000" />
     </task>
     <servers />
   </component>
