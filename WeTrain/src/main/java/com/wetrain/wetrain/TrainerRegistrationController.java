@@ -2,6 +2,9 @@ package com.wetrain.wetrain;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -10,6 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class TrainerRegistrationController {
+    static int once = 0;
     @FXML
     private Button attachButt;
     @FXML
@@ -24,6 +28,23 @@ public class TrainerRegistrationController {
     private BorderPane mainPane;
     @FXML
     private Button submitButt;
+    @FXML
+    private TextField passwSField;
+    @FXML
+    private PasswordField passwField;
+    @FXML
+    private CheckBox checkVisible;
+    @FXML
+    void passwStart() {
+        if (once == 0) {
+            passwSField.managedProperty().bind(checkVisible.selectedProperty());
+            passwSField.visibleProperty().bind(checkVisible.selectedProperty());
+            passwField.managedProperty().bind(checkVisible.selectedProperty().not());
+            passwField.visibleProperty().bind(checkVisible.selectedProperty().not());
+            passwSField.textProperty().bindBidirectional(passwField.textProperty());
+            once = 1;
+        }
+    }
     @FXML
     protected void attachButtonEntered(){attachButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 10");}
     @FXML

@@ -2,6 +2,9 @@ package com.wetrain.wetrain;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -10,6 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class LoginController {
+    private int once = 0;
     @FXML
     private Text homeButt;
     @FXML
@@ -18,6 +22,23 @@ public class LoginController {
     private BorderPane mainPane;
     @FXML
     private Button submitButt;
+    @FXML
+    private TextField passwSField;
+    @FXML
+    private PasswordField passwField;
+    @FXML
+    private CheckBox checkVisible;
+    @FXML
+    void passwStart() {
+        if (once == 0) {
+            passwSField.managedProperty().bind(checkVisible.selectedProperty());
+            passwSField.visibleProperty().bind(checkVisible.selectedProperty());
+            passwField.managedProperty().bind(checkVisible.selectedProperty().not());
+            passwField.visibleProperty().bind(checkVisible.selectedProperty().not());
+            passwSField.textProperty().bindBidirectional(passwField.textProperty());
+            once = 1;
+        }
+    }
     @FXML
     void homeButtonAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();

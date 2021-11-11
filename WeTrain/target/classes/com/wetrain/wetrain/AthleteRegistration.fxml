@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -57,7 +58,7 @@
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Text>
-         <TextField layoutX="282.0" layoutY="210.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.43); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+         <TextField layoutX="282.0" layoutY="210.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -65,19 +66,6 @@
                <Cursor fx:constant="TEXT" />
             </cursor>
          </TextField>
-         <TextField layoutX="282.0" layoutY="266.0" prefHeight="31.0" prefWidth="290.0" promptText="Password:                                                    " style="-fx-background-color: rgba(24, 147, 21, 0.43); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="TEXT" />
-            </cursor>
-         </TextField>
-         <Button layoutX="537.0" layoutY="269.0" mnemonicParsing="false" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-background-radius: 50;" text="👁" textAlignment="JUSTIFY">
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
          <Text fx:id="profileButt" layoutX="211.0" layoutY="69.0" onMouseClicked="#profileButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
@@ -95,6 +83,23 @@
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
+         </CheckBox>
+         <TextField fx:id="passwSField" layoutX="281.0" layoutY="258.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;" visible="false">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </TextField>
+         <PasswordField fx:id="passwField" layoutX="281.0" layoutY="258.0" onMouseClicked="#passwStart" prefHeight="31.0" prefWidth="290.0" promptText="Password:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font></PasswordField>
+         <CheckBox fx:id="checkVisible" layoutX="577.0" layoutY="264.0" mnemonicParsing="false" text="👁">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
          </CheckBox>
       </Pane>
    </center>
