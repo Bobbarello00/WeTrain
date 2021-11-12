@@ -34,14 +34,7 @@ public class AthleteRegistrationController {
     private CheckBox checkVisible;
     @FXML
     void passwStart() {
-        if (once == 0) {
-            passwSField.managedProperty().bind(checkVisible.selectedProperty());
-            passwSField.visibleProperty().bind(checkVisible.selectedProperty());
-            passwField.managedProperty().bind(checkVisible.selectedProperty().not());
-            passwField.visibleProperty().bind(checkVisible.selectedProperty().not());
-            passwSField.textProperty().bindBidirectional(passwField.textProperty());
-            once = 1;
-        }
+        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
     }
     @FXML
     void eyeButtonAction() {checkVisible.fire();}
