@@ -14,7 +14,7 @@ public class WeTrainController {
     @FXML
     private Button regButt;
     @FXML
-    private Text signInText;
+    private Text logInText;
     @FXML
     protected void registerButtonAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();
@@ -22,7 +22,7 @@ public class WeTrainController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void signInTextAction() throws IOException {
+    protected void logInTextAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();
         Pane view = loader.getPage("Login");
         mainPane.setCenter(view);
@@ -36,11 +36,11 @@ public class WeTrainController {
         regButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
     }
     @FXML
-    protected void signInButtonEntered(){
-        signInText.setStyle("-fx-fill: rgb(20, 130, 17)");
+    protected void logInButtonEntered(){
+        logInText.setStyle("-fx-fill: rgb(20, 130, 17)");
     }
     @FXML
-    protected void signInButtonExited(){
-        signInText.setStyle("-fx-fill: rgba(24, 147, 21, 1);");
+    protected void logInButtonExited(){
+        logInText.setStyle("-fx-fill: rgba(24, 147, 21, 1);");
     }
 }

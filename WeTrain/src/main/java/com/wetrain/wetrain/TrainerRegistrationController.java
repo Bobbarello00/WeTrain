@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class TrainerRegistrationController {
-    static int once = 0;
+    private static int once = 0;
     @FXML
     private Button attachButt;
     @FXML

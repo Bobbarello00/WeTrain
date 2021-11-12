@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class LoginController {
-    private int once = 0;
+    private static int once = 0;
     @FXML
     private Text homeButt;
     @FXML
