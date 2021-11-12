@@ -29,6 +29,8 @@ public class NutritionistRegistrationController {
     @FXML
     private Button submitButt;
     @FXML
+    private Button eyeButt;
+    @FXML
     private TextField passwSField;
     @FXML
     private PasswordField passwField;
@@ -45,6 +47,8 @@ public class NutritionistRegistrationController {
             once = 1;
         }
     }
+    @FXML
+    void eyeButtonAction() {checkVisible.fire();}
     @FXML
     protected void attachButtonEntered(){attachButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 10");}
     @FXML

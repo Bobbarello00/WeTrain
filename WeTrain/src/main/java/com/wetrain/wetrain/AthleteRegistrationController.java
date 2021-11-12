@@ -25,6 +25,8 @@ public class AthleteRegistrationController {
     @FXML
     private Button submitButt;
     @FXML
+    private Button eyeButt;
+    @FXML
     private TextField passwSField;
     @FXML
     private PasswordField passwField;
@@ -41,6 +43,8 @@ public class AthleteRegistrationController {
             once = 1;
         }
     }
+    @FXML
+    void eyeButtonAction() {checkVisible.fire();}
     @FXML
     protected void profileButtonAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();

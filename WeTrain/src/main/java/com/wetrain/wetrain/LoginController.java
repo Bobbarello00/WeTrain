@@ -23,6 +23,8 @@ public class LoginController {
     @FXML
     private Button submitButt;
     @FXML
+    private Button eyeButt;
+    @FXML
     private TextField passwSField;
     @FXML
     private PasswordField passwField;
@@ -39,6 +41,8 @@ public class LoginController {
             once = 1;
         }
     }
+    @FXML
+    void eyeButtonAction() {checkVisible.fire();}
     @FXML
     void homeButtonAction() throws IOException {
         FxmlLoader loader = new FxmlLoader();
