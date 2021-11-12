@@ -13,7 +13,6 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class AthleteRegistrationController {
-    private static int once = 0;
     @FXML
     private Text homeButt;
     @FXML
@@ -51,11 +50,7 @@ public class AthleteRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
-        Pane view = loader.getPage("AthletesHome");
-        mainPane.setCenter(view);
-    }
+    protected void submitButtonAction() throws IOException {PageSwitchAfterLog.pageSwitch(submitButt, "AthletesHome");}
     @FXML
     protected void submitButtonEntered(){
         submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");

@@ -25,7 +25,9 @@ public class AthletesHomeController {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button planButt;
+    private Button startButt;
+    @FXML
+    private Button editButt;
     @FXML
     private Button workoutButt;
     @FXML
@@ -53,21 +55,23 @@ public class AthletesHomeController {
     @FXML
     void dietButtonExited() {dietButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
-    void logoutButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
-        Pane view = loader.getPage("WeTrainGUI");
-        mainPane.setCenter(view);
-    }
+    void editButtonAction() {System.out.println("Edit Button");}
+    @FXML
+    void editButtonEntered() {editButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    @FXML
+    void editButtonExited() {editButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    @FXML
+    void logoutButtonAction() throws IOException {PageSwitchAfterLog.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
     void logoutButtonEntered() {logoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML
     void logoutButtonExited() {logoutButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
-    void planButtonAction() {System.out.println("Plan Training");}
+    void startButtonAction() {System.out.println("Start Workout");}
     @FXML
-    void planButtonEntered() {planButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    void startButtonEntered() {startButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML
-    void planButtonExited() {planButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    void startButtonExited() {startButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void workoutButtonAction() {System.out.println("Request workout plan");}
     @FXML
