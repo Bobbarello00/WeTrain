@@ -36,9 +36,7 @@ public class TrainerRegistrationController {
     @FXML
     private CheckBox checkVisible;
     @FXML
-    void passwStart() {
-        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
-    }
+    void passwStart() {PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);}
     @FXML
     void eyeButtonAction() {checkVisible.fire();}
     @FXML
@@ -46,28 +44,24 @@ public class TrainerRegistrationController {
     @FXML
     protected void attachButtonExited() {attachButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 10");}
     @FXML
-    void attachButtonAction() {
-        System.out.println("attach effettuato!");
-    }
+    void attachButtonAction() {System.out.println("attach effettuato!");}
     @FXML
-    void infoButtonAction() {
-        System.out.println("info");
-    }
+    void infoButtonAction() {System.out.println("info");}
     @FXML
     protected void profileButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("ProfileSelection");
         mainPane.setCenter(view);
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }
     @FXML
     protected void submitButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);
     }

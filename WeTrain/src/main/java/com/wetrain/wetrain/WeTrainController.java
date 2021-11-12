@@ -17,13 +17,13 @@ public class WeTrainController {
     private Text logInText;
     @FXML
     protected void registerButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("ProfileSelection");
         mainPane.setCenter(view);
     }
     @FXML
     protected void logInTextAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("Login");
         mainPane.setCenter(view);
     }

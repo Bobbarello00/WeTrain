@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 
-public class PageSwitchBeforeLog {
+public class PageSwitchSimple {
     private Pane view;
 
     public Pane getPage(String fileName) throws IOException {
@@ -18,7 +18,7 @@ public class PageSwitchBeforeLog {
             }
             view = FXMLLoader.load(fileUrl);
         } catch (FileNotFoundException e) {
-            System.out.println("File "+fileName+" non trovato, controllare il PageSwitchBeforeLog!");
+            System.out.println("File "+fileName+" non trovato, controllare il PageSwitchSimple!");
         }
         return view;
     }

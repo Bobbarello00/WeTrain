@@ -32,7 +32,7 @@ public class AthletesHomeController {
     private Button workoutButt;
     @FXML
     void athletesHomeButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("AthletesHome");
         mainPane.setCenter(view);
     }
@@ -61,7 +61,7 @@ public class AthletesHomeController {
     @FXML
     void editButtonExited() {editButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
-    void logoutButtonAction() throws IOException {PageSwitchAfterLog.pageSwitch(logoutButt, "WeTrainGUI");}
+    void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
     void logoutButtonEntered() {logoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML

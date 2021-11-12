@@ -32,25 +32,24 @@ public class AthleteRegistrationController {
     @FXML
     private CheckBox checkVisible;
     @FXML
-    void passwStart() {
-        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
-    }
+    void passwStart() {PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);}
     @FXML
     void eyeButtonAction() {checkVisible.fire();}
     @FXML
     protected void profileButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("ProfileSelection");
         mainPane.setCenter(view);
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() throws IOException {PageSwitchAfterLog.pageSwitch(submitButt, "AthletesHome");}
+    protected void submitButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(submitButt, "AthletesHome");}
     @FXML
     protected void submitButtonEntered(){
         submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");

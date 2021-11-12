@@ -24,7 +24,7 @@ public class NutritionistsHomeController {
     private Button submitButt;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }
@@ -34,7 +34,7 @@ public class NutritionistsHomeController {
     void logoutButtonExited() {logoutButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void nutritionistsHomeButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("NutritionistsHome");
         mainPane.setCenter(view);
     }

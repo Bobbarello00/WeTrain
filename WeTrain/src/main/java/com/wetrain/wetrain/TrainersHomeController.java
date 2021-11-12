@@ -36,7 +36,7 @@ public class TrainersHomeController {
     void calendarButtonExited() {calendarButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }
@@ -70,7 +70,7 @@ public class TrainersHomeController {
     void submitButtonExited() {submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void trainersHomeButtonAction() throws IOException {
-        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
+        PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);
     }

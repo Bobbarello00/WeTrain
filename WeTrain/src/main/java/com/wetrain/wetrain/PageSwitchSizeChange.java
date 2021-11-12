@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class PageSwitchAfterLog {
+public class PageSwitchSizeChange {
 
     public static void pageSwitch(Button button, String page) throws IOException {
         Stage stage = (Stage) button.getScene().getWindow();
@@ -20,7 +20,7 @@ public class PageSwitchAfterLog {
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
         newStage.setTitle("WeTrain");
-        stage.getIcons().add(new Image("file:src/main/resources/Images/WeTrainLogo.png"));
+        newStage.getIcons().add(new Image("file:src/main/resources/Images/WeTrainLogo.png"));
         newStage.setScene(newScene);
         newStage.setResizable(false);
         newStage.show();
