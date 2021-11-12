@@ -39,13 +39,13 @@ public class AthleteRegistrationController {
     void eyeButtonAction() {checkVisible.fire();}
     @FXML
     protected void profileButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("ProfileSelection");
         mainPane.setCenter(view);
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }

@@ -55,19 +55,19 @@ public class TrainerRegistrationController {
     }
     @FXML
     protected void profileButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("ProfileSelection");
         mainPane.setCenter(view);
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }
     @FXML
     protected void submitButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);
     }

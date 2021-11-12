@@ -37,7 +37,7 @@ public class LoginController {
     void eyeButtonAction() {checkVisible.fire();}
     @FXML
     void homeButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }

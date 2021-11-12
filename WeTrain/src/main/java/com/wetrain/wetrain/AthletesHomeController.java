@@ -32,7 +32,7 @@ public class AthletesHomeController {
     private Button workoutButt;
     @FXML
     void athletesHomeButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("AthletesHome");
         mainPane.setCenter(view);
     }

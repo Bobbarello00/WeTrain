@@ -31,7 +31,7 @@ public class ProfileSelectionController {
 
     @FXML
     protected void athletesButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("AthleteRegistration");
         mainPane.setCenter(view);
     }
@@ -45,7 +45,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("WeTrainGUI");
         mainPane.setCenter(view);
     }
@@ -59,7 +59,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void nutritionistButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("NutritionistRegistration");
         mainPane.setCenter(view);
     }
@@ -73,7 +73,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void trainersButtonAction() throws IOException {
-        FxmlLoader loader = new FxmlLoader();
+        PageSwitchBeforeLog loader = new PageSwitchBeforeLog();
         Pane view = loader.getPage("TrainerRegistration");
         mainPane.setCenter(view);
     }
