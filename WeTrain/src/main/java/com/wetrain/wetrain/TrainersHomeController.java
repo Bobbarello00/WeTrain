@@ -11,8 +11,6 @@ import java.io.IOException;
 
 public class TrainersHomeController {
     @FXML
-    private Button calendarButt;
-    @FXML
     private ImageView logo;
     @FXML
     private Button logoutButt;
@@ -21,7 +19,9 @@ public class TrainersHomeController {
     @FXML
     private Button manageLButt;
     @FXML
-    private Button createButt;
+    private Button createCButt;
+    @FXML
+    private Button createWButt;
     @FXML
     private Button startButt;
     @FXML
@@ -30,12 +30,6 @@ public class TrainersHomeController {
     private Button manageRButt;
     @FXML
     private Text trainersHomeButt;
-    @FXML
-    void calendarButtonAction() {System.out.println("Lesson Plan Calendar");}
-    @FXML
-    void calendarButtonEntered() {calendarButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void calendarButtonExited() {calendarButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
@@ -49,11 +43,17 @@ public class TrainersHomeController {
     @FXML
     void manageLButtonExited() {manageLButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
-    void createButtonAction() {System.out.println("Create New Course");}
+    void createCButtonAction() {System.out.println("Create New Course");}
     @FXML
-    void createButtonEntered() {createButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    void createCButtonEntered() {createCButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML
-    void createButtonExited() {createButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    void createCButtonExited() {createCButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    @FXML
+    void createWButtonAction() {System.out.println("Create New Workout");}
+    @FXML
+    void createWButtonEntered() {createCButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    @FXML
+    void createWButtonExited() {createCButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void startButtonAction() {System.out.println("Start Lesson");}
     @FXML
