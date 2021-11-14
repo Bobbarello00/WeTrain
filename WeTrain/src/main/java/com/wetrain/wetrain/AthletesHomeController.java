@@ -5,13 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class AthletesHomeController {
-    @FXML
-    private Text athletesHomeButt;
     @FXML
     private Button bookButt;
     @FXML
@@ -31,7 +28,7 @@ public class AthletesHomeController {
     @FXML
     private Button workoutButt;
     @FXML
-    void athletesHomeButtonAction() throws IOException {
+    void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("AthletesHome");
         mainPane.setCenter(view);
