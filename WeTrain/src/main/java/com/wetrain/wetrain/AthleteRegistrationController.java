@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class AthleteRegistrationController {
+    private static int once = 0;
     @FXML
     private Text homeButt;
     @FXML
@@ -32,24 +33,35 @@ public class AthleteRegistrationController {
     @FXML
     private CheckBox checkVisible;
     @FXML
-    void passwStart() {PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);}
+    void passwStart() {
+        if (once == 0) {
+            PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
+            once = 1;
+        }
+    }
     @FXML
-    void eyeButtonAction() {checkVisible.fire();}
+    void eyeButtonAction() {
+        checkVisible.fire();
+    }
     @FXML
     protected void profileButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("ProfileSelection");
+        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
     protected void homeButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI");
+        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
     protected void submitButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(submitButt, "AthletesHome");}
+        once = 0;
+        PageSwitchSizeChange.pageSwitch(submitButt, "AthletesHome");
+    }
     @FXML
     protected void submitButtonEntered(){
         submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");

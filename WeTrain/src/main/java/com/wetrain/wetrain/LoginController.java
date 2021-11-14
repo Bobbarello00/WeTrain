@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 public class LoginController {
+    private static int once = 0;
     @FXML
     private Text homeButt;
     @FXML
@@ -31,14 +32,20 @@ public class LoginController {
     private CheckBox checkVisible;
     @FXML
     void passwStart() {
-        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
+        if (once == 0) {
+            PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
+            once = 1;
+        }
     }
     @FXML
-    void eyeButtonAction() {checkVisible.fire();}
+    void eyeButtonAction() {
+        checkVisible.fire();
+    }
     @FXML
     void homeButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI");
+        once = 0;
         mainPane.setCenter(view);
     }
     @FXML

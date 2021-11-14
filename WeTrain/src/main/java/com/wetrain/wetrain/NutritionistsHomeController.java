@@ -39,15 +39,27 @@ public class NutritionistsHomeController {
         mainPane.setCenter(view);
     }
     @FXML
-    void recordButtonAction() {System.out.println("Record Video Presentation");}
+    void recordButtonAction() {
+        System.out.println("Record Video Presentation");
+    }
     @FXML
-    void recordButtonEntered() {recordButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    void recordButtonEntered() {
+        recordButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    }
     @FXML
-    void recordButtonExited() {recordButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    void recordButtonExited() {
+        recordButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    }
     @FXML
-    void submitButtonAction() {System.out.println("Submit Diet Plan");}
+    void submitButtonAction() {
+        System.out.println("Submit Diet Plan");
+    }
     @FXML
-    void submitButtonEntered() {submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    void submitButtonEntered() {
+        submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    }
     @FXML
-    void submitButtonExited() {submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    void submitButtonExited() {
+        submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    }
 }
