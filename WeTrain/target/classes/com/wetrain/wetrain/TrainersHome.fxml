@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.TrainersHomeController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
-            prefWidth="750.0" style="-fx-background-color: c2ffc0;">
+      <Pane prefHeight="785.0" prefWidth="1533.0" style="-fx-background-color: c2ffc0;">
          <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0"
                     onMouseClicked="#trainersHomeButtonAction" pickOnBounds="true" preserveRatio="true">
             <cursor>
@@ -20,14 +25,8 @@
             </cursor>
             <Image url="@../../../Images/WeTrainLogo.png"/>
          </ImageView>
-         <Text layoutX="301.0" layoutY="147.0" scaleX="2.2" scaleY="2.2" strokeType="OUTSIDE" strokeWidth="0.0"
-               text="What do you want to do?" wrappingWidth="148.56498718261736">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Text>
-         <Text fx:id="trainersHomeButt" layoutX="139.0" layoutY="69.0" onMouseClicked="#trainersHomeButtonAction"
-               scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="TrainersHome "
+         <Text fx:id="trainersHomeButt" layoutX="246.0" layoutY="74.0" onMouseClicked="#trainersHomeButtonAction"
+               scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TrainersHome "
                wrappingWidth="86.21977043151855">
             <font>
                <Font name="ABeeZee Regular" size="12.0"/>
@@ -36,81 +35,103 @@
                <Cursor fx:constant="HAND"/>
             </cursor>
          </Text>
-         <Button fx:id="modifyButt" layoutX="86.0" layoutY="208.0" mnemonicParsing="false"
-                 onAction="#modifyButtonAction" onMouseEntered="#modifyButtonEntered"
-                 onMouseExited="#modifyButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                 style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                 text="        Modify        Lessons" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <cursor>
-               <Cursor fx:constant="HAND"/>
-            </cursor>
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Button>
-         <Button fx:id="startButt" layoutX="313.0" layoutY="208.0" mnemonicParsing="false" onAction="#startButtonAction"
-                 onMouseEntered="#startButtonEntered" onMouseExited="#startButtonExited" prefHeight="56.0"
-                 prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                 style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                 text="        Start        Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <cursor>
-               <Cursor fx:constant="HAND"/>
-            </cursor>
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Button>
-         <Button fx:id="submitButt" layoutX="539.0" layoutY="208.0" mnemonicParsing="false"
-                 onAction="#submitButtonAction" onMouseEntered="#submitButtonEntered"
-                 onMouseExited="#submitButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                 style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                 text="        Submit        Workout Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <cursor>
-               <Cursor fx:constant="HAND"/>
-            </cursor>
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Button>
-         <Button fx:id="recordButt" layoutX="199.5" layoutY="313.0" mnemonicParsing="false"
-                 onAction="#recordButtonAction" onMouseEntered="#recordButtonEntered"
-                 onMouseExited="#recordButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                 style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                 text="        Record        Video Presentation" textAlignment="CENTER" textFill="WHITE"
-                 wrapText="true">
-            <cursor>
-               <Cursor fx:constant="HAND"/>
-            </cursor>
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Button>
-         <Button fx:id="calendarButt" layoutX="426.0" layoutY="313.0" mnemonicParsing="false"
-                 onAction="#calendarButtonAction" onMouseEntered="#calendarButtonEntered"
-                 onMouseExited="#calendarButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                 style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                 text="     Lesson Plan     Calendar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <cursor>
-               <Cursor fx:constant="HAND"/>
-            </cursor>
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Button>
-         <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="601.0" layoutY="31.0" pickOnBounds="true"
-                    preserveRatio="true">
-            <Image url="@../../../Images/User1.png"/>
-         </ImageView>
-         <Text layoutX="661.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User1"
-               wrappingWidth="37.451904296875">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
-            </font>
-         </Text>
-         <Button fx:id="logoutButt" layoutX="653.0" layoutY="53.0" mnemonicParsing="false"
-                 onAction="#logoutButtonAction" onMouseEntered="#logoutButtonEntered"
-                 onMouseExited="#logoutButtonExited" prefHeight="12.0" prefWidth="67.0" scaleX="0.75" scaleY="0.75"
-                 style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="Logout"
+         <VBox alignment="CENTER" layoutX="48.0" layoutY="140.0" prefHeight="622.0" prefWidth="240.0" spacing="55.0"
+               style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+            <Button fx:id="startButt" mnemonicParsing="false" onAction="#startButtonAction"
+                    onMouseEntered="#startButtonEntered" onMouseExited="#startButtonExited" prefHeight="56.0"
+                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
+                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
+                    text="        Start        Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Button>
+            <Button fx:id="manageLButt" mnemonicParsing="false" onAction="#manageLButtonAction"
+                    onMouseEntered="#manageLButtonEntered" onMouseExited="#manageLButtonExited" prefHeight="56.0"
+                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
+                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
+                    text="        Manage        Lessons" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Button>
+            <Button fx:id="manageRButt" mnemonicParsing="false" onAction="#manageRButtonAction"
+                    onMouseEntered="#manageRButtonEntered" onMouseExited="#manageRButtonExited" prefHeight="56.0"
+                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
+                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
+                    text="        Manage        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Button>
+            <Button fx:id="calendarButt" mnemonicParsing="false" onAction="#calendarButtonAction"
+                    onMouseEntered="#calendarButtonEntered" onMouseExited="#calendarButtonExited" prefHeight="56.0"
+                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
+                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
+                    text="     Lesson Plan     Calendar" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Button>
+            <Button fx:id="createButt" mnemonicParsing="false" onAction="#createButtonAction"
+                    onMouseEntered="#createButtonEntered" onMouseExited="#createButtonExited" prefHeight="56.0"
+                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
+                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
+                    text="        Create        New Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Button>
+         </VBox>
+         <HBox alignment="CENTER_RIGHT" layoutX="1166.0" layoutY="12.0" prefHeight="107.0" prefWidth="315.0"
+               style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+            <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
+               <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../../../Images/User1.png"/>
+               </ImageView>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
+               <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User1"
+                     wrappingWidth="37.451904296875">
+                  <font>
+                     <Font name="ABeeZee Regular" size="12.0"/>
+                  </font>
+                  <VBox.margin>
+                     <Insets/>
+                  </VBox.margin>
+               </Text>
+               <Button fx:id="logoutButt" layoutX="29.0" layoutY="96.0" mnemonicParsing="false"
+                       onAction="#logoutButtonAction" onMouseEntered="#logoutButtonEntered"
+                       onMouseExited="#logoutButtonExited" prefHeight="23.0" prefWidth="83.0" scaleX="1.25"
+                       scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
+                       text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <cursor>
+                     <Cursor fx:constant="HAND"/>
+                  </cursor>
+                  <font>
+                     <Font name="ABeeZee Regular" size="12.0"/>
+                  </font>
+               </Button>
+            </VBox>
+         </HBox>
+         <Button fx:id="editButt" layoutX="1257.0" layoutY="91.0" mnemonicParsing="false" onAction="#editButtonAction"
+                 onMouseEntered="#editButtonEntered" onMouseExited="#editButtonExited" prefHeight="23.0"
+                 prefWidth="29.0" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="🖉"
                  textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <cursor>
                <Cursor fx:constant="HAND"/>
@@ -119,6 +140,46 @@
                <Font name="ABeeZee Regular" size="12.0"/>
             </font>
          </Button>
+         <Pane layoutX="334.0" layoutY="139.0" prefHeight="623.0" prefWidth="1147.0"
+               style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+            <HBox layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0"
+                  style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.7);"/>
+            <HBox layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0"
+                  style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.3);"/>
+            <Text layoutX="117.0" layoutY="41.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="🏃 Your Courses" wrappingWidth="93.06498718261736">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Text>
+            <Text layoutX="127.0" layoutY="347.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="⏰ Pending Requests" wrappingWidth="118.82054138183611">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Text>
+            <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="＄ Your Earnings " wrappingWidth="138.06498718261736">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Text>
+            <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0"
+                  style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+               </padding>
+               <AreaChart prefHeight="240.0" prefWidth="615.0">
+                  <xAxis>
+                     <CategoryAxis side="BOTTOM"/>
+                  </xAxis>
+                  <yAxis>
+                     <NumberAxis side="LEFT"/>
+                  </yAxis>
+               </AreaChart>
+               <Pane prefHeight="300.0" prefWidth="615.0"/>
+            </VBox>
+         </Pane>
       </Pane>
    </center>
 </BorderPane>

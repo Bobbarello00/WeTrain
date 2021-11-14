@@ -79,10 +79,8 @@ public class NutritionistRegistrationController {
     }
     @FXML
     protected void submitButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome");
         once = 0;
-        mainPane.setCenter(view);
+        PageSwitchSizeChange.pageSwitch(submitButt, "NutritionistsHome");
     }
     @FXML
     protected void submitButtonEntered(){

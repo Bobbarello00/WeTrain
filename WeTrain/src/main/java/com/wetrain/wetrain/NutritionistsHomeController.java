@@ -19,15 +19,17 @@ public class NutritionistsHomeController {
     @FXML
     private Text nutritionistsHomeButt;
     @FXML
-    private Button recordButt;
+    private Button editButt;
     @FXML
-    private Button submitButt;
+    private Button createButt;
     @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("WeTrainGUI");
-        mainPane.setCenter(view);
-    }
+    private Button startButt;
+    @FXML
+    private Button manageRButt;
+    @FXML
+    private Button manageDButt;
+    @FXML
+    void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
     void logoutButtonEntered() {logoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML
@@ -39,27 +41,64 @@ public class NutritionistsHomeController {
         mainPane.setCenter(view);
     }
     @FXML
-    void recordButtonAction() {
-        System.out.println("Record Video Presentation");
+    void startButtonAction() {
+        System.out.println("Start Appointment");
     }
     @FXML
-    void recordButtonEntered() {
-        recordButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    void startButtonEntered() {
+        startButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
     }
     @FXML
-    void recordButtonExited() {
-        recordButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    void startButtonExited() {
+        startButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
-    void submitButtonAction() {
-        System.out.println("Submit Diet Plan");
+    void manageRButtonAction() {
+        System.out.println("Manage Requests");
     }
     @FXML
-    void submitButtonEntered() {
-        submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    void manageRButtonEntered() {
+        manageRButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
     }
     @FXML
-    void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    void manageRButtonExited() {
+        manageRButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
+    @FXML
+    void manageDButtonAction() {
+        System.out.println("Manage Your Diets");
+    }
+    @FXML
+    void manageDButtonEntered() {
+        manageDButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    }
+    @FXML
+    void manageDButtonExited() {
+        manageDButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    }
+    @FXML
+    void editButtonAction() {
+        System.out.println("Edit");
+    }
+    @FXML
+    void editButtonEntered() {
+        editButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    }
+    @FXML
+    void editButtonExited() {
+        editButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    }
+    @FXML
+    void createButtonAction() {
+        System.out.println("Create New Diet");
+    }
+    @FXML
+    void createButtonEntered() {
+        createButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");
+    }
+    @FXML
+    void createButtonExited() {
+        createButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+    }
+
 }

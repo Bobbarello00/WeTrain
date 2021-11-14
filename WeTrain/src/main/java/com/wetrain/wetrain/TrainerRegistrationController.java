@@ -79,10 +79,8 @@ public class TrainerRegistrationController {
     }
     @FXML
     protected void submitButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome");
         once = 0;
-        mainPane.setCenter(view);
+        PageSwitchSizeChange.pageSwitch(submitButt, "TrainersHome");
     }
     @FXML
     protected void submitButtonEntered(){
