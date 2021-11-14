@@ -49,7 +49,7 @@ public class AthletesHomeController {
     @FXML
     void buyButtonExited() {buyButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
-    void dietButtonAction() {System.out.println("Request diet plan");}
+    void dietButtonAction() {System.out.println("Your diet plan");}
     @FXML
     void dietButtonEntered() {dietButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML
@@ -73,7 +73,7 @@ public class AthletesHomeController {
     @FXML
     void startButtonExited() {startButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
-    void workoutButtonAction() {System.out.println("Request workout plan");}
+    void workoutButtonAction() {System.out.println("Your workout plan");}
     @FXML
     void workoutButtonEntered() {workoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
     @FXML
