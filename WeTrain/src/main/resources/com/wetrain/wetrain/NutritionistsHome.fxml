@@ -6,6 +6,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,154 +19,138 @@
 <BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.NutritionistsHomeController">
    <center>
       <Pane prefHeight="785.0" prefWidth="1533.0" style="-fx-background-color: c2ffc0;">
-         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0"
-                    onMouseClicked="#nutritionistsHomeButtonAction" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#nutritionistsHomeButtonAction" pickOnBounds="true" preserveRatio="true">
             <cursor>
-               <Cursor fx:constant="HAND"/>
+               <Cursor fx:constant="HAND" />
             </cursor>
-            <Image url="@../../../Images/WeTrainLogo.png"/>
+            <Image url="@../../../Images/WeTrainLogo.png" />
          </ImageView>
-         <Text fx:id="nutritionistsHomeButt" layoutX="280.0" layoutY="69.0"
-               onMouseClicked="#nutritionistsHomeButtonAction" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE"
-               strokeWidth="0.0" text="NutritionistsHome " wrappingWidth="106.46977043151855">
+         <Text fx:id="nutritionistsHomeButt" layoutX="280.0" layoutY="69.0" onMouseClicked="#nutritionistsHomeButtonAction" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NutritionistsHome " wrappingWidth="106.46977043151855">
             <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
+               <Font name="ABeeZee Regular" size="12.0" />
             </font>
             <cursor>
-               <Cursor fx:constant="HAND"/>
+               <Cursor fx:constant="HAND" />
             </cursor>
          </Text>
-         <VBox alignment="CENTER" layoutX="48.0" layoutY="140.0" prefHeight="622.0" prefWidth="240.0" spacing="90.0"
-               style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-            <Button fx:id="startButt" layoutX="68.0" layoutY="97.0" mnemonicParsing="false"
-                    onAction="#startButtonAction" onMouseEntered="#startButtonEntered"
-                    onMouseExited="#startButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25"
-                    scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                    text="        Start        Appointment" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <VBox alignment="CENTER" layoutX="48.0" layoutY="140.0" prefHeight="622.0" prefWidth="240.0" spacing="90.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+            <Button fx:id="startButt" layoutX="68.0" layoutY="97.0" mnemonicParsing="false" onAction="#startButtonAction" onMouseEntered="#startButtonEntered" onMouseExited="#startButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="        Start        Appointment" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="manageRButt" mnemonicParsing="false" onAction="#manageRButtonAction"
-                    onMouseEntered="#manageRButtonEntered" onMouseExited="#manageRButtonExited" prefHeight="56.0"
-                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                    text="        Manage        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="manageRButt" mnemonicParsing="false" onAction="#manageRButtonAction" onMouseEntered="#manageRButtonEntered" onMouseExited="#manageRButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="        Manage        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="manageDButt" mnemonicParsing="false" onAction="#manageDButtonAction"
-                    onMouseEntered="#manageDButtonEntered" onMouseExited="#manageDButtonExited" prefHeight="56.0"
-                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                    text="        Manage        Your Diets" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="manageDButt" mnemonicParsing="false" onAction="#manageDButtonAction" onMouseEntered="#manageDButtonEntered" onMouseExited="#manageDButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="        Manage        Your Diets" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="createButt" mnemonicParsing="false" onAction="#createButtonAction"
-                    onMouseEntered="#createButtonEntered" onMouseExited="#createButtonExited" prefHeight="56.0"
-                    prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                    style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                    text="        Create        New Diet" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="createButt" mnemonicParsing="false" onAction="#createButtonAction" onMouseEntered="#createButtonEntered" onMouseExited="#createButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="        Create        New Diet" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Button>
          </VBox>
-         <HBox alignment="CENTER_RIGHT" layoutX="1166.0" layoutY="12.0" prefHeight="107.0" prefWidth="315.0"
-               style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+         <HBox alignment="CENTER_RIGHT" layoutX="1166.0" layoutY="12.0" prefHeight="107.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
             <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
                <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../../../Images/User1.png"/>
+                  <Image url="@../../../Images/User1.png" />
                </ImageView>
             </VBox>
             <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
-               <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User1"
-                     wrappingWidth="37.451904296875">
+               <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" wrappingWidth="37.451904296875">
                   <font>
-                     <Font name="ABeeZee Regular" size="12.0"/>
+                     <Font name="ABeeZee Regular" size="12.0" />
                   </font>
                   <VBox.margin>
-                     <Insets/>
+                     <Insets />
                   </VBox.margin>
                </Text>
-               <Button fx:id="logoutButt" layoutX="29.0" layoutY="96.0" mnemonicParsing="false"
-                       onAction="#logoutButtonAction" onMouseEntered="#logoutButtonEntered"
-                       onMouseExited="#logoutButtonExited" prefHeight="23.0" prefWidth="83.0" scaleX="1.25"
-                       scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;"
-                       text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <Button fx:id="logoutButt" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" onMouseEntered="#logoutButtonEntered" onMouseExited="#logoutButtonExited" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                   <cursor>
-                     <Cursor fx:constant="HAND"/>
+                     <Cursor fx:constant="HAND" />
                   </cursor>
                   <font>
-                     <Font name="ABeeZee Regular" size="12.0"/>
+                     <Font name="ABeeZee Regular" size="12.0" />
                   </font>
                </Button>
             </VBox>
          </HBox>
-         <Button fx:id="editButt" layoutX="1257.0" layoutY="91.0" mnemonicParsing="false" onAction="#editButtonAction"
-                 onMouseEntered="#editButtonEntered" onMouseExited="#editButtonExited" prefHeight="23.0"
-                 prefWidth="29.0" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="🖉"
-                 textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="editButt" layoutX="1257.0" layoutY="91.0" mnemonicParsing="false" onAction="#editButtonAction" onMouseEntered="#editButtonEntered" onMouseExited="#editButtonExited" prefHeight="23.0" prefWidth="29.0" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <cursor>
-               <Cursor fx:constant="HAND"/>
+               <Cursor fx:constant="HAND" />
             </cursor>
             <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
+               <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Pane layoutX="334.0" layoutY="139.0" prefHeight="623.0" prefWidth="1147.0"
-               style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-            <HBox layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0"
-                  style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.7);"/>
-            <HBox layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0"
-                  style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.3);"/>
-            <Text layoutX="117.0" layoutY="41.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="🍴 Your Diets" wrappingWidth="93.06498718261736">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
-               </font>
-            </Text>
-            <Text layoutX="127.0" layoutY="347.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="⏰ Pending Requests" wrappingWidth="118.82054138183611">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
-               </font>
-            </Text>
-            <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="＄ Your Earnings " wrappingWidth="138.06498718261736">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
-               </font>
-            </Text>
-            <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0"
-                  style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
+         <Pane layoutX="334.0" layoutY="139.0" prefHeight="623.0" prefWidth="1147.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+            <HBox alignment="CENTER_RIGHT" layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.7);">
+               <children>
+                  <ScrollBar orientation="VERTICAL" style="-fx-background-radius: 10;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ScrollBar>
+               </children>
                <padding>
-                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding></HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.3);">
+               <children>
+                  <ScrollBar orientation="VERTICAL" style="-fx-background-radius: 10;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ScrollBar>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding></HBox>
+            <Text layoutX="117.0" layoutY="41.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="🍴 Your Diets" wrappingWidth="93.06498718261736">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="127.0" layoutY="347.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="⏰ Pending Requests" wrappingWidth="118.82054138183611">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="＄ Your Earnings " wrappingWidth="138.06498718261736">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0" />
+               </font>
+            </Text>
+            <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
                <AreaChart prefHeight="240.0" prefWidth="615.0">
                   <xAxis>
-                     <CategoryAxis side="BOTTOM"/>
+                     <CategoryAxis side="BOTTOM" />
                   </xAxis>
                   <yAxis>
-                     <NumberAxis side="LEFT"/>
+                     <NumberAxis side="LEFT" />
                   </yAxis>
                </AreaChart>
-               <Pane prefHeight="300.0" prefWidth="615.0"/>
+               <Pane prefHeight="300.0" prefWidth="615.0" />
             </VBox>
          </Pane>
       </Pane>
