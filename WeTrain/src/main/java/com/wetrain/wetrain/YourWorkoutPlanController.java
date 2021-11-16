@@ -7,23 +7,29 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class AthletesHomeController {
+public class YourWorkoutPlanController {
+
     @FXML
     private Button bookButt;
+
     @FXML
     private Button buyButt;
+
     @FXML
     private Button dietButt;
-    @FXML
-    private Button logoutButt;
-    @FXML
-    private BorderPane mainPane;
-    @FXML
-    private Button startButt;
+
     @FXML
     private Button editButt;
+
+    @FXML
+    private Button logoutButt;
+
+    @FXML
+    private BorderPane mainPane;
+
     @FXML
     private Button workoutButt;
+
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
@@ -51,4 +57,5 @@ public class AthletesHomeController {
         Pane view = loader.getPage("YourWorkoutPlan");
         mainPane.setCenter(view);
     }
+
 }

@@ -28,6 +28,10 @@ BorderPane {
     -fx-background-color: rgb(24, 127, 21);
 }
 
+.button:pressed {
+    -fx-background-color: rgb(24, 177, 21);
+}
+
 
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color: rgba(255,255,255,0.5);
