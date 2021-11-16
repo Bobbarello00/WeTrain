@@ -16,48 +16,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" prefHeight="785.0" prefWidth="1458.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.AthletesHomeController">
+<BorderPane fx:id="mainPane" prefHeight="785.0" prefWidth="1458.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.AthletesHomeController">
    <center>
-      <Pane prefHeight="785.0" prefWidth="1533.0" style="-fx-background-color: c2ffc0;">
+      <Pane prefHeight="785.0" prefWidth="1533.0">
          <children>
             <VBox alignment="CENTER" layoutX="21.0" layoutY="188.0" prefHeight="546.0" prefWidth="203.0" spacing="45.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
                <children>
-                  <Button fx:id="startButt" mnemonicParsing="false" onAction="#startButtonAction" onMouseEntered="#startButtonEntered" onMouseExited="#startButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="        Start        Workout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  <Button fx:id="startButt" mnemonicParsing="false" onAction="#startButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Start        Workout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="workoutButt" mnemonicParsing="false" onAction="#workoutButtonAction" onMouseEntered="#workoutButtonEntered" onMouseExited="#workoutButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="       Your        Workout Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  <Button fx:id="workoutButt" mnemonicParsing="false" onAction="#workoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="       Your        Workout Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="dietButt" mnemonicParsing="false" onAction="#dietButtonAction" onMouseEntered="#dietButtonEntered" onMouseExited="#dietButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="           Your           Diet Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  <Button fx:id="dietButt" mnemonicParsing="false" onAction="#dietButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Diet Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bookButt" mnemonicParsing="false" onAction="#bookButtonAction" onMouseEntered="#bookButtonEntered" onMouseExited="#bookButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="        Book        Private Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  <Button fx:id="bookButt" mnemonicParsing="false" onAction="#bookButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Book        Private Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="buyButt" mnemonicParsing="false" onAction="#buyButtonAction" onMouseEntered="#buyButtonEntered" onMouseExited="#buyButtonExited" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="     Buy     Subscription" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  <Button fx:id="buyButt" mnemonicParsing="false" onAction="#buyButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="     Buy     Subscription" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
@@ -85,10 +70,7 @@
                               <Insets />
                            </VBox.margin>
                         </Text>
-                        <Button fx:id="logoutButt" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" onMouseEntered="#logoutButtonEntered" onMouseExited="#logoutButtonExited" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
+                        <Button fx:id="logoutButt" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="12.0" />
                            </font>
@@ -97,10 +79,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button fx:id="editButt" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" onMouseEntered="#editButtonEntered" onMouseExited="#editButtonExited" prefHeight="23.0" prefWidth="29.0" style="-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25;" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            <Button fx:id="editButt" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -112,22 +91,14 @@
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                      </padding>
                      <children>
-                        <ScrollBar layoutX="410.0" layoutY="35.0" orientation="VERTICAL" style="-fx-background-radius: 10;">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ScrollBar>
+                        <ScrollBar layoutX="410.0" layoutY="35.0" orientation="VERTICAL" style="-fx-background-radius: 10;" />
                      </children></HBox>
                   <HBox alignment="CENTER_RIGHT" layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.3);">
                      <padding>
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                      </padding>
                      <children>
-                        <ScrollBar orientation="VERTICAL" style="-fx-background-radius: 10;">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ScrollBar>
+                        <ScrollBar orientation="VERTICAL" style="-fx-background-radius: 10;" />
                      </children></HBox>
                   <Text layoutX="117.0" layoutY="41.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃 Your Courses" wrappingWidth="93.06498718261736">
                      <font>

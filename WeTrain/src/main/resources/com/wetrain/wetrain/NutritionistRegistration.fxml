@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.NutritionistRegistrationController">
+<BorderPane fx:id="mainPane" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.NutritionistRegistrationController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -28,13 +28,10 @@
          <ImageView fitHeight="297.0" fitWidth="272.0" layoutX="9.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
             <Image url="@../../../Images/Nutritionists.png" />
          </ImageView>
-         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="360.0" mnemonicParsing="false" onAction="#submitButtonAction" onMouseEntered="#submitButtonEntered" onMouseExited="#submitButtonExited" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="360.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="23.0" prefWidth="70.0" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
          </Button>
          <Text layoutX="370.0" layoutY="156.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup your account" wrappingWidth="112.83168792724626">
             <font>
@@ -72,20 +69,14 @@
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Text>
-         <Button fx:id="attachButt" layoutX="525.0" layoutY="185.0" mnemonicParsing="false" onAction="#attachButtonAction" onMouseEntered="#attachButtonEntered" onMouseExited="#attachButtonExited" prefHeight="15.0" prefWidth="0.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 10;">
+         <Button fx:id="attachButt" layoutX="525.0" layoutY="185.0" mnemonicParsing="false" onAction="#attachButtonAction" prefHeight="15.0" prefWidth="0.0" style="-fx-background-radius: 10;">
             <graphic>
                <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../../../Images/attach.png" />
                </ImageView>
             </graphic>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
          </Button>
-         <Button fx:id="infoButt" layoutX="562.0" layoutY="172.0" mnemonicParsing="false" onAction="#infoButtonAction" prefHeight="0.0" prefWidth="29.0" style="-fx-background-color: rgba(24, 127, 21, 0); -fx-background-radius: 50;" text="ⓘ">
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
+         <Button fx:id="infoButt" layoutX="562.0" layoutY="172.0" mnemonicParsing="false" onAction="#infoButtonAction" prefHeight="0.0" prefWidth="29.0" style="-fx-background-color: rgba(24, 127, 21, 0); -fx-text-fill: #707070;" text="ⓘ">
             <tooltip>
                <Tooltip contentDisplay="RIGHT" prefWidth="150.0" style="-fx-background-color: rgba(43,127,31,0.5);" text="attach a copy of: bachelor's degree or higher from an accredited college or university, with coursework that includes the core science and nutrition requirements. Proof of internship of at least 900 hours." textOverrun="CLIP" wrapText="true">
                   <font>
@@ -130,7 +121,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </CheckBox>
-         <Button fx:id="eyeButt" layoutX="539.0" layoutY="292.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0);" text="👁">
+         <Button fx:id="eyeButt" layoutX="539.0" layoutY="292.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>

@@ -36,43 +36,15 @@ public class AthletesHomeController {
     @FXML
     void bookButtonAction() {System.out.println("Book private lesson");}
     @FXML
-    void bookButtonEntered() {bookButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void bookButtonExited() {bookButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
     void buyButtonAction() {System.out.println("Buy Monthly subscription");}
-    @FXML
-    void buyButtonEntered() {buyButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void buyButtonExited() {buyButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void dietButtonAction() {System.out.println("Your diet plan");}
     @FXML
-    void dietButtonEntered() {dietButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void dietButtonExited() {dietButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
     void editButtonAction() {System.out.println("Edit Button");}
-    @FXML
-    void editButtonEntered() {editButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void editButtonExited() {editButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
     @FXML
     void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
-    void logoutButtonEntered() {logoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void logoutButtonExited() {logoutButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
     void startButtonAction() {System.out.println("Start Workout");}
     @FXML
-    void startButtonEntered() {startButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void startButtonExited() {startButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
     void workoutButtonAction() {System.out.println("Your workout plan");}
-    @FXML
-    void workoutButtonEntered() {workoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void workoutButtonExited() {workoutButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
 }

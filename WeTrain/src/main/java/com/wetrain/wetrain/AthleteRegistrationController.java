@@ -62,12 +62,4 @@ public class AthleteRegistrationController {
         once = 0;
         PageSwitchSizeChange.pageSwitch(submitButt, "AthletesHome");
     }
-    @FXML
-    protected void submitButtonEntered(){
-        submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");
-    }
-    @FXML
-    protected void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
-    }
 }

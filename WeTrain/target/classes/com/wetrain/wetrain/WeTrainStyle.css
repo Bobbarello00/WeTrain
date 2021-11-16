@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
 
-BorderPane{
+BorderPane {
     -fx-font-family: 'ABeeZee', sans-serif;
     -fx-background-color: rgba(194, 255, 192, 1);
 }
-
+.check-box{
+    -fx-cursor: hand;
+}
 .check-box .box {
     -fx-background-color: #c2ffc0;
     -fx-border-color:grey;
@@ -15,6 +17,15 @@ BorderPane{
 }
 .check-box:selected .box {
     -fx-background-color: rgb(24, 147, 21);
+}
+.button{
+    -fx-background-color: rgb(24, 147, 21);
+    -fx-background-radius: 50;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: rgb(24, 127, 21);
 }
 
 
@@ -33,4 +44,5 @@ BorderPane{
 .scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
     -fx-background-color: rgba(21,147,24,0.7);
     -fx-background-radius: 5em;
+    -fx-cursor: hand;
 }

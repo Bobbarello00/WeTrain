@@ -52,12 +52,4 @@ public class LoginController {
     void submitButtonAction() {
         System.out.println("Submit effettuato!");
     }
-    @FXML
-    void submitButtonEntered() {
-        submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");
-    }
-    @FXML
-    void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 50");
-    }
 }

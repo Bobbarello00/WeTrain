@@ -28,14 +28,6 @@ public class WeTrainController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void registerButtonEntered(){
-        regButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");
-    }
-    @FXML
-    protected void registerButtonExited() {
-        regButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
-    }
-    @FXML
     protected void logInButtonEntered(){
         logInText.setStyle("-fx-fill: rgb(20, 130, 17)");
     }

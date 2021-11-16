@@ -48,14 +48,6 @@ public class NutritionistRegistrationController {
         checkVisible.fire();
     }
     @FXML
-    protected void attachButtonEntered(){
-        attachButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 10");
-    }
-    @FXML
-    protected void attachButtonExited() {
-        attachButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 10");
-    }
-    @FXML
     void attachButtonAction() {
         System.out.println("attach effettuato!");
     }
@@ -81,13 +73,5 @@ public class NutritionistRegistrationController {
     protected void submitButtonAction() throws IOException {
         once = 0;
         PageSwitchSizeChange.pageSwitch(submitButt, "NutritionistsHome");
-    }
-    @FXML
-    protected void submitButtonEntered(){
-        submitButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 50");
-    }
-    @FXML
-    protected void submitButtonExited() {
-        submitButt.setStyle("-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50");
     }
 }

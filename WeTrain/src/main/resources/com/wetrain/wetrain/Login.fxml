@@ -12,9 +12,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.LoginController">
+<BorderPane fx:id="mainPane" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.LoginController">
    <center>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-color: c2ffc0;" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -27,7 +27,7 @@
          <ImageView fitHeight="188.0" fitWidth="315.0" layoutX="82.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
             <Image url="@../../../Images/User1.png" />
          </ImageView>
-         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" onMouseEntered="#submitButtonEntered" onMouseExited="#submitButtonExited" prefHeight="23.0" prefWidth="70.0" style="-fx-background-color: rgba(24, 147, 21, 1); -fx-background-radius: 50;" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="23.0" prefWidth="70.0" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -85,13 +85,10 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </CheckBox>
-         <Button fx:id="eyeButt" layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0);" text="👁">
+         <Button fx:id="eyeButt" layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
          </Button>
       </Pane>
    </center>
