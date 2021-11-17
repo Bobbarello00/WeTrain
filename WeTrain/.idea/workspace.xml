@@ -40,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/wetrain/wetrain" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Fruits-Market-master/Fruits-Market-master/FruitMarket" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -134,6 +134,7 @@
       <workItem from="1637093876501" duration="82000" />
       <workItem from="1637139603032" duration="3031000" />
       <workItem from="1637143797074" duration="7000" />
+      <workItem from="1637145061736" duration="30000" />
     </task>
     <servers />
   </component>
