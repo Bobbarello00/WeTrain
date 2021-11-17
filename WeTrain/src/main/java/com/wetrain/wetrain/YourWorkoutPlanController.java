@@ -54,7 +54,7 @@ public class YourWorkoutPlanController {
     @FXML
     void workoutButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourWorkoutPlan");
+        Pane view = loader.getPage("AthletesHome");
         mainPane.setCenter(view);
     }
 

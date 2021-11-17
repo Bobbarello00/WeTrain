@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -17,63 +16,29 @@ public class TrainersHomeController {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button manageLButt;
+    private Button manageLessonsButt;
     @FXML
-    private Button createCButt;
+    private Button createCourseButt;
     @FXML
-    private Button createWButt;
-    @FXML
-    private Button startButt;
+    private Button createWorkoutButt;
     @FXML
     private Button editButt;
     @FXML
-    private Button manageRButt;
-    @FXML
-    private Text trainersHomeButt;
+    private Button manageRequestsButt;
     @FXML
     void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
-    void logoutButtonEntered() {logoutButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
+    void manageLessonsButtonAction() {System.out.println("Manage Lessons");}
     @FXML
-    void logoutButtonExited() {logoutButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    void createCourseButtonAction() {System.out.println("Create New Course");}
     @FXML
-    void manageLButtonAction() {System.out.println("Manage Lessons");}
+    void createWorkoutButtonAction() {System.out.println("Create New Workout");}
     @FXML
-    void manageLButtonEntered() {manageLButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void manageLButtonExited() {manageLButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
-    void createCButtonAction() {System.out.println("Create New Course");}
-    @FXML
-    void createCButtonEntered() {createCButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void createCButtonExited() {createCButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
-    void createWButtonAction() {System.out.println("Create New Workout");}
-    @FXML
-    void createWButtonEntered() {createCButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void createWButtonExited() {createCButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
-    void startButtonAction() {System.out.println("Start Lesson");}
-    @FXML
-    void startButtonEntered() {startButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void startButtonExited() {startButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
-    void manageRButtonAction() {System.out.println("Manage Requests");}
-    @FXML
-    void manageRButtonEntered() {manageRButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void manageRButtonExited() {manageRButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
+    void manageRequestsButtonAction() {System.out.println("Manage Requests");}
     @FXML
     void editButtonAction() {System.out.println("Edit");}
     @FXML
-    void editButtonEntered() {editButt.setStyle("-fx-background-color: rgb(20, 130, 17); -fx-background-radius: 25");}
-    @FXML
-    void editButtonExited() {editButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");}
-    @FXML
-    void trainersHomeButtonAction() throws IOException {
+    void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);

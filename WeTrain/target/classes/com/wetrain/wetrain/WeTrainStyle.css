@@ -27,12 +27,9 @@ BorderPane {
 .button:hover {
     -fx-background-color: rgb(24, 127, 21);
 }
-
 .button:pressed {
     -fx-background-color: rgb(24, 177, 21);
 }
-
-
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color: rgba(255,255,255,0.5);
 }
@@ -47,6 +44,11 @@ BorderPane {
 }
 .scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
     -fx-background-color: rgba(21,147,24,0.7);
+    -fx-background-radius: 5em;
+    -fx-cursor: hand;
+}
+.scroll-bar:horizontal .thumb:pressed, .scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: rgba(24, 177, 21, 0.7);
     -fx-background-radius: 5em;
     -fx-cursor: hand;
 }

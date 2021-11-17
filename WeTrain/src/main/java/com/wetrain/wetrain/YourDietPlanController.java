@@ -72,7 +72,7 @@ public class YourDietPlanController {
     @FXML
     void dietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourDietPlan");
+        Pane view = loader.getPage("AthletesHome");
         mainPane.setCenter(view);
     }
 
