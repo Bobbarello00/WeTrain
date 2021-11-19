@@ -38,8 +38,10 @@ public class NutritionistsHomeController {
         System.out.println("Manage Appointments");
     }
     @FXML
-    void manageRequestsButtonAction() {
-        System.out.println("Manage Requests");
+    void manageRequestsButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("ManageRequestsNutritionists");
+        mainPane.setCenter(view);
     }
     @FXML
     void manageDietsButtonAction() {

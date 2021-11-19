@@ -38,7 +38,11 @@ public class TrainersHomeController {
     @FXML
     void createWorkoutButtonAction() {System.out.println("Create New Workout");}
     @FXML
-    void manageRequestsButtonAction() {System.out.println("Manage Requests");}
+    void manageRequestsButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("manageRequestsTrainers");
+        mainPane.setCenter(view);
+    }
     @FXML
     void editButtonAction() {System.out.println("Edit");}
     @FXML

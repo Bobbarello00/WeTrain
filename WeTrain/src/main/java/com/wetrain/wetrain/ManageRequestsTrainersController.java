@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class ManageLessonsController {
+public class ManageRequestsTrainersController {
     @FXML
     private ImageView logo;
     @FXML
@@ -30,7 +30,7 @@ public class ManageLessonsController {
     @FXML
     void manageLessonsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome");
+        Pane view = loader.getPage("ManageLessonsTrainers");
         mainPane.setCenter(view);
     }
     @FXML
@@ -40,7 +40,7 @@ public class ManageLessonsController {
     @FXML
     void manageRequestsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsTrainers");
+        Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);
     }
     @FXML
@@ -52,4 +52,3 @@ public class ManageLessonsController {
         mainPane.setCenter(view);
     }
 }
-
