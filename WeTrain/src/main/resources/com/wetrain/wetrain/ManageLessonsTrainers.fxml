@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" prefHeight="785.0" prefWidth="1458.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.AthletesHomeController">
+<BorderPane fx:id="mainPane" prefHeight="785.0" prefWidth="1458.0" stylesheets="@../../../../../../target/classes/com/wetrain/wetrain/WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.ManageLessonsController">
    <center>
       <Pane prefHeight="785.0" prefWidth="1533.0">
          <children>
@@ -62,37 +62,31 @@
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Text>
-                  <Text layoutX="125.0" layoutY="342.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="🔥 Popular Courses" wrappingWidth="112.15387725830095">
-                     <font>
-                        <Font name="ABeeZee Regular" size="12.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📈 Your Training Report" wrappingWidth="138.06498718261736">
+                  <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="＄ Your Earnings " wrappingWidth="138.06498718261736">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Text>
                   <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
-                     <children>
-                        <AreaChart prefHeight="240.0" prefWidth="615.0">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </AreaChart>
-                        <Pane prefHeight="300.0" prefWidth="615.0" />
-                     </children>
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
+                     <children>
+                        <AreaChart prefHeight="240.0" prefWidth="615.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </AreaChart>
+                        <Pane prefHeight="300.0" prefWidth="615.0" />
+                     </children>
                   </VBox>
-                  <ListView layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" />
-                  <ListView layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;" />
+                  <ListView layoutX="35.0" layoutY="58.0" prefHeight="546.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" />
                </children>
             </Pane>
-            <Text layoutX="445.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Athletes Home" textAlignment="JUSTIFY" wrappingWidth="90.66976737976074">
+            <Text layoutX="445.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Lessons" textAlignment="JUSTIFY" wrappingWidth="93.46977043151855">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -109,22 +103,22 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
                      <children>
-                        <Button fx:id="workoutButt" mnemonicParsing="false" onAction="#workoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="       Your        Workout Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="manageLessonsButt" mnemonicParsing="false" onAction="#manageLessonsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-border-color: rgb(24, 147, 21); -fx-border-radius: 50; -fx-text-fill: rgb(24, 147, 21);" text="        Manage        Lessons" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="dietButt" mnemonicParsing="false" onAction="#dietButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Diet Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="manageRequestsButt" mnemonicParsing="false" onAction="#manageRequestsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="bookButt" mnemonicParsing="false" onAction="#bookButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Book        Private Lesson" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="createWorkoutButt" mnemonicParsing="false" onAction="#createWorkoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Workout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buyButt" mnemonicParsing="false" onAction="#buyButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="     Buy     Subscription" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Button fx:id="createCourseButt" mnemonicParsing="false" onAction="#createCourseButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="12.0" />
                            </font>

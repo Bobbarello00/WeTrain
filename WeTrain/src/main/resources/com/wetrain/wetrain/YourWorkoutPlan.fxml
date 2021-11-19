@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -44,12 +44,6 @@
             </font>
          </Button>
          <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-            <HBox alignment="CENTER_RIGHT" layoutX="35.0" layoutY="58.0" prefHeight="543.0" prefWidth="439.0" style="-fx-background-radius: 50; -fx-background-color: rgba(21,147,24,0.7);">
-               <padding>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-               </padding>
-               <ScrollBar layoutX="410.0" layoutY="35.0" orientation="VERTICAL" style="-fx-background-radius: 10;" />
-            </HBox>
             <Text layoutX="117.0" layoutY="41.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃 Exercises" wrappingWidth="93.06498718261736">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
@@ -66,6 +60,7 @@
                </padding>
                <Pane prefHeight="300.0" prefWidth="615.0" />
             </VBox>
+            <ListView layoutX="35.0" layoutY="58.0" prefHeight="543.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" />
          </Pane>
          <Text layoutX="505.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Workout Plan" textAlignment="JUSTIFY" wrappingWidth="127.80309867858887">
             <font>
