@@ -42,6 +42,7 @@
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/wetrain/wetrain" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -49,6 +50,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src" />
+      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources\com\wetrain\wetrain" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources\fonts" />
@@ -141,6 +144,9 @@
       <workItem from="1637316050823" duration="148000" />
       <workItem from="1637332853028" duration="1515000" />
       <workItem from="1637334526998" duration="3103000" />
+      <workItem from="1637155895049" duration="682000" />
+      <workItem from="1637239769451" duration="597000" />
+      <workItem from="1637511698025" duration="2783000" />
     </task>
     <servers />
   </component>
