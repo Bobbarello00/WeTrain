@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 
 public class ManageRequestsNutritionistsController {
@@ -51,13 +50,17 @@ public class ManageRequestsNutritionistsController {
     void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
 
     @FXML
-    void manageAppointmentsButtonAction() {
-
+    void manageAppointmentsButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("ManageAppointmentsNutritionists");
+        mainPane.setCenter(view);
     }
 
     @FXML
-    void manageDietsButtonAction() {
-
+    void manageDietsButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("ManageDietsNutritionists");
+        mainPane.setCenter(view);
     }
 
     @FXML

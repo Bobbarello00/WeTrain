@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" spacing="45.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-radius: 50; -fx-border-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="15.0" />
+         </HBox.margin>
+         <image>
+            <Image url="@../../../Images/WeTrainLogo.png" />
+         </image>
+      </ImageView>
+      <Label scaleX="1.5" scaleY="1.5" text="Item name ">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</HBox>

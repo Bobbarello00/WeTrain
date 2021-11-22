@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class NutritionistsHomeController {
+public class ManageLessonsTrainersController {
     @FXML
     private ImageView logo;
     @FXML
@@ -16,47 +16,40 @@ public class NutritionistsHomeController {
     @FXML
     private BorderPane mainPane;
     @FXML
+    private Button manageLessonsButt;
+    @FXML
+    private Button createCourseButt;
+    @FXML
+    private Button createWorkoutButt;
+    @FXML
     private Button editButt;
-    @FXML
-    private Button createDietButt;
-    @FXML
-    private Button manageAppointmentsButt;
     @FXML
     private Button manageRequestsButt;
     @FXML
-    private Button manageDietsButt;
-    @FXML
     void logoutButtonAction() throws IOException {PageSwitchSizeChange.pageSwitch(logoutButt, "WeTrainGUI");}
     @FXML
-    void logoAction() throws IOException {
+    void manageLessonsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome");
+        Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);
     }
     @FXML
-    void manageAppointmentsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageAppointmentsNutritionists");
-        mainPane.setCenter(view);
-    }
+    void createCourseButtonAction() {System.out.println("Create New Course");}
+    @FXML
+    void createWorkoutButtonAction() {System.out.println("Create New Workout");}
     @FXML
     void manageRequestsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsNutritionists");
+        Pane view = loader.getPage("ManageRequestsTrainers");
         mainPane.setCenter(view);
     }
     @FXML
-    void manageDietsButtonAction() throws IOException {
+    void editButtonAction() {System.out.println("Edit");}
+    @FXML
+    void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageDietsNutritionists");
+        Pane view = loader.getPage("TrainersHome");
         mainPane.setCenter(view);
-    }
-    @FXML
-    void editButtonAction() {
-        System.out.println("Edit");
-    }
-    @FXML
-    void createDietButtonAction() {
-        System.out.println("Create New Diet");
     }
 }
+
