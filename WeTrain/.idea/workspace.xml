@@ -17,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -39,6 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/wetrain/wetrain" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -147,6 +148,8 @@
       <workItem from="1637155895049" duration="682000" />
       <workItem from="1637239769451" duration="597000" />
       <workItem from="1637511698025" duration="2783000" />
+      <workItem from="1637592908803" duration="6701000" />
+      <workItem from="1637599708497" duration="1078000" />
     </task>
     <servers />
   </component>

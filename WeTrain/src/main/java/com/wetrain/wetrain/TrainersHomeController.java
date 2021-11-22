@@ -68,26 +68,36 @@ public class TrainersHomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int n = 6,m = 8;
+        int n = 10,m = 10;
         ArrayList<Node> courses = new ArrayList<Node>();
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n-1;i++){
             try {
                 courses.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItem.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        try {
+            courses.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItemNew.fxml"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ObservableList<Node> coursesObservableList = FXCollections.observableList(courses);
         coursesList.setItems(coursesObservableList);
         ArrayList<Node> requests = new ArrayList<Node>();
-        for(int i=0;i<m;i++){
+        for(int i=0;i<m-1;i++){
             try {
                 requests.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItem.fxml"))));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        ObservableList<Node> requestsObservableList = FXCollections.observableList(courses);
+        try {
+            requests.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItemNew.fxml"))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ObservableList<Node> requestsObservableList = FXCollections.observableList(requests);
         requestsList.setItems(requestsObservableList);
     }
 }

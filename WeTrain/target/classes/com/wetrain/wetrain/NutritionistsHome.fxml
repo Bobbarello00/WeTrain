@@ -76,8 +76,22 @@
                </AreaChart>
                <Pane prefHeight="300.0" prefWidth="615.0" />
             </VBox>
-            <ListView layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" />
-            <ListView layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;" />
+            <HBox alignment="CENTER" layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+               <children>
+                  <ListView fx:id="dietsList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
+               </children>
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
+               <children>
+                  <ListView fx:id="requestsList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
+               </children>
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </padding>
+            </HBox>
          </Pane>
          <Text layoutX="479.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutritionists Home" textAlignment="JUSTIFY" wrappingWidth="116.06976127624512">
             <font>

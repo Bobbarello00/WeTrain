@@ -15,10 +15,10 @@
             <Insets left="15.0" />
          </HBox.margin>
          <image>
-            <Image url="@../../../Images/WeTrainLogo.png" />
+            <Image url="@../../../Images/plus.png" />
          </image>
       </ImageView>
-      <Label scaleX="1.5" scaleY="1.5" text="Item name ">
+      <Label scaleX="1.5" scaleY="1.5" text="Add New">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
