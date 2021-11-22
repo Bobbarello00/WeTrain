@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="mainPane" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.AthleteRegistrationController">
+   <center>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <Image url="@../../../../Images/WeTrainLogo.png" />
+         </ImageView>
+         <ImageView fitHeight="241.0" fitWidth="261.0" layoutX="35.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
+            <Image url="@../../../../Images/Athletes.png" />
+         </ImageView>
+         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="23.0" prefWidth="70.0" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Button>
+         <Text layoutX="370.0" layoutY="170.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup your account" wrappingWidth="112.83168792724626">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <Text fx:id="homeButt" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Text>
+         <Text layoutX="375.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Athlete Registration" wrappingWidth="116.44276428222656">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <Text layoutX="175.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <TextField layoutX="282.0" layoutY="210.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor>
+         </TextField>
+         <Text fx:id="profileButt" layoutX="211.0" layoutY="69.0" onMouseClicked="#profileButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Text>
+         <Text layoutX="332.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Text>
+         <CheckBox layoutX="286.0" layoutY="310.0" mnemonicParsing="false" text="Save Credentials">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </CheckBox>
+         <TextField fx:id="passwSField" layoutX="281.0" layoutY="258.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;" visible="false">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </TextField>
+         <PasswordField fx:id="passwField" layoutX="281.0" layoutY="258.0" onMouseClicked="#passwStart" prefHeight="31.0" prefWidth="290.0" promptText="Password:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font></PasswordField>
+         <CheckBox fx:id="checkVisible" layoutX="580.0" layoutY="262.0" mnemonicParsing="false" visible="false">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </CheckBox>
+         <Button fx:id="eyeButt" layoutX="537.0" layoutY="262.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
+            <font>
+               <Font name="ABeeZee Regular" size="12.0" />
+            </font>
+         </Button>
+      </Pane>
+   </center>
+</BorderPane>

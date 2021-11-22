@@ -12,7 +12,7 @@ import java.util.Objects;
 public class WeTrain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader homePage = new FXMLLoader(WeTrain.class.getResource("WeTrainGUI.fxml"));
+        FXMLLoader homePage = new FXMLLoader(WeTrain.class.getResource("Launcher/WeTrainGUI.fxml"));
         Scene scene = new Scene(homePage.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("WeTrainStyle.css")).toExternalForm());
         stage.setTitle("WeTrain");

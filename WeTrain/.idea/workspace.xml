@@ -17,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,11 +51,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Launcher" />
+      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Trainers" />
+      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Nutritionists" />
+      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Athletes" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src" />
-      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources" />
-      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources\com\wetrain\wetrain" />
-      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources" />
-      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrain\trunk\WeTrain\src\main\resources\fonts" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.wetrain.wetrain" />
     </key>
   </component>
   <component name="RunManager">
@@ -64,7 +67,7 @@
       <module name="WeTrain" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.wetrain.wetrain.*" />
+          <option name="PATTERN" value="com.wetrain.wetrain.Controllers.Launcher.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,11 +154,22 @@
       <workItem from="1637592908803" duration="6701000" />
       <workItem from="1637599708497" duration="1445000" />
       <workItem from="1637601217663" duration="41000" />
+      <workItem from="1637601363520" duration="2765000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.reflect.InvocationTargetException" package="java.lang.reflect" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
