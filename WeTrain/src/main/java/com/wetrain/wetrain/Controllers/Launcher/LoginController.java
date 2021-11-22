@@ -52,6 +52,6 @@ public class LoginController {
     }
     @FXML
     void submitButtonAction() {
-        System.out.println("Submit effettuato!");
+        System.out.println("Login effettuato!");
     }
 }
