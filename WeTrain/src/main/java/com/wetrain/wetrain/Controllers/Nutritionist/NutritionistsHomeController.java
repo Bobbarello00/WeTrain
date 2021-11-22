@@ -54,19 +54,19 @@ public class NutritionistsHomeController implements Initializable {
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageAppointmentsNutritionists", "Nutritionist");
+        Pane view = loader.getPage("ManageAppointmentsNutritionists", "Nutritionists");
         mainPane.setCenter(view);
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsNutritionists", "Nutritionist");
+        Pane view = loader.getPage("ManageRequestsNutritionists", "Nutritionists");
         mainPane.setCenter(view);
     }
     @FXML
     void manageDietsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageDietsNutritionists", "Nutritionist");
+        Pane view = loader.getPage("ManageDietsNutritionists", "Nutritionists");
         mainPane.setCenter(view);
     }
     @FXML
