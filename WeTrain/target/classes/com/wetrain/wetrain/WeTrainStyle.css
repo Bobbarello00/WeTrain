@@ -43,7 +43,7 @@ BorderPane {
     -fx-background-radius: 0em;
 }
 .scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
-    -fx-background-color: rgba(21,147,24,0.7);
+    -fx-background-color: rgba(24,147,21,0.7);
     -fx-background-radius: 5em;
     -fx-cursor: hand;
 }
@@ -60,6 +60,35 @@ BorderPane {
     -fx-background-color: white;
     -fx-background-radius: 50;
 }
-.list-view .scroll-bar{
+.list-view .scroll-bar {
     -fx-background-radius: 5em;
 }
+.text-field{
+    -fx-background-color: rgba(24, 147, 21, 0.23);
+    -fx-background-radius: 50;
+    -fx-Prompt-text-fill: #707070;
+}
+.date-picker {
+    -fx-background-color: transparent;
+}
+.date-picker .text-field {
+    -fx-background-color: rgba(24, 147, 21, 0.23);
+    -fx-background-radius: 50;
+    -fx-cursor: none;
+}
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.radio-button .radio{
+    -fx-background-color: transparent;
+    -fx-border-color: #707070 ;
+    -fx-border-radius:50;
+}
+
+.radio-button .dot{
+    -fx-color: rgb(0,255,0) ;
+}
+
+

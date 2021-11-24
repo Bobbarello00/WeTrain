@@ -1,13 +1,9 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
 import com.wetrain.wetrain.PageSwitchSimple;
-import com.wetrain.wetrain.PageSwitchSizeChange;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -26,7 +22,7 @@ public class AthleteRegistrationController {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button submitButt;
+    private Button continueButt;
     @FXML
     private Button eyeButt;
     @FXML
@@ -61,8 +57,11 @@ public class AthleteRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() throws IOException {
+    protected void continueButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("MoreInfo", "Launcher");
         once = 0;
-        PageSwitchSizeChange.pageSwitch(submitButt, "Athletes/AthletesHome");
+        MoreInfoController.dynamicLabel = new Label("Athlete Registration");
+        mainPane.setCenter(view);
     }
 }
