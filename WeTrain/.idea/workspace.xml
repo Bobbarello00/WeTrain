@@ -47,7 +47,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -158,6 +158,11 @@
       <workItem from="1637604444581" duration="144000" />
       <workItem from="1637614743142" duration="2067000" />
       <workItem from="1637616973356" duration="157000" />
+      <workItem from="1637655335730" duration="150000" />
+      <workItem from="1637655519329" duration="86000" />
+      <workItem from="1637671026265" duration="385000" />
+      <workItem from="1637684699235" duration="2763000" />
+      <workItem from="1637741937689" duration="1616000" />
     </task>
     <servers />
   </component>

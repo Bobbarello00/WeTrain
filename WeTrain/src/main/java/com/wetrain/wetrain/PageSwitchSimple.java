@@ -1,6 +1,5 @@
-package com.wetrain.wetrain.Controllers;
+package com.wetrain.wetrain;
 
-import com.wetrain.wetrain.WeTrain;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 

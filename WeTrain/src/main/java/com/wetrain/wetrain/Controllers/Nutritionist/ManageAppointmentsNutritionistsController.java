@@ -1,6 +1,6 @@
 package com.wetrain.wetrain.Controllers.Nutritionist;
 
-import com.wetrain.wetrain.Controllers.PageSwitchSimple;
+import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

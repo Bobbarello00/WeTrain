@@ -1,14 +1,10 @@
 package com.wetrain.wetrain.Controllers.Athletes;
 
-import com.wetrain.wetrain.Controllers.PageSwitchSimple;
+import com.wetrain.wetrain.Controllers.ListPopulate;
+import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
-import com.wetrain.wetrain.WeTrain;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
@@ -16,8 +12,6 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class YourWorkoutPlanController implements Initializable {
@@ -35,6 +29,8 @@ public class YourWorkoutPlanController implements Initializable {
     private BorderPane mainPane;
     @FXML
     private ListView exercisesList;
+    @FXML
+    private ListView daysList;
     @FXML
     private Button workoutButt;
     @FXML
@@ -66,16 +62,7 @@ public class YourWorkoutPlanController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int n = 15;
-        ArrayList<Node> exercises = new ArrayList<Node>();
-        for (int i = 0; i < n; i++) {
-            try {
-                exercises.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItem.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        ObservableList<Node> exercisesObservableList = FXCollections.observableList(exercises);
-        exercisesList.setItems(exercisesObservableList);
+        ListPopulate.populateList(15,exercisesList,false);
+        ListPopulate.populateList(5,daysList,false);
     }
 }

@@ -106,7 +106,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <Text layoutX="627.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛈 Info" wrappingWidth="138.06498718261736">
+            <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛈 Info" wrappingWidth="138.06498718261736">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>

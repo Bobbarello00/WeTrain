@@ -1,6 +1,6 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
-import com.wetrain.wetrain.Controllers.PageSwitchSimple;
+import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;

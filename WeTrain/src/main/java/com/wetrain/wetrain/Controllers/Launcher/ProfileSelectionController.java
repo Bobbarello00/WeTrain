@@ -1,6 +1,6 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
-import com.wetrain.wetrain.Controllers.PageSwitchSimple;
+import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
