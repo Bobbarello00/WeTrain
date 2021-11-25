@@ -61,7 +61,7 @@ public class AthleteRegistrationController {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("MoreInfo", "Launcher");
         once = 0;
-        MoreInfoController.dynamicLabel = new Label("Athlete Registration");
+        MoreInfoController.string = "Athlete Registration";
         mainPane.setCenter(view);
     }
 }

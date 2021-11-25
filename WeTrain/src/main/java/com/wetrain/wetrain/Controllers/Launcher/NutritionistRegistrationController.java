@@ -73,8 +73,11 @@ public class NutritionistRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() throws IOException {
+    protected void continueButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("MoreInfo", "Launcher");
         once = 0;
-        PageSwitchSizeChange.pageSwitch(submitButt, "Nutritionists/NutritionistsHome");
+        MoreInfoController.string = "Nutritionist Registration";
+        mainPane.setCenter(view);
     }
 }

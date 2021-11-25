@@ -1,7 +1,6 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
 import com.wetrain.wetrain.PageSwitchSimple;
-import com.wetrain.wetrain.PageSwitchSizeChange;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -73,8 +72,11 @@ public class TrainerRegistrationController {
         mainPane.setCenter(view);
     }
     @FXML
-    protected void submitButtonAction() throws IOException {
+    protected void continueButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("MoreInfo", "Launcher");
         once = 0;
-        PageSwitchSizeChange.pageSwitch(submitButt, "Trainers/TrainersHome");
+        MoreInfoController.string = "Trainer Registration";
+        mainPane.setCenter(view);
     }
 }

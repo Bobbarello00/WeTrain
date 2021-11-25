@@ -3,6 +3,7 @@ package com.wetrain.wetrain.Controllers.Launcher;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -13,11 +14,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MoreInfoController {
+public class MoreInfoController implements Initializable {
     private static int once = 0;
+    public static String string;
     @FXML
-    public static Label dynamicLabel;
+    private static Label dynamicLabel;
     @FXML
     private Button registerButt;
     @FXML
@@ -64,4 +68,8 @@ public class MoreInfoController {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        dynamicLabel.setText(string);
+    }
 }
