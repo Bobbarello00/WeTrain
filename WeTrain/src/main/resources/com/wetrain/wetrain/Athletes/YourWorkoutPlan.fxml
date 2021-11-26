@@ -44,7 +44,7 @@
             </font>
          </Button>
          <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-            <Text layoutX="125.0" layoutY="342.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃 Exercises" wrappingWidth="93.06498718261736">
+            <Text layoutX="108.0" layoutY="185.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃 Exercises" wrappingWidth="93.06498718261736">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -65,22 +65,49 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
-               <children>
-                  <ListView fx:id="daysList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
-               </children>
+            <HBox alignment="CENTER" layoutX="35.0" layoutY="199.0" prefHeight="405.0" prefWidth="439.0"
+                  style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
                <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                </padding>
+               <ListView fx:id="exercisesList" prefHeight="197.0" prefWidth="389.0"
+                         style="-fx-background-radius: 50; -fx-background-color: transparent;"/>
             </HBox>
-            <HBox alignment="CENTER" layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
-               <children>
-                  <ListView fx:id="exercisesList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
-               </children>
-               <padding>
-                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-               </padding>
-            </HBox>
+            <Button fx:id="mondayButton" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" onAction="#mondayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="tuesdayButton" layoutX="105.0" layoutY="75.0" mnemonicParsing="false" onAction="#tuesdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="wednesdayButton" layoutX="170.0" layoutY="75.0" mnemonicParsing="false" onAction="#wednesdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="fridayButton" layoutX="300.0" layoutY="75.0" mnemonicParsing="false" onAction="#fridayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="sundayButton" layoutX="430.0" layoutY="75.0" mnemonicParsing="false" onAction="#sundayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="thursdayButton" layoutX="235.0" layoutY="75.0" mnemonicParsing="false" onAction="#thursdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="saturdayButton" layoutX="365.0" layoutY="75.0" mnemonicParsing="false" onAction="#saturdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="17.0" />
+               </font>
+            </Button>
          </Pane>
          <Text layoutX="505.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Workout Plan" textAlignment="JUSTIFY" wrappingWidth="127.80309867858887">
             <font>

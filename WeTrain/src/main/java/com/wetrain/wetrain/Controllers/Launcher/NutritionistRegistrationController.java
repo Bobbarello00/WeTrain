@@ -1,7 +1,6 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
 import com.wetrain.wetrain.PageSwitchSimple;
-import com.wetrain.wetrain.PageSwitchSizeChange;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -77,7 +76,7 @@ public class NutritionistRegistrationController {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("MoreInfo", "Launcher");
         once = 0;
-        MoreInfoController.string = "Nutritionist Registration";
+        MoreInfoController.string = "Nutritionist";
         mainPane.setCenter(view);
     }
 }

@@ -70,9 +70,37 @@ public class NewWorkoutPlanController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,exercisesList,true);
-        ListPopulate.populateList(10,exercisesSelectedList,true);
+        ListPopulate.populateList(10,exercisesList,false);
+        ListPopulate.populateList(10,exercisesSelectedList,false);
     }
+
+    @FXML
+    public void addExerciseTextAction() {
+        System.out.println("ExerciseAdded");
+    }
+
+    public void mondayButtonAction() {
+    }
+
+    public void tuesdayButtonAction() {
+    }
+
+    public void wednesdayButtonAction() {
+    }
+
+    public void thursdayButtonAction() {
+    }
+
+    public void fridayButtonAction() {
+    }
+
+    public void saturdayButtonAction() {
+    }
+
+    public void sundayButtonAction() {
+    }
+
+
 
     //TODO Search bar ----------------------------------------------------
 

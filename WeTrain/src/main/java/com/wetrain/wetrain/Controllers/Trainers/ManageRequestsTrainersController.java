@@ -46,7 +46,11 @@ public class ManageRequestsTrainersController implements Initializable {
     @FXML
     void createCourseButtonAction() {System.out.println("Create New Course");}
     @FXML
-    void createWorkoutButtonAction() {System.out.println("Create New Workout");}
+    void createWorkoutButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("NewWorkoutPlan", "Trainers");
+        mainPane.setCenter(view);
+    }
     @FXML
     void manageRequestsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

@@ -3,9 +3,7 @@ package com.wetrain.wetrain.Controllers.Launcher;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
@@ -14,16 +12,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class MoreInfoController implements Initializable {
+public class MoreInfoController {
     private static int once = 0;
     public static String string;
     @FXML
-    private static Label dynamicLabel;
-    @FXML
     private Button registerButt;
+    @FXML
+    private Text registrationText;
     @FXML
     private Text homeButt;
     @FXML
@@ -41,7 +37,7 @@ public class MoreInfoController implements Initializable {
     @FXML
     void registerButtonAction() throws IOException {
         once = 0;
-        PageSwitchSizeChange.pageSwitch(registerButt, "Athletes/AthletesHome");
+        PageSwitchSizeChange.pageSwitch(registerButt, string + "s/" + string + "sHome");
     }
     @FXML
     protected void profileButtonAction() throws IOException {
@@ -67,9 +63,11 @@ public class MoreInfoController implements Initializable {
             once=1;
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        dynamicLabel.setText(string);
+    @FXML
+    public void registrationTextAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage(string + "Registration", "Launcher");
+        once = 0;
+        mainPane.setCenter(view);
     }
 }

@@ -16,6 +16,20 @@ import java.util.ResourceBundle;
 
 public class YourWorkoutPlanController implements Initializable {
     @FXML
+    public Button mondayButton;
+    @FXML
+    public Button tuesdayButton;
+    @FXML
+    public Button wednesdayButton;
+    @FXML
+    public Button thursdayButton;
+    @FXML
+    public Button fridayButton;
+    @FXML
+    public Button saturdayButton;
+    @FXML
+    public Button sundayButton;
+    @FXML
     private Button bookButt;
     @FXML
     private Button buyButt;
@@ -29,8 +43,6 @@ public class YourWorkoutPlanController implements Initializable {
     private BorderPane mainPane;
     @FXML
     private ListView exercisesList;
-    @FXML
-    private ListView daysList;
     @FXML
     private Button workoutButt;
     @FXML
@@ -63,6 +75,26 @@ public class YourWorkoutPlanController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,exercisesList,false);
-        ListPopulate.populateList(5,daysList,false);
+    }
+    @FXML
+    public void mondayButtonAction() {
+    }
+    @FXML
+    public void tuesdayButtonAction() {
+    }
+    @FXML
+    public void wednesdayButtonAction() {
+    }
+    @FXML
+    public void thursdayButtonAction() {
+    }
+    @FXML
+    public void fridayButtonAction() {
+    }
+    @FXML
+    public void saturdayButtonAction() {
+    }
+    @FXML
+    public void sundayButtonAction() {
     }
 }

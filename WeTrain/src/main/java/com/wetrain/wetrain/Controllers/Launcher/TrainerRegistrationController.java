@@ -76,7 +76,7 @@ public class TrainerRegistrationController {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("MoreInfo", "Launcher");
         once = 0;
-        MoreInfoController.string = "Trainer Registration";
+        MoreInfoController.string = "Trainer";
         mainPane.setCenter(view);
     }
 }

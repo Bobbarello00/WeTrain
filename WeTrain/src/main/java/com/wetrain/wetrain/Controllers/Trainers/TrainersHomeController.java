@@ -37,22 +37,40 @@ public class TrainersHomeController implements Initializable {
     @FXML
     private Button manageRequestsButt;
     @FXML
+    private Button mondayButton;
+    @FXML
+    private Button tuesdayButton;
+    @FXML
+    private Button wednesdayButton;
+    @FXML
+    private Button thursdayButton;
+    @FXML
+    private Button fridayButton;
+    @FXML
+    private Button saturdayButton;
+    @FXML
+    private Button sundayButton;
+    @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
     @FXML
     void manageLessonsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("manageLessonsTrainers", "Trainers");
+        Pane view = loader.getPage("ManageLessonsTrainers", "Trainers");
         mainPane.setCenter(view);
     }
     @FXML
     void createCourseButtonAction() {System.out.println("Create New Course");}
     @FXML
-    void createWorkoutButtonAction() {System.out.println("Create New Workout");}
+    void createWorkoutButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("NewWorkoutPlan", "Trainers");
+        mainPane.setCenter(view);
+    }
     @FXML
     void manageRequestsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("manageRequestsTrainers", "Trainers");
+        Pane view = loader.getPage("ManageRequestsTrainers", "Trainers");
         mainPane.setCenter(view);
     }
     @FXML
