@@ -32,8 +32,10 @@ public class ManageAppointmentsNutritionistsController {
     private Button manageRequestsButt;
 
     @FXML
-    void createDietButtonAction() {
-
+    void createDietButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("NewDiet", "Nutritionists");
+        mainPane.setCenter(view);
     }
 
     @FXML

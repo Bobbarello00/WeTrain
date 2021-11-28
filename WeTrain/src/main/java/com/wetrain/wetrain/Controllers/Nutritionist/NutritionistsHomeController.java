@@ -68,8 +68,10 @@ public class NutritionistsHomeController implements Initializable {
         System.out.println("Edit");
     }
     @FXML
-    void createDietButtonAction() {
-        System.out.println("Create New Diet");
+    void createDietButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("NewDiet", "Nutritionists");
+        mainPane.setCenter(view);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
