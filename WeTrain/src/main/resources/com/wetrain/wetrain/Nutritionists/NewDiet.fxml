@@ -140,13 +140,13 @@
                         <Font name="ABeeZee Regular" size="17.0" />
                      </font>
                   </Button>
-                  <Text layoutX="111.0" layoutY="222.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Diet day" />
+                  <Text layoutX="120.0" layoutY="223.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected day Diet" />
                   <HBox alignment="CENTER" layoutX="640.0" layoutY="72.0" prefHeight="529.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
                      <padding>
                         <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                      </padding>
                      <children>
-                        <TextArea prefHeight="200.0" prefWidth="382.0" promptText="Insert general info for diet.">
+                        <TextArea prefHeight="200.0" prefWidth="382.0" promptText="Insert general info for diet." wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="20.0" />
                            </font>
@@ -158,7 +158,7 @@
                         <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
                      </padding>
                      <children>
-                        <TextArea prefHeight="339.0" prefWidth="374.0" promptText="Insert diet indication for selected day.">
+                        <TextArea prefHeight="339.0" prefWidth="374.0" promptText="Insert diet indication for selected day." wrapText="true">
                            <font>
                               <Font name="ABeeZee Regular" size="20.0" />
                            </font>

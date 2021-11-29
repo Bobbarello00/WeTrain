@@ -76,6 +76,6 @@ public class NutritionistsHomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,dietsList,true);
-        ListPopulate.populateList(10,requestsList,true);
+        ListPopulate.populateList(10,requestsList,false);
     }
 }

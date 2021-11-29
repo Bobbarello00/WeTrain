@@ -4,6 +4,8 @@ BorderPane {
     -fx-font-family: 'ABeeZee', sans-serif;
     -fx-background-color: rgba(194, 255, 192, 1);
 }
+
+
 .check-box{
     -fx-cursor: hand;
 }
@@ -18,6 +20,8 @@ BorderPane {
 .check-box:selected .box {
     -fx-background-color: rgb(24, 147, 21);
 }
+
+
 .button{
     -fx-background-color: rgb(24, 147, 21);
     -fx-background-radius: 50;
@@ -30,6 +34,8 @@ BorderPane {
 .button:pressed {
     -fx-background-color: rgb(24, 177, 21);
 }
+
+
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color: rgba(255,255,255,0.5);
 }
@@ -52,6 +58,8 @@ BorderPane {
     -fx-background-radius: 5em;
     -fx-cursor: hand;
 }
+
+
 .list-view .list-cell{
     -fx-background-color: transparent;
     -fx-background-radius: 50;
@@ -63,11 +71,15 @@ BorderPane {
 .list-view .scroll-bar {
     -fx-background-radius: 5em;
 }
+
+
 .text-field{
     -fx-background-color: rgba(24, 147, 21, 0.23);
     -fx-background-radius: 50;
     -fx-Prompt-text-fill: #707070;
 }
+
+
 .date-picker {
     -fx-background-color: transparent;
 }
@@ -81,14 +93,30 @@ BorderPane {
     -fx-background-radius: 10;
     -fx-cursor: hand;
 }
+
+
 .radio-button .radio{
     -fx-background-color: transparent;
     -fx-border-color: #707070 ;
     -fx-border-radius:50;
 }
-
 .radio-button .dot{
     -fx-color: rgb(0,255,0) ;
 }
 
+
+.text-area {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: rgba(255,255,255,0.8);
+    -fx-text-fill: white;
+}
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
 

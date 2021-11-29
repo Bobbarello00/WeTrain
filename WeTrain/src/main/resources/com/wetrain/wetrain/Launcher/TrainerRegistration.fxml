@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="mainPane" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.TrainerRegistrationController">
+<BorderPane fx:id="mainPane" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.TrainerRegistrationController">
    <center>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <cursor>
@@ -27,24 +35,6 @@
             </font>
          </Button>
          <Text layoutX="370.0" layoutY="156.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup your account" wrappingWidth="112.83168792724626">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Text>
-         <Text fx:id="homeButt" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Text>
-         <Text layoutX="373.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainer Registration" wrappingWidth="112.70948791503906">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Text>
-         <Text layoutX="175.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -78,19 +68,6 @@
                </Tooltip>
             </tooltip>
          </Button>
-         <Text layoutX="332.0" layoutY="70.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Text>
-         <Text fx:id="profileButt" layoutX="211.0" layoutY="69.0" onMouseClicked="#profileButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Text>
          <CheckBox layoutX="285.0" layoutY="338.0" mnemonicParsing="false" text="Save Credentials">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
@@ -119,6 +96,45 @@
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
+         <HBox alignment="CENTER_LEFT" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="403.0" scaleX="1.5"
+               scaleY="1.5">
+            <Text fx:id="homeButt" onMouseClicked="#homeButtonAction" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Home" wrappingWidth="36.44281768798828">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Text>
+            <Text fx:id="profileButt" onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="Profile Selection" wrappingWidth="95.1094741821289">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="70.58959579467773">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0"/>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND"/>
+               </cursor>
+            </Text>
+         </HBox>
       </Pane>
    </center>
 </BorderPane>

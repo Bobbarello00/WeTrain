@@ -29,7 +29,7 @@ public class NutritionistRegistrationController {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button submitButt;
+    private Button continueButt;
     @FXML
     private Button eyeButt;
     @FXML

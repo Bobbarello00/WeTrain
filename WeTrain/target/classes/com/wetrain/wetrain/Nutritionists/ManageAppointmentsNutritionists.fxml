@@ -60,7 +60,14 @@
                </padding>
                <Pane prefHeight="300.0" prefWidth="615.0" />
             </VBox>
-            <ListView layoutX="35.0" layoutY="57.0" prefHeight="547.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" />
+            <VBox alignment="CENTER" layoutX="35.0" layoutY="57.0" prefHeight="546.0" prefWidth="439.0"
+                  style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+               </padding>
+               <ListView fx:id="appointmentsList" prefHeight="546.0" prefWidth="439.0"
+                         style="-fx-background-color: transparent; -fx-background-radius: 50;"/>
+            </VBox>
          </Pane>
          <Text layoutX="501.0" layoutY="86.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Appointments" textAlignment="JUSTIFY" wrappingWidth="131.06979179382324">
             <font>

@@ -3,8 +3,10 @@ package com.wetrain.wetrain.Controllers.Trainers;
 import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -79,25 +81,18 @@ public class NewWorkoutPlanController implements Initializable {
         System.out.println("ExerciseAdded");
     }
 
-    public void mondayButtonAction() {
-    }
-
-    public void tuesdayButtonAction() {
-    }
-
-    public void wednesdayButtonAction() {
-    }
-
-    public void thursdayButtonAction() {
-    }
-
-    public void fridayButtonAction() {
-    }
-
-    public void saturdayButtonAction() {
-    }
-
-    public void sundayButtonAction() {
+    @FXML
+    void dayButtonAction(ActionEvent event) {
+        String sourceId = ((Node) event.getSource()).getId();
+        switch(sourceId){
+            case "mondayButton" -> System.out.println("monday");
+            case "tuesdayButton" -> System.out.println("tuesday");
+            case "wednesdayButton" -> System.out.println("wednesday");
+            case "thursdayButton" -> System.out.println("thursday");
+            case "fridayButton" -> System.out.println("friday");
+            case "saturdayButton" -> System.out.println("saturday");
+            case "sundayButton" -> System.out.println("sunday");
+        }
     }
 
 

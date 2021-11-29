@@ -71,6 +71,6 @@ public class ManageRequestsNutritionistsController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,requestsList,true);
+        ListPopulate.populateList(10,requestsList,false);
     }
 }
