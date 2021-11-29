@@ -12,9 +12,11 @@ import java.util.Objects;
 
 public class PageSwitchSizeChange {
 
-    public static void pageSwitch(Button button, String page) throws IOException {
+    public static void pageSwitch(Button button, String page, boolean closeOldStage) throws IOException {
         Stage stage = (Stage) button.getScene().getWindow();
-        stage.close();
+        if(closeOldStage) {
+            stage.close();
+        }
         Stage newStage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource(page + ".fxml")));
         Scene newScene = new Scene(root);

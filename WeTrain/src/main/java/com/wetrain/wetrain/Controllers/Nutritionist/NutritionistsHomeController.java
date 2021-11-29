@@ -38,7 +38,7 @@ public class NutritionistsHomeController implements Initializable {
     private Button manageDietsButt;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
+        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

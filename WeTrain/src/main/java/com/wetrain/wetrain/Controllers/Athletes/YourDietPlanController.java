@@ -99,7 +99,7 @@ public class YourDietPlanController {
 
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
+        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
 
     private void colorShift(Button button, Text text){
         if(previousButt!=null){

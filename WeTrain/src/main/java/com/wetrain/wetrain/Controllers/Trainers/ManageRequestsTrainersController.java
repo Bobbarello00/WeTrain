@@ -36,7 +36,7 @@ public class ManageRequestsTrainersController implements Initializable {
     private Button manageRequestsButt;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
+        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageLessonsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

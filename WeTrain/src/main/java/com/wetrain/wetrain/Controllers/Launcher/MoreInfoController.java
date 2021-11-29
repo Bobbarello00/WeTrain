@@ -37,7 +37,7 @@ public class MoreInfoController {
     @FXML
     void registerButtonAction() throws IOException {
         once = 0;
-        PageSwitchSizeChange.pageSwitch(registerButt, string + "s/" + string + "sHome");
+        PageSwitchSizeChange.pageSwitch(registerButt, string + "s/" + string + "sHome", true);
     }
     @FXML
     protected void profileButtonAction() throws IOException {

@@ -55,7 +55,7 @@ public class AthletesHomeController implements Initializable {
     void editButtonAction() {System.out.println("Edit Button");}
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
+        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
     @FXML
     void workoutButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

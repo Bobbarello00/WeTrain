@@ -50,7 +50,7 @@ public class ManageRequestsNutritionistsController implements Initializable {
     }
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
+        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

@@ -52,7 +52,7 @@ public class TrainersHomeController implements Initializable {
     private Button sundayButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI");}
+        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageLessonsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
