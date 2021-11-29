@@ -83,6 +83,9 @@ BorderPane {
 .date-picker {
     -fx-background-color: transparent;
 }
+.date-picker-popup {
+    -fx-background-color: transparent;
+}
 .date-picker .text-field {
     -fx-background-color: rgba(24, 147, 21, 0.23);
     -fx-background-radius: 50;
@@ -93,7 +96,15 @@ BorderPane {
     -fx-background-radius: 10;
     -fx-cursor: hand;
 }
-
+.date-picker-popup .day-cell:hover{
+    -fx-background-color: rgb(24,147,21);
+}
+.date-picker-popup .week-number-cell{
+    -fx-text-fill: rgb(24,147,21);
+}
+.date-picker-popup .today{
+    -fx-cell-focus-inner-border: rgb(24,147,21);
+}
 
 .radio-button .radio{
     -fx-background-color: transparent;
@@ -120,3 +131,12 @@ BorderPane {
     -fx-background-color: transparent;
 }
 
+.combo-box{
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(24,147,21);
+    -fx-prompt-text-fill: black;
+    -fx-border-radius: 50;
+}
+.combo-box-popup .list-cell{
+    -fx-border-radius: 50;
+}
