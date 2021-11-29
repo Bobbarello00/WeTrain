@@ -53,7 +53,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Button>
-            <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+            <Pane layoutX="257.0" layoutY="113.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
                <children>
                   <Text layoutX="109.0" layoutY="64.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
                   <TextField fx:id="workoutNameText" layoutX="133.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
@@ -64,42 +64,6 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <Button fx:id="mondayButton" layoutX="75.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="tuesdayButton" layoutX="140.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="wednesdayButton" layoutX="205.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="fridayButton" layoutX="335.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="sundayButton" layoutX="465.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="thursdayButton" layoutX="270.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="saturdayButton" layoutX="400.0" layoutY="170.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="17.0" />
-                     </font>
-                  </Button>
-                  <Text layoutX="109.0" layoutY="156.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Training days" />
                   <Text layoutX="704.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Necessary gym equipment" />
                   <HBox alignment="CENTER" layoutX="640.0" layoutY="263.0" prefHeight="363.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
                      <children>
@@ -110,7 +74,62 @@
                      </padding>
                   </HBox>
                   <Text layoutX="688.0" layoutY="244.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
-                  <Text layoutX="109.0" layoutY="259.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Time schedule" />
+                  <HBox layoutX="75.0" layoutY="160.0" prefHeight="473.0" prefWidth="503.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
+                           <children>
+                              <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Training days" />
+                              <Button fx:id="mondayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="tuesdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="wednesdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="fridayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="sundayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="thursdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="saturdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                                 <font>
+                                    <Font name="ABeeZee Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="474.0" prefWidth="396.0" spacing="13.0">
+                           <children>
+                              <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Time schedule" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                              <fx:include source="../TimeScheduler.fxml" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
                </children>
             </Pane>
             <Text layoutX="490.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Course" textAlignment="JUSTIFY" wrappingWidth="122.86976432800293">

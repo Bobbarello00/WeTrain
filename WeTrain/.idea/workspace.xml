@@ -17,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -51,11 +51,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain" />
+      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Trainers" />
       <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Launcher" />
       <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Trainers" />
       <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Nutritionists" />
-      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Athletes" />
-      <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.wetrain.wetrain" />
