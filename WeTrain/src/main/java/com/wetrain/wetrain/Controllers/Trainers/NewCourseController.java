@@ -1,14 +1,10 @@
 package com.wetrain.wetrain.Controllers.Trainers;
 
-<<<<<<< .mine
 import com.wetrain.wetrain.Controllers.TimeSchedulerController;
 import com.wetrain.wetrain.PageSwitchSimple;
-||||||| .r119
-=======
-import com.wetrain.wetrain.DaysOfTheWeekController;
->>>>>>> .r120
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -98,7 +94,6 @@ public class NewCourseController {
     }
     @FXML
     void dayButtonAction(ActionEvent event) {
-<<<<<<< .mine
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){
             case "mondayButton" -> mondayTimeScheduler.toggleVisibility();
@@ -109,19 +104,5 @@ public class NewCourseController {
             case "saturdayButton" -> saturdayTimeScheduler.toggleVisibility();
             case "sundayButton" -> sundayTimeScheduler.toggleVisibility();
         }
-||||||| .r119
-        String sourceId = ((Node) event.getSource()).getId();
-        switch(sourceId){
-            case "mondayButton" -> System.out.println("monday");
-            case "tuesdayButton" -> System.out.println("tuesday");
-            case "wednesdayButton" -> System.out.println("wednesday");
-            case "thursdayButton" -> System.out.println("thursday");
-            case "fridayButton" -> System.out.println("friday");
-            case "saturdayButton" -> System.out.println("saturday");
-            case "sundayButton" -> System.out.println("sunday");
-        }
-=======
-        DaysOfTheWeekController.dayButtonAction(event);
->>>>>>> .r120
     }
 }
