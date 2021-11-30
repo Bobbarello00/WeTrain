@@ -109,9 +109,9 @@
                <Cursor fx:constant="TEXT" />
             </cursor>
          </TextField>
-         <RadioButton fx:id="maleButton" layoutX="430.0" layoutY="309.0" mnemonicParsing="false" onAction="#toggleRadioGroup" text="M" />
-         <RadioButton fx:id="femaleButton" layoutX="489.0" layoutY="309.0" mnemonicParsing="false" onAction="#toggleRadioGroup" text="F" />
-         <RadioButton fx:id="nogenderButton" layoutX="543.0" layoutY="309.0" mnemonicParsing="false" onAction="#toggleRadioGroup" text="X" />
+         <RadioButton fx:id="maleButton" layoutX="430.0" layoutY="309.0" mnemonicParsing="false" text="M" />
+         <RadioButton fx:id="femaleButton" layoutX="489.0" layoutY="309.0" mnemonicParsing="false" text="F" />
+         <RadioButton fx:id="nogenderButton" layoutX="543.0" layoutY="309.0" mnemonicParsing="false" text="X" />
          <TextField layoutX="400.0" layoutY="252.0" prefHeight="31.0" prefWidth="174.0" promptText="UserName:">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />

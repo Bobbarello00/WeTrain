@@ -76,7 +76,7 @@
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </TextField>
-         <PasswordField fx:id="passwField" layoutX="282.0" layoutY="261.0" onMouseClicked="#passwStart" prefHeight="31.0" prefWidth="290.0" promptText="Password:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;" />
+         <PasswordField fx:id="passwField" layoutX="282.0" layoutY="261.0" prefHeight="31.0" prefWidth="290.0" promptText="Password:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;" />
          <CheckBox fx:id="checkVisible" layoutX="582.0" layoutY="269.0" mnemonicParsing="false" visible="false">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />

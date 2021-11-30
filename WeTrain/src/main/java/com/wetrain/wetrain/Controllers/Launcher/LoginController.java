@@ -3,6 +3,7 @@ package com.wetrain.wetrain.Controllers.Launcher;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -13,9 +14,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
-    private static int once = 0;
+public class LoginController implements Initializable {
     @FXML
     private Text homeText;
     @FXML
@@ -33,13 +35,6 @@ public class LoginController {
     @FXML
     private CheckBox checkVisible;
     @FXML
-    void passwStart() {
-        if (once == 0) {
-            PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
-            once = 1;
-        }
-    }
-    @FXML
     void eyeButtonAction() {
         checkVisible.fire();
     }
@@ -47,11 +42,15 @@ public class LoginController {
     void homeButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
     void submitButtonAction() {
         System.out.println("Login effettuato!");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
     }
 }

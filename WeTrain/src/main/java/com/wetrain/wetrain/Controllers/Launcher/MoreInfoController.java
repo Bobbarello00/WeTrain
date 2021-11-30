@@ -3,6 +3,7 @@ package com.wetrain.wetrain.Controllers.Launcher;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -12,9 +13,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MoreInfoController {
-    private static int once = 0;
+public class MoreInfoController implements Initializable {
     public static String string;
     @FXML
     private Button registerButton;
@@ -36,38 +38,32 @@ public class MoreInfoController {
     private Text profileText;
     @FXML
     void registerButtonAction() throws IOException {
-        once = 0;
         PageSwitchSizeChange.pageSwitch(registerButton, string + "s/" + string + "sHome", true);
     }
     @FXML
-    protected void profileButtonAction() throws IOException {
+    void profileButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("ProfileSelection", "Launcher");
-        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
-    protected void homeButtonAction() throws IOException {
+    void homeButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
-    protected void toggleRadioGroup(){
-        if(once==0) {
-            ToggleGroup group = new ToggleGroup();
-            nogenderButton.setToggleGroup(group);
-            maleButton.setToggleGroup(group);
-            femaleButton.setToggleGroup(group);
-            once=1;
-        }
-    }
-    @FXML
-    public void registrationTextAction() throws IOException {
+    void registrationTextAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage(string + "Registration", "Launcher");
-        once = 0;
         mainPane.setCenter(view);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ToggleGroup group = new ToggleGroup();
+        nogenderButton.setToggleGroup(group);
+        maleButton.setToggleGroup(group);
+        femaleButton.setToggleGroup(group);
     }
 }

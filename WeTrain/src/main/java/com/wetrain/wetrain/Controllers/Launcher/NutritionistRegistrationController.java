@@ -3,6 +3,7 @@ package com.wetrain.wetrain.Controllers.Launcher;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
@@ -13,9 +14,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class NutritionistRegistrationController {
-    private static int once = 0;
+public class NutritionistRegistrationController implements Initializable {
     @FXML
     private Button attachButton;
     @FXML
@@ -39,13 +41,6 @@ public class NutritionistRegistrationController {
     @FXML
     private CheckBox checkVisible;
     @FXML
-    void passwStart() {
-        if (once == 0) {
-            PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
-            once = 1;
-        }
-    }
-    @FXML
     void eyeButtonAction() {
         checkVisible.fire();
     }
@@ -61,22 +56,24 @@ public class NutritionistRegistrationController {
     protected void homeButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
     protected void profileButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("ProfileSelection", "Launcher");
-        once = 0;
         mainPane.setCenter(view);
     }
     @FXML
     protected void continueButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("MoreInfo", "Launcher");
-        once = 0;
         MoreInfoController.string = "Nutritionist";
         mainPane.setCenter(view);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
     }
 }
