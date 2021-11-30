@@ -17,15 +17,15 @@ import java.io.IOException;
 public class LoginController {
     private static int once = 0;
     @FXML
-    private Text homeButt;
+    private Text homeText;
     @FXML
     private ImageView logo;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button submitButt;
+    private Button submitButton;
     @FXML
-    private Button eyeButt;
+    private Button eyeButton;
     @FXML
     private TextField passwSField;
     @FXML

@@ -28,7 +28,7 @@
          <ImageView fitHeight="241.0" fitWidth="261.0" layoutX="35.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
             <Image url="@../../../../Images/Athletes.png" />
          </ImageView>
-         <Button fx:id="continueButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="continueButton" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -68,47 +68,44 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </CheckBox>
-         <Button fx:id="eyeButt" layoutX="537.0" layoutY="262.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
+         <Button fx:id="eyeButton" layoutX="537.0" layoutY="262.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <HBox alignment="CENTER_LEFT" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="403.0" scaleX="1.5"
-               scaleY="1.5">
-            <Text fx:id="homeButt" onMouseClicked="#homeButtonAction" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Home" wrappingWidth="36.44281768798828">
+         <HBox alignment="CENTER_LEFT" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="403.0" scaleX="1.5" scaleY="1.5">
+            <Text fx:id="homeText" onMouseClicked="#homeButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="36.44281768798828">
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="profileButt" onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Profile Selection" wrappingWidth="95.1094741821289">
+            <Text fx:id="profileText" onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="70.58959579467773">
                <font>
-                  <Font name="ABeeZee Regular" size="12.0"/>
+                  <Font name="ABeeZee Regular" size="12.0" />
                </font>
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
          </HBox>

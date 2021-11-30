@@ -16,50 +16,50 @@ public class YourDietPlanController {
     private Button previousButt;
     private Text previousText;
     @FXML
-    private Button bookButt;
+    private Button bookButton;
     @FXML
-    private Button buyButt;
+    private Button findCourseButton;
     @FXML
-    private Button dietButt;
+    private Button dietButton;
     @FXML
-    private Button editButt;
+    private Button editButton;
 
     @FXML
     private VBox infoBox;
     @FXML
-    private Button logoutButt;
+    private Button logoutButton;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button mondayButt;
+    private Button mondayButton;
     @FXML
     private Text mondayText;
     @FXML
-    private Button tuesdayButt;
+    private Button tuesdayButton;
     @FXML
     private Text tuesdayText;
     @FXML
-    private Button wednesdayButt;
+    private Button wednesdayButton;
     @FXML
     private Text wednesdayText;
     @FXML
-    private Button thursdayButt;
+    private Button thursdayButton;
     @FXML
     private Text thursdayText;
     @FXML
-    private Button fridayButt;
+    private Button fridayButton;
     @FXML
     private Text fridayText;
     @FXML
-    private Button saturdayButt;
+    private Button saturdayButton;
     @FXML
     private Text saturdayText;
     @FXML
-    private Button sundayButt;
+    private Button sundayButton;
     @FXML
     private Text sundayText;
     @FXML
-    private Button workoutButt;
+    private Button workoutButton;
 
     @FXML
     void bookButtonAction() {
@@ -67,7 +67,7 @@ public class YourDietPlanController {
     }
 
     @FXML
-    void buyButtonAction() {
+    void findCourseButtonAction() {
 
     }
 
@@ -99,7 +99,8 @@ public class YourDietPlanController {
 
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
+    }
 
     private void colorShift(Button button, Text text){
         if(previousButt!=null){
@@ -115,25 +116,25 @@ public class YourDietPlanController {
     }
 
     @FXML
-    void mondayButtonAction() {colorShift(mondayButt, mondayText);}
+    void mondayButtonAction() {colorShift(mondayButton, mondayText);}
 
     @FXML
-    void tuesdayButtonAction() {colorShift(tuesdayButt, tuesdayText);}
+    void tuesdayButtonAction() {colorShift(tuesdayButton, tuesdayText);}
 
     @FXML
-    void wednesdayButtonAction() {colorShift(wednesdayButt, wednesdayText);}
+    void wednesdayButtonAction() {colorShift(wednesdayButton, wednesdayText);}
 
     @FXML
-    void thursdayButtonAction() {colorShift(thursdayButt, thursdayText);}
+    void thursdayButtonAction() {colorShift(thursdayButton, thursdayText);}
 
     @FXML
-    void fridayButtonAction() {colorShift(fridayButt, fridayText);}
+    void fridayButtonAction() {colorShift(fridayButton, fridayText);}
 
     @FXML
-    void saturdayButtonAction() {colorShift(saturdayButt, saturdayText);}
+    void saturdayButtonAction() {colorShift(saturdayButton, saturdayText);}
 
     @FXML
-    void sundayButtonAction() {colorShift(sundayButt, sundayText);}
+    void sundayButtonAction() {colorShift(sundayButton, sundayText);}
 
 
 

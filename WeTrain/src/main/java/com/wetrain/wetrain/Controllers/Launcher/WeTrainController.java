@@ -13,7 +13,7 @@ public class WeTrainController {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button regButt;
+    private Button regButton;
     @FXML
     private Text logInText;
     @FXML

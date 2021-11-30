@@ -19,23 +19,23 @@ public class TrainersHomeController implements Initializable {
     @FXML
     private ImageView logo;
     @FXML
-    private Button logoutButt;
+    private Button logoutButton;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button manageLessonsButt;
+    private Button manageLessonsButton;
     @FXML
-    private Button createCourseButt;
+    private Button createCourseButton;
     @FXML
-    private Button createWorkoutButt;
+    private Button createWorkoutButton;
     @FXML
-    private Button editButt;
+    private Button editButton;
     @FXML
     private ListView coursesList;
     @FXML
     private ListView requestsList;
     @FXML
-    private Button manageRequestsButt;
+    private Button manageRequestsButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -52,7 +52,7 @@ public class TrainersHomeController implements Initializable {
     private Button sundayButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageLessonsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

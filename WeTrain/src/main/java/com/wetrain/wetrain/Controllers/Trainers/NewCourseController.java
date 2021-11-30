@@ -1,8 +1,8 @@
 package com.wetrain.wetrain.Controllers.Trainers;
 
+import com.wetrain.wetrain.DaysOfTheWeekController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -71,16 +71,7 @@ public class NewCourseController {
     }
     @FXML
     void dayButtonAction(ActionEvent event) {
-        String sourceId = ((Node) event.getSource()).getId();
-        switch(sourceId){
-            case "mondayButton" -> System.out.println("monday");
-            case "tuesdayButton" -> System.out.println("tuesday");
-            case "wednesdayButton" -> System.out.println("wednesday");
-            case "thursdayButton" -> System.out.println("thursday");
-            case "fridayButton" -> System.out.println("friday");
-            case "saturdayButton" -> System.out.println("saturday");
-            case "sundayButton" -> System.out.println("sunday");
-        }
+        DaysOfTheWeekController.dayButtonAction(event);
     }
 
 }

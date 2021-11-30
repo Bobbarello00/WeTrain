@@ -17,25 +17,25 @@ public class NewDietController {
     private Button createDietButt;
 
     @FXML
-    private Button editButt;
+    private Button editButton;
 
     @FXML
     private Button fridayButton;
 
     @FXML
-    private Button logoutButt;
+    private Button logoutButton;
 
     @FXML
     private BorderPane mainPane;
 
     @FXML
-    private Button manageAppointmentsButt;
+    private Button manageAppointmentsButton;
 
     @FXML
-    private Button manageDietsButt;
+    private Button manageDietsButton;
 
     @FXML
-    private Button manageRequestsButt;
+    private Button manageRequestsButton;
 
     @FXML
     private Button mondayButton;
@@ -79,7 +79,7 @@ public class NewDietController {
 
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
 
     @FXML
     void manageAppointmentsButtonAction() throws IOException {

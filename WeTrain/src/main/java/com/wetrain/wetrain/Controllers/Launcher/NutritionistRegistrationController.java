@@ -17,21 +17,21 @@ import java.io.IOException;
 public class NutritionistRegistrationController {
     private static int once = 0;
     @FXML
-    private Button attachButt;
+    private Button attachButton;
     @FXML
-    private Text homeButt;
+    private Text homeText;
     @FXML
-    private Text profileButt;
+    private Text profileText;
     @FXML
-    private Button infoButt;
+    private Button infoButton;
     @FXML
     private ImageView logo;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button continueButt;
+    private Button continueButton;
     @FXML
-    private Button eyeButt;
+    private Button eyeButton;
     @FXML
     private TextField passwSField;
     @FXML

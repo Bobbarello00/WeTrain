@@ -18,7 +18,7 @@
          <ImageView fitHeight="188.0" fitWidth="315.0" layoutX="91.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
             <Image url="@../../../../Images/group-exercise.png" />
          </ImageView>
-         <Button fx:id="regButt" alignment="CENTER" layoutX="495.0" layoutY="257.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="23.0" prefWidth="151.0" text="Register" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="regButton" alignment="CENTER" layoutX="495.0" layoutY="257.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="23.0" prefWidth="151.0" text="Register" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>

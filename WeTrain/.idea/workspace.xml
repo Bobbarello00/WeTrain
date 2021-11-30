@@ -17,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -175,6 +175,7 @@
       <workItem from="1638203082353" duration="3476000" />
       <workItem from="1638207094957" duration="3000" />
       <workItem from="1638207326447" duration="25000" />
+      <workItem from="1638263174976" duration="3579000" />
     </task>
     <servers />
   </component>

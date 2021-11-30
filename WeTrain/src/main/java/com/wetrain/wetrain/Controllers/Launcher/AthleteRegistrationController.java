@@ -14,17 +14,17 @@ import java.io.IOException;
 public class AthleteRegistrationController {
     private static int once = 0;
     @FXML
-    private Text homeButt;
+    private Text homeText;
     @FXML
-    private Text profileButt;
+    private Text profileText;
     @FXML
     private ImageView logo;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button continueButt;
+    private Button continueButton;
     @FXML
-    private Button eyeButt;
+    private Button eyeButton;
     @FXML
     private TextField passwSField;
     @FXML

@@ -31,14 +31,14 @@
                      <Insets />
                   </VBox.margin>
                </Text>
-               <Button fx:id="logoutButt" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <Button fx:id="logoutButton" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
                </Button>
             </VBox>
          </HBox>
-         <Button fx:id="editButt" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="editButton" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -60,13 +60,11 @@
                </padding>
                <Pane prefHeight="300.0" prefWidth="615.0" />
             </VBox>
-            <VBox alignment="CENTER" layoutX="35.0" layoutY="57.0" prefHeight="546.0" prefWidth="439.0"
-                  style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+            <VBox alignment="CENTER" layoutX="35.0" layoutY="57.0" prefHeight="546.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
-               <ListView fx:id="appointmentsList" prefHeight="546.0" prefWidth="439.0"
-                         style="-fx-background-color: transparent; -fx-background-radius: 50;"/>
+               <ListView fx:id="appointmentsList" prefHeight="546.0" prefWidth="439.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
             </VBox>
          </Pane>
          <Text layoutX="501.0" layoutY="86.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Appointments" textAlignment="JUSTIFY" wrappingWidth="131.06979179382324">
@@ -82,22 +80,22 @@
                <Image url="@../../../../Images/WeTrainLogo.png" />
             </ImageView>
             <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-               <Button fx:id="manageDietsButt" mnemonicParsing="false" onAction="#manageDietsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Your Diets" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <Button fx:id="manageDietsButton" mnemonicParsing="false" onAction="#manageDietsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Your Diets" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
                </Button>
-               <Button fx:id="manageRequestsButt" mnemonicParsing="false" onAction="#manageRequestsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <Button fx:id="manageRequestsButton" mnemonicParsing="false" onAction="#manageRequestsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
                </Button>
-               <Button fx:id="manageAppointmentsButt" mnemonicParsing="false" onAction="#manageAppointmentsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-border-radius: 50; -fx-text-fill: rgb(24, 147, 21); -fx-border-color: rgb(24, 147, 21);" text="        Manage        Appointments" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <Button fx:id="manageAppointmentsButton" mnemonicParsing="false" onAction="#manageAppointmentsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-border-radius: 50; -fx-text-fill: rgb(24, 147, 21); -fx-border-color: rgb(24, 147, 21);" text="        Manage        Appointments" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
                </Button>
-               <Button fx:id="createDietButt" mnemonicParsing="false" onAction="#createDietButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Diet" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <Button fx:id="createDietButton" mnemonicParsing="false" onAction="#createDietButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Diet" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>

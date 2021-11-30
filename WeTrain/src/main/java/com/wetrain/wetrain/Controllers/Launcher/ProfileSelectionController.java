@@ -13,10 +13,10 @@ import java.io.IOException;
 public class ProfileSelectionController {
 
     @FXML
-    private Button athletesButt;
+    private Button athletesButton;
 
     @FXML
-    private Text homeButt;
+    private Text homeText;
 
     @FXML
     private ImageView logo;
@@ -25,10 +25,10 @@ public class ProfileSelectionController {
     private BorderPane mainPane;
 
     @FXML
-    private Button nutritionistsButt;
+    private Button nutritionistsButton;
 
     @FXML
-    private Button trainersButt;
+    private Button trainersButton;
 
     @FXML
     protected void athletesButtonAction() throws IOException {
@@ -38,11 +38,11 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void athletesButtonEntered(){
-        athletesButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+        athletesButton.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
     protected void athletesButtonExited() {
-        athletesButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
+        athletesButton.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
     @FXML
     protected void homeButtonAction() throws IOException {
@@ -52,11 +52,11 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void nutritionistsButtonEntered(){
-        nutritionistsButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+        nutritionistsButton.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
     protected void nutritionistsButtonExited() {
-        nutritionistsButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
+        nutritionistsButton.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
     @FXML
     protected void nutritionistButtonAction() throws IOException {
@@ -66,11 +66,11 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void trainersButtonEntered(){
-        trainersButt.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
+        trainersButton.setStyle("-fx-background-color: rgb(24, 147, 21); -fx-background-radius: 25");
     }
     @FXML
     protected void trainersButtonExited() {
-        trainersButt.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
+        trainersButton.setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
     @FXML
     protected void trainersButtonAction() throws IOException {

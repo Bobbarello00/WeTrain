@@ -1,12 +1,12 @@
 package com.wetrain.wetrain.Controllers.Trainers;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
+import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -21,7 +21,7 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     private ImageView logo;
     @FXML
-    private Button logoutButt;
+    private Button logoutButton;
     @FXML
     private ListView exercisesList;
     @FXML
@@ -29,18 +29,18 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button manageLessonsButt;
+    private Button manageLessonsButton;
     @FXML
-    private Button createCourseButt;
+    private Button createCourseButton;
     @FXML
-    private Button createWorkoutButt;
+    private Button createWorkoutButton;
     @FXML
-    private Button editButt;
+    private Button editButton;
     @FXML
-    private Button manageRequestsButt;
+    private Button manageRequestsButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
     }
     @FXML
     void manageLessonsButtonAction() throws IOException {
@@ -70,34 +70,17 @@ public class NewWorkoutPlanController implements Initializable {
         Pane view = loader.getPage("TrainersHome", "Trainers");
         mainPane.setCenter(view);
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,exercisesList,false);
         ListPopulate.populateList(10,exercisesSelectedList,false);
     }
-
     @FXML
     public void addExerciseTextAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Trainers/AddExercise", false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Trainers/AddExercise", false);
     }
-
     @FXML
     void dayButtonAction(ActionEvent event) {
-        String sourceId = ((Node) event.getSource()).getId();
-        switch(sourceId){
-            case "mondayButton" -> System.out.println("monday");
-            case "tuesdayButton" -> System.out.println("tuesday");
-            case "wednesdayButton" -> System.out.println("wednesday");
-            case "thursdayButton" -> System.out.println("thursday");
-            case "fridayButton" -> System.out.println("friday");
-            case "saturdayButton" -> System.out.println("saturday");
-            case "sundayButton" -> System.out.println("sunday");
-        }
+        DaysOfTheWeekController.dayButtonAction(event);
     }
-
-
-
-    //TODO Search bar ----------------------------------------------------
-
 }

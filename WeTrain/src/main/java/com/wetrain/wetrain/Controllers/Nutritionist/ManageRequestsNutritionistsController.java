@@ -17,21 +17,21 @@ import java.util.ResourceBundle;
 public class ManageRequestsNutritionistsController implements Initializable {
 
     @FXML
-    private Button createDietButt;
+    private Button createDietButton;
     @FXML
-    private Button editButt;
+    private Button editButton;
     @FXML
     private ListView requestsList;
     @FXML
-    private Button logoutButt;
+    private Button logoutButton;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Button manageAppointmentsButt;
+    private Button manageAppointmentsButton;
     @FXML
-    private Button manageDietsButt;
+    private Button manageDietsButton;
     @FXML
-    private Button manageRequestsButt;
+    private Button manageRequestsButton;
     @FXML
     void createDietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
@@ -50,7 +50,7 @@ public class ManageRequestsNutritionistsController implements Initializable {
     }
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

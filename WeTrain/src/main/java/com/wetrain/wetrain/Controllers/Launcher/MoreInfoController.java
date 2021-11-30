@@ -17,27 +17,27 @@ public class MoreInfoController {
     private static int once = 0;
     public static String string;
     @FXML
-    private Button registerButt;
+    private Button registerButton;
     @FXML
     private Text registrationText;
     @FXML
-    private Text homeButt;
+    private Text homeText;
     @FXML
-    private RadioButton maleButt;
+    private RadioButton maleButton;
     @FXML
-    private RadioButton femaleButt;
+    private RadioButton femaleButton;
     @FXML
-    private RadioButton nogenderButt;
+    private RadioButton nogenderButton;
     @FXML
     private ImageView logo;
     @FXML
     private BorderPane mainPane;
     @FXML
-    private Text profileButt;
+    private Text profileText;
     @FXML
     void registerButtonAction() throws IOException {
         once = 0;
-        PageSwitchSizeChange.pageSwitch(registerButt, string + "s/" + string + "sHome", true);
+        PageSwitchSizeChange.pageSwitch(registerButton, string + "s/" + string + "sHome", true);
     }
     @FXML
     protected void profileButtonAction() throws IOException {
@@ -57,9 +57,9 @@ public class MoreInfoController {
     protected void toggleRadioGroup(){
         if(once==0) {
             ToggleGroup group = new ToggleGroup();
-            nogenderButt.setToggleGroup(group);
-            maleButt.setToggleGroup(group);
-            femaleButt.setToggleGroup(group);
+            nogenderButton.setToggleGroup(group);
+            maleButton.setToggleGroup(group);
+            femaleButton.setToggleGroup(group);
             once=1;
         }
     }

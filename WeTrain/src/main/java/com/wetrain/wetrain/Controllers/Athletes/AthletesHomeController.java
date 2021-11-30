@@ -16,13 +16,13 @@ import java.util.ResourceBundle;
 
 public class AthletesHomeController implements Initializable {
     @FXML
-    private Button bookButt;
+    private Button bookButton;
     @FXML
-    private Button buyButt;
+    private Button findCourseButton;
     @FXML
-    private Button dietButt;
+    private Button dietButton;
     @FXML
-    private Button logoutButt;
+    private Button logoutButton;
     @FXML
     private BorderPane mainPane;
     @FXML
@@ -30,11 +30,9 @@ public class AthletesHomeController implements Initializable {
     @FXML
     private ListView popularsList;
     @FXML
-    private Button startButt;
+    private Button editButton;
     @FXML
-    private Button editButt;
-    @FXML
-    private Button workoutButt;
+    private Button workoutButton;
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
@@ -44,7 +42,7 @@ public class AthletesHomeController implements Initializable {
     @FXML
     void bookButtonAction() {System.out.println("Book private lesson");}
     @FXML
-    void buyButtonAction() {System.out.println("Buy Monthly subscription");}
+    void findCourseButtonAction() {System.out.println("Buy Monthly subscription");}
     @FXML
     void dietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
@@ -55,7 +53,7 @@ public class AthletesHomeController implements Initializable {
     void editButtonAction() {System.out.println("Edit Button");}
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButt, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void workoutButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

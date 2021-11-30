@@ -27,7 +27,7 @@
          <ImageView fitHeight="188.0" fitWidth="315.0" layoutX="82.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
             <Image url="@../../../../Images/User1.png" />
          </ImageView>
-         <Button fx:id="submitButt" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="23.0" prefWidth="70.0" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="submitButton" alignment="CENTER" layoutX="502.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="23.0" prefWidth="70.0" text="Submit" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -40,7 +40,7 @@
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Text>
-         <Text fx:id="homeButt" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
+         <Text fx:id="homeText" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
@@ -85,7 +85,7 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </CheckBox>
-         <Button fx:id="eyeButt" layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
+         <Button fx:id="eyeButton" layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
