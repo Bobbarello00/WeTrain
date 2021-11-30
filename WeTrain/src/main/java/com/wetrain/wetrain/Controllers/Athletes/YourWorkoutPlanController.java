@@ -1,8 +1,10 @@
 package com.wetrain.wetrain.Controllers.Athletes;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
+import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,6 +17,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class YourWorkoutPlanController implements Initializable {
+
+    private DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
     public Button mondayButton;
     @FXML
@@ -54,7 +58,7 @@ public class YourWorkoutPlanController implements Initializable {
     @FXML
     void bookButtonAction() {System.out.println("Book private lesson");}
     @FXML
-    void findCourseButtonButtonAction() {System.out.println("Buy Monthly subscription");}
+    void findCourseButtonAction() {System.out.println("Buy Monthly subscription");}
     @FXML
     void dietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
@@ -77,24 +81,7 @@ public class YourWorkoutPlanController implements Initializable {
         ListPopulate.populateList(15,exercisesList,false);
     }
     @FXML
-    public void mondayButtonAction() {
-    }
-    @FXML
-    public void tuesdayButtonAction() {
-    }
-    @FXML
-    public void wednesdayButtonAction() {
-    }
-    @FXML
-    public void thursdayButtonAction() {
-    }
-    @FXML
-    public void fridayButtonAction() {
-    }
-    @FXML
-    public void saturdayButtonAction() {
-    }
-    @FXML
-    public void sundayButtonAction() {
+    void dayButtonAction(ActionEvent event) {
+        daysController.dayButtonAction(event);
     }
 }

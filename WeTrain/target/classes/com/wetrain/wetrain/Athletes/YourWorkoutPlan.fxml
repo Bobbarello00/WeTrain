@@ -71,37 +71,37 @@
                </padding>
                <ListView fx:id="exercisesList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
             </HBox>
-            <Button fx:id="mondayButton" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" onAction="#mondayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="mondayButton" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="tuesdayButton" layoutX="105.0" layoutY="75.0" mnemonicParsing="false" onAction="#tuesdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="tuesdayButton" layoutX="105.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="wednesdayButton" layoutX="170.0" layoutY="75.0" mnemonicParsing="false" onAction="#wednesdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="wednesdayButton" layoutX="170.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="fridayButton" layoutX="300.0" layoutY="75.0" mnemonicParsing="false" onAction="#fridayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="fridayButton" layoutX="300.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="sundayButton" layoutX="430.0" layoutY="75.0" mnemonicParsing="false" onAction="#sundayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="sundayButton" layoutX="430.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="thursdayButton" layoutX="235.0" layoutY="75.0" mnemonicParsing="false" onAction="#thursdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="thursdayButton" layoutX="235.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="saturdayButton" layoutX="365.0" layoutY="75.0" mnemonicParsing="false" onAction="#saturdayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="saturdayButton" layoutX="365.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>

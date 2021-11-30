@@ -18,6 +18,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class NewWorkoutPlanController implements Initializable {
+
+    private DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
     private ImageView logo;
     @FXML
@@ -81,6 +83,6 @@ public class NewWorkoutPlanController implements Initializable {
     }
     @FXML
     void dayButtonAction(ActionEvent event) {
-        DaysOfTheWeekController.dayButtonAction(event);
+        daysController.dayButtonAction(event);
     }
 }

@@ -2,18 +2,19 @@ package com.wetrain.wetrain.Controllers.Athletes;
 
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class YourDietPlanController {
 
-    private Button previousButt;
+    private Button previousButton;
+
     private Text previousText;
     @FXML
     private Button bookButton;
@@ -23,9 +24,6 @@ public class YourDietPlanController {
     private Button dietButton;
     @FXML
     private Button editButton;
-
-    @FXML
-    private VBox infoBox;
     @FXML
     private Button logoutButton;
     @FXML
@@ -103,39 +101,20 @@ public class YourDietPlanController {
     }
 
     private void colorShift(Button button, Text text){
-        if(previousButt!=null){
-            previousButt.setStyle(null);
+        if(previousButton!=null){
+            previousButton.setStyle(null);
             previousText.setStyle("-fx-fill: white");
         }
         button.setStyle("-fx-background-color: white;" +
                 "-fx-border-color:  rgb(24, 147, 21);" +
                 "-fx-border-radius: 50");
         text.setStyle("-fx-fill: rgb(24, 147, 21)");
-        previousButt = button;
+        previousButton = button;
         previousText = text;
     }
 
     @FXML
-    void mondayButtonAction() {colorShift(mondayButton, mondayText);}
-
-    @FXML
-    void tuesdayButtonAction() {colorShift(tuesdayButton, tuesdayText);}
-
-    @FXML
-    void wednesdayButtonAction() {colorShift(wednesdayButton, wednesdayText);}
-
-    @FXML
-    void thursdayButtonAction() {colorShift(thursdayButton, thursdayText);}
-
-    @FXML
-    void fridayButtonAction() {colorShift(fridayButton, fridayText);}
-
-    @FXML
-    void saturdayButtonAction() {colorShift(saturdayButton, saturdayText);}
-
-    @FXML
-    void sundayButtonAction() {colorShift(sundayButton, sundayText);}
-
-
-
+    void dayButtonAction(ActionEvent event) {
+        colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
+    }
 }

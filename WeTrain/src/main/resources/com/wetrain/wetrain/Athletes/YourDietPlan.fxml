@@ -44,7 +44,7 @@
          </Button>
          <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
             <VBox alignment="CENTER" layoutX="35.0" layoutY="58.0" prefHeight="543.0" prefWidth="439.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
-               <Button fx:id="mondayButton" mnemonicParsing="false" onAction="#mondayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="mondayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -52,7 +52,7 @@
                      <Text fx:id="mondayText" fill="WHITE" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" />
                   </graphic>
                </Button>
-               <Button fx:id="tuesdayButton" mnemonicParsing="false" onAction="#tuesdayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="tuesdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -60,7 +60,7 @@
                      <Text fx:id="tuesdayText" fill="WHITE" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" />
                   </graphic>
                </Button>
-               <Button fx:id="wednesdayButton" mnemonicParsing="false" onAction="#wednesdayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="wednesdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -68,7 +68,7 @@
                      <Text fx:id="wednesdayText" fill="WHITE" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wednesday" />
                   </graphic>
                </Button>
-               <Button fx:id="thursdayButton" mnemonicParsing="false" onAction="#thursdayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="thursdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -76,7 +76,7 @@
                      <Text fx:id="thursdayText" fill="WHITE" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" />
                   </graphic>
                </Button>
-               <Button fx:id="fridayButton" mnemonicParsing="false" onAction="#fridayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="fridayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -84,7 +84,7 @@
                      <Text fx:id="fridayText" fill="WHITE" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" />
                   </graphic>
                </Button>
-               <Button fx:id="saturdayButton" mnemonicParsing="false" onAction="#saturdayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="saturdayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -92,7 +92,7 @@
                      <Text fx:id="saturdayText" fill="WHITE" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" />
                   </graphic>
                </Button>
-               <Button fx:id="sundayButton" mnemonicParsing="false" onAction="#sundayButtonAction" prefHeight="49.0" prefWidth="342.0">
+               <Button fx:id="sundayButton" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="49.0" prefWidth="342.0">
                   <font>
                      <Font name="ABeeZee Regular" size="12.0" />
                   </font>
@@ -111,7 +111,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <VBox fx:id="infoBox" layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
+            <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>

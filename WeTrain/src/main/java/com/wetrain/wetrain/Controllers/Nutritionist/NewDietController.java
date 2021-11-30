@@ -1,5 +1,6 @@
 package com.wetrain.wetrain.Controllers.Nutritionist;
 
+import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
@@ -13,8 +14,10 @@ import java.io.IOException;
 
 public class NewDietController {
 
+    private DaysOfTheWeekController daysController = new DaysOfTheWeekController();
+
     @FXML
-    private Button createDietButt;
+    private Button createDietButton;
 
     @FXML
     private Button editButton;
@@ -103,31 +106,7 @@ public class NewDietController {
     }
 
     @FXML
-    void mondayButtonAction() {
-
-    }
-    @FXML
-    void tuesdayButtonAction() {
-
-    }
-    @FXML
-    void wednesdayButtonAction() {
-
-    }
-    @FXML
-    void thursdayButtonAction() {
-
-    }
-    @FXML
-    void fridayButtonAction(ActionEvent event) {
-
-    }
-    @FXML
-    void saturdayButtonAction() {
-
-    }
-    @FXML
-    void sundayButtonAction() {
-
+    void dayButtonAction(ActionEvent event) {
+        daysController.dayButtonAction(event);
     }
 }
