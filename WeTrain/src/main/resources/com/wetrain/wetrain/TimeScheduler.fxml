@@ -23,7 +23,7 @@
          </cursor>
       </ComboBox>
       <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-      <ComboBox fx:id="startMinuteBox" prefHeight="27.0" prefWidth="60.0" promptText="m">
+      <ComboBox fx:id="startMinuteBox" prefHeight="27.0" prefWidth="65.0" promptText="min">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -37,7 +37,7 @@
          </cursor>
       </ComboBox>
       <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-      <ComboBox fx:id="endMinuteBox" prefHeight="23.0" prefWidth="60.0" promptText="m">
+      <ComboBox fx:id="endMinuteBox" prefHeight="23.0" prefWidth="65.0" promptText="min">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

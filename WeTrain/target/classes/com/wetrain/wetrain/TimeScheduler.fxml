@@ -7,89 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< .mine
 <HBox fx:id="timeSchedulerHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" stylesheets="@WeTrainStyle.css" visible="false" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.TimeSchedulerController">
-||||||| .r123
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-         <font>
-            <Font name="ABeeZee Regular" size="12.0" />
-         </font>
-      </Text>
-      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="131.0" spacing="3.0">
-         <children>
-            <ComboBox prefHeight="27.0" prefWidth="51.0" promptText="h">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-            <ComboBox prefHeight="27.0" prefWidth="55.0" promptText="m">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-         </children>
-      </HBox>
-      <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-      <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="131.0" spacing="3.0">
-         <children>
-            <ComboBox prefHeight="27.0" prefWidth="51.0" promptText="h">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-            <ComboBox prefHeight="23.0" prefWidth="55.0" promptText="m">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-         </children>
-      </HBox>
-   </children>
-=======
-<HBox fx:id="timeSchedulerHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="350.0" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-         <font>
-            <Font name="ABeeZee Regular" size="12.0" />
-         </font>
-      </Text>
-      <HBox alignment="CENTER" prefHeight="51.0" prefWidth="131.0" spacing="3.0">
-         <children>
-            <ComboBox fx:id="startHourBox" prefHeight="27.0" prefWidth="51.0" promptText="h">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-            <ComboBox fx:id="startMinuteBox" prefHeight="27.0" prefWidth="55.0" promptText="m">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-         </children>
-      </HBox>
-      <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-      <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="131.0" spacing="3.0">
-         <children>
-            <ComboBox fx:id="endHourBox" prefHeight="27.0" prefWidth="51.0" promptText="h">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-            <ComboBox fx:id="endMinuteBox" prefHeight="23.0" prefWidth="55.0" promptText="m">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
-         </children>
-      </HBox>
-   </children>
->>>>>>> .r125
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
@@ -105,7 +23,7 @@
          </cursor>
       </ComboBox>
       <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-      <ComboBox fx:id="startMinuteBox" prefHeight="27.0" prefWidth="60.0" promptText="m">
+      <ComboBox fx:id="startMinuteBox" prefHeight="27.0" prefWidth="65.0" promptText="min">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -119,7 +37,7 @@
          </cursor>
       </ComboBox>
       <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-      <ComboBox fx:id="endMinuteBox" prefHeight="23.0" prefWidth="60.0" promptText="m">
+      <ComboBox fx:id="endMinuteBox" prefHeight="23.0" prefWidth="65.0" promptText="min">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

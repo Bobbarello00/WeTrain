@@ -29,7 +29,7 @@
          <ImageView fitHeight="297.0" fitWidth="272.0" layoutX="9.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
             <Image url="@../../../../Images/Nutritionists.png" />
          </ImageView>
-         <Button fx:id="continueButton" alignment="CENTER" layoutX="502.0" layoutY="360.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
+         <Button fx:id="continueButton" alignment="CENTER" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>

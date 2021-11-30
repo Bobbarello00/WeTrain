@@ -51,7 +51,11 @@ public class NewWorkoutPlanController implements Initializable {
         mainPane.setCenter(view);
     }
     @FXML
-    void createCourseButtonAction() {System.out.println("Create New Course");}
+    void createCourseButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("TrainersHome", "Trainers");
+        mainPane.setCenter(view);
+    }
     @FXML
     void createWorkoutButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
