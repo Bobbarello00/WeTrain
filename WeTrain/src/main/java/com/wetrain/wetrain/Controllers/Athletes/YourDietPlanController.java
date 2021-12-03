@@ -66,8 +66,10 @@ public class YourDietPlanController {
         mainPane.setCenter(view);
     }
     @FXML
-    void findCourseButtonAction() {
-
+    void findCourseButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("FindCourse", "Athletes");
+        mainPane.setCenter(view);
     }
     @FXML
     void dietButtonAction() throws IOException {

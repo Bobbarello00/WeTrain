@@ -46,7 +46,11 @@ public class AthletesHomeController implements Initializable {
         mainPane.setCenter(view);
     }
     @FXML
-    void findCourseButtonAction() {System.out.println("Buy Monthly subscription");}
+    void findCourseButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("FindCourse", "Athletes");
+        mainPane.setCenter(view);
+    }
     @FXML
     void dietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
@@ -57,7 +61,8 @@ public class AthletesHomeController implements Initializable {
     void editButtonAction() {System.out.println("Edit Button");}
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
+    }
     @FXML
     void workoutButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();

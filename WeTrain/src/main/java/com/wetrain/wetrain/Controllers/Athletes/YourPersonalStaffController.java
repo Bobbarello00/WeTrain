@@ -61,12 +61,12 @@ public class YourPersonalStaffController {
 
     }
     @FXML
-    void editButtonAction() {
-
-    }
+    void editButtonAction() {System.out.println("Edit Button");}
     @FXML
-    void findCourseButtonAction() {
-
+    void findCourseButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("FindCourse", "Athletes");
+        mainPane.setCenter(view);
     }
     @FXML
     void logoAction() throws IOException {

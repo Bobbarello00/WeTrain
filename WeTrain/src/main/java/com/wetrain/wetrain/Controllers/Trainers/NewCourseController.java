@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class NewCourseController implements Initializable {
-    private Boolean[] toggle = new Boolean[7];
+    private Boolean[] toggled = new Boolean[7];
     @FXML
     private Button createCourseButt;
     @FXML
@@ -121,26 +121,29 @@ public class NewCourseController implements Initializable {
     void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){
-            case "mondayButton" -> toggleDayButtonAction(mondayTimeSchedulerController,mondayButton,0);
-            case "tuesdayButton" -> toggleDayButtonAction(tuesdayTimeSchedulerController,tuesdayButton,1);
-            case "wednesdayButton" -> toggleDayButtonAction(wednesdayTimeSchedulerController,wednesdayButton,2);
-            case "thursdayButton" -> toggleDayButtonAction(thursdayTimeSchedulerController,thursdayButton,3);
-            case "fridayButton" -> toggleDayButtonAction(fridayTimeSchedulerController,fridayButton,4);
-            case "saturdayButton" -> toggleDayButtonAction(saturdayTimeSchedulerController,saturdayButton,5);
-            case "sundayButton" -> toggleDayButtonAction(sundayTimeSchedulerController,sundayButton,6);
+            case "mondayButton" -> toggledDayButtonAction(mondayTimeSchedulerController,mondayButton,0);
+            case "tuesdayButton" -> toggledDayButtonAction(tuesdayTimeSchedulerController,tuesdayButton,1);
+            case "wednesdayButton" -> toggledDayButtonAction(wednesdayTimeSchedulerController,wednesdayButton,2);
+            case "thursdayButton" -> toggledDayButtonAction(thursdayTimeSchedulerController,thursdayButton,3);
+            case "fridayButton" -> toggledDayButtonAction(fridayTimeSchedulerController,fridayButton,4);
+            case "saturdayButton" -> toggledDayButtonAction(saturdayTimeSchedulerController,saturdayButton,5);
+            case "sundayButton" -> toggledDayButtonAction(sundayTimeSchedulerController,sundayButton,6);
         }
     }
-    private void toggleDayButtonAction(TimeSchedulerController controller,Button button, int i){
-        controller.toggleVisibility(toggle[i]);
-        if(!toggle[i]) {
-            button.setStyle("-fx-background-color: white; -fx-text-fill: rgb(24,147,21); -fx-border-color: rgb(24,147,21); -fx-border-radius: 50");
+    private void toggledDayButtonAction(TimeSchedulerController controller,Button button, int i){
+        controller.toggleVisibility(toggled[i]);
+        if(!toggled[i]) {
+            button.setStyle("-fx-background-color: white;" +
+                    " -fx-text-fill: rgb(24,147,21);" +
+                    " -fx-border-color: rgb(24,147,21);" +
+                    " -fx-border-radius: 50");
         }else{
             button.setStyle(null);
         }
-        toggle[i]=!toggle[i];
+        toggled[i]=!toggled[i];
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Arrays.fill(toggle, Boolean.FALSE);
+        Arrays.fill(toggled, Boolean.FALSE);
     }
 }

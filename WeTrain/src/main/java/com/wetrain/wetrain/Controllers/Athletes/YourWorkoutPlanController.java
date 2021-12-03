@@ -62,7 +62,11 @@ public class YourWorkoutPlanController implements Initializable {
         mainPane.setCenter(view);
     }
     @FXML
-    void findCourseButtonAction() {System.out.println("Buy Monthly subscription");}
+    void findCourseButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("FindCourse", "Athletes");
+        mainPane.setCenter(view);
+    }
     @FXML
     void dietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
