@@ -30,6 +30,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="20Rz1k2tWXIr9gg1hkyVPVJl2nE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -181,6 +184,8 @@
       <workItem from="1638281531439" duration="2005000" />
       <workItem from="1638283590396" duration="4113000" />
       <workItem from="1638288358356" duration="1341000" />
+      <workItem from="1638542043760" duration="340000" />
+      <workItem from="1638542552471" duration="1090000" />
     </task>
     <servers />
   </component>

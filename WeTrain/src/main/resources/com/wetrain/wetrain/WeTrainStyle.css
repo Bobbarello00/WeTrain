@@ -97,10 +97,10 @@ BorderPane {
     -fx-cursor: hand;
 }
 .date-picker-popup .day-cell:hover{
-    -fx-background-color: rgb(24,147,21);
+    -fx-background-color: rgba(24,147,21,0.7);
 }
 .date-picker-popup .day-cell:focused{
-    -fx-background-color: rgb(24,107,21);
+    -fx-background-color: rgb(24,147,21);
     -fx-text-fill: white;
 }
 .date-picker-popup .week-number-cell{
