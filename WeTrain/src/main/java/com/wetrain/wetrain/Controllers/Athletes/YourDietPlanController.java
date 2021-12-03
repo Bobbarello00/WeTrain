@@ -17,7 +17,7 @@ public class YourDietPlanController {
 
     private Text previousText;
     @FXML
-    private Button bookButton;
+    private Button staffButton;
     @FXML
     private Button findCourseButton;
     @FXML
@@ -60,46 +60,41 @@ public class YourDietPlanController {
     private Button workoutButton;
 
     @FXML
-    void bookButtonAction() {
-
+    void staffButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("YourPersonalStaff", "Athletes");
+        mainPane.setCenter(view);
     }
-
     @FXML
     void findCourseButtonAction() {
 
     }
-
     @FXML
     void dietButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("AthletesHome", "Athletes");
         mainPane.setCenter(view);
     }
-
     @FXML
     void workoutButtonAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("YourWorkoutPlan", "Athletes");
         mainPane.setCenter(view);
     }
-
     @FXML
     void editButtonAction() {
 
     }
-
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         Pane view = loader.getPage("AthletesHome", "Athletes");
         mainPane.setCenter(view);
     }
-
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
     }
-
     private void colorShift(Button button, Text text){
         if(previousButton!=null){
             previousButton.setStyle(null);
@@ -112,7 +107,6 @@ public class YourDietPlanController {
         previousButton = button;
         previousText = text;
     }
-
     @FXML
     void dayButtonAction(ActionEvent event) {
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));

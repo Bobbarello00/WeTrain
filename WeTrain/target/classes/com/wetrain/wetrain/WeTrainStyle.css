@@ -59,8 +59,7 @@ BorderPane {
     -fx-cursor: hand;
 }
 
-
-.list-view .list-cell{
+.list-view ,.list-view .list-cell{
     -fx-background-color: transparent;
     -fx-background-radius: 50;
 }

@@ -34,7 +34,7 @@ public class YourWorkoutPlanController implements Initializable {
     @FXML
     public Button sundayButton;
     @FXML
-    private Button bookButton;
+    private Button staffButton;
     @FXML
     private Button findCourseButton;
     @FXML
@@ -56,7 +56,11 @@ public class YourWorkoutPlanController implements Initializable {
         mainPane.setCenter(view);
     }
     @FXML
-    void bookButtonAction() {System.out.println("Book private lesson");}
+    void staffButtonAction() throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
+        Pane view = loader.getPage("YourPersonalStaff", "Athletes");
+        mainPane.setCenter(view);
+    }
     @FXML
     void findCourseButtonAction() {System.out.println("Buy Monthly subscription");}
     @FXML
