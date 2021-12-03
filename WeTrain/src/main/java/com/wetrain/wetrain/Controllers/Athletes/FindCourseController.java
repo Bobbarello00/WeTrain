@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -55,7 +54,7 @@ public class FindCourseController implements Initializable {
     @FXML
     private Button workoutButton;
     @FXML
-    void dayButtonAction(ActionEvent event) {
+    private void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){
             case "mondayButton" -> selectedDayButtonAction(mondayButton,0);
@@ -79,44 +78,34 @@ public class FindCourseController implements Initializable {
         selected[i]=!selected[i];
     }
     @FXML
-    void dietButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourDietPlan", "Athletes");
-        mainPane.setCenter(view);
+    private void dietButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(mainPane,"YourDietPlan", "Athletes");
     }
     @FXML
-    void editButtonAction() {System.out.println("Edit Button");}
+    private void editButtonAction() {System.out.println("Edit Button");}
     @FXML
-    void findCourseButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("AthletesHome", "Athletes");
-        mainPane.setCenter(view);
+    private void findCourseButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
     }
     @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("AthletesHome", "Athletes");
-        mainPane.setCenter(view);
+    private void logoAction() throws IOException {
+        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
     }
     @FXML
-    void logoutButtonAction() throws IOException {
+    private void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
     }
     @FXML
-    void searchButtonAction(ActionEvent event) {
+    private void searchButtonAction(ActionEvent event) {
         System.out.println("Search done");
     }
     @FXML
-    void staffButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourPersonalStaff", "Athletes");
-        mainPane.setCenter(view);
+    private void staffButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(mainPane,"YourPersonalStaff", "Athletes");
     }
     @FXML
-    void workoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourWorkoutPlan", "Athletes");
-        mainPane.setCenter(view);
+    private void workoutButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(mainPane,"YourWorkoutPlan", "Athletes");
     }
 
     @Override

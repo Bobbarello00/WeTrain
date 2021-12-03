@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -61,27 +60,19 @@ public class YourDietPlanController {
 
     @FXML
     void staffButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourPersonalStaff", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"YourPersonalStaff", "Athletes");
     }
     @FXML
     void findCourseButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("FindCourse", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"FindCourse", "Athletes");
     }
     @FXML
     void dietButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("AthletesHome", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
     }
     @FXML
     void workoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourWorkoutPlan", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"YourWorkoutPlan", "Athletes");
     }
     @FXML
     void editButtonAction() {
@@ -89,9 +80,7 @@ public class YourDietPlanController {
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("AthletesHome", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
     }
     @FXML
     void logoutButtonAction() throws IOException {

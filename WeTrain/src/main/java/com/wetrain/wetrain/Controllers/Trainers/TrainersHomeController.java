@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -55,35 +54,25 @@ public class TrainersHomeController implements Initializable {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageLessonsTrainers", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageLessonsTrainers", "Trainers");
     }
     @FXML
     void createCourseButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NewCourse", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NewCourse", "Trainers");
     }
     @FXML
     void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NewWorkoutPlan", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NewWorkoutPlan", "Trainers");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsTrainers", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageRequestsTrainers", "Trainers");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit");}
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"TrainersHome", "Trainers");
     }
 
     @Override

@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
@@ -63,9 +62,7 @@ public class NewDietController {
 
     @FXML
     void createDietButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
     }
 
     @FXML
@@ -75,9 +72,7 @@ public class NewDietController {
 
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
     }
 
     @FXML
@@ -86,23 +81,17 @@ public class NewDietController {
 
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageAppointmentsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageAppointmentsNutritionists", "Nutritionists");
     }
 
     @FXML
     void manageDietsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageDietsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageDietsNutritionists", "Nutritionists");
     }
 
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageRequestsNutritionists", "Nutritionists");
     }
 
     @FXML

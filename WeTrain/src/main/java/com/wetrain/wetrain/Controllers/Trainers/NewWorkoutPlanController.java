@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,35 +45,25 @@ public class NewWorkoutPlanController implements Initializable {
     }
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("manageLessonsTrainers", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageLessonsTrainers", "Trainers");
     }
     @FXML
     void createCourseButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NewCourse", "Trainers");
     }
     @FXML
     void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"TrainersHome", "Trainers");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("manageRequestsTrainers", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageRequestsTrainers", "Trainers");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit");}
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"TrainersHome", "Trainers");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

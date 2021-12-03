@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,27 +40,19 @@ public class NutritionistsHomeController implements Initializable {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
     }
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageAppointmentsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageAppointmentsNutritionists", "Nutritionists");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageRequestsNutritionists", "Nutritionists");
     }
     @FXML
     void manageDietsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageDietsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageDietsNutritionists", "Nutritionists");
     }
     @FXML
     void editButtonAction() {
@@ -69,9 +60,7 @@ public class NutritionistsHomeController implements Initializable {
     }
     @FXML
     void createDietButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NewDiet", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NewDiet", "Nutritionists");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

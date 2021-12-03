@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -54,22 +53,17 @@ public class TrainerRegistrationController implements Initializable {
     }
     @FXML
     protected void profileButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ProfileSelection", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ProfileSelection", "Launcher");
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
     }
     @FXML
     protected void continueButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("MoreInfo", "Launcher");
         MoreInfoController.string = "Trainer";
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"MoreInfo", "Launcher");
+
     }
 
     @Override

@@ -84,6 +84,7 @@ BorderPane {
 }
 .date-picker-popup {
     -fx-background-color: transparent;
+    -fx-background-size: 100;
 }
 .date-picker .text-field {
     -fx-background-color: rgba(24, 147, 21, 0.23);

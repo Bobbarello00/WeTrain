@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,27 +34,19 @@ public class AthletesHomeController implements Initializable {
     private Button workoutButton;
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("AthletesHome", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
     }
     @FXML
     void staffButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourPersonalStaff", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"YourPersonalStaff", "Athletes");
     }
     @FXML
     void findCourseButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("FindCourse", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"FindCourse", "Athletes");
     }
     @FXML
     void dietButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourDietPlan", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"YourDietPlan", "Athletes");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit Button");}
@@ -65,9 +56,7 @@ public class AthletesHomeController implements Initializable {
     }
     @FXML
     void workoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("YourWorkoutPlan", "Athletes");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"YourWorkoutPlan", "Athletes");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

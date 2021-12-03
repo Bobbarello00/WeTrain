@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,9 +33,7 @@ public class ManageRequestsNutritionistsController implements Initializable {
     private Button manageRequestsButton;
     @FXML
     void createDietButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NewDiet", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NewDiet", "Nutritionists");
     }
     @FXML
     void editButtonAction() {
@@ -44,30 +41,22 @@ public class ManageRequestsNutritionistsController implements Initializable {
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
     }
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageAppointmentsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageAppointmentsNutritionists", "Nutritionists");
     }
     @FXML
     void manageDietsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageDietsNutritionists", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageDietsNutritionists", "Nutritionists");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistsHome", "Nutritionists");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

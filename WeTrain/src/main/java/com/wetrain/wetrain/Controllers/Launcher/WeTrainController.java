@@ -4,7 +4,6 @@ import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -18,15 +17,11 @@ public class WeTrainController {
     private Text logInText;
     @FXML
     protected void registerButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ProfileSelection", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ProfileSelection", "Launcher");
     }
     @FXML
     protected void logInTextAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("Login", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"Login", "Launcher");
     }
     @FXML
     protected void logInButtonEntered(){

@@ -9,7 +9,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -42,21 +41,15 @@ public class MoreInfoController implements Initializable {
     }
     @FXML
     void profileButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ProfileSelection", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ProfileSelection", "Launcher");
     }
     @FXML
-    void homeButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        mainPane.setCenter(view);
+    private void homeButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
     }
     @FXML
     void registrationTextAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage(string + "Registration", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,string + "Registration", "Launcher");
     }
 
     @Override

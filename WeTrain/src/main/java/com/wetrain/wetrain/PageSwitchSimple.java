@@ -1,6 +1,7 @@
 package com.wetrain.wetrain;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.io.FileNotFoundException;
@@ -8,9 +9,10 @@ import java.io.IOException;
 import java.net.URL;
 
 public class PageSwitchSimple {
-    private Pane view;
+    private static Pane view;
 
-    public Pane getPage(String fileName, String pathString) throws IOException {
+    public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
+        PageSwitchSimple loader = new PageSwitchSimple();
         try{
             URL fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + ".fxml");
             if(fileUrl==null){
@@ -20,6 +22,6 @@ public class PageSwitchSimple {
         } catch (FileNotFoundException e) {
             System.out.println("File "+fileName+" non trovato, controllare il PageSwitchSimple!");
         }
-        return view;
+        mainPane.setCenter(view);
     }
 }

@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -32,9 +31,7 @@ public class ProfileSelectionController {
 
     @FXML
     protected void athletesButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("AthleteRegistration", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"AthleteRegistration", "Launcher");
     }
     @FXML
     protected void athletesButtonEntered(){
@@ -46,9 +43,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
     }
     @FXML
     protected void nutritionistsButtonEntered(){
@@ -60,9 +55,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void nutritionistButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NutritionistRegistration", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NutritionistRegistration", "Launcher");
     }
     @FXML
     protected void trainersButtonEntered(){
@@ -74,8 +67,6 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void trainersButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainerRegistration", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"TrainerRegistration", "Launcher");
     }
 }

@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -40,9 +39,7 @@ public class LoginController implements Initializable {
     }
     @FXML
     void homeButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("WeTrainGUI", "Launcher");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
     }
     @FXML
     void submitButtonAction() {

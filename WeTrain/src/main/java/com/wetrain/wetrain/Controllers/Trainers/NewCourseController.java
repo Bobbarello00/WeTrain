@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -83,23 +82,17 @@ public class NewCourseController implements Initializable {
     private TextField workoutNameText;
     @FXML
     void createCourseButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"TrainersHome", "Trainers");
     }
     @FXML
     void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("NewWorkoutPlan", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"NewWorkoutPlan", "Trainers");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit");}
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("TrainersHome", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"TrainersHome", "Trainers");
     }
     @FXML
     void logoutButtonAction() throws IOException {
@@ -107,15 +100,11 @@ public class NewCourseController implements Initializable {
     }
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageLessonsTrainers", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageLessonsTrainers", "Trainers");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple loader = new PageSwitchSimple();
-        Pane view = loader.getPage("ManageRequestsTrainers", "Trainers");
-        mainPane.setCenter(view);
+        PageSwitchSimple.switchPage(mainPane,"ManageRequestsTrainers", "Trainers");
     }
     @FXML
     void dayButtonAction(ActionEvent event) {
