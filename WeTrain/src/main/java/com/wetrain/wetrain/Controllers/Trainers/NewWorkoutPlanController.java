@@ -32,6 +32,8 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     private Button manageLessonsButton;
     @FXML
+    private Button createButton;
+    @FXML
     private Button createCourseButton;
     @FXML
     private Button createWorkoutButton;
@@ -73,9 +75,17 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     public void addExerciseTextAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Trainers/AddExercise", false);
+        mainPane.setDisable(true);
+    }
+    public void setDisable(){
+        mainPane.setDisable(false);
     }
     @FXML
     void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);
+    }
+    @FXML
+    void createButtonAction() {
+        System.out.println("Created");
     }
 }

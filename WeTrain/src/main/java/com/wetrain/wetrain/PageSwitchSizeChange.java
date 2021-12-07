@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -25,6 +26,9 @@ public class PageSwitchSizeChange {
         newStage.getIcons().add(new Image("file:src/main/resources/Images/WeTrainLogo.png"));
         newStage.setScene(newScene);
         newStage.setResizable(false);
+        if(!closeOldStage) {
+            newStage.initStyle(StageStyle.UNDECORATED);
+        }
         newStage.show();
     }
 

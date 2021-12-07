@@ -141,6 +141,7 @@ BorderPane {
     -fx-border-radius: 50;
 }
 .combo-box-popup .list-view{
+    -fx-background-color: rgba(255,255,255,0.8);
     -fx-background-radius: 10;
     -fx-border-color: rgb(24,147,21);
     -fx-border-radius: 10;

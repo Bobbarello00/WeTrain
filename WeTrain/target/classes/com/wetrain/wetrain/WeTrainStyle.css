@@ -84,7 +84,6 @@ BorderPane {
 }
 .date-picker-popup {
     -fx-background-color: transparent;
-    -fx-background-size: 100;
 }
 .date-picker .text-field {
     -fx-background-color: rgba(24, 147, 21, 0.23);
@@ -142,6 +141,7 @@ BorderPane {
     -fx-border-radius: 50;
 }
 .combo-box-popup .list-view{
+    -fx-background-color: rgba(255,255,255,0.8);
     -fx-background-radius: 10;
     -fx-border-color: rgb(24,147,21);
     -fx-border-radius: 10;
