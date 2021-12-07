@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class AddExerciseController {
 
+    public static BorderPane mainPane;
     @FXML
     private Button addButton;
 
@@ -23,10 +24,11 @@ public class AddExerciseController {
     private TextArea equipmentTextArea;
 
     @FXML
-    private BorderPane mainPane;
+    private BorderPane secondaryPane;
 
     @FXML
     private TextField nameText;
+
 
     @FXML
     void addButtonAction(ActionEvent event) {

@@ -75,10 +75,6 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     public void addExerciseTextAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Trainers/AddExercise", false);
-        mainPane.setDisable(true);
-    }
-    public void setDisable(){
-        mainPane.setDisable(false);
     }
     @FXML
     void dayButtonAction(ActionEvent event) {
