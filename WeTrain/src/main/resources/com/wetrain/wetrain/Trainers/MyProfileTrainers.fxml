@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1095.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.MyProfileTrainersController">
+<BorderPane fx:id="secondaryPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1095.0" style="-fx-border-radius: 50; -fx-background-radius: 50; -fx-border-width: 3;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.MyProfileTrainersController">
 <center>
     <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
         <children>
@@ -50,7 +50,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="986.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+            <ImageView fx:id="closeImage" fitHeight="103.0" fitWidth="105.0" layoutX="986.0" layoutY="-7.0" onMouseClicked="#closeImageAction" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
                <image>
                   <Image url="@../../../../Images/cross.png" />
                </image>
@@ -73,12 +73,12 @@
                   </ImageView>
                   <HBox alignment="CENTER" prefHeight="26.0" prefWidth="397.0" spacing="95.0">
                      <children>
-                        <Label scaleX="2.0" scaleY="2.0" text="First Name" />
-                        <Label scaleX="2.0" scaleY="2.0" text="Last Name" />
+                        <Label fx:id="firstNameLabel" scaleX="2.0" scaleY="2.0" text="First Name" />
+                        <Label fx:id="lastNameLabel" scaleX="2.0" scaleY="2.0" text="Last Name" />
                      </children>
                   </HBox>
-                  <Label scaleX="1.4" scaleY="1.4" text="Fiscal Code" />
-                  <Label layoutX="186.0" layoutY="281.0" scaleX="1.4" scaleY="1.4" text="Email" />
+                  <Label fx:id="fiscalCodeLabel" scaleX="1.4" scaleY="1.4" text="Fiscal Code" />
+                  <Label fx:id="emailLabel" layoutX="186.0" layoutY="281.0" scaleX="1.4" scaleY="1.4" text="Email" />
                </children>
             </VBox>
         </children>
