@@ -39,6 +39,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="JavaClassFindUsagesOptions.isSearchForTextOccurrences" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -54,11 +55,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain" />
       <recent name="C:\Users\Edoardo\Documents\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Trainers" />
       <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Launcher" />
       <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Trainers" />
-      <recent name="C:\Users\Andrea\Desktop\Università\ISPW PROJECT\WeTrainProject\trunk\WeTrain\src\main\resources\com\wetrain\wetrain\Nutritionists" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.wetrain.wetrain" />
@@ -193,7 +194,9 @@
       <workItem from="1638886033251" duration="326000" />
       <workItem from="1638886564509" duration="2871000" />
       <workItem from="1638896213133" duration="2439000" />
-      <workItem from="1638952983545" duration="2984000" />
+      <workItem from="1638952983545" duration="13547000" />
+      <workItem from="1638970109058" duration="63000" />
+      <workItem from="1638970303354" duration="197000" />
     </task>
     <servers />
   </component>

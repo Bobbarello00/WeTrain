@@ -28,14 +28,16 @@ public class AddExerciseController {
     @FXML
     private TextField nameText;
 
-
+    //TODO
     @FXML
     void addButtonAction(ActionEvent event) {
         ((Stage)addButton.getScene().getWindow()).close();
+        //MainPane.getInstance().setDisable(false);
     }
 
     @FXML
     void cancelButtonAction(ActionEvent event) {
         ((Stage)addButton.getScene().getWindow()).close();
+        //MainPane.getInstance().setDisable(false);
     }
 }

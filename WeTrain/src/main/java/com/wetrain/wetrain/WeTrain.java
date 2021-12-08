@@ -11,10 +11,12 @@ import java.util.Objects;
 public class WeTrain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader homePage = new FXMLLoader(WeTrain.class.getResource("Launcher/WeTrainGUI.fxml"));
-        Scene scene = new Scene(homePage.load());
+        FXMLLoader mainPane = new FXMLLoader(WeTrain.class.getResource("MainPane.fxml"));
+        Scene scene = new Scene(mainPane.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("WeTrainStyle.css")).toExternalForm());
         PageSwitchSizeChange.pageLauncher(stage, scene);
+        PageSwitchSimple.switchPage(MainPane.getInstance(), "WeTrainGUI", "Launcher");
+        stage.show();
     }
 
    public static void main(String[] args) {

@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,8 +24,6 @@ public class NutritionistsHomeController implements Initializable {
     @FXML
     private ListView dietsList;
     @FXML
-    private BorderPane mainPane;
-    @FXML
     private ListView requestsList;
     @FXML
     private Button createDietButton;
@@ -38,7 +35,8 @@ public class NutritionistsHomeController implements Initializable {
     private Button manageDietsButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
+    }
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
@@ -65,7 +63,6 @@ public class NutritionistsHomeController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MainPane.setInstance(mainPane);
         ListPopulate.populateList(10,dietsList,true);
         ListPopulate.populateList(10,requestsList,false);
     }

@@ -91,7 +91,7 @@ public class FindCourseController implements Initializable {
     }
     @FXML
     private void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
     }
     @FXML
     private void searchButtonAction(ActionEvent event) {

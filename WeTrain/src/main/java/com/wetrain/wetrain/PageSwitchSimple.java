@@ -16,11 +16,11 @@ public class PageSwitchSimple {
         try{
             URL fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + ".fxml");
             if(fileUrl==null){
-                throw new java.io.FileNotFoundException("non ho trovato il file FXML");
+                throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
             }
             view = FXMLLoader.load(fileUrl);
         } catch (FileNotFoundException e) {
-            System.out.println("File "+fileName+" non trovato, controllare il PageSwitchSimple!");
+            System.out.println("File "+ pathString + "/" + fileName + ".fxml" + " non trovato, controllare il PageSwitchSimple!");
         }
         mainPane.setCenter(view);
     }

@@ -41,7 +41,7 @@ public class NewWorkoutPlanController implements Initializable {
     private Button manageRequestsButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
     }
     @FXML
     void manageLessonsButtonAction() throws IOException {
@@ -72,7 +72,7 @@ public class NewWorkoutPlanController implements Initializable {
     }
     @FXML
     public void addExerciseTextAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "Trainers/AddExercise", false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "AddExercise", "Trainers", false);
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

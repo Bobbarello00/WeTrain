@@ -36,7 +36,7 @@ public class MoreInfoController implements Initializable {
     private Text profileText;
     @FXML
     void registerButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(registerButton, string + "s/" + string + "sHome", true);
+        PageSwitchSizeChange.pageSwitch(registerButton, string + "sHome", string + "s",true);
     }
     @FXML
     void profileButtonAction() throws IOException {

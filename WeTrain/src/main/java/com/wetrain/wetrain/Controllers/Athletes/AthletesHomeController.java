@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,8 +22,6 @@ public class AthletesHomeController implements Initializable {
     private Button dietButton;
     @FXML
     private Button logoutButton;
-    @FXML
-    private BorderPane mainPane;
     @FXML
     private ListView coursesList;
     @FXML
@@ -53,7 +50,7 @@ public class AthletesHomeController implements Initializable {
     void editButtonAction() {System.out.println("Edit Button");}
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
     }
     @FXML
     void workoutButtonAction() throws IOException {
@@ -61,7 +58,6 @@ public class AthletesHomeController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        MainPane.setInstance(mainPane);
         ListPopulate.populateList(10,coursesList,true);
         ListPopulate.populateList(10,popularsList,false);
     }

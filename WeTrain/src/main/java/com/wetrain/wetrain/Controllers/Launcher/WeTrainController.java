@@ -3,18 +3,12 @@ package com.wetrain.wetrain.Controllers.Launcher;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class WeTrainController implements Initializable {
-    @FXML
-    public BorderPane mainPane;
+public class WeTrainController {
     @FXML
     private Button regButton;
     @FXML
@@ -34,10 +28,5 @@ public class WeTrainController implements Initializable {
     @FXML
     protected void logInButtonExited(){
         logInText.setStyle("-fx-fill: rgba(24, 147, 21, 1);");
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        MainPane.setInstance(mainPane);
     }
 }
