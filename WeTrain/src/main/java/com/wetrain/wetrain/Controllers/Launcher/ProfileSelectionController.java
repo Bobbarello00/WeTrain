@@ -1,10 +1,11 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
+
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -19,10 +20,6 @@ public class ProfileSelectionController {
 
     @FXML
     private ImageView logo;
-
-    @FXML
-    private BorderPane mainPane;
-
     @FXML
     private Button nutritionistsButton;
 
@@ -31,7 +28,7 @@ public class ProfileSelectionController {
 
     @FXML
     protected void athletesButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"AthleteRegistration", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthleteRegistration", "Launcher");
     }
     @FXML
     protected void athletesButtonEntered(){
@@ -43,7 +40,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "Launcher");
     }
     @FXML
     protected void nutritionistsButtonEntered(){
@@ -55,7 +52,7 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void nutritionistButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"NutritionistRegistration", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistRegistration", "Launcher");
     }
     @FXML
     protected void trainersButtonEntered(){
@@ -67,6 +64,6 @@ public class ProfileSelectionController {
     }
     @FXML
     protected void trainersButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"TrainerRegistration", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainerRegistration", "Launcher");
     }
 }

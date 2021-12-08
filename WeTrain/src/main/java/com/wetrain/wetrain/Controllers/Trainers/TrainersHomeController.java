@@ -1,6 +1,7 @@
 package com.wetrain.wetrain.Controllers.Trainers;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
@@ -54,29 +55,30 @@ public class TrainersHomeController implements Initializable {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"ManageLessonsTrainers", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageLessonsTrainers", "Trainers");
     }
     @FXML
     void createCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"NewCourse", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewCourse", "Trainers");
     }
     @FXML
     void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"NewWorkoutPlan", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"ManageRequestsTrainers", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageRequestsTrainers", "Trainers");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit");}
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"TrainersHome", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        MainPane.setInstance(mainPane);
         ListPopulate.populateList(10,coursesList,true);
         ListPopulate.populateList(10,requestsList,true);
     }

@@ -1,5 +1,7 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
+
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
@@ -9,7 +11,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -21,8 +22,6 @@ public class LoginController implements Initializable {
     private Text homeText;
     @FXML
     private ImageView logo;
-    @FXML
-    private BorderPane mainPane;
     @FXML
     private Button submitButton;
     @FXML
@@ -39,7 +38,7 @@ public class LoginController implements Initializable {
     }
     @FXML
     void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "Launcher");
     }
     @FXML
     void submitButtonAction() {

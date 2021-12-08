@@ -1,5 +1,7 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
+
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
@@ -9,7 +11,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -27,8 +28,6 @@ public class NutritionistRegistrationController implements Initializable {
     private Button infoButton;
     @FXML
     private ImageView logo;
-    @FXML
-    private BorderPane mainPane;
     @FXML
     private Button continueButton;
     @FXML
@@ -53,16 +52,16 @@ public class NutritionistRegistrationController implements Initializable {
     }
     @FXML
     protected void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "Launcher");
     }
     @FXML
     protected void profileButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"ProfileSelection", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "Launcher");
     }
     @FXML
     protected void continueButtonAction() throws IOException {
         MoreInfoController.string = "Nutritionist";
-        PageSwitchSimple.switchPage(mainPane,"MoreInfo", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"MoreInfo", "Launcher");
     }
 
     @Override

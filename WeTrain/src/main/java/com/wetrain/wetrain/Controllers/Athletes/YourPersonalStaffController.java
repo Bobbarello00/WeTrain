@@ -1,11 +1,11 @@
 package com.wetrain.wetrain.Controllers.Athletes;
 
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
@@ -25,8 +25,6 @@ public class YourPersonalStaffController {
     private Button findCourseButton;
     @FXML
     private Button logoutButton;
-    @FXML
-    private BorderPane mainPane;
     @FXML
     private Button nutritionistCertificationsButton;
     @FXML
@@ -51,7 +49,7 @@ public class YourPersonalStaffController {
     }
     @FXML
     void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"YourDietPlan", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
     }
     @FXML
     void dietRequestButtonAction() {
@@ -61,11 +59,11 @@ public class YourPersonalStaffController {
     void editButtonAction() {System.out.println("Edit Button");}
     @FXML
     void findCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"FindCourse", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"FindCourse", "Athletes");
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @FXML
     void logoutButtonAction() throws IOException {
@@ -77,7 +75,7 @@ public class YourPersonalStaffController {
     }
     @FXML
     void staffButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @FXML
     void trainerCertificationsButtonAction() {
@@ -85,7 +83,7 @@ public class YourPersonalStaffController {
     }
     @FXML
     void workoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"YourWorkoutPlan", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourWorkoutPlan", "Athletes");
     }
     @FXML
     void workoutRequestButtonAction() {

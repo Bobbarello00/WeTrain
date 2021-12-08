@@ -1,5 +1,7 @@
 package com.wetrain.wetrain.Controllers.Launcher;
 
+
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
@@ -8,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -32,8 +33,6 @@ public class MoreInfoController implements Initializable {
     @FXML
     private ImageView logo;
     @FXML
-    private BorderPane mainPane;
-    @FXML
     private Text profileText;
     @FXML
     void registerButtonAction() throws IOException {
@@ -41,15 +40,15 @@ public class MoreInfoController implements Initializable {
     }
     @FXML
     void profileButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"ProfileSelection", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "Launcher");
     }
     @FXML
     private void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "Launcher");
     }
     @FXML
     void registrationTextAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,string + "Registration", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),string + "Registration", "Launcher");
     }
 
     @Override

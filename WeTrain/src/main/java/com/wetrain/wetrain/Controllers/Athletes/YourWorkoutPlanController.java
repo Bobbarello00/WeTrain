@@ -2,6 +2,7 @@ package com.wetrain.wetrain.Controllers.Athletes;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.DaysOfTheWeekController;
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
@@ -9,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,26 +43,24 @@ public class YourWorkoutPlanController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private BorderPane mainPane;
-    @FXML
     private ListView exercisesList;
     @FXML
     private Button workoutButton;
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @FXML
     void staffButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"YourPersonalStaff", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourPersonalStaff", "Athletes");
     }
     @FXML
     void findCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"FindCourse", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"FindCourse", "Athletes");
     }
     @FXML
     void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"YourDietPlan", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit Button");}
@@ -71,7 +69,7 @@ public class YourWorkoutPlanController implements Initializable {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void workoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"AthletesHome", "Athletes");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

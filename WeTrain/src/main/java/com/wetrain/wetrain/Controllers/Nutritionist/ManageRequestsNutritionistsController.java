@@ -1,13 +1,13 @@
 package com.wetrain.wetrain.Controllers.Nutritionist;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
+import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,8 +24,6 @@ public class ManageRequestsNutritionistsController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private BorderPane mainPane;
-    @FXML
     private Button manageAppointmentsButton;
     @FXML
     private Button manageDietsButton;
@@ -33,7 +31,7 @@ public class ManageRequestsNutritionistsController implements Initializable {
     private Button manageRequestsButton;
     @FXML
     void createDietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"NewDiet", "Nutritionists");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewDiet", "Nutritionists");
     }
     @FXML
     void editButtonAction() {
@@ -41,22 +39,22 @@ public class ManageRequestsNutritionistsController implements Initializable {
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
     }
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "Launcher/WeTrainGUI", true);}
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"ManageAppointmentsNutritionists", "Nutritionists");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageAppointmentsNutritionists", "Nutritionists");
     }
     @FXML
     void manageDietsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"ManageDietsNutritionists", "Nutritionists");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageDietsNutritionists", "Nutritionists");
     }
     @FXML
     void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(mainPane,"NutritionistsHome", "Nutritionists");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
