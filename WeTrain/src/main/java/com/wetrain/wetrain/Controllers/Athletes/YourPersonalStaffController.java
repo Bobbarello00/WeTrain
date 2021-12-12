@@ -6,6 +6,7 @@ import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -68,6 +69,11 @@ public class YourPersonalStaffController {
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher",true);
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void nutritionistCertificationsButtonAction() {

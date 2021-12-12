@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +34,11 @@ public class AthletesHomeController implements Initializable {
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void staffButtonAction() throws IOException {

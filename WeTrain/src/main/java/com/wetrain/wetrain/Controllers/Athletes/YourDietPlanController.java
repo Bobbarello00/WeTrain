@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -83,6 +84,11 @@ public class YourDietPlanController {
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher",true);
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
     }
     private void colorShift(Button button, Text text){
         if(previousButton!=null){

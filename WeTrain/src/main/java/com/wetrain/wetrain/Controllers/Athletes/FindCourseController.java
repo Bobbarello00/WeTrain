@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -74,6 +75,11 @@ public class FindCourseController implements Initializable {
             button.setStyle(null);
         }
         selected[i]=!selected[i];
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     private void dietButtonAction() throws IOException {
