@@ -26,7 +26,7 @@ public class NewCourseController implements Initializable {
     @FXML
     private Button createWorkoutButt;
     @FXML
-    private Button editButt;
+    private Button editButton;
     @FXML
     private ListView<?> exercisesSelectedList;
     @FXML
@@ -95,7 +95,9 @@ public class NewCourseController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
     }
     @FXML
-    void editButtonAction() {System.out.println("Edit");}
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
+    }
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");

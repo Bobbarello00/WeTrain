@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Nutritionist;
+package com.wetrain.wetrain.Controllers.Nutritionists;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.MainPane;
@@ -14,16 +14,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManageRequestsNutritionistsController implements Initializable {
-
+public class ManageDietsNutritionistsController implements Initializable{
     @FXML
     private Button createDietButton;
     @FXML
     private Button editButton;
     @FXML
-    private ListView<?> requestsList;
-    @FXML
     private Button logoutButton;
+    @FXML
+    private ListView<?> dietsList;
     @FXML
     private Button manageAppointmentsButton;
     @FXML
@@ -35,8 +34,8 @@ public class ManageRequestsNutritionistsController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewDiet", "Nutritionists");
     }
     @FXML
-    void editButtonAction() {
-
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
     @FXML
     void logoAction() throws IOException {
@@ -55,15 +54,15 @@ public class ManageRequestsNutritionistsController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageAppointmentsNutritionists", "Nutritionists");
     }
     @FXML
-    void manageDietsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageDietsNutritionists", "Nutritionists");
+    void manageDietsButtonAction()throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorNutritionists", "Nutritionists");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,requestsList,false);
+        ListPopulate.populateList(10,dietsList,true);
     }
 }

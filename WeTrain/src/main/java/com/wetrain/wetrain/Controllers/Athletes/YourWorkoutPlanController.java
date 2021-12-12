@@ -64,7 +64,9 @@ public class YourWorkoutPlanController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
     }
     @FXML
-    void editButtonAction() {System.out.println("Edit Button");}
+    protected void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+    }
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);

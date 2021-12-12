@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Nutritionist;
+package com.wetrain.wetrain.Controllers.Nutritionists;
 
 import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.MainPane;
@@ -55,8 +55,8 @@ public class NewDietController {
         System.out.println("Created");
      }
     @FXML
-    void editButtonAction() {
-        System.out.println("Edit");
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
     @FXML
     void logoAction() throws IOException {
@@ -80,7 +80,7 @@ public class NewDietController {
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorNutritionists", "Nutritionists");
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

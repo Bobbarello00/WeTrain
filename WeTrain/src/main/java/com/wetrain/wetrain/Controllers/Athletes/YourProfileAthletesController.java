@@ -1,12 +1,15 @@
 package com.wetrain.wetrain.Controllers.Athletes;
 
 import com.wetrain.wetrain.MainPane;
+import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class YourProfileAthletesController {
     @FXML
@@ -29,7 +32,7 @@ public class YourProfileAthletesController {
         MainPane.getInstance().setDisable(false);
     }
     @FXML
-    protected void editButtonAction(ActionEvent event) {
-
+    protected void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
     }
 }

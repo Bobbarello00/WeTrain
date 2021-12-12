@@ -36,7 +36,7 @@
          </Button>
       </VBox>
    </HBox>
-   <Button fx:id="editButt" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+   <Button fx:id="editButton" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>

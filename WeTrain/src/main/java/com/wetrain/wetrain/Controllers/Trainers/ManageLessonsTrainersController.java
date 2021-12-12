@@ -58,7 +58,9 @@ public class ManageLessonsTrainersController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
-    void editButtonAction() {System.out.println("Edit");}
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
+    }
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");

@@ -40,6 +40,19 @@ public class YourPersonalStaffController {
     private Button workoutButton;
     @FXML
     private Button workoutRequestButton;
+    //TODO Implementare metodi
+    @FXML
+    void trainerCertificationsButtonAction() {
+
+    }
+    @FXML
+    void workoutRequestButtonAction() {
+
+    }
+    @FXML
+    void nutritionistCertificationsButtonAction() {
+
+    }
     @FXML
     void appointmentRequestButtonAction() {
 
@@ -49,15 +62,17 @@ public class YourPersonalStaffController {
 
     }
     @FXML
-    void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
-    }
-    @FXML
     void dietRequestButtonAction() {
 
     }
     @FXML
-    void editButtonAction() {System.out.println("Edit Button");}
+    void dietButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
+    }
+    @FXML
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+    }
     @FXML
     void findCourseButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"FindCourse", "Athletes");
@@ -75,23 +90,11 @@ public class YourPersonalStaffController {
         ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
-    void nutritionistCertificationsButtonAction() {
-
-    }
-    @FXML
     void staffButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @FXML
-    void trainerCertificationsButtonAction() {
-
-    }
-    @FXML
     void workoutButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourWorkoutPlan", "Athletes");
-    }
-    @FXML
-    void workoutRequestButtonAction() {
-
     }
 }

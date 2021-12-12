@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1480.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Nutritionist.ManageRequestsNutritionistsController">
+<Pane prefHeight="785.0" prefWidth="1480.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Trainers.YourCollaboratorTrainersController">
    <HBox alignment="CENTER_RIGHT" layoutX="1115.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -41,32 +41,47 @@
       </font>
    </Button>
    <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-      <Text layoutX="134.0" layoutY="39.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="⏰ Pending Requests" wrappingWidth="136.5983200073244">
+      <Text layoutX="654.0" layoutY="40.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="✍ Write email" wrappingWidth="85.66499328613298">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛈 Info" wrappingWidth="138.06498718261736">
-         <font>
-            <Font name="ABeeZee Regular" size="12.0" />
-         </font>
-      </Text>
-      <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
+      <VBox layoutX="556.0" layoutY="55.0" prefHeight="547.0" prefWidth="588.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
          <Pane prefHeight="300.0" prefWidth="615.0" />
       </VBox>
-      <VBox layoutX="35.0" layoutY="57.0" prefHeight="547.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
-         <children>
-            <ListView fx:id="requestsList" prefHeight="547.0" prefWidth="439.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
-         </children>
+      <Text layoutX="114.0" layoutY="38.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="👨‍⚕️ Nutritionist" wrappingWidth="87.20787811279314">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Text>
+      <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="54.0" prefHeight="547.0" prefWidth="505.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.4); -fx-background-radius: 50;">
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="100.0" />
          </padding>
+         <children>
+            <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
+               <image>
+                  <Image url="@../../../../Images/User1.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="certificationsButton" mnemonicParsing="false" onAction="#certificationsButtonAction" text="Show Certifications 👁" />
+            <Label fx:id="nutritionistName" scaleX="1.5" scaleY="1.5" text="Name of the Nutritionist" />
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
+               <padding>
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="50.0" />
+               </padding>
+               <children>
+                  <Button fx:id="changeCollaboratorButton" mnemonicParsing="false" onAction="#changeCollaboratorButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Change your collaborator  ❌" />
+                  <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmailButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Send Email" />
+               </children>
+            </VBox>
+         </children>
       </VBox>
    </Pane>
-   <Text layoutX="474.0" layoutY="86.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Requests" textAlignment="JUSTIFY" wrappingWidth="112.66976737976074">
+   <Text layoutX="474.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Collaborator" textAlignment="JUSTIFY" wrappingWidth="112.66976737976074">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
@@ -79,22 +94,22 @@
          <Image url="@../../../../Images/WeTrainLogo.png" />
       </ImageView>
       <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-         <Button fx:id="manageDietsButton" mnemonicParsing="false" onAction="#manageDietsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Your Diets" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="manageLessonsButton" mnemonicParsing="false" onAction="#manageLessonsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Lessons" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="yourCollaboratorButton" mnemonicParsing="false" onAction="#yourCollaboratorButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-border-color: rgb(24, 147, 21); -fx-border-radius: 50; -fx-text-fill: rgb(24, 147, 21);" text="        Your        Collaborator" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="yourCollaboratorButton" mnemonicParsing="false" onAction="#yourCollaboratorButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-border-color: rgb(24, 147,21); -fx-border-radius: 50; -fx-text-fill: rgb(24, 147,21);" text="        Your        Collaborator" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="manageAppointmentsButton" mnemonicParsing="false" onAction="#manageAppointmentsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Appointments" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="createWorkoutButton" mnemonicParsing="false" onAction="#createWorkoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Workout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="createDietButton" mnemonicParsing="false" onAction="#createDietButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Diet" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="createCourseButton" mnemonicParsing="false" onAction="#createCourseButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>

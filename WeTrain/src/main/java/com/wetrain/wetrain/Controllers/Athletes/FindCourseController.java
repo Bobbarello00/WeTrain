@@ -85,7 +85,9 @@ public class FindCourseController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
     }
     @FXML
-    private void editButtonAction() {System.out.println("Edit Button");}
+    protected void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+    }
     @FXML
     private void findCourseButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");

@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManageRequestsTrainersController implements Initializable {
+public class YourCollaboratorTrainersController{
     @FXML
     private ImageView logo;
     @FXML
@@ -23,13 +23,17 @@ public class ManageRequestsTrainersController implements Initializable {
     @FXML
     private Button manageLessonsButton;
     @FXML
-    private ListView<?> requestsList;
-    @FXML
     private Button createCourseButton;
     @FXML
     private Button createWorkoutButton;
     @FXML
     private Button editButton;
+    @FXML
+    private Button certificationsButton;
+    @FXML
+    private Button sendEmailButton;
+    @FXML
+    private Button changeCollaboratorButton;
     @FXML
     private Button yourCollaboratorButton;
     @FXML
@@ -58,13 +62,24 @@ public class ManageRequestsTrainersController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
-    void editButtonAction() {System.out.println("Edit");}
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(logoutButton, "YourProfileTrainersNutritionists", "", false);
+    }
+    //TODO implementare metodi
+    @FXML
+    void certificationsButtonAction() {
+
+    }
+    @FXML
+    void sendEmailButtonAction() {
+
+    }
+    @FXML
+    void changeCollaboratorButtonAction() {
+
+    }
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,requestsList,true);
     }
 }

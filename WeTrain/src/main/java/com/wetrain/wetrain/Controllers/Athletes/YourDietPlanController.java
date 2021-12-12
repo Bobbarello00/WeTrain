@@ -14,8 +14,8 @@ import java.io.IOException;
 public class YourDietPlanController {
 
     private Button previousButton;
-
     private Text previousText;
+
     @FXML
     private Button staffButton;
     @FXML
@@ -74,8 +74,8 @@ public class YourDietPlanController {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourWorkoutPlan", "Athletes");
     }
     @FXML
-    void editButtonAction() {
-
+    protected void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
     }
     @FXML
     void logoAction() throws IOException {

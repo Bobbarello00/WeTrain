@@ -77,14 +77,14 @@ public class TrainersHomeController implements Initializable {
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
     }
-
+    @FXML
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList,true);
         ListPopulate.populateList(10,requestsList,true);
     }
 
-    protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
-    }
 }

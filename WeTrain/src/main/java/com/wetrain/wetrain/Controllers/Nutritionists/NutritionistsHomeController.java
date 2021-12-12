@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Nutritionist;
+package com.wetrain.wetrain.Controllers.Nutritionists;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.MainPane;
