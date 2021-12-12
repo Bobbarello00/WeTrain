@@ -35,7 +35,11 @@ public class AddExerciseController {
         ((Stage)addButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
-
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     void cancelButtonAction(ActionEvent event) {
         ((Stage)addButton.getScene().getWindow()).close();

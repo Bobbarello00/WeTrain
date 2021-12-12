@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +35,11 @@ public class ManageLessonsTrainersController implements Initializable {
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void manageLessonsButtonAction() throws IOException {
