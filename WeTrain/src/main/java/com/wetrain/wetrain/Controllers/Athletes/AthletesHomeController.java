@@ -24,9 +24,9 @@ public class AthletesHomeController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private ListView coursesList;
+    private ListView<?> coursesList;
     @FXML
-    private ListView popularsList;
+    private ListView<?> popularsList;
     @FXML
     private Button editButton;
     @FXML

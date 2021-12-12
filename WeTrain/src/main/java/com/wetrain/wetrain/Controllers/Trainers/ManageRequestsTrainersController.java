@@ -23,7 +23,7 @@ public class ManageRequestsTrainersController implements Initializable {
     @FXML
     private Button manageLessonsButton;
     @FXML
-    private ListView requestsList;
+    private ListView<?> requestsList;
     @FXML
     private Button createCourseButton;
     @FXML
@@ -31,7 +31,7 @@ public class ManageRequestsTrainersController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private Button manageRequestsButton;
+    private Button yourCollaboratorButton;
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
@@ -54,8 +54,8 @@ public class ManageRequestsTrainersController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
     }
     @FXML
-    void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit");}

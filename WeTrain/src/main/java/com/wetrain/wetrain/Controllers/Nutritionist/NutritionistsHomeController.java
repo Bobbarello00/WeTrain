@@ -23,15 +23,15 @@ public class NutritionistsHomeController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private ListView dietsList;
+    private ListView<?> dietsList;
     @FXML
-    private ListView requestsList;
+    private ListView<?> requestsList;
     @FXML
     private Button createDietButton;
     @FXML
     private Button manageAppointmentsButton;
     @FXML
-    private Button manageRequestsButton;
+    private Button yourCollaboratorButton;
     @FXML
     private Button manageDietsButton;
     @FXML
@@ -51,8 +51,8 @@ public class NutritionistsHomeController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageAppointmentsNutritionists", "Nutritionists");
     }
     @FXML
-    void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageRequestsNutritionists", "Nutritionists");
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorNutritionists", "Nutritionists");
     }
     @FXML
     void manageDietsButtonAction() throws IOException {

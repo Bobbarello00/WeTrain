@@ -19,15 +19,15 @@ import java.util.ResourceBundle;
 
 public class NewWorkoutPlanController implements Initializable {
 
-    private DaysOfTheWeekController daysController = new DaysOfTheWeekController();
+    public final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
     private ImageView logo;
     @FXML
     private Button logoutButton;
     @FXML
-    private ListView exercisesList;
+    private ListView<?> exercisesList;
     @FXML
-    private ListView exercisesSelectedList;
+    private ListView<?> exercisesSelectedList;
     @FXML
     private Button manageLessonsButton;
     @FXML
@@ -39,7 +39,7 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private Button manageRequestsButton;
+    private Button yourCollaboratorButton;
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
@@ -62,8 +62,8 @@ public class NewWorkoutPlanController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
     }
     @FXML
-    void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageRequestsTrainers", "Trainers");
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
     void editButtonAction() {System.out.println("Edit");}

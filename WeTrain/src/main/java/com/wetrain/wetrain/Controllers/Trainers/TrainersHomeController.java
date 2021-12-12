@@ -29,11 +29,11 @@ public class TrainersHomeController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private ListView coursesList;
+    private ListView<?> coursesList;
     @FXML
-    private ListView requestsList;
+    private ListView<?> requestsList;
     @FXML
-    private Button manageRequestsButton;
+    private Button yourCollaboratorButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -70,10 +70,6 @@ public class TrainersHomeController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
     }
     @FXML
-    void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageRequestsTrainers", "Trainers");
-    }
-    @FXML
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
@@ -86,5 +82,9 @@ public class TrainersHomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList,true);
         ListPopulate.populateList(10,requestsList,true);
+    }
+
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
 }

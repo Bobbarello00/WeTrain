@@ -22,13 +22,13 @@ public class ManageDietsNutritionistsController implements Initializable{
     @FXML
     private Button logoutButton;
     @FXML
-    private ListView dietsList;
+    private ListView<?> dietsList;
     @FXML
     private Button manageAppointmentsButton;
     @FXML
     private Button manageDietsButton;
     @FXML
-    private Button manageRequestsButton;
+    private Button yourCollaboratorButton;
     @FXML
     void createDietButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewDiet", "Nutritionists");
@@ -58,8 +58,8 @@ public class ManageDietsNutritionistsController implements Initializable{
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
     }
     @FXML
-    void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageRequestsNutritionists", "Nutritionists");
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

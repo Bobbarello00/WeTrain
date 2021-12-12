@@ -34,7 +34,7 @@ public class NewCourseController implements Initializable {
     @FXML
     private Button manageLessonsButt;
     @FXML
-    private Button manageRequestsButt;
+    private Button yourCollaboratorButt;
     @FXML
     private Button mondayButton;
     @FXML
@@ -114,8 +114,8 @@ public class NewCourseController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageLessonsTrainers", "Trainers");
     }
     @FXML
-    void manageRequestsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageRequestsTrainers", "Trainers");
+    protected void yourCollaboratorButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

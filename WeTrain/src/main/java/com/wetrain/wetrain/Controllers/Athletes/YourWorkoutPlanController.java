@@ -44,7 +44,7 @@ public class YourWorkoutPlanController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private ListView exercisesList;
+    private ListView<?> exercisesList;
     @FXML
     private Button workoutButton;
     @FXML
