@@ -59,7 +59,7 @@ public class YourCollaboratorTrainersController{
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
     }
     @FXML
     void editButtonAction() throws IOException {
