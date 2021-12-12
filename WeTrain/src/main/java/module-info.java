@@ -9,6 +9,7 @@ module com.wetrain.wetrain {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires org.jetbrains.annotations;
 
     opens com.wetrain.wetrain to javafx.fxml;
     exports com.wetrain.wetrain;

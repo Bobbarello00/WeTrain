@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -19,16 +18,16 @@ public class PageSwitchSizeChange {
 
     public static void pageSwitch(Button button, String page, String path, boolean closeOldStage) throws IOException {
         Stage newStage;
+        BorderPane actualPane = MainPane.getInstance();
         Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));
         BorderPane pane = (BorderPane) root;
 
         if(!closeOldStage) {
-            //TODO Non posso cliccare bottoni del menù Home alla chiusura di AddExercise
+            MainPane.setInstance(actualPane);
+            MainPane.getInstance().setDisable(true);
             Alert alert = new Alert(Alert.AlertType.NONE);
-            alert.initModality(Modality.APPLICATION_MODAL);
             newStage = (Stage) alert.getDialogPane().getScene().getWindow();
         }else {
-            MainPane.setInstance((BorderPane) root);
             newStage = new Stage();
             Stage stage = (Stage) button.getScene().getWindow();
             stage.close();

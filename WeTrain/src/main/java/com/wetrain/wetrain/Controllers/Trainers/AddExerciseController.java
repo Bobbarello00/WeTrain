@@ -1,5 +1,6 @@
 package com.wetrain.wetrain.Controllers.Trainers;
 
+import com.wetrain.wetrain.MainPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -32,12 +33,12 @@ public class AddExerciseController {
     @FXML
     void addButtonAction(ActionEvent event) {
         ((Stage)addButton.getScene().getWindow()).close();
-        //MainPane.getInstance().setDisable(false);
+        MainPane.getInstance().setDisable(false);
     }
 
     @FXML
     void cancelButtonAction(ActionEvent event) {
         ((Stage)addButton.getScene().getWindow()).close();
-        //MainPane.getInstance().setDisable(false);
+        MainPane.getInstance().setDisable(false);
     }
 }
