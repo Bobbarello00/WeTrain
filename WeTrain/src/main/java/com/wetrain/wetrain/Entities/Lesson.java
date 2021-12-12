@@ -13,6 +13,6 @@ public class Lesson {
 
     public void modifyDate(LocalDateTime newDate){
         this.lessonDate = newDate;
-        //TODO notifica agli iscritti la modifica
+        //Notifica agli iscritti la modifica
     }
 }
