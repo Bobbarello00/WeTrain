@@ -5,6 +5,7 @@ import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -16,6 +17,11 @@ public class WeTrainController {
     @FXML
     protected void registerButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "Launcher");
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) regButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     protected void logInTextAction() throws IOException {

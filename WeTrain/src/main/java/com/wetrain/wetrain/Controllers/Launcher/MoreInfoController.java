@@ -11,6 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +38,11 @@ public class MoreInfoController implements Initializable {
     @FXML
     void registerButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(registerButton, string + "sHome", string + "s",true);
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) registerButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void profileButtonAction() throws IOException {

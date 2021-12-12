@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,6 +44,11 @@ public class TrainerRegistrationController implements Initializable {
     @FXML
     void eyeButtonAction() {
         checkVisible.fire();
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) continueButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void attachButtonAction() {

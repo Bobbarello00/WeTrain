@@ -12,7 +12,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.AthleteRegistrationController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
@@ -108,4 +107,12 @@
          </cursor>
       </Text>
    </HBox>
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="700.0" layoutY="10.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../../Images/cross.png" />
+      </image>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </ImageView>
 </Pane>

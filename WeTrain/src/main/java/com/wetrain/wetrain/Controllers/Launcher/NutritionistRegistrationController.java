@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,6 +46,11 @@ public class NutritionistRegistrationController implements Initializable {
     @FXML
     void attachButtonAction() {
         System.out.println("attach effettuato!");
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) continueButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     void infoButtonAction() {

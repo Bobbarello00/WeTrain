@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -14,18 +15,19 @@ public class ProfileSelectionController {
 
     @FXML
     private Button athletesButton;
-
     @FXML
     private Text homeText;
-
     @FXML
     private ImageView logo;
     @FXML
     private Button nutritionistsButton;
-
     @FXML
     private Button trainersButton;
-
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) athletesButton.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     protected void athletesButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthleteRegistration", "Launcher");

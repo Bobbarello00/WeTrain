@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,7 +45,11 @@ public class LoginController implements Initializable {
     void submitButtonAction() {
         System.out.println("Login effettuato!");
     }
-
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) submitButton.getScene().getWindow();
+        stage.close();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);

@@ -124,5 +124,13 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="700.0" layoutY="10.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Images/cross.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </Pane>

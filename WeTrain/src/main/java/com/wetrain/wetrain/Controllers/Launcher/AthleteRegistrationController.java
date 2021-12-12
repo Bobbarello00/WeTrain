@@ -12,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -41,6 +42,11 @@ public class AthleteRegistrationController implements Initializable {
     @FXML
     protected void profileButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "Launcher");
+    }
+    @FXML
+    protected void closeAction(){
+        Stage stage = (Stage) continueButton.getScene().getWindow();
+        stage.close();
     }
     @FXML
     protected void homeButtonAction() throws IOException {
