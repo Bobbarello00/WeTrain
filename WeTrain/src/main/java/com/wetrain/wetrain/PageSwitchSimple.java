@@ -14,7 +14,13 @@ public class PageSwitchSimple {
     public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
         PageSwitchSimple loader = new PageSwitchSimple();
         try{
-            URL fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + ".fxml");
+            URL fileUrl;
+            if(pathString == "") {
+                fileUrl = WeTrain.class.getResource(fileName + ".fxml");
+            }
+            else {
+                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + ".fxml");
+            }
             if(fileUrl==null){
                 throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
             }

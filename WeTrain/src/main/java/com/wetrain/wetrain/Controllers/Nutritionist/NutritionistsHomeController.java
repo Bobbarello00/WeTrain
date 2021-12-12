@@ -59,8 +59,8 @@ public class NutritionistsHomeController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageDietsNutritionists", "Nutritionists");
     }
     @FXML
-    void editButtonAction() {
-        System.out.println("Edit");
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
     @FXML
     void createDietButtonAction() throws IOException {

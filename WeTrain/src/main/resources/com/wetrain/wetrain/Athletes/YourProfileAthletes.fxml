@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane prefHeight="650.0" prefWidth="1102.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.MyProfileTrainersController">
+<Pane prefHeight="650.0" prefWidth="1102.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Athletes.YourProfileAthletesController">
    <children>
       <Text layoutX="596.0" layoutY="143.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="📈 Your Training Report" wrappingWidth="138.06498718261736">
          <font>

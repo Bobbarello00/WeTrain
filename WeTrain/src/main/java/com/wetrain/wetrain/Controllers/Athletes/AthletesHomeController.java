@@ -32,6 +32,10 @@ public class AthletesHomeController implements Initializable {
     @FXML
     private Button workoutButton;
     @FXML
+    void editButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+    }
+    @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
@@ -51,8 +55,6 @@ public class AthletesHomeController implements Initializable {
     void dietButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
     }
-    @FXML
-    void editButtonAction() {System.out.println("Edit Button");}
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);

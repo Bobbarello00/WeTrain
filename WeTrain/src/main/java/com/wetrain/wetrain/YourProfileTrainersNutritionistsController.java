@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class MyProfileTrainersNutritionistsController {
+public class YourProfileTrainersNutritionistsController {
     @FXML
     private Button editButton;
     @FXML
@@ -22,9 +22,10 @@ public class MyProfileTrainersNutritionistsController {
     @FXML
     protected void closeAction(){
         ((Stage) editButton.getScene().getWindow()).close();
+        MainPane.getInstance().setDisable(false);
     }
     @FXML
-    void editButtonAction(ActionEvent event) {
+    protected void editButtonAction(ActionEvent event) {
 
     }
 }
