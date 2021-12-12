@@ -138,7 +138,7 @@
                </font>
             </Button>
             <Text layoutX="120.0" layoutY="223.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected day Diet" />
-            <HBox alignment="CENTER" layoutX="640.0" layoutY="72.0" prefHeight="529.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+            <HBox alignment="CENTER" layoutX="640.0" layoutY="72.0" prefHeight="472.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -163,6 +163,11 @@
                </children>
             </HBox>
             <Text layoutX="688.0" layoutY="62.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General info" />
+            <Button fx:id="createButton" layoutX="986.0" layoutY="572.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="ABeeZee Regular" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1430.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
