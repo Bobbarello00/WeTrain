@@ -78,8 +78,7 @@ public class FindCourseController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
     private void dietButtonAction() throws IOException {

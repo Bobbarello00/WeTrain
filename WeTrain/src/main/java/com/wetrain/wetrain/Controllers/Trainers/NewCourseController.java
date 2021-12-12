@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class NewCourseController implements Initializable {
-    private Boolean[] toggled = new Boolean[7];
+    public Boolean[] toggled = new Boolean[7];
     @FXML
     private Button createCourseButt;
     @FXML
@@ -37,6 +37,8 @@ public class NewCourseController implements Initializable {
     private Button manageRequestsButt;
     @FXML
     private Button mondayButton;
+    @FXML
+    private Button createButton;
     @FXML
     private TimeSchedulerController mondayTimeSchedulerController;
     @FXML
@@ -79,6 +81,11 @@ public class NewCourseController implements Initializable {
     private Parent sundayTimeScheduler;
     @FXML
     private TextField workoutNameText;
+    @FXML
+    void createButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
+        System.out.println("Created");
+    }
     @FXML
     void createCourseButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");

@@ -29,8 +29,7 @@ public class PageSwitchSizeChange {
             newStage = (Stage) alert.getDialogPane().getScene().getWindow();
         }else {
             newStage = new Stage();
-            Stage stage = (Stage) button.getScene().getWindow();
-            stage.close();
+            ((Stage) button.getScene().getWindow()).close();
         }
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());

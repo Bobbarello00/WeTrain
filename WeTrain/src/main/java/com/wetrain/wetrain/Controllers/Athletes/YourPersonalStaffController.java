@@ -72,8 +72,7 @@ public class YourPersonalStaffController {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
     void nutritionistCertificationsButtonAction() {

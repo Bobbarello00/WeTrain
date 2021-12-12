@@ -26,6 +26,8 @@ public class NewDietController {
     @FXML
     private Button manageAppointmentsButton;
     @FXML
+    private Button createButton;
+    @FXML
     private Button manageDietsButton;
     @FXML
     private Button manageRequestsButton;
@@ -48,6 +50,11 @@ public class NewDietController {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
     }
     @FXML
+    void createButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
+        System.out.println("Created");
+     }
+    @FXML
     void editButtonAction() {
         System.out.println("Edit");
     }
@@ -61,8 +68,7 @@ public class NewDietController {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
     void manageAppointmentsButtonAction() throws IOException {

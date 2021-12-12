@@ -41,8 +41,7 @@ public class MoreInfoController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) registerButton.getScene().getWindow();
-        stage.close();
+        ((Stage) registerButton.getScene().getWindow()).close();
     }
     @FXML
     void profileButtonAction() throws IOException {

@@ -45,8 +45,7 @@ public class AthleteRegistrationController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) continueButton.getScene().getWindow();
-        stage.close();
+        ((Stage) continueButton.getScene().getWindow()).close();
     }
     @FXML
     protected void homeButtonAction() throws IOException {

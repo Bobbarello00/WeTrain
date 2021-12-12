@@ -85,7 +85,8 @@ public class NewWorkoutPlanController implements Initializable {
         daysController.dayButtonAction(event);
     }
     @FXML
-    void createButtonAction() {
+    void createButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
         System.out.println("Created");
     }
 }

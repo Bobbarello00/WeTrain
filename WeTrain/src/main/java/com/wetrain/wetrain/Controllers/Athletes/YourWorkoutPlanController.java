@@ -71,8 +71,7 @@ public class YourWorkoutPlanController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
     void workoutButtonAction() throws IOException {

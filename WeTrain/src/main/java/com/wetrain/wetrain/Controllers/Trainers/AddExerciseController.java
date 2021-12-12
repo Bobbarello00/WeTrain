@@ -10,25 +10,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class AddExerciseController {
-
     @FXML
     private Button addButton;
-
     @FXML
     private Button cancelButton;
-
     @FXML
     private TextArea descriptionTextArea;
-
     @FXML
     private TextArea equipmentTextArea;
-
     @FXML
     private BorderPane secondaryPane;
-
     @FXML
     private TextField nameText;
-
     //TODO
     @FXML
     void addButtonAction(ActionEvent event) {
@@ -37,8 +30,7 @@ public class AddExerciseController {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) addButton.getScene().getWindow();
-        stage.close();
+        ((Stage) addButton.getScene().getWindow()).close();
     }
     @FXML
     void cancelButtonAction(ActionEvent event) {

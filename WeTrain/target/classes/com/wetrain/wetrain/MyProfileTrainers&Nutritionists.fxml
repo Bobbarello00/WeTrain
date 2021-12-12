@@ -15,7 +15,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane prefHeight="650.0" prefWidth="1102.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.MyProfileTrainersController">
   <children>
       <Text layoutX="596.0" layoutY="143.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="＄ Your Earnings " wrappingWidth="138.06498718261736">
@@ -49,7 +48,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <ImageView fx:id="closeImage" fitHeight="103.0" fitWidth="105.0" layoutX="986.0" layoutY="-7.0" onMouseClicked="#closeImageAction" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
+      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="986.0" layoutY="-7.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
          <image>
             <Image url="@../../../Images/cross.png" />
          </image>
@@ -78,7 +77,7 @@
             </HBox>
             <Label fx:id="fiscalCodeLabel" scaleX="1.4" scaleY="1.4" text="Fiscal Code: RSS BBR 69 C 48 F839 A" />
             <Label fx:id="emailLabel" layoutX="186.0" layoutY="281.0" scaleX="1.4" scaleY="1.4" text="Email: example@gmail.com" />
-            <Label fx:id="emailLabel1" scaleX="1.4" scaleY="1.4" text="IBAN:  IT 99 C 12345 67890 123456789012" />
+            <Label fx:id="ibanLabel" scaleX="1.4" scaleY="1.4" text="IBAN:  IT 99 C 12345 67890 123456789012" />
          </children>
       </VBox>
       <Button fx:id="editButton" layoutX="419.0" layoutY="541.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">

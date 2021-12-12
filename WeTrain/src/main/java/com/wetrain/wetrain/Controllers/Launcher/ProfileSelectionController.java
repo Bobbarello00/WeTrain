@@ -25,8 +25,7 @@ public class ProfileSelectionController {
     private Button trainersButton;
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) athletesButton.getScene().getWindow();
-        stage.close();
+        ((Stage) athletesButton.getScene().getWindow()).close();
     }
     @FXML
     protected void athletesButtonAction() throws IOException {

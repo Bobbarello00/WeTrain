@@ -48,8 +48,7 @@ public class ManageRequestsNutritionistsController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
     void manageAppointmentsButtonAction() throws IOException {

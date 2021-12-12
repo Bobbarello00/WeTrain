@@ -20,8 +20,7 @@ public class WeTrainController {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) regButton.getScene().getWindow();
-        stage.close();
+        ((Stage) regButton.getScene().getWindow()).close();
     }
     @FXML
     protected void logInTextAction() throws IOException {

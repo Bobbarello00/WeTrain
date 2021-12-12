@@ -47,8 +47,7 @@ public class TrainerRegistrationController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) continueButton.getScene().getWindow();
-        stage.close();
+        ((Stage) continueButton.getScene().getWindow()).close();
     }
     @FXML
     void attachButtonAction() {

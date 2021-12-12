@@ -87,8 +87,7 @@ public class YourDietPlanController {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
+        ((Stage) logoutButton.getScene().getWindow()).close();
     }
     private void colorShift(Button button, Text text){
         if(previousButton!=null){

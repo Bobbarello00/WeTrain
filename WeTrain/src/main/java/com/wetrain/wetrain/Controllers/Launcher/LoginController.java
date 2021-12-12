@@ -47,8 +47,7 @@ public class LoginController implements Initializable {
     }
     @FXML
     protected void closeAction(){
-        Stage stage = (Stage) submitButton.getScene().getWindow();
-        stage.close();
+        ((Stage) submitButton.getScene().getWindow()).close();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
