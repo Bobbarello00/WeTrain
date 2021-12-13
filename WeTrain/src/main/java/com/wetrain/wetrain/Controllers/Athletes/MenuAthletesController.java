@@ -3,10 +3,8 @@ package com.wetrain.wetrain.Controllers.Athletes;
 import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -26,14 +24,18 @@ public class MenuAthletesController {
     }
     @FXML
     void findCourseButtonAction() throws IOException {
-        buttonBehavior.setBehavior(staffButton,"FindCourse","Athletes");
+        buttonBehavior.setBehavior(findCourseButton,"FindCourse","Athletes");
     }
     @FXML
     void dietButtonAction() throws IOException {
-        buttonBehavior.setBehavior(staffButton,"YourDietPlan","Athletes");
+        buttonBehavior.setBehavior(dietButton,"YourDietPlan","Athletes");
     }
     @FXML
     void workoutButtonAction() throws IOException {
-        buttonBehavior.setBehavior(staffButton,"YourWorkoutPlan","Athletes");
+        buttonBehavior.setBehavior(workoutButton,"YourWorkoutPlan","Athletes");
+    }
+    @FXML
+    void logoAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
 }

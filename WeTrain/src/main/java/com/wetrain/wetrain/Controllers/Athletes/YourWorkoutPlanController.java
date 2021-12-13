@@ -2,8 +2,6 @@ package com.wetrain.wetrain.Controllers.Athletes;
 
 import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.DaysOfTheWeekController;
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class YourWorkoutPlanController implements Initializable {
 
-    private DaysOfTheWeekController daysController = new DaysOfTheWeekController();
+    public DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
     public Button mondayButton;
     @FXML
@@ -34,35 +32,11 @@ public class YourWorkoutPlanController implements Initializable {
     @FXML
     public Button sundayButton;
     @FXML
-    private Button staffButton;
-    @FXML
-    private Button findCourseButton;
-    @FXML
-    private Button dietButton;
-    @FXML
     private Button editButton;
     @FXML
     private Button logoutButton;
     @FXML
     private ListView<?> exercisesList;
-    @FXML
-    private Button workoutButton;
-    @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
-    }
-    @FXML
-    void staffButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourPersonalStaff", "Athletes");
-    }
-    @FXML
-    void findCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"FindCourse", "Athletes");
-    }
-    @FXML
-    void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
-    }
     @FXML
     protected void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
@@ -76,15 +50,11 @@ public class YourWorkoutPlanController implements Initializable {
         ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
-    void workoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
+    void dayButtonAction(ActionEvent event) {
+        daysController.dayButtonAction(event);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,exercisesList,false);
-    }
-    @FXML
-    void dayButtonAction(ActionEvent event) {
-        daysController.dayButtonAction(event);
     }
 }

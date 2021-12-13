@@ -28,10 +28,6 @@ public class AthletesHomeController implements Initializable {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
     }
     @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
-    }
-    @FXML
     protected void closeAction(){
         ((Stage) logoutButton.getScene().getWindow()).close();
     }

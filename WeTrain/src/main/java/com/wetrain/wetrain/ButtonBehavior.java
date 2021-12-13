@@ -21,7 +21,7 @@ public class ButtonBehavior {
         } else {
             button.setStyle(null);
             selectedButton = null;
-            PageSwitchSimple.switchPage(MainPane.getInstance(), "TrainersHome", path);
+            PageSwitchSimple.switchPage(MainPane.getInstance(), path + "Home", path);
         }
     }
 }

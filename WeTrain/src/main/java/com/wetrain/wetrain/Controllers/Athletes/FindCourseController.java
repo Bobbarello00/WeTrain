@@ -23,11 +23,7 @@ public class FindCourseController implements Initializable {
     @FXML
     private TextField courseNameText;
     @FXML
-    private Button dietButton;
-    @FXML
     private Button editButton;
-    @FXML
-    private Button findCourseButton;
     @FXML
     private Button fridayButton;
     @FXML
@@ -41,8 +37,6 @@ public class FindCourseController implements Initializable {
     @FXML
     private Button searchButton;
     @FXML
-    private Button staffButton;
-    @FXML
     private Button sundayButton;
     @FXML
     private Button thursdayButton;
@@ -50,8 +44,6 @@ public class FindCourseController implements Initializable {
     private Button tuesdayButton;
     @FXML
     private Button wednesdayButton;
-    @FXML
-    private Button workoutButton;
     @FXML
     private void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
@@ -81,16 +73,8 @@ public class FindCourseController implements Initializable {
         ((Stage) logoutButton.getScene().getWindow()).close();
     }
     @FXML
-    private void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
-    }
-    @FXML
     protected void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
-    }
-    @FXML
-    private void findCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @FXML
     private void logoAction() throws IOException {
@@ -104,15 +88,6 @@ public class FindCourseController implements Initializable {
     private void searchButtonAction(ActionEvent event) {
         System.out.println("Search done");
     }
-    @FXML
-    private void staffButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourPersonalStaff", "Athletes");
-    }
-    @FXML
-    private void workoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourWorkoutPlan", "Athletes");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Arrays.fill(selected, Boolean.FALSE);

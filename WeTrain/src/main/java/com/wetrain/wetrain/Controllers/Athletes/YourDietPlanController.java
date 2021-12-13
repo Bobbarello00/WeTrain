@@ -1,7 +1,5 @@
 package com.wetrain.wetrain.Controllers.Athletes;
 
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,13 +13,6 @@ public class YourDietPlanController {
 
     private Button previousButton;
     private Text previousText;
-
-    @FXML
-    private Button staffButton;
-    @FXML
-    private Button findCourseButton;
-    @FXML
-    private Button dietButton;
     @FXML
     private Button editButton;
     @FXML
@@ -55,31 +46,8 @@ public class YourDietPlanController {
     @FXML
     private Text sundayText;
     @FXML
-    private Button workoutButton;
-
-    @FXML
-    void staffButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourPersonalStaff", "Athletes");
-    }
-    @FXML
-    void findCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"FindCourse", "Athletes");
-    }
-    @FXML
-    void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
-    }
-    @FXML
-    void workoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourWorkoutPlan", "Athletes");
-    }
-    @FXML
     protected void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
-    }
-    @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
     }
     @FXML
     void logoutButtonAction() throws IOException {

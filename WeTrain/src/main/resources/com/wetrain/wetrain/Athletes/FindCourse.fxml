@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1480.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Athletes.FindCourseController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Athletes.FindCourseController">
    <children>
-      <HBox alignment="CENTER_RIGHT" layoutX="1115.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+      <HBox alignment="CENTER_RIGHT" layoutX="855.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
          <children>
             <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
                <children>
@@ -45,53 +45,17 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="editButton" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="editButton" layoutX="950.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
-      <Text layoutX="445.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find Course" textAlignment="JUSTIFY" wrappingWidth="90.66976737976074">
+      <Text layoutX="185.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find Course" textAlignment="JUSTIFY" wrappingWidth="90.66976737976074">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <VBox alignment="CENTER" layoutX="38.0" layoutY="26.0" prefHeight="694.0" prefWidth="183.0" spacing="65.0">
-         <children>
-            <ImageView fitHeight="103.0" fitWidth="105.0" onMouseClicked="#logoAction" pickOnBounds="true" preserveRatio="true" scaleX="2.0" scaleY="2.0">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <image>
-                  <Image url="@../../../../Images/WeTrainLogo.png" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-               <children>
-                  <Button fx:id="workoutButton" mnemonicParsing="false" onAction="#workoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="       Your        Workout Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="dietButton" mnemonicParsing="false" onAction="#dietButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Diet Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="staffButton" mnemonicParsing="false" onAction="#staffButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Your        Personal Staff" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="12.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="findCourseButton" mnemonicParsing="false" onAction="#findCourseButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-text-fill: rgb(24, 147, 21); -fx-border-color: rgb(24, 147, 21); -fx-border-radius: 50;" text="            Find            New Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-                     <font>
-                        <Font name="ABeeZee Regular" size="12.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-      <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+      <Pane layoutX="1.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
          <children>
             <Text layoutX="111.0" layoutY="62.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
             <TextField fx:id="courseNameText" layoutX="133.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
@@ -160,7 +124,7 @@
             <Text layoutX="127.0" layoutY="182.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Select your preferred days" />
          </children>
       </Pane>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1430.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1170.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Images/cross.png" />
          </image>
