@@ -13,8 +13,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1480.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Trainers.NewWorkoutPlanController">
-   <HBox alignment="CENTER_RIGHT" layoutX="1115.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Trainers.NewWorkoutPlanController">
+   <HBox alignment="CENTER_RIGHT" layoutX="854.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../../Images/User1.png" />
@@ -36,12 +36,12 @@
          </Button>
       </VBox>
    </HBox>
-   <Button fx:id="editButton" layoutX="1210.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+   <Button fx:id="editButton" layoutX="949.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Button>
-   <Pane layoutX="261.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+   <Pane layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <Text layoutX="109.0" layoutY="64.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Workout Name" />
       <TextField fx:id="workoutNameText" layoutX="133.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
          <font>
@@ -120,42 +120,12 @@
          </font>
       </Button>
    </Pane>
-   <Text layoutX="490.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Workout Plan" textAlignment="JUSTIFY" wrappingWidth="122.86976432800293">
+   <Text layoutX="229.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Workout Plan" textAlignment="JUSTIFY" wrappingWidth="122.86976432800293">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
-   <VBox alignment="CENTER" layoutX="38.0" layoutY="26.0" prefHeight="694.0" prefWidth="183.0" spacing="65.0">
-      <ImageView fitHeight="103.0" fitWidth="105.0" onMouseClicked="#logoAction" pickOnBounds="true" preserveRatio="true" scaleX="2.0" scaleY="2.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <Image url="@../../../../Images/WeTrainLogo.png" />
-      </ImageView>
-      <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-         <Button fx:id="manageLessonsButton" mnemonicParsing="false" onAction="#manageLessonsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Manage        Lessons" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Button>
-         <Button fx:id="yourCollaboratorButton" mnemonicParsing="false" onAction="#yourCollaboratorButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Your        Collaborator" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Button>
-         <Button fx:id="createWorkoutButton" mnemonicParsing="false" onAction="#createWorkoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" style="-fx-background-color: white; -fx-border-radius: 50; -fx-text-fill: rgb(24, 147, 21); -fx-border-color: rgb(24, 147, 21);" text="        Create        New Workout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Button>
-         <Button fx:id="createCourseButton" mnemonicParsing="false" onAction="#createCourseButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <font>
-               <Font name="ABeeZee Regular" size="12.0" />
-            </font>
-         </Button>
-      </VBox>
-   </VBox>
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1430.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../../../Images/cross.png" />
       </image>

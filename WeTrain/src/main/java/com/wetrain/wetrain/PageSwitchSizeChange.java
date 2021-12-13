@@ -16,6 +16,22 @@ import java.util.Objects;
 
 public class PageSwitchSizeChange {
 
+    public static void loadHome(Button button, String page, String path) throws IOException {
+        Stage newStage;
+        Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));
+        BorderPane pane = (BorderPane) root;
+
+        newStage = new Stage();
+        ((Stage) button.getScene().getWindow()).close();
+
+        Scene newScene = new Scene(root);
+        newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
+        pageLauncher(newStage, newScene);
+        PageSwitchSimple.switchPage2(pane, page, path);
+
+        newStage.show();
+    }
+
     public static void pageSwitch(Button button, String page, String path, boolean closeOldStage) throws IOException {
         Stage newStage;
         BorderPane actualPane = MainPane.getInstance();
