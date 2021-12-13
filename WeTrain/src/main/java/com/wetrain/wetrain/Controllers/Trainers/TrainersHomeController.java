@@ -75,7 +75,7 @@ public class TrainersHomeController implements Initializable {
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
+        PageSwitchSimple.switchPage2(MainPane.getInstance(),"TrainersHome2", "Trainers");
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
