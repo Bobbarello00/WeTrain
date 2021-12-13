@@ -27,7 +27,7 @@ public class PageSwitchSizeChange {
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
         pageLauncher(newStage, newScene);
-        PageSwitchSimple.switchPage2(pane, page, path);
+        PageSwitchSimple.switchPageAndMenu(pane, page, path);
 
         newStage.show();
     }

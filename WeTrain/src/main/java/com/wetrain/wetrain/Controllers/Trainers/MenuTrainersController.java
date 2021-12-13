@@ -1,5 +1,6 @@
 package com.wetrain.wetrain.Controllers.Trainers;
 
+import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
@@ -8,7 +9,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class MenuTrainersController {
-    private Button selectedButton;
+    public static ButtonBehavior buttonBehavior = new ButtonBehavior();
     @FXML
     private Button createCourseButton;
     @FXML
@@ -19,40 +20,22 @@ public class MenuTrainersController {
     private Button yourCollaboratorButton;
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        buttonBehavior(manageLessonsButton,"ManageLessonsTrainers");
+        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessonsTrainers","Trainers");
     }
     @FXML
     void createCourseButtonAction() throws IOException {
-        buttonBehavior(createCourseButton,"NewCourse");
+        buttonBehavior.setBehavior(createCourseButton,"NewCourse","Trainers");
     }
     @FXML
     void createWorkoutButtonAction() throws IOException {
-        buttonBehavior(createWorkoutButton,"NewWorkoutPlan");
+        buttonBehavior.setBehavior(createWorkoutButton,"NewWorkoutPlan","Trainers");
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        buttonBehavior(yourCollaboratorButton,"YourCollaboratorTrainers");
+        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorTrainers","Trainers");
     }
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome","Trainers");
-    }
-
-    void buttonBehavior(Button button, String filename) throws IOException {
-        if(selectedButton != button) {
-            if (selectedButton != null) {
-                selectedButton.setStyle(null);
-            }
-            button.setStyle("-fx-background-color: white;" +
-                    " -fx-text-fill: rgb(24, 147, 21);" +
-                    " -fx-border-color: rgb(24, 147, 21);" +
-                    " -fx-border-radius: 50;");
-            selectedButton = button;
-            PageSwitchSimple.switchPage(MainPane.getInstance(), filename, "Trainers");
-        } else {
-            button.setStyle(null);
-            selectedButton = null;
-            PageSwitchSimple.switchPage(MainPane.getInstance(), "TrainersHome", "Trainers");
-        }
     }
 }

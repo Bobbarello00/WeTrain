@@ -29,7 +29,7 @@ public class PageSwitchSimple {
         }
         mainPane.setCenter(view);
     }
-    public static void switchPage2(BorderPane mainPane, String fileName, String pathString) throws IOException {
+    public static void switchPageAndMenu(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;
             URL menuUrl;

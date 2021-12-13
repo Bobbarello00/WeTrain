@@ -53,10 +53,6 @@ public class TrainersHomeController implements Initializable {
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
-    @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple.switchPage2(MainPane.getInstance(),"TrainersHome", "Trainers");
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList,true);

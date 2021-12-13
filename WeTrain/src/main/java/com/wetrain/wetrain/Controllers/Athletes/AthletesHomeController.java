@@ -16,12 +16,6 @@ import java.util.ResourceBundle;
 
 public class AthletesHomeController implements Initializable {
     @FXML
-    private Button staffButton;
-    @FXML
-    private Button findCourseButton;
-    @FXML
-    private Button dietButton;
-    @FXML
     private Button logoutButton;
     @FXML
     private ListView<?> coursesList;
@@ -29,8 +23,6 @@ public class AthletesHomeController implements Initializable {
     private ListView<?> popularsList;
     @FXML
     private Button editButton;
-    @FXML
-    private Button workoutButton;
     @FXML
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
