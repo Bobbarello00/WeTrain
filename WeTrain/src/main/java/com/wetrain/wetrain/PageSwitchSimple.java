@@ -15,7 +15,7 @@ public class PageSwitchSimple {
         PageSwitchSimple loader = new PageSwitchSimple();
         try{
             URL fileUrl;
-            if(pathString == "") {
+            if(pathString.isEmpty()) {
                 fileUrl = WeTrain.class.getResource(fileName + ".fxml");
             }
             else {
