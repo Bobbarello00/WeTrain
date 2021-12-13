@@ -22,19 +22,11 @@ import java.util.ResourceBundle;
 public class NewCourseController implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     @FXML
-    private Button createCourseButt;
-    @FXML
-    private Button createWorkoutButt;
-    @FXML
     private Button editButton;
     @FXML
     private ListView<?> exercisesSelectedList;
     @FXML
     private Button logoutButton;
-    @FXML
-    private Button manageLessonsButt;
-    @FXML
-    private Button yourCollaboratorButt;
     @FXML
     private Button mondayButton;
     @FXML
@@ -87,14 +79,6 @@ public class NewCourseController implements Initializable {
         System.out.println("Created");
     }
     @FXML
-    void createCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
-    }
-    @FXML
-    void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
-    }
-    @FXML
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
@@ -110,14 +94,6 @@ public class NewCourseController implements Initializable {
     protected void closeAction(){
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.close();
-    }
-    @FXML
-    void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageLessonsTrainers", "Trainers");
-    }
-    @FXML
-    protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

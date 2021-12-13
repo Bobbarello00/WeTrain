@@ -21,19 +21,11 @@ public class TrainersHomeController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private Button manageLessonsButton;
-    @FXML
-    private Button createCourseButton;
-    @FXML
-    private Button createWorkoutButton;
-    @FXML
     private Button editButton;
     @FXML
     private ListView<?> coursesList;
     @FXML
     private ListView<?> requestsList;
-    @FXML
-    private Button yourCollaboratorButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -58,28 +50,12 @@ public class TrainersHomeController implements Initializable {
         stage.close();
     }
     @FXML
-    void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageLessonsTrainers", "Trainers");
-    }
-    @FXML
-    void createCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewCourse", "Trainers");
-    }
-    @FXML
-    void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
-    }
-    @FXML
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage2(MainPane.getInstance(),"TrainersHome2", "Trainers");
-    }
-    @FXML
-    protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
+        PageSwitchSimple.switchPage2(MainPane.getInstance(),"TrainersHome", "Trainers");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

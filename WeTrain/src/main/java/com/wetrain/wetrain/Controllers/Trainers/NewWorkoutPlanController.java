@@ -29,17 +29,9 @@ public class NewWorkoutPlanController implements Initializable {
     @FXML
     private ListView<?> exercisesSelectedList;
     @FXML
-    private Button manageLessonsButton;
-    @FXML
     private Button createButton;
     @FXML
-    private Button createCourseButton;
-    @FXML
-    private Button createWorkoutButton;
-    @FXML
     private Button editButton;
-    @FXML
-    private Button yourCollaboratorButton;
     @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
@@ -48,22 +40,6 @@ public class NewWorkoutPlanController implements Initializable {
     protected void closeAction(){
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.close();
-    }
-    @FXML
-    void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageLessonsTrainers", "Trainers");
-    }
-    @FXML
-    void createCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewCourse", "Trainers");
-    }
-    @FXML
-    void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
-    }
-    @FXML
-    protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourCollaboratorTrainers", "Trainers");
     }
     @FXML
     void editButtonAction() throws IOException {

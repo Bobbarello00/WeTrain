@@ -21,12 +21,6 @@ public class YourCollaboratorTrainersController{
     @FXML
     private Button logoutButton;
     @FXML
-    private Button manageLessonsButton;
-    @FXML
-    private Button createCourseButton;
-    @FXML
-    private Button createWorkoutButton;
-    @FXML
     private Button editButton;
     @FXML
     private Button certificationsButton;
@@ -35,8 +29,6 @@ public class YourCollaboratorTrainersController{
     @FXML
     private Button changeCollaboratorButton;
     @FXML
-    private Button yourCollaboratorButton;
-    @FXML
     void logoutButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
     }
@@ -44,22 +36,6 @@ public class YourCollaboratorTrainersController{
     protected void closeAction(){
         Stage stage = (Stage) logoutButton.getScene().getWindow();
         stage.close();
-    }
-    @FXML
-    void manageLessonsButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ManageLessonsTrainers", "Trainers");
-    }
-    @FXML
-    void createCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewCourse", "Trainers");
-    }
-    @FXML
-    void createWorkoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan", "Trainers");
-    }
-    @FXML
-    protected void yourCollaboratorButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
     }
     @FXML
     void editButtonAction() throws IOException {
