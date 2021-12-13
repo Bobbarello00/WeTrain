@@ -54,16 +54,16 @@ public class YourPersonalStaffController {
 
     }
     @FXML
-    void appointmentRequestButtonAction() {
-
-    }
-    @FXML
-    void consultationRequestButtonAction() {
-
-    }
-    @FXML
     void dietRequestButtonAction() {
 
+    }
+    @FXML
+    void appointmentRequestButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(appointmentRequestButton, "RequestForm", "Athletes", false);
+    }
+    @FXML
+    void consultationRequestButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(consultationRequestButton, "RequestForm", "Athletes", false);
     }
     @FXML
     void dietButtonAction() throws IOException {
