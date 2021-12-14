@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class ButtonBehavior {
-    private static Button selectedButton;
+    public Button selectedButton;
 
     public void setBehavior(Button button, String filename, String path) throws IOException {
         if(selectedButton != button) {

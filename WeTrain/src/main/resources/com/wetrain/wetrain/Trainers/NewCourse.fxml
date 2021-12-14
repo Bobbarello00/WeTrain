@@ -42,7 +42,7 @@
       </font>
    </Button>
    <Pane layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-      <Text layoutX="109.0" layoutY="64.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
+      <Text layoutX="109.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
       <TextField fx:id="workoutNameText" layoutX="133.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
@@ -51,18 +51,14 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Text layoutX="704.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Necessary gym equipment" />
+      <Text layoutX="704.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level" />
       <HBox alignment="CENTER" layoutX="640.0" layoutY="263.0" prefHeight="305.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
          </padding>
-         <TextArea prefHeight="437.0" prefWidth="436.0" wrapText="true">
-            <font>
-               <Font size="18.0" />
-            </font>
-         </TextArea>
+         <TextArea prefHeight="437.0" prefWidth="436.0" wrapText="true" />
       </HBox>
-      <Text layoutX="688.0" layoutY="244.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
+      <Text layoutX="694.0" layoutY="250.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
       <HBox layoutX="75.0" layoutY="160.0" prefHeight="473.0" prefWidth="503.0">
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Training days" />
@@ -113,15 +109,10 @@
             <fx:include fx:id="sundayTimeScheduler" source="../TimeScheduler.fxml" />
          </VBox>
       </HBox>
-      <HBox alignment="CENTER" layoutX="640.0" layoutY="82.0" prefHeight="141.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="76.0" prefHeight="141.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
          </padding>
-         <TextArea prefHeight="150.0" prefWidth="436.0" wrapText="true">
-            <font>
-               <Font name="ABeeZee Regular" size="18.0" />
-            </font>
-         </TextArea>
       </HBox>
       <Button fx:id="createButton" layoutX="986.0" layoutY="598.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>

@@ -37,5 +37,9 @@ public class MenuAthletesController {
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
+        if(buttonBehavior.selectedButton != null) {
+            buttonBehavior.selectedButton.setStyle(null);
+            buttonBehavior.selectedButton = null;
+        }
     }
 }

@@ -20,6 +20,14 @@
       </list>
     </option>
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -69,6 +77,8 @@
       <workItem from="1639424260285" duration="314000" />
       <workItem from="1639424590669" duration="255000" />
       <workItem from="1639425137854" duration="2209000" />
+      <workItem from="1639487231128" duration="61000" />
+      <workItem from="1639487307942" duration="1476000" />
     </task>
     <servers />
   </component>

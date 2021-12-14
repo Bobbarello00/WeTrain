@@ -21,6 +21,10 @@ public class MenuNutritionistsController {
     @FXML
     void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
+        if(buttonBehavior.selectedButton != null) {
+            buttonBehavior.selectedButton.setStyle(null);
+            buttonBehavior.selectedButton = null;
+        }
     }
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
