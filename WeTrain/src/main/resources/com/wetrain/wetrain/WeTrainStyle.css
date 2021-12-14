@@ -127,6 +127,10 @@ BorderPane {
     -fx-prompt-text-fill: rgba(255,255,255,0.8);
     -fx-text-fill: white;
 }
+.text-area .scroll-bar{
+    -fx-background-radius: 50;
+    -fx-background-color: rgba(255,255,255,0.2);
+}
 .text-area .scroll-pane {
     -fx-background-color: transparent;
 }
