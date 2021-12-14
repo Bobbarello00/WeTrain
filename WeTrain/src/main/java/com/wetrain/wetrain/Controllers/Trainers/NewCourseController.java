@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -74,9 +75,23 @@ public class NewCourseController implements Initializable {
     @FXML
     private TextField workoutNameText;
     @FXML
+    private TextArea infoTextArea;
+    @FXML
+    private TextArea equipmentTextArea;
+    @FXML
+    private Button fitnessNoneButton;
+    @FXML
+    private Button fitnessIntermediateButton;
+    @FXML
+    private Button fitnessAdvancedButton;
+    @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
         System.out.println("Created");
+    }
+    @FXML
+    void fitnessLevelSelection(){
+
     }
     @FXML
     void editButtonAction() throws IOException {
