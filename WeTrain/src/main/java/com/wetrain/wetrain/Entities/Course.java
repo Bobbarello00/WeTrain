@@ -1,14 +1,14 @@
-package com.wetrain.wetrain.Entities;
+package com.wetrain.wetrain.entities;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Course {
     private String name;
-    private ArrayList<Lesson> lessons;
+    private List<Lesson> lessons;
     private String owner;
     private String equipment;
 
-    public Course(String name, ArrayList<Lesson> lessons, String owner, String equipment){
+    public Course(String name, List<Lesson> lessons, String owner, String equipment){
         this.name = name;
         this.lessons = lessons;
         this.owner = owner;

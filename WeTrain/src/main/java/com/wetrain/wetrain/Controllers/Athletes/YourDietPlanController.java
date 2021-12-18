@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Athletes;
+package com.wetrain.wetrain.controllers.athletes;
 
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
@@ -47,11 +47,11 @@ public class YourDietPlanController {
     private Text sundayText;
     @FXML
     protected void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "athletes", false);
     }
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher",true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher",true);
     }
     @FXML
     protected void closeAction(){

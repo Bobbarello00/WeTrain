@@ -16,6 +16,8 @@ import java.util.Objects;
 
 public class PageSwitchSizeChange {
 
+    private PageSwitchSizeChange() {}
+
     public static void loadHome(Button button, String page, String path) throws IOException {
         Stage newStage;
         Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));

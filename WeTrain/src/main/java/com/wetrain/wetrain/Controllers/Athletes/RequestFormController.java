@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Athletes;
+package com.wetrain.wetrain.controllers.athletes;
 
 import com.wetrain.wetrain.MainPane;
 import javafx.fxml.FXML;

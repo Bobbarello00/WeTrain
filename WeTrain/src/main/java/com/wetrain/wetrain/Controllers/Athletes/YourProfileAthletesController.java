@@ -1,25 +1,20 @@
-package com.wetrain.wetrain.Controllers.Athletes;
+package com.wetrain.wetrain.controllers.athletes;
 
 import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSizeChange;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class YourProfileAthletesController {
     @FXML
-    private ImageView closeImage;
-    @FXML
     private Button editButton;
     @FXML
     private Label emailLabel;
     @FXML
-    private Label emailLabel1;
+    private Label paymentMethodLabel;
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -33,6 +28,6 @@ public class YourProfileAthletesController {
     }
     @FXML
     protected void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+
     }
 }

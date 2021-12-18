@@ -13,25 +13,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.TrainerRegistrationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.launcher.RegistrationController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <children>
-      <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeTextAction" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <image>
-            <Image url="@../../../../Images/WeTrainLogo.png" />
+            <Image url="@../../../../images/WeTrainLogo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="319.0" fitWidth="242.0" layoutX="24.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
          <image>
-            <Image url="@../../../../Images/Trainers.png" />
+            <Image url="@../../../../images/Trainers.png" />
          </image>
       </ImageView>
-      <Button fx:id="continueButton" alignment="CENTER" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
+      <Button alignment="CENTER" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="282.0" layoutY="238.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+      <TextField fx:id="emailField" layoutX="282.0" layoutY="238.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -58,12 +58,12 @@
          <graphic>
             <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Images/attach.png" />
+                  <Image url="@../../../../images/attach.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="infoButton" layoutX="563.0" layoutY="171.0" mnemonicParsing="false" onAction="#infoButtonAction" prefHeight="0.0" prefWidth="29.0" style="-fx-background-color: rgba(24, 127, 21, 0); -fx-text-fill: #707070;" text="ⓘ">
+      <Button layoutX="563.0" layoutY="171.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="29.0" style="-fx-background-color: rgba(24, 127, 21, 0); -fx-text-fill: #707070;" text="ⓘ">
          <tooltip>
             <Tooltip contentDisplay="RIGHT" prefWidth="150.0" style="-fx-background-color: rgba(43,127,31,0.5);" text="attach a copy of: high school diploma or GED,  complete cardiopulmonary resuscitation (CPR) and  automated external defibrillator (AED) " textOverrun="CLIP" wrapText="true">
                <font>
@@ -102,7 +102,7 @@
       </Button>
       <HBox alignment="CENTER_LEFT" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="403.0" scaleX="1.5" scaleY="1.5">
          <children>
-            <Text fx:id="homeButton" onMouseClicked="#homeButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="36.44281768798828">
+            <Text onMouseClicked="#homeTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="36.44281768798828">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -115,7 +115,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="profileButton" onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
+            <Text onMouseClicked="#profileTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -140,7 +140,7 @@
       </HBox>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="700.0" layoutY="10.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Images/cross.png" />
+            <Image url="@../../../../images/cross.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />

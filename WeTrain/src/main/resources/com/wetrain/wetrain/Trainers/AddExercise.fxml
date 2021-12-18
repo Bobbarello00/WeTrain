@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Trainers.AddExerciseController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.trainers.AddExerciseController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
@@ -19,7 +19,7 @@
       <cursor>
          <Cursor fx:constant="DEFAULT" />
       </cursor>
-      <Image url="@../../../../Images/WeTrainLogo.png" />
+      <Image url="@../../../../images/WeTrainLogo.png" />
    </ImageView>
    <Button fx:id="addButton" alignment="CENTER" layoutX="629.0" layoutY="406.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="23.0" prefWidth="70.0" scaleX="1.2" scaleY="1.2" text="Add" textAlignment="JUSTIFY" textFill="WHITE">
       <font>

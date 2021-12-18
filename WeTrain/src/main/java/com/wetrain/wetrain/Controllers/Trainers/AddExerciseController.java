@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Trainers;
+package com.wetrain.wetrain.controllers.trainers;
 
 import com.wetrain.wetrain.MainPane;
 import javafx.event.ActionEvent;
@@ -22,7 +22,6 @@ public class AddExerciseController {
     private BorderPane secondaryPane;
     @FXML
     private TextField nameText;
-    //TODO
     @FXML
     void addButtonAction(ActionEvent event) {
         ((Stage)addButton.getScene().getWindow()).close();

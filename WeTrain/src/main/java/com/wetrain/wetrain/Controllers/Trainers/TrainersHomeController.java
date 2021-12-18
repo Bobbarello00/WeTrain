@@ -1,11 +1,10 @@
-package com.wetrain.wetrain.Controllers.Trainers;
+package com.wetrain.wetrain.controllers.trainers;
 
-import com.wetrain.wetrain.Controllers.ListPopulate;
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.controllers.ListPopulate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -23,9 +22,9 @@ public class TrainersHomeController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private ListView<?> coursesList;
+    private ListView<Node> coursesList;
     @FXML
-    private ListView<?> requestsList;
+    private ListView<Node> requestsList;
     @FXML
     private Button mondayButton;
     @FXML
@@ -42,7 +41,7 @@ public class TrainersHomeController implements Initializable {
     private Button sundayButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @FXML
     protected void closeAction(){

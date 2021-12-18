@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Entities;
+package com.wetrain.wetrain.entities;
 
 import java.time.LocalDateTime;
 

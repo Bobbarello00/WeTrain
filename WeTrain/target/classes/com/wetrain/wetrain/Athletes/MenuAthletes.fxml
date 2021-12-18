@@ -11,14 +11,14 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0"
       prefWidth="261.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.wetrain.wetrain.Controllers.Athletes.MenuAthletesController">
+      fx:controller="com.wetrain.wetrain.controllers.athletes.MenuAthletesController">
    <VBox alignment="CENTER" layoutX="39.0" layoutY="46.0" prefHeight="694.0" prefWidth="183.0" spacing="65.0">
       <ImageView fitHeight="103.0" fitWidth="105.0" onMouseClicked="#logoAction" pickOnBounds="true"
                  preserveRatio="true" scaleX="2.0" scaleY="2.0">
          <cursor>
             <Cursor fx:constant="HAND"/>
          </cursor>
-         <Image url="@../../../../Images/WeTrainLogo.png"/>
+         <Image url="@../../../../images/WeTrainLogo.png"/>
       </ImageView>
       <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0"
             style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">

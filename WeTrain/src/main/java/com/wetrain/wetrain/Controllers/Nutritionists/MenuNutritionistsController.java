@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Nutritionists;
+package com.wetrain.wetrain.controllers.nutritionists;
 
 import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.MainPane;
@@ -9,7 +9,8 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class MenuNutritionistsController {
-    public static ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final String HOME = "nutritionists";
     @FXML
     private Button createDietButton;
     @FXML
@@ -20,27 +21,24 @@ public class MenuNutritionistsController {
     private Button yourCollaboratorButton;
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "Nutritionists");
-        if(buttonBehavior.selectedButton != null) {
-            buttonBehavior.selectedButton.setStyle(null);
-            buttonBehavior.selectedButton = null;
-        }
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", HOME);
+        buttonBehavior.resetSelectedButton();
     }
     @FXML
     void manageAppointmentsButtonAction() throws IOException {
-        buttonBehavior.setBehavior(manageAppointmentsButton,"ManageAppointmentsNutritionists","Nutritionists");
+        buttonBehavior.setBehavior(manageAppointmentsButton,"ManageAppointmentsNutritionists",HOME);
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorNutritionists","Nutritionists");
+        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorNutritionists",HOME);
     }
     @FXML
     void manageDietsButtonAction() throws IOException {
-        buttonBehavior.setBehavior(manageDietsButton,"ManageDietsNutritionists","Nutritionists");
+        buttonBehavior.setBehavior(manageDietsButton,"ManageDietsNutritionists",HOME);
     }
     @FXML
     void createDietButtonAction() throws IOException {
-        buttonBehavior.setBehavior(createDietButton,"NewDiet","Nutritionists");
+        buttonBehavior.setBehavior(createDietButton,"NewDiet",HOME);
     }
 }
 

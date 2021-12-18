@@ -6,6 +6,8 @@ import javafx.scene.control.TextField;
 
 public class PasswordBehaviorActivation {
 
+    private PasswordBehaviorActivation(){}
+
     public static void passwordFieldBind(TextField passwSField, PasswordField passwField, CheckBox checkVisible){
         passwSField.managedProperty().bind(checkVisible.selectedProperty());
         passwSField.visibleProperty().bind(checkVisible.selectedProperty());

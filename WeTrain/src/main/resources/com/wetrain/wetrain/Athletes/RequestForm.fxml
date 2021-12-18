@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="476.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Athletes.RequestFormController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="476.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.athletes.RequestFormController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
@@ -20,7 +20,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <image>
-            <Image url="@../../../../Images/WeTrainLogo.png" />
+            <Image url="@../../../../images/WeTrainLogo.png" />
          </image>
       </ImageView>
       <Button fx:id="sendButton" alignment="CENTER" layoutX="342.0" layoutY="407.0" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="23.0" prefWidth="103.0" scaleX="1.25" scaleY="1.25" text="Send Request" textAlignment="JUSTIFY" textFill="WHITE">
@@ -39,7 +39,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
          <image>
-            <Image url="@../../../../Images/cross.png" />
+            <Image url="@../../../../images/cross.png" />
          </image>
       </ImageView>
       <Pane layoutX="60.0" layoutY="178.0" prefHeight="200.0" prefWidth="399.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">

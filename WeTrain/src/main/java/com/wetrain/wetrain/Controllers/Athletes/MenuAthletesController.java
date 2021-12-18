@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Athletes;
+package com.wetrain.wetrain.controllers.athletes;
 
 import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.MainPane;
@@ -9,7 +9,8 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class MenuAthletesController {
-    public static ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final String HOME = "athletes";
     @FXML
     private Button dietButton;
     @FXML
@@ -20,26 +21,23 @@ public class MenuAthletesController {
     private Button workoutButton;
     @FXML
     void staffButtonAction() throws IOException {
-        buttonBehavior.setBehavior(staffButton,"YourPersonalStaff","Athletes");
+        buttonBehavior.setBehavior(staffButton,"YourPersonalStaff",HOME);
     }
     @FXML
     void findCourseButtonAction() throws IOException {
-        buttonBehavior.setBehavior(findCourseButton,"FindCourse","Athletes");
+        buttonBehavior.setBehavior(findCourseButton,"FindCourse",HOME);
     }
     @FXML
     void dietButtonAction() throws IOException {
-        buttonBehavior.setBehavior(dietButton,"YourDietPlan","Athletes");
+        buttonBehavior.setBehavior(dietButton,"YourDietPlan",HOME);
     }
     @FXML
     void workoutButtonAction() throws IOException {
-        buttonBehavior.setBehavior(workoutButton,"YourWorkoutPlan","Athletes");
+        buttonBehavior.setBehavior(workoutButton,"YourWorkoutPlan",HOME);
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
-        if(buttonBehavior.selectedButton != null) {
-            buttonBehavior.selectedButton.setStyle(null);
-            buttonBehavior.selectedButton = null;
-        }
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
+        buttonBehavior.resetSelectedButton();
     }
 }

@@ -3,16 +3,18 @@ package com.wetrain.wetrain;
 import javafx.scene.layout.BorderPane;
 
 public class MainPane {
-    private static BorderPane mainPane;
+    private static BorderPane pane;
 
-    public static void setInstance(BorderPane pane){
-        mainPane = pane;
+    private MainPane(){}
+
+    public static void setInstance(BorderPane newPane){
+        pane = newPane;
     }
 
     public static BorderPane getInstance(){
-        if(mainPane == null){
+        if(pane == null){
             System.out.println("Error: mainPane is null");
         }
-        return mainPane;
+        return pane;
     }
 }

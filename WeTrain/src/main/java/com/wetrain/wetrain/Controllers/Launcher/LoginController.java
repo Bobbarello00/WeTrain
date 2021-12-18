@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Launcher;
+package com.wetrain.wetrain.controllers.launcher;
 
 
 import com.wetrain.wetrain.MainPane;
@@ -39,7 +39,7 @@ public class LoginController implements Initializable {
     }
     @FXML
     void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "launcher");
     }
     @FXML
     void submitButtonAction() {

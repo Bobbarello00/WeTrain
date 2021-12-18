@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Entities;
+package com.wetrain.wetrain.entities;
 
 import java.time.LocalDate;
 
@@ -8,7 +8,7 @@ public abstract class User {
     private String fiscalCode;
     private String email;
 
-    public User(String name, LocalDate dateOfBirth, String fc, String email){
+    protected User(String name, LocalDate dateOfBirth, String fc, String email){
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.fiscalCode = fc;

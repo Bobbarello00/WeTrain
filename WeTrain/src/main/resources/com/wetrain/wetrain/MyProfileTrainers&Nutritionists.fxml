@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="650.0" prefWidth="1102.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Launcher.MyProfileTrainersController">
+<Pane prefHeight="650.0" prefWidth="1102.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.launcher.MyProfileTrainersController">
   <children>
       <Text layoutX="596.0" layoutY="143.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="＄ Your Earnings " wrappingWidth="138.06498718261736">
           <font>
@@ -40,7 +40,7 @@
       </VBox>
       <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="27.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2">
          <image>
-            <Image url="@../../../Images/WeTrainLogo.png" />
+            <Image url="@../../../images/WeTrainLogo.png" />
          </image>
       </ImageView>
       <Text layoutX="216.0" layoutY="70.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Profile" wrappingWidth="68.99833679199236">
@@ -50,7 +50,7 @@
       </Text>
       <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="986.0" layoutY="-7.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true" scaleX="0.8" scaleY="0.8">
          <image>
-            <Image url="@../../../Images/cross.png" />
+            <Image url="@../../../images/cross.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -63,7 +63,7 @@
          <children>
             <ImageView fitHeight="103.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" scaleX="1.8" scaleY="1.8">
                <image>
-                  <Image url="@../../../Images/User1.png" />
+                  <Image url="@../../../images/User1.png" />
                </image>
                <VBox.margin>
                   <Insets bottom="20.0" top="50.0" />

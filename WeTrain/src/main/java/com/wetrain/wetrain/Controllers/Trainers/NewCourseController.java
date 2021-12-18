@@ -1,6 +1,6 @@
-package com.wetrain.wetrain.Controllers.Trainers;
+package com.wetrain.wetrain.controllers.trainers;
 
-import com.wetrain.wetrain.Controllers.TimeSchedulerController;
+import com.wetrain.wetrain.controllers.TimeSchedulerController;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
@@ -86,7 +86,7 @@ public class NewCourseController implements Initializable {
     private Button fitnessAdvancedButton;
     @FXML
     void createButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         System.out.println("Created");
     }
     @FXML
@@ -99,11 +99,11 @@ public class NewCourseController implements Initializable {
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
     }
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @FXML
     protected void closeAction(){

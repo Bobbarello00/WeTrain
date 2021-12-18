@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Trainers.NewCourseController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.trainers.NewCourseController">
    <HBox alignment="CENTER_RIGHT" layoutX="854.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../../Images/User1.png" />
+            <Image url="@../../../../images/User1.png" />
          </ImageView>
       </VBox>
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
@@ -51,8 +51,32 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
+<<<<<<< .mine
+      <Text layoutX="704.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level" />
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="263.0" prefHeight="305.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+         <padding>
+            <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
+         </padding>
+         <TextArea prefHeight="437.0" prefWidth="436.0" wrapText="true" />
+      </HBox>
+      <Text layoutX="694.0" layoutY="250.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
+||||||| .r159
+      <Text layoutX="704.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Necessary gym equipment" />
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="263.0" prefHeight="305.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+         <padding>
+            <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
+         </padding>
+         <TextArea prefHeight="437.0" prefWidth="436.0" wrapText="true">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </TextArea>
+      </HBox>
+      <Text layoutX="688.0" layoutY="244.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
+=======
       <Text layoutX="696.0" layoutY="111.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level:" wrappingWidth="74.90380859375" />
       <Text layoutX="694.0" layoutY="323.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
+>>>>>>> .r165
       <HBox layoutX="75.0" layoutY="160.0" prefHeight="473.0" prefWidth="503.0">
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Training days" />
@@ -103,11 +127,25 @@
             <fx:include fx:id="sundayTimeScheduler" source="../TimeScheduler.fxml" />
          </VBox>
       </HBox>
+<<<<<<< .mine
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="76.0" prefHeight="141.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+||||||| .r159
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="82.0" prefHeight="141.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+=======
       <HBox alignment="CENTER" layoutX="805.0" layoutY="76.0" prefHeight="81.0" prefWidth="284.0" spacing="50.0"
             style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+>>>>>>> .r165
          <padding>
             <Insets bottom="12.0" left="10.0" right="10.0" top="12.0"/>
          </padding>
+<<<<<<< .mine
+||||||| .r159
+         <TextArea prefHeight="150.0" prefWidth="436.0" wrapText="true">
+            <font>
+               <Font name="ABeeZee Regular" size="18.0" />
+            </font>
+         </TextArea>
+=======
          <Button fx:id="fitnessNoneButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0"
                  prefWidth="30.0" scaleX="2.0" scaleY="2.0"
                  style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);"
@@ -120,6 +158,7 @@
                  prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0"
                  style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);"
                  text="🏋"/>
+>>>>>>> .r165
       </HBox>
       <Button fx:id="createButton" layoutX="998.0" layoutY="611.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.2" scaleY="1.2" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
@@ -150,8 +189,20 @@
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
+<<<<<<< .mine
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../../images/cross.png" />
+      </image>
+||||||| .r159
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../../../../Images/cross.png" />
+      </image>
+=======
    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction"
               pickOnBounds="true" preserveRatio="true">
+>>>>>>> .r165
       <cursor>
          <Cursor fx:constant="HAND"/>
       </cursor>

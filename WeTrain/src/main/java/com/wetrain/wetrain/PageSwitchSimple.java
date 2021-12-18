@@ -11,21 +11,25 @@ import java.net.URL;
 public class PageSwitchSimple {
     private static Pane view;
     private static Pane menu;
+    private static final String EXTENSION = ".fxml";
+
+    private PageSwitchSimple(){}
+
     public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = WeTrain.class.getResource(fileName + ".fxml");
+                fileUrl = WeTrain.class.getResource(fileName + EXTENSION);
             }
             else {
-                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + ".fxml");
+                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
             }
             if(fileUrl==null){
                 throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
             }
             view = FXMLLoader.load(fileUrl);
         } catch (FileNotFoundException e) {
-            System.out.println("File "+ pathString + "/" + fileName + ".fxml" + " non trovato, controllare il PageSwitchSimple!");
+            System.out.println("File "+ pathString + "/" + fileName + EXTENSION + " non trovato, controllare il PageSwitchSimple!");
         }
         mainPane.setCenter(view);
     }
@@ -33,15 +37,15 @@ public class PageSwitchSimple {
         try{
             URL fileUrl;
             URL menuUrl;
-            fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + ".fxml");
-            menuUrl = WeTrain.class.getResource(pathString + "/Menu" + pathString + ".fxml");
+            fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
+            menuUrl = WeTrain.class.getResource(pathString + "/Menu" + pathString + EXTENSION);
             if(fileUrl==null || menuUrl==null){
                 throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
             }
             view = FXMLLoader.load(fileUrl);
             menu = FXMLLoader.load(menuUrl);
         } catch (FileNotFoundException e) {
-            System.out.println("2File "+ pathString + "/" + fileName + ".fxml" +" non trovato, controllare il PageSwitchSimple!");
+            System.out.println("File "+ pathString + "/" + fileName + EXTENSION +" non trovato, controllare il PageSwitchSimple!");
         }
         mainPane.setCenter(view);
         mainPane.setLeft(menu);

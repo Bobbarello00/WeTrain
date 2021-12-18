@@ -1,10 +1,9 @@
-package com.wetrain.wetrain.Controllers.Launcher;
+package com.wetrain.wetrain.controllers.launcher;
 
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,10 +12,8 @@ public class WeTrainController {
     @FXML
     private Button regButton;
     @FXML
-    private Text logInText;
-    @FXML
     protected void registerButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "launcher");
     }
     @FXML
     protected void closeAction(){
@@ -24,14 +21,6 @@ public class WeTrainController {
     }
     @FXML
     protected void logInTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"Login", "Launcher");
-    }
-    @FXML
-    protected void logInButtonEntered(){
-        logInText.setStyle("-fx-fill: rgb(20, 130, 17)");
-    }
-    @FXML
-    protected void logInButtonExited(){
-        logInText.setStyle("-fx-fill: rgba(24, 147, 21, 1);");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"Login", "launcher");
     }
 }

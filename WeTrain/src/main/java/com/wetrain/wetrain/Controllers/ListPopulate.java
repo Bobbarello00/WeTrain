@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers;
+package com.wetrain.wetrain.controllers;
 
 import com.wetrain.wetrain.WeTrain;
 import javafx.collections.FXCollections;
@@ -12,8 +12,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ListPopulate {
-    public static void populateList(int n, ListView nameList, boolean newItem) {
-        ArrayList<Node> name = new ArrayList<Node>();
+
+    private ListPopulate() {}
+
+    public static void populateList(int n, ListView<Node> nameList, boolean newItem) {
+        ArrayList<Node> name = new ArrayList<>();
         for (int i = 0; i < n-1; i++) {
             try {
                 name.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItem.fxml"))));

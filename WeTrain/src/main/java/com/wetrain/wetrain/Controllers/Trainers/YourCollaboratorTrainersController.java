@@ -1,19 +1,14 @@
-package com.wetrain.wetrain.Controllers.Trainers;
+package com.wetrain.wetrain.controllers.trainers;
 
-import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class YourCollaboratorTrainersController{
     @FXML
@@ -30,7 +25,7 @@ public class YourCollaboratorTrainersController{
     private Button changeCollaboratorButton;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @FXML
     protected void closeAction(){
@@ -56,6 +51,6 @@ public class YourCollaboratorTrainersController{
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "Trainers");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
     }
 }

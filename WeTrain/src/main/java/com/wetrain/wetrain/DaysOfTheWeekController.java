@@ -32,8 +32,4 @@ public class DaysOfTheWeekController {
                 "-fx-text-fill: rgb(24, 147, 21)");
         previousButton = button;
     }
-
-    public Button getSelectedDay(){
-        return this.previousButton;
-    }
 }

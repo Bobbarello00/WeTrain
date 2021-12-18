@@ -103,7 +103,7 @@
       </Button>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="616.0" layoutY="15.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Images/cross.png" />
+            <Image url="@../../../images/cross.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />

@@ -90,6 +90,33 @@
                </children>
             </VBox>
          </children>
+<<<<<<< .mine
+      </VBox>
+      <Text layoutX="287.0" layoutY="39.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Overview" textAlignment="JUSTIFY" wrappingWidth="95.73644065856934">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Text>
+      <Button fx:id="subscribeButton" layoutX="258.0" layoutY="635.0" mnemonicParsing="false" onAction="#subscribeButtonAction" prefHeight="23.0" prefWidth="154.0" scaleX="1.5" scaleY="1.5" text="Subscribe" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="616.0" layoutY="15.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/cross.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</Pane>
+||||||| .r160
+      </Pane>
+   </center>
+</BorderPane>
+=======
       </VBox>
       <Text layoutX="287.0" layoutY="39.0" scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Overview" textAlignment="JUSTIFY" wrappingWidth="95.73644065856934">
          <font>
@@ -111,3 +138,4 @@
       </ImageView>
    </children>
 </Pane>
+>>>>>>> .r165

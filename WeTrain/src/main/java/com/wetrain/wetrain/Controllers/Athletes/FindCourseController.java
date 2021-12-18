@@ -1,7 +1,5 @@
-package com.wetrain.wetrain.Controllers.Athletes;
+package com.wetrain.wetrain.controllers.athletes;
 
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class FindCourseController implements Initializable {
 
-    private Boolean[] selected = new Boolean[7];
+    private final Boolean[] selected = new Boolean[7];
     @FXML
     private TextField courseNameText;
     @FXML
@@ -74,18 +72,14 @@ public class FindCourseController implements Initializable {
     }
     @FXML
     protected void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "athletes", false);
     }
     @FXML
-    private void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "Athletes");
+    protected void logoutButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @FXML
-    private void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
-    }
-    @FXML
-    private void searchButtonAction(ActionEvent event) {
+    protected void searchButtonAction(ActionEvent event) {
         System.out.println("Search done");
     }
     @Override

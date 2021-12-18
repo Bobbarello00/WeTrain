@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Launcher;
+package com.wetrain.wetrain.controllers.launcher;
 
 
 import com.wetrain.wetrain.MainPane;
@@ -18,7 +18,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MoreInfoController implements Initializable {
-    public static String string;
+    private static final String HOME = "launcher";
+    private static String string;
     @FXML
     private Button registerButton;
     @FXML
@@ -45,15 +46,19 @@ public class MoreInfoController implements Initializable {
     }
     @FXML
     void profileButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }
     @FXML
     private void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
     @FXML
     void registrationTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),string + "Registration", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),string + "Registration", HOME);
+    }
+
+    public static void setSelectedProfileString(String selectedProfileString){
+        string = selectedProfileString;
     }
 
     @Override

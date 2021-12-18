@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers;
+package com.wetrain.wetrain.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +21,7 @@ public class TimeSchedulerController implements Initializable {
     private ComboBox<String> startMinuteBox;
     @FXML
     private HBox timeSchedulerHBox;
-    /*
+    /*TODO logica per leggere l'orario
     @FXML
     private void select(ActionEvent event){
         ComboBox box = (ComboBox) event.getSource();

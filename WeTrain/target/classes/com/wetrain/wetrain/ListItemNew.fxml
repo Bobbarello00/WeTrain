@@ -15,7 +15,7 @@
             <Insets left="15.0" />
          </HBox.margin>
          <image>
-            <Image url="@../../../Images/plus.png" />
+            <Image url="@../../../images/plus.png" />
          </image>
       </ImageView>
       <Label scaleX="1.5" scaleY="1.5" text="Add New">

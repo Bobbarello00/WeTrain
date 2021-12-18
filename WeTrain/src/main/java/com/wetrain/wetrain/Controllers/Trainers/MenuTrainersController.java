@@ -1,4 +1,4 @@
-package com.wetrain.wetrain.Controllers.Trainers;
+package com.wetrain.wetrain.controllers.trainers;
 
 import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.MainPane;
@@ -9,7 +9,8 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 
 public class MenuTrainersController {
-    public static ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final String HOME = "trainers";
     @FXML
     private Button createCourseButton;
     @FXML
@@ -20,26 +21,23 @@ public class MenuTrainersController {
     private Button yourCollaboratorButton;
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessonsTrainers","Trainers");
+        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessonsTrainers",HOME);
     }
     @FXML
     void createCourseButtonAction() throws IOException {
-        buttonBehavior.setBehavior(createCourseButton,"NewCourse","Trainers");
+        buttonBehavior.setBehavior(createCourseButton,"NewCourse",HOME);
     }
     @FXML
     void createWorkoutButtonAction() throws IOException {
-        buttonBehavior.setBehavior(createWorkoutButton,"NewWorkoutPlan","Trainers");
+        buttonBehavior.setBehavior(createWorkoutButton,"NewWorkoutPlan",HOME);
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorTrainers","Trainers");
+        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorTrainers",HOME);
     }
     @FXML
     void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome","Trainers");
-        if(buttonBehavior.selectedButton != null) {
-            buttonBehavior.selectedButton.setStyle(null);
-            buttonBehavior.selectedButton = null;
-        }
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome",HOME);
+        buttonBehavior.resetSelectedButton();
     }
 }

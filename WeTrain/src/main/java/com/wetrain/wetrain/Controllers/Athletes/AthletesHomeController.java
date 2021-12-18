@@ -1,11 +1,10 @@
-package com.wetrain.wetrain.Controllers.Athletes;
+package com.wetrain.wetrain.controllers.athletes;
 
-import com.wetrain.wetrain.Controllers.ListPopulate;
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.controllers.ListPopulate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -18,38 +17,23 @@ public class AthletesHomeController implements Initializable {
     @FXML
     private Button logoutButton;
     @FXML
-    private ListView<?> coursesList;
+    private ListView<Node> coursesList;
     @FXML
-    private ListView<?> popularsList;
+    private ListView<Node> popularsList;
     @FXML
     private Button editButton;
     @FXML
     void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "Athletes", false);
+        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "athletes", false);
     }
     @FXML
     protected void closeAction(){
         ((Stage) logoutButton.getScene().getWindow()).close();
     }
-    @FXML
-    void staffButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourPersonalStaff", "Athletes");
-    }
-    @FXML
-    void findCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"FindCourse", "Athletes");
-    }
-    @FXML
-    void dietButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourDietPlan", "Athletes");
-    }
+
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
-    }
-    @FXML
-    void workoutButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"YourWorkoutPlan", "Athletes");
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

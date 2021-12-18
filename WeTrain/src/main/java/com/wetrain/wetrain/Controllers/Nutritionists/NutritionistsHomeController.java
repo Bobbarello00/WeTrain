@@ -1,9 +1,10 @@
-package com.wetrain.wetrain.Controllers.Nutritionists;
+package com.wetrain.wetrain.controllers.nutritionists;
 
-import com.wetrain.wetrain.Controllers.ListPopulate;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.controllers.ListPopulate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -18,12 +19,12 @@ public class NutritionistsHomeController implements Initializable {
     @FXML
     private Button editButton;
     @FXML
-    private ListView<?> dietsList;
+    private ListView<Node> dietsList;
     @FXML
-    private ListView<?> requestsList;
+    private ListView<Node> requestsList;
     @FXML
     void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "Launcher", true);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @FXML
     protected void closeAction(){
