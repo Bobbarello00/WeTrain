@@ -1,0 +1,1 @@
+W 2javaX9hrfWeTrain/src/main/java/com/wetrain/wetrain/controllers/trainers/YourCollaboratorTrainersController.java

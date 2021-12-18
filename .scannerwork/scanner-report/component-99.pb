@@ -1,0 +1,1 @@
+c 2javaXEhrCWeTrain/src/main/java/com/wetrain/wetrain/PageSwitchSizeChange.java

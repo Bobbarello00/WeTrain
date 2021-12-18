@@ -1,0 +1,1 @@
+ä 2cssX›hr;WeTrain/target/classes/com/wetrain/wetrain/WeTrainStyle.css

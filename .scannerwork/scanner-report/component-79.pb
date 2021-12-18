@@ -1,0 +1,1 @@
+O 2javaX/hrpWeTrain/src/main/java/com/wetrain/wetrain/controllers/nutritionists/YourCollaboratorNutritionistsController.java
