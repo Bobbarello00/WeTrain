@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.trainers.NewCourseController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.Controllers.Trainers.NewCourseController">
    <HBox alignment="CENTER_RIGHT" layoutX="854.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../../images/User1.png" />
+            <Image url="@../../../../Images/User1.png" />
          </ImageView>
       </VBox>
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
@@ -51,8 +51,14 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Text layoutX="696.0" layoutY="111.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level:" wrappingWidth="74.90380859375" />
-      <Text layoutX="694.0" layoutY="323.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
+      <Text layoutX="704.0" layoutY="65.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level" />
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="263.0" prefHeight="305.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+         <padding>
+            <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
+         </padding>
+         <TextArea prefHeight="437.0" prefWidth="436.0" wrapText="true" />
+      </HBox>
+      <Text layoutX="694.0" layoutY="250.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
       <HBox layoutX="75.0" layoutY="160.0" prefHeight="473.0" prefWidth="503.0">
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Training days" />
@@ -103,70 +109,28 @@
             <fx:include fx:id="sundayTimeScheduler" source="../TimeScheduler.fxml" />
          </VBox>
       </HBox>
-      <HBox alignment="CENTER" layoutX="805.0" layoutY="76.0" prefHeight="81.0" prefWidth="284.0" spacing="50.0"
-            style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="76.0" prefHeight="141.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
          <padding>
-            <Insets bottom="12.0" left="10.0" right="10.0" top="12.0"/>
+            <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
          </padding>
-         <Button fx:id="fitnessNoneButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0"
-                 prefWidth="30.0" scaleX="2.0" scaleY="2.0"
-                 style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);"
-                 text="🛇"/>
-         <Button fx:id="fitnessIntermediateButton" mnemonicParsing="false" onAction="#fitnessLevelSelection"
-                 prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0"
-                 style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);"
-                 text="🚶"/>
-         <Button fx:id="fitnessAdvancedButton" mnemonicParsing="false" onAction="#fitnessLevelSelection"
-                 prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0"
-                 style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);"
-                 text="🏋"/>
       </HBox>
-      <Button fx:id="createButton" layoutX="998.0" layoutY="611.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.2" scaleY="1.2" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="createButton" layoutX="986.0" layoutY="598.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
-      <Pane layoutX="640.0" layoutY="331.0" prefHeight="262.0" prefWidth="450.0"
-            style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
-         <TextArea fx:id="infoTextArea" layoutX="59.0" layoutY="31.0" prefHeight="198.0" prefWidth="333.0" scaleX="1.25"
-                   scaleY="1.25" wrapText="true"/>
-      </Pane>
-      <Text layoutX="695.0" layoutY="235.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Equipment:" wrappingWidth="62.976593017578125" />
-      <HBox alignment="CENTER" layoutX="806.0" layoutY="176.0" prefHeight="125.0" prefWidth="284.0"
-            style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
-         <padding>
-            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
-         </padding>
-         <TextArea fx:id="equipmentTextArea" prefHeight="96.0" prefWidth="199.0" scaleX="1.25" scaleY="1.25"
-                   wrapText="true">
-            <HBox.margin>
-               <Insets bottom="5.0" top="5.0"/>
-            </HBox.margin>
-         </TextArea>
-      </HBox>
    </Pane>
    <Text layoutX="229.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Course" textAlignment="JUSTIFY" wrappingWidth="122.86976432800293">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
-<<<<<<< .mine
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../../../../images/cross.png" />
-      </image>
-||||||| .r161
    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../../../../Images/cross.png" />
       </image>
-=======
-   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1169.0" layoutY="14.0" onMouseClicked="#closeAction"
-              pickOnBounds="true" preserveRatio="true">
->>>>>>> .r165
       <cursor>
-         <Cursor fx:constant="HAND"/>
+         <Cursor fx:constant="HAND" />
       </cursor>
-      <Image url="@../../../../Images/cross.png"/>
    </ImageView>
 </Pane>
