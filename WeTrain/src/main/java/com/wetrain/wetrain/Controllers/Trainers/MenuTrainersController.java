@@ -40,4 +40,9 @@ public class MenuTrainersController {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome",HOME);
         buttonBehavior.resetSelectedButton();
     }
+
+    public static void resetSelectedButton(){
+        buttonBehavior.resetSelectedButton();
+    }
+
 }

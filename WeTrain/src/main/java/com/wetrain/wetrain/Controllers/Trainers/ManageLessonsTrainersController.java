@@ -35,10 +35,6 @@ public class ManageLessonsTrainersController implements Initializable {
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
     }
-    @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList,true);

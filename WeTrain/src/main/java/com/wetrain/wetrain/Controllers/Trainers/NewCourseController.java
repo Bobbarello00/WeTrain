@@ -1,5 +1,6 @@
 package com.wetrain.wetrain.controllers.trainers;
 
+import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.controllers.TimeSchedulerController;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
@@ -87,6 +88,7 @@ public class NewCourseController implements Initializable {
     @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
+        MenuTrainersController.resetSelectedButton();
         System.out.println("Created");
     }
     @FXML
