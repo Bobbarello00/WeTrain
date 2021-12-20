@@ -24,8 +24,6 @@ import java.util.ResourceBundle;
 public class NewCourseController implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     @FXML
-    private Button editButton;
-    @FXML
     private ListView<?> exercisesSelectedList;
     @FXML
     private Button logoutButton;
@@ -80,12 +78,6 @@ public class NewCourseController implements Initializable {
     @FXML
     private TextArea equipmentTextArea;
     @FXML
-    private Button fitnessNoneButton;
-    @FXML
-    private Button fitnessIntermediateButton;
-    @FXML
-    private Button fitnessAdvancedButton;
-    @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         MenuTrainersController.resetSelectedButton();
@@ -97,7 +89,7 @@ public class NewCourseController implements Initializable {
     }
     @FXML
     void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "YourProfileTrainersNutritionists", "", false);
     }
     @FXML
     void logoAction() throws IOException {
