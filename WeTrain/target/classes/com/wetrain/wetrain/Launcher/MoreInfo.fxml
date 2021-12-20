@@ -104,7 +104,10 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <DatePicker editable="false" layoutX="207.0" layoutY="301.0" prefHeight="31.0" prefWidth="203.0" promptText="Your Birth Date" />
+      <DatePicker layoutX="207.0" layoutY="301.0" prefHeight="31.0" prefWidth="203.0" promptText="Birth Date:      gg/mm/aaaa">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></DatePicker>
       <TextField layoutX="207.0" layoutY="252.0" prefHeight="31.0" prefWidth="174.0" promptText="FiscalCode:">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />

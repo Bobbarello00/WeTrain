@@ -80,7 +80,7 @@
             <Label fx:id="paymentMethodLabel" scaleX="1.4" scaleY="1.4" text="Payment method: Mastercard ****6789" />
          </children>
       </VBox>
-      <Button layoutX="419.0" layoutY="541.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="editButton" layoutX="419.0" layoutY="541.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
