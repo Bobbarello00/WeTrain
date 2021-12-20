@@ -13,13 +13,9 @@ public class AddExerciseController {
     @FXML
     private Button addButton;
     @FXML
-    private Button cancelButton;
-    @FXML
     private TextArea descriptionTextArea;
     @FXML
     private TextArea equipmentTextArea;
-    @FXML
-    private BorderPane secondaryPane;
     @FXML
     private TextField nameText;
     @FXML
