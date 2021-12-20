@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fc281a7-5843-4352-9f54-5a718a5a8707" name="Changes" comment="" />
+    <list default="true" id="e9b5b766-6402-4644-b866-83998877390e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="22TEarVRhMP4WNKEfTMWlKB0xre" />
+  <component name="ProjectId" id="22Ydl8JeCVkF5oev6nGBlH1qATe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,57 +19,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-<<<<<<< .mine
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../HelloWorldJavaFX" />
-||||||| .r182
-=======
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
->>>>>>> .r186
-  </component>
-  <component name="RunManager">
-    <configuration name="WeTrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.wetrain.wetrain.WeTrain" />
-      <module name="WeTrain" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.wetrain.wetrain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.WeTrain" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1fc281a7-5843-4352-9f54-5a718a5a8707" name="Changes" comment="" />
-      <created>1639853245469</created>
+      <changelist id="e9b5b766-6402-4644-b866-83998877390e" name="Changes" comment="" />
+      <created>1640018610919</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1639853245469</updated>
-      <workItem from="1639853250488" duration="232000" />
-      <workItem from="1639853494432" duration="66000" />
-      <workItem from="1639919455812" duration="652000" />
-      <workItem from="1639920123794" duration="261000" />
-      <workItem from="1639925526913" duration="28000" />
-      <workItem from="1639927398931" duration="75000" />
-      <workItem from="1639927486742" duration="65000" />
-      <workItem from="1639929051964" duration="2689000" />
-<<<<<<< .mine
-      <workItem from="1640011921133" duration="5546000" />
-||||||| .r182
-=======
-      <workItem from="1640012419058" duration="4486000" />
->>>>>>> .r186
+      <updated>1640018610919</updated>
+      <workItem from="1640018613325" duration="702000" />
     </task>
     <servers />
   </component>
