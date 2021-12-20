@@ -5,7 +5,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -26,22 +25,22 @@
             <Image url="@../../../../images/WeTrainLogo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="319.0" fitWidth="242.0" layoutX="24.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
+      <ImageView fitHeight="346.0" fitWidth="290.0" layoutX="46.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" scaleX="0.65" scaleY="0.65">
          <image>
             <Image url="@../../../../images/Trainers.png" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
+      <Button fx:id="continueButton" alignment="CENTER" layoutX="542.0" layoutY="349.0" mnemonicParsing="false" onAction="#continueButtonAction" prefHeight="23.0" prefWidth="70.0" text="Continue" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
-      <Text layoutX="370.0" layoutY="156.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup your account" wrappingWidth="112.83168792724626">
+      <Text layoutX="408.0" layoutY="186.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup your account" wrappingWidth="112.83168792724626">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <TextField fx:id="emailField" layoutX="282.0" layoutY="238.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+      <TextField fx:id="emailField" layoutX="320.0" layoutY="224.0" prefHeight="31.0" prefWidth="290.0" promptText="Email:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -49,45 +48,22 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Text layoutX="285.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please submit your certification here:" wrappingWidth="219.90956115722656">
-         <font>
-            <Font name="ABeeZee Regular" size="12.0" />
-         </font>
-      </Text>
-      <Button fx:id="attachButton" layoutX="525.0" layoutY="185.0" mnemonicParsing="false" onAction="#attachButtonAction" prefHeight="15.0" prefWidth="0.0" style="-fx-background-radius: 10;">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../images/attach.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="563.0" layoutY="171.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="29.0" style="-fx-background-color: rgba(24, 127, 21, 0); -fx-text-fill: #707070;" text="ⓘ">
-         <tooltip>
-            <Tooltip contentDisplay="RIGHT" prefWidth="150.0" style="-fx-background-color: rgba(43,127,31,0.5);" text="attach a copy of: high school diploma or GED,  complete cardiopulmonary resuscitation (CPR) and  automated external defibrillator (AED) " textOverrun="CLIP" wrapText="true">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Tooltip>
-         </tooltip>
-      </Button>
-      <CheckBox layoutX="285.0" layoutY="338.0" mnemonicParsing="false" text="Save Credentials">
+      <CheckBox layoutX="323.0" layoutY="324.0" mnemonicParsing="false" text="Save Credentials">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </CheckBox>
-      <TextField fx:id="passwSField" layoutX="281.0" layoutY="288.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;" visible="false">
+      <TextField fx:id="passwSField" layoutX="319.0" layoutY="274.0" prefHeight="31.0" prefWidth="290.0" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;" visible="false">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwField" layoutX="281.0" layoutY="288.0" prefHeight="31.0" prefWidth="290.0" promptText="Password:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;">
+      <PasswordField fx:id="passwField" layoutX="319.0" layoutY="274.0" prefHeight="31.0" prefWidth="290.0" promptText="Password:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 50; -fx-Prompt-text-fill: #707070;">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </PasswordField>
-      <CheckBox fx:id="checkVisible" layoutX="579.0" layoutY="295.0" mnemonicParsing="false" visible="false">
+      <CheckBox fx:id="checkVisible" layoutX="617.0" layoutY="281.0" mnemonicParsing="false" visible="false">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -95,7 +71,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
-      <Button fx:id="eyeButton" layoutX="537.0" layoutY="292.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
+      <Button layoutX="575.0" layoutY="278.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

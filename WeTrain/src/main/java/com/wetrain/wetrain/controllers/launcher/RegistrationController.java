@@ -20,19 +20,7 @@ import java.util.ResourceBundle;
 public class RegistrationController implements Initializable {
     private static final String HOME = "launcher";
     @FXML
-    private Button attachButton;
-    @FXML
-    private Text homeText;
-    @FXML
-    private Text profileText;
-    @FXML
-    private Button infoButton;
-    @FXML
-    private ImageView logo;
-    @FXML
     private Button continueButton;
-    @FXML
-    private Button eyeButton;
     @FXML
     private TextField passwSField;
     @FXML
