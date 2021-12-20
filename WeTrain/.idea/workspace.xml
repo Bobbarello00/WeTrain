@@ -10,6 +10,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -22,9 +29,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< .mine
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../HelloWorldJavaFX" />
+||||||| .r182
+=======
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+>>>>>>> .r186
   </component>
   <component name="RunManager">
     <configuration name="WeTrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -62,7 +74,12 @@
       <workItem from="1639927398931" duration="75000" />
       <workItem from="1639927486742" duration="65000" />
       <workItem from="1639929051964" duration="2689000" />
+<<<<<<< .mine
+      <workItem from="1640011921133" duration="5546000" />
+||||||| .r182
+=======
       <workItem from="1640012419058" duration="4486000" />
+>>>>>>> .r186
     </task>
     <servers />
   </component>
