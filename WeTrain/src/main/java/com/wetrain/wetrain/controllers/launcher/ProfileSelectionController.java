@@ -14,7 +14,6 @@ public class ProfileSelectionController {
     private static final String HOME = "launcher";
     @FXML
     private Button athletesButton;
-
     @FXML
     protected void closeAction(){
         ((Stage) athletesButton.getScene().getWindow()).close();

@@ -40,10 +40,6 @@ public class RegistrationController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"MoreInfo", HOME);
     }
     @FXML
-    void attachButtonAction() {
-        System.out.println("attach effettuato!");
-    }
-    @FXML
     protected void profileTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }

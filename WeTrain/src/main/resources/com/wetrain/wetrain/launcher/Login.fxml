@@ -16,7 +16,7 @@
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <children>
-      <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -42,7 +42,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <Text fx:id="homeText" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
+      <Text layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -87,7 +87,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
-      <Button fx:id="eyeButton" layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
+      <Button layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

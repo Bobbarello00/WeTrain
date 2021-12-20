@@ -9,24 +9,12 @@ import java.io.IOException;
 
 public class YourCollaboratorNutritionistsController{
     @FXML
-    private Button editButton;
-    @FXML
     private Button logoutButton;
-    @FXML
-    private Button certificationsButton;
-    @FXML
-    private Button sendEmailButton;
-    @FXML
-    private Button changeCollaboratorButton;
     @FXML
     void editButtonAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(logoutButton, "YourProfileTrainersNutritionists", "", false);
     }
     //TODO implementare metodi
-    @FXML
-    void certificationsButtonAction() {
-
-    }
     @FXML
     void sendEmailButtonAction() {
 

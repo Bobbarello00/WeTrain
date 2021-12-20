@@ -23,19 +23,11 @@ public class MoreInfoController implements Initializable {
     @FXML
     private Button registerButton;
     @FXML
-    private Text registrationText;
-    @FXML
-    private Text homeText;
-    @FXML
     private RadioButton maleButton;
     @FXML
     private RadioButton femaleButton;
     @FXML
     private RadioButton nogenderButton;
-    @FXML
-    private ImageView logo;
-    @FXML
-    private Text profileText;
     @FXML
     void registerButtonAction() throws IOException {
         PageSwitchSizeChange.loadHome(registerButton, string + "sHome", string + "s");

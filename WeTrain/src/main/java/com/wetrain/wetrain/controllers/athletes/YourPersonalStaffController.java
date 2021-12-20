@@ -11,38 +11,14 @@ import java.io.IOException;
 public class YourPersonalStaffController {
     private static final String HOME = "athletes";
     @FXML
-    private Button appointmentRequestButton;
-    @FXML
-    private Button consultationRequestButton;
-    @FXML
-    private Button dietRequestButton;
-    @FXML
-    private Button editButton;
-    @FXML
     private Button logoutButton;
-    @FXML
-    private Button nutritionistCertificationsButton;
     @FXML
     private Label nutritionistName;
     @FXML
-    private Button staffButton;
-    @FXML
-    private Button trainerCertificationsButton;
-    @FXML
     private Label trainerName;
-    @FXML
-    private Button workoutRequestButton;
     //TODO Implementare metodi
     @FXML
-    void trainerCertificationsButtonAction() {
-
-    }
-    @FXML
     void workoutRequestButtonAction() {
-
-    }
-    @FXML
-    void nutritionistCertificationsButtonAction() {
 
     }
     @FXML
@@ -51,15 +27,15 @@ public class YourPersonalStaffController {
     }
     @FXML
     void appointmentRequestButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(appointmentRequestButton, "RequestForm", HOME, false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "RequestForm", HOME, false);
     }
     @FXML
     void consultationRequestButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(consultationRequestButton, "RequestForm", HOME, false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "RequestForm", HOME, false);
     }
     @FXML
     void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", HOME, false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "YourProfileAthletes", HOME, false);
     }
     @FXML
     void logoutButtonAction() throws IOException {

@@ -7,6 +7,7 @@ import com.wetrain.wetrain.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -16,35 +17,29 @@ public class NewDietController {
 
     private final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
-    private Button createDietButton;
-    @FXML
     private Button editButton;
-    @FXML
-    private Button fridayButton;
     @FXML
     private Button logoutButton;
     @FXML
-    private Button manageAppointmentsButton;
-    @FXML
-    private Button createButton;
-    @FXML
-    private Button manageDietsButton;
-    @FXML
-    private Button yourCollaboratorButton;
-    @FXML
     private Button mondayButton;
+    @FXML
+    private Button tuesdayButton;
+    @FXML
+    private Button thursdayButton;
+    @FXML
+    private Button wednesdayButton;
+    @FXML
+    private Button fridayButton;
     @FXML
     private Button saturdayButton;
     @FXML
     private Button sundayButton;
     @FXML
-    private Button thursdayButton;
-    @FXML
-    private Button tuesdayButton;
-    @FXML
-    private Button wednesdayButton;
-    @FXML
     private TextField workoutNameText;
+    @FXML
+    private TextArea dietForSelectedDayTextArea;
+    @FXML
+    private TextArea generalInfoTextArea;
     @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "nutritionists");

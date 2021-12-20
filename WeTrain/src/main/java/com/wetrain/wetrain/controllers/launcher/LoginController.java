@@ -20,13 +20,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
     @FXML
-    private Text homeText;
-    @FXML
-    private ImageView logo;
-    @FXML
     private Button submitButton;
-    @FXML
-    private Button eyeButton;
     @FXML
     private TextField passwSField;
     @FXML
