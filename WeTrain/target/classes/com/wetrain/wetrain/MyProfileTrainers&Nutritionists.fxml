@@ -62,18 +62,14 @@
         </padding>
         <ImageView fitHeight="103.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" scaleX="1.8"
                    scaleY="1.8">
-            <image>
-                <Image url="@../../../images/User1.png"/>
-            </image>
             <VBox.margin>
                 <Insets bottom="20.0" top="50.0"/>
             </VBox.margin>
+            <Image url="@../../../images/User1.png"/>
         </ImageView>
         <HBox alignment="CENTER" prefHeight="26.0" prefWidth="397.0" spacing="95.0">
-            <children>
-                <Label fx:id="firstNameLabel" scaleX="2.0" scaleY="2.0" text="First Name"/>
-                <Label fx:id="lastNameLabel" scaleX="2.0" scaleY="2.0" text="Last Name"/>
-            </children>
+            <Label fx:id="firstNameLabel" scaleX="2.0" scaleY="2.0" text="First Name"/>
+            <Label fx:id="lastNameLabel" scaleX="2.0" scaleY="2.0" text="Last Name"/>
         </HBox>
         <Label fx:id="fiscalCodeLabel" scaleX="1.4" scaleY="1.4" text="Fiscal Code: RSS BBR 69 C 48 F839 A"/>
         <Label fx:id="emailLabel" layoutX="186.0" layoutY="281.0" scaleX="1.4" scaleY="1.4"
