@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.launcher.ProfileSelectionController">
+   <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeTextAction" pickOnBounds="true" preserveRatio="true">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <Image url="@../images/WeTrainLogo.png" />
+   </ImageView>
+   <Text layoutX="319.0" layoutY="157.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Which one are you?" wrappingWidth="111.76499938964861">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font>
+   </Text>
+   <Text layoutX="121.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Athlete" wrappingWidth="44.666656494140625">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font>
+   </Text>
+   <Text layoutX="326.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Trainer" wrappingWidth="96.00003051757812">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font>
+   </Text>
+   <Text layoutX="569.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutritionist" wrappingWidth="68.66671752929688">
+      <font>
+         <Font name="ABeeZee Regular" size="12.0" />
+      </font>
+   </Text>
+   <Button layoutX="539.0" layoutY="225.0" mnemonicParsing="false" onAction="#nutritionistButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="122.0" prefWidth="96.0" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
+      <graphic>
+         <ImageView fitHeight="122.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/Nutritionists.png" />
+         </ImageView>
+      </graphic>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button layoutX="309.0" layoutY="225.0" mnemonicParsing="false" onAction="#trainersButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="130.0" prefWidth="131.0" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
+      <graphic>
+         <ImageView fitHeight="122.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/Trainers.png" />
+         </ImageView>
+      </graphic>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <Button fx:id="athletesButton" layoutX="79.0" layoutY="225.0" mnemonicParsing="false" onAction="#athletesButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="130.0" prefWidth="129.0" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
+      <graphic>
+         <ImageView fitHeight="133.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/Athletes.png" />
+         </ImageView>
+      </graphic>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+   <HBox alignment="CENTER_LEFT" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="403.0" scaleX="1.5" scaleY="1.5">
+      <Text onMouseClicked="#homeTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="36.44281768798828">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;" wrappingWidth="10.176158905029297">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+   </HBox>
+   <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="700.0" layoutY="10.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+      <Image url="@../images/cross.png" />
+   </ImageView>
+</Pane>
