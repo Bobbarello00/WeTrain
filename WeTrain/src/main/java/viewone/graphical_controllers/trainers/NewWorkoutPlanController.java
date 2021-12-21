@@ -5,7 +5,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.graphical_controllers.HomeControllerTrainersNutritionists;
-import viewone.graphical_controllers.ListPopulate;
+import viewone.ListPopulate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,8 +28,8 @@ public class NewWorkoutPlanController extends HomeControllerTrainersNutritionist
     private Button createButton;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,exercisesList,false);
-        ListPopulate.populateList(10,exercisesSelectedList,false);
+        ListPopulate.populateList(10,exercisesList);
+        ListPopulate.populateList(10,exercisesSelectedList);
     }
     @FXML
     public void addExerciseTextAction() throws IOException {

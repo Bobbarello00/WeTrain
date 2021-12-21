@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import viewone.graphical_controllers.HomeControllerTrainersNutritionists;
-import viewone.graphical_controllers.ListPopulate;
+import viewone.ListPopulate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -15,7 +15,7 @@ public class ManageLessonsTrainersController extends HomeControllerTrainersNutri
     private ListView<Node> coursesList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,coursesList,true);
+        ListPopulate.populateList(10,coursesList);
     }
 }
 

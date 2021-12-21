@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import viewone.DaysOfTheWeekController;
-import viewone.graphical_controllers.ListPopulate;
+import viewone.ListPopulate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,6 +37,6 @@ public class YourWorkoutPlanController extends HomeControllerAthletes implements
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(15,exercisesList,false);
+        ListPopulate.populateList(15,exercisesList);
     }
 }

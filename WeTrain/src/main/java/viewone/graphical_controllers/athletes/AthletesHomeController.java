@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
-import viewone.graphical_controllers.ListPopulate;
+import viewone.ListPopulate;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -19,8 +19,8 @@ public class AthletesHomeController extends HomeControllerAthletes implements In
     private ListView<Node> popularsList;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,coursesList,true);
-        ListPopulate.populateList(10,popularsList,false);
+        ListPopulate.populateList(10,coursesList);
+        ListPopulate.populateList(10,popularsList);
         coursesList.getSelectionModel().getSelectedItems();
 
         //TODO
