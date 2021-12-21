@@ -1,10 +1,48 @@
-package com.wetrain.wetrain.entities;
+package com.wetrain.wetrain.graphical_controllers.trainers;
 
-import java.time.LocalDate;
+import com.wetrain.wetrain.ButtonBehavior;
+import com.wetrain.wetrain.MainPane;
+import com.wetrain.wetrain.PageSwitchSimple;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 
-public class Trainer extends User {
+import java.io.IOException;
 
-    public Trainer(String name, LocalDate dateOfBirth, String fc, String email){
-        super(name, dateOfBirth, fc, email);
+public class MenuTrainersController {
+    private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final String HOME = "trainers";
+    @FXML
+    private Button createCourseButton;
+    @FXML
+    private Button createWorkoutButton;
+    @FXML
+    private Button manageLessonsButton;
+    @FXML
+    private Button yourCollaboratorButton;
+    @FXML
+    void manageLessonsButtonAction() throws IOException {
+        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessonsTrainers",HOME);
     }
+    @FXML
+    void createCourseButtonAction() throws IOException {
+        buttonBehavior.setBehavior(createCourseButton,"NewCourse",HOME);
+    }
+    @FXML
+    void createWorkoutButtonAction() throws IOException {
+        buttonBehavior.setBehavior(createWorkoutButton,"NewWorkoutPlan",HOME);
+    }
+    @FXML
+    protected void yourCollaboratorButtonAction() throws IOException {
+        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorTrainers",HOME);
+    }
+    @FXML
+    void logoAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome",HOME);
+        buttonBehavior.resetSelectedButton();
+    }
+
+    public static void resetSelectedButton(){
+        buttonBehavior.resetSelectedButton();
+    }
+
 }

@@ -12,13 +12,13 @@ import java.io.IOException;
 
 public abstract class HomeController {
     @FXML
-    abstract void editButtonAction(ActionEvent e) throws IOException;
+    abstract void editButtonAction(ActionEvent event) throws IOException;
     @FXML
-    void logoutButtonAction(ActionEvent e) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) e.getSource(), "WeTrainGUI", "launcher", true);
+    void logoutButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "WeTrainGUI", "launcher", true);
     }
     @FXML
-    protected void closeAction(MouseEvent e){
-        ((Stage) ((ImageView)e.getSource()).getScene().getWindow()).close();
+    protected void closeAction(MouseEvent event){
+        ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
     }
 }

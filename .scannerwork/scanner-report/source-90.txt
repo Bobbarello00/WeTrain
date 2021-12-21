@@ -1,10 +1,22 @@
-package com.wetrain.wetrain.entities;
+package com.wetrain.wetrain.graphical_controllers.nutritionists;
 
-import java.time.LocalDate;
+import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerTrainersNutritionists;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
-public class Athlete extends User {
+import java.io.IOException;
 
-    public Athlete(String name, LocalDate dateOfBirth, String fc, String email){
-        super(name, dateOfBirth, fc, email);
+public class YourCollaboratorNutritionistsController extends HomeControllerTrainersNutritionists {
+
+    //TODO implementare metodi
+    @FXML
+    void sendEmailButtonAction() {
+
+    }
+    @FXML
+    void changeCollaboratorButtonAction() {
+
     }
 }

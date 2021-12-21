@@ -1,1 +1,1 @@
-T 2javaX€hrWWeTrain/src/main/java/com/wetrain/wetrain/controllers/trainers/NewCourseController.java
+T 2javaXhrWWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/ListViewController.java

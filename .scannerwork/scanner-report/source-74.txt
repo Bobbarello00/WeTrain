@@ -1,9 +1,13 @@
-package com.wetrain.wetrain.controllers.nutritionists;
+package com.wetrain.wetrain.graphical_controllers.athletes;
 
-import com.wetrain.wetrain.controllers.ListPopulate;
+import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
+import com.wetrain.wetrain.graphical_controllers.ListPopulate;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
@@ -12,27 +16,31 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManageAppointmentsNutritionistsController implements Initializable {
+public class YourWorkoutPlanController extends HomeControllerAthletes implements Initializable {
+
+    private final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
-    private Button editButton;
+    public Button mondayButton;
     @FXML
-    private Button logoutButton;
+    public Button tuesdayButton;
     @FXML
-    private ListView<?> appointmentsList;
+    public Button wednesdayButton;
     @FXML
-    void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
-    }
+    public Button thursdayButton;
     @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
-    }
+    public Button fridayButton;
     @FXML
-    protected void closeAction(){
-        ((Stage) logoutButton.getScene().getWindow()).close();
+    public Button saturdayButton;
+    @FXML
+    public Button sundayButton;
+    @FXML
+    private ListView<Node> exercisesList;
+    @FXML
+    void dayButtonAction(ActionEvent event) {
+        daysController.dayButtonAction(event);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,appointmentsList,true);
+        ListPopulate.populateList(15,exercisesList,false);
     }
 }

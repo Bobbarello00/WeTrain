@@ -1,1 +1,1 @@
-C 2javaX=hr]WeTrain/src/main/java/com/wetrain/wetrain/controllers/athletes/YourWorkoutPlanController.java
+C 2javaX*hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/athletes/AthletesHomeController.java

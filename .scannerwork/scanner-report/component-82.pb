@@ -1,1 +1,1 @@
-R 2javaX/hrcWeTrain/src/main/java/com/wetrain/wetrain/controllers/trainers/ManageLessonsTrainersController.java
+R 2javaXhr_WeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/launcher/WeTrainController.java

@@ -1,6 +1,7 @@
 package com.wetrain.wetrain.graphical_controllers.athletes;
 
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,14 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class YourDietPlanController {
+public class YourDietPlanController extends HomeControllerAthletes {
 
     private Button previousButton;
     private Text previousText;
-    @FXML
-    private Button editButton;
-    @FXML
-    private Button logoutButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -45,18 +42,6 @@ public class YourDietPlanController {
     private Button sundayButton;
     @FXML
     private Text sundayText;
-    @FXML
-    protected void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "athletes", false);
-    }
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher",true);
-    }
-    @FXML
-    protected void closeAction(){
-        ((Stage) logoutButton.getScene().getWindow()).close();
-    }
     private void colorShift(Button button, Text text){
         if(previousButton!=null){
             previousButton.setStyle(null);

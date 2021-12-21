@@ -1,70 +1,61 @@
-package com.wetrain.wetrain.controllers.launcher;
+package com.wetrain.wetrain.graphical_controllers.athletes;
 
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
-import com.wetrain.wetrain.PasswordBehaviorActivation;
+import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class RegistrationController implements Initializable {
-    private static final String HOME = "launcher";
+public class YourDietPlanController extends HomeControllerAthletes {
+
+    private Button previousButton;
+    private Text previousText;
     @FXML
-    private Button attachButton;
+    private Button mondayButton;
     @FXML
-    private Text homeText;
+    private Text mondayText;
     @FXML
-    private Text profileText;
+    private Button tuesdayButton;
     @FXML
-    private Button infoButton;
+    private Text tuesdayText;
     @FXML
-    private ImageView logo;
+    private Button wednesdayButton;
     @FXML
-    private Button continueButton;
+    private Text wednesdayText;
     @FXML
-    private Button eyeButton;
+    private Button thursdayButton;
     @FXML
-    private TextField passwSField;
+    private Text thursdayText;
     @FXML
-    private PasswordField passwField;
+    private Button fridayButton;
     @FXML
-    private CheckBox checkVisible;
+    private Text fridayText;
     @FXML
-    void eyeButtonAction() {
-        checkVisible.fire();
+    private Button saturdayButton;
+    @FXML
+    private Text saturdayText;
+    @FXML
+    private Button sundayButton;
+    @FXML
+    private Text sundayText;
+    private void colorShift(Button button, Text text){
+        if(previousButton!=null){
+            previousButton.setStyle(null);
+            previousText.setStyle("-fx-fill: white");
+        }
+        button.setStyle("-fx-background-color: white;" +
+                "-fx-border-color:  rgb(24, 147, 21);" +
+                "-fx-border-radius: 50");
+        text.setStyle("-fx-fill: rgb(24, 147, 21)");
+        previousButton = button;
+        previousText = text;
     }
     @FXML
-    protected void homeTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
-    }
-    @FXML
-    protected void continueButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"MoreInfo", HOME);
-    }
-    @FXML
-    void attachButtonAction() {
-        System.out.println("attach effettuato!");
-    }
-    @FXML
-    protected void profileTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
-    }
-    @FXML
-    protected void closeAction(){
-        ((Stage) continueButton.getScene().getWindow()).close();
+    void dayButtonAction(ActionEvent event) {
+        colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
     }
 }

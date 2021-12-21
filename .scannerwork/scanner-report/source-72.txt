@@ -1,26 +1,36 @@
-package com.wetrain.wetrain.controllers.launcher;
+package com.wetrain.wetrain.graphical_controllers.athletes;
 
-import com.wetrain.wetrain.MainPane;
-import com.wetrain.wetrain.PageSwitchSimple;
+import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WeTrainController {
+public class YourPersonalStaffController extends HomeControllerAthletes {
+    private static final String HOME = "athletes";
     @FXML
-    private Button regButton;
+    private Label nutritionistName;
     @FXML
-    protected void registerButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "launcher");
+    private Label trainerName;
+    //TODO Implementare metodi
+    @FXML
+    void workoutRequestButtonAction() {
+
     }
     @FXML
-    protected void closeAction(){
-        ((Stage) regButton.getScene().getWindow()).close();
+    void dietRequestButtonAction() {
+
     }
     @FXML
-    protected void logInTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"Login", "launcher");
+    void appointmentRequestButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", HOME, false);
+    }
+    @FXML
+    void consultationRequestButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", HOME, false);
     }
 }

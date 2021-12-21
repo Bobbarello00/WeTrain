@@ -2,6 +2,7 @@ package com.wetrain.wetrain.graphical_controllers.athletes;
 
 import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
 import com.wetrain.wetrain.graphical_controllers.ListPopulate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class YourWorkoutPlanController implements Initializable {
+public class YourWorkoutPlanController extends HomeControllerAthletes implements Initializable {
 
     private final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
@@ -33,23 +34,7 @@ public class YourWorkoutPlanController implements Initializable {
     @FXML
     public Button sundayButton;
     @FXML
-    private Button editButton;
-    @FXML
-    private Button logoutButton;
-    @FXML
     private ListView<Node> exercisesList;
-    @FXML
-    protected void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "athletes", false);
-    }
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
-    }
-    @FXML
-    protected void closeAction(){
-        ((Stage) logoutButton.getScene().getWindow()).close();
-    }
     @FXML
     void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);

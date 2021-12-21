@@ -1,1 +1,1 @@
-_ 2javaXhr<WeTrain/src/main/java/com/wetrain/wetrain/entities/User.java
+_ 2javaXuhraWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/NewCourseController.java

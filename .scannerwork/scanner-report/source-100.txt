@@ -1,19 +1,20 @@
 package com.wetrain.wetrain;
 
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
-public class PasswordBehaviorActivation {
+public class MainPane {
+    private static BorderPane pane;
 
-    private PasswordBehaviorActivation(){}
+    private MainPane(){}
 
-    public static void passwordFieldBind(TextField passwSField, PasswordField passwField, CheckBox checkVisible){
-        passwSField.managedProperty().bind(checkVisible.selectedProperty());
-        passwSField.visibleProperty().bind(checkVisible.selectedProperty());
-        passwField.managedProperty().bind(checkVisible.selectedProperty().not());
-        passwField.visibleProperty().bind(checkVisible.selectedProperty().not());
-        passwSField.textProperty().bindBidirectional(passwField.textProperty());
+    public static void setInstance(BorderPane newPane){
+        pane = newPane;
     }
 
+    public static BorderPane getInstance(){
+        if(pane == null){
+            System.out.println("Error: mainPane is null");
+        }
+        return pane;
+    }
 }

@@ -4,6 +4,8 @@ import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerTrainersNutritionists;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,13 +15,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class NewDietController {
+public class NewDietController extends HomeControllerTrainersNutritionists {
 
     private final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
-    @FXML
-    private Button editButton;
-    @FXML
-    private Button logoutButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -45,18 +43,6 @@ public class NewDietController {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistsHome", "nutritionists");
         System.out.println("Created");
      }
-    @FXML
-    void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
-    }
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
-    }
-    @FXML
-    protected void closeAction(){
-        ((Stage) logoutButton.getScene().getWindow()).close();
-    }
     @FXML
     void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);

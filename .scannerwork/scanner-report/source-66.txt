@@ -1,33 +1,17 @@
-package com.wetrain.wetrain.controllers.athletes;
+package com.wetrain.wetrain.entities;
 
-import com.wetrain.wetrain.MainPane;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
+import java.time.LocalDate;
 
-import java.io.IOException;
+public abstract class User {
+    private String name;
+    private LocalDate dateOfBirth;
+    private String fiscalCode;
+    private String email;
 
-public class YourProfileAthletesController {
-    @FXML
-    private Button editButton;
-    @FXML
-    private Label emailLabel;
-    @FXML
-    private Label paymentMethodLabel;
-    @FXML
-    private Label firstNameLabel;
-    @FXML
-    private Label fiscalCodeLabel;
-    @FXML
-    private Label lastNameLabel;
-    @FXML
-    protected void closeAction(){
-        ((Stage) editButton.getScene().getWindow()).close();
-        MainPane.getInstance().setDisable(false);
-    }
-    @FXML
-    protected void editButtonAction() throws IOException {
-
+    protected User(String name, LocalDate dateOfBirth, String fc, String email){
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.fiscalCode = fc;
+        this.email = email;
     }
 }

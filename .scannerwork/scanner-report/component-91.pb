@@ -1,1 +1,1 @@
-[ 2javaXhr>WeTrain/src/main/java/com/wetrain/wetrain/entities/Course.java
+[ 2javaX0hr\WeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/TimeSchedulerController.java

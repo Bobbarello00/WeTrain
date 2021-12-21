@@ -1,71 +1,36 @@
-package com.wetrain.wetrain.controllers.launcher;
+package com.wetrain.wetrain.graphical_controllers.athletes;
 
-
+import com.wetrain.wetrain.ButtonBehavior;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
-import com.wetrain.wetrain.PageSwitchSizeChange;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class MoreInfoController implements Initializable {
-    private static final String HOME = "launcher";
-    private static String string;
+public class MenuAthletesController {
+    private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
+    private static final String HOME = "athletes";
     @FXML
-    private Button registerButton;
-    @FXML
-    private Text registrationText;
-    @FXML
-    private Text homeText;
-    @FXML
-    private RadioButton maleButton;
-    @FXML
-    private RadioButton femaleButton;
-    @FXML
-    private RadioButton nogenderButton;
-    @FXML
-    private ImageView logo;
-    @FXML
-    private Text profileText;
-    @FXML
-    void registerButtonAction() throws IOException {
-        PageSwitchSizeChange.loadHome(registerButton, string + "sHome", string + "s");
+    void staffButtonAction(ActionEvent event) throws IOException {
+        buttonBehavior.setBehavior(((Button) event.getSource()),"YourPersonalStaff",HOME);
     }
     @FXML
-    protected void closeAction(){
-        ((Stage) registerButton.getScene().getWindow()).close();
+    void findCourseButtonAction(ActionEvent event) throws IOException {
+        buttonBehavior.setBehavior(((Button) event.getSource()),"FindCourse",HOME);
     }
     @FXML
-    void profileButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
+    void dietButtonAction(ActionEvent event) throws IOException {
+        buttonBehavior.setBehavior(((Button) event.getSource()),"YourDietPlan",HOME);
     }
     @FXML
-    private void homeButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
+    void workoutButtonAction(ActionEvent event) throws IOException {
+        buttonBehavior.setBehavior(((Button) event.getSource()),"YourWorkoutPlan",HOME);
     }
     @FXML
-    void registrationTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),string + "Registration", HOME);
-    }
-
-    public static void setSelectedProfileString(String selectedProfileString){
-        string = selectedProfileString;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        ToggleGroup group = new ToggleGroup();
-        nogenderButton.setToggleGroup(group);
-        maleButton.setToggleGroup(group);
-        femaleButton.setToggleGroup(group);
+    void logoAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
+        buttonBehavior.resetSelectedButton();
     }
 }

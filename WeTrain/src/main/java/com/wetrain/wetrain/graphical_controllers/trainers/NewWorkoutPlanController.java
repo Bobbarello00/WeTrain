@@ -4,6 +4,7 @@ import com.wetrain.wetrain.DaysOfTheWeekController;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerTrainersNutritionists;
 import com.wetrain.wetrain.graphical_controllers.ListPopulate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,40 +13,23 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewWorkoutPlanController implements Initializable {
+public class NewWorkoutPlanController extends HomeControllerTrainersNutritionists implements Initializable {
     private static final String HOME = "trainers";
     public final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
-    @FXML
-    private ImageView logo;
-    @FXML
-    private Button logoutButton;
     @FXML
     private ListView<Node> exercisesList;
     @FXML
     private ListView<Node> exercisesSelectedList;
     @FXML
     private Button createButton;
-    @FXML
-    private Button editButton;
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
-    }
-    @FXML
-    protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,exercisesList,false);
@@ -53,7 +37,7 @@ public class NewWorkoutPlanController implements Initializable {
     }
     @FXML
     public void addExerciseTextAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "AddExercise", HOME, false);
+        PageSwitchSizeChange.pageSwitch(createButton, "AddExercise", HOME, false);
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

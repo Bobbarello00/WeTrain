@@ -1,6 +1,7 @@
 package com.wetrain.wetrain.graphical_controllers.athletes;
 
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,17 +16,13 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class FindCourseController implements Initializable {
+public class FindCourseController extends HomeControllerAthletes implements Initializable {
 
     private final Boolean[] selected = new Boolean[7];
     @FXML
     private TextField courseNameText;
     @FXML
-    private Button editButton;
-    @FXML
     private Button fridayButton;
-    @FXML
-    private Button logoutButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -65,18 +62,6 @@ public class FindCourseController implements Initializable {
             button.setStyle(null);
         }
         selected[i]=!selected[i];
-    }
-    @FXML
-    protected void closeAction(){
-        ((Stage) logoutButton.getScene().getWindow()).close();
-    }
-    @FXML
-    protected void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileAthletes", "athletes", false);
-    }
-    @FXML
-    protected void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
     @FXML
     protected void searchButtonAction(ActionEvent event) {

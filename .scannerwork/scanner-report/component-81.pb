@@ -1,1 +1,1 @@
-Q 2javaX'hrYWeTrain/src/main/java/com/wetrain/wetrain/controllers/trainers/AddExerciseController.java
+Q 2javaX5hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/launcher/RegistrationController.java

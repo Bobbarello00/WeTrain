@@ -1,5 +1,6 @@
 package com.wetrain.wetrain.graphical_controllers.trainers;
 
+import com.wetrain.wetrain.graphical_controllers.HomeControllerTrainersNutritionists;
 import com.wetrain.wetrain.graphical_controllers.TimeSchedulerController;
 import com.wetrain.wetrain.MainPane;
 import com.wetrain.wetrain.PageSwitchSimple;
@@ -20,12 +21,10 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class NewCourseController implements Initializable {
+public class NewCourseController extends HomeControllerTrainersNutritionists implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     @FXML
     private ListView<?> exercisesSelectedList;
-    @FXML
-    private Button logoutButton;
     @FXML
     private Button mondayButton;
     @FXML
@@ -85,23 +84,6 @@ public class NewCourseController implements Initializable {
     @FXML
     void fitnessLevelSelection(){
 
-    }
-    @FXML
-    void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "YourProfileTrainersNutritionists", "", false);
-    }
-    @FXML
-    void logoAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
-    }
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
-    }
-    @FXML
-    protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

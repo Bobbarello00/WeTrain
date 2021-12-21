@@ -1,1 +1,1 @@
-> 2javaX,hrZWeTrain/src/main/java/com/wetrain/wetrain/controllers/athletes/MenuAthletesController.java
+> 2javaXhr>WeTrain/src/main/java/com/wetrain/wetrain/entities/Course.java

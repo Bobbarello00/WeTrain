@@ -1,1 +1,1 @@
-< 2javaX+hrZWeTrain/src/main/java/com/wetrain/wetrain/controllers/athletes/AthletesHomeController.java
+< 2javaX$hrFWeTrain/src/main/java/com/wetrain/wetrain/DaysOfTheWeekController.java

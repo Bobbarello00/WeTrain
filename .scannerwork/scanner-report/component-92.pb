@@ -1,1 +1,1 @@
-\ 2javaXhr>WeTrain/src/main/java/com/wetrain/wetrain/entities/Lesson.java
+\ 2javaX"hrcWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/AddExerciseController.java

@@ -1,1 +1,1 @@
-G 2javaXGhrZWeTrain/src/main/java/com/wetrain/wetrain/controllers/launcher/RegistrationController.java
+G 2javaX>hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/athletes/YourDietPlanController.java

@@ -1,1 +1,1 @@
-e 2javaXhr6WeTrain/src/main/java/com/wetrain/wetrain/WeTrain.java
+e 2javaXhrAWeTrain/src/main/java/com/wetrain/wetrain/MainPaneController.java

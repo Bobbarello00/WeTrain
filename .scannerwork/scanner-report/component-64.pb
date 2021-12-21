@@ -1,1 +1,1 @@
-@ 2javaXMhrZWeTrain/src/main/java/com/wetrain/wetrain/controllers/athletes/YourDietPlanController.java
+@ 2javaXhrDWeTrain/src/main/java/com/wetrain/wetrain/entities/Nutritionist.java

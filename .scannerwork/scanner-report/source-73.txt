@@ -1,43 +1,35 @@
-package com.wetrain.wetrain.controllers;
+package com.wetrain.wetrain.graphical_controllers.athletes;
 
-import com.wetrain.wetrain.WeTrain;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.control.ListView;
+import com.wetrain.wetrain.MainPane;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
 
-public class ListPopulate {
+public class YourProfileAthletesController extends HomeControllerAthletes {
+    @FXML
+    private Label emailLabel;
+    @FXML
+    private Label paymentMethodLabel;
+    @FXML
+    private Label firstNameLabel;
+    @FXML
+    private Label fiscalCodeLabel;
+    @FXML
+    private Label lastNameLabel;
+    @FXML
+    protected void closeAction(MouseEvent event){
+        ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
+        MainPane.getInstance().setDisable(false);
+    }
+    @FXML
+    protected void editButtonAction() throws IOException {
 
-    private ListPopulate() {}
-
-    public static void populateList(int n, ListView nameList, boolean newItem) {
-        ArrayList<Node> name = new ArrayList<>();
-        for (int i = 0; i < n-1; i++) {
-            try {
-                name.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItem.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if(newItem){
-            try {
-                name.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItemNew.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
-            try {
-                name.add(FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("ListItem.fxml"))));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        ObservableList<Node> nameObservableList = FXCollections.observableList(name);
-        nameList.setItems(nameObservableList);
     }
 }

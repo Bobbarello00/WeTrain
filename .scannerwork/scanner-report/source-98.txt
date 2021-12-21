@@ -1,53 +1,32 @@
-package com.wetrain.wetrain;
+package com.wetrain.wetrain.graphical_controllers.trainers;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import com.wetrain.wetrain.MainPane;
+import com.wetrain.wetrain.PageSwitchSimple;
+import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerTrainersNutritionists;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 
-public class PageSwitchSimple {
-    private static Pane view;
-    private static Pane menu;
-    private static final String EXTENSION = ".fxml";
+public class YourCollaboratorTrainersController extends HomeControllerTrainersNutritionists {
+    @FXML
+    private Button sendEmailButton;
+    @FXML
+    private Button changeCollaboratorButton;
+    //TODO implementare metodi
+    @FXML
+    void certificationsButtonAction() {
 
-    private PageSwitchSimple(){}
-
-    public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
-        try{
-            URL fileUrl;
-            if(pathString.isEmpty()) {
-                fileUrl = WeTrain.class.getResource(fileName + EXTENSION);
-            }
-            else {
-                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
-            }
-            if(fileUrl==null){
-                throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
-            }
-            view = FXMLLoader.load(fileUrl);
-        } catch (FileNotFoundException e) {
-            System.out.println("File "+ pathString + "/" + fileName + EXTENSION + " non trovato, controllare il PageSwitchSimple!");
-        }
-        mainPane.setCenter(view);
     }
-    public static void switchPageAndMenu(BorderPane mainPane, String fileName, String pathString) throws IOException {
-        try{
-            URL fileUrl;
-            URL menuUrl;
-            fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
-            menuUrl = WeTrain.class.getResource(pathString + "/Menu" + pathString + EXTENSION);
-            if(fileUrl==null || menuUrl==null){
-                throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
-            }
-            view = FXMLLoader.load(fileUrl);
-            menu = FXMLLoader.load(menuUrl);
-        } catch (FileNotFoundException e) {
-            System.out.println("File "+ pathString + "/" + fileName + EXTENSION +" non trovato, controllare il PageSwitchSimple!");
-        }
-        mainPane.setCenter(view);
-        mainPane.setLeft(menu);
+    @FXML
+    void sendEmailButtonAction() {
+
+    }
+    @FXML
+    void changeCollaboratorButtonAction() {
+
     }
 }

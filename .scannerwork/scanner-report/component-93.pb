@@ -1,1 +1,1 @@
-] 2javaXhrDWeTrain/src/main/java/com/wetrain/wetrain/entities/Nutritionist.java
+] 2javaXhrmWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/ManageLessonsTrainersController.java

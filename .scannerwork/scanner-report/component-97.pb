@@ -1,1 +1,1 @@
-a 2javaXhrAWeTrain/src/main/java/com/wetrain/wetrain/MainPaneController.java
+a 2javaX,hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/TrainersHomeController.java

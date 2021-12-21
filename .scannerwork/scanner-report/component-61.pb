@@ -1,1 +1,1 @@
-= 2javaXYhrXWeTrain/src/main/java/com/wetrain/wetrain/controllers/athletes/FindCourseController.java
+= 2javaXhr?WeTrain/src/main/java/com/wetrain/wetrain/entities/Athlete.java

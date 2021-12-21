@@ -1,6 +1,7 @@
 package com.wetrain.wetrain.graphical_controllers.trainers;
 
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerTrainersNutritionists;
 import com.wetrain.wetrain.graphical_controllers.ListPopulate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,13 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TrainersHomeController implements Initializable {
-    @FXML
-    private ImageView logo;
-    @FXML
-    private Button logoutButton;
-    @FXML
-    private Button editButton;
+public class TrainersHomeController extends HomeControllerTrainersNutritionists implements Initializable {
     @FXML
     private ListView<Node> coursesList;
     @FXML
@@ -39,19 +34,6 @@ public class TrainersHomeController implements Initializable {
     private Button saturdayButton;
     @FXML
     private Button sundayButton;
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
-    }
-    @FXML
-    protected void closeAction(){
-        Stage stage = (Stage) logoutButton.getScene().getWindow();
-        stage.close();
-    }
-    @FXML
-    void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(editButton, "YourProfileTrainersNutritionists", "", false);
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList,true);

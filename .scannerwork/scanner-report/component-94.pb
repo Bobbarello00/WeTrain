@@ -1,2 +1,1 @@
-^ 2javaX
-hr?WeTrain/src/main/java/com/wetrain/wetrain/entities/Trainer.java
+^ 2javaX1hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/MenuTrainersController.java

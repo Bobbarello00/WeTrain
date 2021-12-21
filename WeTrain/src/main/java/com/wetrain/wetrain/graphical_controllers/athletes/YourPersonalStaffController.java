@@ -1,6 +1,8 @@
 package com.wetrain.wetrain.graphical_controllers.athletes;
 
 import com.wetrain.wetrain.PageSwitchSizeChange;
+import com.wetrain.wetrain.graphical_controllers.HomeControllerAthletes;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,10 +10,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class YourPersonalStaffController {
+public class YourPersonalStaffController extends HomeControllerAthletes {
     private static final String HOME = "athletes";
-    @FXML
-    private Button logoutButton;
     @FXML
     private Label nutritionistName;
     @FXML
@@ -26,23 +26,11 @@ public class YourPersonalStaffController {
 
     }
     @FXML
-    void appointmentRequestButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "RequestForm", HOME, false);
+    void appointmentRequestButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", HOME, false);
     }
     @FXML
-    void consultationRequestButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "RequestForm", HOME, false);
-    }
-    @FXML
-    void editButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "YourProfileAthletes", HOME, false);
-    }
-    @FXML
-    void logoutButtonAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher",true);
-    }
-    @FXML
-    protected void closeAction(){
-        ((Stage) logoutButton.getScene().getWindow()).close();
+    void consultationRequestButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", HOME, false);
     }
 }

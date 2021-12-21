@@ -9,7 +9,7 @@ import java.io.IOException;
 public abstract class HomeControllerTrainersNutritionists extends HomeController {
 
     @Override
-    void editButtonAction(ActionEvent e) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) e.getSource(), "YourProfileTrainersNutritionists", "", false);
+    void editButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "YourProfileTrainersNutritionists", "", false);
     }
 }

@@ -1,39 +1,52 @@
-package com.wetrain.wetrain.controllers.trainers;
+package com.wetrain.wetrain.graphical_controllers.launcher;
 
 import com.wetrain.wetrain.MainPane;
-import javafx.event.ActionEvent;
+import com.wetrain.wetrain.PageSwitchSimple;
+import com.wetrain.wetrain.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class AddExerciseController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class RegistrationController implements Initializable {
+    private static final String HOME = "launcher";
     @FXML
-    private Button addButton;
+    private Button continueButton;
     @FXML
-    private Button cancelButton;
+    private TextField passwSField;
     @FXML
-    private TextArea descriptionTextArea;
+    private PasswordField passwField;
     @FXML
-    private TextArea equipmentTextArea;
+    private CheckBox checkVisible;
     @FXML
-    private BorderPane secondaryPane;
+    void eyeButtonAction() {
+        checkVisible.fire();
+    }
     @FXML
-    private TextField nameText;
+    protected void homeTextAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
+    }
     @FXML
-    void addButtonAction(ActionEvent event) {
-        ((Stage)addButton.getScene().getWindow()).close();
-        MainPane.getInstance().setDisable(false);
+    protected void continueButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"MoreInfo", HOME);
+    }
+    @FXML
+    protected void profileTextAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
     }
     @FXML
     protected void closeAction(){
-        ((Stage) addButton.getScene().getWindow()).close();
-    }
-    @FXML
-    void cancelButtonAction(ActionEvent event) {
-        ((Stage)addButton.getScene().getWindow()).close();
-        MainPane.getInstance().setDisable(false);
+        ((Stage) continueButton.getScene().getWindow()).close();
     }
 }

@@ -1,1 +1,1 @@
-b 2javaX6hr?WeTrain/src/main/java/com/wetrain/wetrain/PageSwitchSimple.java
+b 2javaX!hrpWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/YourCollaboratorTrainersController.java

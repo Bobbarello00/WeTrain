@@ -1,1 +1,1 @@
-X 2javaX"hreWeTrain/src/main/java/com/wetrain/wetrain/controllers/YourProfileTrainersNutritionistsController.java
+X 2javaX2hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/nutritionists/NewDietController.java

@@ -1,5 +1,6 @@
-C
-javaS1068(Remove this unused "name" private field. 2 F
-javaS1068+Remove this unused "lessons" private field. 2  D
-javaS1068)Remove this unused "owner" private field. 2 H
-javaS1068-Remove this unused "equipment" private field. 2		 
+˜
+javaS125<This block of commented-out lines of code should be removed. 2 +:
+[ 4Code:
+[ HCode:
+[ CodeK
+javaS11352Complete the task associated to this TODO comment. 2 &

@@ -1,1 +1,1 @@
-Z 2javaXhr?WeTrain/src/main/java/com/wetrain/wetrain/entities/Athlete.java
+Z 2javaXhrzWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/nutritionists/YourCollaboratorNutritionistsController.java
