@@ -61,18 +61,31 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛈 Info" wrappingWidth="138.06498718261736">
+            <Text layoutX="643.0" layoutY="41.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🛈 News Feed" wrappingWidth="138.06498718261736">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
             <VBox layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
-               <children>
-                  <Pane prefHeight="300.0" prefWidth="615.0" />
-               </children>
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="70.0">
+                     <children>
+                        <Button fx:id="logoutButton11" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="250.0" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="ABeeZee Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="logoutButton1" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="250.0" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="ABeeZee Regular" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
             </VBox>
             <HBox alignment="CENTER" layoutX="35.0" layoutY="58.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
                <children>
