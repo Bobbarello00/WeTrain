@@ -21,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class NewCourseController extends HomeControllerTrainersNutritionists implements Initializable {
     public Boolean[] toggled = new Boolean[7];
+    private Button selectedFitnessLevel;
     @FXML
     private ListView<?> exercisesSelectedList;
     @FXML
@@ -80,8 +81,16 @@ public class NewCourseController extends HomeControllerTrainersNutritionists imp
         System.out.println("Created");
     }
     @FXML
-    void fitnessLevelSelection(){
-
+    void fitnessLevelSelection(ActionEvent event){
+        if(selectedFitnessLevel !=null){
+            selectedFitnessLevel.setStyle("-fx-text-fill: rgb(24,147,21);" +
+                    " -fx-background-color: white;" +
+                    "-fx-background-radius: 10");
+        }
+        selectedFitnessLevel = (Button)event.getSource();
+        selectedFitnessLevel.setStyle("-fx-text-fill: white;" +
+                " -fx-background-color: rgb(24,147,21);" +
+                "-fx-background-radius: 11");
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

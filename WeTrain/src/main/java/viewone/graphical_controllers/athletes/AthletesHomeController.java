@@ -17,12 +17,18 @@ public class AthletesHomeController extends HomeControllerAthletes implements In
     private ListView<Node> coursesList;
     @FXML
     private ListView<Node> popularsList;
+    @FXML
+    private ListView<Node> feedList;
+    @FXML
+    protected void feedSwitchAction(){
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
         ListPopulate.populateList(10,popularsList);
+        ListPopulate.populateList(30,feedList);
         coursesList.getSelectionModel().getSelectedItems();
-
         //TODO
         coursesList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<Node>() {
