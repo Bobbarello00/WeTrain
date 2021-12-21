@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.nutritionists.YourCollaboratorNutritionistsController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.graphical_controllers.nutritionists.YourCollaboratorNutritionistsController">
    <HBox alignment="CENTER_RIGHT" layoutX="855.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +35,7 @@
          </Button>
       </VBox>
    </HBox>
-   <Button fx:id="editButton" layoutX="950.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+   <Button layoutX="950.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
@@ -57,15 +57,14 @@
                   <Image url="@../../../../images/User1.png" />
                </image>
             </ImageView>
-            <Button fx:id="certificationsButton" mnemonicParsing="false" onAction="#certificationsButtonAction" text="Show Certifications 👁" />
             <Label fx:id="trainerName" scaleX="1.5" scaleY="1.5" text="Name of the Trainer" />
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
                <padding>
                   <Insets bottom="30.0" left="30.0" right="30.0" top="50.0" />
                </padding>
                <children>
-                  <Button fx:id="changeCollaboratorButton" mnemonicParsing="false" onAction="#changeCollaboratorButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Change your collaborator  ❌" />
-                  <Button fx:id="sendEmailButton" mnemonicParsing="false" onAction="#sendEmailButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Send Email" />
+                  <Button mnemonicParsing="false" onAction="#changeCollaboratorButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Change your collaborator  ❌" />
+                  <Button mnemonicParsing="false" onAction="#sendEmailButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Send Email" />
                </children>
             </VBox>
          </children>

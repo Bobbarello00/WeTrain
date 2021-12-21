@@ -12,12 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.launcher.MoreInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.graphical_controllers.launcher.MoreInfoController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <children>
-      <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -50,7 +50,7 @@
       </TextField>
       <HBox alignment="CENTER_LEFT" layoutX="217.0" layoutY="56.0" prefHeight="19.0" prefWidth="403.0" scaleX="1.5" scaleY="1.5">
          <children>
-            <Text fx:id="homeText" onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="36.44281768798828">
+            <Text onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" wrappingWidth="36.44281768798828">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="profileText" onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
+            <Text onMouseClicked="#profileButtonAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Selection" wrappingWidth="95.1094741821289">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Text>
-            <Text fx:id="registrationText" onMouseClicked="#registrationTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="70.58959579467773">
+            <Text onMouseClicked="#registrationTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" wrappingWidth="70.58959579467773">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>

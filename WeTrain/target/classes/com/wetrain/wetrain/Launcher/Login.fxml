@@ -11,12 +11,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.launcher.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.graphical_controllers.launcher.LoginController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <children>
-      <ImageView fx:id="logo" fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="103.0" fitWidth="105.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#homeButtonAction" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -42,7 +42,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <Text fx:id="homeText" layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
+      <Text layoutX="126.0" layoutY="69.0" onMouseClicked="#homeButtonAction" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Home " wrappingWidth="37.15311622619629">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -87,7 +87,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </CheckBox>
-      <Button fx:id="eyeButton" layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
+      <Button layoutX="537.0" layoutY="265.0" mnemonicParsing="false" onAction="#eyeButtonAction" style="-fx-background-color: rgba(24, 147, 21, 0); -fx-text-fill: #454545;" text="👁">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

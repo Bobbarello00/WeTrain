@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.nutritionists.NewDietController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.graphical_controllers.nutritionists.NewDietController">
    <children>
       <HBox alignment="CENTER_RIGHT" layoutX="855.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
          <children>
@@ -107,7 +107,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <TextArea prefHeight="506.0" prefWidth="507.0" promptText="Insert general info for diet." wrapText="true">
+                  <TextArea fx:id="generalInfoTextArea" prefHeight="506.0" prefWidth="507.0" promptText="Insert general info for diet." wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="20.0" />
                      </font>
@@ -119,7 +119,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <children>
-                  <TextArea prefHeight="339.0" prefWidth="462.0" promptText="Insert diet indication for selected day." wrapText="true">
+                  <TextArea fx:id="dietForSelectedDayTextArea" prefHeight="339.0" prefWidth="462.0" promptText="Insert diet indication for selected day." wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="20.0" />
                      </font>
@@ -127,7 +127,7 @@
                </children>
             </HBox>
             <Text layoutX="688.0" layoutY="62.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General info" />
-            <Button fx:id="createButton" layoutX="986.0" layoutY="572.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button layoutX="986.0" layoutY="572.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.controllers.athletes.YourPersonalStaffController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wetrain.wetrain.graphical_controllers.athletes.YourPersonalStaffController">
    <HBox alignment="CENTER_RIGHT" layoutX="855.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +35,7 @@
          </Button>
       </VBox>
    </HBox>
-   <Button fx:id="editButton" layoutX="950.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+   <Button layoutX="950.0" layoutY="87.0" mnemonicParsing="false" onAction="#editButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
@@ -48,14 +48,13 @@
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
             <Image url="@../../../../images/User1.png" />
          </ImageView>
-         <Button fx:id="trainerCertificationsButton" mnemonicParsing="false" onAction="#trainerCertificationsButtonAction" text="Show Certifications 👁" />
          <Label fx:id="trainerName" scaleX="1.5" scaleY="1.5" text="Name of the Trainer" />
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
             <padding>
                <Insets bottom="30.0" left="30.0" right="30.0" top="50.0" />
             </padding>
-            <Button fx:id="workoutRequestButton" mnemonicParsing="false" onAction="#workoutRequestButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Request new Workout Plan" />
-            <Button fx:id="consultationRequestButton" mnemonicParsing="false" onAction="#consultationRequestButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Request consultation" />
+            <Button mnemonicParsing="false" onAction="#workoutRequestButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Request new Workout Plan" />
+            <Button mnemonicParsing="false" onAction="#consultationRequestButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Request consultation" />
          </VBox>
       </VBox>
       <Text layoutX="137.0" layoutY="40.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="👨 Your Trainer" wrappingWidth="93.06498718261736">
@@ -75,14 +74,13 @@
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
             <Image url="@../../../../images/User1.png" />
          </ImageView>
-         <Button fx:id="nutritionistCertificationsButton" mnemonicParsing="false" onAction="#nutritionistCertificationsButtonAction" text="Show Certifications 👁" />
          <Label fx:id="nutritionistName" scaleX="1.5" scaleY="1.5" text="Name of the Nutritionist" />
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0">
             <padding>
                <Insets bottom="30.0" left="30.0" right="30.0" top="50.0" />
             </padding>
-            <Button fx:id="dietRequestButton" mnemonicParsing="false" onAction="#dietRequestButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Request new Diet Plan" />
-            <Button fx:id="appointmentRequestButton" mnemonicParsing="false" onAction="#appointmentRequestButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Request appointment" />
+            <Button mnemonicParsing="false" onAction="#dietRequestButtonAction" prefWidth="190.0" scaleX="2.0" scaleY="2.0" text="Request new Diet Plan" />
+            <Button mnemonicParsing="false" onAction="#appointmentRequestButtonAction" prefWidth="140.0" scaleX="2.0" scaleY="2.0" text="Request appointment" />
          </VBox>
       </VBox>
    </Pane>

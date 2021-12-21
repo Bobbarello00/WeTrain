@@ -13,14 +13,14 @@ module com.wetrain.wetrain {
 
     opens com.wetrain.wetrain to javafx.fxml;
     exports com.wetrain.wetrain;
-    exports com.wetrain.wetrain.controllers;
-    opens com.wetrain.wetrain.controllers to javafx.fxml;
-    exports com.wetrain.wetrain.controllers.athletes;
-    opens com.wetrain.wetrain.controllers.athletes to javafx.fxml;
-    exports com.wetrain.wetrain.controllers.nutritionists;
-    opens com.wetrain.wetrain.controllers.nutritionists to javafx.fxml;
-    exports com.wetrain.wetrain.controllers.trainers;
-    opens com.wetrain.wetrain.controllers.trainers to javafx.fxml;
-    exports com.wetrain.wetrain.controllers.launcher;
-    opens com.wetrain.wetrain.controllers.launcher to javafx.fxml;
+    exports com.wetrain.wetrain.graphical_controllers;
+    opens com.wetrain.wetrain.graphical_controllers to javafx.fxml;
+    exports com.wetrain.wetrain.graphical_controllers.athletes;
+    opens com.wetrain.wetrain.graphical_controllers.athletes to javafx.fxml;
+    exports com.wetrain.wetrain.graphical_controllers.nutritionists;
+    opens com.wetrain.wetrain.graphical_controllers.nutritionists to javafx.fxml;
+    exports com.wetrain.wetrain.graphical_controllers.trainers;
+    opens com.wetrain.wetrain.graphical_controllers.trainers to javafx.fxml;
+    exports com.wetrain.wetrain.graphical_controllers.launcher;
+    opens com.wetrain.wetrain.graphical_controllers.launcher to javafx.fxml;
 }
