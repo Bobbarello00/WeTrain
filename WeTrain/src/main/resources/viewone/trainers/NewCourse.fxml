@@ -107,9 +107,9 @@
          <padding>
             <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
          </padding>
-         <Button mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🛇" />
-         <Button mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🚶" />
-         <Button mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🏋" />
+         <Button fx:id="baseFitnessLevelButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🛇" />
+         <Button fx:id="intermediateFitnessLevelButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🚶" />
+         <Button fx:id="advancedFitnessLevelButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🏋" />
       </HBox>
       <Button layoutX="998.0" layoutY="611.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.2" scaleY="1.2" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>

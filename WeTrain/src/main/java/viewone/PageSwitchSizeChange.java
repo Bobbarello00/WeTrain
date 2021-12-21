@@ -59,7 +59,7 @@ public class PageSwitchSizeChange {
 
     static void pageLauncher(Stage newStage, Scene newScene) {
         newStage.setTitle("WeTrain");
-        newStage.getIcons().add(new Image("file:src/main/resources/Images/WeTrainLogo.png"));
+        newStage.getIcons().add(new Image("file:src/main/resources/viewone/images/WeTrainLogo.png"));
         newStage.setScene(newScene);
         newStage.setResizable(false);
         newStage.initStyle(StageStyle.TRANSPARENT);

@@ -75,6 +75,12 @@ public class NewCourseController extends HomeControllerTrainersNutritionists imp
     @FXML
     private TextArea equipmentTextArea;
     @FXML
+    private Button baseFitnessLevelButton;
+    @FXML
+    private Button intermediateFitnessLevelButton;
+    @FXML
+    private Button advancedFitnessLevelButton;
+    @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         MenuTrainersController.resetSelectedButton();
@@ -82,12 +88,17 @@ public class NewCourseController extends HomeControllerTrainersNutritionists imp
     }
     @FXML
     void fitnessLevelSelection(ActionEvent event){
-        if(selectedFitnessLevel !=null){
+        String buttonName = ((Node)event.getSource()).getId();
+        if(selectedFitnessLevel!=null) {
             selectedFitnessLevel.setStyle("-fx-text-fill: rgb(24,147,21);" +
                     " -fx-background-color: white;" +
                     "-fx-background-radius: 10");
         }
-        selectedFitnessLevel = (Button)event.getSource();
+        switch (buttonName){
+            case "baseFitnessLevelButton" -> selectedFitnessLevel=baseFitnessLevelButton ;
+            case "intermediateFitnessLevelButton" -> selectedFitnessLevel=intermediateFitnessLevelButton;
+            case "advancedFitnessLevelButton" -> selectedFitnessLevel=advancedFitnessLevelButton;
+        }
         selectedFitnessLevel.setStyle("-fx-text-fill: white;" +
                 " -fx-background-color: rgb(24,147,21);" +
                 "-fx-background-radius: 11");
@@ -119,6 +130,7 @@ public class NewCourseController extends HomeControllerTrainersNutritionists imp
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
     }
 }
