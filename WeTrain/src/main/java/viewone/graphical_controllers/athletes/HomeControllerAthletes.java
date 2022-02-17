@@ -10,6 +10,6 @@ import java.io.IOException;
 public abstract class HomeControllerAthletes extends HomeController {
     @Override
     protected void editButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "YourProfileAthletes", "", false);
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "YourProfileAthletes", "athletes", false);
     }
 }
