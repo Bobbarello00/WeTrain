@@ -57,8 +57,8 @@
       </Text>
       <Pane layoutX="1.0" layoutY="119.0" prefHeight="650.0" prefWidth="1187.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
          <children>
-            <Text layoutX="111.0" layoutY="62.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
-            <TextField fx:id="courseNameText" layoutX="133.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+            <Text layoutX="100.0" layoutY="77.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
+            <TextField fx:id="courseNameText" layoutX="122.0" layoutY="97.0" prefHeight="32.0" prefWidth="291.0" promptText="Name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
@@ -66,8 +66,8 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <Text layoutX="122.0" layoutY="336.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Fitness Level" />
-            <HBox alignment="CENTER" layoutX="640.0" layoutY="76.0" prefHeight="524.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+            <Text layoutX="115.0" layoutY="354.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Fitness Level" />
+            <HBox alignment="CENTER" layoutX="640.0" layoutY="85.0" prefHeight="515.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
                <padding>
                   <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
                </padding>
@@ -75,53 +75,58 @@
                   <ListView fx:id="resultList" prefHeight="526.0" prefWidth="401.0" />
                </children>
             </HBox>
-            <Text layoutX="688.0" layoutY="62.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Results" />
-            <HBox alignment="CENTER" layoutX="73.0" layoutY="353.0" prefHeight="141.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+            <Text layoutX="695.0" layoutY="74.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Results" />
+            <HBox alignment="CENTER" layoutX="77.0" layoutY="375.0" prefHeight="119.0" prefWidth="436.0" spacing="90.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
                <padding>
                   <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
                </padding>
+               <children>
+                  <Button fx:id="baseFitnessLevelButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.4" scaleY="2.4" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🛇" />
+                  <Button fx:id="intermediateFitnessLevelButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.4" scaleY="2.4" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🚶" />
+                  <Button fx:id="advancedFitnessLevelButton" mnemonicParsing="false" onAction="#fitnessLevelSelection" prefHeight="30.0" prefWidth="30.0" scaleX="2.4" scaleY="2.4" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🏋" />
+               </children>
             </HBox>
-            <Button fx:id="mondayButton" layoutX="73.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="mondayButton" layoutX="73.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="tuesdayButton" layoutX="138.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="tuesdayButton" layoutX="138.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="wednesdayButton" layoutX="203.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="wednesdayButton" layoutX="203.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="fridayButton" layoutX="333.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="fridayButton" layoutX="333.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="sundayButton" layoutX="463.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="sundayButton" layoutX="463.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="thursdayButton" layoutX="268.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="thursdayButton" layoutX="268.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="saturdayButton" layoutX="398.0" layoutY="198.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="saturdayButton" layoutX="398.0" layoutY="223.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="searchButton" layoutX="407.0" layoutY="574.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="🔍  Search" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="searchButton" layoutX="396.0" layoutY="571.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="🔍  Search" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
             </Button>
-            <Text layoutX="127.0" layoutY="182.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Select your preferred days" />
+            <Text layoutX="127.0" layoutY="207.0" scaleX="1.8" scaleY="1.8" strokeType="OUTSIDE" strokeWidth="0.0" text="Select your preferred days" />
          </children>
       </Pane>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1170.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">

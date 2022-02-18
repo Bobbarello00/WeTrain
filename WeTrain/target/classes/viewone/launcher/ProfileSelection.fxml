@@ -16,37 +16,22 @@
       </cursor>
       <Image url="@../images/WeTrainLogo.png" />
    </ImageView>
-   <Text layoutX="319.0" layoutY="157.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Which one are you?" wrappingWidth="111.76499938964861">
+   <Text layoutX="319.0" layoutY="145.0" scaleX="2.5" scaleY="2.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Which one are you?" wrappingWidth="111.76499938964861">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
-   <Text layoutX="121.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Athlete" wrappingWidth="44.666656494140625">
+   <Text layoutX="202.0" layoutY="373.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Athlete" wrappingWidth="44.666656494140625">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
-   <Text layoutX="326.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Trainer" wrappingWidth="96.00003051757812">
+   <Text layoutX="469.0" layoutY="372.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Personal Trainer" wrappingWidth="96.00003051757812">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
-   <Text layoutX="569.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nutritionist" wrappingWidth="68.66671752929688">
-      <font>
-         <Font name="ABeeZee Regular" size="12.0" />
-      </font>
-   </Text>
-   <Button layoutX="539.0" layoutY="225.0" mnemonicParsing="false" onAction="#nutritionistButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="122.0" prefWidth="96.0" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
-      <graphic>
-         <ImageView fitHeight="122.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../images/Nutritionists.png" />
-         </ImageView>
-      </graphic>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Button>
-   <Button layoutX="309.0" layoutY="225.0" mnemonicParsing="false" onAction="#trainersButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="130.0" prefWidth="131.0" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
+   <Button layoutX="452.0" layoutY="201.0" mnemonicParsing="false" onAction="#trainersButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="130.0" prefWidth="131.0" scaleX="1.2" scaleY="1.2" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
       <graphic>
          <ImageView fitHeight="122.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/Trainers.png" />
@@ -56,7 +41,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
-   <Button fx:id="athletesButton" layoutX="79.0" layoutY="225.0" mnemonicParsing="false" onAction="#athletesButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="130.0" prefWidth="129.0" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
+   <Button fx:id="athletesButton" layoutX="160.0" layoutY="201.0" mnemonicParsing="false" onAction="#athletesButtonAction" onMouseEntered="#buttonColorShiftEntered" onMouseExited="#buttonColorShiftExited" prefHeight="130.0" prefWidth="129.0" scaleX="1.2" scaleY="1.2" style="-fx-background-color: rgba(24, 147, 21, 0.65); -fx-background-radius: 25;">
       <graphic>
          <ImageView fitHeight="133.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/Athletes.png" />

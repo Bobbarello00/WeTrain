@@ -19,18 +19,13 @@ public class ProfileSelectionController {
         ((Stage) athletesButton.getScene().getWindow()).close();
     }
     @FXML
-    protected void athletesButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthleteRegistration", HOME);
-        MoreInfoController.setSelectedProfileString("Athlete");
-    }
-    @FXML
     protected void homeTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
     @FXML
-    protected void nutritionistButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"NutritionistRegistration", HOME);
-        MoreInfoController.setSelectedProfileString("Nutritionist");
+    protected void athletesButtonAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthleteRegistration", HOME);
+        MoreInfoController.setSelectedProfileString("Athlete");
     }
     @FXML
     protected void trainersButtonAction() throws IOException {
@@ -45,5 +40,4 @@ public class ProfileSelectionController {
     void buttonColorShiftExited(MouseEvent event){
         ((Button) event.getSource()).setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
     }
-
 }

@@ -4,7 +4,6 @@ import viewone.DaysOfTheWeekController;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.graphical_controllers.HomeControllerTrainersNutritionists;
 import viewone.ListPopulate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewWorkoutPlanController extends HomeControllerTrainersNutritionists implements Initializable {
+public class NewWorkoutPlanController extends HomeControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
     public final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML
@@ -40,8 +39,10 @@ public class NewWorkoutPlanController extends HomeControllerTrainersNutritionist
         daysController.dayButtonAction(event);
     }
     @FXML
-    void createButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", HOME);
-        System.out.println("Created");
+    void navigationButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
+        if(event.getSource()==createButton) {
+            System.out.println("Created");
+        }
     }
 }

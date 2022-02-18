@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import viewone.graphical_controllers.FitnessLevelFilter;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -15,6 +16,13 @@ import java.util.ResourceBundle;
 public class FindCourseController extends HomeControllerAthletes implements Initializable {
 
     private final Boolean[] selected = new Boolean[7];
+    private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
+    @FXML
+    private Button baseFitnessLevelButton;
+    @FXML
+    private Button intermediateFitnessLevelButton;
+    @FXML
+    private Button advancedFitnessLevelButton;
     @FXML
     private TextField courseNameText;
     @FXML
@@ -60,11 +68,16 @@ public class FindCourseController extends HomeControllerAthletes implements Init
         selected[i]=!selected[i];
     }
     @FXML
-    protected void searchButtonAction(ActionEvent event) {
-        System.out.println("Search done");
+    void fitnessLevelSelection(ActionEvent event){
+        fitnessLevelFilter.fitnessLevelSelection(event);
+    }
+    @FXML
+    protected void searchButtonAction() {
+        System.out.println("Search done, showing results...");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        baseFitnessLevelButton.fire();
         Arrays.fill(selected, Boolean.FALSE);
     }
 }

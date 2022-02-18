@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
-import viewone.graphical_controllers.HomeControllerTrainersNutritionists;
+import viewone.graphical_controllers.FitnessLevelFilter;
 import viewone.graphical_controllers.TimeSchedulerController;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -19,11 +19,11 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class NewCourseController extends HomeControllerTrainersNutritionists implements Initializable {
+public class NewCourseController extends HomeControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
-    private Button selectedFitnessLevel;
+    private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
     @FXML
-    private ListView<?> exercisesSelectedList;
+    private ListView<Node> exercisesSelectedList;
     @FXML
     private Button mondayButton;
     @FXML
@@ -88,20 +88,7 @@ public class NewCourseController extends HomeControllerTrainersNutritionists imp
     }
     @FXML
     void fitnessLevelSelection(ActionEvent event){
-        String buttonName = ((Node)event.getSource()).getId();
-        if(selectedFitnessLevel!=null) {
-            selectedFitnessLevel.setStyle("-fx-text-fill: rgb(24,147,21);" +
-                    " -fx-background-color: white;" +
-                    "-fx-background-radius: 10");
-        }
-        switch (buttonName){
-            case "baseFitnessLevelButton" -> selectedFitnessLevel=baseFitnessLevelButton ;
-            case "intermediateFitnessLevelButton" -> selectedFitnessLevel=intermediateFitnessLevelButton;
-            case "advancedFitnessLevelButton" -> selectedFitnessLevel=advancedFitnessLevelButton;
-        }
-        selectedFitnessLevel.setStyle("-fx-text-fill: white;" +
-                " -fx-background-color: rgb(24,147,21);" +
-                "-fx-background-radius: 11");
+        fitnessLevelFilter.fitnessLevelSelection(event);
     }
     @FXML
     void dayButtonAction(ActionEvent event) {

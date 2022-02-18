@@ -8,47 +8,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0"
-      prefWidth="261.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="viewone.graphical_controllers.athletes.MenuAthletesController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="261.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.athletes.MenuAthletesController">
    <VBox alignment="CENTER" layoutX="39.0" layoutY="46.0" prefHeight="694.0" prefWidth="183.0" spacing="65.0">
-      <ImageView fitHeight="103.0" fitWidth="105.0" onMouseClicked="#logoAction" pickOnBounds="true"
-                 preserveRatio="true" scaleX="2.0" scaleY="2.0">
+      <ImageView fitHeight="103.0" fitWidth="105.0" onMouseClicked="#logoAction" pickOnBounds="true" preserveRatio="true" scaleX="2.0" scaleY="2.0">
          <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
          </cursor>
-         <Image url="@../images/WeTrainLogo.png"/>
+         <Image url="@../images/WeTrainLogo.png" />
       </ImageView>
-      <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0"
-            style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
-         <Button fx:id="workoutButton" mnemonicParsing="false" onAction="#workoutButtonAction" prefHeight="56.0"
-                 prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="       Your        Workout Plan"
-                 textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <VBox alignment="CENTER" prefHeight="486.0" prefWidth="183.0" spacing="53.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
+         <Button fx:id="workoutButton" mnemonicParsing="false" onAction="#workoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="       Your        Workout Plan" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
+               <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="dietButton" mnemonicParsing="false" onAction="#dietButtonAction" prefHeight="56.0"
-                 prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Diet Plan"
-                 textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="weekButton" mnemonicParsing="false" onAction="#weekButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Weekly Schedule" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
+               <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="staffButton" mnemonicParsing="false" onAction="#staffButtonAction" prefHeight="56.0"
-                 prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Personal Staff"
-                 textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <Button fx:id="trainerButton" mnemonicParsing="false" onAction="#trainerButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="           Your           Personal Trainer" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
+               <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="findCourseButton" mnemonicParsing="false" onAction="#findCourseButtonAction"
-                 prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25"
-                 text="            Find            New Course" textAlignment="CENTER" textFill="WHITE"
-                 wrapText="true">
+         <Button fx:id="findCourseButton" mnemonicParsing="false" onAction="#findCourseButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="            Find            New Course" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
-               <Font name="ABeeZee Regular" size="12.0"/>
+               <Font name="ABeeZee Regular" size="12.0" />
             </font>
          </Button>
       </VBox>

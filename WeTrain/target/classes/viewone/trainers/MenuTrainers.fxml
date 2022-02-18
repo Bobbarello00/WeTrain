@@ -27,12 +27,12 @@
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="yourCollaboratorButton" mnemonicParsing="false" onAction="#yourCollaboratorButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Your        Collaborator" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="yourCollaboratorButton" mnemonicParsing="false" onAction="#yourCollaboratorButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Your        Subscribers" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="createWorkoutButton" mnemonicParsing="false" onAction="#createWorkoutButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Create        New Workout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="workoutRequestsButton" mnemonicParsing="false" onAction="#workoutRequestsButtonAction" prefHeight="56.0" prefWidth="125.0" scaleX="1.25" scaleY="1.25" text="        Workout        Requests" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>

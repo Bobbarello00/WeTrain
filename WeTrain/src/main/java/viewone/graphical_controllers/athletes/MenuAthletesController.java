@@ -13,16 +13,16 @@ public class MenuAthletesController {
     private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
     private static final String HOME = "athletes";
     @FXML
-    void staffButtonAction(ActionEvent event) throws IOException {
-        buttonBehavior.setBehavior(((Button) event.getSource()),"YourPersonalStaff",HOME);
+    void trainerButtonAction(ActionEvent event) throws IOException {
+        buttonBehavior.setBehavior(((Button) event.getSource()),"YourPersonalTrainer",HOME);
     }
     @FXML
     void findCourseButtonAction(ActionEvent event) throws IOException {
         buttonBehavior.setBehavior(((Button) event.getSource()),"FindCourse",HOME);
     }
     @FXML
-    void dietButtonAction(ActionEvent event) throws IOException {
-        buttonBehavior.setBehavior(((Button) event.getSource()),"YourDietPlan",HOME);
+    void weekButtonAction(ActionEvent event) throws IOException {
+        buttonBehavior.setBehavior(((Button) event.getSource()),"YourWeeklySchedule",HOME);
     }
     @FXML
     void workoutButtonAction(ActionEvent event) throws IOException {

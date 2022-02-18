@@ -16,8 +16,6 @@ module com.wetrain.wetrain {
     opens viewone.graphical_controllers to javafx.fxml;
     exports viewone.graphical_controllers.athletes;
     opens viewone.graphical_controllers.athletes to javafx.fxml;
-    exports viewone.graphical_controllers.nutritionists;
-    opens viewone.graphical_controllers.nutritionists to javafx.fxml;
     exports viewone.graphical_controllers.trainers;
     opens viewone.graphical_controllers.trainers to javafx.fxml;
     exports viewone.graphical_controllers.launcher;

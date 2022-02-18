@@ -14,26 +14,26 @@ public class MenuTrainersController {
     @FXML
     private Button createCourseButton;
     @FXML
-    private Button createWorkoutButton;
+    private Button workoutRequestsButton;
     @FXML
     private Button manageLessonsButton;
     @FXML
     private Button yourCollaboratorButton;
     @FXML
     void manageLessonsButtonAction() throws IOException {
-        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessonsTrainers",HOME);
+        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessons",HOME);
     }
     @FXML
     void createCourseButtonAction() throws IOException {
         buttonBehavior.setBehavior(createCourseButton,"NewCourse",HOME);
     }
     @FXML
-    void createWorkoutButtonAction() throws IOException {
-        buttonBehavior.setBehavior(createWorkoutButton,"NewWorkoutPlan",HOME);
+    void workoutRequestsButtonAction() throws IOException {
+        buttonBehavior.setBehavior(workoutRequestsButton,"WorkoutRequests",HOME);
     }
     @FXML
     protected void yourCollaboratorButtonAction() throws IOException {
-        buttonBehavior.setBehavior(yourCollaboratorButton,"YourCollaboratorTrainers",HOME);
+        buttonBehavior.setBehavior(yourCollaboratorButton,"YourSubscribers",HOME);
     }
     @FXML
     void logoAction() throws IOException {

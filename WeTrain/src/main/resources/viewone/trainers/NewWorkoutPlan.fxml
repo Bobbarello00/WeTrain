@@ -108,13 +108,18 @@
          </padding>
          <ListView fx:id="exercisesList" prefHeight="197.0" prefWidth="390.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
       </HBox>
-      <HBox alignment="CENTER" layoutX="69.0" layoutY="238.0" prefHeight="363.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
+      <HBox alignment="CENTER" layoutX="69.0" layoutY="238.0" prefHeight="312.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="12.0" left="7.0" right="7.0" top="12.0" />
          </padding>
          <ListView fx:id="exercisesSelectedList" prefHeight="339.0" prefWidth="390.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
       </HBox>
-      <Button fx:id="createButton" layoutX="984.0" layoutY="572.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="createButton" layoutX="984.0" layoutY="587.0" mnemonicParsing="false" onAction="#navigationButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="90.0" layoutY="587.0" mnemonicParsing="false" onAction="#navigationButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
