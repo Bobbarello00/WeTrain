@@ -3,8 +3,12 @@ package model;
 import java.time.LocalDate;
 
 public class Trainer extends User {
-
-    public Trainer(String name, LocalDate dateOfBirth, String fc, String email){
+    private String iban;
+    public Trainer(String name, LocalDate dateOfBirth, String fc, String email, String iban){
         super(name, dateOfBirth, fc, email);
+        this.iban = iban;
+    }
+    public void changeIban(String newIban){
+        this.iban = newIban;
     }
 }
