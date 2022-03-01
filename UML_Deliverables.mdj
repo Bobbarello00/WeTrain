@@ -9745,7 +9745,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 700,
+									"left": 686,
 									"top": 421,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -9766,7 +9766,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 715,
+									"left": 701,
 									"top": 421,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -9787,7 +9787,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 671,
+									"left": 657,
 									"top": 422,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -9808,7 +9808,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 701,
+									"left": 687,
 									"top": 427,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -9829,7 +9829,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 714,
+									"left": 700,
 									"top": 430,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -9850,7 +9850,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 673,
+									"left": 659,
 									"top": 423,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -9871,7 +9871,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 701,
+									"left": 687,
 									"top": 416,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -9891,7 +9891,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 714,
+									"left": 700,
 									"top": 413,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -9911,7 +9911,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 673,
+									"left": 659,
 									"top": 420,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -9957,7 +9957,7 @@
 								"$ref": "AAAAAAF/DVUK2L5+unw="
 							},
 							"lineStyle": 2,
-							"points": "686:408;686:448",
+							"points": "672:408;672:448",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF/HQD5Y9B3/9o="
@@ -9992,6 +9992,19 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAF/HQD5Y9CBII4="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF/RnIcfXZRnPE=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 152,
+							"top": 448,
+							"width": 118.998046875,
+							"height": 92,
+							"text": "Aggiungere workoutDayBean\n(Collegarlo direttamente con il model)"
 						}
 					]
 				},
@@ -11809,7 +11822,8 @@
 								"$ref": "AAAAAAF/G+a44dc20Ig="
 							},
 							"name": "requestCode",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					]
 				},
