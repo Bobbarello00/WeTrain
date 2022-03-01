@@ -1,1 +1,0 @@
-@ 2javaXhrDWeTrain/src/main/java/com/wetrain/wetrain/entities/Nutritionist.java

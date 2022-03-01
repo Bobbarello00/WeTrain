@@ -1,1 +1,0 @@
-D 2javaXJhrbWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/athletes/FindCourseController.java

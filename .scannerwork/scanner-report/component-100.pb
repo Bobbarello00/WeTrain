@@ -1,1 +1,0 @@
-d 2javaXhr7WeTrain/src/main/java/com/wetrain/wetrain/MainPane.java

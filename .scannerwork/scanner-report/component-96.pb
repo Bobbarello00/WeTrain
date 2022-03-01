@@ -1,1 +1,0 @@
-` 2javaX4hrfWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/NewWorkoutPlanController.java

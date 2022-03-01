@@ -1,1 +1,0 @@
-Q 2javaX5hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/launcher/RegistrationController.java

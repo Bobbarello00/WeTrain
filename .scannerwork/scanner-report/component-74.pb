@@ -1,1 +1,0 @@
-J 2javaX/hrgWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/athletes/YourWorkoutPlanController.java

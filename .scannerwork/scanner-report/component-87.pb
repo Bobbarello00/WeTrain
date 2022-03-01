@@ -1,1 +1,0 @@
-W 2javaX-hrnWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/nutritionists/MenuNutritionistsController.java

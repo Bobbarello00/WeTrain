@@ -1,1 +1,0 @@
-f 2javaX6hr?WeTrain/src/main/java/com/wetrain/wetrain/PageSwitchSimple.java

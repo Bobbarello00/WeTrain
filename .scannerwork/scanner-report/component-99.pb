@@ -1,1 +1,0 @@
-c 2javaX#hroWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/YourProfileTrainersNutritionistsController.java

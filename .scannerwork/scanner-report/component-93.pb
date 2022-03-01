@@ -1,1 +1,0 @@
-] 2javaXhrmWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/ManageLessonsTrainersController.java

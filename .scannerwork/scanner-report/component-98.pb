@@ -1,1 +1,0 @@
-b 2javaX!hrpWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/YourCollaboratorTrainersController.java

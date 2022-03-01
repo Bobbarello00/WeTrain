@@ -1,1 +1,0 @@
-E 2javaX%hrdWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/athletes/MenuAthletesController.java

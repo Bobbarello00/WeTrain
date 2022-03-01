@@ -1,1 +1,0 @@
-WeTrainProject :XehfF)jGí-N5K\.(gaD=3[?IiJ,/0<R_8Z]BLA2CE@$`kd9VXŽTcU^& ';O4MY*!S:QH%+#1">W6b7PB2.https://github.com/Bobbarello00/WeTrainProjectB51https://travis-ci.org/Bobbarello00/WeTrainProjectB95https://github.com/Bobbarello00/WeTrainProject/issuesB2.https://github.com/Bobbarello00/WeTrainProjectRBobbarello00_WeTrain

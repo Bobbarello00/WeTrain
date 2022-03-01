@@ -1,1 +1,0 @@
-_ 2javaXuhraWeTrain/src/main/java/com/wetrain/wetrain/graphical_controllers/trainers/NewCourseController.java
