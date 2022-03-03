@@ -1,12 +1,15 @@
 package viewone.graphical_controllers.trainers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.ListPopulate;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +22,10 @@ public class WorkoutRequestsController extends HomeControllerTrainers implements
     @FXML
     void newWorkoutButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);
+    }
+    @FXML
+    void clarificationEmailButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button)event.getSource(),"EmailForm","",false);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

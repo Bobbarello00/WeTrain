@@ -73,6 +73,11 @@
                               <Font name="ABeeZee Regular" size="12.0" />
                            </font>
                         </Button>
+                        <Button layoutX="54.0" layoutY="476.0" mnemonicParsing="false" onAction="#clarificationEmailButtonAction" prefHeight="23.0" prefWidth="113.0" scaleX="1.4" scaleY="1.4" text="Ask Clarification" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="ABeeZee Regular" size="12.0" />
+                           </font>
+                        </Button>
                      </children></Pane>
                </children>
             </VBox>
