@@ -1,9 +1,9 @@
-package viewtwo;
+package viewtwo.graphical_controllers1;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import viewone.WeTrain;
+import viewtwo.WeTrain1;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,27 +11,26 @@ import java.net.URL;
 
 public class PageSwitchSimple1 {
     private static Pane view;
-    private static Pane menu;
     private static final String EXTENSION = ".fxml";
 
     private PageSwitchSimple1(){}
 
-    public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
+    public static void switchPage(BorderPane mainPane1, String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = WeTrain.class.getResource(fileName + EXTENSION);
+                fileUrl = WeTrain1.class.getResource(fileName + EXTENSION);
             }
             else {
-                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
+                fileUrl = WeTrain1.class.getResource(pathString + "/" + fileName + EXTENSION);
             }
             if(fileUrl==null){
-                throw new FileNotFoundException("Non ho trovato il file FXML");
+                throw new FileNotFoundException("FXML non trovato");
             }
             view = FXMLLoader.load(fileUrl);
         } catch (FileNotFoundException e) {
-            System.out.println("File "+ pathString + "/" + fileName + EXTENSION + " non trovato, controllare il PageSwitchSimple!");
+            System.out.println("Non trovo il File "+ pathString + "/" + fileName + EXTENSION + ", controllare il PageSwitchSimple1!");
         }
-        mainPane.setCenter(view);
+        mainPane1.setCenter(view);
     }
 }

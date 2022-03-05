@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers1.launcher1.ProfileSelectionController1">
+   <children>
+      <RadioButton layoutX="179.0" layoutY="209.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Athlete" />
+      <RadioButton layoutX="357.0" layoutY="209.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Trainer" />
+      <Text layoutX="186.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Profile">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <Button layoutX="274.0" layoutY="299.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
+   </children>
+</Pane>

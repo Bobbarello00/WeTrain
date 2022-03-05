@@ -15,7 +15,7 @@ public class WeTrain extends Application {
         Scene scene = new Scene(mainPane.load());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("WeTrainStyle.css")).toExternalForm());
         PageSwitchSizeChange.pageLauncher(stage, scene);
-        PageSwitchSimple.switchPage(MainPane.getInstance(), "WeTrainGUI", "Launcher");
+        PageSwitchSimple.switchPage(MainPane.getInstance(), "WeTrainGUI", "launcher");
         stage.show();
     }
 

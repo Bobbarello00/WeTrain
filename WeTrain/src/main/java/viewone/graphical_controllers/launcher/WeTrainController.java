@@ -10,17 +10,17 @@ import java.io.IOException;
 
 public class WeTrainController {
     @FXML
-    private Button regButton;
+    private Button loginButton;
     @FXML
-    protected void registerButtonAction() throws IOException {
+    protected void registerTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "launcher");
     }
     @FXML
     protected void closeAction(){
-        ((Stage) regButton.getScene().getWindow()).close();
+        ((Stage) loginButton.getScene().getWindow()).close();
     }
     @FXML
-    protected void logInTextAction() throws IOException {
+    protected void loginButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"Login", "launcher");
     }
 }

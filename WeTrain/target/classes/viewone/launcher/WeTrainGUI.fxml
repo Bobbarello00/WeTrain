@@ -15,17 +15,17 @@
    <ImageView fitHeight="188.0" fitWidth="315.0" layoutX="91.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true" scaleX="1.5" scaleY="1.5">
       <Image url="@../images/group-exercise.png" />
    </ImageView>
-   <Button fx:id="regButton" alignment="CENTER" layoutX="495.0" layoutY="257.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="23.0" prefWidth="151.0" text="Register" textAlignment="JUSTIFY" textFill="WHITE">
+   <Button fx:id="loginButton" alignment="CENTER" layoutX="495.0" layoutY="257.0" mnemonicParsing="false" onAction="#loginButtonAction" prefHeight="23.0" prefWidth="151.0" text="Login" textAlignment="JUSTIFY" textFill="WHITE">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Button>
-   <Text layoutX="477.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" wrappingWidth="150.731689453125">
+   <Text layoutX="516.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fist time?" wrappingWidth="56.3316650390625">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Text>
-   <Text fill="#189315" layoutX="628.0" layoutY="301.0" onMouseClicked="#logInTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In" textAlignment="JUSTIFY" wrappingWidth="43.73175048828125">
+   <Text fill="#189315" layoutX="575.0" layoutY="302.0" onMouseClicked="#registerTextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" textAlignment="JUSTIFY" wrappingWidth="49.33172607421875">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
