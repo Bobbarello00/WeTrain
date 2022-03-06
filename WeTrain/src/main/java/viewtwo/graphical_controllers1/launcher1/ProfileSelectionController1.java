@@ -11,4 +11,8 @@ public class ProfileSelectionController1 {
     protected void backAction() throws IOException {
         PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
     }
+    @FXML
+    protected void nextAction() throws IOException {
+        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
+    }
 }

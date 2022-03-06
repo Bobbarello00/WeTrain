@@ -11,4 +11,8 @@ public class LoginController1 {
     protected void backAction() throws IOException {
         PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");;
     }
+    @FXML
+    protected void loginAction() throws IOException {
+        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");;
+    }
 }
