@@ -114,7 +114,7 @@
          </padding>
       </VBox>
    </Pane>
-   <Text layoutX="245.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Diet Plan" textAlignment="JUSTIFY" wrappingWidth="127.80309867858887">
+   <Text layoutX="245.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Weekly Schedule" textAlignment="JUSTIFY" wrappingWidth="127.80309867858887">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
