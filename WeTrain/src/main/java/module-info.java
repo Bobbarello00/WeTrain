@@ -10,6 +10,7 @@ module com.wetrain.wetrain {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires org.jetbrains.annotations;
+    requires java.sql;
 
 
     exports viewone.graphical_controllers;
