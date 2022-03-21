@@ -35,8 +35,14 @@ public class Query {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, Course) VALUES ('%s', '%s');", Timestamp.valueOf(lesson.getLessonDate()), lesson.getCourse().getId()));
     }
 
-    public static int insertNotification(Statement stmt, Lesson lesson) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Athlete, Trainer) " +
-                "VALUES ('%s','%s','%s','%s','%s');", ));
+    public static int insertNotification(Statement stmt, Notification notification) throws SQLException {
+        if(notification.getUser() instanceof Athlete) {
+            return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Athlete) " +
+                    "VALUES ('%s','%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
+        }
+        else {
+            return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Trainer) " +
+                    "VALUES ('%s','%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
+        }
     }
 }
