@@ -3,11 +3,12 @@ package viewone;
 import javafx.scene.layout.BorderPane;
 
 public class MainPane {
+
     private static BorderPane pane;
 
     private MainPane(){}
 
-    public static void setInstance(BorderPane newPane){
+    public synchronized static void setInstance(BorderPane newPane){
         pane = newPane;
     }
 
