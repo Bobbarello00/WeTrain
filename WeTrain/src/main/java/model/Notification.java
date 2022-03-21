@@ -17,4 +17,23 @@ public class Notification {
         this.user = user;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public LocalDateTime getNotificationDate() {
+        return notificationDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
 }

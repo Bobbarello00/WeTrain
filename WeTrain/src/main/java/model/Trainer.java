@@ -11,4 +11,8 @@ public class Trainer extends User {
     public void changeIban(String newIban){
         this.iban = newIban;
     }
+
+    public String getIban() {
+        return iban;
+    }
 }

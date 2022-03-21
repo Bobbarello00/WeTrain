@@ -14,4 +14,12 @@ public class Athlete extends User {
         this.cardNumber = newCardNumber;
         this.cardExpirationDate = newCardExpirationDate;
     }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public LocalDate getCardExpirationDate() {
+        return cardExpirationDate;
+    }
 }

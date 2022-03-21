@@ -11,4 +11,19 @@ public class Exercise{
         this.trainer = trainer;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getInformation() {
+        return information;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
 }

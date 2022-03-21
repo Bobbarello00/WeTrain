@@ -17,4 +17,16 @@ public class Lesson {
         this.lessonDate = newDate;
         //Notifica agli iscritti la modifica
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public LocalDateTime getLessonDate() {
+        return lessonDate;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
 }
