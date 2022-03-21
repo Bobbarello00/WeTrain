@@ -1,19 +1,16 @@
 package database;
 
-import database.DatabaseConnection;
+import model.Athlete;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Query {
 
-
-    public ResultSet query() throws SQLException {
+    //TODO gestione duplicate record
+    public static int insertAthlete(Athlete athlete) throws SQLException {
         Connection conn = DatabaseConnection.getInstance().conn;
         Statement stmt = conn.createStatement();
-        return stmt.executeQuery("show databases;");
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (FC, Name, Surname, Birth, Email) VALUES ('%s', '%s', '%s', '%s', '%s');", athlete.getFiscalCode(), athlete.getName(), athlete.getSurname(), Date.valueOf(athlete.getDateOfBirth()), athlete.getEmail()));
     }
 
 }

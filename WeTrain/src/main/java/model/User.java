@@ -16,4 +16,25 @@ public abstract class User {
         this.fiscalCode = fc;
         this.email = email;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getFiscalCode() {
+        return fiscalCode;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }

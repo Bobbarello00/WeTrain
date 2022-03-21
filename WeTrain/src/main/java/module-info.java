@@ -36,4 +36,6 @@ module com.wetrain.wetrain {
     opens viewtwo to javafx.fxml;
     exports database;
     opens database to javafx.fxml;
+
+    exports model;
 }
