@@ -108,11 +108,11 @@ public class Query {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) VALUES ('%s', '%s', '%s');", Timestamp.valueOf(request.getRequestDate()), request.getAthlete().getFiscalCode(), request.getTrainer().getFiscalCode()));
     }
 
-    private static int addExerciseToWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
+    public static int addExerciseToWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) VALUES (%s, %s);", workoutDayKey, exercise.getId()));
     }
 
-    private static int insertWorkoutDay(Statement stmt, WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
+    public static int insertWorkoutDay(Statement stmt, WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
         try (PreparedStatement statement2 = DatabaseConnection.getInstance().conn.prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s)", workoutPlanKey), Statement.RETURN_GENERATED_KEYS);) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
