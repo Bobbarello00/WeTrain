@@ -1,17 +1,25 @@
 package model;
 
 public class Exercise{
-    private String id;
+    private int id;
     private String name;
-    private String information;
+    private String info;
     private Trainer trainer;
-    public Exercise(String name, String information, Trainer trainer){
+
+    public Exercise(String name, String information, int id){
+        this.id = id;
         this.name = name;
-        this.information = information;
+        this.info = information;
+    }
+
+    public Exercise(String name, String information, Trainer trainer, int id){
+        this.id = id;
+        this.name = name;
+        this.info = information;
         this.trainer = trainer;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -19,8 +27,8 @@ public class Exercise{
         return name;
     }
 
-    public String getInformation() {
-        return information;
+    public String getInfo() {
+        return info;
     }
 
     public Trainer getTrainer() {

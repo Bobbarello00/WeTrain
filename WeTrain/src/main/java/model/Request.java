@@ -13,4 +13,20 @@ public class Request {
         this.athlete = athlete;
         this.trainer = trainer;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public LocalDateTime getRequestDate() {
+        return requestDate;
+    }
+
+    public Athlete getAthlete() {
+        return athlete;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
 }
