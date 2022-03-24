@@ -14,7 +14,6 @@ public class WorkoutPlanDAO {
     public void saveWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
             int id = Query.insertWorkoutPlan(stmt, workoutPlan);
-            workoutPlan.setId(id);
             for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
                 WorkoutDayDAO.saveWorkoutDay(workoutDay, id);
             }
