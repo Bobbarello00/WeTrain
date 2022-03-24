@@ -5,7 +5,6 @@ import database.Query;
 import model.Exercise;
 import model.ExerciseCatalogue;
 import model.Trainer;
-import model.WorkoutDay;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +14,7 @@ import java.sql.Statement;
 public class ExerciseDAO {
     Connection conn = DatabaseConnection.getInstance().conn;
 
-    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId){
+    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
         Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
     }
 
