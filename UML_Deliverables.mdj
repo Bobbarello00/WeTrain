@@ -35057,8 +35057,8 @@
 											"visible": false,
 											"fillColor": "#e2e2e2",
 											"font": "Arial;13;0",
-											"left": -1936,
-											"top": 80,
+											"left": -1952,
+											"top": 64,
 											"height": 13
 										},
 										{
@@ -35069,8 +35069,8 @@
 											},
 											"fillColor": "#e2e2e2",
 											"font": "Arial;13;1",
-											"left": 229,
-											"top": 1791,
+											"left": 221,
+											"top": 1783,
 											"width": 223.8818359375,
 											"height": 13,
 											"text": "WorkoutPlanDAO"
@@ -35084,8 +35084,8 @@
 											"visible": false,
 											"fillColor": "#e2e2e2",
 											"font": "Arial;13;0",
-											"left": -1936,
-											"top": 80,
+											"left": -1952,
+											"top": 64,
 											"width": 160.3798828125,
 											"height": 13,
 											"text": "(from Design-level diagram)"
@@ -35099,16 +35099,16 @@
 											"visible": false,
 											"fillColor": "#e2e2e2",
 											"font": "Arial;13;0",
-											"left": -1936,
-											"top": 80,
+											"left": -1952,
+											"top": 64,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"fillColor": "#e2e2e2",
 									"font": "Arial;13;0",
-									"left": 224,
-									"top": 1784,
+									"left": 216,
+									"top": 1776,
 									"width": 233.8818359375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -35136,8 +35136,8 @@
 									"visible": false,
 									"fillColor": "#e2e2e2",
 									"font": "Arial;13;0",
-									"left": 224,
-									"top": 1809,
+									"left": 216,
+									"top": 1801,
 									"width": 118.81787109375,
 									"height": 10
 								},
@@ -35162,18 +35162,37 @@
 											},
 											"fillColor": "#e2e2e2",
 											"font": "Arial;13;0",
-											"left": 229,
-											"top": 1814,
+											"left": 221,
+											"top": 1806,
 											"width": 223.8818359375,
 											"height": 13,
 											"text": "+saveWorkoutPlan(plan: WorkoutPlan)",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAF/vJPqdJK8EV4=",
+											"_parent": {
+												"$ref": "AAAAAAF/Wse9ITo5l1g="
+											},
+											"model": {
+												"$ref": "AAAAAAF/vJPqSpJ9zJ4="
+											},
+											"visible": false,
+											"fillColor": "#e2e2e2",
+											"font": "Arial;13;0",
+											"left": 213,
+											"top": 1821,
+											"width": 223.8818359375,
+											"height": 13,
+											"text": "+Operation1()",
 											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#e2e2e2",
 									"font": "Arial;13;0",
-									"left": 224,
-									"top": 1809,
+									"left": 216,
+									"top": 1801,
 									"width": 233.8818359375,
 									"height": 23
 								},
@@ -35189,8 +35208,8 @@
 									"visible": false,
 									"fillColor": "#e2e2e2",
 									"font": "Arial;13;0",
-									"left": -968,
-									"top": 40,
+									"left": -976,
+									"top": 32,
 									"width": 10,
 									"height": 10
 								},
@@ -35206,8 +35225,8 @@
 									"visible": false,
 									"fillColor": "#e2e2e2",
 									"font": "Arial;13;0",
-									"left": -968,
-									"top": 40,
+									"left": -976,
+									"top": 32,
 									"width": 10,
 									"height": 10
 								}
@@ -35215,10 +35234,10 @@
 							"fillColor": "#e2e2e2",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 224,
-							"top": 1784,
+							"left": 216,
+							"top": 1776,
 							"width": 233.8818359375,
-							"height": 58,
+							"height": 49,
 							"nameCompartment": {
 								"$ref": "AAAAAAF/Wse9ITozOck="
 							},
@@ -35318,7 +35337,7 @@
 								"$ref": "AAAAAAF/Wse9IToyHQg="
 							},
 							"lineStyle": 2,
-							"points": "224:1792;200:1792;200:1440;242:1440",
+							"points": "216:1792;200:1792;200:1440;242:1440",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF/Wsnv9IE6o08="
@@ -36505,7 +36524,7 @@
 							"left": 216,
 							"top": 1952,
 							"width": 272.13916015625,
-							"height": 58,
+							"height": 49,
 							"nameCompartment": {
 								"$ref": "AAAAAAF/WtQ4U+iGGjg="
 							},
@@ -36545,7 +36564,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 356,
-									"top": 1889,
+									"top": 1881,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -36566,7 +36585,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 371,
-									"top": 1889,
+									"top": 1881,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -36587,7 +36606,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 327,
-									"top": 1890,
+									"top": 1882,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -36608,7 +36627,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 357,
-									"top": 1860,
+									"top": 1843,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -36629,7 +36648,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 370,
-									"top": 1863,
+									"top": 1846,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -36650,7 +36669,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 329,
-									"top": 1856,
+									"top": 1839,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -36756,7 +36775,7 @@
 								"$ref": "AAAAAAF/Wse9IToyHQg="
 							},
 							"lineStyle": 2,
-							"points": "342:1841;342:1952",
+							"points": "342:1824;342:1952",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF/WtT5gPszsR8="
@@ -41927,7 +41946,7 @@
 								"$ref": "AAAAAAF/UJqb36xO3ZI="
 							},
 							"lineStyle": 2,
-							"points": "504:1032;64:1032;64:1812;224:1812",
+							"points": "504:1032;64:1032;64:1812;216:1812",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAF/l6+RtZSky30="
@@ -44080,6 +44099,14 @@
 									}
 								}
 							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAF/vJPqSpJ9zJ4=",
+							"_parent": {
+								"$ref": "AAAAAAF/Wse9IDowVIQ="
+							},
+							"name": "Operation1"
 						}
 					]
 				},
