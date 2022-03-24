@@ -25,10 +25,8 @@ public class AthleteDAO {
             }else{
                 throw new Exception("Athlete not found!");
             }
-        } catch(SQLException sqlEx){
+        } catch(Exception sqlEx){
             System.out.println(sqlEx);
-        } catch (Exception e) {
-            System.out.println(e);
         }
         return null;
     }

@@ -10,5 +10,5 @@ public class ExerciseCatalogue {
     public static List<Exercise> filterExercisesByName(String exerciseName){
         return ;
     }
-    public static void addExercise(){};
+    public static void addExercise(Exercise newExercise){};
 }

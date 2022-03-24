@@ -12,7 +12,7 @@ public class Exercise{
         this.info = information;
     }
 
-    public Exercise(String name, String information, Trainer trainer, int id){
+    public Exercise(String name, String information, int id, Trainer trainer){
         this.id = id;
         this.name = name;
         this.info = information;

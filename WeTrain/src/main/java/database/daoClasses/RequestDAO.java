@@ -17,7 +17,7 @@ public class RequestDAO {
     public Request loadRequest(String code, Trainer trainer, Athlete athlete) throws SQLException{
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadRequest(stmt, code)) {
             if(rs.next()) {
-                return new Request(rs.getInt("idRequest"), //TODO CONVERSION rs.getDate("RequestDate"), athlete, trainer);
+                return new Request(rs.getInt("idRequest"), /*TODO CONVERSION rs.getDate("RequestDate")*/, athlete, trainer);
             }
             else{
                 throw new Exception("Request not found!");
@@ -26,7 +26,9 @@ public class RequestDAO {
             e.printStackTrace();
         }
     }
-    public void deleteRequest(Request request){
-        try
+    public void deleteRequest(Request request) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.deleteRequest(request);
+        }
     }
 }
