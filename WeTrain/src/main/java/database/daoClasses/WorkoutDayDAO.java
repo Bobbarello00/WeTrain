@@ -5,15 +5,13 @@ import database.Query;
 import model.Exercise;
 import model.WorkoutDay;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class WorkoutDayDAO {
-    Connection conn = DatabaseConnection.getInstance().conn;
-    public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
-        try (Statement stmt = conn.createStatement()) {
+
+    public static void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
+        try (Statement stmt = DatabaseConnection.getInstance().conn.createStatement()) {
             int id = Query.insertWorkoutDay(stmt, workoutDay, idWorkoutPlan);
             workoutDay.setId(id);
             for (Exercise exercise : workoutDay.getListExercise()){
@@ -21,4 +19,5 @@ public class WorkoutDayDAO {
             }
         }
     }
+
 }

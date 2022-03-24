@@ -15,12 +15,8 @@ import java.sql.Statement;
 public class ExerciseDAO {
     Connection conn = DatabaseConnection.getInstance().conn;
 
-    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
-        try{
-                Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId){
+        Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
     }
 
     public void saveExercise(Exercise exercise) throws SQLException {
