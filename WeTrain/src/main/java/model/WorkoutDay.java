@@ -5,6 +5,7 @@ import java.util.List;
 public class WorkoutDay {
     private int id;
     private WorkoutPlan workoutPlan;
+    private int day;
     private List<Exercise> listExercise;
 
     public WorkoutDay(int id, WorkoutPlan workoutPlan){

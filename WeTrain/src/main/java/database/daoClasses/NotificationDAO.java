@@ -19,7 +19,8 @@ public class NotificationDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllNotifications(stmt, user)){
             List<Notification> myList = new ArrayList<Notification>();
             while(rs.next()){
-                myList.add(new Notification(rs.getInt("idNotification"),rs.getInt("Type"),rs.getString("Info"),
+                myList.add(new Notification(rs.getInt("idNotification"), rs.getInt("Type"),
+                        rs.getString("Info"),
                         rs.getTimestamp("NotificationDate").toLocalDateTime(),user));
             }
             return myList;
