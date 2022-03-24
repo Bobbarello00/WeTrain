@@ -3,7 +3,7 @@ package model;
 import java.util.List;
 
 public class WorkoutDay {
-    private int id;
+    private Integer id;
     private final WorkoutPlan workoutPlan;
     private int day;
     private List<Exercise> listExercise;
@@ -15,10 +15,6 @@ public class WorkoutDay {
 
     public WorkoutDay(WorkoutPlan workoutPlan){
         this.workoutPlan = workoutPlan;
-    }
-
-    public void setId(int id){
-        this.id = id;
     }
 
     public List<Exercise> getListExercise(){

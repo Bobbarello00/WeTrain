@@ -3,7 +3,6 @@ package database;
 import model.*;
 
 import java.sql.*;
-import java.util.List;
 
 public class Query {
 
@@ -108,7 +107,7 @@ public class Query {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) VALUES ('%s', '%s', '%s');", Timestamp.valueOf(request.getRequestDate()), request.getAthlete().getFiscalCode(), request.getTrainer().getFiscalCode()));
     }
 
-    public static int addExerciseToWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
+    public static int insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) VALUES (%s, %s);", workoutDayKey, exercise.getId()));
     }
 
@@ -117,16 +116,16 @@ public class Query {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    int workoutDayKey = generatedKeys.getInt(1);
-                    List<Exercise> exerciseList = workoutDay.getListExercise();
-                    for (Exercise exercise : exerciseList) {
-                        addExerciseToWorkoutDay(stmt, exercise, workoutDayKey);
-                    }
+                    return generatedKeys.getInt(1);
+                } else {
+                    //TODO eccezione personalizzata
+                    System.out.println("DB - Errore nell'inserimento del workoutDay");
                 }
             }
         }
-        return 0;
+        return -1;
     }
+
 
     public static int insertWorkoutPlan(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
 

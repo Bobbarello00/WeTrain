@@ -11,6 +11,8 @@ public class WorkoutPlan {
         this.id = id;
     }
 
+    public WorkoutPlan(){}
+
     public int getId() {
         return id;
     }
