@@ -8,6 +8,12 @@ import java.util.List;
 public class Query {
 
     //TODO gestione duplicate record
+    public static ResultSet loadAllNotifications(Statement stmt, User user) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT *;" +
+                "FROM Notification;" +
+                "where Athlete = '%s' or Trainer = '%s'", user.getFiscalCode(), user.getFiscalCode()));
+    }
+
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Athlete;" +
@@ -52,6 +58,11 @@ public class Query {
                 "where idExercise = %s", idExercise));
     }
 
+    public static ResultSet loadTrainerExercises(Statement stmt, Trainer trainer) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT *;" +
+                "FROM Exercise join Trainer on Exercise.Trainer = '%s';", trainer.getFiscalCode()));
+    }
+
     public static int insertExercise(Statement stmt, Exercise exercise) throws SQLException {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Information, Trainer) VALUES ('%s', '%s', '%s');", exercise.getName(), exercise.getInfo(), exercise.getTrainer().getFiscalCode()));
     }
@@ -69,6 +80,17 @@ public class Query {
             return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Trainer) " +
                     "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
         }
+    }
+
+    public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT *;" +
+                "FROM Request;" +
+                "where idRequest = %s", id));
+    }
+
+    public static ResultSet deleteRequest(Statement stmt, Request request) throws SQLException {
+        return stmt.executeQuery(String.format("DELETE FROM Request" +
+                "where idRequest = %s", request.getId()));
     }
 
     public static int insertRequest(Statement stmt, Request request) throws SQLException {
