@@ -30,6 +30,7 @@ public class ExerciseDAO {
             System.out.println(sqlEx);
         }
     }
+
     public ExerciseCatalogue loadTrainerExercises(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerExercises(stmt, trainer)){
             ExerciseCatalogue newCatalogue = new ExerciseCatalogue();
