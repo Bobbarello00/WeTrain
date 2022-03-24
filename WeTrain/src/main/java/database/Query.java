@@ -14,6 +14,17 @@ public class Query {
                 "where Athlete = '%s' or Trainer = '%s'", user.getFiscalCode(), user.getFiscalCode()));
     }
 
+    public static int insertNotification(Statement stmt, Notification notification) throws SQLException {
+        if(notification.getUser() instanceof Athlete) {
+            return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Athlete) " +
+                    "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
+        }
+        else {
+            return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Trainer) " +
+                    "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
+        }
+    }
+
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Athlete;" +
@@ -67,19 +78,19 @@ public class Query {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Information, Trainer) VALUES ('%s', '%s', '%s');", exercise.getName(), exercise.getInfo(), exercise.getTrainer().getFiscalCode()));
     }
 
+    public static ResultSet loadLesson(Statement stmt, int id) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT *;" +
+                "FROM Lesson;" +
+                "where idLesson = %s", id));
+    }
+
     public static int insertLesson(Statement stmt, Lesson lesson) throws SQLException {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, Course) VALUES ('%s', %s);", Timestamp.valueOf(lesson.getLessonDate()), lesson.getCourse().getId()));
     }
 
-    public static int insertNotification(Statement stmt, Notification notification) throws SQLException {
-        if(notification.getUser() instanceof Athlete) {
-            return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Athlete) " +
-                    "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
-        }
-         else {
-            return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Trainer) " +
-                    "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
-        }
+    public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT *;" +
+                "FROM Request join Trainer on Request.Trainer = '%s';", trainer.getFiscalCode()));
     }
 
     public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {
@@ -101,12 +112,12 @@ public class Query {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) VALUES (%s, %s);", workoutDayKey, exercise.getId()));
     }
 
-    private static int addWorkoutDayToWorkoutPlan(Statement stmt, WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
+    private static int insertWorkoutDay(Statement stmt, WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
         try (PreparedStatement statement2 = DatabaseConnection.getInstance().conn.prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s)", workoutPlanKey), Statement.RETURN_GENERATED_KEYS);) {
             statement2.executeUpdate();
-            try (ResultSet generatedKeys2 = statement2.getGeneratedKeys()) {
-                if (generatedKeys2.next()) {
-                    int workoutDayKey = generatedKeys2.getInt(1);
+            try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int workoutDayKey = generatedKeys.getInt(1);
                     List<Exercise> exerciseList = workoutDay.getListExercise();
                     for (Exercise exercise : exerciseList) {
                         addExerciseToWorkoutDay(stmt, exercise, workoutDayKey);
@@ -121,21 +132,24 @@ public class Query {
 
         try(PreparedStatement statement = DatabaseConnection.getInstance().conn.prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS);) {
             int ret = statement.executeUpdate();
-            Integer workoutPlanKey = null;
-            try (ResultSet generatedKeys = statement.getGeneratedKeys();) {
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    workoutPlanKey = generatedKeys.getInt(1);
-
-                    List<WorkoutDay> workoutDayList = workoutPlan.getWorkoutDayList();
-                    for (WorkoutDay workoutDay : workoutDayList) {
-                        addWorkoutDayToWorkoutPlan(stmt, workoutDay, workoutPlanKey);
-                    }
+                    return generatedKeys.getInt(1);
+                } else {
+                    //TODO eccezione personalizzata
+                    System.out.println("DB - Errore nell'inserimento del workoutPlan");
                 }
             }
         } catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
-        return 0;
+        return -1;
+    }
+
+    public static ResultSet loadWorkoutPlan(Statement stmt, Athlete athlete) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT WorkoutPlan.*;" +
+                "FROM WorkoutPlan join Athlete on WorkoutPlan.idWorkoutPlan = Athlete.WorkoutPlan;" +
+                "WHERE Athlete.fc = '%s'", athlete.getFiscalCode()));
     }
 
     public static int insertSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {

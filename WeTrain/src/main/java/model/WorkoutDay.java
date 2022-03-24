@@ -4,13 +4,21 @@ import java.util.List;
 
 public class WorkoutDay {
     private int id;
-    private WorkoutPlan workoutPlan;
+    private final WorkoutPlan workoutPlan;
     private int day;
     private List<Exercise> listExercise;
 
     public WorkoutDay(int id, WorkoutPlan workoutPlan){
         this.id = id;
         this.workoutPlan = workoutPlan;
+    }
+
+    public WorkoutDay(WorkoutPlan workoutPlan){
+        this.workoutPlan = workoutPlan;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public List<Exercise> getListExercise(){
