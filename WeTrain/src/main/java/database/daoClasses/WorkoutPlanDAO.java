@@ -6,4 +6,5 @@ import java.sql.Connection;
 
 public class WorkoutPlanDAO {
     Connection conn = DatabaseConnection.getInstance().conn;
+    
 }

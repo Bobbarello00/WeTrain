@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class NotificationDAO {
             List<Notification> myList = new ArrayList<Notification>();
             while(rs.next()){
                 myList.add(new Notification(rs.getInt("idNotification"),rs.getInt("Type"),rs.getString("Info"),
-                        /*TODO CONVERSION rs.getDate("NotificationDate")*/,user));
+                        rs.getTimestamp("NotificationDate").toLocalDateTime(),user));
             }
             return myList;
         }
