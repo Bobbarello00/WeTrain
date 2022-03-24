@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ExerciseCatalogue {
     private List<Exercise> exerciseList;
-    public ExerciseCatalogue(List<Exercise> exerciseList){
+    public ExerciseCatalogue(){
         this.exerciseList = exerciseList;
     }
     public static List<Exercise> filterExercisesByName(String exerciseName){

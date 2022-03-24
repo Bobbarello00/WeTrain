@@ -23,7 +23,18 @@ public class ExerciseDAO {
     }
     public ExerciseCatalogue loadTrainerExercises(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerExercises(stmt, trainer)){
-            return ExerciseCatalogue();
+            ExerciseCatalogue newCatalogue = new ExerciseCatalogue();
+            while(rs.next()){
+                Exercise newExercise = new Exercise(rs.getString("Name"), rs.getString("Info"), trainer);
+                newCatalogue.addExercise(newExercise);
+            }
+            return newCatalogue;
+        }
+    }
+
+    public Exercise loadExercise(int id) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadExercise(stmt, id)){
+            return new Exercise(rs.getString("Name"), rs.getString("Info"));
         }
     }
 }

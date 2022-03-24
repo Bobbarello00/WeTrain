@@ -18,11 +18,18 @@ public class AthleteDAO {
     }
     public Athlete loadAthlete(String fc) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAthlete(stmt, fc)){
-            return new Athlete(rs.getString("Name"), rs.getString("Surname"), rs.getDate("Birth").toLocalDate(),
-                    rs.getString("FC"), rs.getString("Email"), rs.getString("CardNumber"),
-                    rs.getDate("CardExpirationDate").toLocalDate());
-        }catch(SQLException sqlEx){
+            if(rs.next()) {
+                return new Athlete(rs.getString("Name"), rs.getString("Surname"), rs.getDate("Birth").toLocalDate(),
+                        rs.getString("FC"), rs.getString("Email"), rs.getString("CardNumber"),
+                        rs.getDate("CardExpirationDate").toLocalDate());
+            }else{
+                throw new Exception("Athlete not found!");
+            }
+        } catch(SQLException sqlEx){
             System.out.println(sqlEx);
+        } catch (Exception e) {
+            System.out.println(e);
         }
+        return null;
     }
 }
