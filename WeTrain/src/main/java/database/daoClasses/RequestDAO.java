@@ -26,7 +26,7 @@ public class RequestDAO {
                 throw new Exception("Request not found!");
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return null;
     }

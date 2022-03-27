@@ -22,7 +22,7 @@ public class ExerciseDAO {
         try(Statement stmt = conn.createStatement()){
             Query.insertExercise(stmt, exercise);
         }catch(SQLException sqlEx){
-            System.out.println(sqlEx);
+            sqlEx.printStackTrace();
         }
     }
 

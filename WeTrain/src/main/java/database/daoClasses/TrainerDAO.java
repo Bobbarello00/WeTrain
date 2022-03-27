@@ -21,7 +21,7 @@ public class TrainerDAO {
                 throw new Exception("Trainer not found!");
             }
         } catch (Exception sqlEx) {
-            System.out.println(sqlEx);
+            sqlEx.printStackTrace();
         }
         return null;
     }

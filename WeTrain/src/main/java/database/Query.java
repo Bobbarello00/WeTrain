@@ -1,16 +1,17 @@
 package database;
 
 import model.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 
 public class Query {
 
     //TODO gestione duplicate record
-    public static ResultSet loadAllNotifications(Statement stmt, User user) throws SQLException {
+    public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Notification;" +
-                "where Athlete = '%s' or Trainer = '%s'", user.getFiscalCode(), user.getFiscalCode()));
+                "WHERE Athlete = '%s' or Trainer = '%s'", user.getFiscalCode(), user.getFiscalCode()));
     }
 
     public static int insertNotification(Statement stmt, Notification notification) throws SQLException {
@@ -24,10 +25,15 @@ public class Query {
         }
     }
 
+    public static int deleteNotification(Statement stmt, Notification notification) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Notification" +
+                "WHERE idNotification = %s", notification.getId()));
+    }
+
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Athlete;" +
-                "where fc = '%s'", fc));
+                "WHERE fc = '%s'", fc));
     }
 
     public static int insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -38,10 +44,15 @@ public class Query {
         return stmt.executeUpdate(String.format("UPDATE ATHLETE SET CardNumber = '%s', CardExpirationDate = '%s' WHERE Fc = '%s';", athlete.getCardNumber(), Date.valueOf(athlete.getCardExpirationDate()), athlete.getFiscalCode()));
     }
 
+    public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Athlete" +
+                "WHERE FC = '%s'", athlete.getFiscalCode()));
+    }
+
     public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Trainer;" +
-                "where fc = '%s'", fc));
+                "WHERE fc = '%s'", fc));
     }
 
     public static int insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
@@ -52,20 +63,30 @@ public class Query {
         return stmt.executeUpdate(String.format("UPDATE TRAINER SET Iban = '%s' WHERE Fc = '%s';", trainer.getIban(), trainer.getFiscalCode()));
     }
 
+    public static int deleteTrainer(Statement stmt, Trainer trainer) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Trainer" +
+                "WHERE FC = '%s'", trainer.getFiscalCode()));
+    }
+
     public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Course;" +
-                "where idCourse = %s", id));
+                "WHERE idCourse = %s", id));
     }
 
     public static int insertCourse(Statement stmt, Course course) throws SQLException {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) VALUES ('%s', '%s', '%s', '%s', '%s');", course.getName(), course.getDescription(), course.getFitnessLevel(), course.getEquipment(), course.getOwner().getFiscalCode()));
     }
 
+    public static int deleteCourse(Statement stmt, Course course) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Course" +
+                "WHERE idCourse = %s", course.getId()));
+    }
+
     public static ResultSet loadExercise(Statement stmt, int idExercise) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Exercise;" +
-                "where idExercise = %s", idExercise));
+                "WHERE idExercise = %s", idExercise));
     }
 
     public static ResultSet loadTrainerExercises(Statement stmt, Trainer trainer) throws SQLException {
@@ -77,14 +98,28 @@ public class Query {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Information, Trainer) VALUES ('%s', '%s', '%s');", exercise.getName(), exercise.getInfo(), exercise.getTrainer().getFiscalCode()));
     }
 
+    public static int deleteExercise(Statement stmt, Exercise exercise) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Exercise" +
+                "WHERE idExercise = %s", exercise.getId()));
+    }
+
     public static ResultSet loadLesson(Statement stmt, int id) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Lesson;" +
-                "where idLesson = %s", id));
+                "WHERE idLesson = %s", id));
     }
 
     public static int insertLesson(Statement stmt, Lesson lesson) throws SQLException {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, Course) VALUES ('%s', %s);", Timestamp.valueOf(lesson.getLessonDate()), lesson.getCourse().getId()));
+    }
+
+    public static int deleteLesson(Statement stmt, Lesson lesson) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Lesson" +
+                "WHERE idLesson = %s", lesson.getId()));
+    }
+
+    public static int insertRequest(Statement stmt, Request request) throws SQLException {
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) VALUES ('%s', '%s', '%s');", Timestamp.valueOf(request.getRequestDate()), request.getAthlete().getFiscalCode(), request.getTrainer().getFiscalCode()));
     }
 
     public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
@@ -95,16 +130,12 @@ public class Query {
     public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {
         return stmt.executeQuery(String.format("SELECT *;" +
                 "FROM Request;" +
-                "where idRequest = %s", id));
+                "WHERE idRequest = %s", id));
     }
 
-    public static ResultSet deleteRequest(Statement stmt, Request request) throws SQLException {
-        return stmt.executeQuery(String.format("DELETE FROM Request" +
-                "where idRequest = %s", request.getId()));
-    }
-
-    public static int insertRequest(Statement stmt, Request request) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) VALUES ('%s', '%s', '%s');", Timestamp.valueOf(request.getRequestDate()), request.getAthlete().getFiscalCode(), request.getTrainer().getFiscalCode()));
+    public static int deleteRequest(Statement stmt, Request request) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Request" +
+                "WHERE idRequest = %s", request.getId()));
     }
 
     public static int insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
@@ -126,6 +157,10 @@ public class Query {
         return -1;
     }
 
+    public static int deleteWorkoutDay(Statement stmt, WorkoutDay workoutDay) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM WorkoutDay" +
+                "WHERE idWorkoutDay = %s", workoutDay.getId()));
+    }
 
     public static int insertWorkoutPlan(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
 
@@ -151,8 +186,17 @@ public class Query {
                 "WHERE Athlete.fc = '%s'", athlete.getFiscalCode()));
     }
 
+    public static int deleteWorkoutPla(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM WorkoutPlan" +
+                "WHERE idWorkoutPlan = %s", workoutPlan.getId()));
+    }
+
     public static int insertSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Subscribe (Course, Athlete) VALUES (%s, '%s');", course.getId(), athlete.getFiscalCode()));
     }
 
+    public static int deleteSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM Subscribe" +
+                "WHERE Course = %s and Athlete = '%s'", course.getId(), athlete.getFiscalCode()));
+    }
 }

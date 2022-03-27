@@ -13,7 +13,7 @@ public class AthleteDAO {
         try(Statement stmt = conn.createStatement();){
             Query.insertAthlete(stmt, athlete);
         }catch(SQLException sqlEx){
-            System.out.println(sqlEx);
+            sqlEx.printStackTrace();
         }
     }
     public Athlete loadAthlete(String fc) throws SQLException {
@@ -26,7 +26,7 @@ public class AthleteDAO {
                 throw new Exception("Athlete not found!");
             }
         } catch(Exception sqlEx){
-            System.out.println(sqlEx);
+            sqlEx.printStackTrace();
         }
         return null;
     }
