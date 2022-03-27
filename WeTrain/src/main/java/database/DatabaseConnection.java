@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 
 public class DatabaseConnection {
 
-    private static final DatabaseConnection dbConn = new DatabaseConnection();
-    public Connection conn;
+    private static DatabaseConnection dbConn;
+    private Connection conn;
 
     private DatabaseConnection() {
         try {
@@ -19,6 +19,9 @@ public class DatabaseConnection {
         }
     }
 
+    public Connection getConn(){
+        return conn;
+    }
 
     public static DatabaseConnection getInstance(){
         if(dbConn == null){

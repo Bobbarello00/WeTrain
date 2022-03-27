@@ -1,4 +1,4 @@
-1] As a user with a hectic schedule, i want online live courses, so that i can squeeze in a convinient workout.
+1] As a user with a hectic schedule, i want online live courses, so that i can squeeze in a convenient workout.
 
 2] As a personal trainer, i want to keep track of all my courses, so i can organize my job better.
 

@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 
 public class EmailFormController {
     @FXML
-    private TextArea EmailTextArea;
+    private TextArea emailTextArea;
     @FXML
-    private TextField ObjectTextField;
+    private TextField objectTextField;
     @FXML
     private Button sendButton;
     @FXML

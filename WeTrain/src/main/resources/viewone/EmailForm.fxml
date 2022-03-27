@@ -44,12 +44,12 @@
       </ImageView>
       <Pane layoutX="60.0" layoutY="178.0" prefHeight="200.0" prefWidth="399.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
          <children>
-            <TextArea fx:id="EmailTextArea" layoutX="40.0" layoutY="32.0" prefHeight="137.0" prefWidth="314.0" promptText="Email content" scaleX="1.25" scaleY="1.25" style="-fx-prompt-text-fill: white;" wrapText="true">
+            <TextArea fx:id="emailTextArea" layoutX="40.0" layoutY="32.0" prefHeight="137.0" prefWidth="314.0" promptText="Email content" scaleX="1.25" scaleY="1.25" style="-fx-prompt-text-fill: white;" wrapText="true">
                <padding>
                   <Insets left="5.0" right="5.0" />
                </padding></TextArea>
          </children>
       </Pane>
-      <TextField fx:id="ObjectTextField" layoutX="102.0" layoutY="132.0" prefHeight="25.0" prefWidth="246.0" promptText="Email object" scaleX="1.3" scaleY="1.3" />
+      <TextField fx:id="objectTextField" layoutX="102.0" layoutY="132.0" prefHeight="25.0" prefWidth="246.0" promptText="Email object" scaleX="1.3" scaleY="1.3" />
    </children>
 </Pane>

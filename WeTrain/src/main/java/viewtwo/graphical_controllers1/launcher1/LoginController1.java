@@ -15,10 +15,10 @@ public class LoginController1 {
     private TextField emailTextField;
     @FXML
     protected void backAction() throws IOException {
-        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");;
+        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
     }
     @FXML
     protected void loginAction() throws IOException {
-        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");;
+        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
     }
 }

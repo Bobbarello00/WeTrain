@@ -8,11 +8,11 @@ public class MainPane {
 
     private MainPane(){}
 
-    public synchronized static void setInstance(BorderPane newPane){
+    public static synchronized  void setInstance(BorderPane newPane){
         pane = newPane;
     }
 
-    public static BorderPane getInstance(){
+    public static synchronized BorderPane getInstance(){
         if(pane == null){
             System.out.println("Error: mainPane is null");
         }
