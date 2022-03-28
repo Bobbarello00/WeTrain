@@ -2,6 +2,7 @@ package viewone.graphical_controllers.launcher;
 
 
 import javafx.scene.control.*;
+import viewone.bean.TrainerBean;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
@@ -11,11 +12,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MoreInfoController implements Initializable {
     private static final String HOME = "launcher";
-    private static String string;
+    private static String selectedProfile;
     @FXML
     private Button registerButton;
     @FXML
@@ -25,7 +27,7 @@ public class MoreInfoController implements Initializable {
     @FXML
     private RadioButton nogenderButton;
     @FXML
-    private DatePicker birthText;
+    private DatePicker birthPicker;
     @FXML
     private TextField fcText;
     @FXML
@@ -36,12 +38,20 @@ public class MoreInfoController implements Initializable {
     private TextField usernameText;
     @FXML
     void registerButtonAction() throws IOException {
-        String username = usernameText.getText();
-        String name = firstNameText.getText();
-        String lastName = lastNameText.getText();
-        String fc = fcText.getText();
-        String birth = birthText.toString();
-        PageSwitchSizeChange.loadHome(registerButton, string + "sHome", string + "s");
+        //TODO
+        if(!Objects.equals(usernameText.getText(), "") & !Objects.equals(firstNameText.getText(), "") & !Objects.equals(lastNameText.getText(), "") & !Objects.equals(fcText.getText(), "") & birthPicker.getValue() != null) {
+            NewUser.getInstance().setUsername(usernameText.getText());
+            NewUser.getInstance().setName(firstNameText.getText());
+            NewUser.getInstance().setSurname(lastNameText.getText());
+            NewUser.getInstance().setFc(fcText.getText());
+            NewUser.getInstance().setBirth(birthPicker.getValue());
+            if (Objects.equals(selectedProfile, "Athlete")) {
+
+            } else {
+                NewUser.setInstance(new TrainerBean());
+            }
+            PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
+        }
     }
     @FXML
     protected void closeAction(){
@@ -57,11 +67,11 @@ public class MoreInfoController implements Initializable {
     }
     @FXML
     void registrationTextAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),string + "Registration", HOME);
+        PageSwitchSimple.switchPage(MainPane.getInstance(), selectedProfile + "Registration", HOME);
     }
 
     public static void setSelectedProfileString(String selectedProfileString){
-        string = selectedProfileString;
+        selectedProfile = selectedProfileString;
     }
 
     @Override

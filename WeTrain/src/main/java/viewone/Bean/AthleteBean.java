@@ -1,4 +1,4 @@
-package viewone.Bean;
+package viewone.bean;
 
 import java.time.LocalDate;
 

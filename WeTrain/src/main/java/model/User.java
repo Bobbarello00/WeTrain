@@ -8,6 +8,9 @@ public abstract class User {
     private LocalDate dateOfBirth;
     private String fiscalCode;
     private String email;
+    private String password;
+
+    protected User() {}
 
     protected User(String name, String surname, LocalDate dateOfBirth, String fc, String email){
         this.name = name;
@@ -36,5 +39,9 @@ public abstract class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

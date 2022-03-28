@@ -1,4 +1,4 @@
-package viewone.Bean;
+package viewone.bean;
 
 public class TrainerBean extends UserBean{
     private String iban;

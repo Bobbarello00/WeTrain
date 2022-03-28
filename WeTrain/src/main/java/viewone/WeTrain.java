@@ -1,16 +1,13 @@
 package viewone;
 
 import database.DatabaseConnection;
-import database.Query;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Athlete;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class WeTrain extends Application {

@@ -26,16 +26,14 @@ module com.wetrain.wetrain {
 
     exports viewtwo.graphical_controllers1;
     opens viewtwo.graphical_controllers1 to javafx.fxml;
-    //exports viewtwo.graphical_controllers1.athletes1;
-    //opens viewtwo.graphical_controllers1.athletes1 to javafx.fxml;
-    //exports viewtwo.graphical_controllers1.trainers1;
-    //opens viewtwo.graphical_controllers1.trainers1 to javafx.fxml;
     exports viewtwo.graphical_controllers1.launcher1;
     opens viewtwo.graphical_controllers1.launcher1 to javafx.fxml;
     exports viewtwo;
     opens viewtwo to javafx.fxml;
     exports database;
     opens database to javafx.fxml;
+    exports viewone.bean;
+    opens viewone.bean to javafx.fxml;
 
     exports model;
 }

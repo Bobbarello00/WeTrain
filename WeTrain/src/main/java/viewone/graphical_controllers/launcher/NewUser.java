@@ -1,25 +1,25 @@
 package viewone.graphical_controllers.launcher;
 
-import model.Athlete;
-import model.Trainer;
-import model.User;
-
+import viewone.bean.AthleteBean;
+import viewone.bean.TrainerBean;
+import viewone.bean.UserBean;
+//TODO
 public class NewUser {
-    private static User user;
+    private static UserBean user;
 
     private String birth;
 
     private NewUser() {}
 
-    public static void setInstance(Athlete athlete){
+    public static void setInstance(AthleteBean athlete){
         user = athlete;
     }
 
-    public static void setInstance(Trainer trainer){
+    public static void setInstance(TrainerBean trainer){
         user = trainer;
     }
 
-    public static User getInstance(){
+    public static UserBean getInstance(){
         return user;
     }
 }

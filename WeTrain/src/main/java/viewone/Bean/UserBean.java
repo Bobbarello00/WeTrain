@@ -1,10 +1,15 @@
-package viewone.Bean;
+package viewone.bean;
+
+import java.time.LocalDate;
 
 public abstract class UserBean {
     private String username;
     private String name;
     private String surname;
     private String fc;
+    private String email;
+    private String password;
+    private LocalDate birth;
 
     public UserBean() {}
 
@@ -45,5 +50,29 @@ public abstract class UserBean {
 
     public void setFc(String fc) {
         this.fc = fc;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public LocalDate getBirth() {
+        return birth;
+    }
+
+    public void setBirth(LocalDate birth) {
+        this.birth = birth;
     }
 }
