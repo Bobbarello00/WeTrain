@@ -11,7 +11,7 @@ public class ExerciseCatalogue {
     }
 
     public static List<Exercise> filterExercisesByName(String exerciseName){
-        return ;
+        return new ArrayList<>(); //TODO
     }
 
     public void addExercise(Exercise newExercise){

@@ -8,10 +8,11 @@ import java.sql.*;
 public class Query {
 
     private Query(){}
+    private static final String SELECT_ALL = "SELECT *;";
 
     //TODO gestione duplicate record
     public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Notification;" +
                 "WHERE Athlete = '%s' or Trainer = '%s'", user.getFiscalCode(), user.getFiscalCode()));
     }
@@ -33,7 +34,7 @@ public class Query {
     }
 
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Athlete;" +
                 "WHERE fc = '%s'", fc));
     }
@@ -52,7 +53,7 @@ public class Query {
     }
 
     public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Trainer;" +
                 "WHERE fc = '%s'", fc));
     }
@@ -71,7 +72,7 @@ public class Query {
     }
 
     public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Course;" +
                 "WHERE idCourse = %s", id));
     }
@@ -86,13 +87,13 @@ public class Query {
     }
 
     public static ResultSet loadExercise(Statement stmt, int idExercise) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Exercise;" +
                 "WHERE idExercise = %s", idExercise));
     }
 
     public static ResultSet loadTrainerExercises(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format("SELECT Exercise.*;" +
                 "FROM Exercise join Trainer on Exercise.Trainer = '%s';", trainer.getFiscalCode()));
     }
 
@@ -106,7 +107,7 @@ public class Query {
     }
 
     public static ResultSet loadLesson(Statement stmt, int id) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Lesson;" +
                 "WHERE idLesson = %s", id));
     }
@@ -125,12 +126,12 @@ public class Query {
     }
 
     public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format("SELECT Request.*;" +
                 "FROM Request join Trainer on Request.Trainer = '%s';", trainer.getFiscalCode()));
     }
 
     public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT *;" +
+        return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Request;" +
                 "WHERE idRequest = %s", id));
     }

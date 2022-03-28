@@ -40,7 +40,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <TextField layoutX="238.0" layoutY="206.0" prefHeight="31.0" prefWidth="174.0" promptText="First Name:">
+      <TextField fx:id="firstNameText" layoutX="238.0" layoutY="206.0" prefHeight="31.0" prefWidth="174.0" promptText="First Name:">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -96,7 +96,7 @@
             </Text>
          </children>
       </HBox>
-      <TextField layoutX="431.0" layoutY="206.0" prefHeight="31.0" prefWidth="174.0" promptText="Last Name:">
+      <TextField fx:id="lastNameText" layoutX="431.0" layoutY="206.0" prefHeight="31.0" prefWidth="174.0" promptText="Last Name:">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -104,11 +104,11 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <DatePicker layoutX="238.0" layoutY="302.0" prefHeight="31.0" prefWidth="203.0" promptText="Birth Date:      gg/mm/aaaa">
+      <DatePicker fx:id="birthText" layoutX="238.0" layoutY="302.0" prefHeight="31.0" prefWidth="203.0" promptText="Birth Date:      gg/mm/aaaa">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></DatePicker>
-      <TextField layoutX="238.0" layoutY="253.0" prefHeight="31.0" prefWidth="174.0" promptText="FiscalCode:">
+      <TextField fx:id="fcText" layoutX="238.0" layoutY="253.0" prefHeight="31.0" prefWidth="174.0" promptText="FiscalCode:">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -119,7 +119,7 @@
       <RadioButton fx:id="maleButton" layoutX="461.0" layoutY="310.0" mnemonicParsing="false" text="M" />
       <RadioButton fx:id="femaleButton" layoutX="520.0" layoutY="310.0" mnemonicParsing="false" text="F" />
       <RadioButton fx:id="nogenderButton" layoutX="574.0" layoutY="310.0" mnemonicParsing="false" text="X" />
-      <TextField layoutX="431.0" layoutY="253.0" prefHeight="31.0" prefWidth="174.0" promptText="UserName:">
+      <TextField fx:id="usernameText" layoutX="431.0" layoutY="253.0" prefHeight="31.0" prefWidth="174.0" promptText="UserName:">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

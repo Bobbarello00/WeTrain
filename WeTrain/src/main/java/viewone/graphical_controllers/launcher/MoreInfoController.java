@@ -1,14 +1,12 @@
 package viewone.graphical_controllers.launcher;
 
 
+import javafx.scene.control.*;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +25,22 @@ public class MoreInfoController implements Initializable {
     @FXML
     private RadioButton nogenderButton;
     @FXML
+    private DatePicker birthText;
+    @FXML
+    private TextField fcText;
+    @FXML
+    private TextField firstNameText;
+    @FXML
+    private TextField lastNameText;
+    @FXML
+    private TextField usernameText;
+    @FXML
     void registerButtonAction() throws IOException {
+        String username = usernameText.getText();
+        String name = firstNameText.getText();
+        String lastName = lastNameText.getText();
+        String fc = fcText.getText();
+        String birth = birthText.toString();
         PageSwitchSizeChange.loadHome(registerButton, string + "sHome", string + "s");
     }
     @FXML
