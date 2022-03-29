@@ -6,10 +6,19 @@ import model.Trainer;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class TrainerDAO {
     Connection conn = DatabaseConnection.getInstance().getConn();
+
+    public void saveTrainer(Trainer trainer) throws SQLException {
+        try(Statement stmt = conn.createStatement();){
+            Query.insertTrainer(stmt, trainer);
+        }catch(SQLException sqlEx){
+            sqlEx.printStackTrace();
+        }
+    }
 
     public Trainer loadTrainer(String fc){
         try(Statement stmt =conn.createStatement(); ResultSet rs = Query.loadTrainer(stmt, fc)){
