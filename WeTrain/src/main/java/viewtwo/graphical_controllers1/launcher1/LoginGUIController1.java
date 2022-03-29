@@ -8,7 +8,7 @@ import viewtwo.graphical_controllers1.PageSwitchSimple1;
 
 import java.io.IOException;
 
-public class LoginController1 {
+public class LoginGUIController1 {
     @FXML
     private PasswordField passwordField;
     @FXML

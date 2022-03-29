@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProfileSelectionController1 implements Initializable {
+public class ProfileSelectionGUIController1 implements Initializable {
     private RadioButton notSelected=new RadioButton();
     @FXML
     private RadioButton trainerSelection;
