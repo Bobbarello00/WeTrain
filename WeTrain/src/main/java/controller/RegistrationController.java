@@ -1,22 +1,30 @@
 package controller;
 
+import database.dao_classes.AthleteDAO;
+import database.dao_classes.TrainerDAO;
 import model.Athlete;
 import model.Trainer;
-import model.User;
+import viewone.bean.CredentialBean;
+import viewone.bean.UserBean;
 
+import java.sql.SQLException;
 import java.util.Objects;
-//TODO
-public class RegistrationController {
-    private User user;
 
-    public void setUser(ProfileBean profile) {
-        if(Objects.equals(profile, "Athlete")) {
-            user = new Athlete();
+public class RegistrationController {
+    private static CredentialBean credentialBean;
+
+    public static void processUserInfo(UserBean bean) throws SQLException {
+        if(Objects.equals(bean.getType(), "Athlete")) {
+            AthleteDAO athlete = new AthleteDAO();
+            athlete.saveAthlete(new Athlete(bean.getName(), bean.getSurname(), bean.getBirth(), bean.getFc(), credentialBean.getEmail(), credentialBean.getPassword()));
         } else {
-            user = new Trainer();
+            TrainerDAO trainer = new TrainerDAO();
+            trainer.saveTrainer(new Trainer(bean.getName(), bean.getSurname(), bean.getBirth(), bean.getFc(), credentialBean.getEmail(), credentialBean.getPassword()));
         }
     }
 
-    public
+    public static void setCredentialInfo(CredentialBean credential) {
+        credentialBean = credential;
+    }
 
 }

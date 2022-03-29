@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.launcher;
 
 
+import controller.RegistrationController;
 import javafx.scene.control.*;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -12,6 +13,7 @@ import viewone.bean.UserBean;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -36,10 +38,9 @@ public class MoreInfoGUIController implements Initializable {
     private TextField lastNameText;
     @FXML
     private TextField usernameText;
-    ToggleGroup group;
-    char gender;
+    private char gender;
 
-    public UserBean getValue(){
+    public void sendUserInfo(){
         if(!Objects.equals(usernameText.getText(), "") & !Objects.equals(firstNameText.getText(), "") & !Objects.equals(lastNameText.getText(), "") & !Objects.equals(fcText.getText(), "") & birthPicker.getValue() != null) {
             UserBean user = new UserBean();
 
@@ -50,15 +51,19 @@ public class MoreInfoGUIController implements Initializable {
             user.setBirth(birthPicker.getValue());
             user.setType(selectedProfile);
             user.setGender(gender);
-            return user;
+            try {
+                RegistrationController.processUserInfo(user);
+            } catch (SQLException e){
+                System.out.println("Errore nel salvataggio dell'utente.");
+            }
         } else {
             //Notifica all'utente che deve inserire tutti i campi
         }
-        return null;
     }
 
     @FXML
     public void registerButtonAction() throws IOException {
+        sendUserInfo();
         PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
     }
     @FXML
@@ -84,7 +89,7 @@ public class MoreInfoGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        group = new ToggleGroup();
+        ToggleGroup group = new ToggleGroup();
         nogenderButton.setToggleGroup(group);
         maleButton.setToggleGroup(group);
         femaleButton.setToggleGroup(group);

@@ -13,14 +13,6 @@ public class UserBean {
 
     public UserBean() {}
 
-    public UserBean(String username, String name, String surname, String fc, char gender) {
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.fc = fc;
-        this.gender = gender;
-    }
-
     public String getType() {
         return type;
     }
