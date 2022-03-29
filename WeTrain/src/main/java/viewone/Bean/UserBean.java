@@ -10,6 +10,7 @@ public abstract class UserBean {
     private String email;
     private String password;
     private LocalDate birth;
+    protected String type;
 
     public UserBean() {}
 

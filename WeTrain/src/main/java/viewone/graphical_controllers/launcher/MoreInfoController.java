@@ -9,6 +9,8 @@ import viewone.PageSwitchSizeChange;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import viewone.bean.UserBean;
+import viewone.bean.AthleteBean;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,22 +38,30 @@ public class MoreInfoController implements Initializable {
     private TextField lastNameText;
     @FXML
     private TextField usernameText;
-    @FXML
-    void registerButtonAction() throws IOException {
-        //TODO
-        if(!Objects.equals(usernameText.getText(), "") & !Objects.equals(firstNameText.getText(), "") & !Objects.equals(lastNameText.getText(), "") & !Objects.equals(fcText.getText(), "") & birthPicker.getValue() != null) {
-            NewUser.getInstance().setUsername(usernameText.getText());
-            NewUser.getInstance().setName(firstNameText.getText());
-            NewUser.getInstance().setSurname(lastNameText.getText());
-            NewUser.getInstance().setFc(fcText.getText());
-            NewUser.getInstance().setBirth(birthPicker.getValue());
-            if (Objects.equals(selectedProfile, "Athlete")) {
 
+    public UserBean getValue(){
+        if(!Objects.equals(usernameText.getText(), "") & !Objects.equals(firstNameText.getText(), "") & !Objects.equals(lastNameText.getText(), "") & !Objects.equals(fcText.getText(), "") & birthPicker.getValue() != null) {
+            UserBean user;
+            if (Objects.equals(selectedProfile, "Athlete")) {
+                user = new AthleteBean();
             } else {
-                NewUser.setInstance(new TrainerBean());
+                user = new TrainerBean();
             }
-            PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
+            user.setUsername(usernameText.getText());
+            user.setName(firstNameText.getText());
+            user.setSurname(lastNameText.getText());
+            user.setFc(fcText.getText());
+            user.setBirth(birthPicker.getValue());
+            return user;
+        } else {
+            //Notifica all'utente che deve inserire tutti i campi
         }
+        return null;
+    }
+
+    @FXML
+    public void registerButtonAction() throws IOException {
+        PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
     }
     @FXML
     protected void closeAction(){
