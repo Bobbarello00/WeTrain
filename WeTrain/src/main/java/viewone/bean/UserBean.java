@@ -2,23 +2,31 @@ package viewone.bean;
 
 import java.time.LocalDate;
 
-public abstract class UserBean {
+public class UserBean {
     private String username;
     private String name;
     private String surname;
     private String fc;
-    private String email;
-    private String password;
     private LocalDate birth;
     protected String type;
+    private char gender;
 
     public UserBean() {}
 
-    public UserBean(String username, String name, String surname, String fc) {
+    public UserBean(String username, String name, String surname, String fc, char gender) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.fc = fc;
+        this.gender = gender;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUsername() {
@@ -53,27 +61,19 @@ public abstract class UserBean {
         this.fc = fc;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public LocalDate getBirth() {
         return birth;
     }
 
     public void setBirth(LocalDate birth) {
         this.birth = birth;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
     }
 }

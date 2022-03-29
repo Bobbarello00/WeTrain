@@ -2,7 +2,6 @@ package viewone.graphical_controllers.launcher;
 
 
 import javafx.scene.control.*;
-import viewone.bean.TrainerBean;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
@@ -10,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import viewone.bean.UserBean;
-import viewone.bean.AthleteBean;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,20 +36,20 @@ public class MoreInfoController implements Initializable {
     private TextField lastNameText;
     @FXML
     private TextField usernameText;
+    ToggleGroup group;
+    char gender;
 
     public UserBean getValue(){
         if(!Objects.equals(usernameText.getText(), "") & !Objects.equals(firstNameText.getText(), "") & !Objects.equals(lastNameText.getText(), "") & !Objects.equals(fcText.getText(), "") & birthPicker.getValue() != null) {
-            UserBean user;
-            if (Objects.equals(selectedProfile, "Athlete")) {
-                user = new AthleteBean();
-            } else {
-                user = new TrainerBean();
-            }
+            UserBean user = new UserBean();
+
             user.setUsername(usernameText.getText());
             user.setName(firstNameText.getText());
             user.setSurname(lastNameText.getText());
             user.setFc(fcText.getText());
             user.setBirth(birthPicker.getValue());
+            user.setType(selectedProfile);
+            user.setGender(gender);
             return user;
         } else {
             //Notifica all'utente che deve inserire tutti i campi
@@ -86,9 +84,21 @@ public class MoreInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ToggleGroup group = new ToggleGroup();
+        group = new ToggleGroup();
         nogenderButton.setToggleGroup(group);
         maleButton.setToggleGroup(group);
         femaleButton.setToggleGroup(group);
+        group.selectToggle(nogenderButton);
+        group.selectedToggleProperty().addListener(
+                (observable, oldToggle, newToggle) -> {
+                    if(newToggle == maleButton) {
+                        gender = 'm';
+                    } else if(newToggle == femaleButton) {
+                        gender = 'f';
+                    } else {
+                        gender = 'x';
+                    }
+                }
+        );
     }
 }

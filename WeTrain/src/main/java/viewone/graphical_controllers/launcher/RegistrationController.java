@@ -1,8 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
 import javafx.scene.control.TextField;
-import viewone.bean.AthleteBean;
-import viewone.bean.TrainerBean;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;
