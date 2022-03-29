@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class MoreInfoController implements Initializable {
+public class MoreInfoGUIController implements Initializable {
     private static final String HOME = "launcher";
     private static String selectedProfile;
     @FXML

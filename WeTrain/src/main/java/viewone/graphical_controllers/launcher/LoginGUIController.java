@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 
 import java.io.IOException;
 
-public class LoginController  extends LauncherController{
+public class LoginGUIController extends LauncherGUIController {
     @FXML
     void homeAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "launcher");

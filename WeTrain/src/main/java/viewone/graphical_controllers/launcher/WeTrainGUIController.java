@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class WeTrainController {
+public class WeTrainGUIController {
     @FXML
     private Button loginButton;
     @FXML

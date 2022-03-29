@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.util.Objects;
 
-public class RegistrationController extends LauncherController implements Initializable {
+public class RegistrationGUIController extends LauncherGUIController implements Initializable {
     private static final String HOME = "launcher";
     @FXML
     private static TextField emailField;

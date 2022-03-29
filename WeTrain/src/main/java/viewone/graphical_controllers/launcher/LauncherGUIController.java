@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public abstract class LauncherController implements Initializable {
+public abstract class LauncherGUIController implements Initializable {
     @FXML
     private TextField passwSField;
     @FXML
