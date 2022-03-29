@@ -8,7 +8,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddExerciseController {
+public class AddExerciseGUIController {
     @FXML
     private Button addButton;
     @FXML

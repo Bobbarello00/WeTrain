@@ -9,7 +9,7 @@ import javafx.scene.control.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ManageLessonsController extends HomeControllerTrainers implements Initializable {
+public class ManageLessonsGUIController extends HomeGUIControllerTrainers implements Initializable {
     @FXML
     private ListView<Node> coursesList;
     @Override

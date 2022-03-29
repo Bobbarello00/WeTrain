@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NewWorkoutPlanController extends HomeControllerTrainers implements Initializable {
+public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
     public final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML

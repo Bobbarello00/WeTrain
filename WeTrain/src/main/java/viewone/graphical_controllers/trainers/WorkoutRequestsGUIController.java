@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class WorkoutRequestsController extends HomeControllerTrainers implements Initializable {
+public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
     @FXML
     private ListView<Node> requestsList;

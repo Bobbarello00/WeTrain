@@ -19,7 +19,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class NewCourseController extends HomeControllerTrainers implements Initializable {
+public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
     @FXML
@@ -83,7 +83,7 @@ public class NewCourseController extends HomeControllerTrainers implements Initi
     @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
-        MenuTrainersController.resetSelectedButton();
+        MenuTrainersGUIController.resetSelectedButton();
         System.out.println("Created");
     }
     @FXML

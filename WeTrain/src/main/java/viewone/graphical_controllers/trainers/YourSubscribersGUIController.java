@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class YourSubscribersController extends HomeControllerTrainers implements Initializable {
+public class YourSubscribersGUIController extends HomeGUIControllerTrainers implements Initializable {
     @FXML
     private Label subscribersCountLabel;
     @FXML
