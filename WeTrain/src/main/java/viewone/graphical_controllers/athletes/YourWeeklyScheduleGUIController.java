@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class YourWeeklyScheduleController extends HomeControllerAthletes {
+public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes {
 
     private Button previousButton;
     private Text previousText;

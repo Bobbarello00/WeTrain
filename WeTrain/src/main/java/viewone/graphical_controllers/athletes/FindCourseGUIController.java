@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class FindCourseController extends HomeControllerAthletes implements Initializable {
+public class FindCourseGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private final Boolean[] selected = new Boolean[7];
     private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();

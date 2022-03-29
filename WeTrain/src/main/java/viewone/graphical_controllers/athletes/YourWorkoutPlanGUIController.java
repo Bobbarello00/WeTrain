@@ -12,7 +12,7 @@ import javafx.scene.control.ListView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class YourWorkoutPlanController extends HomeControllerAthletes implements Initializable {
+public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
     @FXML

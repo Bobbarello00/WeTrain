@@ -12,7 +12,7 @@ import viewone.ListPopulate;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AthletesHomeController extends HomeControllerAthletes implements Initializable {
+public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
     @FXML
     private ListView<Node> coursesList;
     @FXML

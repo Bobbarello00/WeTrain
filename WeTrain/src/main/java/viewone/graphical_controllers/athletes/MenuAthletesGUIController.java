@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class MenuAthletesController {
+public class MenuAthletesGUIController {
     private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
     private static final String HOME = "athletes";
     @FXML

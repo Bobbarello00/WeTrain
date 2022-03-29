@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class YourPersonalTrainerController extends HomeControllerAthletes{
+public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes {
     @FXML
     private Label trainerName;
     @FXML
