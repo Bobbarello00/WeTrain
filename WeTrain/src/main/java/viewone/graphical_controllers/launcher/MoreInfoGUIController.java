@@ -51,7 +51,9 @@ public class MoreInfoGUIController implements Initializable {
             user.setUsername(usernameText.getText());
             user.setName(firstNameText.getText());
             user.setSurname(lastNameText.getText());
-            user.setFc(fcText.getText());
+            if(!user.setFc(fcText.getText())){
+                return 2;
+            }
             if(!user.setBirth(birthPicker.getEditor().getText())){
                return 1;
             }
@@ -80,6 +82,7 @@ public class MoreInfoGUIController implements Initializable {
             switch (res) {
                 case (-1) -> alert.setHeaderText("Empty fields");
                 case (1) -> alert.setHeaderText("Birth date not valid");
+                case (2) -> alert.setHeaderText("Fiscal code not valid");
             }
             alert.showAndWait();
         }

@@ -3,6 +3,7 @@ package viewone.bean;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.regex.*;
 
 public class UserBean {
     private String username;
@@ -51,8 +52,16 @@ public class UserBean {
         return fc;
     }
 
-    public void setFc(String fc) {
-        this.fc = fc;
+    public boolean setFc(String fc) {
+        if(isValidFc(fc)) {
+            this.fc = fc;
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidFc(String fc) {
+        return Pattern.matches("^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z])$|([0-9]{11})$",fc);
     }
 
     public LocalDate getBirth() {
@@ -60,15 +69,14 @@ public class UserBean {
     }
 
     public boolean setBirth(String birth) {
-        if(isValidBirthDate(birth)) {
+        if(isValidBirth(birth)) {
             this.birth = LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 
-    private static boolean isValidBirthDate(String value) {
+    private static boolean isValidBirth(String value) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         try {
             LocalDate ld = LocalDate.parse(value, formatter);
