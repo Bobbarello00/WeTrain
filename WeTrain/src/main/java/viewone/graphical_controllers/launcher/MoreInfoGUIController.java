@@ -2,21 +2,18 @@ package viewone.graphical_controllers.launcher;
 
 
 import controller.RegistrationController;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.util.converter.LocalDateStringConverter;
+import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.stage.Stage;
 import viewone.bean.UserBean;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -43,15 +40,21 @@ public class MoreInfoGUIController implements Initializable {
     private TextField usernameText;
     private char gender;
 
-    public void sendUserInfo(){
-        if(!Objects.equals(usernameText.getText(), "") & !Objects.equals(firstNameText.getText(), "") & !Objects.equals(lastNameText.getText(), "") & !Objects.equals(fcText.getText(), "") & birthPicker.getValue() != null) {
-            UserBean user = new UserBean();
+    public int sendUserInfo(){
+        if(!Objects.equals(usernameText.getText(), "")
+                & !Objects.equals(firstNameText.getText(), "")
+                & !Objects.equals(lastNameText.getText(), "")
+                & !Objects.equals(fcText.getText(), "")
+                & !Objects.equals(birthPicker.getEditor().getText(), "")){
 
+            UserBean user = new UserBean();
             user.setUsername(usernameText.getText());
             user.setName(firstNameText.getText());
             user.setSurname(lastNameText.getText());
             user.setFc(fcText.getText());
-            user.setBirth(birthPicker.getEditor().getText());
+            if(!user.setBirth(birthPicker.getEditor().getText())){
+               return 1;
+            }
             user.setType(selectedProfile);
             user.setGender(gender);
             try {
@@ -59,17 +62,29 @@ public class MoreInfoGUIController implements Initializable {
             } catch (SQLException e){
                 System.out.println("Errore nel salvataggio dell'utente.");
             }
+            return 0;
         } else {
-            //Notifica all'utente che deve inserire tutti i campi
-            System.out.println("Compilare tutti i campi.");
+            return -1;
         }
     }
 
     @FXML
     public void registerButtonAction() throws IOException {
-        sendUserInfo();
-        PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
+        int res = sendUserInfo();
+        if(res == 0) {
+            PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
+        } else{
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("OOPS, SOMETHING WENT WRONG!");
+            alert.setContentText("Be sure to fill all fields correctly, thanks for your collaboration!");
+            switch (res) {
+                case (-1) -> alert.setHeaderText("Empty fields");
+                case (1) -> alert.setHeaderText("Birth date not valid");
+            }
+            alert.showAndWait();
+        }
     }
+
     @FXML
     protected void closeAction(){
         ((Stage) registerButton.getScene().getWindow()).close();

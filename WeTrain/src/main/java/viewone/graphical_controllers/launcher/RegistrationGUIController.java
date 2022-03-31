@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.launcher;
 
 import controller.RegistrationController;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -27,7 +28,11 @@ public class RegistrationGUIController extends LauncherGUIController implements 
             sendCredentialInfo();
             PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME);
         } else {
-            System.out.println("Inserire email e password.");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ATTENZIONE!");
+            alert.setHeaderText("Inserire email e password.");
+            alert.setContentText("Assicurati di aver compilato tutti i campi prima di procedere, grazie.");
+            alert.showAndWait();
         }
     }
     @FXML

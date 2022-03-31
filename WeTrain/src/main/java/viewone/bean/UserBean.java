@@ -2,6 +2,7 @@ package viewone.bean;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class UserBean {
     private String username;
@@ -58,10 +59,25 @@ public class UserBean {
         return birth;
     }
 
-    public void setBirth(String birth) {
-        //TODO CONTROLLARE FORMATO DATA
+    public boolean setBirth(String birth) {
+        if(isValidBirthDate(birth)) {
+            this.birth = LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private static boolean isValidBirthDate(String value) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.birth = LocalDate.parse(birth, formatter);
+        try {
+            LocalDate ld = LocalDate.parse(value, formatter);
+            String result = ld.format(formatter);
+            return result.equals(value);
+        } catch (DateTimeParseException exp) {
+            //exp.printStackTrace();
+        }
+        return false;
     }
 
     public char getGender() {

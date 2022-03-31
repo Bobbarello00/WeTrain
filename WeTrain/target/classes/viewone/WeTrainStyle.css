@@ -157,3 +157,18 @@ BorderPane {
     -fx-text-fill: rgb(24,147,21);
     -fx-background-color: rgba(24,147,21,0.1) ;
 }
+
+.dialog {
+    -fx-font-family: 'ABeeZee', sans-serif;
+    -fx-background-color: rgba(194, 255, 192, 1);
+    -fx-border-radius: 3em;
+    -fx-border-color: rgb(24,147,21);
+    -fx-background-radius: 3.5em;
+    -fx-border-width: 3;
+}
+
+.dialog .header-panel{
+    -fx-font-family: 'ABeeZee', sans-serif;
+    -fx-background-color: rgba(194, 255, 192, 1);
+    -fx-background-radius: 3.5em;
+}
