@@ -23,9 +23,16 @@ public class TrainerDAO {
     public Trainer loadTrainer(String fc){
         try(Statement stmt =conn.createStatement(); ResultSet rs = Query.loadTrainer(stmt, fc)){
             if(rs.next()){
-                return new Trainer(rs.getString("Name"),rs.getString("Surname"),
-                        rs.getDate("Birth").toLocalDate(),rs.getString("FC"),
-                        rs.getString("Email"),rs.getString("Iban"));
+                return new Trainer(rs.getString("Name"),
+                        rs.getString("Surname"),
+                        rs.getString("Username"),
+                        rs.getDate("Birth").toLocalDate(),
+                        rs.getString("FC"),
+                        rs.getString("Gender").charAt(0),
+                        rs.getString("Email"),
+                        rs.getString("Password"),
+                        rs.getString("Iban")
+                );
             }else{
                 throw new Exception("Trainer not found!");
             }

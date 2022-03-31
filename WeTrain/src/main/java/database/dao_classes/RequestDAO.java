@@ -42,9 +42,16 @@ public class RequestDAO {
                 ResultSet rs1 = Query.loadAthlete(stmt, rs.getString("Athlete"));
                 Athlete myAthlete = null;
                 if (rs1.next()) {
-                    myAthlete = new Athlete(rs1.getString("Name"), rs1.getString("Surname"),
-                            rs1.getDate("Birth").toLocalDate(), rs1.getString("FC"), rs1.getString("Email"),
-                            rs1.getString("CardNumber"), rs1.getDate("CardExpirationDate").toLocalDate());
+                    myAthlete = new Athlete(rs1.getString("Name"),
+                            rs1.getString("Surname"),
+                            rs1.getString("Username"),
+                            rs1.getDate("Birth").toLocalDate(),
+                            rs1.getString("FC"),
+                            rs1.getString("Gender").charAt(0),
+                            rs1.getString("Email"),
+                            rs1.getString("Password"),
+                            rs1.getString("CardNumber"),
+                            rs1.getDate("CardExpirationDate").toLocalDate());
                 }
                 myList.add(new Request(rs.getInt("idRequest"), rs.getTimestamp("RequestDate").toLocalDateTime(),
                         myAthlete, trainer));

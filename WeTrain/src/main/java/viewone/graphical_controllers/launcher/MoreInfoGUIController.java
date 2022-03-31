@@ -3,6 +3,7 @@ package viewone.graphical_controllers.launcher;
 
 import controller.RegistrationController;
 import javafx.scene.control.*;
+import javafx.util.converter.LocalDateStringConverter;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
@@ -14,6 +15,8 @@ import viewone.bean.UserBean;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -48,7 +51,7 @@ public class MoreInfoGUIController implements Initializable {
             user.setName(firstNameText.getText());
             user.setSurname(lastNameText.getText());
             user.setFc(fcText.getText());
-            user.setBirth(birthPicker.getValue());
+            user.setBirth(birthPicker.getEditor().getText());
             user.setType(selectedProfile);
             user.setGender(gender);
             try {
@@ -58,6 +61,7 @@ public class MoreInfoGUIController implements Initializable {
             }
         } else {
             //Notifica all'utente che deve inserire tutti i campi
+            System.out.println("Compilare tutti i campi.");
         }
     }
 

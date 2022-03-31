@@ -6,12 +6,12 @@ public class Athlete extends User {
     private String cardNumber;
     private LocalDate cardExpirationDate;
 
-    public Athlete(String name, String surname, LocalDate dateOfBirth, String fc, String email, String password){
-        super(name, surname, dateOfBirth, fc, email);
+    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password){
+        super(name, surname, username, dateOfBirth, fc, gender, email, password);
     }
 
-    public Athlete(String name, String surname, LocalDate dateOfBirth, String fc, String email, String cardNumber, LocalDate cardExpirationDate){
-        super(name, surname, dateOfBirth, fc, email);
+    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password, String cardNumber, LocalDate cardExpirationDate){
+        super(name, surname, username, dateOfBirth, fc, gender, email, password);
         this.cardNumber = cardNumber;
         this.cardExpirationDate = cardExpirationDate;
     }

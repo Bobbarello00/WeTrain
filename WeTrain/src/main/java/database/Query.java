@@ -40,7 +40,7 @@ public class Query {
     }
 
     public static int insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (FC, Name, Surname, Birth, Email) VALUES ('%s', '%s', '%s', '%s', '%s');", athlete.getFiscalCode(), athlete.getName(), athlete.getSurname(), Date.valueOf(athlete.getDateOfBirth()), athlete.getEmail()));
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (FC, Name, Surname, Birth, Email, Gender, Password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", athlete.getFiscalCode(), athlete.getName(), athlete.getSurname(), Date.valueOf(athlete.getDateOfBirth()), athlete.getEmail(), athlete.getGender(), athlete.getPassword()));
     }
 
     public static int insertCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -59,7 +59,7 @@ public class Query {
     }
 
     public static int insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (FC, Name, Surname, Birth, Email) VALUES ('%s', '%s', '%s', '%s', '%s');", trainer.getFiscalCode(), trainer.getName(), trainer.getSurname(), Date.valueOf(trainer.getDateOfBirth()), trainer.getEmail()));
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (FC, Name, Surname, Birth, Gender, Email, Password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s');", trainer.getFiscalCode(), trainer.getName(), trainer.getSurname(), Date.valueOf(trainer.getDateOfBirth()), trainer.getGender(), trainer.getEmail(), trainer.getPassword()));
     }
 
     public static int insertIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {

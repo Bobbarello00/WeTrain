@@ -16,10 +16,10 @@ public class RegistrationController {
     public static void processUserInfo(UserBean bean) throws SQLException {
         if(Objects.equals(bean.getType(), "Athlete")) {
             AthleteDAO athlete = new AthleteDAO();
-            athlete.saveAthlete(new Athlete(bean.getName(), bean.getSurname(), bean.getBirth(), bean.getFc(), credentialBean.getEmail(), credentialBean.getPassword()));
+            athlete.saveAthlete(new Athlete(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialBean.getEmail(), credentialBean.getPassword()));
         } else {
             TrainerDAO trainer = new TrainerDAO();
-            trainer.saveTrainer(new Trainer(bean.getName(), bean.getSurname(), bean.getBirth(), bean.getFc(), credentialBean.getEmail(), credentialBean.getPassword()));
+            trainer.saveTrainer(new Trainer(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialBean.getEmail(), credentialBean.getPassword()));
         }
     }
 

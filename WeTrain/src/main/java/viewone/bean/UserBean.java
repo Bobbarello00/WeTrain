@@ -1,6 +1,7 @@
 package viewone.bean;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class UserBean {
     private String username;
@@ -12,14 +13,6 @@ public class UserBean {
     private char gender;
 
     public UserBean() {}
-
-    public UserBean(String username, String name, String surname, String fc, String type) {
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.fc = fc;
-        this.type = type;
-    }
 
     public String getType() {
         return type;
@@ -65,8 +58,10 @@ public class UserBean {
         return birth;
     }
 
-    public void setBirth(LocalDate birth) {
-        this.birth = birth;
+    public void setBirth(String birth) {
+        //TODO CONTROLLARE FORMATO DATA
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.birth = LocalDate.parse(birth, formatter);
     }
 
     public char getGender() {

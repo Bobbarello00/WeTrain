@@ -14,9 +14,9 @@ import java.util.Objects;
 public class RegistrationGUIController extends LauncherGUIController implements Initializable {
     private static final String HOME = "launcher";
     @FXML
-    private static TextField emailField;
+    private TextField emailField;
     @FXML
-    private static TextField passwField;
+    private TextField passwField;
     @FXML
     protected void homeTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
@@ -35,7 +35,7 @@ public class RegistrationGUIController extends LauncherGUIController implements 
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }
 
-    public static void sendCredentialInfo() {
+    public void sendCredentialInfo() {
         CredentialBean credential = new CredentialBean(emailField.getText(), passwField.getText());
         RegistrationController.setCredentialInfo(credential);
     }
