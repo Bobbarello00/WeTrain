@@ -106,6 +106,12 @@ public class Query {
                 "Password = '%s'", email, password));
     }
 
+    public static ResultSet loadUser(Statement stmt, String fc) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM User;" +
+                "WHERE FC = '%s'", fc));
+    }
+
     public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Course;" +
