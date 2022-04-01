@@ -1,9 +1,8 @@
 package database.dao_classes;
 
-import database.DatabaseConnection;
+import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Exercise;
-import model.Notification;
 import model.WorkoutDay;
 import model.WorkoutPlan;
 
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutDayDAO {
-    Connection conn = DatabaseConnection.getInstance().getConn();
+    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
             int id = Query.insertWorkoutDay(workoutDay, idWorkoutPlan);

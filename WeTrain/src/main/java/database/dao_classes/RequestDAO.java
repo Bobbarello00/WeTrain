@@ -1,6 +1,6 @@
 package database.dao_classes;
 
-import database.DatabaseConnection;
+import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Athlete;
 import model.Request;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RequestDAO {
-    Connection conn = DatabaseConnection.getInstance().getConn();
+    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public Request loadRequest(int requestCode, Trainer trainer, Athlete athlete) throws SQLException{
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadRequest(stmt, requestCode)) {

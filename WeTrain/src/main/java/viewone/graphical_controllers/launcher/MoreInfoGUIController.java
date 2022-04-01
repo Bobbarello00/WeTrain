@@ -14,6 +14,7 @@ import viewone.bean.UserBean;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -64,8 +65,13 @@ public class MoreInfoGUIController implements Initializable {
             user.setGender(gender);
             try {
                 RegistrationController.processUserInfo(user);
+            }  catch (SQLIntegrityConstraintViolationException e) {
+                //TODO duplicate primary key
+                System.out.println("Duplicate primary key");
+                return 4;
             } catch (SQLException e){
                 System.out.println("Errore nel salvataggio dell'utente.");
+                return 5;
             }
             return 0;
         } else {
@@ -82,6 +88,7 @@ public class MoreInfoGUIController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("OOPS, SOMETHING WENT WRONG!");
             alert.setContentText("Be sure to fill all fields correctly, thanks for your collaboration!");
+            //TODO sostituire switch case con try-catch(?)
             switch (res) {
                 case (-1) -> alert.setHeaderText("Empty fields");
                 case (1) -> alert.setHeaderText("Birth date not valid");
@@ -90,13 +97,22 @@ public class MoreInfoGUIController implements Initializable {
                     alert.setHeaderText("Excessive length in name, surname or username");
                     alert.setContentText("Be sure that name or surname are under 45 characters and username is under 20 characters, thanks for your collaboration!");
                 }
+                case (4) -> {
+                    alert.setHeaderText("Error in user registration");
+                    alert.setContentText("Fiscal code, username or email already existing in our database. \n" +
+                            "If you already have an account, log in.");
+                }
+                case (5) -> {
+                    alert.setHeaderText("Error in our database");
+                    alert.setContentText("Sorry for the inconvenience");
+                }
             }
             alert.showAndWait();
         }
     }
 
     @FXML
-    private void closeAction(){
+    protected void closeAction(){
         ((Stage) registerButton.getScene().getWindow()).close();
     }
     @FXML

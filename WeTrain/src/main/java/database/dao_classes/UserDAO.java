@@ -1,6 +1,6 @@
 package database.dao_classes;
 
-import database.DatabaseConnection;
+import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Athlete;
 import model.Trainer;
@@ -8,13 +8,14 @@ import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDAO {
-    Connection conn = DatabaseConnection.getInstance().getConn();
+    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public User loadUser(String fc) {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
+    public User loadUser(String email, String password) throws SQLException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, email, password)) {
             if (rs.next()) {
                 String usr = rs.getString("FC");
                 AthleteDAO aDao = new AthleteDAO();
@@ -32,8 +33,6 @@ public class UserDAO {
             } else {
                 // TODO throw MyException; (user non trovato)
             }
-        } catch (Exception sqlEx) {
-            sqlEx.printStackTrace();
         }
         return null;
     }

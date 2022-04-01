@@ -1,6 +1,6 @@
 package database.dao_classes;
 
-import database.DatabaseConnection;
+import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Exercise;
 import model.ExerciseCatalogue;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ExerciseDAO {
-    Connection conn = DatabaseConnection.getInstance().getConn();
+    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
         Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);

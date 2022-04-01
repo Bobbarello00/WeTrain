@@ -8,12 +8,12 @@ import java.sql.*;
 public class Query {
 
     private Query(){}
-    private static final String SELECT_ALL = "SELECT *;";
+    private static final String SELECT_ALL = "SELECT *";
 
     //TODO gestione duplicate record
     public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM Notification;" +
+                "FROM Notification" +
                 "WHERE Athlete = '%s' or Trainer = '%s'", user.getFiscalCode(), user.getFiscalCode()));
     }
 
@@ -100,15 +100,15 @@ public class Query {
     }
 
     public static ResultSet loadUser(Statement stmt, String email, String password) throws SQLException {
+        System.out.println(password);
         return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM User;" +
-                "WHERE Email = '%s' and" +
-                "Password = '%s'", email, password));
+                "FROM mydb.User " +
+                "WHERE Email = '%s' AND Password = '%s';", email, password));
     }
 
     public static ResultSet loadUser(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM User;" +
+                "FROM mydb.User " +
                 "WHERE FC = '%s'", fc));
     }
 
@@ -200,7 +200,7 @@ public class Query {
     }
 
     public static int insertWorkoutDay(WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
-        try (PreparedStatement statement2 = DatabaseConnection.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s)", workoutPlanKey), Statement.RETURN_GENERATED_KEYS);) {
+        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s)", workoutPlanKey), Statement.RETURN_GENERATED_KEYS);) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -227,7 +227,7 @@ public class Query {
 
     public static int insertWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException {
 
-        try(PreparedStatement statement = DatabaseConnection.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS);) {
+        try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS);) {
             if(statement.executeUpdate() == 0){
                 System.out.println("Inserimento WorkoutPlan fallito.");
             }

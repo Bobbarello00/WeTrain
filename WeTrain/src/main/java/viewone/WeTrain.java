@@ -1,6 +1,6 @@
 package viewone;
 
-import database.DatabaseConnection;
+import database.DatabaseConnectionSingleton;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ import java.util.Objects;
 public class WeTrain extends Application {
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        DatabaseConnection.getInstance();
+        DatabaseConnectionSingleton.getInstance();
         /*LocalDate date = LocalDate.of(2000, 5, 21);
         Athlete athlete = new Athlete("Andrea", "De Filippis", date, "DFLNDR", "ciao@gmail.com", null, null);
         Query.insertAthlete(athlete);*/

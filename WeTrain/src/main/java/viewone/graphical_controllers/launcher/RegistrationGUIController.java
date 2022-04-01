@@ -7,7 +7,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import viewone.bean.CredentialBean;
+import viewone.bean.CredentialsBean;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -43,7 +43,7 @@ public class RegistrationGUIController extends LauncherGUIController implements 
     }
 
     private boolean sendCredentialInfo() {
-        CredentialBean credential = new CredentialBean();
+        CredentialsBean credential = new CredentialsBean();
         if(!credential.setEmail(emailField.getText())
                 || !credential.setPassword(passwField.getText())){
             return false;

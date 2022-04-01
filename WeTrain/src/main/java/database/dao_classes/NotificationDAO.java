@@ -1,6 +1,6 @@
 package database.dao_classes;
 
-import database.DatabaseConnection;
+import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Notification;
 import model.User;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationDAO {
-    Connection conn = DatabaseConnection.getInstance().getConn();
+    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public List<Notification> loadAllNotifications(User user) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllNotifications(stmt, user)){
