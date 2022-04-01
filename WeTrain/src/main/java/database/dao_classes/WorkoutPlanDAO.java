@@ -29,10 +29,11 @@ public class WorkoutPlanDAO {
                 int idWorkoutPlan = rs.getInt("idWorkoutPlan");
                 WorkoutPlan workoutPlan = new WorkoutPlan(idWorkoutPlan);
                 workoutPlan.addAllWorkoutDays(workoutDayDAO.loadAllWorkoutDays(workoutPlan));
+                return workoutPlan;
             }else {
                 return null;
             }
         }
-        return null;
     }
 }
+

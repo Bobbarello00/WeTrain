@@ -20,7 +20,7 @@ public class AthleteDAO {
     public Athlete loadAthlete(String fc) throws SQLException{
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAthlete(stmt, fc)) {
             if (rs.next()) {
-                ResultSet rs1 = Query.loadUser(stmt,fc);
+                ResultSet rs1 = Query.loadUser(stmt, fc);
                 Athlete athlete = new Athlete(rs1.getString("Name"),
                         rs1.getString("Surname"),
                         rs1.getString("Username"),
