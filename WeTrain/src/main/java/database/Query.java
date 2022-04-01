@@ -163,7 +163,11 @@ public class Query {
     }
 
     public static int insertRequest(Statement stmt, Request request) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) VALUES ('%s', '%s', '%s');", Timestamp.valueOf(request.getRequestDate()), request.getAthlete().getFiscalCode(), request.getTrainer().getFiscalCode()));
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) " +
+                "VALUES ('%s', '%s', '%s');",
+                Timestamp.valueOf(request.getRequestDate()),
+                request.getAthlete().getFiscalCode(),
+                request.getTrainer().getFiscalCode()));
     }
 
     public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
@@ -183,7 +187,10 @@ public class Query {
     }
 
     public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) VALUES (%s, %s);", workoutDayKey, exercise.getId()));
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) " +
+                "VALUES (%s, %s);",
+                workoutDayKey,
+                exercise.getId()));
     }
 
     public static int insertWorkoutDay(WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
@@ -199,6 +206,12 @@ public class Query {
             }
         }
         return -1;
+    }
+
+    public static ResultSet loadAllWorkoutDays(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT WorkoutDay.*;" +
+                "FROM WorkoutDay;" +
+                "WHERE WorkoutDay.WorkoutPlan = %s", workoutPlan.getId()));
     }
 
     public static int deleteWorkoutDay(Statement stmt, WorkoutDay workoutDay) throws SQLException {
