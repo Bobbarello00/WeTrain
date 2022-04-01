@@ -28,24 +28,40 @@ public class UserBean {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public boolean setUsername(String username) {
+        if(isValidLength(username, 20)){
+            this.username = username;
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isValidLength(String str, int i) {
+        return str.length() <= i;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean setName(String name) {
+        if(isValidLength(name, 45)){
+            this.name = name;
+            return true;
+        }
+        return false;
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public boolean setSurname(String surname) {
+        if(isValidLength(surname, 45)){
+            this.surname = surname;
+            return true;
+        }
+        return false;
     }
 
     public String getFc() {

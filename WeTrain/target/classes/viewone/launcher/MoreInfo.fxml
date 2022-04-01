@@ -104,7 +104,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <DatePicker fx:id="birthPicker" layoutX="238.0" layoutY="302.0" prefHeight="31.0" prefWidth="203.0" promptText="Birth Date:      gg/mm/aaaa">
+      <DatePicker fx:id="birthPicker" layoutX="238.0" layoutY="302.0" prefHeight="31.0" prefWidth="203.0" promptText="Birth Date:        dd/mm/yyyy">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></DatePicker>

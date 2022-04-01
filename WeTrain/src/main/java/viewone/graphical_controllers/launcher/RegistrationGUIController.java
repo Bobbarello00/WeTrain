@@ -19,29 +19,36 @@ public class RegistrationGUIController extends LauncherGUIController implements 
     @FXML
     private TextField passwField;
     @FXML
-    protected void homeTextAction() throws IOException {
+    private void homeTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
     @FXML
-    protected void continueButtonAction() throws IOException {
-        if(!Objects.equals(emailField.getText(), "") & !Objects.equals(passwField.getText(), "")) {
-            sendCredentialInfo();
+    private void continueButtonAction() throws IOException {
+        if(!Objects.equals(emailField.getText(), "") & !Objects.equals(passwField.getText(), "") & sendCredentialInfo()) {
             PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("ATTENZIONE!");
-            alert.setHeaderText("Inserire email e password.");
-            alert.setContentText("Assicurati di aver compilato tutti i campi prima di procedere, grazie.");
+            alert.setTitle("WARNING!");
+            alert.setHeaderText("Email or password not inserted or mistyped.");
+            alert.setContentText("Be sure to fill all fields correctly, thanks.\n " +
+                    "Remember that the password must contain between eight and 45 characters," +
+                    " at least one number and both lower and uppercase letters and " +
+                    "special characters (e.g. @!#$%^&+=) and must not contain tabs or spaces");
             alert.showAndWait();
         }
     }
     @FXML
-    protected void profileTextAction() throws IOException {
+    private void profileTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }
 
-    public void sendCredentialInfo() {
-        CredentialBean credential = new CredentialBean(emailField.getText(), passwField.getText());
+    private boolean sendCredentialInfo() {
+        CredentialBean credential = new CredentialBean();
+        if(!credential.setEmail(emailField.getText())
+                || !credential.setPassword(passwField.getText())){
+            return false;
+        }
         RegistrationController.setCredentialInfo(credential);
+        return true;
     }
 }

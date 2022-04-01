@@ -40,7 +40,7 @@ public class MoreInfoGUIController implements Initializable {
     private TextField usernameText;
     private char gender;
 
-    public int sendUserInfo(){
+    private int sendUserInfo(){
         if(!Objects.equals(usernameText.getText(), "")
                 & !Objects.equals(firstNameText.getText(), "")
                 & !Objects.equals(lastNameText.getText(), "")
@@ -48,9 +48,12 @@ public class MoreInfoGUIController implements Initializable {
                 & !Objects.equals(birthPicker.getEditor().getText(), "")){
 
             UserBean user = new UserBean();
-            user.setUsername(usernameText.getText());
-            user.setName(firstNameText.getText());
-            user.setSurname(lastNameText.getText());
+            if(!user.setUsername(usernameText.getText())
+                || !user.setName(firstNameText.getText())
+                || !user.setSurname(lastNameText.getText())){
+                return 3;
+            }
+
             if(!user.setFc(fcText.getText())){
                 return 2;
             }
@@ -71,7 +74,7 @@ public class MoreInfoGUIController implements Initializable {
     }
 
     @FXML
-    public void registerButtonAction() throws IOException {
+    private void registerButtonAction() throws IOException {
         int res = sendUserInfo();
         if(res == 0) {
             PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
@@ -83,17 +86,21 @@ public class MoreInfoGUIController implements Initializable {
                 case (-1) -> alert.setHeaderText("Empty fields");
                 case (1) -> alert.setHeaderText("Birth date not valid");
                 case (2) -> alert.setHeaderText("Fiscal code not valid");
+                case (3) -> {
+                    alert.setHeaderText("Excessive length in name, surname or username");
+                    alert.setContentText("Be sure that name or surname are under 45 characters and username is under 20 characters, thanks for your collaboration!");
+                }
             }
             alert.showAndWait();
         }
     }
 
     @FXML
-    protected void closeAction(){
+    private void closeAction(){
         ((Stage) registerButton.getScene().getWindow()).close();
     }
     @FXML
-    void profileButtonAction() throws IOException {
+    private void profileButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }
     @FXML
@@ -101,7 +108,7 @@ public class MoreInfoGUIController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
     @FXML
-    void registrationTextAction() throws IOException {
+    private void registrationTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(), selectedProfile + "Registration", HOME);
     }
 
