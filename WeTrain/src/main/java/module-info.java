@@ -21,6 +21,8 @@ module com.wetrain.wetrain {
     opens viewone.graphical_controllers.trainers to javafx.fxml;
     exports viewone.graphical_controllers.launcher;
     opens viewone.graphical_controllers.launcher to javafx.fxml;
+    exports viewone.bean;
+    opens viewone.bean to javafx.fxml;
     exports viewone;
     opens viewone to javafx.fxml;
 
@@ -32,8 +34,7 @@ module com.wetrain.wetrain {
     opens viewtwo to javafx.fxml;
     exports database;
     opens database to javafx.fxml;
-    exports viewone.bean;
-    opens viewone.bean to javafx.fxml;
+
 
     exports model;
 }

@@ -20,11 +20,19 @@ public class Query {
     public static int insertNotification(Statement stmt, Notification notification) throws SQLException {
         if(notification.getUser() instanceof Athlete) {
             return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Athlete) " +
-                    "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
+                    "VALUES (%s,'%s','%s','%s');",
+                    notification.getType(),
+                    notification.getDescription(),
+                    Timestamp.valueOf(notification.getNotificationDate()),
+                    notification.getUser()));
         }
         else {
             return stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Trainer) " +
-                    "VALUES (%s,'%s','%s','%s');", notification.getType(), notification.getDescription(), Timestamp.valueOf(notification.getNotificationDate()), notification.getUser()));
+                    "VALUES (%s,'%s','%s','%s');",
+                    notification.getType(),
+                    notification.getDescription(),
+                    Timestamp.valueOf(notification.getNotificationDate()),
+                    notification.getUser()));
         }
     }
 
@@ -36,7 +44,7 @@ public class Query {
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Athlete;" +
-                "WHERE fc = '%s'", fc));
+                "WHERE User = '%s'", fc));
     }
 
     public static void insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -54,22 +62,31 @@ public class Query {
     }
 
     public static int insertCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("UPDATE ATHLETE SET CardNumber = '%s', CardExpirationDate = '%s' WHERE Fc = '%s';", athlete.getCardNumber(), Date.valueOf(athlete.getCardExpirationDate()), athlete.getFiscalCode()));
+        return stmt.executeUpdate(String.format("UPDATE ATHLETE SET CardNumber = '%s', CardExpirationDate = '%s' WHERE User = '%s';", athlete.getCardNumber(), Date.valueOf(athlete.getCardExpirationDate()), athlete.getFiscalCode()));
     }
 
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM Athlete" +
-                "WHERE FC = '%s'", athlete.getFiscalCode()));
+                "WHERE User = '%s'", athlete.getFiscalCode()));
     }
 
     public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Trainer;" +
-                "WHERE fc = '%s'", fc));
+                "WHERE User = '%s'", fc));
     }
 
     public static void insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');", trainer.getFiscalCode(), trainer.getName(), trainer.getSurname(), trainer.getUsername(), Date.valueOf(trainer.getDateOfBirth()), trainer.getGender(), trainer.getEmail(), trainer.getPassword()));
+        stmt.executeUpdate(String.format("INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) " +
+                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+                trainer.getFiscalCode(),
+                trainer.getName(),
+                trainer.getSurname(),
+                trainer.getUsername(),
+                Date.valueOf(trainer.getDateOfBirth()),
+                trainer.getGender(),
+                trainer.getEmail(),
+                trainer.getPassword()));
         stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (FC) VALUES ('%s');", trainer.getFiscalCode()));
     }
 
@@ -82,6 +99,13 @@ public class Query {
                 "WHERE FC = '%s'", trainer.getFiscalCode()));
     }
 
+    public static ResultSet loadUser(Statement stmt, String email, String password) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM User;" +
+                "WHERE Email = '%s' and" +
+                "Password = '%s'", email, password));
+    }
+
     public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Course;" +
@@ -89,7 +113,13 @@ public class Query {
     }
 
     public static int insertCourse(Statement stmt, Course course) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) VALUES ('%s', '%s', '%s', '%s', '%s');", course.getName(), course.getDescription(), course.getFitnessLevel(), course.getEquipment(), course.getOwner().getFiscalCode()));
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
+                "VALUES ('%s', '%s', '%s', '%s', '%s');",
+                course.getName(),
+                course.getDescription(),
+                course.getFitnessLevel(),
+                course.getEquipment(),
+                course.getOwner().getFiscalCode()));
     }
 
     public static int deleteCourse(Statement stmt, Course course) throws SQLException {

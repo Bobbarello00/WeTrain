@@ -24,4 +24,8 @@ public class WorkoutPlan {
     public List<WorkoutDay> getWorkoutDayList() {
         return workoutDayList;
     }
+
+    public void addAllWorkoutDays(List<WorkoutDay> workoutDayList) {
+        this.workoutDayList = workoutDayList;
+    }
 }
