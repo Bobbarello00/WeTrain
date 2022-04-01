@@ -20,9 +20,9 @@ public class TrainerDAO {
         }
     }
 
-    public Trainer loadTrainer(String fc){
-        try(Statement stmt =conn.createStatement(); ResultSet rs = Query.loadTrainer(stmt, fc)){
-            if(rs.next()){
+    public Trainer loadTrainer(String fc) throws SQLException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainer(stmt, fc)) {
+            if (rs.next()) {
                 return new Trainer(rs.getString("Name"),
                         rs.getString("Surname"),
                         rs.getString("Username"),
@@ -33,12 +33,9 @@ public class TrainerDAO {
                         rs.getString("Password"),
                         rs.getString("Iban")
                 );
-            }else{
-                throw new Exception("Trainer not found!");
+            } else {
+                return null;
             }
-        } catch (Exception sqlEx) {
-            sqlEx.printStackTrace();
         }
-        return null;
     }
 }

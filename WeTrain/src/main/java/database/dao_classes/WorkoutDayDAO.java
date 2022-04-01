@@ -3,19 +3,34 @@ package database.dao_classes;
 import database.DatabaseConnection;
 import database.Query;
 import model.Exercise;
+import model.Notification;
 import model.WorkoutDay;
+import model.WorkoutPlan;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WorkoutDayDAO {
-
-    public static void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
-        try (Statement stmt = DatabaseConnection.getInstance().getConn().createStatement()) {
+    Connection conn = DatabaseConnection.getInstance().getConn();
+    public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
             int id = Query.insertWorkoutDay(workoutDay, idWorkoutPlan);
             for (Exercise exercise : workoutDay.getListExercise()){
                 ExerciseDAO.insertExerciseInWorkoutDay(stmt, exercise, id);
             }
+        }
+    }
+    public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllWorkoutDays(stmt, workoutPlan)){
+            List<WorkoutDay> myList = new ArrayList<>();
+            while(rs.next()){
+                myList.add(new WorkoutDay(rs.getInt("idWorkoutDay"),workoutPlan));
+            }
+            return myList;
         }
     }
 

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Athlete extends User {
     private String cardNumber;
     private LocalDate cardExpirationDate;
+    private WorkoutPlan workoutPlan;
 
     public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password){
         super(name, surname, username, dateOfBirth, fc, gender, email, password);
@@ -34,5 +35,13 @@ public class Athlete extends User {
 
     public void setCardExpirationDate(LocalDate cardExpirationDate) {
         this.cardExpirationDate = cardExpirationDate;
+    }
+
+    public WorkoutPlan getWorkoutPlan() {
+        return workoutPlan;
+    }
+
+    public void setWorkoutPlan(WorkoutPlan workoutPlan) {
+        this.workoutPlan = workoutPlan;
     }
 }

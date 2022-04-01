@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.DatabaseConnection;
 import database.Query;
 import model.Athlete;
+import model.WorkoutPlan;
 
 import java.sql.*;
 
@@ -16,24 +17,24 @@ public class AthleteDAO {
             sqlEx.printStackTrace();
         }
     }
-    public Athlete loadAthlete(String fc) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAthlete(stmt, fc)){
-            if(rs.next()) {
-                return new Athlete(rs.getString("Name"),
-                        rs.getString("Surname"),
-                        rs.getString("Username"),
-                        rs.getDate("Birth").toLocalDate(),
-                        rs.getString("FC"),
-                        rs.getString("Gender").charAt(0),
-                        rs.getString("Email"),
-                        rs.getString("Password"),
+    public Athlete loadAthlete(String fc) throws SQLException{
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAthlete(stmt, fc)) {
+            if (rs.next()) {
+                ResultSet rs1 = Query.loadUser(stmt,fc);
+                Athlete athlete = new Athlete(rs1.getString("Name"),
+                        rs1.getString("Surname"),
+                        rs1.getString("Username"),
+                        rs1.getDate("Birth").toLocalDate(),
+                        rs1.getString("FC"),
+                        rs1.getString("Gender").charAt(0),
+                        rs1.getString("Email"),
+                        rs1.getString("Password"),
                         rs.getString("CardNumber"),
                         rs.getDate("CardExpirationDate").toLocalDate());
-            }else{
-                throw new Exception("Athlete not found!");
+                athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(athlete));
+            } else {
+                return null;
             }
-        } catch(Exception sqlEx){
-            sqlEx.printStackTrace();
         }
         return null;
     }
