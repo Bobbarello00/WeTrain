@@ -8,19 +8,10 @@ import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserDAO {
     Connection conn = DatabaseConnection.getInstance().getConn();
-
-    public void saveUser(User user) throws SQLException {
-        try (Statement stmt = conn.createStatement();) {
-            Query.insertUser(stmt, user);
-        } catch (SQLException sqlEx) {
-            sqlEx.printStackTrace();
-        }
-    }
 
     public User loadUser(String fc) {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {

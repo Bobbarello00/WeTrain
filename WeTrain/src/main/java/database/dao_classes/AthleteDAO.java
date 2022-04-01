@@ -3,9 +3,11 @@ package database.dao_classes;
 import database.DatabaseConnection;
 import database.Query;
 import model.Athlete;
-import model.WorkoutPlan;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class AthleteDAO {
     Connection conn = DatabaseConnection.getInstance().getConn();
