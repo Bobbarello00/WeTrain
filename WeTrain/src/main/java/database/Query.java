@@ -39,8 +39,18 @@ public class Query {
                 "WHERE fc = '%s'", fc));
     }
 
-    public static int insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (FC, Name, Surname, Username, Birth, Email, Gender, Password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');", athlete.getFiscalCode(), athlete.getName(), athlete.getSurname(), athlete.getUsername(), Date.valueOf(athlete.getDateOfBirth()), athlete.getEmail(), athlete.getGender(), athlete.getPassword()));
+    public static void insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
+        stmt.executeUpdate(String.format("INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
+                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+                athlete.getFiscalCode(),
+                athlete.getName(),
+                athlete.getSurname(),
+                athlete.getUsername(),
+                Date.valueOf(athlete.getDateOfBirth()),
+                athlete.getEmail(),
+                athlete.getGender(),
+                athlete.getPassword()));
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (User) VALUES ('%s');", athlete.getFiscalCode()));
     }
 
     public static int insertCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -58,8 +68,9 @@ public class Query {
                 "WHERE fc = '%s'", fc));
     }
 
-    public static int insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (FC, Name, Surname, Username, Birth, Gender, Email, Password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');", trainer.getFiscalCode(), trainer.getName(), trainer.getSurname(), trainer.getUsername(), Date.valueOf(trainer.getDateOfBirth()), trainer.getGender(), trainer.getEmail(), trainer.getPassword()));
+    public static void insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
+        stmt.executeUpdate(String.format("INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');", trainer.getFiscalCode(), trainer.getName(), trainer.getSurname(), trainer.getUsername(), Date.valueOf(trainer.getDateOfBirth()), trainer.getGender(), trainer.getEmail(), trainer.getPassword()));
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (FC) VALUES ('%s');", trainer.getFiscalCode()));
     }
 
     public static int insertIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
@@ -97,8 +108,8 @@ public class Query {
                 "FROM Exercise join Trainer on Exercise.Trainer = '%s';", trainer.getFiscalCode()));
     }
 
-    public static int insertExercise(Statement stmt, Exercise exercise) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Information, Trainer) VALUES ('%s', '%s', '%s');", exercise.getName(), exercise.getInfo(), exercise.getTrainer().getFiscalCode()));
+    public static void insertExercise(Statement stmt, Exercise exercise) throws SQLException {
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Information, Trainer) VALUES ('%s', '%s', '%s');", exercise.getName(), exercise.getInfo(), exercise.getTrainer().getFiscalCode()));
     }
 
     public static int deleteExercise(Statement stmt, Exercise exercise) throws SQLException {
@@ -136,13 +147,13 @@ public class Query {
                 "WHERE idRequest = %s", id));
     }
 
-    public static int deleteRequest(Statement stmt, Request request) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM Request" +
+    public static void deleteRequest(Statement stmt, Request request) throws SQLException {
+        stmt.executeUpdate(String.format("DELETE FROM Request" +
                 "WHERE idRequest = %s", request.getId()));
     }
 
-    public static int insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) VALUES (%s, %s);", workoutDayKey, exercise.getId()));
+    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) VALUES (%s, %s);", workoutDayKey, exercise.getId()));
     }
 
     public static int insertWorkoutDay(WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
