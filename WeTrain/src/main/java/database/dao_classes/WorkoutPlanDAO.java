@@ -22,17 +22,11 @@ public class WorkoutPlanDAO {
         }
     }
 
-    public WorkoutPlan loadWorkoutPlan(Athlete athlete) throws SQLException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadWorkoutPlan(stmt,athlete)){
-            if(rs.next()){
-                WorkoutDayDAO workoutDayDAO = new WorkoutDayDAO();
-                int idWorkoutPlan = rs.getInt("idWorkoutPlan");
-                WorkoutPlan workoutPlan = new WorkoutPlan(idWorkoutPlan);
-                workoutPlan.addAllWorkoutDays(workoutDayDAO.loadAllWorkoutDays(workoutPlan));
-                return workoutPlan;
-            }else {
-                return null;
-            }
+    public WorkoutPlan loadWorkoutPlan(Integer idWorkoutPlan, Athlete athlete) throws SQLException {
+        try (Statement stmt = conn.createStatement()){
+            WorkoutPlan workoutPlan = new WorkoutPlan(idWorkoutPlan, athlete);
+            workoutPlan.addAllWorkoutDays(new WorkoutDayDAO().loadAllWorkoutDays(workoutPlan));
+            return workoutPlan;
         }
     }
 }

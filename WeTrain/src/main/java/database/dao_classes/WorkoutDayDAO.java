@@ -23,14 +23,16 @@ public class WorkoutDayDAO {
             }
         }
     }
+
     public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllWorkoutDays(stmt, workoutPlan)){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
-                myList.add(new WorkoutDay(rs.getInt("idWorkoutDay"),workoutPlan));
+                WorkoutDay workoutDay = new WorkoutDay(rs.getInt("idWorkoutDay"),workoutPlan);
+                workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutDay));
+                myList.add(new WorkoutDay(rs.getInt("idWorkoutDay"), workoutPlan));
             }
             return myList;
         }
     }
-
 }

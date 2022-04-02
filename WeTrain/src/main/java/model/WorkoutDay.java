@@ -25,8 +25,12 @@ public class WorkoutDay {
         listExercise.remove(exercise);
     }
 
-    public void insertExercise(Exercise exercise){
+    public void addExercise(Exercise exercise){
         listExercise.add(exercise);
+    }
+
+    public void addAllExercise(List<Exercise> list){
+        listExercise = list;
     }
 
     public int getId() {

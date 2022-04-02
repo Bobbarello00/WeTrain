@@ -7,8 +7,9 @@ public class WorkoutPlan {
     private Athlete athlete;
     private List<WorkoutDay> workoutDayList;
 
-    public WorkoutPlan(int id){
+    public WorkoutPlan(int id, Athlete athlete){
         this.id = id;
+        this.athlete = athlete;
     }
 
     public WorkoutPlan(){}

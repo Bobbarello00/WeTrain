@@ -4,10 +4,8 @@ import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Athlete;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 
 public class AthleteDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
@@ -19,21 +17,37 @@ public class AthleteDAO {
             sqlEx.printStackTrace();
         }
     }
+
     public Athlete loadAthlete(String fc) throws SQLException{
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAthlete(stmt, fc)) {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
             if (rs.next()) {
-                ResultSet rs1 = Query.loadUser(stmt, fc);
-                Athlete athlete = new Athlete(rs1.getString("Name"),
-                        rs1.getString("Surname"),
-                        rs1.getString("Username"),
-                        rs1.getDate("Birth").toLocalDate(),
-                        rs1.getString("FC"),
-                        rs1.getString("Gender").charAt(0),
-                        rs1.getString("Email"),
-                        rs1.getString("Password"),
-                        rs.getString("CardNumber"),
-                        rs.getDate("CardExpirationDate").toLocalDate());
-                athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(athlete));
+                Athlete athlete = new Athlete(rs.getString("Name"),
+                        rs.getString("Surname"),
+                        rs.getString("Username"),
+                        rs.getDate("Birth").toLocalDate(),
+                        rs.getString("FC"),
+                        rs.getString("Gender").charAt(0),
+                        rs.getString("Email"),
+                        rs.getString("Password")
+                );
+
+                try(ResultSet rs1 = Query.loadAthlete(stmt, fc)) {
+                    if (rs1.next()) {
+                        athlete.setCardNumber(rs1.getString("CardNumber"));
+                        Date temp = rs1.getDate("CardExpirationDate");
+                        LocalDate cardExpirationDate = null;
+                        if (temp != null) {
+                            cardExpirationDate = temp.toLocalDate();
+                        }
+                        athlete.setCardExpirationDate(cardExpirationDate);
+                        if (rs1.getInt("WorkoutPlan") != 0) {
+                            athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt("WorkoutPlan"), athlete));
+                        } else {
+                            athlete.setWorkoutPlan(null);
+                        }
+                        return athlete;
+                    }
+                }
             } else {
                 return null;
             }

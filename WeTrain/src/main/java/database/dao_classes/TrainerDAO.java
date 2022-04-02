@@ -23,6 +23,7 @@ public class TrainerDAO {
     public Trainer loadTrainer(String fc) throws SQLException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainer(stmt, fc)) {
             if (rs.next()) {
+                //TODO caricare prima lo User come in Athlete
                 return new Trainer(rs.getString("Name"),
                         rs.getString("Surname"),
                         rs.getString("Username"),
