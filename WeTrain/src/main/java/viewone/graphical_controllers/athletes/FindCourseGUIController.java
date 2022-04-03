@@ -7,6 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import model.LoggedUserSingleton;
 import viewone.graphical_controllers.FitnessLevelFilter;
 
 import java.net.URL;
@@ -44,6 +46,8 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @FXML
     private Button wednesdayButton;
     @FXML
+    private Text usernameText;
+    @FXML
     private void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){
@@ -79,5 +83,6 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(selected, Boolean.FALSE);
+        usernameText.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 }

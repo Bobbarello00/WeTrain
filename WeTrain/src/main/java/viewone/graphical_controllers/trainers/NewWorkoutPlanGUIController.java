@@ -1,5 +1,8 @@
 package viewone.graphical_controllers.trainers;
 
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import model.LoggedUserSingleton;
 import viewone.DaysOfTheWeekController;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -25,11 +28,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     private ListView<Node> exercisesSelectedList;
     @FXML
     private Button createButton;
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,exercisesList);
-        ListPopulate.populateList(10,exercisesSelectedList);
-    }
+    @FXML
+    private Text usernameText1;
     @FXML
     public void addExerciseTextAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(createButton, "AddExercise", HOME, false);
@@ -44,5 +44,11 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         if(event.getSource()==createButton) {
             System.out.println("Created");
         }
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ListPopulate.populateList(10,exercisesList);
+        ListPopulate.populateList(10,exercisesSelectedList);
+        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 }

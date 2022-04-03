@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public abstract class HomeGUIControllerAthletes extends HomeController {
+public abstract class HomeGUIControllerAthletes extends HomeController  {
     @Override
     protected void editButtonAction(ActionEvent event) throws IOException {
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "YourProfileAthletes", "athletes", false);

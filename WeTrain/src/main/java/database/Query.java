@@ -7,8 +7,10 @@ import java.sql.*;
 
 public class Query {
 
-    private Query(){}
     private static final String SELECT_ALL = "SELECT * ";
+
+    private Query(){}
+
 
     //TODO gestione duplicate record
     public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
@@ -72,7 +74,7 @@ public class Query {
 
     public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM mydb.Trainer" +
+                "FROM mydb.Trainer " +
                 "WHERE User = '%s';", fc));
     }
 
@@ -118,6 +120,18 @@ public class Query {
                 "WHERE idCourse = %s;", id));
     }
 
+    public static ResultSet loadAllCoursesAthlete(Statement stmt, Athlete athlete) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM mydb.Course join mydb.Subscribe on Subscribe.Course = Course.idCourse " +
+                "WHERE Subscribe.Athlete = '%s';", athlete.getFiscalCode()));
+    }
+
+    public static ResultSet loadAllCoursesTrainer(Statement stmt, Trainer trainer) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM mydb.Course " +
+                "WHERE Trainer = '%s';", trainer.getFiscalCode()));
+    }
+
     public static int insertCourse(Statement stmt, Course course) throws SQLException {
         return stmt.executeUpdate(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
                 "VALUES ('%s', '%s', '%s', '%s', '%s');",
@@ -161,6 +175,12 @@ public class Query {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Lesson " +
                 "WHERE idLesson = %s;", id));
+    }
+
+    public static ResultSet loadAllLessons(Statement stmt, Course course) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM mydb.Lesson " +
+                "WHERE Course = %s;", course.getId()));
     }
 
     public static int insertLesson(Statement stmt, Lesson lesson) throws SQLException {

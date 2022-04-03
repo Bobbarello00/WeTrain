@@ -21,13 +21,10 @@
          </ImageView>
       </VBox>
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
-         <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" wrappingWidth="37.451904296875">
+         <Text fx:id="usernameText1" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" textAlignment="CENTER" wrappingWidth="119.85203123092651">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
          </Text>
          <Button fx:id="logoutButton" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>

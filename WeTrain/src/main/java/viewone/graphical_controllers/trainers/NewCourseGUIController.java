@@ -1,5 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
+import javafx.scene.text.Text;
+import model.LoggedUserSingleton;
 import viewone.graphical_controllers.FitnessLevelFilter;
 import viewone.graphical_controllers.TimeSchedulerController;
 import viewone.MainPane;
@@ -81,6 +83,8 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML
     private Button advancedFitnessLevelButton;
     @FXML
+    private Text usernameText1;
+    @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         MenuTrainersGUIController.resetSelectedButton();
@@ -119,5 +123,6 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
+        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 }

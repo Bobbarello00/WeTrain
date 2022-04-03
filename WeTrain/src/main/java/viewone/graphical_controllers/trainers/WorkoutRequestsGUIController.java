@@ -6,6 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import model.LoggedUserSingleton;
 import viewone.ListPopulate;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -20,6 +23,8 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     @FXML
     private ListView<Node> requestsList;
     @FXML
+    private Text usernameText1;
+    @FXML
     void newWorkoutButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);
     }
@@ -30,5 +35,6 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,requestsList);
+        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 }

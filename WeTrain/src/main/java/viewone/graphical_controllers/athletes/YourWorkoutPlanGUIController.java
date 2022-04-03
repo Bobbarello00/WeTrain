@@ -1,5 +1,8 @@
 package viewone.graphical_controllers.athletes;
 
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import model.LoggedUserSingleton;
 import viewone.DaysOfTheWeekController;
 import viewone.ListPopulate;
 import javafx.event.ActionEvent;
@@ -32,11 +35,14 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
     @FXML
     private ListView<Node> exercisesList;
     @FXML
+    private Text usernameText1;
+    @FXML
     void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,exercisesList);
+        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 }

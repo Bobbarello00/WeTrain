@@ -20,13 +20,10 @@
          </ImageView>
       </VBox>
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
-         <Text scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" wrappingWidth="37.451904296875">
+         <Text fx:id="usernameText1" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" textAlignment="CENTER" wrappingWidth="119.85203123092651">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
          </Text>
          <Button fx:id="logoutButton" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <font>
@@ -68,12 +65,12 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <VBox alignment="TOP_CENTER" layoutX="614.0" layoutY="55.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.15); -fx-background-radius: 50;">
+      <VBox alignment="TOP_CENTER" layoutX="617.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.15); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="100.0" />
          </padding>
       </VBox>
-      <VBox fx:id="addTrainerBox" alignment="TOP_CENTER" layoutX="61.0" layoutY="68.0" prefHeight="543.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
+      <VBox fx:id="addTrainerBox" alignment="TOP_CENTER" layoutX="61.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
