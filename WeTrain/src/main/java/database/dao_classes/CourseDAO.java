@@ -5,7 +5,6 @@ import database.Query;
 import model.Athlete;
 import model.Course;
 import model.Trainer;
-import model.WorkoutDay;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

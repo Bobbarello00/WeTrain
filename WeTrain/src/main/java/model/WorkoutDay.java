@@ -6,7 +6,7 @@ public class WorkoutDay {
     private Integer id;
     private final WorkoutPlan workoutPlan;
     private int day;
-    private List<Exercise> listExercise;
+    private List<Exercise> exerciseList;
 
     public WorkoutDay(int id, WorkoutPlan workoutPlan){
         this.id = id;
@@ -17,20 +17,20 @@ public class WorkoutDay {
         this.workoutPlan = workoutPlan;
     }
 
-    public List<Exercise> getListExercise(){
-        return listExercise;
+    public List<Exercise> getExerciseList(){
+        return exerciseList;
     }
 
     public void removeExercise(Exercise exercise){
-        listExercise.remove(exercise);
+        exerciseList.remove(exercise);
     }
 
     public void addExercise(Exercise exercise){
-        listExercise.add(exercise);
+        exerciseList.add(exercise);
     }
 
     public void addAllExercise(List<Exercise> list){
-        listExercise = list;
+        exerciseList = list;
     }
 
     public int getId() {

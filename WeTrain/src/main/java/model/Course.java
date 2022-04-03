@@ -5,7 +5,7 @@ import java.util.List;
 public class Course {
     private int id;
     private String name;
-    private List<Lesson> lessons;
+    private List<Lesson> lessonList;
     private Trainer owner;
     private String description;
     private String fitnessLevel;
@@ -28,8 +28,8 @@ public class Course {
         return name;
     }
 
-    public List<Lesson> getLessons() {
-        return lessons;
+    public List<Lesson> getLessonList() {
+        return lessonList;
     }
 
     public Trainer getOwner() {
@@ -48,7 +48,11 @@ public class Course {
         return equipment;
     }
 
-    public void setLessons(List<Lesson> lessons) {
-        this.lessons = lessons;
+    public void setLessonList(List<Lesson> lessonList) {
+        this.lessonList = lessonList;
+    }
+
+    public void addAllLessons(List<Lesson> list){
+        lessonList = list;
     }
 }

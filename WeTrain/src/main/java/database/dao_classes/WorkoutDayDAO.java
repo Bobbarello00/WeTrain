@@ -18,7 +18,7 @@ public class WorkoutDayDAO {
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
             int id = Query.insertWorkoutDay(workoutDay, idWorkoutPlan);
-            for (Exercise exercise : workoutDay.getListExercise()){
+            for (Exercise exercise : workoutDay.getExerciseList()){
                 ExerciseDAO.insertExerciseInWorkoutDay(stmt, exercise, id);
             }
         }
