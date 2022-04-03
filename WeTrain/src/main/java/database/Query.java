@@ -87,16 +87,16 @@ public class Query {
                 trainer.getGender(),
                 trainer.getEmail(),
                 trainer.getPassword()));
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (FC) VALUES ('%s');", trainer.getFiscalCode()));
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (User) VALUES ('%s');", trainer.getFiscalCode()));
     }
 
     public static int insertIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("UPDATE mydb.TRAINER SET Iban = '%s' WHERE Fc = '%s';", trainer.getIban(), trainer.getFiscalCode()));
+        return stmt.executeUpdate(String.format("UPDATE mydb.TRAINER SET Iban = '%s' WHERE User = '%s';", trainer.getIban(), trainer.getFiscalCode()));
     }
 
     public static int deleteTrainer(Statement stmt, Trainer trainer) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Trainer " +
-                "WHERE FC = '%s';", trainer.getFiscalCode()));
+                "WHERE User = '%s';", trainer.getFiscalCode()));
     }
 
     public static ResultSet loadUser(Statement stmt, String email, String password) throws SQLException {
@@ -115,7 +115,7 @@ public class Query {
     public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Course " +
-                "WHERE idCourse = %s", id));
+                "WHERE idCourse = %s;", id));
     }
 
     public static int insertCourse(Statement stmt, Course course) throws SQLException {

@@ -14,16 +14,12 @@ import java.util.ResourceBundle;
 public class YourProfileAthletesGUIController extends ProfileController implements Initializable {
     @FXML
     private Label emailLabel;
-
     @FXML
     private Label firstNameLabel;
-
     @FXML
     private Label fiscalCodeLabel;
-
     @FXML
     private Label lastNameLabel;
-
     @FXML
     private Label paymentMethodLabel;
     @FXML
