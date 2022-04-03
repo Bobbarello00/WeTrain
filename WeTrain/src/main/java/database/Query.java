@@ -15,7 +15,7 @@ public class Query {
     //TODO gestione duplicate record
     public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM Notification" +
+                "FROM Notification " +
                 "WHERE Athlete = '%s' or Trainer = '%s';", user.getFiscalCode(), user.getFiscalCode()));
     }
 

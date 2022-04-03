@@ -1,6 +1,7 @@
 package controller;
 
 import database.dao_classes.UserDAO;
+import exception.ElementNotFoundException;
 import model.Athlete;
 import model.LoggedUserSingleton;
 import model.Trainer;
@@ -16,11 +17,9 @@ public class LoginController {
         if(user == null) {
             //TODO EXCEPTION user non trovato
             System.out.println("EXCEPTION user non trovato");
+            throw new ElementNotFoundException();
+
         }
-        if(user instanceof Athlete){
-            LoggedUserSingleton.setInstance((Athlete) user);
-        } else {
-            LoggedUserSingleton.setInstance((Trainer) user);
-        }
+        LoggedUserSingleton.setInstance(user);
     }
 }

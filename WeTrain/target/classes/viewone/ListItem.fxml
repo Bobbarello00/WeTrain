@@ -23,7 +23,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="itemCode" text="Item name ">
+      <Label fx:id="itemCode" text="Item code ">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
