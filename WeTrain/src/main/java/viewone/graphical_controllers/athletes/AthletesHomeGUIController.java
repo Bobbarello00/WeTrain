@@ -23,6 +23,10 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     private ListView<Node> feedList;
     @FXML
     private Text usernameText;
+
+    public void populateCourseList() {
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
