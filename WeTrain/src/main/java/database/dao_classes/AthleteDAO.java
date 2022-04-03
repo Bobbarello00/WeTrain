@@ -13,8 +13,6 @@ public class AthleteDAO {
     public void saveAthlete(Athlete athlete) throws SQLException {
         try(Statement stmt = conn.createStatement();){
             Query.insertAthlete(stmt, athlete);
-        }catch(SQLException sqlEx){
-            sqlEx.printStackTrace();
         }
     }
 

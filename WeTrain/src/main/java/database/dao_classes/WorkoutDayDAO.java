@@ -30,7 +30,7 @@ public class WorkoutDayDAO {
             while(rs.next()){
                 WorkoutDay workoutDay = new WorkoutDay(rs.getInt("idWorkoutDay"),workoutPlan);
                 workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutDay));
-                myList.add(new WorkoutDay(rs.getInt("idWorkoutDay"), workoutPlan));
+                myList.add(workoutDay);
             }
             return myList;
         }

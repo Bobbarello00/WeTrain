@@ -15,6 +15,12 @@ import java.util.List;
 public class NotificationDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
+    public void saveNotification(Notification notification) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.insertNotification(stmt,notification);
+        }
+    }
+
     public List<Notification> loadAllNotifications(User user) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllNotifications(stmt, user)){
             List<Notification> myList = new ArrayList<>();
@@ -25,6 +31,5 @@ public class NotificationDAO {
             }
             return myList;
         }
-
     }
 }

@@ -15,8 +15,6 @@ public class TrainerDAO {
     public void saveTrainer(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement();){
             Query.insertTrainer(stmt, trainer);
-        }catch(SQLException sqlEx){
-            sqlEx.printStackTrace();
         }
     }
 

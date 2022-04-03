@@ -11,10 +11,9 @@ public class Course {
     private String fitnessLevel;
     private String equipment;
 
-    public Course(int id, String name, List<Lesson> lessons, String description, String fitnessLevel, Trainer owner, String equipment){
+    public Course(int id, String name, String description, String fitnessLevel, Trainer owner, String equipment){
         this.id = id;
         this.name = name;
-        this.lessons = lessons;
         this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
@@ -47,5 +46,9 @@ public class Course {
 
     public String getEquipment() {
         return equipment;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 }
