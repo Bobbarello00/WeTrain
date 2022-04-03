@@ -1,5 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
+import javafx.scene.text.Text;
+import model.LoggedUserSingleton;
 import viewone.ListPopulate;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,23 +18,12 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
     @FXML
     private ListView<Node> requestsList;
     @FXML
-    private Button mondayButton;
-    @FXML
-    private Button tuesdayButton;
-    @FXML
-    private Button wednesdayButton;
-    @FXML
-    private Button thursdayButton;
-    @FXML
-    private Button fridayButton;
-    @FXML
-    private Button saturdayButton;
-    @FXML
-    private Button sundayButton;
+    private Text usernameText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
         ListPopulate.populateList(10,requestsList);
+        usernameText.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 
 }

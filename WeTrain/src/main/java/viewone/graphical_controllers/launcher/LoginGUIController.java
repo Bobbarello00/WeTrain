@@ -3,6 +3,7 @@ package viewone.graphical_controllers.launcher;
 
 import controller.LoginController;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -10,13 +11,15 @@ import model.Athlete;
 import model.LoggedUserSingleton;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CredentialsBean;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class LoginGUIController extends LauncherGUIController {
-
+    @FXML
+    private Button submitButton;
     @FXML
     private TextField emailField;
     @FXML
@@ -32,9 +35,10 @@ public class LoginGUIController extends LauncherGUIController {
         try {
             LoginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
             if(LoggedUserSingleton.getInstance() instanceof Athlete){
-                PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "athletes");
+                PageSwitchSizeChange.loadHome(submitButton, "AthletesHome", "athletes");
+            } else {
+                PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");
             }
-            PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         } catch (SQLException e) {
             //TODO Exception
             e.printStackTrace();
