@@ -2,10 +2,14 @@ package viewone.graphical_controllers.launcher;
 
 
 import controller.LoginController;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import model.Athlete;
+import model.LoggedUserSingleton;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
-import javafx.fxml.FXML;
 import viewone.bean.CredentialsBean;
 
 import java.io.IOException;
@@ -18,6 +22,8 @@ public class LoginGUIController extends LauncherGUIController {
     @FXML
     private TextField passwField;
     @FXML
+    private TextField passwSField;
+    @FXML
     void homeAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "launcher");
     }
@@ -25,9 +31,33 @@ public class LoginGUIController extends LauncherGUIController {
     void submitButtonAction() {
         try {
             LoginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
+            if(LoggedUserSingleton.getInstance() instanceof Athlete){
+                PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "athletes");
+            }
+            PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         } catch (SQLException e) {
             //TODO Exception
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+    @FXML
+    void keyHandler(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER){
+            submitButtonAction();
+        }
+        if(event.getCode() == KeyCode.ESCAPE){
+            if(emailField.isFocused()){
+                if(passwField.isVisible()){
+                    passwField.requestFocus();
+                }else{
+                    passwSField.requestFocus();
+                }
+            }else {
+                emailField.requestFocus();
+            }
+        }
+    }
+
 }

@@ -3,6 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import model.Athlete;
+import model.LoggedUserSingleton;
 import model.Trainer;
 import viewone.bean.CredentialsBean;
 import viewone.bean.UserBean;
@@ -14,13 +15,16 @@ public class RegistrationController {
     private static CredentialsBean credentialsBean;
 
     public static void processUserInfo(UserBean bean) throws SQLException {
-
         if (Objects.equals(bean.getType(), "Athlete")) {
-            AthleteDAO athlete = new AthleteDAO();
-            athlete.saveAthlete(new Athlete(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword()));
+            AthleteDAO athleteDAO = new AthleteDAO();
+            Athlete athlete = new Athlete(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
+            athleteDAO.saveAthlete(athlete);
+            LoggedUserSingleton.setInstance(athlete);
         } else {
-            TrainerDAO trainer = new TrainerDAO();
-            trainer.saveTrainer(new Trainer(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword()));
+            TrainerDAO trainerDAO = new TrainerDAO();
+            Trainer trainer = new Trainer(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
+            trainerDAO.saveTrainer(trainer);
+            LoggedUserSingleton.setInstance(trainer);
         }
     }
 

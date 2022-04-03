@@ -6,7 +6,7 @@ public class LoggedUserSingleton {
 
     private LoggedUserSingleton() {}
 
-    public User getInstance(){
+    public static User getInstance(){
         return user;
     }
 

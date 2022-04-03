@@ -33,6 +33,7 @@ public class ExerciseDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
+                //TODO caricare trainer
                 exerciseList.add(new Exercise(
                         rs.getInt("idExercise"),
                         rs.getString("Name"),

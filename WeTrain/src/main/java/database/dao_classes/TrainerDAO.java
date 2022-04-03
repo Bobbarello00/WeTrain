@@ -21,22 +21,27 @@ public class TrainerDAO {
     }
 
     public Trainer loadTrainer(String fc) throws SQLException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainer(stmt, fc)) {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
             if (rs.next()) {
-                //TODO caricare prima lo User come in Athlete
-                return new Trainer(rs.getString("Name"),
-                        rs.getString("Surname"),
-                        rs.getString("Username"),
-                        rs.getDate("Birth").toLocalDate(),
-                        rs.getString("FC"),
-                        rs.getString("Gender").charAt(0),
-                        rs.getString("Email"),
-                        rs.getString("Password"),
-                        rs.getString("Iban")
+                Trainer trainer = new Trainer(rs.getString("Name"),
+                    rs.getString("Surname"),
+                    rs.getString("Username"),
+                    rs.getDate("Birth").toLocalDate(),
+                    rs.getString("FC"),
+                    rs.getString("Gender").charAt(0),
+                    rs.getString("Email"),
+                    rs.getString("Password")
                 );
+                try(ResultSet rs1 = Query.loadTrainer(stmt, fc)) {
+                    if (rs1.next()) {
+                        trainer.setIban(rs1.getString("Iban"));
+                        return trainer;
+                    }
+                }
             } else {
                 return null;
             }
         }
+        return null;
     }
 }
