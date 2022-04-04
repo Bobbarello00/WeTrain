@@ -20,7 +20,7 @@ public class CourseListCellFactory extends ListCell<CourseEssentialBean> {
                     if (parentNode == null)parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
                     ((Label)parentNode.lookup("#itemName")).setText(courseBean.getName());
                     ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(courseBean.getId()));
-                    ((Label)parentNode.lookup("#itemOwner")).setText("\uD83D\uDC68"+courseBean.getOwner());
+                    ((Label)parentNode.lookup("#itemOwner")).setText("\uD83D\uDC68 "+courseBean.getOwner());
                     setGraphic(parentNode);
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -28,7 +28,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="itemOwner" prefHeight="18.0" prefWidth="105.0" scaleX="0.8" scaleY="0.8" text="Item Owner">
+      <Label fx:id="itemOwner" prefHeight="18.0" prefWidth="157.0" scaleX="0.8" scaleY="0.8" text="Item Owner">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
