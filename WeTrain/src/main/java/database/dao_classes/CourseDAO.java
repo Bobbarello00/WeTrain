@@ -22,6 +22,7 @@ public class CourseDAO {
         }
     }
 
+    //TODO caricare anche le lezioni
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesAthlete(stmt, athlete)){
             List<Course> myList = new ArrayList<>();

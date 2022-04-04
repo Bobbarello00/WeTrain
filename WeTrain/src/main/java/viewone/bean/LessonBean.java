@@ -1,32 +1,24 @@
-package model;
+package viewone.bean;
 
 import java.sql.Time;
 
-public class Lesson {
-    private int id;
+public class LessonBean {
     private String lessonDay;
     private Time lessonStartTime;
     private Time lessonEndTime;
-    private Course course;
 
-    public Lesson(int id, Course course, String lessonDay, Time lessonStartTime, Time lessonEndTime){
-        this.id = id;
-        this.course = course;
+    public LessonBean(String lessonDay, Time lessonStartTime, Time lessonEndTime){
         this.lessonDay = lessonDay;
         this.lessonStartTime = lessonStartTime;
         this.lessonEndTime = lessonEndTime;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getLessonDay() {
         return lessonDay;
     }
 
-    public Course getCourse() {
-        return course;
+    public void setLessonDay(String lessonDay) {
+        this.lessonDay = lessonDay;
     }
 
     public Time getLessonStartTime() {

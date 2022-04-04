@@ -8,19 +8,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.sql.Time;
 import java.util.ResourceBundle;
 
 public class TimeSchedulerController implements Initializable {
-    @FXML
-    private ComboBox<String> endHourBox;
-    @FXML
-    private ComboBox<String> endMinuteBox;
-    @FXML
-    private ComboBox<String> startHourBox;
-    @FXML
-    private ComboBox<String> startMinuteBox;
-    @FXML
-    private HBox timeSchedulerHBox;
+    @FXML private ComboBox<String> endHourBox;
+    @FXML private ComboBox<String> endMinuteBox;
+    @FXML private ComboBox<String> startHourBox;
+    @FXML private ComboBox<String> startMinuteBox;
+    @FXML private HBox timeSchedulerHBox;
     /*TODO logica per leggere l'orario
     @FXML
     private void select(ActionEvent event){
@@ -28,8 +24,9 @@ public class TimeSchedulerController implements Initializable {
         String s = box.getSelectionModel().getSelectedItem().toString();
     }
     */
+
     public void toggleVisibility(boolean toggle){
-        timeSchedulerHBox.setVisible(!toggle);
+        timeSchedulerHBox.setVisible(toggle);
     }
 
 

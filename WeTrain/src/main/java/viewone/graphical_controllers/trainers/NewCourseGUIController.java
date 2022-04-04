@@ -24,66 +24,40 @@ import java.util.ResourceBundle;
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
-    @FXML
-    private ListView<Node> exercisesSelectedList;
-    @FXML
-    private Button mondayButton;
-    @FXML
-    private Button createButton;
-    @FXML
-    private TimeSchedulerController mondayTimeSchedulerController;
-    @FXML
-    private Parent mondayTimeScheduler;
-    @FXML
-    private Button tuesdayButton;
-    @FXML
-    private TimeSchedulerController tuesdayTimeSchedulerController;
-    @FXML
-    private Parent tuesdayTimeScheduler;
-    @FXML
-    private Button wednesdayButton;
-    @FXML
-    private TimeSchedulerController wednesdayTimeSchedulerController;
-    @FXML
-    private Parent wednesdayTimeScheduler;
-    @FXML
-    private Button thursdayButton;
-    @FXML
-    private TimeSchedulerController thursdayTimeSchedulerController;
-    @FXML
-    private Parent thursdayTimeScheduler;
-    @FXML
-    private Button fridayButton;
-    @FXML
-    private TimeSchedulerController fridayTimeSchedulerController;
-    @FXML
-    private Parent fridayTimeScheduler;
-    @FXML
-    private Button saturdayButton;
-    @FXML
-    private TimeSchedulerController saturdayTimeSchedulerController;
-    @FXML
-    private Parent saturdayTimeScheduler;
-    @FXML
-    private Button sundayButton;
-    @FXML
-    private TimeSchedulerController sundayTimeSchedulerController;
-    @FXML
-    private Parent sundayTimeScheduler;
-    @FXML
-    private TextField workoutNameText;
-    @FXML
-    private TextArea infoTextArea;
-    @FXML
-    private TextArea equipmentTextArea;
-    @FXML
-    private Button baseFitnessLevelButton;
-    @FXML
-    private Button intermediateFitnessLevelButton;
-    @FXML
-    private Button advancedFitnessLevelButton;
-    @FXML
-    private Text usernameText1;
+    @FXML private ListView<Node> exercisesSelectedList;
+    @FXML private Button mondayButton;
+    @FXML private Button createButton;
+    @FXML private TimeSchedulerController mondayTimeSchedulerController;
+    @FXML private Parent mondayTimeScheduler;
+    @FXML private Button tuesdayButton;
+    @FXML private TimeSchedulerController tuesdayTimeSchedulerController;
+    @FXML private Parent tuesdayTimeScheduler;
+    @FXML private Button wednesdayButton;
+    @FXML private TimeSchedulerController wednesdayTimeSchedulerController;
+    @FXML private Parent wednesdayTimeScheduler;
+    @FXML private Button thursdayButton;
+    @FXML private TimeSchedulerController thursdayTimeSchedulerController;
+    @FXML private Parent thursdayTimeScheduler;
+    @FXML private Button fridayButton;
+    @FXML private TimeSchedulerController fridayTimeSchedulerController;
+    @FXML private Parent fridayTimeScheduler;
+    @FXML private Button saturdayButton;
+    @FXML private TimeSchedulerController saturdayTimeSchedulerController;
+    @FXML private Parent saturdayTimeScheduler;
+    @FXML private Button sundayButton;
+    @FXML private TimeSchedulerController sundayTimeSchedulerController;
+    @FXML private Parent sundayTimeScheduler;
+    @FXML private TextField courseNameText;
+    @FXML private TextArea infoTextArea;
+    @FXML private TextArea equipmentTextArea;
+    @FXML private Button baseFitnessLevelButton;
+    @FXML private Button intermediateFitnessLevelButton;
+    @FXML private Button advancedFitnessLevelButton;
+    @FXML private Text usernameText1;
+
+    public NewCourseGUIController() {
+    }
+
     @FXML
     void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
@@ -108,8 +82,9 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         }
     }
     private void toggledDayButtonAction(TimeSchedulerController controller,Button button, int i){
+        toggled[i]=!toggled[i];
         controller.toggleVisibility(toggled[i]);
-        if(!toggled[i]) {
+        if(toggled[i]) {
             button.setStyle("-fx-background-color: white;" +
                     " -fx-text-fill: rgb(24,147,21);" +
                     " -fx-border-color: rgb(24,147,21);" +
@@ -117,7 +92,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         }else{
             button.setStyle(null);
         }
-        toggled[i]=!toggled[i];
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

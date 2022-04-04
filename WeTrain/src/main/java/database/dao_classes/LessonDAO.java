@@ -26,7 +26,7 @@ public class LessonDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllLessons(stmt, course)){
             List<Lesson> myList = new ArrayList<>();
             while(rs.next()){
-                myList.add(new Lesson(rs.getInt("idLesson"), course, rs.getTimestamp("LessonSchedule").toLocalDateTime()));
+                myList.add(new Lesson(rs.getInt("idLesson"), course, rs.getString("LessonDay"), rs.getTime("LessonStartTime"), rs.getTime("LessonEndTime")));
             }
             return myList;
         }

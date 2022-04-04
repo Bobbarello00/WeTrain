@@ -184,9 +184,11 @@ public class Query {
     }
 
     public static int insertLesson(Statement stmt, Lesson lesson) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, Course) " +
-                "VALUES ('%s', %s);",
-                Timestamp.valueOf(lesson.getLessonDate()),
+        return stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, LessonStartTime, LessonEndTime, Course) " +
+                "VALUES ('%s', '%s', '%s', %s);",
+                lesson.getLessonDay(),
+                lesson.getLessonStartTime().toString(),
+                lesson.getLessonEndTime().toString(),
                 lesson.getCourse().getId()));
     }
 
