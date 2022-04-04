@@ -8,27 +8,30 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="355.0" spacing="30.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.5); -fx-border-radius: 50; -fx-border-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="355.0" spacing="10.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.5); -fx-border-radius: 50; -fx-border-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
          <HBox.margin>
-            <Insets left="15.0" />
+            <Insets left="5.0" />
          </HBox.margin>
          <image>
             <Image url="@images/WeTrainLogo.png" />
          </image>
       </ImageView>
-      <Label fx:id="itemName" prefHeight="15.0" prefWidth="121.0" scaleX="1.5" scaleY="1.5" text="Item name ">
+      <Label fx:id="itemName" prefHeight="15.0" prefWidth="254.0" scaleX="1.5" scaleY="1.5" text="Item name ">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
       </Label>
       <Label fx:id="itemCode" prefHeight="15.0" prefWidth="0.0" text="Item name " visible="false">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="itemOwner" prefHeight="18.0" prefWidth="105.0" scaleX="0.8" scaleY="0.8" text="Item Owner">
+      <Label fx:id="itemOwner" prefHeight="18.0" prefWidth="291.0" scaleX="0.8" scaleY="0.8" text="Item Owner">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
