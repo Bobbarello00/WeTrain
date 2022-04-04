@@ -2,9 +2,7 @@ package controller;
 
 import database.dao_classes.UserDAO;
 import exception.ElementNotFoundException;
-import model.Athlete;
 import model.LoggedUserSingleton;
-import model.Trainer;
 import model.User;
 import viewone.bean.CredentialsBean;
 
@@ -18,7 +16,6 @@ public class LoginController {
             //TODO EXCEPTION user non trovato
             System.out.println("EXCEPTION user non trovato");
             throw new ElementNotFoundException();
-
         }
         LoggedUserSingleton.setInstance(user);
     }

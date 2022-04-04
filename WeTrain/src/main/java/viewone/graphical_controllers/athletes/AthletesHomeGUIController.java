@@ -37,7 +37,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
     public void populateCourseList() {
         try {
-            List<CourseEssentialBean> courseBeanList = CourseManagementAthleteController.populateCourseList();
+            List<CourseEssentialBean> courseBeanList = CourseManagementAthleteController.getCourseList();
             ArrayList<Node> tempList = new ArrayList<>();
             for (CourseEssentialBean courseBean : courseBeanList) {
                 try {

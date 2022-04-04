@@ -12,11 +12,11 @@ import java.util.List;
 
 public class CourseManagementAthleteController {
 
-    public static List<CourseEssentialBean> populateCourseList() throws SQLException {
+    public static List<CourseEssentialBean> getCourseList() throws SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) LoggedUserSingleton.getInstance());
         List<CourseEssentialBean> beanList = new ArrayList<>();
         for(Course course : courseList) {
-            beanList.add(new CourseEssentialBean(course.getId(), course.getName()));
+            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + course.getOwner().getSurname()));
         }
         return beanList;
     }

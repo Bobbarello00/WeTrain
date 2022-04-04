@@ -3,10 +3,12 @@ package viewone.bean;
 public class CourseEssentialBean {
     private int id;
     private String name;
+    private String owner;
 
-    public CourseEssentialBean(int id, String name){
+    public CourseEssentialBean(int id, String name, String owner){
         this.id = id;
         this.name = name;
+        this.owner = owner;
     }
 
     public int getId() {
@@ -23,5 +25,13 @@ public class CourseEssentialBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }
