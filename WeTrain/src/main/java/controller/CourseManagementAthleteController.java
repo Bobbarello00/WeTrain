@@ -16,7 +16,7 @@ public class CourseManagementAthleteController {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) LoggedUserSingleton.getInstance());
         List<CourseEssentialBean> beanList = new ArrayList<>();
         for(Course course : courseList) {
-            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + course.getOwner().getSurname()));
+            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
         }
         return beanList;
     }
