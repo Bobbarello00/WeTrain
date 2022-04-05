@@ -22,6 +22,20 @@ public class CourseDAO {
         }
     }
 
+    public Course loadCourse(int id) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourse(stmt, id)) {
+            if(rs.next()){
+                Trainer trainer = new TrainerDAO().loadTrainer(rs.getString("Trainer"));
+                Course course = new Course(rs.getInt("idCourse"), rs.getString("Name"), rs.getString("Description"), rs.getString("FitnessLevel"), trainer, rs.getString("Equipment"));
+                course.addAllLessons(new LessonDAO().loadAllLessons(course));
+                return course;
+            } else {
+                System.out.println("Course not found");
+                return null;
+            }
+        }
+    }
+
     //TODO caricare anche le lezioni
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesAthlete(stmt, athlete)){

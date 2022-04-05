@@ -1,11 +1,14 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
@@ -17,14 +20,10 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
-    @FXML
-    private ListView<CourseEssentialBean> courseList;
-    @FXML
-    private ListView<Node> popularList;
-    @FXML
-    private ListView<Node> feedList;
-    @FXML
-    private Text usernameText1;
+    @FXML private ListView<CourseEssentialBean> courseList;
+    @FXML private ListView<Node> popularList;
+    @FXML private ListView<Node> feedList;
+    @FXML private Text usernameText1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,16 +41,16 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        /*TODO
-        courseList.getSelectionModel().selectedItemProperty().???????????????;
-        addListener(new ChangeListener<Node>() {
+
+        courseList.getSelectionModel().selectedItemProperty().
+        addListener(new ChangeListener<CourseEssentialBean>() {
             @Override
-            public void changed(ObservableValue<? extends Node> observableValue, Node oldNode, Node newNode) {
+            public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
                 Label label = (Label)(newNode.lookup("#itemCode"));
                 label.setText("Ciao");
             }
         });
-        */
+
         usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 }

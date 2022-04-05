@@ -4,6 +4,7 @@ import database.dao_classes.CourseDAO;
 import model.Athlete;
 import model.Course;
 import model.LoggedUserSingleton;
+import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
 
 import java.sql.SQLException;
@@ -19,5 +20,10 @@ public class CourseManagementAthleteController {
             beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
         }
         return beanList;
+    }
+
+    public static CourseBean getCourse(int id) throws SQLException {
+        Course course = new CourseDAO().loadCourse(id);
+        return new CourseBean(course.getId(), course.getName(), course.getDescription(), course.getFitnessLevel(),course.getOwner().getName() + " " + course.getOwner().getSurname(), course.getEquipment());
     }
 }
