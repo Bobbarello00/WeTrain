@@ -20,20 +20,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class LoginGUIController extends LauncherGUIController {
-    @FXML
-    private Button submitButton;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField passwField;
-    @FXML
-    private TextField passwSField;
-    @FXML
-    void homeAction() throws IOException {
+    @FXML private Button submitButton;
+    @FXML private TextField emailField;
+    @FXML private TextField passwField;
+    @FXML private TextField passwSField;
+
+    @FXML void homeAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "launcher");
     }
-    @FXML
-    void submitButtonAction() {
+
+    @FXML void submitButtonAction() {
         try {
             LoginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
             if(LoggedUserSingleton.getInstance() instanceof Athlete){
@@ -54,8 +50,8 @@ public class LoginGUIController extends LauncherGUIController {
             e.printStackTrace();
         }
     }
-    @FXML
-    void keyHandler(KeyEvent event) {
+
+    @FXML void keyHandler(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER){
             submitButtonAction();
         }

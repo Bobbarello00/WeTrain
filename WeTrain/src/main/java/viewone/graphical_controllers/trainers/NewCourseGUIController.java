@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
+
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
     @FXML private Button createButton;
@@ -58,18 +59,16 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     public NewCourseGUIController() {
     }
 
-    @FXML
-    void createButtonAction() throws IOException {
+    @FXML void createButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
         MenuTrainersGUIController.resetSelectedButton();
         System.out.println("Created");
     }
-    @FXML
-    void fitnessLevelSelection(ActionEvent event){
+    @FXML void fitnessLevelSelection(ActionEvent event){
         fitnessLevelFilter.fitnessLevelSelection(event);
     }
-    @FXML
-    void dayButtonAction(ActionEvent event) {
+
+    @FXML void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){
             case "mondayButton" -> toggledDayButtonAction(mondayTimeSchedulerController,mondayButton,0);
@@ -81,6 +80,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             case "sundayButton" -> toggledDayButtonAction(sundayTimeSchedulerController,sundayButton,6);
         }
     }
+
     private void toggledDayButtonAction(TimeSchedulerController controller,Button button, int i){
         toggled[i]=!toggled[i];
         controller.toggleVisibility(toggled[i]);
@@ -94,8 +94,8 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         }
 
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
         usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());

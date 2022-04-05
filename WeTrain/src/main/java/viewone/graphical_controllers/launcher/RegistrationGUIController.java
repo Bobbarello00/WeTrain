@@ -14,16 +14,15 @@ import java.util.Objects;
 
 public class RegistrationGUIController extends LauncherGUIController implements Initializable {
     private static final String HOME = "launcher";
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField passwField;
-    @FXML
-    private void homeTextAction() throws IOException {
+
+    @FXML private TextField emailField;
+    @FXML private TextField passwField;
+
+    @FXML private void homeTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
-    @FXML
-    private void continueButtonAction() throws IOException {
+
+    @FXML private void continueButtonAction() throws IOException {
         if(!Objects.equals(emailField.getText(), "") & !Objects.equals(passwField.getText(), "") & sendCredentialInfo()) {
             PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME);
         } else {
@@ -37,8 +36,8 @@ public class RegistrationGUIController extends LauncherGUIController implements 
             alert.showAndWait();
         }
     }
-    @FXML
-    private void profileTextAction() throws IOException {
+
+    @FXML private void profileTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }
 

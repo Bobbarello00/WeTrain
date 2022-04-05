@@ -8,16 +8,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public abstract class ProfileController {
-    @FXML
-    private Label emailLabel;
-    @FXML
-    private Label firstNameLabel;
-    @FXML
-    private Label fiscalCodeLabel;
-    @FXML
-    private Label lastNameLabel;
-    @FXML
-    protected void closeAction(MouseEvent event){
+    @FXML private Label emailLabel;
+    @FXML private Label firstNameLabel;
+    @FXML private Label fiscalCodeLabel;
+    @FXML private Label lastNameLabel;
+
+    @FXML protected void closeAction(MouseEvent event){
         ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }

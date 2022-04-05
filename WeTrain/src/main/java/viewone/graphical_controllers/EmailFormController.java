@@ -8,19 +8,16 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 public class EmailFormController {
-    @FXML
-    private TextArea emailTextArea;
-    @FXML
-    private TextField objectTextField;
-    @FXML
-    private Button sendButton;
-    @FXML
-    protected void closeAction(){
+    @FXML private TextArea emailTextArea;
+    @FXML private TextField objectTextField;
+    @FXML private Button sendButton;
+
+    @FXML protected void closeAction(){
         ((Stage) sendButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
-    @FXML
-    void sendButtonAction() {
+
+    @FXML void sendButtonAction() {
         System.out.println("Email Sent!");
         ((Stage) sendButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

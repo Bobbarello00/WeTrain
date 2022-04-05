@@ -8,8 +8,8 @@ import viewone.graphical_controllers.HomeController;
 import java.io.IOException;
 
 public abstract class HomeGUIControllerTrainers extends HomeController {
-    @Override
-    protected void editButtonAction(ActionEvent event) throws IOException {
+
+    @Override public void editButtonAction(ActionEvent event) throws IOException {
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "YourProfileTrainers", "trainers", false);
     }
 }

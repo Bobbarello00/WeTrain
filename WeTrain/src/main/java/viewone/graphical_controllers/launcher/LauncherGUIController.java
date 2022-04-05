@@ -14,22 +14,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public abstract class LauncherGUIController implements Initializable {
-    @FXML
-    private TextField passwSField;
-    @FXML
-    private PasswordField passwField;
-    @FXML
-    private CheckBox checkVisible;
-    @FXML
-    void eyeButtonAction() {
+    @FXML private TextField passwSField;
+    @FXML private PasswordField passwField;
+    @FXML private CheckBox checkVisible;
+    @FXML void eyeButtonAction() {
         checkVisible.fire();
     }
-    @FXML
-    protected void closeAction(MouseEvent event){
+
+    @FXML protected void closeAction(MouseEvent event){
         ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
     }
 }

@@ -20,26 +20,19 @@ import java.util.ResourceBundle;
 
 public class MoreInfoGUIController implements Initializable {
     private static final String HOME = "launcher";
-    private static String selectedProfile;
-    @FXML
-    private Button registerButton;
-    @FXML
-    private RadioButton maleButton;
-    @FXML
-    private RadioButton femaleButton;
-    @FXML
-    private RadioButton nogenderButton;
-    @FXML
-    private DatePicker birthPicker;
-    @FXML
-    private TextField fcText;
-    @FXML
-    private TextField firstNameText;
-    @FXML
-    private TextField lastNameText;
-    @FXML
-    private TextField usernameText;
     private char gender;
+
+    private static String selectedProfile;
+    @FXML private Button registerButton;
+    @FXML private RadioButton maleButton;
+    @FXML private RadioButton femaleButton;
+    @FXML private RadioButton nogenderButton;
+    @FXML private DatePicker birthPicker;
+    @FXML private TextField fcText;
+    @FXML private TextField firstNameText;
+    @FXML private TextField lastNameText;
+    @FXML private TextField usernameText;
+
 
     private int sendUserInfo(){
         if(!Objects.equals(usernameText.getText(), "")
@@ -79,8 +72,7 @@ public class MoreInfoGUIController implements Initializable {
         }
     }
 
-    @FXML
-    private void registerButtonAction() throws IOException {
+    @FXML private void registerButtonAction() throws IOException {
         int res = sendUserInfo();
         if(res == 0) {
             PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
@@ -110,21 +102,19 @@ public class MoreInfoGUIController implements Initializable {
             alert.showAndWait();
         }
     }
-
-    @FXML
-    protected void closeAction(){
+    @FXML protected void closeAction(){
         ((Stage) registerButton.getScene().getWindow()).close();
     }
-    @FXML
-    private void profileButtonAction() throws IOException {
+
+    @FXML private void profileButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
     }
-    @FXML
-    private void homeButtonAction() throws IOException {
+
+    @FXML private void homeButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
-    @FXML
-    private void registrationTextAction() throws IOException {
+
+    @FXML private void registrationTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(), selectedProfile + "Registration", HOME);
     }
 
@@ -132,8 +122,7 @@ public class MoreInfoGUIController implements Initializable {
         selectedProfile = selectedProfileString;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ToggleGroup group = new ToggleGroup();
         nogenderButton.setToggleGroup(group);
         maleButton.setToggleGroup(group);

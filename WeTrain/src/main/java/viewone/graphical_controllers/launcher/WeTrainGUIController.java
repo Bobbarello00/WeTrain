@@ -9,18 +9,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class WeTrainGUIController {
-    @FXML
-    private Button loginButton;
-    @FXML
-    protected void registerTextAction() throws IOException {
+    @FXML private Button loginButton;
+
+    @FXML protected void registerTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", "launcher");
     }
-    @FXML
-    protected void closeAction(){
+
+    @FXML protected void closeAction(){
         ((Stage) loginButton.getScene().getWindow()).close();
     }
-    @FXML
-    protected void loginButtonAction() throws IOException {
+
+    @FXML protected void loginButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"Login", "launcher");
     }
 }

@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
 import viewone.ListPopulate;
@@ -20,20 +19,19 @@ import java.util.ResourceBundle;
 
 public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
-    @FXML
-    private ListView<Node> requestsList;
-    @FXML
-    private Text usernameText1;
-    @FXML
-    void newWorkoutButtonAction() throws IOException {
+
+    @FXML private ListView<Node> requestsList;
+    @FXML private Text usernameText1;
+
+    @FXML void newWorkoutButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);
     }
-    @FXML
-    void clarificationEmailButtonAction(ActionEvent event) throws IOException {
+
+    @FXML void clarificationEmailButtonAction(ActionEvent event) throws IOException {
         PageSwitchSizeChange.pageSwitch((Button)event.getSource(),"EmailForm","",false);
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,requestsList);
         usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
