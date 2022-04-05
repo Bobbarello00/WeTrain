@@ -24,6 +24,6 @@ public class CourseManagementAthleteController {
 
     public static CourseBean getCourse(int id) throws SQLException {
         Course course = new CourseDAO().loadCourse(id);
-        return new CourseBean(course.getId(), course.getName(), course.getDescription(), course.getFitnessLevel(),course.getOwner().getName() + " " + course.getOwner().getSurname(), course.getEquipment());
+        return new CourseBean(course.getId(), course.getName(), course.getDescription(), course.getFitnessLevel(), course.getOwner().getName() + " " + course.getOwner().getSurname(), course.getEquipment());
     }
 }

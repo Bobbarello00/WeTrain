@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.ElementNotFoundException;
 import model.Athlete;
 import model.Course;
 import model.Trainer;
@@ -30,8 +31,7 @@ public class CourseDAO {
                 course.addAllLessons(new LessonDAO().loadAllLessons(course));
                 return course;
             } else {
-                System.out.println("Course not found");
-                return null;
+                throw new ElementNotFoundException();
             }
         }
     }

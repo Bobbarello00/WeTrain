@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class CourseInfoGUIController implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
-    private CourseBean courseBean;
+    private static CourseBean courseBean;
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
     @FXML private Button tuesdayButton;
@@ -66,7 +66,7 @@ public class CourseInfoGUIController implements Initializable {
                 "-fx-background-radius: 11");
     }
 
-    public void setValue(CourseBean bean) {
+    public static void setValue(CourseBean bean) {
         courseBean = bean;
     }
 

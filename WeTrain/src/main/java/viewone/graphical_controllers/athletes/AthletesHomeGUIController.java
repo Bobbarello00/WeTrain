@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
+import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
 import viewone.listCellFactories.CourseListCellFactory;
 
@@ -46,7 +47,12 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         addListener(new ChangeListener<CourseEssentialBean>() {
             @Override
             public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
-                CourseManagementAthleteController.getCourse(newItem.getId());
+                try {
+                    CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
+                    CourseInfoGUIController.setValue(courseBean);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
