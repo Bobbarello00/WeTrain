@@ -33,7 +33,7 @@
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
                   </Text>
-                  <Button layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Button fx:id="logoutButton" layoutX="29.0" layoutY="96.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.25" scaleY="1.25" text="Logout" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font name="ABeeZee Regular" size="12.0" />
                      </font>
