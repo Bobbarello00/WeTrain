@@ -8,14 +8,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
 import viewone.listCellFactories.CourseListCellFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -25,7 +28,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private ListView<Node> popularList;
     @FXML private ListView<Node> feedList;
     @FXML private Text usernameText1;
-
+    @FXML private Button logoutButton;
+    private static CourseBean selectedCourse;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         /*ListPopulate.populateList(10,courseList);
@@ -49,13 +53,24 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
                 try {
                     CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
-                    CourseInfoGUIController.setValue(courseBean);
+                    setSelectedCourse(courseBean);
+                    PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
                 } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
 
         usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+    }
+
+    public static CourseBean getSelectedCourse() {
+        return selectedCourse;
+    }
+
+    public void setSelectedCourse(CourseBean course) {
+        selectedCourse = course;
     }
 }

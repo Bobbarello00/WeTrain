@@ -7,19 +7,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.graphical_controllers.FitnessLevelFilter;
 
 import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class CourseInfoGUIController implements Initializable {
-    public Boolean[] toggled = new Boolean[7];
-    private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
-    private static CourseBean courseBean;
+
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
     @FXML private Button tuesdayButton;
@@ -28,14 +27,14 @@ public class CourseInfoGUIController implements Initializable {
     @FXML private Button fridayButton;
     @FXML private Button saturdayButton;
     @FXML private Button sundayButton;
-    @FXML private Button createButton;
-    @FXML private TextField courseNameText;
+    @FXML private Button subscribeButton;
+    @FXML private Label courseNameText;
     @FXML private Label infoLabel;
     @FXML private Label equipmentLabel;
     @FXML private Button baseFitnessLevelButton;
     @FXML private Button intermediateFitnessLevelButton;
     @FXML private Button advancedFitnessLevelButton;
-    @FXML private TextField trainerNameText;
+    @FXML private Label trainerNameText;
     @FXML private Label mondayTimeText;
     @FXML private Label tuesdayTimeText;
     @FXML private Label wednesdayTimeText;
@@ -44,18 +43,30 @@ public class CourseInfoGUIController implements Initializable {
     @FXML private Label saturdayTimeText;
     @FXML private Label sundayTimeText;
 
+    private void setButtonColor(Button button) {
+        button.setStyle("-fx-background-color: white;" +
+                " -fx-text-fill: rgb(24,147,21);" +
+                " -fx-border-color: rgb(24,147,21);" +
+                " -fx-border-radius: 50");
+    }
+
+    private void setDay(Button button, Label label, LessonBean lessonBean) {
+        label.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
+        setButtonColor(button);
+    }
+
     private void setScheduleLesson(List<LessonBean> lessonBeanList) {
-        Arrays.fill(toggled, Boolean.FALSE);
         //TODO da testare
         for(LessonBean lessonBean: lessonBeanList){
             switch (lessonBean.getLessonDay()){
-                case ("monday") -> mondayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
-                case ("tuesday") -> tuesdayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
-                case ("wednesday") -> wednesdayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
-                case ("thursday") -> thursdayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
-                case ("friday") -> fridayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
-                case ("saturday") -> saturdayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
-                case ("sunday") -> sundayTimeText.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
+                //TODO codice duplicato
+                case ("monday") -> setDay(mondayButton, mondayTimeText, lessonBean);
+                case ("tuesday") -> setDay(tuesdayButton, tuesdayTimeText, lessonBean);
+                case ("wednesday") -> setDay(wednesdayButton, wednesdayTimeText, lessonBean);
+                case ("thursday") -> setDay(thursdayButton, thursdayTimeText, lessonBean);
+                case ("friday") -> setDay(fridayButton, fridayTimeText, lessonBean);
+                case ("saturday") -> setDay(saturdayButton, saturdayTimeText, lessonBean);
+                case ("sunday") -> setDay(sundayButton, sundayTimeText, lessonBean);
             }
         }
     }
@@ -66,24 +77,32 @@ public class CourseInfoGUIController implements Initializable {
                 "-fx-background-radius: 11");
     }
 
-    public static void setValue(CourseBean bean) {
-        courseBean = bean;
+    @FXML protected void closeAction(MouseEvent event){
+        ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(courseBean == null) {
-            //TODO throw Exception;
-            System.out.println("Error in CorseInfoGUIController: courseBean is null.");
-        }
+    private void setValue(CourseBean courseBean) {
         courseNameText.setText(courseBean.getName());
         trainerNameText.setText(courseBean.getOwner());
         infoLabel.setText(courseBean.getDescription());
         equipmentLabel.setText(courseBean.getEquipment());
         switch (courseBean.getFitnessLevel()){
-            case ("base") -> setFitnessLevel(baseFitnessLevelButton);
-            case ("intermediate") -> setFitnessLevel(intermediateFitnessLevelButton);
-            case ("advanced") -> setFitnessLevel(advancedFitnessLevelButton);
+            case ("Base") -> setFitnessLevel(baseFitnessLevelButton);
+            case ("Intermediate") -> setFitnessLevel(intermediateFitnessLevelButton);
+            case ("Advanced") -> setFitnessLevel(advancedFitnessLevelButton);
+        }
+        if(courseBean.getLessonBeanList() != null) {
+            setScheduleLesson(courseBean.getLessonBeanList());
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        CourseBean courseBean = AthletesHomeGUIController.getSelectedCourse();
+        if(courseBean != null) {
+            setValue(courseBean);
+        } else {
+            System.out.println("Error in CourseInfoGUIController: courseBean == null");
         }
     }
 
