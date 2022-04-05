@@ -46,8 +46,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         addListener(new ChangeListener<CourseEssentialBean>() {
             @Override
             public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
-                Label label = (Label)(newNode.lookup("#itemCode"));
-                label.setText("Ciao");
+                CourseManagementAthleteController.getCourse(newItem.getId());
             }
         });
 
