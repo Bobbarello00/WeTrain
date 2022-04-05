@@ -3,7 +3,10 @@ package viewone.graphical_controllers.athletes;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.graphical_controllers.FitnessLevelFilter;
@@ -82,5 +85,9 @@ public class CourseInfoGUIController implements Initializable {
             case ("intermediate") -> setFitnessLevel(intermediateFitnessLevelButton);
             case ("advanced") -> setFitnessLevel(advancedFitnessLevelButton);
         }
+    }
+
+    public void subscribeButtonAction() {
+        //TODO Sottoscrizione al corso
     }
 }
