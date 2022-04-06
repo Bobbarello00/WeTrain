@@ -97,7 +97,7 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="editButton" layoutX="420.0" layoutY="545.0" mnemonicParsing="false" onAction="#editProfileButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="editButton" layoutX="420.0" layoutY="542.0" mnemonicParsing="false" onAction="#editProfileButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
