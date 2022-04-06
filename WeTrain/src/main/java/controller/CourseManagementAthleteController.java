@@ -16,9 +16,8 @@ import java.util.List;
 
 public class CourseManagementAthleteController {
 
-    public static void subscribeToACourse(CourseBean courseBean) {
-
-        new CourseDAO().subscribeToACourse();
+    public static void subscribeToACourse(CourseBean courseBean) throws SQLException {
+        new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));
     }
 
     public static List<CourseEssentialBean> getCourseList() throws SQLException {

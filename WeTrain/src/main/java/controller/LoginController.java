@@ -12,11 +12,6 @@ public class LoginController {
 
     public static void login(CredentialsBean credentials) throws SQLException {
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
-        if(user == null) {
-            //TODO EXCEPTION user non trovato
-            System.out.println("EXCEPTION user non trovato");
-            throw new ElementNotFoundException();
-        }
         LoggedUserSingleton.setInstance(user);
     }
 }

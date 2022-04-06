@@ -16,6 +16,7 @@ import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -110,8 +111,12 @@ public class CourseInfoGUIController implements Initializable {
     public void subscribeButtonAction(ActionEvent event) {
         //TODO Sottoscrizione al corso
         if(courseBean != null) {
-            CourseManagementAthleteController.subscribeToACourse(courseBean);
-            System.out.println("Subscribed!");
+            try {
+                CourseManagementAthleteController.subscribeToACourse(courseBean);
+                System.out.println("Subscribed!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

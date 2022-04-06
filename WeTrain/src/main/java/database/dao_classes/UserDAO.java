@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.ElementNotFoundException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
@@ -31,7 +32,7 @@ public class UserDAO {
                     // TODO MALE MALE (non dovevamo arrivare qui -> eccezione) :')
                 }
             } else {
-                // TODO throw MyException; (user non trovato)
+                throw new ElementNotFoundException();
             }
         }
         return null;
