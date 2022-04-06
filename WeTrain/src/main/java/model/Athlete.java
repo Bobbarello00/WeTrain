@@ -1,11 +1,13 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Athlete extends User {
     private String cardNumber;
     private LocalDate cardExpirationDate;
     private WorkoutPlan workoutPlan;
+    private List<Course> courseList;
 
     public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password){
         super(name, surname, username, dateOfBirth, fc, gender, email, password);
@@ -16,6 +18,7 @@ public class Athlete extends User {
         this.cardNumber = cardNumber;
         this.cardExpirationDate = cardExpirationDate;
     }
+
     public void changeCardInfo(String newCardNumber, LocalDate newCardExpirationDate){
         this.cardNumber = newCardNumber;
         this.cardExpirationDate = newCardExpirationDate;
@@ -43,5 +46,13 @@ public class Athlete extends User {
 
     public void setWorkoutPlan(WorkoutPlan workoutPlan) {
         this.workoutPlan = workoutPlan;
+    }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
     }
 }

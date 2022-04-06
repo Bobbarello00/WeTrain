@@ -11,7 +11,7 @@ public class AthleteDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public void saveAthlete(Athlete athlete) throws SQLException {
-        try(Statement stmt = conn.createStatement();){
+        try(Statement stmt = conn.createStatement()){
             Query.insertAthlete(stmt, athlete);
         }
     }
@@ -43,6 +43,7 @@ public class AthleteDAO {
                         } else {
                             athlete.setWorkoutPlan(null);
                         }
+                        athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
                         return athlete;
                     }
                 }

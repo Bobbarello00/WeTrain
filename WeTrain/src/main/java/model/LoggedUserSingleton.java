@@ -6,6 +6,7 @@ public class LoggedUserSingleton {
 
     private LoggedUserSingleton() {}
 
+    //TODO caricare l'istanza direttamente dal database?
     public static User getInstance(){
         return user;
     }

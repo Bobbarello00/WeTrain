@@ -5,6 +5,7 @@ import database.Query;
 import exception.ElementNotFoundException;
 import model.Athlete;
 import model.Course;
+import model.LoggedUserSingleton;
 import model.Trainer;
 
 import java.sql.Connection;
@@ -23,6 +24,13 @@ public class CourseDAO {
         }
     }
 
+    //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
+    public void subscribeToACourse(Course course) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.insertSubscribe(stmt, course, (Athlete) LoggedUserSingleton.getInstance());
+        }
+    }
+
     public Course loadCourse(int id) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourse(stmt, id)) {
             if(rs.next()){
@@ -36,16 +44,24 @@ public class CourseDAO {
         }
     }
 
-    //TODO caricare anche le lezioni
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesAthlete(stmt, athlete)){
+            if(!rs.next()){
+                return null;
+            }
             List<Course> myList = new ArrayList<>();
-            while(rs.next()){
+            do{
                 Trainer trainer = new TrainerDAO().loadTrainer(rs.getString("Trainer"));
-                Course course = new Course(rs.getInt("idCourse"), rs.getString("Name"), rs.getString("Description"), rs.getString("FitnessLevel"), trainer, rs.getString("Equipment"));
+                Course course = new Course(
+                        rs.getInt("idCourse"),
+                        rs.getString("Name"),
+                        rs.getString("Description"),
+                        rs.getString("FitnessLevel"),
+                        trainer,
+                        rs.getString("Equipment"));
                 course.addAllLessons(new LessonDAO().loadAllLessons(course));
                 myList.add(course);
-            }
+            }while((rs.next()));
             return myList;
         }
     }

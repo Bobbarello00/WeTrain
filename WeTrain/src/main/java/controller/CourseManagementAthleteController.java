@@ -7,6 +7,7 @@ import model.Lesson;
 import model.LoggedUserSingleton;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
+import viewone.bean.CourseSearchBean;
 import viewone.bean.LessonBean;
 
 import java.sql.SQLException;
@@ -14,6 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseManagementAthleteController {
+
+    public static void subscribeToACourse(CourseBean courseBean) {
+
+        new CourseDAO().subscribeToACourse();
+    }
 
     public static List<CourseEssentialBean> getCourseList() throws SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) LoggedUserSingleton.getInstance());
@@ -24,8 +30,8 @@ public class CourseManagementAthleteController {
         return beanList;
     }
 
-    public static CourseBean getCourse(int id) throws SQLException {
-        Course course = new CourseDAO().loadCourse(id);
+    public static CourseBean getCourse(CourseSearchBean bean) throws SQLException {
+        Course course = new CourseDAO().loadCourse(bean.getId());
         CourseBean courseBean = new CourseBean(
                 course.getId(),
                 course.getName(),

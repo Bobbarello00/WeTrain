@@ -16,6 +16,7 @@ import model.LoggedUserSingleton;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
+import viewone.bean.CourseSearchBean;
 import viewone.listCellFactories.CourseListCellFactory;
 
 import java.io.IOException;
@@ -56,7 +57,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     public void eventList(ListView<CourseEssentialBean> listView, CourseEssentialBean newItem) {
         try {
             if(newItem != null) {
-                CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
+                CourseBean courseBean = CourseManagementAthleteController.getCourse(new CourseSearchBean(newItem.getId()));
                 setSelectedCourse(courseBean);
                 PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());

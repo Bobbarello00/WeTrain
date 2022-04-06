@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.CourseManagementAthleteController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -42,6 +43,7 @@ public class CourseInfoGUIController implements Initializable {
     @FXML private Label fridayTimeText;
     @FXML private Label saturdayTimeText;
     @FXML private Label sundayTimeText;
+    private CourseBean courseBean;
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -97,7 +99,7 @@ public class CourseInfoGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CourseBean courseBean = AthletesHomeGUIController.getSelectedCourse();
+        courseBean = AthletesHomeGUIController.getSelectedCourse();
         if(courseBean != null) {
             setValue(courseBean);
         } else {
@@ -107,7 +109,10 @@ public class CourseInfoGUIController implements Initializable {
 
     public void subscribeButtonAction(ActionEvent event) {
         //TODO Sottoscrizione al corso
-        System.out.println("Subscribed!");
+        if(courseBean != null) {
+            CourseManagementAthleteController.subscribeToACourse(courseBean);
+            System.out.println("Subscribed!");
+        }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
