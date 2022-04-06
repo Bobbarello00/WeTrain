@@ -5,12 +5,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.LoggedUserSingleton;
 import model.Trainer;
-import viewone.graphical_controllers.ProfileController;
+import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class YourProfileTrainersGUIController extends ProfileController implements Initializable {
+public class YourProfileTrainersGUIController extends ProfileGUIController implements Initializable {
     @FXML private Label emailLabel;
     @FXML private Label firstNameLabel;
     @FXML private Label lastNameLabel;

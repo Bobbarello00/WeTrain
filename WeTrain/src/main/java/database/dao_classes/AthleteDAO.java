@@ -10,6 +10,15 @@ import java.time.LocalDate;
 public class AthleteDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
+    public void updateCardInfo(String cardNumber, LocalDate expirationDate, Athlete athlete) throws SQLException{
+        try(Statement stmt = conn.createStatement()){
+            //TODO set dei valori prima di fare update ??
+            athlete.setCardNumber(cardNumber);
+            athlete.setCardExpirationDate(expirationDate);
+            Query.updateCardInfoAthlete(stmt, athlete);
+        }
+    }
+
     public void saveAthlete(Athlete athlete) throws SQLException {
         try(Statement stmt = conn.createStatement()){
             Query.insertAthlete(stmt, athlete);

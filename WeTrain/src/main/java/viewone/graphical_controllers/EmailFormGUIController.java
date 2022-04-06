@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-public class EmailFormController {
+public class EmailFormGUIController {
     @FXML private TextArea emailTextArea;
     @FXML private TextField objectTextField;
     @FXML private Button sendButton;

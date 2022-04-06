@@ -2,8 +2,8 @@ package viewone.graphical_controllers.trainers;
 
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
-import viewone.graphical_controllers.FitnessLevelFilter;
-import viewone.graphical_controllers.TimeSchedulerController;
+import viewone.graphical_controllers.FitnessLevelFilterGUIController;
+import viewone.graphical_controllers.TimeSchedulerGUIController;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.event.ActionEvent;
@@ -23,30 +23,30 @@ import java.util.ResourceBundle;
 
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
-    private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
+    private final FitnessLevelFilterGUIController fitnessLevelFilter= new FitnessLevelFilterGUIController();
 
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
     @FXML private Button createButton;
-    @FXML private TimeSchedulerController mondayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController mondayTimeSchedulerController;
     @FXML private Parent mondayTimeScheduler;
     @FXML private Button tuesdayButton;
-    @FXML private TimeSchedulerController tuesdayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController tuesdayTimeSchedulerController;
     @FXML private Parent tuesdayTimeScheduler;
     @FXML private Button wednesdayButton;
-    @FXML private TimeSchedulerController wednesdayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController wednesdayTimeSchedulerController;
     @FXML private Parent wednesdayTimeScheduler;
     @FXML private Button thursdayButton;
-    @FXML private TimeSchedulerController thursdayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController thursdayTimeSchedulerController;
     @FXML private Parent thursdayTimeScheduler;
     @FXML private Button fridayButton;
-    @FXML private TimeSchedulerController fridayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController fridayTimeSchedulerController;
     @FXML private Parent fridayTimeScheduler;
     @FXML private Button saturdayButton;
-    @FXML private TimeSchedulerController saturdayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController saturdayTimeSchedulerController;
     @FXML private Parent saturdayTimeScheduler;
     @FXML private Button sundayButton;
-    @FXML private TimeSchedulerController sundayTimeSchedulerController;
+    @FXML private TimeSchedulerGUIController sundayTimeSchedulerController;
     @FXML private Parent sundayTimeScheduler;
     @FXML private TextField courseNameText;
     @FXML private TextArea infoTextArea;
@@ -81,7 +81,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         }
     }
 
-    private void toggledDayButtonAction(TimeSchedulerController controller,Button button, int i){
+    private void toggledDayButtonAction(TimeSchedulerGUIController controller, Button button, int i){
         toggled[i]=!toggled[i];
         controller.toggleVisibility(toggled[i]);
         if(toggled[i]) {

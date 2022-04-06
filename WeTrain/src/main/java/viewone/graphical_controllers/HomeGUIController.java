@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public abstract class HomeController {
+public abstract class HomeGUIController {
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
 
     @FXML void logoutButtonAction(ActionEvent event) throws IOException {

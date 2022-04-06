@@ -10,7 +10,7 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TimeSchedulerController implements Initializable {
+public class TimeSchedulerGUIController implements Initializable {
     @FXML private ComboBox<String> endHourBox;
     @FXML private ComboBox<String> endMinuteBox;
     @FXML private ComboBox<String> startHourBox;

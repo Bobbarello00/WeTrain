@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.ProfileManagementController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,12 +10,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import model.Athlete;
 import model.LoggedUserSingleton;
-import viewone.graphical_controllers.ProfileController;
+import viewone.bean.CardInfoBean;
+import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class YourProfileAthletesGUIController extends ProfileController implements Initializable {
+public class YourProfileAthletesGUIController extends ProfileGUIController implements Initializable {
     @FXML private Label emailLabel;
     @FXML private Label firstNameLabel;
     @FXML private Label fiscalCodeLabel;
@@ -26,13 +30,30 @@ public class YourProfileAthletesGUIController extends ProfileController implemen
     @FXML private DatePicker newExpirationDate;
 
     @FXML private void editConfirmation(){
-        //TODO CONTROLLI DI FORMATO E UNICITA + CALL DI UPDATE DATI CARTA
-        editPane.setDisable(true);
-        editPane.setVisible(false);
-        setPaymentMethodLabel();
-        editButton.setDisable(false);
-        editButton.setVisible(true);
-        paymentMethodLabel.setVisible(true);
+        if(!Objects.equals(newCardNumber.getText(), "")
+                & !Objects.equals(newExpirationDate.getEditor().getText(), "")) {
+            CardInfoBean cardInfoBean = new CardInfoBean();
+            if(!cardInfoBean.setCardNumber(newCardNumber.getText())
+                    || !cardInfoBean.setExpirationDate(newExpirationDate.getEditor().getText())){
+                System.out.printf("""
+                        errore nel set dei nuovi valori per la carta:
+                         numero: '%s'\s
+                         data: '%s'%n""", newCardNumber.getText(), newExpirationDate.getEditor().getText());
+                return;
+            }
+            try{
+                ProfileManagementController.updateAthleteCardInfo(cardInfoBean);
+            }catch (SQLException e){
+                e.printStackTrace();
+                //TODO GESTIONE EXCEPTION
+            }
+            editPane.setDisable(true);
+            editPane.setVisible(false);
+            setPaymentMethodLabel();
+            editButton.setDisable(false);
+            editButton.setVisible(true);
+            paymentMethodLabel.setVisible(true);
+        }
     }
 
     @FXML private void editAbort(){

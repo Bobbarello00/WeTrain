@@ -9,7 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
-import viewone.graphical_controllers.FitnessLevelFilter;
+import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 
 import java.net.URL;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class FindCourseGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private final Boolean[] selected = new Boolean[7];
-    private final FitnessLevelFilter fitnessLevelFilter= new FitnessLevelFilter();
+    private final FitnessLevelFilterGUIController fitnessLevelFilter= new FitnessLevelFilterGUIController();
     @FXML
     private Button baseFitnessLevelButton;
     @FXML

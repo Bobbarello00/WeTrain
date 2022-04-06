@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public abstract class ProfileController {
+public abstract class ProfileGUIController {
     @FXML private Label emailLabel;
     @FXML private Label firstNameLabel;
     @FXML private Label fiscalCodeLabel;

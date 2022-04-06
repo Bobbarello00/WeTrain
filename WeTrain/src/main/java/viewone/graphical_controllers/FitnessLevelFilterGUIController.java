@@ -3,7 +3,7 @@ package viewone.graphical_controllers;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
-public class FitnessLevelFilter {
+public class FitnessLevelFilterGUIController {
     private Button selectedFitnessLevel;
 
     public void fitnessLevelSelection(ActionEvent event){

@@ -63,7 +63,7 @@ public class Query {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (User) VALUES ('%s');", athlete.getFiscalCode()));
     }
 
-    public static int insertCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
+    public static int updateCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
         return stmt.executeUpdate(String.format("UPDATE mydb.ATHLETE " +
                 "SET CardNumber = '%s', CardExpirationDate = '%s' WHERE User = '%s';",
                 athlete.getCardNumber(),
@@ -96,7 +96,7 @@ public class Query {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (User) VALUES ('%s');", trainer.getFiscalCode()));
     }
 
-    public static int insertIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
+    public static int updateIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
         return stmt.executeUpdate(String.format("UPDATE mydb.TRAINER SET Iban = '%s' WHERE User = '%s';",
                 trainer.getIban(),
                 trainer.getFiscalCode()));
