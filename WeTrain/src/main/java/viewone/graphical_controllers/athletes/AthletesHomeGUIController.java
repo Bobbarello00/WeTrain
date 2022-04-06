@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -29,15 +30,11 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private Text usernameText1;
     @FXML private Button logoutButton;
     private static CourseBean selectedCourse;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*ListPopulate.populateList(10,courseList);
-        populateCourseList();
-        ListPopulate.populateList(0,popularList);
-        ListPopulate.populateList(30,feedList);
-        //courseList.getSelectionModel().getSelectedItems();
-        */
         //TODO fare query per corsi più popolari
+
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
         try {
             ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(CourseManagementAthleteController.getCourseList());
@@ -54,8 +51,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
                     CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
                     setSelectedCourse(courseBean);
                     //TODO bisogna deselezionare l'elemento
-                    courseList.getSelectionModel().clearSelection();
                     PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
+                    Platform.runLater(() -> courseList.getSelectionModel().clearSelection());
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -63,7 +60,6 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
                 }
             }
         });
-
         usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
     }
 
