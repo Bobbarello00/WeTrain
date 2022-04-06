@@ -47,20 +47,25 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         addListener(new ChangeListener<CourseEssentialBean>() {
             @Override
             public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
-                try {
-                    CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
-                    setSelectedCourse(courseBean);
-                    //TODO bisogna deselezionare l'elemento
-                    PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
-                    Platform.runLater(() -> courseList.getSelectionModel().clearSelection());
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                eventList(courseList, newItem);
             }
         });
         usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+    }
+
+    public void eventList(ListView<CourseEssentialBean> listView, CourseEssentialBean newItem) {
+        try {
+            if(newItem != null) {
+                CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
+                setSelectedCourse(courseBean);
+                PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
+                Platform.runLater(() -> listView.getSelectionModel().clearSelection());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static CourseBean getSelectedCourse() {

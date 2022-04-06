@@ -76,7 +76,6 @@ public class CourseInfoGUIController implements Initializable {
     }
 
     @FXML protected void closeAction(MouseEvent event){
-        //AthletesHomeGUIController.clearSelected();
         ((Stage) ((ImageView) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
