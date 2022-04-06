@@ -53,6 +53,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
                 try {
                     CourseBean courseBean = CourseManagementAthleteController.getCourse(newItem.getId());
                     setSelectedCourse(courseBean);
+                    //TODO bisogna deselezionare l'elemento
+                    courseList.getSelectionModel().clearSelection();
                     PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
                 } catch (SQLException e) {
                     e.printStackTrace();

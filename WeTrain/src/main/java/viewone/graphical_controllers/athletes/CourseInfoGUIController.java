@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -9,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import viewone.MainPane;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 
@@ -18,7 +20,6 @@ import java.util.ResourceBundle;
 
 public class CourseInfoGUIController implements Initializable {
 
-    @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
     @FXML private Button tuesdayButton;
     @FXML private Button wednesdayButton;
@@ -50,15 +51,13 @@ public class CourseInfoGUIController implements Initializable {
     }
 
     private void setDay(Button button, Label label, LessonBean lessonBean) {
-        label.setText("from " + lessonBean.getLessonStartTime().toString() + " to " + lessonBean.getLessonEndTime().toString());
+        label.setText("from " + lessonBean.getLessonStartTime().toString().substring(0, 5) + " to " + lessonBean.getLessonEndTime().toString().substring(0, 5));
         setButtonColor(button);
     }
 
     private void setScheduleLesson(List<LessonBean> lessonBeanList) {
-        //TODO da testare
         for(LessonBean lessonBean: lessonBeanList){
             switch (lessonBean.getLessonDay()){
-                //TODO codice duplicato
                 case ("monday") -> setDay(mondayButton, mondayTimeText, lessonBean);
                 case ("tuesday") -> setDay(tuesdayButton, tuesdayTimeText, lessonBean);
                 case ("wednesday") -> setDay(wednesdayButton, wednesdayTimeText, lessonBean);
@@ -77,7 +76,8 @@ public class CourseInfoGUIController implements Initializable {
     }
 
     @FXML protected void closeAction(MouseEvent event){
-        ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
+        ((Stage) ((ImageView) event.getSource()).getScene().getWindow()).close();
+        MainPane.getInstance().setDisable(false);
     }
 
     private void setValue(CourseBean courseBean) {
@@ -105,7 +105,10 @@ public class CourseInfoGUIController implements Initializable {
         }
     }
 
-    public void subscribeButtonAction() {
+    public void subscribeButtonAction(ActionEvent event) {
         //TODO Sottoscrizione al corso
+        System.out.println("Subscribed!");
+        ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
+        MainPane.getInstance().setDisable(false);
     }
 }

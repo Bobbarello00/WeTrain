@@ -19,10 +19,6 @@ public class AddExerciseGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
-    @FXML protected void closeAction(ActionEvent event){
-        ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-    }
-
     @FXML void cancelButtonAction(ActionEvent event) {
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

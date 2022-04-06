@@ -68,13 +68,13 @@
             <VBox alignment="TOP_CENTER" prefHeight="474.0" prefWidth="396.0" spacing="13.0">
                <children>
                   <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Time schedule" />
-                  <Label fx:id="mondayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
-                  <Label fx:id="tuesdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
-                  <Label fx:id="wednesdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
-                  <Label fx:id="thursdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
-                  <Label fx:id="fridayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
-                  <Label fx:id="saturdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
-                  <Label fx:id="sundayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" />
+                  <Label fx:id="mondayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="tuesdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="wednesdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="thursdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="fridayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="saturdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="sundayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
                </children>
             </VBox>
          </children>
