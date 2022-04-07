@@ -21,7 +21,7 @@ public class CourseManagementAthleteController {
     }
 
     public static List<CourseEssentialBean> getCourseList() throws SQLException {
-        List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) LoggedUserSingleton.getInstance());
+        List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) LoginController.getLoggedUser());
         List<CourseEssentialBean> beanList = new ArrayList<>();
         for(Course course : courseList) {
             beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));

@@ -11,7 +11,9 @@ import javafx.scene.layout.Pane;
 import model.Athlete;
 import model.LoggedUserSingleton;
 import model.User;
+import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
+import viewone.bean.UserBean;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URL;
@@ -75,7 +77,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            User usr = LoggedUserSingleton.getInstance();
+            UserBean usr = LoggedUserSingleton.getInstance();
             emailLabel.setText("Email: " + usr.getEmail());
             firstNameLabel.setText(usr.getName());
             lastNameLabel.setText(usr.getSurname());
@@ -88,12 +90,12 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     private void setPaymentMethodLabel() {
         try {
-            Athlete athlete = (Athlete) LoggedUserSingleton.getInstance();
+            AthleteBean athlete = (AthleteBean) LoggedUserSingleton.getInstance();
             if (athlete.getCardNumber() == null) {
                 paymentMethodLabel.setText("Card: " + "Not inserted yet");
             } else {
                 String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
-                paymentMethodLabel.setText("Card: " + athlete.getCardType().toUpperCase() + "  **** **** **** " + cardNumberTruncated);
+                paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
             }
         } catch (SQLException e) {
             e.printStackTrace();

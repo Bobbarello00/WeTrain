@@ -98,18 +98,7 @@ public class CourseInfoGUIController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        courseBean = AthletesHomeGUIController.getSelectedCourse();
-        if(courseBean != null) {
-            setValue(courseBean);
-        } else {
-            System.out.println("Error in CourseInfoGUIController: courseBean == null");
-        }
-    }
-
     public void subscribeButtonAction(ActionEvent event) {
-
         if(courseBean != null) {
             try {
                 CourseManagementAthleteController.subscribeToACourse(courseBean);
@@ -125,5 +114,14 @@ public class CourseInfoGUIController implements Initializable {
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
+    }
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+        courseBean = AthletesHomeGUIController.getSelectedCourse();
+        if(courseBean != null) {
+            setValue(courseBean);
+        } else {
+            System.out.println("Error in CourseInfoGUIController: courseBean == null");
+        }
     }
 }

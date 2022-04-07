@@ -17,15 +17,14 @@ public class RegistrationController {
     public static void processUserInfo(UserBean bean) throws SQLException {
         if (Objects.equals(bean.getType(), "Athlete")) {
             AthleteDAO athleteDAO = new AthleteDAO();
-            Athlete athlete = new Athlete(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
+            Athlete athlete = new Athlete(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFiscalCode(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
             athleteDAO.saveAthlete(athlete);
-            LoggedUserSingleton.setInstance(athlete);
         } else {
             TrainerDAO trainerDAO = new TrainerDAO();
-            Trainer trainer = new Trainer(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFc(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
+            Trainer trainer = new Trainer(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFiscalCode(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
             trainerDAO.saveTrainer(trainer);
-            LoggedUserSingleton.setInstance(trainer);
         }
+        LoginController.login(credentialsBean);
     }
 
     public static void setCredentialInfo(CredentialsBean credential) {

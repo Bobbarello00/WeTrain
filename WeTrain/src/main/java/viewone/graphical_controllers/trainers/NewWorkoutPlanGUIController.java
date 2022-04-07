@@ -41,6 +41,6 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,exercisesList);
         ListPopulate.populateList(10,exercisesSelectedList);
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        setUsername();
     }
 }

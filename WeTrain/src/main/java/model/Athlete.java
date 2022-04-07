@@ -7,7 +7,6 @@ import java.util.List;
 public class Athlete extends User {
     private String cardNumber;
     private YearMonth cardExpirationDate;
-    private String cardType;
     private WorkoutPlan workoutPlan;
     private List<Course> courseList;
 
@@ -56,13 +55,5 @@ public class Athlete extends User {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
-    }
-
-    public String getCardType() {
-        return cardType;
-    }
-
-    public void setCardType(String cardType) {
-        this.cardType = cardType;
     }
 }

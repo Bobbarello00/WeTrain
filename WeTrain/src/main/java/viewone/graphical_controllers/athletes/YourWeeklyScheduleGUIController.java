@@ -2,10 +2,14 @@ package viewone.graphical_controllers.athletes;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private Button previousButton;
     private Text previousText;
@@ -53,4 +57,10 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes {
     void dayButtonAction(ActionEvent event) {
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setUsername();
+    }
+
 }

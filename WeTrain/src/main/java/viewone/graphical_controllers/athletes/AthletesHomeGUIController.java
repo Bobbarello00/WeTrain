@@ -32,28 +32,6 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private Button logoutButton;
     private static CourseBean selectedCourse;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO fare query per corsi più popolari
-
-        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
-        try {
-            ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(CourseManagementAthleteController.getCourseList());
-            courseList.setItems(FXCollections.observableList(courseObservableList));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        courseList.getSelectionModel().selectedItemProperty().
-        addListener(new ChangeListener<CourseEssentialBean>() {
-            @Override
-            public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
-                eventList(courseList, newItem);
-            }
-        });
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
-    }
-
     public void eventList(ListView<CourseEssentialBean> listView, CourseEssentialBean newItem) {
         try {
             if(newItem != null) {
@@ -75,5 +53,27 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
     public void setSelectedCourse(CourseBean course) {
         selectedCourse = course;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //TODO fare query per corsi più popolari
+
+        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        try {
+            ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(CourseManagementAthleteController.getCourseList());
+            courseList.setItems(FXCollections.observableList(courseObservableList));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        courseList.getSelectionModel().selectedItemProperty().
+                addListener(new ChangeListener<CourseEssentialBean>() {
+                    @Override
+                    public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
+                        eventList(courseList, newItem);
+                    }
+                });
+        setUsername();
     }
 }

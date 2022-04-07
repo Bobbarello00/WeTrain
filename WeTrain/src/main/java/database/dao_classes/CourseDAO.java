@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import controller.LoginController;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.ElementNotFoundException;
@@ -24,7 +25,7 @@ public class CourseDAO {
     //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
     public void subscribeToACourse(Course course) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertSubscribe(stmt, course, (Athlete) LoggedUserSingleton.getInstance());
+            Query.insertSubscribe(stmt, course, (Athlete) LoginController.getLoggedUser());
         }
     }
 

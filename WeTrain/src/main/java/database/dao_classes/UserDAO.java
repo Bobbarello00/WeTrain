@@ -26,15 +26,11 @@ public class UserDAO {
                 } else {
                     TrainerDAO tDao = new TrainerDAO();
                     Trainer ret1 = tDao.loadTrainer(usr);
-                    if (ret1 != null) {
-                        return ret1;
-                    }
-                    // TODO MALE MALE (non dovevamo arrivare qui -> eccezione) :')
+                    return ret1;
                 }
             } else {
                 throw new ElementNotFoundException();
             }
         }
-        return null;
     }
 }

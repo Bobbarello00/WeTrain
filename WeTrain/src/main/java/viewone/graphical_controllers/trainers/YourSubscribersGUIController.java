@@ -29,6 +29,6 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         int i = Integer.parseInt(subscribersCountLabel.getText());
         ListPopulate.populateList(i,subscribersList);
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        setUsername();
     }
 }

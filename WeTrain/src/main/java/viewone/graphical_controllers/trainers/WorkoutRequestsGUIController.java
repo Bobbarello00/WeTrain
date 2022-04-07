@@ -33,6 +33,6 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,requestsList);
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        setUsername();
     }
 }

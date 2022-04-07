@@ -19,7 +19,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
         ListPopulate.populateList(10,requestsList);
-        usernameText.setText(LoggedUserSingleton.getInstance().getUsername());
+        setUsername();
     }
 
 }

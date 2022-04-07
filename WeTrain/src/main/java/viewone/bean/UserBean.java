@@ -9,12 +9,26 @@ public class UserBean {
     private String username;
     private String name;
     private String surname;
-    private String fc;
+    private String fiscalCode;
     private LocalDate birth;
-    protected String type;
+    private String type;
     private char gender;
+    private String email;
+    private String password;
 
     public UserBean() {}
+
+    public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.fiscalCode = fiscalCode;
+        this.birth = birth;
+        this.type = type;
+        this.gender = gender;
+        this.email = email;
+        this.password = password;
+    }
 
     public String getType() {
         return type;
@@ -64,13 +78,13 @@ public class UserBean {
         return false;
     }
 
-    public String getFc() {
-        return fc;
+    public String getFiscalCode() {
+        return fiscalCode;
     }
 
     public boolean setFc(String fc) {
         if(isValidFc(fc)) {
-            this.fc = fc;
+            this.fiscalCode = fc;
             return true;
         }
         return false;
@@ -110,5 +124,21 @@ public class UserBean {
 
     public void setGender(char gender) {
         this.gender = gender;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

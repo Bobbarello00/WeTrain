@@ -1,7 +1,9 @@
 package model;
 
-import database.dao_classes.AthleteDAO;
-import database.dao_classes.TrainerDAO;
+import controller.LoginController;
+import viewone.bean.AthleteBean;
+import viewone.bean.TrainerBean;
+import viewone.bean.UserBean;
 
 import java.sql.SQLException;
 
@@ -12,18 +14,16 @@ public class LoggedUserSingleton {
     private LoggedUserSingleton() {}
 
     //TODO Creare un controller che comunica con la DAO?
-    public static User getInstance() throws SQLException {
-        User user = new AthleteDAO().loadAthlete(fiscalCode);
-        if(user == null){
-            user = new TrainerDAO().loadTrainer(fiscalCode);
+    public static UserBean getInstance() throws SQLException {
+        User usr = LoginController.getLoggedUser();
+        if(usr instanceof Athlete) {
+            return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), "Athlete", usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete)usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());
+        } else if(usr instanceof Trainer) {
+            return new TrainerBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), "Trainer", usr.getGender(), usr.getEmail(), usr.getPassword(), ((Trainer) usr).getIban());
+        } else {
+            //throw new ;
+            System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
+            return null;
         }
-        if(user == null){
-            System.out.println("Error - Logged User is null.");
-        }
-        return user;
-    }
-
-    public static void setInstance(User user){
-        fiscalCode = user.getFiscalCode();
     }
 }

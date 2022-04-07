@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.ElementNotFoundException;
 import model.Athlete;
 
 import java.sql.*;
@@ -59,7 +60,7 @@ public class AthleteDAO {
                     }
                 }
             } else {
-                return null;
+                throw new ElementNotFoundException();
             }
         }
     }

@@ -32,7 +32,7 @@ public class LoginGUIController extends LauncherGUIController {
     @FXML void submitButtonAction() {
         try {
             LoginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
-            if(LoggedUserSingleton.getInstance() instanceof Athlete){
+            if(LoginController.getLoggedUser() instanceof Athlete){
                 PageSwitchSizeChange.loadHome(submitButton, "AthletesHome", "athletes");
             } else {
                 PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");

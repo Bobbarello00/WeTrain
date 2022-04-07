@@ -99,10 +99,6 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
-        try {
-            usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        setUsername();
     }
 }

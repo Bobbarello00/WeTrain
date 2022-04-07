@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class ProfileManagementController {
 
     public static void updateAthleteCardInfo(CardInfoBean cardInfoBean) throws SQLException {
-        Athlete athlete = (Athlete) LoggedUserSingleton.getInstance();
+        Athlete athlete = (Athlete) LoginController.getLoggedUser();
         new AthleteDAO().updateCardInfo(cardInfoBean.getCardNumber(),cardInfoBean.getExpirationDate(), athlete);
     }
 

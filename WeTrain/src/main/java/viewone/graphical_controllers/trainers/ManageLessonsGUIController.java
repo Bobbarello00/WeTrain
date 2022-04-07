@@ -17,7 +17,7 @@ public class ManageLessonsGUIController extends HomeGUIControllerTrainers implem
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        setUsername();
     }
 }
 

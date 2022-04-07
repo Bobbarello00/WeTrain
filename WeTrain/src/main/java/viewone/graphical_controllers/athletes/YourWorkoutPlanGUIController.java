@@ -18,31 +18,23 @@ import java.util.ResourceBundle;
 public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
-    @FXML
-    public Button mondayButton;
-    @FXML
-    public Button tuesdayButton;
-    @FXML
-    public Button wednesdayButton;
-    @FXML
-    public Button thursdayButton;
-    @FXML
-    public Button fridayButton;
-    @FXML
-    public Button saturdayButton;
-    @FXML
-    public Button sundayButton;
-    @FXML
-    private ListView<Node> exercisesList;
-    @FXML
-    private Text usernameText1;
-    @FXML
-    void dayButtonAction(ActionEvent event) {
+
+    @FXML public Button mondayButton;
+    @FXML public Button tuesdayButton;
+    @FXML public Button wednesdayButton;
+    @FXML public Button thursdayButton;
+    @FXML public Button fridayButton;
+    @FXML public Button saturdayButton;
+    @FXML public Button sundayButton;
+    @FXML private ListView<Node> exercisesList;
+    @FXML private Text usernameText1;
+
+    @FXML void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,exercisesList);
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        setUsername();
     }
 }

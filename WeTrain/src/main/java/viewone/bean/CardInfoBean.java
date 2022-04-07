@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +12,13 @@ public class CardInfoBean {
     private String cardNumber;
     private YearMonth expirationDate;
     private String type;
+
+    public CardInfoBean() {}
+
+    public CardInfoBean(String cardNumber, YearMonth expirationDate) {
+        setCardNumber(cardNumber);
+        this.expirationDate = expirationDate;
+    }
 
     public String getCardNumber() {
         return cardNumber;
@@ -39,12 +47,12 @@ public class CardInfoBean {
         Matcher matcher = pattern.matcher(card);
         if(matcher.matches()) {
             String group = "";
-            if(matcher.group("visa") != null) group = "visa";
-            else if(matcher.group("mastercard") != null) group = "mastercard";
-            else if(matcher.group("discover") != null) group = "discover";
-            else if(matcher.group("amex") != null) group = "amex";
-            else if(matcher.group("diners") != null) group = "diners";
-            else if(matcher.group("jcb") != null) group = "jcb";
+            if(matcher.group("visa") != null) group = "VISA";
+            else if(matcher.group("mastercard") != null) group = "MASTERCARD";
+            else if(matcher.group("discover") != null) group = "DISCOVER";
+            else if(matcher.group("amex") != null) group = "AMEX";
+            else if(matcher.group("diners") != null) group = "DINERS";
+            else if(matcher.group("jcb") != null) group = "JCB";
             setType(group);
             return true;
         }
