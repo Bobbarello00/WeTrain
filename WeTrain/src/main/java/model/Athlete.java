@@ -1,11 +1,13 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 public class Athlete extends User {
     private String cardNumber;
-    private LocalDate cardExpirationDate;
+    private YearMonth cardExpirationDate;
+    private String cardType;
     private WorkoutPlan workoutPlan;
     private List<Course> courseList;
 
@@ -13,13 +15,13 @@ public class Athlete extends User {
         super(name, surname, username, dateOfBirth, fc, gender, email, password);
     }
 
-    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password, String cardNumber, LocalDate cardExpirationDate){
+    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password, String cardNumber, YearMonth cardExpirationDate){
         super(name, surname, username, dateOfBirth, fc, gender, email, password);
         this.cardNumber = cardNumber;
         this.cardExpirationDate = cardExpirationDate;
     }
 
-    public void changeCardInfo(String newCardNumber, LocalDate newCardExpirationDate){
+    public void changeCardInfo(String newCardNumber, YearMonth newCardExpirationDate){
         this.cardNumber = newCardNumber;
         this.cardExpirationDate = newCardExpirationDate;
     }
@@ -32,11 +34,11 @@ public class Athlete extends User {
         this.cardNumber = cardNumber;
     }
 
-    public LocalDate getCardExpirationDate() {
+    public YearMonth getCardExpirationDate() {
         return cardExpirationDate;
     }
 
-    public void setCardExpirationDate(LocalDate cardExpirationDate) {
+    public void setCardExpirationDate(YearMonth cardExpirationDate) {
         this.cardExpirationDate = cardExpirationDate;
     }
 
@@ -54,5 +56,13 @@ public class Athlete extends User {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 }

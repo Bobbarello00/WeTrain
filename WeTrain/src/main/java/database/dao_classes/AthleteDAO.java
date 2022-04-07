@@ -5,16 +5,18 @@ import database.Query;
 import model.Athlete;
 
 import java.sql.*;
-import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.ZoneId;
 
 public class AthleteDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public void updateCardInfo(String cardNumber, LocalDate expirationDate, Athlete athlete) throws SQLException{
+    public void updateCardInfo(String cardNumber, YearMonth expirationDate, String type, Athlete athlete) throws SQLException{
         try(Statement stmt = conn.createStatement()){
             //TODO set dei valori prima di fare update ??
             athlete.setCardNumber(cardNumber);
             athlete.setCardExpirationDate(expirationDate);
+            athlete.setCardType(type);
             Query.updateCardInfoAthlete(stmt, athlete);
         }
     }
@@ -42,9 +44,9 @@ public class AthleteDAO {
                     if (rs1.next()) {
                         athlete.setCardNumber(rs1.getString("CardNumber"));
                         Date temp = rs1.getDate("CardExpirationDate");
-                        LocalDate cardExpirationDate = null;
-                        if (temp != null) {
-                            cardExpirationDate = temp.toLocalDate();
+                        YearMonth cardExpirationDate = null;
+                        if(temp!=null){
+                            cardExpirationDate = YearMonth.from(temp.toLocalDate());
                         }
                         athlete.setCardExpirationDate(cardExpirationDate);
                         if (rs1.getInt("WorkoutPlan") != 0) {

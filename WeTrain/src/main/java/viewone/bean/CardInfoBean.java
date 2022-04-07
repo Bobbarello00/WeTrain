@@ -1,6 +1,7 @@
 package viewone.bean;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
@@ -8,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class CardInfoBean {
     private String cardNumber;
-    private LocalDate expirationDate;
+    private YearMonth expirationDate;
     private String type;
 
     public String getCardNumber() {
@@ -17,6 +18,8 @@ public class CardInfoBean {
 
     public boolean setCardNumber(String cardNumber) {
         if(isValidCardNumber(cardNumber)) {
+            cardNumber = cardNumber.replaceAll("-", "");
+            cardNumber =cardNumber.replaceAll(" ","");
             this.cardNumber = cardNumber;
             return true;
         }
@@ -32,6 +35,7 @@ public class CardInfoBean {
                 "(?<jcb>(?:2131|1800|35[0-9]{3})[0-9]{11}))$";
         Pattern pattern = Pattern.compile(regex);
         card = card.replaceAll("-", "");
+        card =card.replaceAll(" ","");
         Matcher matcher = pattern.matcher(card);
         if(matcher.matches()) {
             String group = "";
@@ -48,17 +52,13 @@ public class CardInfoBean {
         return false;
     }
 
-    private void setType(String type){
-        this.type = type;
-    }
-
-    public LocalDate getExpirationDate() {
+    public YearMonth getExpirationDate() {
         return expirationDate;
     }
 
     public boolean setExpirationDate(String expirationDate) {
         if(isValidDate(expirationDate)){
-            this.expirationDate = LocalDate.parse(expirationDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            this.expirationDate = YearMonth.parse(expirationDate, DateTimeFormatter.ofPattern("MM/yyyy"));
             return true;
         }
         return false;
@@ -66,15 +66,23 @@ public class CardInfoBean {
 
     private boolean isValidDate(String myDateString) {
         //TODO FORMATO SOLO CON MESE E ANNO
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
         try {
-            LocalDate ld = LocalDate.parse(myDateString, formatter);
-            String result = ld.format(formatter);
+            YearMonth yearMonth = YearMonth.parse(myDateString, formatter);
+            String result = yearMonth.format(formatter);
             return result.equals(myDateString);
         } catch (DateTimeParseException exp) {
             exp.printStackTrace();
         }
         System.out.println("data carta sbagliata");
         return false;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }

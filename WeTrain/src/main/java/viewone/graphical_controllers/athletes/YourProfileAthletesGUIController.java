@@ -27,18 +27,18 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     @FXML private Button editButton;
     @FXML private Pane editPane;
     @FXML private TextField newCardNumber;
-    @FXML private DatePicker newExpirationDate;
+    @FXML private TextField newExpirationDate;
 
     @FXML private void editConfirmation(){
         if(!Objects.equals(newCardNumber.getText(), "")
-                & !Objects.equals(newExpirationDate.getEditor().getText(), "")) {
+                & !Objects.equals(newExpirationDate.getText(), "")) {
             CardInfoBean cardInfoBean = new CardInfoBean();
             if(!cardInfoBean.setCardNumber(newCardNumber.getText())
-                    || !cardInfoBean.setExpirationDate(newExpirationDate.getEditor().getText())){
+                    || !cardInfoBean.setExpirationDate(newExpirationDate.getText())){
                 System.out.printf("""
                         errore nel set dei nuovi valori per la carta:
                          numero: '%s'\s
-                         data: '%s'%n""", newCardNumber.getText(), newExpirationDate.getEditor().getText());
+                         data: '%s'%n""", newCardNumber.getText(), newExpirationDate.getText());
                 return;
             }
             try{
@@ -81,10 +81,12 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     private void setPaymentMethodLabel(){
-        if(((Athlete)LoggedUserSingleton.getInstance()).getCardNumber() == null){
+        Athlete athlete =(Athlete)LoggedUserSingleton.getInstance();
+        if(athlete.getCardNumber() == null){
             paymentMethodLabel.setText("Card: " + "Not inserted yet");
         } else {
-            paymentMethodLabel.setText("Card: " + ((Athlete) LoggedUserSingleton.getInstance()).getCardNumber());
+            String cardNumberTruncated = athlete.getCardNumber().substring(12,16);
+            paymentMethodLabel.setText("Card: " + athlete.getCardType().toUpperCase() +"  **** **** **** "+ cardNumberTruncated);
         }
     }
 }

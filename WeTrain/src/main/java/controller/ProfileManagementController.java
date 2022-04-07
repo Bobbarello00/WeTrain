@@ -12,7 +12,7 @@ public class ProfileManagementController {
     public static void updateAthleteCardInfo(CardInfoBean cardInfoBean) throws SQLException {
         AthleteDAO athleteDAO = new AthleteDAO();
         Athlete athlete = athleteDAO.loadAthlete(LoggedUserSingleton.getInstance().getFiscalCode());
-        athleteDAO.updateCardInfo(cardInfoBean.getCardNumber(), cardInfoBean.getExpirationDate(), athlete);
+        athleteDAO.updateCardInfo(cardInfoBean.getCardNumber(), cardInfoBean.getExpirationDate(), cardInfoBean.getType(), athlete);
         LoggedUserSingleton.setInstance(athlete);
     }
 

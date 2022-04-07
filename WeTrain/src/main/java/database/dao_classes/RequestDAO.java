@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.YearMonth;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +53,9 @@ public class RequestDAO {
                             rs1.getString("Email"),
                             rs1.getString("Password"),
                             rs1.getString("CardNumber"),
-                            rs1.getDate("CardExpirationDate").toLocalDate());
+                            YearMonth.from((rs1.getDate("CardExpirationDate")).toInstant()
+                                    .atZone(ZoneId.systemDefault())
+                                    .toLocalDate()));
                 }
                 myList.add(new Request(rs.getInt("idRequest"), rs.getTimestamp("RequestDate").toLocalDateTime(),
                         myAthlete, trainer));

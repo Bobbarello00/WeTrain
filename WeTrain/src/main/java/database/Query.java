@@ -4,6 +4,7 @@ import model.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
+import java.time.ZoneId;
 
 public class Query {
 
@@ -64,10 +65,10 @@ public class Query {
     }
 
     public static int updateCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("UPDATE mydb.ATHLETE " +
+        return stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
                 "SET CardNumber = '%s', CardExpirationDate = '%s' WHERE User = '%s';",
                 athlete.getCardNumber(),
-                Date.valueOf(athlete.getCardExpirationDate()),
+                Date.valueOf((athlete.getCardExpirationDate()).atDay(1)),
                 athlete.getFiscalCode()));
     }
 
@@ -97,7 +98,7 @@ public class Query {
     }
 
     public static int updateIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("UPDATE mydb.TRAINER SET Iban = '%s' WHERE User = '%s';",
+        return stmt.executeUpdate(String.format("UPDATE mydb.Trainer SET Iban = '%s' WHERE User = '%s';",
                 trainer.getIban(),
                 trainer.getFiscalCode()));
     }
