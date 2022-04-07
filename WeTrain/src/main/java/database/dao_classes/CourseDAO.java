@@ -25,7 +25,7 @@ public class CourseDAO {
     public void subscribeToACourse(Course course) throws SQLException {
         try(Statement stmt = conn.createStatement()){
             Query.insertSubscribe(stmt, course, (Athlete) LoggedUserSingleton.getInstance());
-        }//TODO eccezione nel caso in cui l'Atleta sia già iscritto
+        }
     }
 
     public Course loadCourse(int id) throws SQLException {
@@ -62,6 +62,7 @@ public class CourseDAO {
             return myList;
         }
     }
+
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesTrainer(stmt, trainer)){
             List<Course> myList = new ArrayList<>();

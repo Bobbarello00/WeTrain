@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import model.Athlete;
 import model.LoggedUserSingleton;
+import model.User;
 import viewone.bean.CardInfoBean;
 import viewone.graphical_controllers.ProfileGUIController;
 
@@ -73,20 +74,29 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        emailLabel.setText("Email: " + LoggedUserSingleton.getInstance().getEmail());
-        firstNameLabel.setText(LoggedUserSingleton.getInstance().getName());
-        lastNameLabel.setText(LoggedUserSingleton.getInstance().getSurname());
-        fiscalCodeLabel.setText("FiscalCode: " + LoggedUserSingleton.getInstance().getFiscalCode());
-        setPaymentMethodLabel();
+        try {
+            User usr = LoggedUserSingleton.getInstance();
+            emailLabel.setText("Email: " + usr.getEmail());
+            firstNameLabel.setText(usr.getName());
+            lastNameLabel.setText(usr.getSurname());
+            fiscalCodeLabel.setText("FiscalCode: " + usr.getFiscalCode());
+            setPaymentMethodLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void setPaymentMethodLabel(){
-        Athlete athlete =(Athlete)LoggedUserSingleton.getInstance();
-        if(athlete.getCardNumber() == null){
-            paymentMethodLabel.setText("Card: " + "Not inserted yet");
-        } else {
-            String cardNumberTruncated = athlete.getCardNumber().substring(12,16);
-            paymentMethodLabel.setText("Card: " + athlete.getCardType().toUpperCase() +"  **** **** **** "+ cardNumberTruncated);
+    private void setPaymentMethodLabel() {
+        try {
+            Athlete athlete = (Athlete) LoggedUserSingleton.getInstance();
+            if (athlete.getCardNumber() == null) {
+                paymentMethodLabel.setText("Card: " + "Not inserted yet");
+            } else {
+                String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
+                paymentMethodLabel.setText("Card: " + athlete.getCardType().toUpperCase() + "  **** **** **** " + cardNumberTruncated);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

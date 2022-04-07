@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -98,6 +99,10 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
-        usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        try {
+            usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

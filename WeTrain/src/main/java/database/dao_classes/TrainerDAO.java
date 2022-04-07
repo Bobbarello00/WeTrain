@@ -34,12 +34,13 @@ public class TrainerDAO {
                     if (rs1.next()) {
                         trainer.setIban(rs1.getString("Iban"));
                         return trainer;
+                    } else {
+                        return null;
                     }
                 }
             } else {
                 return null;
             }
         }
-        return null;
     }
 }

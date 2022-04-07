@@ -12,6 +12,7 @@ import model.LoggedUserSingleton;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -83,6 +84,10 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(selected, Boolean.FALSE);
-        usernameText.setText(LoggedUserSingleton.getInstance().getUsername());
+        try {
+            usernameText.setText(LoggedUserSingleton.getInstance().getUsername());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

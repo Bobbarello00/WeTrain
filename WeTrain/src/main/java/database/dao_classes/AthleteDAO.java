@@ -11,12 +11,10 @@ import java.time.ZoneId;
 public class AthleteDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public void updateCardInfo(String cardNumber, YearMonth expirationDate, String type, Athlete athlete) throws SQLException{
+    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException{
         try(Statement stmt = conn.createStatement()){
-            //TODO set dei valori prima di fare update ??
             athlete.setCardNumber(cardNumber);
             athlete.setCardExpirationDate(expirationDate);
-            athlete.setCardType(type);
             Query.updateCardInfoAthlete(stmt, athlete);
         }
     }
@@ -56,12 +54,13 @@ public class AthleteDAO {
                         }
                         athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
                         return athlete;
+                    } else {
+                        return null;
                     }
                 }
             } else {
                 return null;
             }
         }
-        return null;
     }
 }
