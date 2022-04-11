@@ -1,5 +1,7 @@
 package viewone.bean;
 
+import exception.ExpiredCardException;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -15,9 +17,15 @@ public class CardInfoBean {
 
     public CardInfoBean() {}
 
-    public CardInfoBean(String cardNumber, YearMonth expirationDate) {
+    public CardInfoBean(String cardNumber, YearMonth expirationDate) throws ExpiredCardException {
         setCardNumber(cardNumber);
-        this.expirationDate = expirationDate;
+        if((expirationDate.getYear() > LocalDate.now().getYear()) ||
+                ((expirationDate.getYear() == LocalDate.now().getYear()) &
+                (expirationDate.getMonthValue() > LocalDate.now().getMonthValue()))) {
+            this.expirationDate = expirationDate;
+        } else {
+            throw new ExpiredCardException();
+        }
     }
 
     public String getCardNumber() {

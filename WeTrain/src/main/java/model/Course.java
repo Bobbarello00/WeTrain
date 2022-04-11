@@ -20,8 +20,20 @@ public class Course {
         this.equipment = equipment;
     }
 
+    public Course(String name, String description, String fitnessLevel, Trainer owner, String equipment){
+        this.name = name;
+        this.owner = owner;
+        this.description = description;
+        this.fitnessLevel = fitnessLevel;
+        this.equipment = equipment;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -146,14 +146,25 @@ public class Query {
                 "WHERE Trainer = '%s';", trainer.getFiscalCode()));
     }
 
-    public static void insertCourse(Statement stmt, Course course) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
+    public static int insertCourse(Statement stmt, Course course) throws SQLException {
+        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
                         "VALUES ('%s', '%s', '%s', '%s', '%s');",
                 course.getName(),
                 course.getDescription(),
                 course.getFitnessLevel(),
                 course.getEquipment(),
-                course.getOwner().getFiscalCode()));
+                course.getOwner().getFiscalCode()), Statement.RETURN_GENERATED_KEYS);) {
+            statement2.executeUpdate();
+            try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    //TODO eccezione personalizzata
+                    System.out.println("DB - Errore nell'inserimento del workoutDay");
+                }
+            }
+        }
+        return 0;
     }
 
     public static int deleteCourse(Statement stmt, Course course) throws SQLException {

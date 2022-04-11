@@ -4,10 +4,7 @@ import controller.LoginController;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.ElementNotFoundException;
-import model.Athlete;
-import model.Course;
-import model.LoggedUserSingleton;
-import model.Trainer;
+import model.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +15,13 @@ public class CourseDAO {
 
     public void saveCourse(Course course) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertCourse(stmt, course);
+            int idCourse = Query.insertCourse(stmt, course);
+            course.setId(idCourse);
+
+            for(Lesson lesson: course.getLessonList()){
+                lesson.setCourse(course);
+                new LessonDAO().saveLesson(lesson);
+            }
         }
     }
 

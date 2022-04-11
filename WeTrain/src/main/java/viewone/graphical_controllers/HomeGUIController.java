@@ -1,5 +1,6 @@
 package viewone.graphical_controllers;
 
+import exception.ExpiredCardException;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
@@ -22,6 +23,9 @@ public abstract class HomeGUIController {
         try {
             usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ExpiredCardException e){
+            e.print();
             e.printStackTrace();
         }
     }

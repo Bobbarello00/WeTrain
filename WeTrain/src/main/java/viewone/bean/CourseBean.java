@@ -20,6 +20,14 @@ public class CourseBean {
         this.equipment = equipment;
     }
 
+    public CourseBean(String name, String description, String fitnessLevel, String owner, String equipment){
+        this.name = name;
+        this.owner = owner;
+        this.description = description;
+        this.fitnessLevel = fitnessLevel;
+        this.equipment = equipment;
+    }
+
     public int getId() {
         return id;
     }

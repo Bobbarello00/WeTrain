@@ -20,7 +20,7 @@
          </ImageView>
       </VBox>
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="180.0" spacing="25.0">
-         <Text fx:id="usernameText" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" textAlignment="CENTER" wrappingWidth="114.25199437141418">
+         <Text fx:id="usernameText1" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="User1" textAlignment="CENTER" wrappingWidth="114.25199437141418">
             <font>
                <Font name="ABeeZee Regular" size="12.0" />
             </font>

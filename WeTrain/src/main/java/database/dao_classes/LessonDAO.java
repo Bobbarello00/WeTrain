@@ -30,8 +30,8 @@ public class LessonDAO {
                         rs.getInt("idLesson"),
                         course,
                         rs.getString("LessonDay"),
-                        rs.getTime("LessonStartTime"),
-                        rs.getTime("LessonEndTime")));
+                        rs.getTime("LessonStartTime").toLocalTime(),
+                        rs.getTime("LessonEndTime").toLocalTime()));
             }
             return myList;
         }

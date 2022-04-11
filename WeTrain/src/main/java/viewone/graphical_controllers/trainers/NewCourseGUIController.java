@@ -1,7 +1,13 @@
 package viewone.graphical_controllers.trainers;
 
+import controller.CourseManagementTrainerController;
+import exception.ExpiredCardException;
+import exception.TimeNotInserted;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import model.LoggedUserSingleton;
+import viewone.bean.CourseBean;
+import viewone.bean.LessonBean;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
 import viewone.MainPane;
@@ -11,24 +17,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     private final FitnessLevelFilterGUIController fitnessLevelFilter= new FitnessLevelFilterGUIController();
+    private final List<TimeSchedulerGUIController> timeSchedulerGUIControllerList = new ArrayList<>();
 
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
-    @FXML private Button createButton;
     @FXML private TimeSchedulerGUIController mondayTimeSchedulerController;
     @FXML private Parent mondayTimeScheduler;
     @FXML private Button tuesdayButton;
@@ -55,16 +56,56 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML private Button baseFitnessLevelButton;
     @FXML private Button intermediateFitnessLevelButton;
     @FXML private Button advancedFitnessLevelButton;
-    @FXML private Text usernameText1;
-
-    public NewCourseGUIController() {
-    }
 
     @FXML void createButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
-        MenuTrainersGUIController.resetSelectedButton();
-        System.out.println("Created");
+        String fitnessLevel;
+        if(fitnessLevelFilter.getSelectedFitnessLevel() == baseFitnessLevelButton){
+            fitnessLevel = "Base";
+        } else if(fitnessLevelFilter.getSelectedFitnessLevel() == intermediateFitnessLevelButton){
+            fitnessLevel = "Intermediate";
+        } else {
+            fitnessLevel = "Advanced";
+        }
+        try{
+            CourseBean courseBean = new CourseBean(courseNameText.getText(), infoTextArea.getText(), fitnessLevel, Objects.requireNonNull(LoggedUserSingleton.getInstance()).getFiscalCode(), equipmentTextArea.getText());
+            courseBean.setLessonBeanList(getLessonDay());
+            CourseManagementTrainerController.createCourse(courseBean);
+            PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
+            MenuTrainersGUIController.resetSelectedButton();
+            System.out.println("Created");
+        } catch (TimeNotInserted e){
+            e.alert();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ExpiredCardException e) {
+            e.print();
+            e.printStackTrace();
+        }
     }
+
+    private List<LessonBean> getLessonDay() {
+        List<LessonBean> lessonBeanList = new ArrayList<>();
+        List<String> dayList = new ArrayList<>();
+        dayList.add("Monday");
+        dayList.add("Tuesday");
+        dayList.add("Wednesday");
+        dayList.add("Thursday");
+        dayList.add("Friday");
+        dayList.add("Saturday");
+        dayList.add("Sunday");
+
+        for (int i = 0; i < 6; i++) {
+            if (toggled[i]) {
+                lessonBeanList.add(new LessonBean(
+                        dayList.get(i),
+                        timeSchedulerGUIControllerList.get(i).getStartTime(),
+                        timeSchedulerGUIControllerList.get(i).getEndTime()));
+            }
+        }
+
+        return lessonBeanList;
+    }
+
     @FXML void fitnessLevelSelection(ActionEvent event){
         fitnessLevelFilter.fitnessLevelSelection(event);
     }
@@ -100,5 +141,12 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
         setUsername();
+        timeSchedulerGUIControllerList.add(mondayTimeSchedulerController);
+        timeSchedulerGUIControllerList.add(tuesdayTimeSchedulerController);
+        timeSchedulerGUIControllerList.add(wednesdayTimeSchedulerController);
+        timeSchedulerGUIControllerList.add(thursdayTimeSchedulerController);
+        timeSchedulerGUIControllerList.add(fridayTimeSchedulerController);
+        timeSchedulerGUIControllerList.add(saturdayTimeSchedulerController);
+        timeSchedulerGUIControllerList.add(sundayTimeSchedulerController);
     }
 }

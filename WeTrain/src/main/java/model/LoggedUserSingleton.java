@@ -1,6 +1,7 @@
 package model;
 
 import controller.LoginController;
+import exception.ExpiredCardException;
 import viewone.bean.AthleteBean;
 import viewone.bean.TrainerBean;
 import viewone.bean.UserBean;
@@ -13,8 +14,8 @@ public class LoggedUserSingleton {
 
     private LoggedUserSingleton() {}
 
-    //TODO Creare un controller che comunica con la DAO?
-    public static UserBean getInstance() throws SQLException {
+    //TODO Spostare fuori dal model?
+    public static UserBean getInstance() throws SQLException, ExpiredCardException {
         User usr = LoginController.getLoggedUser();
         if(usr instanceof Athlete) {
             return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), "Athlete", usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete)usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());
