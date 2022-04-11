@@ -2,6 +2,10 @@ package viewone.graphical_controllers.launcher;
 
 
 import controller.RegistrationController;
+import exception.EmptyFieldsException;
+import exception.InvalidBirthException;
+import exception.InvalidFiscalCodeException;
+import exception.InvalidUserInfoException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -35,7 +39,7 @@ public class MoreInfoGUIController implements Initializable {
     @FXML private TextField usernameText;
 
 
-    private int sendUserInfo(){
+    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException {
         if(!Objects.equals(usernameText.getText(), "")
                 & !Objects.equals(firstNameText.getText(), "")
                 & !Objects.equals(lastNameText.getText(), "")
@@ -43,66 +47,45 @@ public class MoreInfoGUIController implements Initializable {
                 & !Objects.equals(birthPicker.getEditor().getText(), "")){
 
             UserBean user = new UserBean();
-            //TODO lancio di eccezioni invece che ritorno di interi?
+
             if(!user.setUsername(usernameText.getText())
                 || !user.setName(firstNameText.getText())
                 || !user.setSurname(lastNameText.getText())){
-                return 3;
+                throw new InvalidUserInfoException();
             }
             if(!user.setFc(fcText.getText())){
-                return 2;
+                throw new InvalidFiscalCodeException();
             }
             if(!user.setBirth(birthPicker.getEditor().getText())){
-               return 1;
+               throw new InvalidBirthException();
             }
             user.setType(selectedProfile);
             user.setGender(gender);
-            try {
-                RegistrationController.processUserInfo(user);
-            }  catch (SQLIntegrityConstraintViolationException e) {
-                //TODO duplicate primary key
-                System.out.println("Duplicate primary key");
-                return 4;
-            } catch (SQLException e){
-                System.out.println("Errore nel salvataggio dell'utente.");
-                return 5;
-            }
-            return 0;
+            RegistrationController.processUserInfo(user);
         } else {
-            return -1;
+            throw new EmptyFieldsException();
         }
     }
 
     @FXML private void registerButtonAction() throws IOException {
-        int res = sendUserInfo();
-        if(res == 0) {
+        try{
+            sendUserInfo();
             PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
-        } else{
-            String alertTitle = "OOPS, SOMETHING WENT WRONG!";
-            String alertHeaderText = " ";
-            String alertContentText = "Be sure to fill all fields correctly, thanks for your collaboration!";
-            //TODO sostituire switch case con try-catch(?)
-            switch (res) {
-                case (-1) -> alertHeaderText = "Empty fields";
-                case (1) -> alertHeaderText = "Birth date not valid";
-                case (2) -> alertHeaderText = "Fiscal code not valid";
-                case (3) -> {
-                    alertHeaderText = "Excessive length in name, surname or username";
-                    alertContentText = "Be sure that name or surname are under 45 characters and username is under 20 characters, thanks for your collaboration!";
-                }
-                case (4) -> {
-                    alertHeaderText = "Error in user registration";
-                    alertContentText = "Fiscal code, username or email already existing in our database. \n" +
-                            "If you already have an account, log in.";
-                }
-                case (5) -> {
-                    alertHeaderText = "Error in our database";
-                    alertContentText = "Sorry for the inconvenience";
-                }
-            }
-            AlertFactory.newWarningAlert(alertTitle, alertHeaderText, alertContentText);
+        } catch (SQLIntegrityConstraintViolationException e) {
+            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "Error in user registration",
+                    "Fiscal code, username or email already existing in our database. \n" +
+                            "If you already have an account, log in.");
+        } catch (SQLException e){
+            //TODO gestirla meglio
+            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "Error in our database",
+                    "Sorry for the inconvenience.");
+        } catch (InvalidFiscalCodeException | InvalidUserInfoException | InvalidBirthException | EmptyFieldsException e) {
+            e.alert();
         }
     }
+
     @FXML protected void closeAction(){
         ((Stage) registerButton.getScene().getWindow()).close();
     }
