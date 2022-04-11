@@ -3,6 +3,7 @@ package viewone.graphical_controllers.launcher;
 import controller.RegistrationController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import viewone.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;
@@ -26,14 +27,12 @@ public class RegistrationGUIController extends LauncherGUIController implements 
         if(!Objects.equals(emailField.getText(), "") & !Objects.equals(passwField.getText(), "") & sendCredentialInfo()) {
             PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME);
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("WARNING!");
-            alert.setHeaderText("Email or password not inserted or mistyped.");
-            alert.setContentText("Be sure to fill all fields correctly, thanks.\n " +
-                    "Remember that the password must contain between eight and 45 characters," +
-                    " at least one number and both lower and uppercase letters and " +
-                    "special characters (e.g. @!#$%^&+=) and must not contain tabs or spaces");
-            alert.showAndWait();
+            AlertFactory.newWarningAlert("WARNING!",
+                    "Email or password not inserted or mistyped.",
+                    "Be sure to fill all fields correctly, thanks.\n " +
+                            "Remember that the password must contain between eight and 45 characters," +
+                            " at least one number and both lower and uppercase letters and " +
+                            "special characters (e.g. @!#$%^&+=) and must not contain tabs or spaces");
         }
     }
 

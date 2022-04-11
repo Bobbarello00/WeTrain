@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import viewone.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
@@ -42,12 +43,12 @@ public class MoreInfoGUIController implements Initializable {
                 & !Objects.equals(birthPicker.getEditor().getText(), "")){
 
             UserBean user = new UserBean();
+            //TODO lancio di eccezioni invece che ritorno di interi?
             if(!user.setUsername(usernameText.getText())
                 || !user.setName(firstNameText.getText())
                 || !user.setSurname(lastNameText.getText())){
                 return 3;
             }
-
             if(!user.setFc(fcText.getText())){
                 return 2;
             }
@@ -77,29 +78,29 @@ public class MoreInfoGUIController implements Initializable {
         if(res == 0) {
             PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
         } else{
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("OOPS, SOMETHING WENT WRONG!");
-            alert.setContentText("Be sure to fill all fields correctly, thanks for your collaboration!");
+            String alertTitle = "OOPS, SOMETHING WENT WRONG!";
+            String alertHeaderText = " ";
+            String alertContentText = "Be sure to fill all fields correctly, thanks for your collaboration!";
             //TODO sostituire switch case con try-catch(?)
             switch (res) {
-                case (-1) -> alert.setHeaderText("Empty fields");
-                case (1) -> alert.setHeaderText("Birth date not valid");
-                case (2) -> alert.setHeaderText("Fiscal code not valid");
+                case (-1) -> alertHeaderText = "Empty fields";
+                case (1) -> alertHeaderText = "Birth date not valid";
+                case (2) -> alertHeaderText = "Fiscal code not valid";
                 case (3) -> {
-                    alert.setHeaderText("Excessive length in name, surname or username");
-                    alert.setContentText("Be sure that name or surname are under 45 characters and username is under 20 characters, thanks for your collaboration!");
+                    alertHeaderText = "Excessive length in name, surname or username";
+                    alertContentText = "Be sure that name or surname are under 45 characters and username is under 20 characters, thanks for your collaboration!";
                 }
                 case (4) -> {
-                    alert.setHeaderText("Error in user registration");
-                    alert.setContentText("Fiscal code, username or email already existing in our database. \n" +
-                            "If you already have an account, log in.");
+                    alertHeaderText = "Error in user registration";
+                    alertContentText = "Fiscal code, username or email already existing in our database. \n" +
+                            "If you already have an account, log in.";
                 }
                 case (5) -> {
-                    alert.setHeaderText("Error in our database");
-                    alert.setContentText("Sorry for the inconvenience");
+                    alertHeaderText = "Error in our database";
+                    alertContentText = "Sorry for the inconvenience";
                 }
             }
-            alert.showAndWait();
+            AlertFactory.newWarningAlert(alertTitle, alertHeaderText, alertContentText);
         }
     }
     @FXML protected void closeAction(){

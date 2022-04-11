@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import model.Athlete;
 import model.LoggedUserSingleton;
+import viewone.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
@@ -38,11 +39,9 @@ public class LoginGUIController extends LauncherGUIController {
                 PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");
             }
         } catch (ElementNotFoundException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("OOPS, SOMETHING WENT WRONG!");
-            alert.setHeaderText("User not found.");
-            alert.setContentText("Be sure that you have an account on WeTrain.");
-            alert.showAndWait();
+            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "User not found.",
+                    "Be sure that you have an account on WeTrain.");
         } catch (SQLException e) {
             //TODO Exception
             e.printStackTrace();
