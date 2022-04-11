@@ -10,10 +10,8 @@ public class DatabaseConnectionSingleton {
 
     private DatabaseConnectionSingleton() {
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(
                     "jdbc:mysql://wetraindb.ckbiquzyonvq.us-east-1.rds.amazonaws.com:3306/", "admin", "WeTrain!");
-            System.out.println("Connected");
         } catch (Exception e) {
             System.out.println(e);
         }
