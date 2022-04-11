@@ -4,7 +4,6 @@ import database.dao_classes.CourseDAO;
 import model.Athlete;
 import model.Course;
 import model.Lesson;
-import model.LoggedUserSingleton;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
 import viewone.bean.CourseSearchBean;

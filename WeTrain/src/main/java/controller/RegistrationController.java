@@ -3,7 +3,6 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import model.Athlete;
-import model.LoggedUserSingleton;
 import model.Trainer;
 import viewone.bean.CredentialsBean;
 import viewone.bean.UserBean;

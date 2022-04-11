@@ -1,5 +1,7 @@
 package model;
 
+import exception.ExpiredCardException;
+
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
@@ -9,15 +11,16 @@ public class Athlete extends User {
     private YearMonth cardExpirationDate;
     private WorkoutPlan workoutPlan;
     private List<Course> courseList;
+    private Trainer trainer;
 
-    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password){
+    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password) {
         super(name, surname, username, dateOfBirth, fc, gender, email, password);
     }
 
-    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password, String cardNumber, YearMonth cardExpirationDate){
+    public Athlete(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password, String cardNumber, YearMonth cardExpirationDate) throws ExpiredCardException {
         super(name, surname, username, dateOfBirth, fc, gender, email, password);
         this.cardNumber = cardNumber;
-        this.cardExpirationDate = cardExpirationDate;
+        this.setCardExpirationDate(cardExpirationDate);
     }
 
     public void changeCardInfo(String newCardNumber, YearMonth newCardExpirationDate){
@@ -37,8 +40,16 @@ public class Athlete extends User {
         return cardExpirationDate;
     }
 
-    public void setCardExpirationDate(YearMonth cardExpirationDate) {
-        this.cardExpirationDate = cardExpirationDate;
+    public void setCardExpirationDate(YearMonth cardExpirationDate) throws ExpiredCardException {
+        if(cardExpirationDate != null) {
+            if ((cardExpirationDate.getYear() > LocalDate.now().getYear()) ||
+                    ((cardExpirationDate.getYear() == LocalDate.now().getYear()) &
+                            (cardExpirationDate.getMonthValue() > LocalDate.now().getMonthValue()))) {
+                this.cardExpirationDate = cardExpirationDate;
+            } else {
+                throw new ExpiredCardException();
+            }
+        }
     }
 
     public WorkoutPlan getWorkoutPlan() {
@@ -55,5 +66,13 @@ public class Athlete extends User {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 }

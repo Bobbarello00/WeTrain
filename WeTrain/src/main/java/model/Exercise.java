@@ -6,12 +6,6 @@ public class Exercise{
     private String info;
     private Trainer trainer;
 
-    public Exercise(int id, String name, String information){
-        this.id = id;
-        this.name = name;
-        this.info = information;
-    }
-
     public Exercise(int id, String name, String information, Trainer trainer){
         this.id = id;
         this.name = name;
@@ -33,5 +27,9 @@ public class Exercise{
 
     public Trainer getTrainer() {
         return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
     }
 }

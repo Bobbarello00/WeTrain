@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-import model.LoggedUserSingleton;
 import viewone.ListPopulate;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;

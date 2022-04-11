@@ -25,8 +25,7 @@ public class UserDAO {
                     return ret;
                 } else {
                     TrainerDAO tDao = new TrainerDAO();
-                    Trainer ret1 = tDao.loadTrainer(usr);
-                    return ret1;
+                    return tDao.loadTrainer(usr);
                 }
             } else {
                 throw new ElementNotFoundException();

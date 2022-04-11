@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.ElementNotFoundException;
+import exception.ExpiredCardException;
 import model.Athlete;
 
 import java.sql.*;
@@ -17,6 +18,14 @@ public class AthleteDAO {
             athlete.setCardNumber(cardNumber);
             athlete.setCardExpirationDate(expirationDate);
             Query.updateCardInfoAthlete(stmt, athlete);
+        } catch (ExpiredCardException e) {
+            removeCardInfo(athlete.getFiscalCode());
+        }
+    }
+
+    public void removeCardInfo(String fc) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.removeCardInfo(stmt, fc);
         }
     }
 
@@ -58,10 +67,15 @@ public class AthleteDAO {
                     } else {
                         return null;
                     }
+                } catch (ExpiredCardException e) {
+                    Query.removeCardInfo(stmt, fc);
+                    return loadAthlete(fc);
                 }
             } else {
                 throw new ElementNotFoundException();
             }
         }
     }
+
+    public void setCourseAndWorkoutPlan(Athlete athlete){}
 }

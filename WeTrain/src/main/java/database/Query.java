@@ -71,6 +71,11 @@ public class Query {
                 athlete.getFiscalCode()));
     }
 
+    public static void removeCardInfo(Statement stmt, String fc) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
+                        "SET CardNumber = NULL, CardExpirationDate = NULL WHERE User = '%s';", fc));
+    }
+
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Athlete" +
                 "WHERE User = '%s';", athlete.getFiscalCode()));
@@ -108,7 +113,6 @@ public class Query {
     }
 
     public static ResultSet loadUser(Statement stmt, String email, String password) throws SQLException {
-        System.out.println(password);
         return stmt.executeQuery(String.format(SELECT_ALL +
                 " FROM mydb.User " +
                 " WHERE Email = '%s' AND Password = '%s';", email, password));
@@ -130,7 +134,7 @@ public class Query {
     public static ResultSet loadPopularCourse(Statement stmt) throws SQLException {
         return stmt.executeQuery("SELECT Course.* " +
                 "FROM mydb.Course join mydb.Subscribe on Course.idCourse = Subscribe.Course " +
-                "GROUP BY idCourse" +
+                "GROUP BY idCourse " +
                 "ORDER BY COUNT(idCourse) DESC;");
     }
 
@@ -158,13 +162,10 @@ public class Query {
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
-                } else {
-                    //TODO eccezione personalizzata
-                    System.out.println("DB - Errore nell'inserimento del workoutDay");
                 }
+                return -1;
             }
         }
-        return 0;
     }
 
     public static int deleteCourse(Statement stmt, Course course) throws SQLException {
@@ -259,13 +260,10 @@ public class Query {
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
-                } else {
-                    //TODO eccezione personalizzata
-                    System.out.println("DB - Errore nell'inserimento del workoutDay");
                 }
+                return -1;
             }
         }
-        return -1;
     }
 
     public static ResultSet loadAllWorkoutDays(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
@@ -294,15 +292,10 @@ public class Query {
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
-                } else {
-                    //TODO eccezione personalizzata
-                    System.out.println("DB - Errore nell'inserimento del workoutPlan");
                 }
+                return -1;
             }
-        } catch (SQLException sqlException){
-            sqlException.printStackTrace();
         }
-        return -1;
     }
 
     public static ResultSet loadWorkoutPlan(Statement stmt, Integer idWorkoutPlan) throws SQLException {

@@ -17,15 +17,13 @@ import java.util.List;
 public class ExerciseDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
+    public void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
         Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
     }
 
     public void saveExercise(Exercise exercise) throws SQLException {
         try(Statement stmt = conn.createStatement()){
             Query.insertExercise(stmt, exercise);
-        }catch(SQLException sqlEx){
-            sqlEx.printStackTrace();
         }
     }
 
@@ -33,12 +31,12 @@ public class ExerciseDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
-                //TODO caricare trainer
                 exerciseList.add(new Exercise(
                         rs.getInt("idExercise"),
                         rs.getString("Name"),
-                        rs.getString("Info"))
-                );
+                        rs.getString("Info"),
+                        new TrainerDAO().loadTrainer(workoutDay.getWorkoutPlan().getAthlete().getTrainer().getFiscalCode())
+                ));
             }
             return exerciseList;
         }
@@ -48,7 +46,11 @@ public class ExerciseDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerExercises(stmt, trainer)){
             ExerciseCatalogue newCatalogue = new ExerciseCatalogue();
             while(rs.next()){
-                newCatalogue.addExercise(new Exercise(rs.getInt("idExercise"), rs.getString("Name"), rs.getString("Info"), trainer));
+                newCatalogue.addExercise(new Exercise(
+                        rs.getInt("idExercise"),
+                        rs.getString("Name"),
+                        rs.getString("Info"),
+                        trainer));
             }
             return newCatalogue;
         }
@@ -56,7 +58,12 @@ public class ExerciseDAO {
 
     public Exercise loadExercise(int id) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadExercise(stmt, id)){
-            return new Exercise(rs.getInt("idExercise"), rs.getString("Name"), rs.getString("Info"));
+            return new Exercise(
+                    rs.getInt("idExercise"),
+                    rs.getString("Name"),
+                    rs.getString("Info"),
+                    new TrainerDAO().loadTrainer(rs.getString("Trainer"))
+            );
         }
     }
 }

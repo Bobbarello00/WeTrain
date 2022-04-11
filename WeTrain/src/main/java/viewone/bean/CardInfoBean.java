@@ -1,6 +1,7 @@
 package viewone.bean;
 
 import exception.ExpiredCardException;
+import viewone.AlertFactory;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -17,15 +18,9 @@ public class CardInfoBean {
 
     public CardInfoBean() {}
 
-    public CardInfoBean(String cardNumber, YearMonth expirationDate) throws ExpiredCardException {
+    public CardInfoBean(String cardNumber, YearMonth expirationDate) {
         setCardNumber(cardNumber);
-        if((expirationDate.getYear() > LocalDate.now().getYear()) ||
-                ((expirationDate.getYear() == LocalDate.now().getYear()) &
-                (expirationDate.getMonthValue() > LocalDate.now().getMonthValue()))) {
-            this.expirationDate = expirationDate;
-        } else {
-            throw new ExpiredCardException();
-        }
+        this.expirationDate = expirationDate;
     }
 
     public String getCardNumber() {
@@ -87,8 +82,10 @@ public class CardInfoBean {
             YearMonth yearMonth = YearMonth.parse(myDateString, formatter);
             String result = yearMonth.format(formatter);
             return result.equals(myDateString);
-        } catch (DateTimeParseException exp) {
-            exp.printStackTrace();
+        } catch (DateTimeParseException e) {
+            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "The inserted card date isn't valid.",
+                    "Be sure that the date inserted is correct.");
         }
         System.out.println("data carta sbagliata");
         return false;

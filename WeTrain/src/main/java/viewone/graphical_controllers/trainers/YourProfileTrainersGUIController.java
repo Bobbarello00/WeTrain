@@ -1,10 +1,10 @@
 package viewone.graphical_controllers.trainers;
 
+import exception.ExpiredCardException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import model.LoggedUserSingleton;
-import model.Trainer;
+import viewone.LoggedUserSingleton;
 import viewone.bean.TrainerBean;
 import viewone.graphical_controllers.ProfileGUIController;
 
@@ -31,6 +31,8 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
             fiscalCodeLabel.setText("FiscalCode: " + LoggedUserSingleton.getInstance().getFiscalCode());
             ibanLabel.setText("Iban: " + ((TrainerBean) LoggedUserSingleton.getInstance()).getIban());
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ExpiredCardException e) {
             e.printStackTrace();
         }
     }

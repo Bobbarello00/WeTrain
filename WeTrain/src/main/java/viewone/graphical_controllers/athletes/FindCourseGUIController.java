@@ -8,11 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import model.LoggedUserSingleton;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 

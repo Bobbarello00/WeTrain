@@ -35,6 +35,6 @@ module com.wetrain.wetrain {
     exports database;
     opens database to javafx.fxml;
 
-
+    exports exception;
     exports model;
 }

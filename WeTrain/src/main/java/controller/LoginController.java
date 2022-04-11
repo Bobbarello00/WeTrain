@@ -3,8 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import database.dao_classes.UserDAO;
-import exception.ElementNotFoundException;
-import model.LoggedUserSingleton;
+import exception.FatalErrorManager;
 import model.User;
 import viewone.bean.CredentialsBean;
 
@@ -28,7 +27,7 @@ public class LoginController {
     public static void login(CredentialsBean credentials) throws SQLException {
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
         if(user == null){
-            //TODO MALE MALE
+            FatalErrorManager.kill();
         }
         assert user != null;
         fc = user.getFiscalCode();

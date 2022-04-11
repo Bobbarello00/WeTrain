@@ -35,8 +35,14 @@ public class CourseDAO {
     public Course loadCourse(int id) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourse(stmt, id)) {
             if(rs.next()){
-                Trainer trainer = new TrainerDAO().loadTrainer(rs.getString("Trainer"));
-                Course course = new Course(rs.getInt("idCourse"), rs.getString("Name"), rs.getString("Description"), rs.getString("FitnessLevel"), trainer, rs.getString("Equipment"));
+                Course course = new Course(
+                        rs.getInt("idCourse"),
+                        rs.getString("Name"),
+                        rs.getString("Description"),
+                        rs.getString("FitnessLevel"),
+                        new TrainerDAO().loadTrainer(rs.getString("Trainer")),
+                        rs.getString("Equipment")
+                );
                 course.addAllLessons(new LessonDAO().loadAllLessons(course));
                 return course;
             } else {
@@ -47,35 +53,45 @@ public class CourseDAO {
 
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesAthlete(stmt, athlete)){
-            if(!rs.next()){
-                return null;
-            }
-            List<Course> myList = new ArrayList<>();
-            do{
-                Trainer trainer = new TrainerDAO().loadTrainer(rs.getString("Trainer"));
-                Course course = new Course(
-                        rs.getInt("idCourse"),
-                        rs.getString("Name"),
-                        rs.getString("Description"),
-                        rs.getString("FitnessLevel"),
-                        trainer,
-                        rs.getString("Equipment"));
-                course.addAllLessons(new LessonDAO().loadAllLessons(course));
-                myList.add(course);
-            }while((rs.next()));
-            return myList;
+            return loadAllCourses(athlete, rs);
         }
     }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesTrainer(stmt, trainer)){
-            List<Course> myList = new ArrayList<>();
-            while(rs.next()){
-                Course course = new Course(rs.getInt("idCourse"), rs.getString("Name"), rs.getString("Description"), rs.getString("FitnessLevel"), trainer, rs.getString("Equipment"));
-                course.addAllLessons(new LessonDAO().loadAllLessons(course));
-                myList.add(course);
-            }
-            return myList;
+            return loadAllCourses(trainer, rs);
         }
+    }
+
+    private List<Course> loadAllCourses(User user, ResultSet rs) throws SQLException {
+        if(!rs.next()){
+            throw new ElementNotFoundException();
+        }
+        List<Course> myList = new ArrayList<>();
+        do {
+            Course course;
+            if(user instanceof Trainer) {
+                course = new Course(
+                        rs.getInt("idCourse"),
+                        rs.getString("Name"),
+                        rs.getString("Description"),
+                        rs.getString("FitnessLevel"),
+                        (Trainer) user,
+                        rs.getString("Equipment")
+                );
+            } else {
+                course = new Course(
+                        rs.getInt("idCourse"),
+                        rs.getString("Name"),
+                        rs.getString("Description"),
+                        rs.getString("FitnessLevel"),
+                        new TrainerDAO().loadTrainer(rs.getString("Trainer")),
+                        rs.getString("Equipment")
+                );
+            }
+            course.addAllLessons(new LessonDAO().loadAllLessons(course));
+            myList.add(course);
+        }while(rs.next());
+        return myList;
     }
 }

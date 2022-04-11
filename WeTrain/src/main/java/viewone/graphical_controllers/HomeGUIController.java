@@ -1,9 +1,8 @@
 package viewone.graphical_controllers;
 
 import exception.ExpiredCardException;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import model.LoggedUserSingleton;
+import viewone.LoggedUserSingleton;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +24,7 @@ public abstract class HomeGUIController {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ExpiredCardException e){
-            e.print();
+            e.alert();
             e.printStackTrace();
         }
     }

@@ -1,10 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import model.LoggedUserSingleton;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +10,6 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes implements Initializable {

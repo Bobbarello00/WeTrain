@@ -1,16 +1,14 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
+import exception.ExpiredCardException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import model.Athlete;
-import model.LoggedUserSingleton;
-import model.User;
+import viewone.LoggedUserSingleton;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import viewone.bean.UserBean;
@@ -46,16 +44,19 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             }
             try{
                 ProfileManagementController.updateAthleteCardInfo(cardInfoBean);
+                editPane.setDisable(true);
+                editPane.setVisible(false);
+                setPaymentMethodLabel();
+                editButton.setDisable(false);
+                editButton.setVisible(true);
+                paymentMethodLabel.setVisible(true);
             }catch (SQLException e){
                 e.printStackTrace();
                 //TODO GESTIONE EXCEPTION
+            } catch (ExpiredCardException e) {
+                e.alert();
+                e.printStackTrace();
             }
-            editPane.setDisable(true);
-            editPane.setVisible(false);
-            setPaymentMethodLabel();
-            editButton.setDisable(false);
-            editButton.setVisible(true);
-            paymentMethodLabel.setVisible(true);
         }
     }
 
@@ -85,6 +86,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             setPaymentMethodLabel();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ExpiredCardException e) {
+            e.printStackTrace();
         }
     }
 
@@ -98,6 +101,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ExpiredCardException e) {
             e.printStackTrace();
         }
     }

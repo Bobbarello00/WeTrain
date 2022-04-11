@@ -1,8 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import model.LoggedUserSingleton;
 import viewone.DaysOfTheWeekController;
 import viewone.ListPopulate;
 import javafx.event.ActionEvent;

@@ -2,21 +2,23 @@ package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
 import exception.ExpiredCardException;
-import exception.TimeNotInserted;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
-import model.LoggedUserSingleton;
-import viewone.bean.CourseBean;
-import viewone.bean.LessonBean;
-import viewone.graphical_controllers.FitnessLevelFilterGUIController;
-import viewone.graphical_controllers.TimeSchedulerGUIController;
-import viewone.MainPane;
-import viewone.PageSwitchSimple;
+import exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import viewone.LoggedUserSingleton;
+import viewone.MainPane;
+import viewone.PageSwitchSimple;
+import viewone.bean.CourseBean;
+import viewone.bean.LessonBean;
+import viewone.graphical_controllers.FitnessLevelFilterGUIController;
+import viewone.graphical_controllers.TimeSchedulerGUIController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -73,17 +75,17 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
             MenuTrainersGUIController.resetSelectedButton();
             System.out.println("Created");
-        } catch (TimeNotInserted e){
+        } catch (TimeNotInsertedException e){
             e.alert();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ExpiredCardException e) {
-            e.print();
+            e.alert();
             e.printStackTrace();
         }
     }
 
-    private List<LessonBean> getLessonDay() {
+    private List<LessonBean> getLessonDay() throws TimeNotInsertedException {
         List<LessonBean> lessonBeanList = new ArrayList<>();
         List<String> dayList = new ArrayList<>();
         dayList.add("Monday");

@@ -19,7 +19,7 @@ public class WorkoutDayDAO {
         try (Statement stmt = conn.createStatement()) {
             int id = Query.insertWorkoutDay(workoutDay, idWorkoutPlan);
             for (Exercise exercise : workoutDay.getExerciseList()){
-                ExerciseDAO.insertExerciseInWorkoutDay(stmt, exercise, id);
+                new ExerciseDAO().insertExerciseInWorkoutDay(stmt, exercise, id);
             }
         }
     }
