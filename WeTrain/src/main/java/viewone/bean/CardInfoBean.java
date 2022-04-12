@@ -58,6 +58,7 @@ public class CardInfoBean {
     }
 
     public boolean setExpirationDate(String expirationDate) throws InvalidCardInfoException {
+        //TODO togliere if e modificare isValidDate in checkValidDate
         if(isValidDate(expirationDate)){
             this.expirationDate = YearMonth.parse(expirationDate, DateTimeFormatter.ofPattern("MM/yyyy"));
             return true;
