@@ -2,6 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
 import exception.ExpiredCardException;
+import exception.InvalidCardInfoException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,7 +33,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     private final ProfileManagementController profileManagementController = ProfileManagementController.getInstance();
 
-    @FXML private void editConfirmation(){
+    @FXML private void editConfirmation() throws InvalidCardInfoException {
         if(!Objects.equals(newCardNumber.getText(), "")
                 & !Objects.equals(newExpirationDate.getText(), "")) {
             CardInfoBean cardInfoBean = new CardInfoBean();
@@ -80,7 +81,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            UserBean usr = LoggedUserSingleton.getInstance();
+            UserBean usr = Objects.requireNonNull(LoggedUserSingleton.getInstance());
             emailLabel.setText("Email: " + usr.getEmail());
             firstNameLabel.setText(usr.getName());
             lastNameLabel.setText(usr.getSurname());
@@ -88,14 +89,14 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             setPaymentMethodLabel();
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ExpiredCardException e) {
-            e.printStackTrace();
+        } catch (ExpiredCardException | InvalidCardInfoException e) {
+            e.alert();
         }
     }
 
     private void setPaymentMethodLabel() {
         try {
-            AthleteBean athlete = (AthleteBean) LoggedUserSingleton.getInstance();
+            AthleteBean athlete = (AthleteBean) Objects.requireNonNull(LoggedUserSingleton.getInstance());
             if (athlete.getCardNumber() == null) {
                 paymentMethodLabel.setText("Card: " + "Not inserted yet");
             } else {
@@ -104,8 +105,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ExpiredCardException e) {
-            e.printStackTrace();
+        } catch (ExpiredCardException | InvalidCardInfoException e) {
+            e.alert();
         }
     }
 }

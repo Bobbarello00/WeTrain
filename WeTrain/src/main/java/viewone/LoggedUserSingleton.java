@@ -3,6 +3,7 @@ package viewone;
 import controller.LoginController;
 import exception.ExpiredCardException;
 import engeneering.FatalErrorManager;
+import exception.InvalidCardInfoException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
@@ -18,7 +19,7 @@ public class LoggedUserSingleton {
 
     private LoggedUserSingleton() {}
 
-    public static UserBean getInstance() throws SQLException, ExpiredCardException {
+    public static UserBean getInstance() throws SQLException, ExpiredCardException, InvalidCardInfoException {
         User usr = loginController.getLoggedUser();
         if(usr instanceof Athlete) {
             return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), "Athlete", usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete)usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());

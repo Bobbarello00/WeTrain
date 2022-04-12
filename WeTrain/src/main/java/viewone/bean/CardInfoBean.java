@@ -1,5 +1,6 @@
 package viewone.bean;
 
+import exception.InvalidCardInfoException;
 import viewone.AlertFactory;
 
 import java.time.YearMonth;
@@ -15,16 +16,16 @@ public class CardInfoBean {
 
     public CardInfoBean() {}
 
-    public CardInfoBean(String cardNumber, YearMonth expirationDate) {
+    public CardInfoBean(String cardNumber, YearMonth expirationDate) throws InvalidCardInfoException {
         setCardNumber(cardNumber);
-        setExpirationDate(String.valueOf(expirationDate));
+        setExpirationDate(expirationDate.getMonthValue() + "/" + expirationDate.getYear());
     }
 
     public String getCardNumber() {
         return cardNumber;
     }
 
-    public boolean setCardNumber(String cardNumber) {
+    public boolean setCardNumber(String cardNumber) throws InvalidCardInfoException {
         if(isValidCardNumber(cardNumber)) {
             cardNumber = cardNumber.replace("-", "");
             cardNumber =cardNumber.replace(" ","");
@@ -34,7 +35,7 @@ public class CardInfoBean {
         return false;
     }
 
-    private boolean isValidCardNumber(String card) {
+    private boolean isValidCardNumber(String card) throws InvalidCardInfoException {
         String regex = "^(?:(?<visa>4[0-9]{12}(?:[0-9]{3})?)|" +
                 "(?<mastercard>5[1-5][0-9]{14}))";
         Pattern pattern = Pattern.compile(regex);
@@ -49,14 +50,14 @@ public class CardInfoBean {
             return true;
         }
         System.out.println("numero carta sbagliata");
-        return false;
+        throw new InvalidCardInfoException();
     }
 
     public YearMonth getExpirationDate() {
         return expirationDate;
     }
 
-    public boolean setExpirationDate(String expirationDate) {
+    public boolean setExpirationDate(String expirationDate) throws InvalidCardInfoException {
         if(isValidDate(expirationDate)){
             this.expirationDate = YearMonth.parse(expirationDate, DateTimeFormatter.ofPattern("MM/yyyy"));
             return true;
@@ -64,7 +65,7 @@ public class CardInfoBean {
         return false;
     }
 
-    private boolean isValidDate(String myDateString) {
+    private boolean isValidDate(String myDateString) throws InvalidCardInfoException {
         //TODO FORMATO SOLO CON MESE E ANNO
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
         try {
@@ -72,12 +73,8 @@ public class CardInfoBean {
             String result = yearMonth.format(formatter);
             return result.equals(myDateString);
         } catch (DateTimeParseException e) {
-            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
-                    "The inserted card date isn't valid.",
-                    "Be sure that the date inserted is correct.");
+            throw new InvalidCardInfoException();
         }
-        System.out.println("data carta sbagliata");
-        return false;
     }
 
     public void setType(String type){
