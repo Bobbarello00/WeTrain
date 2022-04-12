@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import viewone.AlertFactory;
 import viewone.MainPane;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
@@ -45,6 +46,8 @@ public class CourseInfoGUIController implements Initializable {
     @FXML private Label saturdayTimeText;
     @FXML private Label sundayTimeText;
     private CourseBean courseBean;
+
+    private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -101,13 +104,12 @@ public class CourseInfoGUIController implements Initializable {
     public void subscribeButtonAction(ActionEvent event) {
         if(courseBean != null) {
             try {
-                CourseManagementAthleteController.subscribeToACourse(courseBean);
+                courseManagementAthleteController.subscribeToACourse(courseBean);
                 System.out.println("Subscribed!");
             } catch (SQLIntegrityConstraintViolationException e){
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("OOPS, SOMETHING WENT WRONG!");
-                alert.setHeaderText("You are already subscribed to this course.");
-                alert.showAndWait();
+                AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                        "You are already subscribed to this course.",
+                        null);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

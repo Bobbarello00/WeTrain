@@ -29,8 +29,8 @@ public class CardInfoBean {
 
     public boolean setCardNumber(String cardNumber) {
         if(isValidCardNumber(cardNumber)) {
-            cardNumber = cardNumber.replaceAll("-", "");
-            cardNumber =cardNumber.replaceAll(" ","");
+            cardNumber = cardNumber.replace("-", "");
+            cardNumber =cardNumber.replace(" ","");
             this.cardNumber = cardNumber;
             return true;
         }
@@ -39,23 +39,15 @@ public class CardInfoBean {
 
     private boolean isValidCardNumber(String card) {
         String regex = "^(?:(?<visa>4[0-9]{12}(?:[0-9]{3})?)|" +
-                "(?<mastercard>5[1-5][0-9]{14})|" +
-                "(?<discover>6(?:011|5[0-9]{2})[0-9]{12})|" +
-                "(?<amex>3[47][0-9]{13})|" +
-                "(?<diners>3(?:0[0-5]|[68][0-9])?[0-9]{11})|" +
-                "(?<jcb>(?:2131|1800|35[0-9]{3})[0-9]{11}))$";
+                "(?<mastercard>5[1-5][0-9]{14}))";
         Pattern pattern = Pattern.compile(regex);
-        card = card.replaceAll("-", "");
-        card =card.replaceAll(" ","");
+        card = card.replace("-", "");
+        card =card.replace(" ","");
         Matcher matcher = pattern.matcher(card);
         if(matcher.matches()) {
             String group = "";
             if(matcher.group("visa") != null) group = "VISA";
             else if(matcher.group("mastercard") != null) group = "MASTERCARD";
-            else if(matcher.group("discover") != null) group = "DISCOVER";
-            else if(matcher.group("amex") != null) group = "AMEX";
-            else if(matcher.group("diners") != null) group = "DINERS";
-            else if(matcher.group("jcb") != null) group = "JCB";
             setType(group);
             return true;
         }

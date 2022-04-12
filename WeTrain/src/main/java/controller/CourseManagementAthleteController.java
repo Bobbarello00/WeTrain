@@ -15,12 +15,24 @@ import java.util.List;
 
 public class CourseManagementAthleteController {
 
-    public static void subscribeToACourse(CourseBean courseBean) throws SQLException {
+    private final LoginController loginController = LoginController.getInstance();
+
+    private CourseManagementAthleteController() {}
+
+    private static class SingletonManager {
+        private static final CourseManagementAthleteController INSTANCE = new CourseManagementAthleteController();
+    }
+
+    public static CourseManagementAthleteController getInstance() {
+        return CourseManagementAthleteController.SingletonManager.INSTANCE;
+    }
+
+    public void subscribeToACourse(CourseBean courseBean) throws SQLException {
         new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));
     }
 
-    public static List<CourseEssentialBean> getCourseList() throws SQLException {
-        List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) LoginController.getLoggedUser());
+    public List<CourseEssentialBean> getCourseList() throws SQLException {
+        List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
         List<CourseEssentialBean> beanList = new ArrayList<>();
         for(Course course : courseList) {
             beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
@@ -28,7 +40,7 @@ public class CourseManagementAthleteController {
         return beanList;
     }
 
-    public static CourseBean getCourse(CourseSearchBean bean) throws SQLException {
+    public CourseBean getCourse(CourseSearchBean bean) throws SQLException {
         Course course = new CourseDAO().loadCourse(bean.getId());
         CourseBean courseBean = new CourseBean(
                 course.getId(),

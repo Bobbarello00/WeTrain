@@ -8,6 +8,8 @@ import java.sql.*;
 public class Query {
 
     private static final String SELECT_ALL = "SELECT * ";
+    private static final String WHERE_USER = "WHERE User = '%s';";
+
 
     private Query(){}
 
@@ -45,8 +47,8 @@ public class Query {
 
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
-                " FROM mydb.Athlete" +
-                " WHERE User = '%s';", fc));
+                " FROM mydb.Athlete " +
+                WHERE_USER, fc));
     }
 
     public static void insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -65,7 +67,8 @@ public class Query {
 
     public static void updateCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
         stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
-                        "SET CardNumber = '%s', CardExpirationDate = '%s' WHERE User = '%s';",
+                        "SET CardNumber = '%s', CardExpirationDate = '%s' " +
+                        WHERE_USER,
                 athlete.getCardNumber(),
                 Date.valueOf((athlete.getCardExpirationDate()).atDay(1)),
                 athlete.getFiscalCode()));
@@ -73,18 +76,20 @@ public class Query {
 
     public static void removeCardInfo(Statement stmt, String fc) throws SQLException {
         stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
-                        "SET CardNumber = NULL, CardExpirationDate = NULL WHERE User = '%s';", fc));
+                        "SET CardNumber = NULL, CardExpirationDate = NULL " +
+                WHERE_USER,
+                fc));
     }
 
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Athlete" +
-                "WHERE User = '%s';", athlete.getFiscalCode()));
+        return stmt.executeUpdate(String.format("DELETE FROM mydb.Athlete " +
+                WHERE_USER, athlete.getFiscalCode()));
     }
 
     public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Trainer " +
-                "WHERE User = '%s';", fc));
+                WHERE_USER, fc));
     }
 
     public static void insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
@@ -102,14 +107,14 @@ public class Query {
     }
 
     public static int updateIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("UPDATE mydb.Trainer SET Iban = '%s' WHERE User = '%s';",
+        return stmt.executeUpdate(String.format("UPDATE mydb.Trainer SET Iban = '%s' " + WHERE_USER,
                 trainer.getIban(),
                 trainer.getFiscalCode()));
     }
 
     public static int deleteTrainer(Statement stmt, Trainer trainer) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Trainer " +
-                "WHERE User = '%s';", trainer.getFiscalCode()));
+                WHERE_USER, trainer.getFiscalCode()));
     }
 
     public static ResultSet loadUser(Statement stmt, String email, String password) throws SQLException {
@@ -150,7 +155,7 @@ public class Query {
                 "WHERE Trainer = '%s';", trainer.getFiscalCode()));
     }
 
-    public static int insertCourse(Statement stmt, Course course) throws SQLException {
+    public static int insertCourse(Course course) throws SQLException {
         try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
                         "VALUES ('%s', '%s', '%s', '%s', '%s');",
                 course.getName(),
@@ -254,7 +259,7 @@ public class Query {
                 exercise.getId()));
     }
 
-    public static int insertWorkoutDay(WorkoutDay workoutDay, int workoutPlanKey) throws SQLException{
+    public static int insertWorkoutDay(int workoutPlanKey) throws SQLException{
         try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s);", workoutPlanKey), Statement.RETURN_GENERATED_KEYS);) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {

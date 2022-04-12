@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import database.dao_classes.UserDAO;
-import exception.FatalErrorManager;
+import engeneering.FatalErrorManager;
 import model.User;
 import viewone.bean.CredentialsBean;
 
@@ -13,7 +13,17 @@ public class LoginController {
 
     private static String fc;
 
-    public static User getLoggedUser() throws SQLException {
+    private LoginController() {}
+
+    private static class SingletonManager {
+        private static final LoginController INSTANCE = new LoginController();
+    }
+
+    public static LoginController getInstance() {
+        return LoginController.SingletonManager.INSTANCE;
+    }
+
+    public User getLoggedUser() throws SQLException {
         User user = new AthleteDAO().loadAthlete(fc);
         if(user == null){
             user = new TrainerDAO().loadTrainer(fc);

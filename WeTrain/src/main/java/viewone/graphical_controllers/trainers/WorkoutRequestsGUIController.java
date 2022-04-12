@@ -20,7 +20,6 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     private static final String HOME = "trainers";
 
     @FXML private ListView<Node> requestsList;
-    @FXML private Text usernameText1;
 
     @FXML void newWorkoutButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);

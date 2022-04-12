@@ -19,6 +19,8 @@ public class RegistrationGUIController extends LauncherGUIController implements 
     @FXML private TextField emailField;
     @FXML private TextField passwField;
 
+    private final RegistrationController registrationController = RegistrationController.getInstance();
+
     @FXML private void homeTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", HOME);
     }
@@ -46,7 +48,7 @@ public class RegistrationGUIController extends LauncherGUIController implements 
                 || !credential.setPassword(passwField.getText())){
             return false;
         }
-        RegistrationController.setCredentialInfo(credential);
+        registrationController.setCredentialInfo(credential);
         return true;
     }
 }

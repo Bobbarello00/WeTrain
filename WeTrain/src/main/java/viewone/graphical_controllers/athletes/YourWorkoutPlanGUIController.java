@@ -25,7 +25,6 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
     @FXML public Button saturdayButton;
     @FXML public Button sundayButton;
     @FXML private ListView<Node> exercisesList;
-    @FXML private Text usernameText1;
 
     @FXML void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);

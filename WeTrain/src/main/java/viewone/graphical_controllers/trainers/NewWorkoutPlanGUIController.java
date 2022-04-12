@@ -20,7 +20,6 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     @FXML private ListView<Node> exercisesList;
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button createButton;
-    @FXML private Text usernameText1;
 
     @FXML public void addExerciseTextAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(createButton, "AddExercise", HOME, false);

@@ -43,7 +43,7 @@ public class Athlete extends User {
     public void setCardExpirationDate(YearMonth cardExpirationDate) throws ExpiredCardException {
         if(cardExpirationDate != null) {
             if ((cardExpirationDate.getYear() > LocalDate.now().getYear()) ||
-                    ((cardExpirationDate.getYear() == LocalDate.now().getYear()) &
+                    ((cardExpirationDate.getYear() == LocalDate.now().getYear()) &&
                             (cardExpirationDate.getMonthValue() > LocalDate.now().getMonthValue()))) {
                 this.cardExpirationDate = cardExpirationDate;
             } else {

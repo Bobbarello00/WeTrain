@@ -15,7 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseDAO {
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+
+    private final Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+    private static final String NAME = "Name";
+    private static final String INFO = "Info";
+    private static final String TRAINER = "Trainer";
+    private static final String IDEXERCISE = "idExercise";
 
     public void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
         Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
@@ -32,9 +37,9 @@ public class ExerciseDAO {
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
                 exerciseList.add(new Exercise(
-                        rs.getInt("idExercise"),
-                        rs.getString("Name"),
-                        rs.getString("Info"),
+                        rs.getInt(IDEXERCISE),
+                        rs.getString(NAME),
+                        rs.getString(INFO),
                         new TrainerDAO().loadTrainer(workoutDay.getWorkoutPlan().getAthlete().getTrainer().getFiscalCode())
                 ));
             }
@@ -47,9 +52,9 @@ public class ExerciseDAO {
             ExerciseCatalogue newCatalogue = new ExerciseCatalogue();
             while(rs.next()){
                 newCatalogue.addExercise(new Exercise(
-                        rs.getInt("idExercise"),
-                        rs.getString("Name"),
-                        rs.getString("Info"),
+                        rs.getInt(IDEXERCISE),
+                        rs.getString(NAME),
+                        rs.getString(INFO),
                         trainer));
             }
             return newCatalogue;
@@ -59,10 +64,10 @@ public class ExerciseDAO {
     public Exercise loadExercise(int id) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadExercise(stmt, id)){
             return new Exercise(
-                    rs.getInt("idExercise"),
-                    rs.getString("Name"),
-                    rs.getString("Info"),
-                    new TrainerDAO().loadTrainer(rs.getString("Trainer"))
+                    rs.getInt(IDEXERCISE),
+                    rs.getString(NAME),
+                    rs.getString(INFO),
+                    new TrainerDAO().loadTrainer(rs.getString(TRAINER))
             );
         }
     }

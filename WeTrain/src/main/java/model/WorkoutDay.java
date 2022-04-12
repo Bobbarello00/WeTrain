@@ -8,8 +8,9 @@ public class WorkoutDay {
     private int day;
     private List<Exercise> exerciseList;
 
-    public WorkoutDay(int id, WorkoutPlan workoutPlan){
+    public WorkoutDay(int id, int day,WorkoutPlan workoutPlan){
         this.id = id;
+        this.day = day;
         this.workoutPlan = workoutPlan;
     }
 
@@ -39,5 +40,13 @@ public class WorkoutDay {
 
     public WorkoutPlan getWorkoutPlan(){
         return workoutPlan;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
     }
 }

@@ -9,11 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import model.LoggedUserSingleton;
-import viewone.AlertFactory;
-import viewone.MainPane;
-import viewone.PageSwitchSimple;
-import viewone.PageSwitchSizeChange;
+import viewone.*;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
 

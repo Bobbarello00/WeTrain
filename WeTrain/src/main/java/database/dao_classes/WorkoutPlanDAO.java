@@ -13,21 +13,18 @@ import java.sql.Statement;
 
 public class WorkoutPlanDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+
     public void saveWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException {
-        try (Statement stmt = conn.createStatement()) {     //stmt può essere tolto
-            int id = Query.insertWorkoutPlan(workoutPlan);
-            for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
-                new WorkoutDayDAO().saveWorkoutDay(workoutDay, id);
-            }
+        int id = Query.insertWorkoutPlan(workoutPlan);
+        for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
+            new WorkoutDayDAO().saveWorkoutDay(workoutDay, id);
         }
     }
 
     public WorkoutPlan loadWorkoutPlan(Integer idWorkoutPlan, Athlete athlete) throws SQLException {
-        try (Statement stmt = conn.createStatement()){
-            WorkoutPlan workoutPlan = new WorkoutPlan(idWorkoutPlan, athlete);
-            workoutPlan.addAllWorkoutDays(new WorkoutDayDAO().loadAllWorkoutDays(workoutPlan));
-            return workoutPlan;
-        }
+        WorkoutPlan workoutPlan = new WorkoutPlan(idWorkoutPlan, athlete);
+        workoutPlan.addAllWorkoutDays(new WorkoutDayDAO().loadAllWorkoutDays(workoutPlan));
+        return workoutPlan;
     }
 }
 

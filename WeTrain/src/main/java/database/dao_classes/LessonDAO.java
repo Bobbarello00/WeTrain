@@ -4,7 +4,6 @@ import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Course;
 import model.Lesson;
-import model.Notification;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

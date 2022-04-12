@@ -13,7 +13,7 @@ public class AthleteBean extends UserBean{
         cardInfoBean = new CardInfoBean(cardNumber, cardExpirationDate);
     }
 
-    public void setType(String cardType){
+    public void setCardType(String cardType){
         cardInfoBean.setType(cardType);
     }
 

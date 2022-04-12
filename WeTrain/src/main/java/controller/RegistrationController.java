@@ -11,9 +11,19 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class RegistrationController {
-    private static CredentialsBean credentialsBean;
+    private CredentialsBean credentialsBean;
 
-    public static void processUserInfo(UserBean bean) throws SQLException {
+    private RegistrationController() {}
+
+    private static class SingletonManager {
+        private static final RegistrationController INSTANCE = new RegistrationController();
+    }
+
+    public static RegistrationController getInstance() {
+        return SingletonManager.INSTANCE;
+    }
+
+    public void processUserInfo(UserBean bean) throws SQLException {
         if (Objects.equals(bean.getType(), "Athlete")) {
             AthleteDAO athleteDAO = new AthleteDAO();
             Athlete athlete = new Athlete(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFiscalCode(), bean.getGender(), credentialsBean.getEmail(), credentialsBean.getPassword());
@@ -26,7 +36,7 @@ public class RegistrationController {
         LoginController.login(credentialsBean);
     }
 
-    public static void setCredentialInfo(CredentialsBean credential) {
+    public void setCredentialInfo(CredentialsBean credential) {
         credentialsBean = credential;
     }
 }

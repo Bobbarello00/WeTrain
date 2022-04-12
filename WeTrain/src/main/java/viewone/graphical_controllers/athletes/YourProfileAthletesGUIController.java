@@ -30,6 +30,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     @FXML private TextField newCardNumber;
     @FXML private TextField newExpirationDate;
 
+    private final ProfileManagementController profileManagementController = ProfileManagementController.getInstance();
+
     @FXML private void editConfirmation(){
         if(!Objects.equals(newCardNumber.getText(), "")
                 & !Objects.equals(newExpirationDate.getText(), "")) {
@@ -43,7 +45,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 return;
             }
             try{
-                ProfileManagementController.updateAthleteCardInfo(cardInfoBean);
+                profileManagementController.updateAthleteCardInfo(cardInfoBean);
                 editPane.setDisable(true);
                 editPane.setVisible(false);
                 setPaymentMethodLabel();

@@ -38,6 +38,7 @@ public class MoreInfoGUIController implements Initializable {
     @FXML private TextField lastNameText;
     @FXML private TextField usernameText;
 
+    private final RegistrationController registrationController = RegistrationController.getInstance();
 
     private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException {
         if(!Objects.equals(usernameText.getText(), "")
@@ -61,7 +62,7 @@ public class MoreInfoGUIController implements Initializable {
             }
             user.setType(selectedProfile);
             user.setGender(gender);
-            RegistrationController.processUserInfo(user);
+            registrationController.processUserInfo(user);
         } else {
             throw new EmptyFieldsException();
         }

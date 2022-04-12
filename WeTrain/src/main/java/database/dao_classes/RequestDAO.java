@@ -2,8 +2,6 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
-import exception.ExpiredCardException;
-import model.Athlete;
 import model.Request;
 import model.Trainer;
 
@@ -11,23 +9,26 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.YearMonth;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RequestDAO {
+    public static final String ID_REQUEST = "idRequest";
+    public static final String REQUEST_DATE = "RequestDate";
+    public static final String INFO = "Info";
+    public static final String ATHLETE = "Athlete";
+    public static final String TRAINER = "Trainer";
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public Request loadRequest(int requestCode) throws SQLException{
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadRequest(stmt, requestCode)) {
             if(rs.next()) {
                 return new Request(
-                        rs.getInt("idRequest"),
-                        rs.getTimestamp("RequestDate").toLocalDateTime(),
-                        rs.getString("Info"),
-                        new AthleteDAO().loadAthlete(rs.getString("Athlete")),
-                        new TrainerDAO().loadTrainer(rs.getString("Trainer")));
+                        rs.getInt(ID_REQUEST),
+                        rs.getTimestamp(REQUEST_DATE).toLocalDateTime(),
+                        rs.getString(INFO),
+                        new AthleteDAO().loadAthlete(rs.getString(ATHLETE)),
+                        new TrainerDAO().loadTrainer(rs.getString(TRAINER)));
             } else {
                 return null;
             }
@@ -43,10 +44,10 @@ public class RequestDAO {
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
-                        rs.getInt("idRequest"),
-                        rs.getTimestamp("RequestDate").toLocalDateTime(),
-                        rs.getString("Info"),
-                        new AthleteDAO().loadAthlete(rs.getString("Athlete")),
+                        rs.getInt(ID_REQUEST),
+                        rs.getTimestamp(REQUEST_DATE).toLocalDateTime(),
+                        rs.getString(INFO),
+                        new AthleteDAO().loadAthlete(rs.getString(ATHLETE)),
                         trainer));
             }
             return myList;

@@ -8,9 +8,20 @@ import model.Athlete;
 
 import java.sql.*;
 import java.time.YearMonth;
-import java.time.ZoneId;
 
 public class AthleteDAO {
+
+    private static final String NAME = "Name";
+    private static final String SURNAME = "Surname";
+    private static final String USERNAME = "Username";
+    private static final String BIRTH = "Birth";
+    private static final String FC = "FC";
+    private static final String GENDER = "Gender";
+    private static final String EMAIL = "Email";
+    private static final String PASSWORD = "Password";
+    private static final String CARD_NUMBER = "CardNumber";
+    private static final String CARD_EXPIRATION_DATE = "CardExpirationDate";
+    private static final String WORKOUT_PLAN = "WorkoutPlan";
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException{
@@ -38,27 +49,27 @@ public class AthleteDAO {
     public Athlete loadAthlete(String fc) throws SQLException{
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
             if (rs.next()) {
-                Athlete athlete = new Athlete(rs.getString("Name"),
-                        rs.getString("Surname"),
-                        rs.getString("Username"),
-                        rs.getDate("Birth").toLocalDate(),
-                        rs.getString("FC"),
-                        rs.getString("Gender").charAt(0),
-                        rs.getString("Email"),
-                        rs.getString("Password")
+                Athlete athlete = new Athlete(rs.getString(NAME),
+                        rs.getString(SURNAME),
+                        rs.getString(USERNAME),
+                        rs.getDate(BIRTH).toLocalDate(),
+                        rs.getString(FC),
+                        rs.getString(GENDER).charAt(0),
+                        rs.getString(EMAIL),
+                        rs.getString(PASSWORD)
                 );
 
                 try(ResultSet rs1 = Query.loadAthlete(stmt, fc)) {
                     if (rs1.next()) {
-                        athlete.setCardNumber(rs1.getString("CardNumber"));
-                        Date temp = rs1.getDate("CardExpirationDate");
+                        athlete.setCardNumber(rs1.getString(CARD_NUMBER));
+                        Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
                         YearMonth cardExpirationDate = null;
                         if(temp!=null){
                             cardExpirationDate = YearMonth.from(temp.toLocalDate());
                         }
                         athlete.setCardExpirationDate(cardExpirationDate);
-                        if (rs1.getInt("WorkoutPlan") != 0) {
-                            athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt("WorkoutPlan"), athlete));
+                        if (rs1.getInt(WORKOUT_PLAN) != 0) {
+                            athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt(WORKOUT_PLAN), athlete));
                         } else {
                             athlete.setWorkoutPlan(null);
                         }

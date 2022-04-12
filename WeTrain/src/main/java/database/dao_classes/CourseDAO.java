@@ -11,24 +11,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseDAO {
+
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+    private static final String IDCOURSE = "idCourse";
+    private static final String COURSENAME = "Name";
+    private static final String DESCRIPTION = "Description";
+    private static final String FITNESSLEVEL = "FitnessLevel";
+    private static final String EQUIPMENT = "Equipment";
+    private static final String TRAINER = "Trainer";
+
+    private final LoginController loginController = LoginController.getInstance();
 
     public void saveCourse(Course course) throws SQLException {
-        try(Statement stmt = conn.createStatement()){
-            int idCourse = Query.insertCourse(stmt, course);
-            course.setId(idCourse);
+        int idCourse = Query.insertCourse(course);
+        course.setId(idCourse);
 
-            for(Lesson lesson: course.getLessonList()){
-                lesson.setCourse(course);
-                new LessonDAO().saveLesson(lesson);
-            }
+        for(Lesson lesson: course.getLessonList()){
+            lesson.setCourse(course);
+            new LessonDAO().saveLesson(lesson);
         }
     }
 
     //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
     public void subscribeToACourse(Course course) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertSubscribe(stmt, course, (Athlete) LoginController.getLoggedUser());
+            Query.insertSubscribe(stmt, course, (Athlete) loginController.getLoggedUser());
         }
     }
 
@@ -36,12 +43,12 @@ public class CourseDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourse(stmt, id)) {
             if(rs.next()){
                 Course course = new Course(
-                        rs.getInt("idCourse"),
-                        rs.getString("Name"),
-                        rs.getString("Description"),
-                        rs.getString("FitnessLevel"),
-                        new TrainerDAO().loadTrainer(rs.getString("Trainer")),
-                        rs.getString("Equipment")
+                        rs.getInt(IDCOURSE),
+                        rs.getString(COURSENAME),
+                        rs.getString(DESCRIPTION),
+                        rs.getString(FITNESSLEVEL),
+                        new TrainerDAO().loadTrainer(rs.getString(TRAINER)),
+                        rs.getString(EQUIPMENT)
                 );
                 course.addAllLessons(new LessonDAO().loadAllLessons(course));
                 return course;
@@ -72,21 +79,21 @@ public class CourseDAO {
             Course course;
             if(user instanceof Trainer) {
                 course = new Course(
-                        rs.getInt("idCourse"),
-                        rs.getString("Name"),
-                        rs.getString("Description"),
-                        rs.getString("FitnessLevel"),
+                        rs.getInt(IDCOURSE),
+                        rs.getString(COURSENAME),
+                        rs.getString(DESCRIPTION),
+                        rs.getString(FITNESSLEVEL),
                         (Trainer) user,
-                        rs.getString("Equipment")
+                        rs.getString(EQUIPMENT)
                 );
             } else {
                 course = new Course(
-                        rs.getInt("idCourse"),
-                        rs.getString("Name"),
-                        rs.getString("Description"),
-                        rs.getString("FitnessLevel"),
-                        new TrainerDAO().loadTrainer(rs.getString("Trainer")),
-                        rs.getString("Equipment")
+                        rs.getInt(IDCOURSE),
+                        rs.getString(COURSENAME),
+                        rs.getString(DESCRIPTION),
+                        rs.getString(FITNESSLEVEL),
+                        new TrainerDAO().loadTrainer(rs.getString(TRAINER)),
+                        rs.getString(EQUIPMENT)
                 );
             }
             course.addAllLessons(new LessonDAO().loadAllLessons(course));

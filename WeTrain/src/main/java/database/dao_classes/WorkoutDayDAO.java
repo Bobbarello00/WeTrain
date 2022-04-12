@@ -17,7 +17,7 @@ public class WorkoutDayDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
-            int id = Query.insertWorkoutDay(workoutDay, idWorkoutPlan);
+            int id = Query.insertWorkoutDay(idWorkoutPlan);
             for (Exercise exercise : workoutDay.getExerciseList()){
                 new ExerciseDAO().insertExerciseInWorkoutDay(stmt, exercise, id);
             }
@@ -28,7 +28,10 @@ public class WorkoutDayDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllWorkoutDays(stmt, workoutPlan)){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
-                WorkoutDay workoutDay = new WorkoutDay(rs.getInt("idWorkoutDay"),workoutPlan);
+                WorkoutDay workoutDay = new WorkoutDay(
+                        rs.getInt("idWorkoutDay"),
+                        rs.getInt("Day"),
+                        workoutPlan);
                 workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutDay));
                 myList.add(workoutDay);
             }

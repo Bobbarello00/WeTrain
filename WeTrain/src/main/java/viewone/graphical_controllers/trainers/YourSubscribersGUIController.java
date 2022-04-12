@@ -19,7 +19,6 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     @FXML private Label subscribersCountLabel;
     @FXML private ListView<Node> subscribersList;
     @FXML private Button writeEmailButton;
-    @FXML private Text usernameText1;
 
     @FXML void writeEmailButtonAction(ActionEvent event) throws IOException {
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(),"EmailForm","",false);

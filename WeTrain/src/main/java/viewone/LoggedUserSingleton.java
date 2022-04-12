@@ -2,7 +2,7 @@ package viewone;
 
 import controller.LoginController;
 import exception.ExpiredCardException;
-import exception.FatalErrorManager;
+import engeneering.FatalErrorManager;
 import model.Athlete;
 import model.Trainer;
 import model.User;
@@ -14,13 +14,12 @@ import java.sql.SQLException;
 
 public class LoggedUserSingleton {
 
-    private static String fiscalCode;
+    private static final LoginController loginController = LoginController.getInstance();
 
     private LoggedUserSingleton() {}
 
-    //TODO Spostare fuori dal model?
     public static UserBean getInstance() throws SQLException, ExpiredCardException {
-        User usr = LoginController.getLoggedUser();
+        User usr = loginController.getLoggedUser();
         if(usr instanceof Athlete) {
             return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), "Athlete", usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete)usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());
         } else if(usr instanceof Trainer) {

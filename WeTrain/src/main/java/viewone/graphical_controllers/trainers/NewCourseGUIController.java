@@ -59,6 +59,8 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML private Button intermediateFitnessLevelButton;
     @FXML private Button advancedFitnessLevelButton;
 
+    private final CourseManagementTrainerController courseManagementTrainerController = CourseManagementTrainerController.getInstance();
+
     @FXML void createButtonAction() throws IOException {
         String fitnessLevel;
         if(fitnessLevelFilter.getSelectedFitnessLevel() == baseFitnessLevelButton){
@@ -71,7 +73,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         try{
             CourseBean courseBean = new CourseBean(courseNameText.getText(), infoTextArea.getText(), fitnessLevel, Objects.requireNonNull(LoggedUserSingleton.getInstance()).getFiscalCode(), equipmentTextArea.getText());
             courseBean.setLessonBeanList(getLessonDay());
-            CourseManagementTrainerController.createCourse(courseBean);
+            courseManagementTrainerController.createCourse(courseBean);
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
             MenuTrainersGUIController.resetSelectedButton();
             System.out.println("Created");

@@ -27,15 +27,15 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private ListView<CourseEssentialBean> courseList;
     @FXML private ListView<Node> popularList;
     @FXML private ListView<Node> feedList;
-    @FXML private Text usernameText1;
     @FXML private Button logoutButton;
     private static CourseBean selectedCourse;
+
+    private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
 
     public void eventList(ListView<CourseEssentialBean> listView, CourseEssentialBean newItem) {
         try {
             if(newItem != null) {
-                CourseBean courseBean = CourseManagementAthleteController.getCourse(new CourseSearchBean(newItem.getId()));
-                setSelectedCourse(courseBean);
+                setSelectedCourse(courseManagementAthleteController.getCourse(new CourseSearchBean(newItem.getId())));
                 PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
@@ -46,12 +46,12 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         }
     }
 
-    public static CourseBean getSelectedCourse() {
-        return selectedCourse;
+    public static void setSelectedCourse(CourseBean course) {
+        selectedCourse = course;
     }
 
-    public void setSelectedCourse(CourseBean course) {
-        selectedCourse = course;
+    public static CourseBean getSelectedCourse() {
+        return selectedCourse;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
         try {
-            ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(CourseManagementAthleteController.getCourseList());
+            ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(courseManagementAthleteController.getCourseList());
             courseList.setItems(FXCollections.observableList(courseObservableList));
         } catch (SQLException e) {
             e.printStackTrace();

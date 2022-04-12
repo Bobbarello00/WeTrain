@@ -5,6 +5,11 @@ public class CourseEssentialBean {
     private String name;
     private String owner;
 
+    public CourseEssentialBean(String name, String owner){
+        this.name = name;
+        this.owner = owner;
+    }
+
     public CourseEssentialBean(int id, String name, String owner){
         this.id = id;
         this.name = name;

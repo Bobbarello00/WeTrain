@@ -11,9 +11,11 @@ public class DatabaseConnectionSingleton {
     private DatabaseConnectionSingleton() {
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://wetraindb.ckbiquzyonvq.us-east-1.rds.amazonaws.com:3306/", "admin", "WeTrain!");
+                    "jdbc:mysql://wetraindb.ckbiquzyonvq.us-east-1.rds.amazonaws.com:3306/",
+                    "admin",
+                    "WeTrain!");
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -22,9 +24,6 @@ public class DatabaseConnectionSingleton {
     }
 
     public static DatabaseConnectionSingleton getInstance(){
-        if(dbConn == null){
-            System.out.println("Error: dbConn is null");
-        }
         return dbConn;
     }
 }

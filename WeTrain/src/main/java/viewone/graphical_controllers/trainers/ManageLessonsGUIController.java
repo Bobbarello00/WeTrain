@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 
 public class ManageLessonsGUIController extends HomeGUIControllerTrainers implements Initializable {
     @FXML private ListView<Node> coursesList;
-    @FXML private Text usernameText1;
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);

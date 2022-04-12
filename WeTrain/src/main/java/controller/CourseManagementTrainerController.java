@@ -14,7 +14,17 @@ import java.util.List;
 
 public class CourseManagementTrainerController {
 
-    public static void createCourse(CourseBean bean) throws SQLException {
+    private CourseManagementTrainerController() {}
+
+    private static class SingletonManager {
+        private static final CourseManagementTrainerController INSTANCE = new CourseManagementTrainerController();
+    }
+
+    public static CourseManagementTrainerController getInstance() {
+        return CourseManagementTrainerController.SingletonManager.INSTANCE;
+    }
+
+    public void createCourse(CourseBean bean) throws SQLException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
         Course course = new Course(bean.getName(), bean.getDescription(), bean.getFitnessLevel(), trainer, bean.getEquipment());
         if(bean.getLessonBeanList() != null){
@@ -23,7 +33,7 @@ public class CourseManagementTrainerController {
         new CourseDAO().saveCourse(course);
     }
 
-    private static List<Lesson> setLesson(List<LessonBean> lessonBeanList, Course course) {
+    private List<Lesson> setLesson(List<LessonBean> lessonBeanList, Course course) {
         List<Lesson> list = new ArrayList<>();
         for(LessonBean bean: lessonBeanList) {
             Lesson lesson = new Lesson(course, bean.getLessonDay(), bean.getLessonStartTime(), bean.getLessonEndTime());
