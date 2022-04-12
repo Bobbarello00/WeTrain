@@ -1,9 +1,6 @@
 package viewone.bean;
 
-import model.Trainer;
-
 import java.time.LocalDate;
-import java.time.YearMonth;
 
 public class TrainerBean extends UserBean{
     private final IbanBean ibanBean;

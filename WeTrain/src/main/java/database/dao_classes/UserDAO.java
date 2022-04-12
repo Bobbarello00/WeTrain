@@ -4,7 +4,6 @@ import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.ElementNotFoundException;
 import model.Athlete;
-import model.Trainer;
 import model.User;
 
 import java.sql.Connection;

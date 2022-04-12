@@ -7,7 +7,7 @@ public class ExerciseCatalogue {
     private List<Exercise> exerciseList;
 
     public ExerciseCatalogue(){
-        this.exerciseList = new ArrayList<Exercise>();
+        this.exerciseList = new ArrayList<>();
     }
 
     public static List<Exercise> filterExercisesByName(String exerciseName){

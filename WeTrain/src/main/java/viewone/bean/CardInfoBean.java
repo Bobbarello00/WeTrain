@@ -1,13 +1,10 @@
 package viewone.bean;
 
-import exception.ExpiredCardException;
 import viewone.AlertFactory;
 
-import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +17,7 @@ public class CardInfoBean {
 
     public CardInfoBean(String cardNumber, YearMonth expirationDate) {
         setCardNumber(cardNumber);
-        this.expirationDate = expirationDate;
+        setExpirationDate(String.valueOf(expirationDate));
     }
 
     public String getCardNumber() {

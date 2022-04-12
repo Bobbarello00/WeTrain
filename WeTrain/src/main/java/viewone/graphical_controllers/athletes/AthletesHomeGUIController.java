@@ -11,12 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.text.Text;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
 import viewone.bean.CourseSearchBean;
-import viewone.listCellFactories.CourseListCellFactory;
+import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;
