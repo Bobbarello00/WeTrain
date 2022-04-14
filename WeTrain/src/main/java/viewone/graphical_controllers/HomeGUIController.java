@@ -1,8 +1,9 @@
 package viewone.graphical_controllers;
 
 import exception.ExpiredCardException;
+import exception.InvalidCardInfoException;
 import javafx.scene.text.Text;
-import viewone.LoggedUserSingleton;
+import viewone.engeneering.LoggedUserSingleton;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,23 +11,30 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import viewone.bean.UserBean;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public abstract class HomeGUIController {
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
     @FXML protected Text usernameText1;
 
     protected void setUsername() {
-        try {
-            usernameText1.setText(LoggedUserSingleton.getInstance().getUsername());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ExpiredCardException e){
+        usernameText1.setText(getLoggedUser().getUsername());
+    }
+
+    protected UserBean getLoggedUser(){
+        try{
+            return Objects.requireNonNull(LoggedUserSingleton.getInstance());
+        } catch (ExpiredCardException | InvalidCardInfoException e){
             e.alert();
             e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     @FXML void logoutButtonAction(ActionEvent event) throws IOException {

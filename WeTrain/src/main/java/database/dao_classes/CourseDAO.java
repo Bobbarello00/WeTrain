@@ -63,6 +63,11 @@ public class CourseDAO {
             return loadAllCourses(athlete, rs);
         }
     }
+    public List<Course> loadPopularCourses() throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadPopularCourse(stmt)){
+            return loadAllCourses(null, rs);
+        }
+    }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesTrainer(stmt, trainer)){

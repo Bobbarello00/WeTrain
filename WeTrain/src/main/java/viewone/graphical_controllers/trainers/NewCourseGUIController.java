@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import viewone.LoggedUserSingleton;
+import viewone.engeneering.LoggedUserSingleton;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
@@ -71,7 +71,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             fitnessLevel = "Advanced";
         }
         try{
-            CourseBean courseBean = new CourseBean(courseNameText.getText(), infoTextArea.getText(), fitnessLevel, Objects.requireNonNull(LoggedUserSingleton.getInstance()).getFiscalCode(), equipmentTextArea.getText());
+            CourseBean courseBean = new CourseBean(courseNameText.getText(), infoTextArea.getText(), fitnessLevel, Objects.requireNonNull(getLoggedUser()).getFiscalCode(), equipmentTextArea.getText());
             courseBean.setLessonBeanList(getLessonDay());
             courseManagementTrainerController.createCourse(courseBean);
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
@@ -80,9 +80,6 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         } catch (TimeNotInsertedException e){
             e.alert();
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ExpiredCardException e) {
-            e.alert();
             e.printStackTrace();
         }
     }

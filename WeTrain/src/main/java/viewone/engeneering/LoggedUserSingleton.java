@@ -1,8 +1,8 @@
-package viewone;
+package viewone.engeneering;
 
 import controller.LoginController;
 import exception.ExpiredCardException;
-import engeneering.FatalErrorManager;
+import viewone.engeneering.FatalErrorManager;
 import exception.InvalidCardInfoException;
 import model.Athlete;
 import model.Trainer;

@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import viewone.LoggedUserSingleton;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import viewone.bean.UserBean;
@@ -33,19 +32,13 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     private final ProfileManagementController profileManagementController = ProfileManagementController.getInstance();
 
-    @FXML private void editConfirmation() throws InvalidCardInfoException {
+    @FXML private void editConfirmation() {
         if(!Objects.equals(newCardNumber.getText(), "")
                 & !Objects.equals(newExpirationDate.getText(), "")) {
             CardInfoBean cardInfoBean = new CardInfoBean();
-            if(!cardInfoBean.setCardNumber(newCardNumber.getText())
-                    || !cardInfoBean.setExpirationDate(newExpirationDate.getText())){
-                System.out.printf("""
-                        errore nel set dei nuovi valori per la carta:
-                         numero: '%s'\s
-                         data: '%s'%n""", newCardNumber.getText(), newExpirationDate.getText());
-                return;
-            }
             try{
+                cardInfoBean.setCardNumber(newCardNumber.getText());
+                cardInfoBean.setExpirationDate(newExpirationDate.getText());
                 profileManagementController.updateAthleteCardInfo(cardInfoBean);
                 editPane.setDisable(true);
                 editPane.setVisible(false);
@@ -56,7 +49,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             }catch (SQLException e){
                 e.printStackTrace();
                 //TODO GESTIONE EXCEPTION
-            } catch (ExpiredCardException e) {
+            } catch (ExpiredCardException | InvalidCardInfoException e) {
                 e.alert();
                 e.printStackTrace();
             }
@@ -80,33 +73,21 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            UserBean usr = Objects.requireNonNull(LoggedUserSingleton.getInstance());
-            emailLabel.setText("Email: " + usr.getEmail());
-            firstNameLabel.setText(usr.getName());
-            lastNameLabel.setText(usr.getSurname());
-            fiscalCodeLabel.setText("FiscalCode: " + usr.getFiscalCode());
-            setPaymentMethodLabel();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ExpiredCardException | InvalidCardInfoException e) {
-            e.alert();
-        }
+        UserBean usr = getLoggedUser();
+        emailLabel.setText("Email: " + usr.getEmail());
+        firstNameLabel.setText(usr.getName());
+        lastNameLabel.setText(usr.getSurname());
+        fiscalCodeLabel.setText("FiscalCode: " + usr.getFiscalCode());
+        setPaymentMethodLabel();
     }
 
     private void setPaymentMethodLabel() {
-        try {
-            AthleteBean athlete = (AthleteBean) Objects.requireNonNull(LoggedUserSingleton.getInstance());
-            if (athlete.getCardNumber() == null) {
-                paymentMethodLabel.setText("Card: " + "Not inserted yet");
-            } else {
-                String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
-                paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ExpiredCardException | InvalidCardInfoException e) {
-            e.alert();
+        AthleteBean athlete = (AthleteBean) getLoggedUser();
+        if (athlete.getCardNumber() == null) {
+            paymentMethodLabel.setText("Card: " + "Not inserted yet");
+        } else {
+            String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
+            paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
         }
     }
 }

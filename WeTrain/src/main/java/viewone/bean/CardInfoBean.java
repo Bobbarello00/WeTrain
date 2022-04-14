@@ -1,7 +1,6 @@
 package viewone.bean;
 
 import exception.InvalidCardInfoException;
-import viewone.AlertFactory;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -25,17 +24,11 @@ public class CardInfoBean {
         return cardNumber;
     }
 
-    public boolean setCardNumber(String cardNumber) throws InvalidCardInfoException {
-        if(isValidCardNumber(cardNumber)) {
-            cardNumber = cardNumber.replace("-", "");
-            cardNumber =cardNumber.replace(" ","");
-            this.cardNumber = cardNumber;
-            return true;
-        }
-        return false;
+    public void setCardNumber(String cardNumber) throws InvalidCardInfoException {
+        this.cardNumber = checkAndReturnValidCardNumber(cardNumber);
     }
 
-    private boolean isValidCardNumber(String card) throws InvalidCardInfoException {
+    private String checkAndReturnValidCardNumber(String card) throws InvalidCardInfoException {
         String regex = "^(?:(?<visa>4[0-9]{12}(?:[0-9]{3})?)|" +
                 "(?<mastercard>5[1-5][0-9]{14}))";
         Pattern pattern = Pattern.compile(regex);
@@ -47,9 +40,10 @@ public class CardInfoBean {
             if(matcher.group("visa") != null) group = "VISA";
             else if(matcher.group("mastercard") != null) group = "MASTERCARD";
             setType(group);
-            return true;
+            return card;
         }
-        System.out.println("numero carta sbagliata");
+        System.out.printf("""
+                    numero carta sbagliata -> %s""",card);
         throw new InvalidCardInfoException();
     }
 
@@ -57,23 +51,17 @@ public class CardInfoBean {
         return expirationDate;
     }
 
-    public boolean setExpirationDate(String expirationDate) throws InvalidCardInfoException {
-        //TODO togliere if e modificare isValidDate in checkValidDate
-        if(isValidDate(expirationDate)){
-            this.expirationDate = YearMonth.parse(expirationDate, DateTimeFormatter.ofPattern("MM/yyyy"));
-            return true;
-        }
-        return false;
+    public void setExpirationDate(String expirationDate) throws InvalidCardInfoException {
+        this.expirationDate = checkAndReturnValidDate(expirationDate);
     }
 
-    private boolean isValidDate(String myDateString) throws InvalidCardInfoException {
-        //TODO FORMATO SOLO CON MESE E ANNO
+    private YearMonth checkAndReturnValidDate(String myDateString) throws InvalidCardInfoException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
         try {
-            YearMonth yearMonth = YearMonth.parse(myDateString, formatter);
-            String result = yearMonth.format(formatter);
-            return result.equals(myDateString);
+            return YearMonth.parse(myDateString, formatter);
         } catch (DateTimeParseException e) {
+            System.out.printf("""
+                    data carta sbagliata -> %s""",myDateString);
             throw new InvalidCardInfoException();
         }
     }

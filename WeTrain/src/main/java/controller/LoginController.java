@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import database.dao_classes.UserDAO;
-import engeneering.FatalErrorManager;
+import viewone.engeneering.FatalErrorManager;
 import model.User;
 import viewone.bean.CredentialsBean;
 
@@ -36,10 +36,9 @@ public class LoginController {
 
     public static void login(CredentialsBean credentials) throws SQLException {
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
-        if(user == null){
-            FatalErrorManager.kill();
+        if(user != null){
+            fc = user.getFiscalCode();
         }
-        assert user != null;
-        fc = user.getFiscalCode();
+        FatalErrorManager.kill();
     }
 }

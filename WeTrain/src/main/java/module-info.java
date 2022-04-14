@@ -12,7 +12,6 @@ module com.wetrain.wetrain {
     requires org.jetbrains.annotations;
     requires java.sql;
 
-
     exports viewone.graphical_controllers;
     opens viewone.graphical_controllers to javafx.fxml;
     exports viewone.graphical_controllers.athletes;
@@ -23,6 +22,8 @@ module com.wetrain.wetrain {
     opens viewone.graphical_controllers.launcher to javafx.fxml;
     exports viewone.bean;
     opens viewone.bean to javafx.fxml;
+    exports viewone.engeneering;
+    opens viewone.engeneering to javafx.fxml;
     exports viewone;
     opens viewone to javafx.fxml;
 
@@ -37,5 +38,4 @@ module com.wetrain.wetrain {
 
     exports exception;
     exports model;
-    exports engeneering;
 }

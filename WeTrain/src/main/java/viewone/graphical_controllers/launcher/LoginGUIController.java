@@ -3,13 +3,15 @@ package viewone.graphical_controllers.launcher;
 
 import controller.LoginController;
 import exception.ElementNotFoundException;
-import exception.ExpiredCardException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import viewone.*;
+import viewone.AlertFactory;
+import viewone.MainPane;
+import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
 
@@ -29,7 +31,7 @@ public class LoginGUIController extends LauncherGUIController {
     @FXML void submitButtonAction() {
         try {
             LoginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
-            if(LoggedUserSingleton.getInstance() instanceof AthleteBean){
+            if(getLoggedUser() instanceof AthleteBean){
                 PageSwitchSizeChange.loadHome(submitButton, "AthletesHome", "athletes");
             } else {
                 PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");
@@ -42,8 +44,6 @@ public class LoginGUIController extends LauncherGUIController {
             //TODO Exception
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ExpiredCardException e) {
             e.printStackTrace();
         }
     }

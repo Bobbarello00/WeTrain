@@ -40,6 +40,15 @@ public class CourseManagementAthleteController {
         return beanList;
     }
 
+    public List<CourseEssentialBean> getPopularCourseList() throws SQLException {
+        List<Course> popularCourses = new CourseDAO().loadPopularCourses();
+        List<CourseEssentialBean> beanList = new ArrayList<>();
+        for(Course course : popularCourses) {
+            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
+        }
+        return beanList;
+    }
+
     public CourseBean getCourse(CourseSearchBean bean) throws SQLException {
         Course course = new CourseDAO().loadCourse(bean.getId());
         CourseBean courseBean = new CourseBean(

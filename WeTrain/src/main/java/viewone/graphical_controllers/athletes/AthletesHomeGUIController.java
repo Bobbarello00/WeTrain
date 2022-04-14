@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
     @FXML private ListView<CourseEssentialBean> courseList;
-    @FXML private ListView<Node> popularList;
+    @FXML private ListView<CourseEssentialBean> popularList;
     @FXML private ListView<Node> feedList;
     @FXML private Button logoutButton;
     private static CourseBean selectedCourse;
@@ -58,9 +58,12 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         //TODO fare query per corsi più popolari
 
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
         try {
             ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(courseManagementAthleteController.getCourseList());
+            ObservableList<CourseEssentialBean> popularObservableList = FXCollections.observableList(courseManagementAthleteController.getPopularCourseList());
             courseList.setItems(FXCollections.observableList(courseObservableList));
+            popularList.setItems(FXCollections.observableList(popularObservableList));
         } catch (SQLException e) {
             e.printStackTrace();
         }
