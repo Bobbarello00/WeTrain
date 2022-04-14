@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.bean.UserBean;
-import viewone.engeneering.FatalErrorManager;
+import viewone.engeneering.FatalCaseManager;
 import viewone.engeneering.LoggedUserSingleton;
 
 import java.net.URL;
@@ -41,7 +41,7 @@ public abstract class LauncherGUIController implements Initializable {
             return Objects.requireNonNull(LoggedUserSingleton.getInstance());
         } catch (ExpiredCardException | InvalidCardInfoException | SQLException e){
             e.printStackTrace();
-            FatalErrorManager.kill();
+            FatalCaseManager.killApplication();
             return null;
         }
     }

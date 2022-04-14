@@ -2,7 +2,6 @@ package viewone.engeneering;
 
 import controller.LoginController;
 import exception.ExpiredCardException;
-import viewone.engeneering.FatalErrorManager;
 import exception.InvalidCardInfoException;
 import model.Athlete;
 import model.Trainer;
@@ -27,7 +26,7 @@ public class LoggedUserSingleton {
             return new TrainerBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), "Trainer", usr.getGender(), usr.getEmail(), usr.getPassword(), ((Trainer) usr).getIban());
         } else {
             System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
-            FatalErrorManager.kill();
+            FatalCaseManager.killApplication();
             return null;
         }
     }

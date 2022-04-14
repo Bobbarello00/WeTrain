@@ -76,10 +76,10 @@ public class CourseDAO {
     }
 
     private List<Course> loadAllCourses(User user, ResultSet rs) throws SQLException {
-        if(!rs.next()){
-            throw new ElementNotFoundException();
-        }
         List<Course> myList = new ArrayList<>();
+        if(!rs.next()){
+            return myList;
+        }
         do {
             Course course;
             if(user instanceof Trainer) {

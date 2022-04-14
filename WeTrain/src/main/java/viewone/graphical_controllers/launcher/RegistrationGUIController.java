@@ -1,9 +1,8 @@
 package viewone.graphical_controllers.launcher;
 
 import controller.RegistrationController;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import viewone.AlertFactory;
+import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;

@@ -1,6 +1,7 @@
 package viewone.bean;
 
 import exception.InvalidCardInfoException;
+import viewone.engeneering.FatalCaseManager;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -16,8 +17,16 @@ public class CardInfoBean {
     public CardInfoBean() {}
 
     public CardInfoBean(String cardNumber, YearMonth expirationDate) throws InvalidCardInfoException {
-        setCardNumber(cardNumber);
-        setExpirationDate(expirationDate.getMonthValue() + "/" + expirationDate.getYear());
+        if (cardNumber == null && expirationDate == null) {
+            this.cardNumber = null;
+            this.expirationDate = null;
+        } else if(cardNumber == null | expirationDate == null){
+            FatalCaseManager.killApplication();
+        }
+        else {
+            setCardNumber(cardNumber);
+            setExpirationDate(expirationDate.getMonthValue() + "/" + expirationDate.getYear());
+        }
     }
 
     public String getCardNumber() {

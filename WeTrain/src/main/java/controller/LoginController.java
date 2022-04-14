@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import database.dao_classes.UserDAO;
-import viewone.engeneering.FatalErrorManager;
+import viewone.engeneering.FatalCaseManager;
 import model.User;
 import viewone.bean.CredentialsBean;
 
@@ -38,7 +38,8 @@ public class LoginController {
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
         if(user != null){
             fc = user.getFiscalCode();
+        } else {
+            FatalCaseManager.killApplication();
         }
-        FatalErrorManager.kill();
     }
 }
