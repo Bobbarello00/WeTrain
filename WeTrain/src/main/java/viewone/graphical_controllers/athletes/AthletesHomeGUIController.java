@@ -20,7 +20,6 @@ import viewone.list_cell_factories.CourseListCellFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
@@ -54,7 +53,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         return selectedCourse;
     }
 
-    public void setListener(ListView<CourseEssentialBean> list){
+    public void setCourseListener(ListView<CourseEssentialBean> list){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<CourseEssentialBean>() {
                     @Override
@@ -77,15 +76,13 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO fare query per corsi più popolari
-
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
         popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
 
         updateList();
 
-        setListener(courseList);
-        setListener(popularList);
+        setCourseListener(courseList);
+        setCourseListener(popularList);
 
         setUsername();
     }

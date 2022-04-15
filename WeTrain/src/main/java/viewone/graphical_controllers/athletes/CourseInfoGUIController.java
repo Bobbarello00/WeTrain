@@ -14,6 +14,7 @@ import viewone.MainPane;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -29,7 +30,6 @@ public class CourseInfoGUIController implements Initializable {
     @FXML private Button fridayButton;
     @FXML private Button saturdayButton;
     @FXML private Button sundayButton;
-    @FXML private Button subscribeButton;
     @FXML private Label courseNameText;
     @FXML private Label infoLabel;
     @FXML private Label equipmentLabel;
@@ -100,7 +100,7 @@ public class CourseInfoGUIController implements Initializable {
         }
     }
 
-    @FXML public void subscribeButtonAction(ActionEvent event) {
+    @FXML public void subscribeButtonAction(ActionEvent event) throws IOException {
         if(courseBean != null) {
             try {
                 courseManagementAthleteController.subscribeToACourse(courseBean);
@@ -115,7 +115,7 @@ public class CourseInfoGUIController implements Initializable {
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
-
+        MenuAthletesGUIController.logoAction2();
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -12,24 +12,25 @@ import java.io.IOException;
 public class MenuAthletesGUIController {
     private static final ButtonBehavior buttonBehavior = new ButtonBehavior();
     private static final String HOME = "athletes";
-    @FXML
-    void trainerButtonAction(ActionEvent event) throws IOException {
+
+    @FXML void trainerButtonAction(ActionEvent event) throws IOException {
         buttonBehavior.setBehavior(((Button) event.getSource()),"YourPersonalTrainer",HOME);
     }
-    @FXML
-    void findCourseButtonAction(ActionEvent event) throws IOException {
+    @FXML void findCourseButtonAction(ActionEvent event) throws IOException {
         buttonBehavior.setBehavior(((Button) event.getSource()),"FindCourse",HOME);
     }
-    @FXML
-    void weekButtonAction(ActionEvent event) throws IOException {
+    @FXML void weekButtonAction(ActionEvent event) throws IOException {
         buttonBehavior.setBehavior(((Button) event.getSource()),"YourWeeklySchedule",HOME);
     }
-    @FXML
-    void workoutButtonAction(ActionEvent event) throws IOException {
+    @FXML void workoutButtonAction(ActionEvent event) throws IOException {
         buttonBehavior.setBehavior(((Button) event.getSource()),"YourWorkoutPlan",HOME);
     }
-    @FXML
-    void logoAction() throws IOException {
+    @FXML void logoAction() throws IOException {
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
+        buttonBehavior.resetSelectedButton();
+    }
+
+    public static void logoAction2() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
         buttonBehavior.resetSelectedButton();
     }

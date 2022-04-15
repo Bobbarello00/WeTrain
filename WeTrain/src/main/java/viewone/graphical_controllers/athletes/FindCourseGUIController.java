@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class FindCourseGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private final Boolean[] selected = new Boolean[7];
-    private final FitnessLevelFilterGUIController fitnessLevelFilter= new FitnessLevelFilterGUIController();
+    private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
 
     @FXML private Button baseFitnessLevelButton;
     @FXML private Button intermediateFitnessLevelButton;
@@ -64,6 +64,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     }
 
     @FXML protected void searchButtonAction() {
+        
         System.out.println("Search done, showing results...");
     }
 

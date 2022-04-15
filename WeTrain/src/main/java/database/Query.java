@@ -9,7 +9,8 @@ public class Query {
 
     private static final String SELECT_ALL = "SELECT * ";
     private static final String WHERE_USER = "WHERE User = '%s';";
-
+    private static final String LIMIT_10 = "LIMIT 10;";
+    private static final String LIMIT_50 = "LIMIT 50;";
 
     private Query(){}
 
@@ -18,7 +19,8 @@ public class Query {
     public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Notification " +
-                "WHERE Athlete = '%s' or Trainer = '%s';", user.getFiscalCode(), user.getFiscalCode()));
+                "WHERE Athlete = '%s' or Trainer = '%s' " +
+                LIMIT_50, user.getFiscalCode(), user.getFiscalCode()));
     }
 
     public static void insertNotification(Statement stmt, Notification notification) throws SQLException {
@@ -140,7 +142,8 @@ public class Query {
         return stmt.executeQuery("SELECT Course.* " +
                 "FROM mydb.Course join mydb.Subscribe on Course.idCourse = Subscribe.Course " +
                 "GROUP BY idCourse " +
-                "ORDER BY COUNT(idCourse) DESC;");
+                "ORDER BY COUNT(idCourse) DESC " +
+                LIMIT_10);
     }
 
     public static ResultSet loadAllCoursesAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -238,7 +241,8 @@ public class Query {
 
     public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
         return stmt.executeQuery(String.format("SELECT Request.* " +
-                "FROM mydb.Request join mydb.Trainer on Request.Trainer = '%s';", trainer.getFiscalCode()));
+                "FROM mydb.Request join mydb.Trainer on Request.Trainer = '%s' " +
+                LIMIT_50, trainer.getFiscalCode()));
     }
 
     public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {
@@ -314,9 +318,9 @@ public class Query {
                 "WHERE idWorkoutPlan = %s;", workoutPlan.getId()));
     }
 
-    public static int insertSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Subscribe (Course, Athlete) " +
-                "VALUES (%s, '%s');",
+    public static void insertSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Subscribe (Course, Athlete) " +
+                        "VALUES (%s, '%s');",
                 course.getId(),
                 athlete.getFiscalCode()));
     }
