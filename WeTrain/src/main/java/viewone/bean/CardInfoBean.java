@@ -52,7 +52,8 @@ public class CardInfoBean {
             return card;
         }
         System.out.printf("""
-                    numero carta sbagliata -> %s""",card);
+                    numero carta sbagliata -> %s
+                    """,card);
         throw new InvalidCardInfoException();
     }
 
@@ -70,7 +71,8 @@ public class CardInfoBean {
             return YearMonth.parse(myDateString, formatter);
         } catch (DateTimeParseException e) {
             System.out.printf("""
-                    data carta sbagliata -> %s""",myDateString);
+                    data carta sbagliata -> %s
+                    """,myDateString);
             throw new InvalidCardInfoException();
         }
     }

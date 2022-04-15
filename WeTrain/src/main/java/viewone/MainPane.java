@@ -8,7 +8,7 @@ public class MainPane {
 
     private MainPane(){}
 
-    public static synchronized  void setInstance(BorderPane newPane){
+    public static synchronized void setInstance(BorderPane newPane){
         pane = newPane;
     }
 

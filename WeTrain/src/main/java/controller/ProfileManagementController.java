@@ -3,6 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import exception.ExpiredCardException;
 import model.Athlete;
+import model.User;
 import viewone.bean.CardInfoBean;
 
 import java.sql.SQLException;
@@ -33,4 +34,7 @@ public class ProfileManagementController {
         new AthleteDAO().updateCardInfo(cardInfoBean.getCardNumber(),cardInfoBean.getExpirationDate(), athlete);
     }
 
+    public void removeCardInfo(Athlete athlete) throws SQLException {
+        new AthleteDAO().removeCardInfo(athlete.getFiscalCode());
+    }
 }

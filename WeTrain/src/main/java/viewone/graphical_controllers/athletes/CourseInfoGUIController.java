@@ -100,7 +100,7 @@ public class CourseInfoGUIController implements Initializable {
         }
     }
 
-    public void subscribeButtonAction(ActionEvent event) {
+    @FXML public void subscribeButtonAction(ActionEvent event) {
         if(courseBean != null) {
             try {
                 courseManagementAthleteController.subscribeToACourse(courseBean);
@@ -115,6 +115,7 @@ public class CourseInfoGUIController implements Initializable {
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
+
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

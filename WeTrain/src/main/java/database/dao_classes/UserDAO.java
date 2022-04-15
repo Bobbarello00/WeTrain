@@ -4,7 +4,9 @@ import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.ElementNotFoundException;
 import model.Athlete;
+import model.Trainer;
 import model.User;
+import viewone.engeneering.FatalCaseManager;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +26,12 @@ public class UserDAO {
                     return ret;
                 } else {
                     TrainerDAO tDao = new TrainerDAO();
-                    return tDao.loadTrainer(usr);
+                    Trainer ret1 = tDao.loadTrainer(usr);
+                    if(ret1 != null) {
+                        return ret1;
+                    }
+                    FatalCaseManager.killApplication();
+                    return null;
                 }
             } else {
                 throw new ElementNotFoundException();

@@ -20,6 +20,7 @@ import viewone.list_cell_factories.CourseListCellFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
@@ -53,12 +54,17 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         return selectedCourse;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO fare query per corsi più popolari
+    public void setListener(ListView<CourseEssentialBean> list){
+        list.getSelectionModel().selectedItemProperty().
+                addListener(new ChangeListener<CourseEssentialBean>() {
+                    @Override
+                    public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
+                        eventList(list, newItem);
+                    }
+                });
+    }
 
-        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
-        popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
+    public void updateList(){
         try {
             ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(courseManagementAthleteController.getCourseList());
             ObservableList<CourseEssentialBean> popularObservableList = FXCollections.observableList(courseManagementAthleteController.getPopularCourseList());
@@ -67,14 +73,20 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
-        courseList.getSelectionModel().selectedItemProperty().
-                addListener(new ChangeListener<CourseEssentialBean>() {
-                    @Override
-                    public void changed(ObservableValue<? extends CourseEssentialBean> observableValue, CourseEssentialBean oldItem, CourseEssentialBean newItem) {
-                        eventList(courseList, newItem);
-                    }
-                });
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //TODO fare query per corsi più popolari
+
+        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
+
+        updateList();
+
+        setListener(courseList);
+        setListener(popularList);
+
         setUsername();
     }
 }

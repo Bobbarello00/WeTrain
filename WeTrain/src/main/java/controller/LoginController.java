@@ -36,10 +36,6 @@ public class LoginController {
 
     public static void login(CredentialsBean credentials) throws SQLException {
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
-        if(user != null){
-            fc = user.getFiscalCode();
-        } else {
-            FatalCaseManager.killApplication();
-        }
+        fc = user.getFiscalCode();
     }
 }

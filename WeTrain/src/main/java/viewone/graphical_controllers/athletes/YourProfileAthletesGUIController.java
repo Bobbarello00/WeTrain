@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import viewone.bean.UserBean;
+import viewone.engeneering.FatalCaseManager;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URL;
@@ -46,7 +47,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 editButton.setDisable(false);
                 editButton.setVisible(true);
                 paymentMethodLabel.setVisible(true);
-            }catch (SQLException e){
+            } catch (SQLException e){
                 e.printStackTrace();
                 //TODO GESTIONE EXCEPTION
             } catch (ExpiredCardException | InvalidCardInfoException e) {
@@ -78,14 +79,21 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         firstNameLabel.setText(usr.getName());
         lastNameLabel.setText(usr.getSurname());
         fiscalCodeLabel.setText("FiscalCode: " + usr.getFiscalCode());
-        setPaymentMethodLabel();
+        try {
+            setPaymentMethodLabel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void setPaymentMethodLabel() {
+    private void setPaymentMethodLabel() throws SQLException {
         AthleteBean athlete = (AthleteBean) getLoggedUser();
-        if (athlete.getCardNumber() == null) {
-            paymentMethodLabel.setText("Card: " + "Not inserted yet");
-        } else {
+        if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
+            paymentMethodLabel.setText("Card: Not inserted yet");
+        } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
+            FatalCaseManager.erasePaymentMethod();
+        } else{
             String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
             paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
         }
