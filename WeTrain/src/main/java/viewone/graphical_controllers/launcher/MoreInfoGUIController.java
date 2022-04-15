@@ -9,6 +9,8 @@ import exception.InvalidUserInfoException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
@@ -124,5 +126,33 @@ public class MoreInfoGUIController implements Initializable {
                     }
                 }
         );
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            registerButtonAction();
+        }
+        if(event.getCode() == KeyCode.ESCAPE) {
+            registrationTextAction();
+        }
+        if(event.getCode() == KeyCode.F1){
+            if(firstNameText.isFocused()) {
+                lastNameText.requestFocus();
+            }else if(lastNameText.isFocused()) {
+                fcText.requestFocus();
+            }else if(fcText.isFocused()) {
+                usernameText.requestFocus();
+            }else if(usernameText.isFocused()) {
+                birthPicker.requestFocus();
+            }else if(birthPicker.isFocused()) {
+                maleButton.requestFocus();
+            }else if(maleButton.isFocused()) {
+                femaleButton.requestFocus();
+            }else if(femaleButton.isFocused()) {
+                nogenderButton.requestFocus();
+            }else {
+                firstNameText.requestFocus();
+            }
+        }
     }
 }

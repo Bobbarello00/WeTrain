@@ -1,6 +1,9 @@
 package viewone.graphical_controllers.launcher;
 
 
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;
@@ -38,5 +41,11 @@ public class ProfileSelectionGUIController {
 
     @FXML void buttonColorShiftExited(MouseEvent event){
         ((Button) event.getSource()).setStyle("-fx-background-color:  rgba(24, 147, 21, 0.65); -fx-background-radius: 25");
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ESCAPE){
+            homeTextAction();
+        }
     }
 }

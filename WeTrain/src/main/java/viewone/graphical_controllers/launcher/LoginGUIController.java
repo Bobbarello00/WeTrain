@@ -4,6 +4,7 @@ package viewone.graphical_controllers.launcher;
 import controller.LoginController;
 import exception.ElementNotFoundException;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -18,7 +19,7 @@ import viewone.bean.CredentialsBean;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class LoginGUIController extends LauncherGUIController {
+public class LoginGUIController extends LauncherGUIController{
     @FXML private Button submitButton;
     @FXML private TextField emailField;
     @FXML private TextField passwField;
@@ -48,11 +49,14 @@ public class LoginGUIController extends LauncherGUIController {
         }
     }
 
-    @FXML void keyHandler(KeyEvent event) {
+    @FXML void keyHandler(KeyEvent event) throws IOException {
         if(event.getCode() == KeyCode.ENTER){
             submitButtonAction();
         }
-        if(event.getCode() == KeyCode.ESCAPE){
+        if(event.getCode() == KeyCode.ESCAPE) {
+            homeAction();
+        }
+        if(event.getCode() == KeyCode.F1){
             if(emailField.isFocused()){
                 if(passwField.isVisible()){
                     passwField.requestFocus();

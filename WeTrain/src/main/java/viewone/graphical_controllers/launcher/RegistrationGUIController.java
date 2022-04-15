@@ -2,6 +2,8 @@ package viewone.graphical_controllers.launcher;
 
 import controller.RegistrationController;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -12,11 +14,12 @@ import viewone.bean.CredentialsBean;
 import java.io.IOException;
 import java.util.Objects;
 
-public class RegistrationGUIController extends LauncherGUIController implements Initializable {
+public class RegistrationGUIController extends LauncherGUIController{
     private static final String HOME = "launcher";
 
     @FXML private TextField emailField;
     @FXML private TextField passwField;
+    @FXML private TextField passwSField;
 
     private final RegistrationController registrationController = RegistrationController.getInstance();
 
@@ -49,5 +52,25 @@ public class RegistrationGUIController extends LauncherGUIController implements 
         }
         registrationController.setCredentialInfo(credential);
         return true;
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            sendCredentialInfo();
+        }
+        if(event.getCode() == KeyCode.ESCAPE) {
+            profileTextAction();
+        }
+        if(event.getCode() == KeyCode.F1){
+            if(emailField.isFocused()){
+                if(passwField.isVisible()){
+                    passwField.requestFocus();
+                }else{
+                    passwSField.requestFocus();
+                }
+            }else {
+                emailField.requestFocus();
+            }
+        }
     }
 }
