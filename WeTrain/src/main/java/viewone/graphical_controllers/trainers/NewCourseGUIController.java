@@ -62,14 +62,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     private final CourseManagementTrainerController courseManagementTrainerController = CourseManagementTrainerController.getInstance();
 
     @FXML void createButtonAction() throws IOException {
-        String fitnessLevel;
-        if(fitnessLevelFilter.getSelectedFitnessLevel() == baseFitnessLevelButton){
-            fitnessLevel = "Base";
-        } else if(fitnessLevelFilter.getSelectedFitnessLevel() == intermediateFitnessLevelButton){
-            fitnessLevel = "Intermediate";
-        } else {
-            fitnessLevel = "Advanced";
-        }
+        String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
         try{
             CourseBean courseBean = new CourseBean(courseNameText.getText(), infoTextArea.getText(), fitnessLevel, Objects.requireNonNull(getLoggedUser()).getFiscalCode(), equipmentTextArea.getText());
             courseBean.setLessonBeanList(getLessonDay());

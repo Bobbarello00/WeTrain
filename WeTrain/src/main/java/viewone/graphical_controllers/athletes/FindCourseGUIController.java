@@ -64,7 +64,9 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     }
 
     @FXML protected void searchButtonAction() {
-        
+        String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
+        System.out.println(fitnessLevel);
+
         System.out.println("Search done, showing results...");
     }
 

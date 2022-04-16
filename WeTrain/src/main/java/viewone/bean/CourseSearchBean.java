@@ -1,17 +1,37 @@
 package viewone.bean;
 
 public class CourseSearchBean {
-    private int id;
+    private String fitnessLevel;
+    private Boolean[] days;
+    private String name;
 
-    public CourseSearchBean(int id) {
-        this.id = id;
+    public CourseSearchBean(String name, String fitnessLevel, Boolean[] days) {
+        this.fitnessLevel = fitnessLevel;
+        this.name = name;
+        this.days = days;
     }
 
-    public int getId() {
-        return id;
+    public String getFitnessLevel() {
+        return fitnessLevel;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setFitnessLevel(String fitnessLevel) {
+        this.fitnessLevel = fitnessLevel;
+    }
+
+    public Boolean[] getDays() {
+        return days;
+    }
+
+    public void setDays(Boolean[] days) {
+        this.days = days;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

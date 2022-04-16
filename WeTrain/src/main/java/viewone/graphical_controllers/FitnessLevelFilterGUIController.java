@@ -3,8 +3,11 @@ package viewone.graphical_controllers;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 
+import java.util.Objects;
+
 public class FitnessLevelFilterGUIController {
     private Button selectedFitnessLevel;
+    private String selectedFitnessLevelString;
 
     public void fitnessLevelSelection(ActionEvent event){
         if(selectedFitnessLevel!=null) {
@@ -20,5 +23,15 @@ public class FitnessLevelFilterGUIController {
 
     public Button getSelectedFitnessLevel(){
         return selectedFitnessLevel;
+    }
+
+    public String getSelectedFitnessLevelString(){
+        if(Objects.equals(getSelectedFitnessLevel().getId(), "baseFitnessLevelButton")){
+            return  "Base";
+        } else if(Objects.equals(getSelectedFitnessLevel().getId(), "intermediateFitnessLevelButton")){
+            return  "Intermediate";
+        } else {
+            return  "Advanced";
+        }
     }
 }

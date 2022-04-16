@@ -14,7 +14,7 @@ import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
-import viewone.bean.CourseSearchBean;
+import viewone.bean.IdBean;
 import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     public void eventList(ListView<CourseEssentialBean> listView, CourseEssentialBean newItem) {
         try {
             if(newItem != null) {
-                setSelectedCourse(courseManagementAthleteController.getCourse(new CourseSearchBean(newItem.getId())));
+                setSelectedCourse(courseManagementAthleteController.getCourse(new IdBean(newItem.getId())));
                 PageSwitchSizeChange.pageSwitch(logoutButton, "CourseInfo", "athletes", false);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }

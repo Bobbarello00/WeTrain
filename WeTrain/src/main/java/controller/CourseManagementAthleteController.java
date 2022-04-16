@@ -6,7 +6,7 @@ import model.Course;
 import model.Lesson;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
-import viewone.bean.CourseSearchBean;
+import viewone.bean.IdBean;
 import viewone.bean.LessonBean;
 
 import java.sql.SQLException;
@@ -49,7 +49,7 @@ public class CourseManagementAthleteController {
         return beanList;
     }
 
-    public CourseBean getCourse(CourseSearchBean bean) throws SQLException {
+    public CourseBean getCourse(IdBean bean) throws SQLException {
         Course course = new CourseDAO().loadCourse(bean.getId());
         CourseBean courseBean = new CourseBean(
                 course.getId(),
