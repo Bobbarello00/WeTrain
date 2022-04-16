@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class Query {
 
@@ -180,22 +180,50 @@ public class Query {
 
     public static ResultSet searchCourse(Statement stmt, String name, String fitnessLevel, Boolean[] days) throws SQLException {
         boolean condition = true;
-        for(Boolean day: days){
-            if(day){
+        List<String> dayStringList = new ArrayList<>(7);
+        dayStringList.add("Monday");
+        dayStringList.add("Tuesday");
+        dayStringList.add("Wednesday");
+        dayStringList.add("Thursday");
+        dayStringList.add("Friday");
+        dayStringList.add("Saturday");
+        dayStringList.add("Sunday");
+        StringBuilder queryString = new StringBuilder();
+
+        for(int i = 0; i < 6; i++){
+            if(days[i]){
                 condition = false;
-                break;
+                queryString.append(String.format("AND Lesson.LessonDay != '%s' ", dayStringList.get(i)));
             }
         }
-        String string = "SELECT * " +
-                "FROM mydb.Course " +
-                "WHERE CONTAINS (CourseName, \"%s\") " +
-                "AND fitnessLevel == '%s' " +
-                "AND ";
-        if(name != null && fitnessLevel != null && condition){
+
+        String string = "{SELECT * " +
+                "FROM mydb.Lesson " +
+                "WHERE Lesson.Course = Course.idCourse " +
+                queryString +
+                ";}";
+        if(name != null && condition){
             return stmt.executeQuery(String.format(SELECT_ALL +
                     "FROM mydb.Course " +
-                    "WHERE CONTAINS (CourseName, \"%s\")" +
-                    "AND ", name));
+                    "WHERE CONTAINS (Name, \"*%s*\") " +
+                    "AND FitnessLevel = '%s';",
+                    name,
+                    fitnessLevel));
+        } else if(name != null) {
+            //TODO query con giorni della settimana
+            return stmt.executeQuery(String.format(SELECT_ALL +
+                            "FROM mydb.Course " +
+                            "WHERE CONTAINS (Name, \"*%s*\") " +
+                            "AND FitnessLevel = '%s' " +
+                            "AND IS NOT NULL " +
+                            queryString,
+                    name,
+                    fitnessLevel));
+        } else {
+            return stmt.executeQuery(String.format(SELECT_ALL +
+                            "FROM mydb.Course " +
+                            "WHERE FitnessLevel = '%s';",
+                    fitnessLevel));
         }
     }
 
@@ -287,7 +315,7 @@ public class Query {
     }
 
     public static int insertWorkoutDay(int workoutPlanKey) throws SQLException{
-        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s);", workoutPlanKey), Statement.RETURN_GENERATED_KEYS);) {
+        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s);", workoutPlanKey), Statement.RETURN_GENERATED_KEYS)) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -317,7 +345,7 @@ public class Query {
 
     public static int insertWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException {
 
-        try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS);) {
+        try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS)) {
             if(statement.executeUpdate() == 0){
                 System.out.println("Inserimento WorkoutPlan fallito.");
             }
