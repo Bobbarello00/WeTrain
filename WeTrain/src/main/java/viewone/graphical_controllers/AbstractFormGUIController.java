@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import viewone.MainPane;
 
-public abstract class AbstractFormGUIController {
+public abstract class AbstractFormGUIController{
     @FXML protected Button sendButton;
 
     @FXML protected void closeAction(){

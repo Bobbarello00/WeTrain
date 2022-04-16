@@ -29,9 +29,11 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         addTrainerBox.setVisible(true);
     }
 
-    @FXML void addTrainerAction() {
+    @FXML void addTrainerAction(ActionEvent event) throws IOException {
         addTrainerBox.setDisable(true);
         addTrainerBox.setVisible(false);
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "FindTrainer", "", false);
+        //TODO SET DEI VALORI DEL TRAINER NUOVO OPPURE SE IL TRAINER E' ANCORA NULL -> rimettere tasto + sulla GUI
         trainerBox.setDisable(false);
         trainerBox.setVisible(true);
     }
