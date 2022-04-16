@@ -18,9 +18,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML private VBox trainerBox;
     @FXML private VBox addTrainerBox;
 
-    //TODO Implementare metodi
-    @FXML void workoutRequestButtonAction() {
-
+    @FXML void workoutRequestButtonAction(ActionEvent event) throws IOException {
+        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "", false);
     }
 
     @FXML void unsubscribeButtonAction() {
