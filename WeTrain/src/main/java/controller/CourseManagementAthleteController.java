@@ -4,10 +4,7 @@ import database.dao_classes.CourseDAO;
 import model.Athlete;
 import model.Course;
 import model.Lesson;
-import viewone.bean.CourseBean;
-import viewone.bean.CourseEssentialBean;
-import viewone.bean.IdBean;
-import viewone.bean.LessonBean;
+import viewone.bean.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -72,5 +69,9 @@ public class CourseManagementAthleteController {
         }
 
         return courseBean;
+    }
+
+    public List<CourseEssentialBean> searchCourse(CourseSearchBean courseSearchBean) {
+
     }
 }

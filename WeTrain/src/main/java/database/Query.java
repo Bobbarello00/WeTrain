@@ -4,6 +4,8 @@ import model.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Query {
 
@@ -173,6 +175,27 @@ public class Query {
                 }
                 return -1;
             }
+        }
+    }
+
+    public static ResultSet searchCourse(Statement stmt, String name, String fitnessLevel, Boolean[] days) throws SQLException {
+        boolean condition = true;
+        for(Boolean day: days){
+            if(day){
+                condition = false;
+                break;
+            }
+        }
+        String string = "SELECT * " +
+                "FROM mydb.Course " +
+                "WHERE CONTAINS (CourseName, \"%s\") " +
+                "AND fitnessLevel == '%s' " +
+                "AND ";
+        if(name != null && fitnessLevel != null && condition){
+            return stmt.executeQuery(String.format(SELECT_ALL +
+                    "FROM mydb.Course " +
+                    "WHERE CONTAINS (CourseName, \"%s\")" +
+                    "AND ", name));
         }
     }
 

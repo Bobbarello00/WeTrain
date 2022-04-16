@@ -14,5 +14,5 @@ public abstract class AbstractFormGUIController{
         MainPane.getInstance().setDisable(false);
     }
 
-    abstract void sendButtonAction();
+    @FXML abstract void sendButtonAction();
 }
