@@ -1,10 +1,40 @@
 package viewone.list_cell_factories;
 
-import viewone.bean.CourseEssentialBean;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import viewone.WeTrain;
+import viewone.bean.UserBean;
 
-public class PersonListCellFactory extends AbstractListCellFactory{
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Objects;
 
-    @Override public void updateItem(CourseEssentialBean courseBean, boolean empty){
-        updateWithParameter(courseBean, empty, "person");
+public class PersonListCellFactory extends ListCell<UserBean> {
+    private Parent parentNode = null ;
+
+    @Override public void updateItem(UserBean userBean, boolean empty){
+        updatePersonListWithParameter(userBean, empty, "person");
+    }
+
+    public void updatePersonListWithParameter(UserBean userBean, boolean empty, String str) {
+        super.updateItem(userBean, empty);
+        if(userBean != null){
+            try {
+                if (parentNode == null)parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
+                ((Label)parentNode.lookup("#itemName")).setText(userBean.getName() + " " + userBean.getSurname());
+                ((Label)parentNode.lookup("#itemOwner")).setText(userBean.getUsername());
+                ((Label)parentNode.lookup("#itemCode")).setText(userBean.getFiscalCode());
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + str + ".png")).toURI().toString()));
+                setGraphic(parentNode);
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }else{
+            setGraphic(null);
+        }
     }
 }

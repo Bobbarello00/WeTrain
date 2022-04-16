@@ -63,7 +63,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
                 });
     }
 
-    public void updateList(){
+    private void updateList(){
         try {
             ObservableList<CourseEssentialBean> courseObservableList = FXCollections.observableList(courseManagementAthleteController.getCourseList());
             ObservableList<CourseEssentialBean> popularObservableList = FXCollections.observableList(courseManagementAthleteController.getPopularCourseList());
