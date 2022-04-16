@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.CourseManagementAthleteController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,16 +9,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import viewone.bean.CourseEssentialBean;
+import viewone.bean.CourseSearchBean;
+import viewone.engeneering.ManageList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
+import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FindCourseGUIController extends HomeGUIControllerAthletes implements Initializable {
-
-    private final Boolean[] selected = new Boolean[7];
-    private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
 
     @FXML private Button baseFitnessLevelButton;
     @FXML private Button intermediateFitnessLevelButton;
@@ -25,7 +29,8 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @FXML private TextField courseNameText;
     @FXML private Button fridayButton;
     @FXML private Button mondayButton;
-    @FXML private ListView<?> resultList;
+    @FXML private ListView<CourseEssentialBean> resultList;
+    @FXML private Button logoutButton;
     @FXML private Button saturdayButton;
     @FXML private Button searchButton;
     @FXML private Button sundayButton;
@@ -33,6 +38,11 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @FXML private Button tuesdayButton;
     @FXML private Button wednesdayButton;
     @FXML private Text usernameText;
+
+    private final Boolean[] selected = new Boolean[7];
+    private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
+
+    private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
 
     @FXML private void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
@@ -63,12 +73,18 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         fitnessLevelFilter.fitnessLevelSelection(event);
     }
 
-    @FXML protected void searchButtonAction() {
+    @FXML protected void searchButtonAction() throws SQLException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
 
         String courseName = courseNameText.getText();
 
+        List<CourseEssentialBean> courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
+                courseName,
+                fitnessLevel,
+                selected
+        ));
 
+        ManageList.updateList(resultList, courseBeanList);
 
         System.out.println("Search done, showing results...");
     }
@@ -76,6 +92,11 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(selected, Boolean.FALSE);
+
+        resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
+
+        ManageList.setCourseListener(resultList, courseManagementAthleteController, logoutButton);
+
         setUsername();
     }
 }

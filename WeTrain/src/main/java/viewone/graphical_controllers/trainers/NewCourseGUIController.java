@@ -23,6 +23,8 @@ import viewone.graphical_controllers.TimeSchedulerGUIController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.*;
 
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
@@ -80,14 +82,9 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     private List<LessonBean> getLessonDay() throws TimeNotInsertedException {
         List<LessonBean> lessonBeanList = new ArrayList<>();
         List<String> dayList = new ArrayList<>();
-        dayList.add("Monday");
-        dayList.add("Tuesday");
-        dayList.add("Wednesday");
-        dayList.add("Thursday");
-        dayList.add("Friday");
-        dayList.add("Saturday");
-        dayList.add("Sunday");
-
+        for(int i = 1; i <= 7; i++) {
+            dayList.add(DayOfWeek.of(i).name());
+        }
         for (int i = 0; i < 6; i++) {
             if (toggled[i]) {
                 lessonBeanList.add(new LessonBean(

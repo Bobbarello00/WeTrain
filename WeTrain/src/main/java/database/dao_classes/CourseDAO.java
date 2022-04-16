@@ -101,9 +101,16 @@ public class CourseDAO {
                         rs.getString(EQUIPMENT)
                 );
             }
+            //TODO è necessario aggiungere le lezioni? Nel caso volessimo visualizzare un corso eseguiremmo loadCourse
             course.addAllLessons(new LessonDAO().loadAllLessons(course));
             myList.add(course);
         }while(rs.next());
         return myList;
+    }
+
+    public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.searchCourse(stmt, name, fitnessLevel, days)){
+            return loadAllCourses(LoginController.getInstance().getLoggedUser(), rs);
+        }
     }
 }

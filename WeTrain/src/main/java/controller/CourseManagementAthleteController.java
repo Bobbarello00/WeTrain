@@ -30,20 +30,12 @@ public class CourseManagementAthleteController {
 
     public List<CourseEssentialBean> getCourseList() throws SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
-        List<CourseEssentialBean> beanList = new ArrayList<>();
-        for(Course course : courseList) {
-            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
-        }
-        return beanList;
+        return getBeanList(courseList);
     }
 
     public List<CourseEssentialBean> getPopularCourseList() throws SQLException {
         List<Course> popularCourses = new CourseDAO().loadPopularCourses();
-        List<CourseEssentialBean> beanList = new ArrayList<>();
-        for(Course course : popularCourses) {
-            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
-        }
-        return beanList;
+        return getBeanList(popularCourses);
     }
 
     public CourseBean getCourse(IdBean bean) throws SQLException {
@@ -71,7 +63,16 @@ public class CourseManagementAthleteController {
         return courseBean;
     }
 
-    public List<CourseEssentialBean> searchCourse(CourseSearchBean courseSearchBean) {
+    private List<CourseEssentialBean> getBeanList(List<Course> courseList) {
+        List<CourseEssentialBean> beanList = new ArrayList<>();
+        for(Course course : courseList) {
+            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
+        }
+        return beanList;
+    }
 
+    public List<CourseEssentialBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException {
+        List<Course> courseList = new CourseDAO().searchCourses(courseSearchBean.getName(), courseSearchBean.getFitnessLevel(), courseSearchBean.getDays());
+        return getBeanList(courseList);
     }
 }

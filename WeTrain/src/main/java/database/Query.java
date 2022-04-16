@@ -4,8 +4,10 @@ import model.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Query {
 
@@ -167,7 +169,7 @@ public class Query {
                 course.getDescription(),
                 course.getFitnessLevel(),
                 course.getEquipment(),
-                course.getOwner().getFiscalCode()), Statement.RETURN_GENERATED_KEYS);) {
+                course.getOwner().getFiscalCode()), Statement.RETURN_GENERATED_KEYS)) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
@@ -181,13 +183,10 @@ public class Query {
     public static ResultSet searchCourse(Statement stmt, String name, String fitnessLevel, Boolean[] days) throws SQLException {
         boolean condition = true;
         List<String> dayStringList = new ArrayList<>(7);
-        dayStringList.add("Monday");
-        dayStringList.add("Tuesday");
-        dayStringList.add("Wednesday");
-        dayStringList.add("Thursday");
-        dayStringList.add("Friday");
-        dayStringList.add("Saturday");
-        dayStringList.add("Sunday");
+        for(int i = 1; i <= 7; i++) {
+            dayStringList.add(DayOfWeek.of(i).name());
+        }
+
         StringBuilder queryString = new StringBuilder();
 
         for(int i = 0; i < 6; i++){
@@ -197,26 +196,28 @@ public class Query {
             }
         }
 
-        String string = "{SELECT * " +
+        String nestedQuery = "{SELECT * " +
                 "FROM mydb.Lesson " +
                 "WHERE Lesson.Course = Course.idCourse " +
                 queryString +
                 ";}";
-        if(name != null && condition){
+        if(condition){
+            //TODO query sbagliata
+            System.out.println("Query sbagliata.");
             return stmt.executeQuery(String.format(SELECT_ALL +
                     "FROM mydb.Course " +
-                    "WHERE CONTAINS (Name, \"*%s*\") " +
+                    "WHERE Name = '*%s*' " +
                     "AND FitnessLevel = '%s';",
                     name,
                     fitnessLevel));
-        } else if(name != null) {
-            //TODO query con giorni della settimana
+        } else if(!Objects.equals(name, "")) {
             return stmt.executeQuery(String.format(SELECT_ALL +
-                            "FROM mydb.Course " +
-                            "WHERE CONTAINS (Name, \"*%s*\") " +
-                            "AND FitnessLevel = '%s' " +
-                            "AND IS NOT NULL " +
-                            queryString,
+                    "FROM mydb.Course " +
+                    "WHERE CONTAINS (Name, \"*%s*\") " +
+                    "AND FitnessLevel = '%s' " +
+                    "AND IS NULL " +
+                    nestedQuery +
+                    ";",
                     name,
                     fitnessLevel));
         } else {
