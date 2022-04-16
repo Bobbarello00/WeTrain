@@ -19,6 +19,7 @@ public class EmailFormGUIController {
 
     @FXML void sendButtonAction() {
         System.out.println("Email Sent!");
+        //TODO CREAZIONE NOTIFICA E INVIO FITTIZIO DELL'EMAIL
         ((Stage) sendButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
