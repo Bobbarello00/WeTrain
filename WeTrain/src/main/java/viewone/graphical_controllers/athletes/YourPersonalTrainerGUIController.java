@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML private Label trainerName;
     @FXML private VBox trainerBox;
     @FXML private VBox addTrainerBox;
+    @FXML private Button logoutButton;
 
     @FXML void workoutRequestButtonAction(ActionEvent event) throws IOException {
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "", false);
@@ -29,10 +31,10 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         addTrainerBox.setVisible(true);
     }
 
-    @FXML void addTrainerAction(ActionEvent event) throws IOException {
+    @FXML void addTrainerAction(MouseEvent event) throws IOException {
         addTrainerBox.setDisable(true);
         addTrainerBox.setVisible(false);
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "FindTrainer", "", false);
+        PageSwitchSizeChange.pageSwitch(logoutButton, "FindTrainer", "athletes", false);
         //TODO SET DEI VALORI DEL TRAINER NUOVO OPPURE SE IL TRAINER E' ANCORA NULL -> rimettere tasto + sulla GUI
         trainerBox.setDisable(false);
         trainerBox.setVisible(true);

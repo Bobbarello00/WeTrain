@@ -101,7 +101,22 @@ public class Query {
 
     public static ResultSet loadAllTrainers(Statement stmt) throws SQLException {
         return stmt.executeQuery(SELECT_ALL +
-                "FROM mydb.Trainer;");
+                "FROM mydb.Trainer " +
+                "GROUP BY User " +
+                "ORDER BY COUNT(User) DESC " +
+                LIMIT_10);
+    }
+
+    public static ResultSet searchTrainer(Statement stmt, String name) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM mydb.Trainer join mydb.User on Trainer.User = User.FC " +
+                "WHERE (Name LIKE '%%%s%%' OR Surname LIKE '%%%s%%') " +
+                "GROUP BY User " +
+                "ORDER BY COUNT(User) DESC " +
+                LIMIT_10,
+                name,
+                name)
+        );
     }
 
     public static void insertTrainer(Statement stmt, Trainer trainer) throws SQLException {

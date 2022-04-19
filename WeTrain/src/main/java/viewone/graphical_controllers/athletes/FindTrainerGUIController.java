@@ -11,11 +11,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import viewone.MainPane;
+import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
 import viewone.list_cell_factories.PersonListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FindTrainerGUIController implements Initializable {
@@ -31,8 +33,11 @@ public class FindTrainerGUIController implements Initializable {
         MainPane.getInstance().setDisable(false);
     }
 
-    @FXML void searchButtonAction(ActionEvent event) {
+    @FXML void searchButtonAction(ActionEvent event) throws SQLException {
         //TODO implementare ricerca Trainers per nome
+        List<UserBean> userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
+        ObservableList<UserBean> trainersObservableList = FXCollections.observableList(userBeanList);
+        trainersList.setItems(FXCollections.observableList(trainersObservableList));
     }
 
     @Override

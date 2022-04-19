@@ -1,7 +1,10 @@
 package controller;
 
 import database.dao_classes.TrainerDAO;
+import model.Trainer;
 import model.User;
+import viewone.bean.TrainerBean;
+import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;
@@ -20,25 +23,33 @@ public class SubscriptionToTrainerController {
         return SubscriptionToTrainerController.SingletonManager.INSTANCE;
     }
 
-
-    public List<UserBean> getTrainersList() throws SQLException{
-        List<User> trainersList = new TrainerDAO().loadAllTrainers();
+    public List<UserBean> setToUserBean(List<Trainer> trainerList) {
         List<UserBean> beanList = new ArrayList<>();
-        for(User trainer : trainersList) {
+        for(User trainer : trainerList) {
             beanList.add(new UserBean(
-                                    trainer.getUsername(),
-                                    trainer.getName(),
-                                    trainer.getSurname(),
-                                    trainer.getFiscalCode(),
-                                    trainer.getDateOfBirth(),
-                                    "Trainer",
-                                    trainer.getGender(),
-                                    trainer.getEmail(),
-                                    trainer.getPassword()
+                            trainer.getUsername(),
+                            trainer.getName(),
+                            trainer.getSurname(),
+                            trainer.getFiscalCode(),
+                            trainer.getDateOfBirth(),
+                            "Trainer",
+                            trainer.getGender(),
+                            trainer.getEmail(),
+                            trainer.getPassword()
                     )
             );
         }
         return beanList;
+    }
+
+    public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException {
+        List<Trainer> trainerList = new TrainerDAO().searchTrainers(bean.getName());
+        return setToUserBean(trainerList);
+    }
+
+    public List<UserBean> getTrainersList() throws SQLException{
+        List<Trainer> trainerList = new TrainerDAO().loadAllTrainers();
+        return setToUserBean(trainerList);
     }
 
 }

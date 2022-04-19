@@ -47,14 +47,24 @@ public class TrainerDAO {
         }
     }
 
-    public List<User> loadAllTrainers() throws SQLException{
+    private List<Trainer> getTrainersList(ResultSet rs) throws SQLException {
+        List<Trainer> myList = new ArrayList<>();
+        while(rs.next()){
+            Trainer newTrainer = loadTrainer(rs.getString("User"));
+            myList.add(newTrainer);
+        }
+        return myList;
+    }
+
+    public List<Trainer> searchTrainers(String name) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.searchTrainer(stmt, name)){
+            return getTrainersList(rs);
+        }
+    }
+
+    public List<Trainer> loadAllTrainers() throws SQLException{
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainers(stmt)){
-            List<User> myList = new ArrayList<>();
-            while(rs.next()){
-                Trainer newTrainer = loadTrainer(rs.getString("FC"));
-                myList.add(newTrainer);
-            }
-            return myList;
+            return getTrainersList(rs);
         }
     }
 }
