@@ -3,17 +3,20 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import model.Trainer;
+import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrainerDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public void saveTrainer(Trainer trainer) throws SQLException {
-        try(Statement stmt = conn.createStatement();){
+        try(Statement stmt = conn.createStatement()){
             Query.insertTrainer(stmt, trainer);
         }
     }
@@ -41,6 +44,17 @@ public class TrainerDAO {
             } else {
                 return null;
             }
+        }
+    }
+
+    public List<User> loadAllTrainers() throws SQLException{
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainers(stmt)){
+            List<User> myList = new ArrayList<>();
+            while(rs.next()){
+                Trainer newTrainer = loadTrainer(rs.getString("FC"));
+                myList.add(newTrainer);
+            }
+            return myList;
         }
     }
 }
