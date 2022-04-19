@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseEssentialBean;
-import viewone.bean.CourseSearchBean;
 import viewone.bean.IdBean;
 import viewone.graphical_controllers.athletes.AthletesHomeGUIController;
 

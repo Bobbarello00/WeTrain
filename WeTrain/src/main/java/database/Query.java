@@ -15,6 +15,7 @@ public class Query {
     private static final String WHERE_USER = "WHERE User = '%s';";
     private static final String LIMIT_10 = "LIMIT 10;";
     private static final String LIMIT_50 = "LIMIT 50;";
+    private static final String PERCENT = "%";
 
     private Query(){}
 
@@ -96,6 +97,11 @@ public class Query {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Trainer " +
                 WHERE_USER, fc));
+    }
+
+    public static ResultSet loadAllTrainers(Statement stmt) throws SQLException {
+        return stmt.executeQuery(SELECT_ALL +
+                "FROM mydb.Trainer;");
     }
 
     public static void insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
@@ -189,41 +195,44 @@ public class Query {
 
         StringBuilder queryString = new StringBuilder();
 
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < 7; i++){
             if(days[i]){
                 condition = false;
                 queryString.append(String.format("AND Lesson.LessonDay != '%s' ", dayStringList.get(i)));
             }
         }
 
-        String nestedQuery = "{SELECT * " +
+        String nestedQuery = "(SELECT * " +
                 "FROM mydb.Lesson " +
                 "WHERE Lesson.Course = Course.idCourse " +
                 queryString +
-                ";}";
+                ")";
         if(condition){
-            //TODO query sbagliata
-            System.out.println("Query sbagliata.");
             return stmt.executeQuery(String.format(SELECT_ALL +
                     "FROM mydb.Course " +
-                    "WHERE Name = '*%s*' " +
+                    "WHERE Name LIKE '%%%s%%' " +
                     "AND FitnessLevel = '%s';",
                     name,
                     fitnessLevel));
-        } else if(!Objects.equals(name, "")) {
-            return stmt.executeQuery(String.format(SELECT_ALL +
-                    "FROM mydb.Course " +
-                    "WHERE CONTAINS (Name, \"*%s*\") " +
-                    "AND FitnessLevel = '%s' " +
-                    "AND IS NULL " +
-                    nestedQuery +
-                    ";",
+        } else if(Objects.equals(name, "")) {
+            String string = String.format(SELECT_ALL +
+                            "FROM mydb.Course " +
+                            "WHERE FitnessLevel = '%s' " +
+                            "AND NOT EXISTS " +
+                            nestedQuery +
+                            ";",
                     name,
-                    fitnessLevel));
+                    fitnessLevel);
+            return stmt.executeQuery(string);
         } else {
             return stmt.executeQuery(String.format(SELECT_ALL +
                             "FROM mydb.Course " +
-                            "WHERE FitnessLevel = '%s';",
+                            "WHERE Name LIKE '%%%s%%' " +
+                            "AND FitnessLevel = '%s' " +
+                            "AND NOT EXISTS " +
+                            nestedQuery +
+                            ";",
+                    name,
                     fitnessLevel));
         }
     }

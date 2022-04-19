@@ -39,7 +39,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @FXML private Button wednesdayButton;
     @FXML private Text usernameText;
 
-    private final Boolean[] selected = new Boolean[7];
+    private final Boolean[] selectedDays = new Boolean[7];
     private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
 
     private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
@@ -58,7 +58,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     }
 
     private void selectedDayButtonAction(Button button, int i){
-        if(!selected[i]) {
+        if(!selectedDays[i]) {
             button.setStyle("-fx-background-color: white;" +
                     " -fx-text-fill: rgb(24,147,21);" +
                     " -fx-border-color: rgb(24,147,21);" +
@@ -66,7 +66,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         }else{
             button.setStyle(null);
         }
-        selected[i]=!selected[i];
+        selectedDays[i]=!selectedDays[i];
     }
 
     @FXML void fitnessLevelSelection(ActionEvent event){
@@ -81,7 +81,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         List<CourseEssentialBean> courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
                 courseName,
                 fitnessLevel,
-                selected
+                selectedDays
         ));
 
         ManageList.updateList(resultList, courseBeanList);
@@ -91,7 +91,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
-        Arrays.fill(selected, Boolean.FALSE);
+        Arrays.fill(selectedDays, Boolean.FALSE);
 
         resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
 
