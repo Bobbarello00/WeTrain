@@ -11,7 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import viewone.MainPane;
-import viewone.bean.TrainerBean;
 import viewone.bean.UserBean;
 import viewone.list_cell_factories.PersonListCellFactory;
 

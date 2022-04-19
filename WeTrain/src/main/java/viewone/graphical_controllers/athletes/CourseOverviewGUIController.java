@@ -21,7 +21,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CourseInfoGUIController implements Initializable {
+public class CourseOverviewGUIController implements Initializable {
 
     @FXML private Button mondayButton;
     @FXML private Button tuesdayButton;
@@ -123,7 +123,7 @@ public class CourseInfoGUIController implements Initializable {
         if(courseBean != null) {
             setValue(courseBean);
         } else {
-            System.out.println("Error in CourseInfoGUIController: courseBean == null");
+            System.out.println("Error in CourseOverviewGUIController: courseBean == null");
         }
     }
 }
