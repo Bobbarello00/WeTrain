@@ -3,6 +3,7 @@ package controller;
 import database.dao_classes.TrainerDAO;
 import model.Trainer;
 import model.User;
+import viewone.bean.IdBean;
 import viewone.bean.TrainerBean;
 import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
@@ -14,6 +15,21 @@ import java.util.List;
 public class SubscriptionToTrainerController {
 
     private SubscriptionToTrainerController() {}
+
+    public UserBean getTrainerUser(IdBean idBean) throws SQLException {
+        Trainer trainer = new TrainerDAO().loadTrainer(String.valueOf(idBean.getId()));
+        UserBean userBean = new UserBean(
+                trainer.getUsername(),
+                trainer.getName(),
+                trainer.getSurname(),
+                trainer.getFiscalCode(),
+                trainer.getDateOfBirth(),
+                "Trainer",
+                trainer.getGender(),
+                trainer.getEmail(),
+                trainer.getPassword()
+        );
+    }
 
     private static class SingletonManager {
         private static final SubscriptionToTrainerController INSTANCE = new SubscriptionToTrainerController();

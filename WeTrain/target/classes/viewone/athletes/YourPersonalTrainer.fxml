@@ -4,6 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -12,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.athletes.YourPersonalTrainerGUIController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.athletes.YourPersonalTrainerGUIController">
    <HBox alignment="CENTER_RIGHT" layoutX="855.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -91,6 +93,20 @@
                </children>
             </VBox>
          </children>
+      </VBox>
+      <VBox fx:id="searchTrainerBox" disable="true" layoutX="61.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" visible="false">
+         <children>
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="495.0" spacing="20.0">
+               <children>
+                  <TextField fx:id="trainerNameSearch" prefHeight="25.0" prefWidth="182.0" promptText="Search trainer" scaleX="1.2" scaleY="1.2" style="-fx-background-color: rgba(255,255,255,0.3);" />
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonAction" scaleX="1.2" scaleY="1.2" style="-fx-background-color: transparent; -fx-text-fill: #158f17;" text="🔍" />
+               </children>
+            </HBox>
+            <ListView fx:id="trainersList" prefHeight="462.0" prefWidth="379.0" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="5.0" />
+         </padding>
       </VBox>
    </Pane>
    <Text layoutX="245.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Personal Trainer" textAlignment="JUSTIFY" wrappingWidth="127.80309867858887">
