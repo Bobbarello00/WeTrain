@@ -81,8 +81,9 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     @FXML void subscribeButtonAction() {
         //TODO EFFETTUARE ISCRIZIONE A TRAINER
-        trainerName.setText(selectedTrainer.getName());
+        trainerName.setText(selectedTrainer.getName() + " " + selectedTrainer.getSurname());
         hideVBox(infoTrainerBox);
+        hideVBox(searchTrainerBox);
         showVBox(emptyInfoTrainerBox);
         showVBox(trainerBox);
     }
@@ -91,23 +92,6 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "EmailForm", "", false);
     }
 
-    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        trainersList.setCellFactory(nodeListView -> new PersonListCellFactory());
-        ObservableList<UserBean> trainersObservableList = null;
-        try {
-            trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        trainersList.setItems(FXCollections.observableList(trainersObservableList));
-        trainersList.getSelectionModel().selectedItemProperty().
-                addListener(new ChangeListener<>() {
-                    @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {
-                        listEvent(trainersList, newItem, subscriptionToTrainerController);
-                    }
-                });
-        setUsername();
-    }
 
     private void listEvent(ListView<UserBean> listView, UserBean newItem, SubscriptionToTrainerController subscriptionToTrainerController) {
         try {
@@ -133,4 +117,23 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     public void setSelectedTrainer(UserBean selectedTrainer) {
         this.selectedTrainer = selectedTrainer;
     }
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+        trainersList.setCellFactory(nodeListView -> new PersonListCellFactory());
+        ObservableList<UserBean> trainersObservableList = null;
+        try {
+            trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        trainersList.setItems(FXCollections.observableList(trainersObservableList));
+        trainersList.getSelectionModel().selectedItemProperty().
+                addListener(new ChangeListener<>() {
+                    @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {
+                        listEvent(trainersList, newItem, subscriptionToTrainerController);
+                    }
+                });
+        setUsername();
+    }
+
 }
