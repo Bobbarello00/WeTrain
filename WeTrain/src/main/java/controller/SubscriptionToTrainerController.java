@@ -3,10 +3,7 @@ package controller;
 import database.dao_classes.TrainerDAO;
 import model.Trainer;
 import model.User;
-import viewone.bean.IdBean;
-import viewone.bean.TrainerBean;
-import viewone.bean.TrainerSearchBean;
-import viewone.bean.UserBean;
+import viewone.bean.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,8 +13,8 @@ public class SubscriptionToTrainerController {
 
     private SubscriptionToTrainerController() {}
 
-    public UserBean getTrainerUser(IdBean idBean) throws SQLException {
-        Trainer trainer = new TrainerDAO().loadTrainer(String.valueOf(idBean.getId()));
+    public UserBean getTrainerUser(FcBean fcBean) throws SQLException {
+        Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
         return new UserBean(
                 trainer.getUsername(),
                 trainer.getName(),

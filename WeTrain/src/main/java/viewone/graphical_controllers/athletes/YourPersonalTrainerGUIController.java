@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import viewone.bean.FcBean;
 import viewone.bean.IdBean;
 import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
@@ -111,7 +112,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     private void listEvent(ListView<UserBean> listView, UserBean newItem, SubscriptionToTrainerController subscriptionToTrainerController) {
         try {
             if(newItem != null) {
-                setSelectedTrainer(subscriptionToTrainerController.getTrainerUser(new IdBean(Integer.getInteger(newItem.getFiscalCode()))));
+                setSelectedTrainer(subscriptionToTrainerController.getTrainerUser(new FcBean(newItem.getFiscalCode())));
                 updateInfoTrainerBox();
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
