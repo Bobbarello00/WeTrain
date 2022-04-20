@@ -28,7 +28,19 @@ public class PersonListCellFactory extends ListCell<UserBean> {
                 ((Label)parentNode.lookup("#itemName")).setText(userBean.getName() + " " + userBean.getSurname());
                 ((Label)parentNode.lookup("#itemOwner")).setText(userBean.getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(userBean.getFiscalCode());
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + str + ".png")).toURI().toString()));
+                if(Objects.equals(userBean.getType(), "Trainer")){
+                    if (userBean.getGender()=="M"){
+                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
+                    }else{
+                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
+                    }
+                }else {
+                    if (userBean.getGender()=="M"){
+                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteM.png")).toURI().toString()));
+                    }else{
+                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteF.png")).toURI().toString()));
+                    }
+                }
                 setGraphic(parentNode);
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
