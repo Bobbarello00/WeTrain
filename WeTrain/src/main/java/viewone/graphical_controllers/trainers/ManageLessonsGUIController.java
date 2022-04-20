@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ListView;
-import javafx.scene.text.Text;
 import viewone.ListPopulate;
 
 import java.net.URL;
@@ -15,7 +14,7 @@ public class ManageLessonsGUIController extends HomeGUIControllerTrainers implem
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
-        setUsername();
+        setUserInfoTab();
     }
 }
 

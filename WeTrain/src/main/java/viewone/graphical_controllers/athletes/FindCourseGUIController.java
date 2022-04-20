@@ -97,6 +97,6 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         ManageList.setCourseListener(resultList, courseManagementAthleteController, logoutButton);
 
-        setUsername();
+        setUserInfoTab();
     }
 }

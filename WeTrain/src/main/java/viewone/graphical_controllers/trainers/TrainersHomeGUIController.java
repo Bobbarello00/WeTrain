@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import viewone.ListPopulate;
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -18,7 +19,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,coursesList);
         ListPopulate.populateList(10,requestsList);
-        setUsername();
+        setUserInfoTab();
     }
 
 }

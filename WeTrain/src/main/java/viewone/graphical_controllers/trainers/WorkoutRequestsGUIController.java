@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.text.Text;
 import viewone.ListPopulate;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -31,6 +30,6 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,requestsList);
-        setUsername();
+        setUserInfoTab();
     }
 }

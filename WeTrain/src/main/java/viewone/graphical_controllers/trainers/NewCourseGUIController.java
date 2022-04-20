@@ -1,7 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
-import exception.ExpiredCardException;
 import exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import viewone.engeneering.LoggedUserSingleton;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
@@ -24,7 +22,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.*;
 
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
@@ -131,7 +128,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
-        setUsername();
+        setUserInfoTab();
         timeSchedulerGUIControllerList.add(mondayTimeSchedulerController);
         timeSchedulerGUIControllerList.add(tuesdayTimeSchedulerController);
         timeSchedulerGUIControllerList.add(wednesdayTimeSchedulerController);

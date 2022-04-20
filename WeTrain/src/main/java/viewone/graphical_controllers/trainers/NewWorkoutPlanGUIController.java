@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.text.Text;
 import viewone.*;
 
 import java.io.IOException;
@@ -39,6 +38,6 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(10,exercisesList);
         ListPopulate.populateList(10,exercisesSelectedList);
-        setUsername();
+        setUserInfoTab();
     }
 }

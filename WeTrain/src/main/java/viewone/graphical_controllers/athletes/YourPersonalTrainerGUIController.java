@@ -9,28 +9,32 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import viewone.WeTrain;
 import viewone.bean.FcBean;
-import viewone.bean.IdBean;
 import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
 import viewone.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     @FXML private Label trainerName;
+    @FXML private ImageView trainerImage;
     @FXML private VBox trainerBox;
     @FXML private VBox addTrainerBox;
     @FXML private VBox searchTrainerBox;
@@ -79,8 +83,13 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
     }
 
-    @FXML void subscribeButtonAction() {
+    @FXML void subscribeButtonAction() throws URISyntaxException {
         //TODO EFFETTUARE ISCRIZIONE A TRAINER
+        if(selectedTrainer.getGender() == 'm') {
+            trainerImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
+        }else{
+            trainerImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
+        }
         trainerName.setText(selectedTrainer.getName() + " " + selectedTrainer.getSurname());
         hideVBox(infoTrainerBox);
         hideVBox(searchTrainerBox);
@@ -133,7 +142,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                         listEvent(trainersList, newItem, subscriptionToTrainerController);
                     }
                 });
-        setUsername();
+        setUserInfoTab();
     }
 
 }

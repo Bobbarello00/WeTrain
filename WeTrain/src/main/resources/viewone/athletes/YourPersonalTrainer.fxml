@@ -17,7 +17,7 @@
 <Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.athletes.YourPersonalTrainerGUIController">
    <HBox alignment="CENTER_RIGHT" layoutX="855.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
-         <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="userImage" fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/User1.png" />
          </ImageView>
       </VBox>
@@ -44,7 +44,7 @@
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="100.0" />
          </padding>
-         <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
+         <ImageView fx:id="trainerImage" fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
             <Image url="@../images/Trainer.png" />
          </ImageView>
          <Label fx:id="trainerName" scaleX="1.5" scaleY="1.5" text="Name of the Trainer" />

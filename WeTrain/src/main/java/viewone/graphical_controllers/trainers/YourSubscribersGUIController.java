@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.text.Text;
 import viewone.ListPopulate;
 import viewone.PageSwitchSizeChange;
 
@@ -27,6 +26,6 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         int i = Integer.parseInt(subscribersCountLabel.getText());
         ListPopulate.populateList(i,subscribersList);
-        setUsername();
+        setUserInfoTab();
     }
 }

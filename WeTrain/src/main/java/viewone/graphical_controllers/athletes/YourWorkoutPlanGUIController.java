@@ -1,6 +1,5 @@
 package viewone.graphical_controllers.athletes;
 
-import javafx.scene.text.Text;
 import viewone.DaysOfTheWeekController;
 import viewone.ListPopulate;
 import javafx.event.ActionEvent;
@@ -32,6 +31,6 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ListPopulate.populateList(15,exercisesList);
-        setUsername();
+        setUserInfoTab();
     }
 }

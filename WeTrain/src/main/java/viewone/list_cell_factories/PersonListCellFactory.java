@@ -29,24 +29,32 @@ public class PersonListCellFactory extends ListCell<UserBean> {
                 ((Label)parentNode.lookup("#itemOwner")).setText(userBean.getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(userBean.getFiscalCode());
                 if(Objects.equals(userBean.getType(), "Trainer")){
-                    if (userBean.getGender()=="M"){
-                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
-                    }else{
-                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
+                    if (userBean.getGender() == 'm'){
+                        setImage("TrainerM");
+                        }else{
+                        setImage("TrainerF");
                     }
                 }else {
-                    if (userBean.getGender()=="M"){
-                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteM.png")).toURI().toString()));
+                    if (userBean.getGender() == 'm'){
+                        setImage("AthleteM");
                     }else{
-                        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteF.png")).toURI().toString()));
+                        setImage("AthleteF");
                     }
                 }
                 setGraphic(parentNode);
-            } catch (IOException | URISyntaxException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{
             setGraphic(null);
+        }
+    }
+
+    private void setImage(String str){
+        try {
+            ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/"+str+".png")).toURI().toString()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -60,7 +60,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setUsername();
+        setUserInfoTab();
     }
 
 }

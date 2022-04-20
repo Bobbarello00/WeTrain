@@ -2,7 +2,9 @@ package viewone.graphical_controllers;
 
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
+import viewone.WeTrain;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
@@ -14,15 +16,41 @@ import javafx.stage.Stage;
 import viewone.bean.UserBean;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Objects;
 
 public abstract class HomeGUIController {
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
     @FXML protected Text usernameText1;
+    @FXML protected ImageView userImage;
 
-    protected void setUsername() {
+    protected void setUserInfoTab() {
         usernameText1.setText(getLoggedUser().getUsername());
+        char gender = getLoggedUser().getGender();
+        String type = getLoggedUser().getType();
+        if(Objects.equals(type, "Trainer")){
+            if(gender == 'm') {
+                setImage("TrainerM");
+            }else{
+                setImage("TrainerF");
+            }
+        }else{
+            if(gender == 'm') {
+                setImage("AthleteM");
+            }else{
+                setImage("AthleteF");
+            }
+        }
+
+    }
+
+    private void setImage(String str){
+        try {
+            userImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/"+str+".png")).toURI().toString()));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected UserBean getLoggedUser(){
