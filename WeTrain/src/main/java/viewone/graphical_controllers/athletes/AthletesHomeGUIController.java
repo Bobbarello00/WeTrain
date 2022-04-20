@@ -33,9 +33,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         return selectedCourse;
     }
 
-    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
-        popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
+    public void updateList() {
         List<CourseEssentialBean> courseBeanList = null;
         List<CourseEssentialBean> popularBeanList = null;
         try {
@@ -46,6 +44,13 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         }
         ManageList.updateList(courseList, courseBeanList);
         ManageList.updateList(popularList, popularBeanList);
+    }
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
+
+        updateList();
 
         ManageList.setCourseListener(courseList, courseManagementAthleteController, logoutButton);
         ManageList.setCourseListener(popularList, courseManagementAthleteController, logoutButton);

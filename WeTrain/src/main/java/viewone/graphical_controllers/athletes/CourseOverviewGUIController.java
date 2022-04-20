@@ -47,6 +47,7 @@ public class CourseOverviewGUIController implements Initializable {
     private CourseBean courseBean;
 
     private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
+    private AthletesHomeGUIController athletesHomeGUIController;
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -100,7 +101,7 @@ public class CourseOverviewGUIController implements Initializable {
         }
     }
 
-    @FXML public void subscribeButtonAction(ActionEvent event) throws IOException {
+    @FXML public void subscribeButtonAction(ActionEvent event) {
         if(courseBean != null) {
             try {
                 courseManagementAthleteController.subscribeToACourse(courseBean);
@@ -115,7 +116,6 @@ public class CourseOverviewGUIController implements Initializable {
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
-        MenuAthletesGUIController.logoAction2();
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

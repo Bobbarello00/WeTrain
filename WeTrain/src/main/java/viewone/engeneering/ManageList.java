@@ -40,7 +40,7 @@ public class ManageList {
         try {
             if(newItem != null) {
                 AthletesHomeGUIController.setSelectedCourse(courseManagementAthleteController.getCourse(new IdBean(newItem.getId())));
-                PageSwitchSizeChange.pageSwitch(button, "CourseInfo", "athletes", false);
+                PageSwitchSizeChange.pageSwitch(button, "CourseOverview", "athletes", false);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
         } catch (SQLException e) {

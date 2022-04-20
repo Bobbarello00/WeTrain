@@ -25,7 +25,7 @@ public class PageSwitchSimple {
                 fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
             }
             if(fileUrl==null){
-                throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
+                throw new FileNotFoundException("Non ho trovato il file FXML");
             }
             view = FXMLLoader.load(fileUrl);
         } catch (FileNotFoundException e) {
@@ -40,7 +40,7 @@ public class PageSwitchSimple {
             fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
             menuUrl = WeTrain.class.getResource(pathString + "/Menu" + pathString + EXTENSION);
             if(fileUrl==null || menuUrl==null){
-                throw new java.io.FileNotFoundException("Non ho trovato il file FXML");
+                throw new FileNotFoundException("Non ho trovato il file FXML");
             }
             view = FXMLLoader.load(fileUrl);
             menu = FXMLLoader.load(menuUrl);

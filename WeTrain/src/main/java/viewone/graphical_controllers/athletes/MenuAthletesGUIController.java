@@ -29,9 +29,4 @@ public class MenuAthletesGUIController {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
         buttonBehavior.resetSelectedButton();
     }
-
-    public static void logoAction2() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
-        buttonBehavior.resetSelectedButton();
-    }
 }
