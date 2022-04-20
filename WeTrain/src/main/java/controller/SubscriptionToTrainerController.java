@@ -18,7 +18,7 @@ public class SubscriptionToTrainerController {
 
     public UserBean getTrainerUser(IdBean idBean) throws SQLException {
         Trainer trainer = new TrainerDAO().loadTrainer(String.valueOf(idBean.getId()));
-        UserBean userBean = new UserBean(
+        return new UserBean(
                 trainer.getUsername(),
                 trainer.getName(),
                 trainer.getSurname(),

@@ -67,31 +67,24 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Text>
-      <VBox alignment="TOP_CENTER" layoutX="617.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.15); -fx-background-radius: 50;">
+      <VBox fx:id="emptyInfoTrainerBox" alignment="TOP_CENTER" layoutX="617.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.15); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="100.0" />
          </padding>
       </VBox>
-      <VBox fx:id="addTrainerBox" alignment="TOP_CENTER" layoutX="61.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
+      <VBox fx:id="addTrainerBox" alignment="CENTER" layoutX="61.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="20.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <VBox alignment="CENTER" prefHeight="550.0" prefWidth="479.0" spacing="50.0">
-               <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="50.0" />
-               </padding>
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#addTrainerAction" pickOnBounds="true" preserveRatio="true" scaleX="10.0" scaleY="10.0">
-                     <image>
-                        <Image url="@../images/plus.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-            </VBox>
+            <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#addTrainerAction" pickOnBounds="true" preserveRatio="true" scaleX="10.0" scaleY="10.0">
+               <image>
+                  <Image url="@../images/plus.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </VBox>
       <VBox fx:id="searchTrainerBox" disable="true" layoutX="61.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 50;" visible="false">
@@ -102,11 +95,35 @@
                   <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonAction" scaleX="1.2" scaleY="1.2" style="-fx-background-color: transparent; -fx-text-fill: #158f17;" text="🔍" />
                </children>
             </HBox>
-            <ListView fx:id="trainersList" prefHeight="462.0" prefWidth="379.0" />
+            <ListView fx:id="trainersList" prefHeight="525.0" prefWidth="418.0" />
          </children>
          <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="5.0" />
+            <Insets bottom="5.0" left="50.0" right="50.0" top="5.0" />
          </padding>
+      </VBox>
+      <VBox fx:id="infoTrainerBox" alignment="TOP_CENTER" disable="true" layoutX="617.0" layoutY="66.0" prefHeight="547.0" prefWidth="519.0" spacing="40.0" style="-fx-background-color: rgba(21,147,24,0.15); -fx-background-radius: 50;" visible="false">
+         <padding>
+            <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+         </padding>
+         <children>
+            <ImageView fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
+               <image>
+                  <Image url="@../images/User1.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="infoName" scaleX="1.5" scaleY="1.5" text="Name" />
+            <Label fx:id="infoSurname" scaleX="1.5" scaleY="1.5" text="Surname" />
+            <Label fx:id="infoUsername" scaleX="1.5" scaleY="1.5" text="Username" />
+            <Label fx:id="infoBirth" scaleX="1.5" scaleY="1.5" text="Birth" />
+            <Button mnemonicParsing="false" onAction="#subscribeButtonAction" prefWidth="140.0" text="Subscribe">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </Button>
+         </children>
       </VBox>
    </Pane>
    <Text layoutX="245.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Personal Trainer" textAlignment="JUSTIFY" wrappingWidth="127.80309867858887">
