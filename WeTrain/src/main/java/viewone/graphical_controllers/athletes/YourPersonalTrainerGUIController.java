@@ -51,7 +51,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     private UserBean selectedTrainer = new UserBean();
 
-    private final SubscriptionToTrainerController subscriptionToTrainerController = SubscriptionToTrainerController.getInstance();
+    private final SubscriptionToTrainerController subscriptionToTrainerController = new SubscriptionToTrainerController();
 
     private void showVBox(VBox vbox){
         vbox.setDisable(false);

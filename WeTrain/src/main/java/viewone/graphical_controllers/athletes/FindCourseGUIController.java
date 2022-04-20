@@ -42,7 +42,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     private final Boolean[] selectedDays = new Boolean[7];
     private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
 
-    private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
+    private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
 
     @FXML private void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();

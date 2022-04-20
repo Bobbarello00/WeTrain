@@ -20,7 +20,7 @@ public class CourseDAO {
     private static final String EQUIPMENT = "Equipment";
     private static final String TRAINER = "Trainer";
 
-    private final LoginController loginController = LoginController.getInstance();
+    private final LoginController loginController = new LoginController();
 
     public void saveCourse(Course course) throws SQLException {
         int idCourse = Query.insertCourse(course);
@@ -110,7 +110,7 @@ public class CourseDAO {
 
     public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.searchCourse(stmt, name, fitnessLevel, days)){
-            return loadAllCourses(LoginController.getInstance().getLoggedUser(), rs);
+            return loadAllCourses(loginController.getLoggedUser(), rs);
         }
     }
 }

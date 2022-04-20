@@ -1,5 +1,7 @@
 package viewone.bean;
 
+import exception.InvalidCredentialsException;
+
 import java.util.regex.Pattern;
 
 public class CredentialsBean {
@@ -8,7 +10,7 @@ public class CredentialsBean {
 
     public CredentialsBean() {}
 
-    public CredentialsBean(String email, String password) {
+    public CredentialsBean(String email, String password) throws InvalidCredentialsException {
         setEmail(email);
         setPassword(password);
     }
@@ -17,12 +19,12 @@ public class CredentialsBean {
         return email;
     }
 
-    public boolean setEmail(String email) {
+    public void setEmail(String email) throws InvalidCredentialsException {
         if(isValidEmail(email)){
             this.email = email;
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidCredentialsException();
     }
 
     private boolean isValidEmail(String email) {
@@ -35,12 +37,12 @@ public class CredentialsBean {
         return password;
     }
 
-    public boolean setPassword(String password) {
+    public void setPassword(String password) throws InvalidCredentialsException {
         if(isValidPassword(password)){
             this.password = password;
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidCredentialsException();
     }
 
     private boolean isValidPassword(String password) {

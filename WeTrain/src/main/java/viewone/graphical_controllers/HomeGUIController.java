@@ -49,6 +49,7 @@ public abstract class HomeGUIController {
         try {
             userImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/"+str+".png")).toURI().toString()));
         } catch (URISyntaxException e) {
+            //TODO
             throw new RuntimeException(e);
         }
     }

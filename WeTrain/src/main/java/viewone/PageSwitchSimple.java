@@ -15,7 +15,7 @@ public class PageSwitchSimple {
 
     private PageSwitchSimple(){}
 
-    public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
+    public static Object switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
@@ -27,11 +27,14 @@ public class PageSwitchSimple {
             if(fileUrl==null){
                 throw new FileNotFoundException("Non ho trovato il file FXML");
             }
-            view = FXMLLoader.load(fileUrl);
+            FXMLLoader root = new FXMLLoader(fileUrl);
+            view = root.load();
+            mainPane.setCenter(view);
+            return root.getController();
         } catch (FileNotFoundException e) {
             System.out.println("File "+ pathString + "/" + fileName + EXTENSION + " non trovato, controllare il PageSwitchSimple!");
+            return null;
         }
-        mainPane.setCenter(view);
     }
     public static void switchPageAndMenu(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{

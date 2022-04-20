@@ -11,8 +11,8 @@ public class FatalCaseManager {
 
     private FatalCaseManager() {}
 
-    private static final ProfileManagementController profileManagementController = ProfileManagementController.getInstance();
-    private static final LoginController loginController = LoginController.getInstance();
+    private static final ProfileManagementController profileManagementController = new ProfileManagementController();
+    private static final LoginController loginController = new LoginController();
 
     public static void killApplication() {
         AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",

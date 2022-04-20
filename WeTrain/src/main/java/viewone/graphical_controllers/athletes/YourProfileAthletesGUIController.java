@@ -31,7 +31,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     @FXML private TextField newCardNumber;
     @FXML private TextField newExpirationDate;
 
-    private final ProfileManagementController profileManagementController = ProfileManagementController.getInstance();
+    private final ProfileManagementController profileManagementController = new ProfileManagementController();
 
     @FXML private void editConfirmation() {
         if(!Objects.equals(newCardNumber.getText(), "")

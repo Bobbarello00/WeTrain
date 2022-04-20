@@ -14,16 +14,6 @@ import java.util.List;
 
 public class CourseManagementTrainerController {
 
-    private CourseManagementTrainerController() {}
-
-    private static class SingletonManager {
-        private static final CourseManagementTrainerController INSTANCE = new CourseManagementTrainerController();
-    }
-
-    public static CourseManagementTrainerController getInstance() {
-        return CourseManagementTrainerController.SingletonManager.INSTANCE;
-    }
-
     public void createCourse(CourseBean bean) throws SQLException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
         Course course = new Course(bean.getName(), bean.getDescription(), bean.getFitnessLevel(), trainer, bean.getEquipment());

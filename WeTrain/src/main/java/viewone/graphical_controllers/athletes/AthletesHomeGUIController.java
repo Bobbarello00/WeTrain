@@ -23,7 +23,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private Button logoutButton;
     private static CourseBean selectedCourse;
 
-    private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
+    private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
 
     public static void setSelectedCourse(CourseBean course) {
         selectedCourse = course;

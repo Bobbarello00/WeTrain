@@ -1,5 +1,10 @@
 package viewone.bean;
 
+import exception.InvalidBirthException;
+import exception.InvalidCredentialsException;
+import exception.InvalidFiscalCodeException;
+import exception.InvalidUserInfoException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -13,21 +18,29 @@ public class UserBean {
     private LocalDate birth;
     private String type;
     private char gender;
-    private String email;
-    private String password;
+    private CredentialsBean credentials;
 
     public UserBean() {}
 
-    public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) {
-        this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.fiscalCode = fiscalCode;
-        this.birth = birth;
-        this.type = type;
-        this.gender = gender;
-        this.email = email;
-        this.password = password;
+    public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException {
+        setUser(username, name, surname, fiscalCode, type, gender);
+        setBirth(birth);
+        credentials = new CredentialsBean(email, password);
+    }
+
+    public UserBean(String username, String name, String surname, String fiscalCode, String birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException, InvalidBirthException {
+        setUser(username, name, surname, fiscalCode, type, gender);
+        setBirth(birth);
+        credentials = new CredentialsBean(email, password);
+    }
+
+    private void setUser(String username, String name, String surname, String fiscalCode, String type, char gender) throws InvalidUserInfoException, InvalidFiscalCodeException {
+        setUsername(username);
+        setName(name);
+        setSurname(surname);
+        setFc(fiscalCode);
+        setType(type);
+        setGender(gender);
     }
 
     public String getType() {
@@ -42,12 +55,12 @@ public class UserBean {
         return username;
     }
 
-    public boolean setUsername(String username) {
+    public void setUsername(String username) throws InvalidUserInfoException {
         if(isValidLength(username, 20)){
             this.username = username;
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidUserInfoException();
     }
 
     private boolean isValidLength(String str, int i) {
@@ -58,36 +71,36 @@ public class UserBean {
         return name;
     }
 
-    public boolean setName(String name) {
+    public void setName(String name) throws InvalidUserInfoException {
         if(isValidLength(name, 45)){
             this.name = name;
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidUserInfoException();
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public boolean setSurname(String surname) {
+    public void setSurname(String surname) throws InvalidUserInfoException {
         if(isValidLength(surname, 45)){
             this.surname = surname;
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidUserInfoException();
     }
 
     public String getFiscalCode() {
         return fiscalCode;
     }
 
-    public boolean setFc(String fc) {
+    public void setFc(String fc) throws InvalidFiscalCodeException {
         if(isValidFc(fc)) {
             this.fiscalCode = fc;
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidFiscalCodeException();
     }
 
     private boolean isValidFc(String fc) {
@@ -98,12 +111,16 @@ public class UserBean {
         return birth;
     }
 
-    public boolean setBirth(String birth) {
+    public void setBirth(String birth) throws InvalidBirthException {
         if(isValidBirth(birth)) {
             this.birth = LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            return true;
+            return;
         }
-        return false;
+        throw new InvalidBirthException();
+    }
+
+    public void setBirth(LocalDate birth) {
+        this.birth = birth;
     }
 
     private static boolean isValidBirth(String value) {
@@ -127,18 +144,10 @@ public class UserBean {
     }
 
     public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+        return credentials.getEmail();
     }
 
     public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+        return credentials.getPassword();
     }
 }

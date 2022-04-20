@@ -1,8 +1,7 @@
 package viewone.engeneering;
 
 import controller.LoginController;
-import exception.ExpiredCardException;
-import exception.InvalidCardInfoException;
+import exception.*;
 import model.Athlete;
 import model.Trainer;
 import model.User;
@@ -14,18 +13,32 @@ import java.sql.SQLException;
 
 public class LoggedUserSingleton {
 
-    private static final LoginController loginController = LoginController.getInstance();
+    private static String fc;
+    private static final LoginController loginController = new LoginController();
 
     private LoggedUserSingleton() {}
 
+    public static String getFc() {
+        return fc;
+    }
+
+    public static void setFc(String fc) {
+        LoggedUserSingleton.fc = fc;
+    }
+
     public static UserBean getInstance() throws SQLException, ExpiredCardException, InvalidCardInfoException {
         User usr = loginController.getLoggedUser();
-        if(usr instanceof Athlete) {
-            return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete)usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());
-        } else if(usr instanceof Trainer) {
-            return new TrainerBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(),  usr.getGender(), usr.getEmail(), usr.getPassword(), ((Trainer) usr).getIban());
-        } else {
-            System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
+        try{
+            if (usr instanceof Athlete) {
+                return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete) usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());
+            } else if (usr instanceof Trainer) {
+                return new TrainerBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), usr.getGender(), usr.getEmail(), usr.getPassword(), ((Trainer) usr).getIban());
+            } else {
+                System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
+                FatalCaseManager.killApplication();
+                return null;
+            }
+        } catch (InvalidUserInfoException | InvalidCredentialsException | InvalidFiscalCodeException e) {
             FatalCaseManager.killApplication();
             return null;
         }

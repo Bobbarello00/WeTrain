@@ -12,17 +12,7 @@ import java.util.List;
 
 public class CourseManagementAthleteController {
 
-    private final LoginController loginController = LoginController.getInstance();
-
-    private CourseManagementAthleteController() {}
-
-    private static class SingletonManager {
-        private static final CourseManagementAthleteController INSTANCE = new CourseManagementAthleteController();
-    }
-
-    public static CourseManagementAthleteController getInstance() {
-        return CourseManagementAthleteController.SingletonManager.INSTANCE;
-    }
+    private final LoginController loginController = new LoginController();
 
     public void subscribeToACourse(CourseBean courseBean) throws SQLException {
         new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));

@@ -46,7 +46,7 @@ public class CourseOverviewGUIController implements Initializable {
     @FXML private Label sundayTimeText;
     private CourseBean courseBean;
 
-    private final CourseManagementAthleteController courseManagementAthleteController = CourseManagementAthleteController.getInstance();
+    private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
     private AthletesHomeGUIController athletesHomeGUIController;
 
     private void setButtonColor(Button button) {

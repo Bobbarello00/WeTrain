@@ -3,6 +3,7 @@ package viewone.graphical_controllers.launcher;
 
 import controller.LoginController;
 import exception.ElementNotFoundException;
+import exception.InvalidCredentialsException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -46,6 +47,8 @@ public class LoginGUIController extends LauncherGUIController{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InvalidCredentialsException e) {
+            e.alert();
         }
     }
 

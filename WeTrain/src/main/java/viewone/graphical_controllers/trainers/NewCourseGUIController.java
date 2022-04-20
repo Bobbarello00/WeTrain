@@ -58,7 +58,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML private Button intermediateFitnessLevelButton;
     @FXML private Button advancedFitnessLevelButton;
 
-    private final CourseManagementTrainerController courseManagementTrainerController = CourseManagementTrainerController.getInstance();
+    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
 
     @FXML void createButtonAction() throws IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();

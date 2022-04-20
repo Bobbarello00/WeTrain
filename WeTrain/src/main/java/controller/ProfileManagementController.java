@@ -11,17 +11,7 @@ import java.time.LocalDate;
 
 public class ProfileManagementController {
 
-    private final LoginController loginController = LoginController.getInstance();
-
-    private ProfileManagementController() {}
-
-    private static class SingletonManager {
-        private static final ProfileManagementController INSTANCE = new ProfileManagementController();
-    }
-
-    public static ProfileManagementController getInstance() {
-        return ProfileManagementController.SingletonManager.INSTANCE;
-    }
+    private final LoginController loginController = new LoginController();
 
     public void updateAthleteCardInfo(CardInfoBean cardInfoBean) throws SQLException, ExpiredCardException {
         Athlete athlete = (Athlete) loginController.getLoggedUser();

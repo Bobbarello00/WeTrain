@@ -2,16 +2,14 @@ package viewone.graphical_controllers.launcher;
 
 
 import controller.RegistrationController;
-import exception.EmptyFieldsException;
-import exception.InvalidBirthException;
-import exception.InvalidFiscalCodeException;
-import exception.InvalidUserInfoException;
+import exception.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import viewone.bean.CredentialsBean;
 import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -28,42 +26,40 @@ import java.util.ResourceBundle;
 public class MoreInfoGUIController implements Initializable {
     private static final String HOME = "launcher";
     private char gender;
+    private String email;
+    private String password;
 
     private static String selectedProfile;
     @FXML private Button registerButton;
     @FXML private RadioButton maleButton;
     @FXML private RadioButton femaleButton;
-    @FXML private RadioButton nogenderButton;
     @FXML private DatePicker birthPicker;
     @FXML private TextField fcText;
     @FXML private TextField firstNameText;
     @FXML private TextField lastNameText;
     @FXML private TextField usernameText;
 
-    private final RegistrationController registrationController = RegistrationController.getInstance();
+    private final RegistrationController registrationController = new RegistrationController();
 
-    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException {
+    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException {
         if(!Objects.equals(usernameText.getText(), "")
                 & !Objects.equals(firstNameText.getText(), "")
                 & !Objects.equals(lastNameText.getText(), "")
                 & !Objects.equals(fcText.getText(), "")
                 & !Objects.equals(birthPicker.getEditor().getText(), "")){
 
-            UserBean user = new UserBean();
+            UserBean user = new UserBean(
+                    usernameText.getText(),
+                    firstNameText.getText(),
+                    lastNameText.getText(),
+                    fcText.getText(),
+                    birthPicker.getEditor().getText(),
+                    selectedProfile,
+                    gender,
+                    email,
+                    password
+            );
 
-            if(!user.setUsername(usernameText.getText())
-                || !user.setName(firstNameText.getText())
-                || !user.setSurname(lastNameText.getText())){
-                throw new InvalidUserInfoException();
-            }
-            if(!user.setFc(fcText.getText())){
-                throw new InvalidFiscalCodeException();
-            }
-            if(!user.setBirth(birthPicker.getEditor().getText())){
-               throw new InvalidBirthException();
-            }
-            user.setType(selectedProfile);
-            user.setGender(gender);
             registrationController.processUserInfo(user);
         } else {
             throw new EmptyFieldsException();
@@ -84,7 +80,8 @@ public class MoreInfoGUIController implements Initializable {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "Error in our database",
                     "Sorry for the inconvenience.");
-        } catch (InvalidFiscalCodeException | InvalidUserInfoException | InvalidBirthException | EmptyFieldsException e) {
+        } catch (InvalidFiscalCodeException | InvalidUserInfoException | InvalidBirthException | EmptyFieldsException |
+                 InvalidCredentialsException e) {
             e.alert();
         }
     }
@@ -109,12 +106,15 @@ public class MoreInfoGUIController implements Initializable {
         selectedProfile = selectedProfileString;
     }
 
+    public void setCredentialInfo(CredentialsBean bean) {
+        this.email = bean.getEmail();
+        this.password = bean.getPassword();
+    }
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ToggleGroup group = new ToggleGroup();
-        nogenderButton.setToggleGroup(group);
         maleButton.setToggleGroup(group);
         femaleButton.setToggleGroup(group);
-        group.selectToggle(nogenderButton);
         group.selectedToggleProperty().addListener(
                 (observable, oldToggle, newToggle) -> {
                     if(newToggle == maleButton) {
@@ -126,6 +126,7 @@ public class MoreInfoGUIController implements Initializable {
                     }
                 }
         );
+        group.selectToggle(maleButton);
     }
 
     @FXML void keyHandler(KeyEvent event) throws IOException {
@@ -148,8 +149,6 @@ public class MoreInfoGUIController implements Initializable {
                 maleButton.requestFocus();
             }else if(maleButton.isFocused()) {
                 femaleButton.requestFocus();
-            }else if(femaleButton.isFocused()) {
-                nogenderButton.requestFocus();
             }else {
                 firstNameText.requestFocus();
             }

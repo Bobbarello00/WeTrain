@@ -229,16 +229,6 @@ public class Query {
                     "AND FitnessLevel = '%s';",
                     name,
                     fitnessLevel));
-        } else if(Objects.equals(name, "")) {
-            String string = String.format(SELECT_ALL +
-                            "FROM mydb.Course " +
-                            "WHERE FitnessLevel = '%s' " +
-                            "AND NOT EXISTS " +
-                            nestedQuery +
-                            ";",
-                    name,
-                    fitnessLevel);
-            return stmt.executeQuery(string);
         } else {
             return stmt.executeQuery(String.format(SELECT_ALL +
                             "FROM mydb.Course " +
