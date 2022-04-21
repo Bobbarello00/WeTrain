@@ -1,6 +1,8 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.LoginController;
 import controller.SubscriptionToTrainerController;
+import database.dao_classes.UserDAO;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,6 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import model.Athlete;
+import model.Trainer;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +25,7 @@ import viewone.WeTrain;
 import viewone.bean.FcBean;
 import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
+import viewone.engeneering.LoggedUserSingleton;
 import viewone.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
@@ -154,6 +159,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                     }
                 });
         setUserInfoTab();
+
     }
 
 }
