@@ -88,10 +88,16 @@ public class Query {
                 fc));
     }
 
-    public static void updateTrainerAthlete(Statement stmt, Athlete athlete, String fc) throws SQLException {
+    public static void updateTrainerAthlete(Statement stmt, String athleteFc, String trainerFc) throws SQLException {
         stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
                         "SET Trainer = '%s' " +
-                        WHERE_USER,fc,athlete.getFiscalCode()));
+                        WHERE_USER, trainerFc, athleteFc));
+    }
+
+    public static void removeTrainerAthlete(Statement stmt, String athleteFc) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
+                "SET Trainer = NULL " +
+                WHERE_USER, athleteFc));
     }
 
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {

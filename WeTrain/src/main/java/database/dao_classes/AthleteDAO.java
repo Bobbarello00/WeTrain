@@ -94,7 +94,15 @@ public class AthleteDAO {
 
     public void setTrainer(Athlete athlete, String fc) {
         try (Statement stmt = conn.createStatement()) {
-            Query.updateTrainerAthlete(stmt, athlete, fc);
+            Query.updateTrainerAthlete(stmt, athlete.getFiscalCode(), fc);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void removeTrainer(Athlete athlete){
+        try (Statement stmt = conn.createStatement()) {
+            Query.removeTrainerAthlete(stmt, athlete.getFiscalCode());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

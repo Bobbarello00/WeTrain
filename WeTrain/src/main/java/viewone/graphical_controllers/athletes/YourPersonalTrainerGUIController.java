@@ -68,8 +68,13 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     @FXML void unsubscribeButtonAction() {
         setSelectedTrainer(null);
-        hideVBox(trainerBox);
-        showVBox(addTrainerBox);
+        try {
+            subscriptionToTrainerController.unsubscribeFromTrainer();
+            hideVBox(trainerBox);
+            showVBox(addTrainerBox);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML void addTrainerAction() {

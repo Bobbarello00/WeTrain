@@ -76,4 +76,8 @@ public class SubscriptionToTrainerController {
         new AthleteDAO().setTrainer((Athlete) loginController.getLoggedUser(), fc);
     }
 
+    public void unsubscribeFromTrainer() throws SQLException {
+        new AthleteDAO().removeTrainer((Athlete) loginController.getLoggedUser());
+    }
+
 }
