@@ -1,19 +1,22 @@
 package controller;
 
+import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
-import exception.InvalidCredentialsException;
-import exception.InvalidFiscalCodeException;
-import exception.InvalidUserInfoException;
+import exception.*;
+import model.Athlete;
 import model.Trainer;
 import model.User;
 import viewone.bean.*;
 import viewone.engeneering.FatalCaseManager;
+import viewone.engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SubscriptionToTrainerController {
+
+    LoginController loginController = new LoginController();
 
     public UserBean getTrainerUser(FcBean fcBean) throws SQLException {
         Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
@@ -67,6 +70,10 @@ public class SubscriptionToTrainerController {
     public List<UserBean> getTrainersList() throws SQLException{
         List<Trainer> trainerList = new TrainerDAO().loadAllTrainers();
         return setToUserBean(trainerList);
+    }
+
+    public void subscribeToTrainer(String fc) throws SQLException {
+        new AthleteDAO().setTrainer((Athlete) loginController.getLoggedUser(), fc);
     }
 
 }

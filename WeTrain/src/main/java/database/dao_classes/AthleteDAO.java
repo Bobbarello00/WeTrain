@@ -5,6 +5,7 @@ import database.Query;
 import exception.ElementNotFoundException;
 import exception.ExpiredCardException;
 import model.Athlete;
+import model.Trainer;
 
 import java.sql.*;
 import java.time.YearMonth;
@@ -24,30 +25,30 @@ public class AthleteDAO {
     private static final String WORKOUT_PLAN = "WorkoutPlan";
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException{
-        try(Statement stmt = conn.createStatement()){
+    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
             athlete.setCardNumber(cardNumber);
             athlete.setCardExpirationDate(expirationDate);
             Query.updateCardInfoAthlete(stmt, athlete);
         } catch (ExpiredCardException e) {
-            removeCardInfo(athlete.getFiscalCode());
+            throw new RuntimeException(e);
         }
     }
 
     public void removeCardInfo(String fc) throws SQLException {
-        try(Statement stmt = conn.createStatement()){
-            Query.removeCardInfo(stmt, fc);
+        try (Statement stmt = conn.createStatement()) {
+            Query.removeCardInfoAthlete(stmt, fc);
         }
     }
 
     public void saveAthlete(Athlete athlete) throws SQLException {
-        try(Statement stmt = conn.createStatement()){
+        try (Statement stmt = conn.createStatement()) {
             Query.insertAthlete(stmt, athlete);
         }
     }
 
-    public Athlete loadAthlete(String fc) throws SQLException{
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
+    public Athlete loadAthlete(String fc) throws SQLException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
             if (rs.next()) {
                 Athlete athlete = new Athlete(rs.getString(NAME),
                         rs.getString(SURNAME),
@@ -59,12 +60,12 @@ public class AthleteDAO {
                         rs.getString(PASSWORD)
                 );
 
-                try(ResultSet rs1 = Query.loadAthlete(stmt, fc)) {
+                try (ResultSet rs1 = Query.loadAthlete(stmt, fc)) {
                     if (rs1.next()) {
                         athlete.setCardNumber(rs1.getString(CARD_NUMBER));
                         Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
                         YearMonth cardExpirationDate = null;
-                        if(temp!=null){
+                        if (temp != null) {
                             cardExpirationDate = YearMonth.from(temp.toLocalDate());
                         }
                         athlete.setCardExpirationDate(cardExpirationDate);
@@ -79,7 +80,7 @@ public class AthleteDAO {
                         return null;
                     }
                 } catch (ExpiredCardException e) {
-                    Query.removeCardInfo(stmt, fc);
+                    Query.removeCardInfoAthlete(stmt, fc);
                     return loadAthlete(fc);
                 }
             } else {
@@ -88,5 +89,14 @@ public class AthleteDAO {
         }
     }
 
-    public void setCourseAndWorkoutPlan(Athlete athlete){}
+    public void setCourseAndWorkoutPlan(Athlete athlete) {
+    }
+
+    public void setTrainer(Athlete athlete, String fc) {
+        try (Statement stmt = conn.createStatement()) {
+            Query.updateTrainerAthlete(stmt, athlete, fc);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

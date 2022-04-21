@@ -83,18 +83,24 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
     }
 
-    @FXML void subscribeButtonAction() throws URISyntaxException {
-        //TODO EFFETTUARE ISCRIZIONE A TRAINER
-        if(selectedTrainer.getGender() == 'm') {
-            trainerImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
-        }else{
-            trainerImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
+    @FXML void subscribeButtonAction(){
+        try {
+            subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
+            if(selectedTrainer.getGender() == 'm') {
+                trainerImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
+            }else{
+                trainerImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
+            }
+            trainerName.setText(selectedTrainer.getName() + " " + selectedTrainer.getSurname());
+            hideVBox(infoTrainerBox);
+            hideVBox(searchTrainerBox);
+            showVBox(emptyInfoTrainerBox);
+            showVBox(trainerBox);
+        } catch (SQLException | URISyntaxException e) {
+            //TODO
+            throw new RuntimeException(e);
         }
-        trainerName.setText(selectedTrainer.getName() + " " + selectedTrainer.getSurname());
-        hideVBox(infoTrainerBox);
-        hideVBox(searchTrainerBox);
-        showVBox(emptyInfoTrainerBox);
-        showVBox(trainerBox);
+
     }
 
     @FXML void writeEmailButtonAction(ActionEvent event) throws IOException {

@@ -7,7 +7,6 @@ import java.sql.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Query {
 
@@ -81,11 +80,18 @@ public class Query {
                 athlete.getFiscalCode()));
     }
 
-    public static void removeCardInfo(Statement stmt, String fc) throws SQLException {
+
+    public static void removeCardInfoAthlete(Statement stmt, String fc) throws SQLException {
         stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
                         "SET CardNumber = NULL, CardExpirationDate = NULL " +
                 WHERE_USER,
                 fc));
+    }
+
+    public static void updateTrainerAthlete(Statement stmt, Athlete athlete, String fc) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
+                        "SET Trainer = '%s' " +
+                        WHERE_USER,fc,athlete.getFiscalCode()));
     }
 
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
@@ -395,4 +401,6 @@ public class Query {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Subscribe " +
                 "WHERE Course = %s and Athlete = '%s';", course.getId(), athlete.getFiscalCode()));
     }
+
+
 }
