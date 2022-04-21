@@ -14,6 +14,8 @@ import java.util.Objects;
 
 public class RegistrationController {
 
+    private final LoginController loginController = new LoginController();
+
     public void processUserInfo(UserBean bean) throws SQLException {
         if (Objects.equals(bean.getType(), "Athlete")) {
             AthleteDAO athleteDAO = new AthleteDAO();
@@ -25,7 +27,7 @@ public class RegistrationController {
             trainerDAO.saveTrainer(trainer);
         }
         try {
-            LoginController.login(new CredentialsBean(bean.getEmail(), bean.getPassword()));
+            loginController.login(new CredentialsBean(bean.getEmail(), bean.getPassword()));
         } catch (InvalidCredentialsException e) {
             FatalCaseManager.killApplication();
         }

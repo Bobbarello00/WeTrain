@@ -3,25 +3,21 @@ package viewone.graphical_controllers.athletes;
 import controller.CourseManagementAthleteController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
+import viewone.engeneering.AlertFactory;
 
-import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class CourseOverviewGUIController implements Initializable {
+public class CourseOverviewGUIController {
 
     @FXML private Button mondayButton;
     @FXML private Button tuesdayButton;
@@ -44,10 +40,11 @@ public class CourseOverviewGUIController implements Initializable {
     @FXML private Label fridayTimeText;
     @FXML private Label saturdayTimeText;
     @FXML private Label sundayTimeText;
+    @FXML private Button subscribeButton;
     private CourseBean courseBean;
+    private boolean subscribed = false;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
-    private AthletesHomeGUIController athletesHomeGUIController;
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -63,7 +60,7 @@ public class CourseOverviewGUIController implements Initializable {
 
     private void setScheduleLesson(List<LessonBean> lessonBeanList) {
         for(LessonBean lessonBean: lessonBeanList){
-            switch (lessonBean.getLessonDay()){
+            switch (lessonBean.getLessonDay().toLowerCase()){
                 case ("monday") -> setDay(mondayButton, mondayTimeText, lessonBean);
                 case ("tuesday") -> setDay(tuesdayButton, tuesdayTimeText, lessonBean);
                 case ("wednesday") -> setDay(wednesdayButton, wednesdayTimeText, lessonBean);
@@ -86,7 +83,13 @@ public class CourseOverviewGUIController implements Initializable {
         MainPane.getInstance().setDisable(false);
     }
 
-    private void setValue(CourseBean courseBean) {
+    public void setValue(CourseBean courseBean) throws SQLException {
+        if(courseManagementAthleteController.checkSubscription(courseBean)){
+            subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
+            subscribeButton.setText("Unsubscribe");
+            subscribed = true;
+        }
+        this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
         trainerNameText.setText(courseBean.getOwner());
         infoLabel.setText(courseBean.getDescription());
@@ -102,28 +105,23 @@ public class CourseOverviewGUIController implements Initializable {
     }
 
     @FXML public void subscribeButtonAction(ActionEvent event) {
-        if(courseBean != null) {
-            try {
-                courseManagementAthleteController.subscribeToACourse(courseBean);
-                System.out.println("Subscribed!");
-            } catch (SQLIntegrityConstraintViolationException e){
-                AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
-                        "You are already subscribed to this course.",
-                        null);
-            } catch (SQLException e) {
-                e.printStackTrace();
+        if(!subscribed){
+            if (courseBean != null) {
+                try {
+                    courseManagementAthleteController.subscribeToACourse(courseBean);
+                    System.out.println("Subscribed!");
+                } catch (SQLIntegrityConstraintViolationException e) {
+                    AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                            "You are already subscribed to this course.",
+                            null);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
+        } else {
+            
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
-    }
-
-    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        courseBean = AthletesHomeGUIController.getSelectedCourse();
-        if(courseBean != null) {
-            setValue(courseBean);
-        } else {
-            System.out.println("Error in CourseOverviewGUIController: courseBean == null");
-        }
     }
 }

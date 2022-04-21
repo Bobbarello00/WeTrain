@@ -14,6 +14,17 @@ public class CourseManagementAthleteController {
 
     private final LoginController loginController = new LoginController();
 
+    public boolean checkSubscription(CourseBean courseBean) throws SQLException {
+        Athlete athlete = (Athlete) loginController.getLoggedUser();
+        List<Course> courseList = athlete.getCourseList();
+        for(Course course: courseList){
+            if(course.getId() == courseBean.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void subscribeToACourse(CourseBean courseBean) throws SQLException {
         new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));
     }

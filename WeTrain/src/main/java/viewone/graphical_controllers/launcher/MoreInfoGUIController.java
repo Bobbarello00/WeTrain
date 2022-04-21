@@ -28,8 +28,8 @@ public class MoreInfoGUIController implements Initializable {
     private char gender;
     private String email;
     private String password;
+    private String selectedProfile;
 
-    private static String selectedProfile;
     @FXML private Button registerButton;
     @FXML private RadioButton maleButton;
     @FXML private RadioButton femaleButton;
@@ -102,8 +102,8 @@ public class MoreInfoGUIController implements Initializable {
         PageSwitchSimple.switchPage(MainPane.getInstance(), selectedProfile + "Registration", HOME);
     }
 
-    public static void setSelectedProfileString(String selectedProfileString){
-        selectedProfile = selectedProfileString;
+    public void setSelectedProfileString(String selectedProfileString){
+        this.selectedProfile = selectedProfileString;
     }
 
     public void setCredentialInfo(CredentialsBean bean) {

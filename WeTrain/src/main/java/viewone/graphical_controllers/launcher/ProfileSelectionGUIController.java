@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ProfileSelectionGUIController {
     private static final String HOME = "launcher";
@@ -26,13 +27,13 @@ public class ProfileSelectionGUIController {
     }
 
     @FXML protected void athletesButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"AthleteRegistration", HOME);
-        MoreInfoGUIController.setSelectedProfileString("Athlete");
+        RegistrationGUIController registrationGUIController = (RegistrationGUIController) Objects.requireNonNull(PageSwitchSimple.switchPage(MainPane.getInstance(),"AthleteRegistration", HOME));
+        registrationGUIController.setSelectedProfile("Athlete");
     }
 
     @FXML protected void trainersButtonAction() throws IOException {
-        PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainerRegistration", HOME);
-        MoreInfoGUIController.setSelectedProfileString("Trainer");
+        RegistrationGUIController registrationGUIController = (RegistrationGUIController) Objects.requireNonNull(PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainerRegistration", HOME));
+        registrationGUIController.setSelectedProfile("Trainer");
     }
 
     @FXML void buttonColorShiftEntered(MouseEvent event){

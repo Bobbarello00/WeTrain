@@ -12,6 +12,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseEssentialBean;
 import viewone.bean.IdBean;
 import viewone.graphical_controllers.athletes.AthletesHomeGUIController;
+import viewone.graphical_controllers.athletes.CourseOverviewGUIController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -39,8 +40,8 @@ public class ManageList {
     private static void eventList(ListView<CourseEssentialBean> listView, CourseEssentialBean newItem, CourseManagementAthleteController courseManagementAthleteController, Button button) {
         try {
             if(newItem != null) {
-                AthletesHomeGUIController.setSelectedCourse(courseManagementAthleteController.getCourse(new IdBean(newItem.getId())));
-                PageSwitchSizeChange.pageSwitch(button, "CourseOverview", "athletes", false);
+                CourseOverviewGUIController courseOverviewGUIController = (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch(button, "CourseOverview", "athletes", false);
+                courseOverviewGUIController.setValue(courseManagementAthleteController.getCourse(new IdBean(newItem.getId())));
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
         } catch (SQLException e) {

@@ -14,7 +14,6 @@ public class Query {
     private static final String WHERE_USER = "WHERE User = '%s';";
     private static final String LIMIT_10 = "LIMIT 10;";
     private static final String LIMIT_50 = "LIMIT 50;";
-    private static final String PERCENT = "%";
 
     private Query(){}
 

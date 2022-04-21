@@ -34,7 +34,7 @@ public class PageSwitchSizeChange {
         newStage.show();
     }
 
-    public static void pageSwitch(Button button, String page, String path, boolean closeOldStage) throws IOException {
+    public static Object pageSwitch(Button button, String page, String path, boolean closeOldStage) throws IOException {
         Stage newStage;
         BorderPane actualPane = MainPane.getInstance();
         Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));
@@ -52,9 +52,10 @@ public class PageSwitchSizeChange {
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
         pageLauncher(newStage, newScene);
-        PageSwitchSimple.switchPage(pane, page, path);
+        Object controller = PageSwitchSimple.switchPage(pane, page, path);
 
         newStage.show();
+        return controller;
     }
 
     static void pageLauncher(Stage newStage, Scene newScene) {

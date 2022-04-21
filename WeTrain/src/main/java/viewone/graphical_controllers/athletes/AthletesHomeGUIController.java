@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import viewone.bean.CourseBean;
 import viewone.bean.CourseEssentialBean;
 import viewone.engeneering.ManageList;
 import viewone.list_cell_factories.CourseListCellFactory;
@@ -21,17 +20,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private ListView<CourseEssentialBean> popularList;
     @FXML private ListView<Node> feedList;
     @FXML private Button logoutButton;
-    private static CourseBean selectedCourse;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
-
-    public static void setSelectedCourse(CourseBean course) {
-        selectedCourse = course;
-    }
-
-    public static CourseBean getSelectedCourse() {
-        return selectedCourse;
-    }
 
     public void updateList() {
         List<CourseEssentialBean> courseBeanList = null;

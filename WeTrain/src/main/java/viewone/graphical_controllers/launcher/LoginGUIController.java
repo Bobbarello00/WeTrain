@@ -26,13 +26,15 @@ public class LoginGUIController extends LauncherGUIController{
     @FXML private TextField passwField;
     @FXML private TextField passwSField;
 
+    private final LoginController loginController = new LoginController();
+
     @FXML void homeAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI", "launcher");
     }
 
     @FXML void submitButtonAction() {
         try {
-            LoginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
+            loginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
             if(getLoggedUser() instanceof AthleteBean){
                 PageSwitchSizeChange.loadHome(submitButton, "AthletesHome", "athletes");
             } else {

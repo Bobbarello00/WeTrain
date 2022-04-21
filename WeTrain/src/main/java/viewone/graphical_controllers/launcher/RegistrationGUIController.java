@@ -14,6 +14,7 @@ import java.util.Objects;
 
 public class RegistrationGUIController extends LauncherGUIController{
     private static final String HOME = "launcher";
+    private String selectedProfile;
 
     @FXML private TextField emailField;
     @FXML private TextField passwField;
@@ -30,6 +31,7 @@ public class RegistrationGUIController extends LauncherGUIController{
                 CredentialsBean bean = new CredentialsBean(emailField.getText(), passwField.getText());
                 MoreInfoGUIController moreInfoGUIController = (MoreInfoGUIController) Objects.requireNonNull(PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME));
                 moreInfoGUIController.setCredentialInfo(bean);
+                moreInfoGUIController.setSelectedProfileString(selectedProfile);
             }
         } catch (InvalidCredentialsException e) {
             e.alert();
@@ -62,5 +64,9 @@ public class RegistrationGUIController extends LauncherGUIController{
                 emailField.requestFocus();
             }
         }
+    }
+
+    public void setSelectedProfile(String selectedProfile) {
+        this.selectedProfile = selectedProfile;
     }
 }
