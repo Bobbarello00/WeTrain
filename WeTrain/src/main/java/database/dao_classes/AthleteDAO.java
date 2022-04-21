@@ -75,6 +75,9 @@ public class AthleteDAO {
                             athlete.setWorkoutPlan(null);
                         }
                         athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
+                        if(rs1.getString("Trainer") != null) {
+                            athlete.setTrainer(new TrainerDAO().loadTrainer(rs1.getString("Trainer")));
+                        }
                         return athlete;
                     } else {
                         return null;

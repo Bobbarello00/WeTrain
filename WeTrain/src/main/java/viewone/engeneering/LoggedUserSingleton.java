@@ -30,9 +30,26 @@ public class LoggedUserSingleton {
         User usr = loginController.getLoggedUser();
         try{
             if (usr instanceof Athlete) {
-                return new AthleteBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), usr.getGender(), usr.getEmail(), usr.getPassword(), ((Athlete) usr).getCardNumber(), ((Athlete) usr).getCardExpirationDate());
+                return new AthleteBean(usr.getUsername(),
+                        usr.getName(),
+                        usr.getSurname(),
+                        usr.getFiscalCode(),
+                        usr.getDateOfBirth(),
+                        usr.getGender(),
+                        usr.getEmail(),
+                        usr.getPassword(),
+                        ((Athlete) usr).getCardNumber(),
+                        ((Athlete) usr).getCardExpirationDate());
             } else if (usr instanceof Trainer) {
-                return new TrainerBean(usr.getUsername(), usr.getName(), usr.getSurname(), usr.getFiscalCode(), usr.getDateOfBirth(), usr.getGender(), usr.getEmail(), usr.getPassword(), ((Trainer) usr).getIban());
+                return new TrainerBean(usr.getUsername(),
+                        usr.getName(),
+                        usr.getSurname(),
+                        usr.getFiscalCode(),
+                        usr.getDateOfBirth(),
+                        usr.getGender(),
+                        usr.getEmail(),
+                        usr.getPassword(),
+                        ((Trainer) usr).getIban());
             } else {
                 System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
                 FatalCaseManager.killApplication();

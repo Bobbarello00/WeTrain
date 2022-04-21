@@ -18,6 +18,29 @@ public class SubscriptionToTrainerController {
 
     LoginController loginController = new LoginController();
 
+    public TrainerBean getTrainer() throws SQLException {
+        Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
+        if(trainer != null){
+            try {
+                return new TrainerBean(
+                        trainer.getUsername(),
+                        trainer.getName(),
+                        trainer.getSurname(),
+                        trainer.getFiscalCode(),
+                        trainer.getDateOfBirth(),
+                        trainer.getGender(),
+                        trainer.getEmail(),
+                        trainer.getPassword(),
+                        trainer.getIban()
+                );
+            } catch (InvalidUserInfoException | InvalidFiscalCodeException | InvalidCredentialsException e) {
+                FatalCaseManager.killApplication();
+                return null;
+            }
+        }
+        return null;
+    }
+
     public UserBean getTrainerUser(FcBean fcBean) throws SQLException {
         Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
         try {

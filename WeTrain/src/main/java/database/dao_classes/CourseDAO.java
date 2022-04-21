@@ -39,6 +39,12 @@ public class CourseDAO {
         }
     }
 
+    public void unsubscribeFromACourse(int idCourse) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.deleteSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
+        }
+    }
+
     public Course loadCourse(int id) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourse(stmt, id)) {
             if(rs.next()){
@@ -101,7 +107,7 @@ public class CourseDAO {
                         rs.getString(EQUIPMENT)
                 );
             }
-            //TODO è necessario aggiungere le lezioni? Nel caso volessimo visualizzare un corso eseguiremmo loadCourse
+
             course.addAllLessons(new LessonDAO().loadAllLessons(course));
             myList.add(course);
         }while(rs.next());

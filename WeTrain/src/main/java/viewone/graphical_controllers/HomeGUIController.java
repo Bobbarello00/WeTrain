@@ -26,9 +26,10 @@ public abstract class HomeGUIController {
     @FXML protected ImageView userImage;
 
     protected void setUserInfoTab() {
-        usernameText1.setText(getLoggedUser().getUsername());
-        char gender = getLoggedUser().getGender();
-        String type = getLoggedUser().getType();
+        UserBean user = getLoggedUser();
+        usernameText1.setText(user.getUsername());
+        char gender = user.getGender();
+        String type = user.getType();
         if(Objects.equals(type, "Trainer")){
             if(gender == 'm') {
                 setImage("TrainerM");

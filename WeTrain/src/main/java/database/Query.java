@@ -173,7 +173,6 @@ public class Query {
                 "WHERE idCourse = %s;", id));
     }
 
-    //TODO da testare
     public static ResultSet loadPopularCourse(Statement stmt) throws SQLException {
         return stmt.executeQuery("SELECT Course.* " +
                 "FROM mydb.Course join mydb.Subscribe on Course.idCourse = Subscribe.Course " +
@@ -402,10 +401,11 @@ public class Query {
                 athlete.getFiscalCode()));
     }
 
-    public static int deleteSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
+    public static int deleteSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Subscribe " +
-                "WHERE Course = %s and Athlete = '%s';", course.getId(), athlete.getFiscalCode()));
+                "WHERE Course = %s and Athlete = '%s';",
+                idCourse,
+                athleteFc));
     }
-
 
 }

@@ -29,6 +29,10 @@ public class CourseManagementAthleteController {
         new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));
     }
 
+    public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException {
+        new CourseDAO().unsubscribeFromACourse(courseBean.getId());
+    }
+
     public List<CourseEssentialBean> getCourseList() throws SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
         return getBeanList(courseList);

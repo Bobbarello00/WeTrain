@@ -106,7 +106,7 @@ public class CourseOverviewGUIController {
 
     @FXML public void subscribeButtonAction(ActionEvent event) {
         if(!subscribed){
-            if (courseBean != null) {
+            if(courseBean != null) {
                 try {
                     courseManagementAthleteController.subscribeToACourse(courseBean);
                     System.out.println("Subscribed!");
@@ -119,7 +119,11 @@ public class CourseOverviewGUIController {
                 }
             }
         } else {
-            
+            try {
+                courseManagementAthleteController.unsubscribeFromACourse(courseBean);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

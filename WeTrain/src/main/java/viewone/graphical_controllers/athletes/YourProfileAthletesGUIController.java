@@ -31,6 +31,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     @FXML private TextField newCardNumber;
     @FXML private TextField newExpirationDate;
 
+    private AthleteBean athlete;
+
     private final ProfileManagementController profileManagementController = new ProfileManagementController();
 
     @FXML private void editConfirmation() {
@@ -74,11 +76,11 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        UserBean usr = getLoggedUser();
-        emailLabel.setText("Email: " + usr.getEmail());
-        firstNameLabel.setText(usr.getName());
-        lastNameLabel.setText(usr.getSurname());
-        fiscalCodeLabel.setText("FiscalCode: " + usr.getFiscalCode());
+        athlete = (AthleteBean) getLoggedUser();
+        emailLabel.setText("Email: " + athlete.getEmail());
+        firstNameLabel.setText(athlete.getName());
+        lastNameLabel.setText(athlete.getSurname());
+        fiscalCodeLabel.setText("FiscalCode: " + athlete.getFiscalCode());
         try {
             setPaymentMethodLabel();
         } catch (SQLException e) {
@@ -88,7 +90,6 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     private void setPaymentMethodLabel() throws SQLException {
-        AthleteBean athlete = (AthleteBean) getLoggedUser();
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
             paymentMethodLabel.setText("Card: Not inserted yet");
         } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
