@@ -11,8 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
-import viewone.bean.UserBean;
 import viewone.engeneering.FatalCaseManager;
+import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URL;
@@ -43,6 +43,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 cardInfoBean.setCardNumber(newCardNumber.getText());
                 cardInfoBean.setExpirationDate(newExpirationDate.getText());
                 profileManagementController.updateAthleteCardInfo(cardInfoBean);
+                athlete = (AthleteBean) LoggedUserSingleton.getInstance();
                 editPane.setDisable(true);
                 editPane.setVisible(false);
                 setPaymentMethodLabel();
