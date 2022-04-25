@@ -3,7 +3,6 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import exception.ExpiredCardException;
 import model.Athlete;
-import model.User;
 import viewone.bean.CardInfoBean;
 
 import java.sql.SQLException;

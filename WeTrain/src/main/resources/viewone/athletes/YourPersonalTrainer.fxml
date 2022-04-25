@@ -45,7 +45,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="100.0" />
          </padding>
          <ImageView fx:id="trainerImage" fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true" scaleX="1.25" scaleY="1.25">
-            <Image url="@../images/Trainer.png" />
+            <Image url="@../images/person.png" />
          </ImageView>
          <Label fx:id="trainerName" scaleX="1.5" scaleY="1.5" text="Name of the Trainer" />
          <Button mnemonicParsing="false" onAction="#unsubscribeButtonAction" prefWidth="140.0" style="-fx-background-color: rgb(200, 0, 0);" text="Unsubscribe" />
