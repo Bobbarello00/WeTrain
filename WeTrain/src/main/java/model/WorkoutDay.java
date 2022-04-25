@@ -4,18 +4,14 @@ import java.util.List;
 
 public class WorkoutDay {
     private Integer id;
-    private final WorkoutPlan workoutPlan;
     private String day;
+    private String info;
     private List<Exercise> exerciseList;
 
-    public WorkoutDay(int id, String day,WorkoutPlan workoutPlan){
+    public WorkoutDay(int id, String day, String info){
         this.id = id;
         this.day = day;
-        this.workoutPlan = workoutPlan;
-    }
-
-    public WorkoutDay(WorkoutPlan workoutPlan){
-        this.workoutPlan = workoutPlan;
+        this.info = info;
     }
 
     public List<Exercise> getExerciseList(){
@@ -38,15 +34,15 @@ public class WorkoutDay {
         return id;
     }
 
-    public WorkoutPlan getWorkoutPlan(){
-        return workoutPlan;
-    }
-
     public String getDay() {
         return day;
     }
 
     public void setDay(String day) {
         this.day = day;
+    }
+
+    public String getInfo() {
+        return info;
     }
 }

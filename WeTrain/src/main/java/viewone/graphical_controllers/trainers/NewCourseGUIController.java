@@ -78,14 +78,10 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
 
     private List<LessonBean> getLessonDay() throws TimeNotInsertedException {
         List<LessonBean> lessonBeanList = new ArrayList<>();
-        List<String> dayList = new ArrayList<>();
-        for(int i = 1; i <= 7; i++) {
-            dayList.add(DayOfWeek.of(i).name());
-        }
         for (int i = 0; i < 6; i++) {
             if (toggled[i]) {
                 lessonBeanList.add(new LessonBean(
-                        dayList.get(i),
+                        DayOfWeek.of(i+1).name(),
                         timeSchedulerGUIControllerList.get(i).getStartTime(),
                         timeSchedulerGUIControllerList.get(i).getEndTime()));
             }

@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
-    public final DaysOfTheWeekController daysController = new DaysOfTheWeekController();
+    public final DaysOfTheWeekButtonController daysController = new DaysOfTheWeekButtonController();
 
     @FXML private ListView<Node> exercisesList;
     @FXML private ListView<Node> exercisesSelectedList;
