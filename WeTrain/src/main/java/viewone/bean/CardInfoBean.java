@@ -22,10 +22,9 @@ public class CardInfoBean {
             this.expirationDate = null;
         } else if(cardNumber == null | expirationDate == null){
             FatalCaseManager.killApplication();
-        }
-        else {
+        } else {
             setCardNumber(cardNumber);
-            setExpirationDate(expirationDate.getMonthValue() + "/" + expirationDate.getYear());
+            this.expirationDate = expirationDate;
         }
     }
 

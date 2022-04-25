@@ -159,7 +159,6 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                     }
                 });
         setUserInfoTab();
-
     }
 
 }
