@@ -35,12 +35,12 @@ public class CourseManagementAthleteController {
 
     public List<CourseEssentialBean> getCourseList() throws SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
-        return getBeanList(courseList);
+        return getCourseEssentialBeanList(courseList);
     }
 
     public List<CourseEssentialBean> getPopularCourseList() throws SQLException {
         List<Course> popularCourses = new CourseDAO().loadPopularCourses();
-        return getBeanList(popularCourses);
+        return getCourseEssentialBeanList(popularCourses);
     }
 
     public CourseBean getCourse(IdBean bean) throws SQLException {
@@ -64,11 +64,10 @@ public class CourseManagementAthleteController {
         } else {
             courseBean.setLessonBeanList(null);
         }
-
         return courseBean;
     }
 
-    private List<CourseEssentialBean> getBeanList(List<Course> courseList) {
+    private List<CourseEssentialBean> getCourseEssentialBeanList(List<Course> courseList) {
         List<CourseEssentialBean> beanList = new ArrayList<>();
         for(Course course : courseList) {
             beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
@@ -78,6 +77,6 @@ public class CourseManagementAthleteController {
 
     public List<CourseEssentialBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException {
         List<Course> courseList = new CourseDAO().searchCourses(courseSearchBean.getName(), courseSearchBean.getFitnessLevel(), courseSearchBean.getDays());
-        return getBeanList(courseList);
+        return getCourseEssentialBeanList(courseList);
     }
 }

@@ -42,11 +42,14 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML private Button logoutButton;
     @FXML private TextField trainerNameSearch;
     @FXML private Button searchButton;
+    @FXML private Button subscribeButton;
     @FXML private ListView<UserBean> trainersList;
     @FXML private Label infoName;
-    @FXML private Label infoBirth;
     @FXML private Label infoSurname;
     @FXML private Label infoUsername;
+    @FXML private Label infoBirth;
+    @FXML private Label infoEmail;
+    @FXML private Label infoIban;
     @FXML private VBox infoTrainerBox;
     @FXML private VBox emptyInfoTrainerBox;
 
@@ -71,6 +74,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         setSelectedTrainer(null);
         try {
             subscriptionToTrainerController.unsubscribeFromTrainer();
+            subscribeButton.setDisable(false);
+            subscribeButton.setVisible(true);
             hideVBox(trainerBox);
             hideVBox(infoTrainerBox);
             showVBox(emptyInfoTrainerBox);
@@ -95,6 +100,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         try {
             subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
             updateTrainerBox();
+            subscribeButton.setDisable(true);
+            subscribeButton.setVisible(false);
             hideVBox(searchTrainerBox);
             showVBox(trainerBox);
         } catch (SQLException | URISyntaxException e) {
@@ -131,12 +138,14 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
     private void updateInfoTrainerBox() {
+        infoName.setText("Name: " + selectedTrainer.getName());
+        infoSurname.setText("Surname: " + selectedTrainer.getSurname());
+        infoUsername.setText("Username: " + selectedTrainer.getUsername());
+        infoBirth.setText("Birth: " + selectedTrainer.getBirth());
+        infoEmail.setText("Email: " + selectedTrainer.getEmail());
+        infoIban.setText("Iban: " + selectedTrainer.getFiscalCode());
         hideVBox(emptyInfoTrainerBox);
         showVBox(infoTrainerBox);
-        infoUsername.setText(selectedTrainer.getUsername());
-        infoName.setText(selectedTrainer.getName());
-        infoSurname.setText(selectedTrainer.getSurname());
-        infoBirth.setText(String.valueOf(selectedTrainer.getBirth()));
     }
 
     private void setTrainer(){
@@ -146,6 +155,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                 setSelectedTrainer(trainerBean);
                 updateInfoTrainerBox();
                 updateTrainerBox();
+                subscribeButton.setDisable(true);
+                subscribeButton.setVisible(false);
                 hideVBox(addTrainerBox);
                 showVBox(trainerBox);
             }else {
