@@ -108,7 +108,7 @@
             <Label fx:id="infoUsername" scaleX="1.5" scaleY="1.5" text="Username" />
             <Label fx:id="infoBirth" scaleX="1.5" scaleY="1.5" text="Birth" />
             <Label fx:id="infoEmail" layoutX="256.0" layoutY="392.0" scaleX="1.5" scaleY="1.5" text="Email" />
-            <Label fx:id="infoIban" layoutX="256.0" layoutY="450.0" scaleX="1.5" scaleY="1.5" text="Iban" />
+            <Label fx:id="infoFiscalCode" layoutX="256.0" layoutY="450.0" scaleX="1.5" scaleY="1.5" text="Iban" />
             <Button fx:id="subscribeButton" mnemonicParsing="false" onAction="#subscribeButtonAction" prefWidth="140.0" text="Subscribe">
                <VBox.margin>
                   <Insets />

@@ -49,7 +49,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML private Label infoUsername;
     @FXML private Label infoBirth;
     @FXML private Label infoEmail;
-    @FXML private Label infoIban;
+    @FXML private Label infoFiscalCode;
     @FXML private VBox infoTrainerBox;
     @FXML private VBox emptyInfoTrainerBox;
 
@@ -143,7 +143,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         infoUsername.setText("Username: " + selectedTrainer.getUsername());
         infoBirth.setText("Birth: " + selectedTrainer.getBirth());
         infoEmail.setText("Email: " + selectedTrainer.getEmail());
-        infoIban.setText("Iban: " + selectedTrainer.getFiscalCode());
+        infoFiscalCode.setText("FiscalCode: " + selectedTrainer.getFiscalCode());
         hideVBox(emptyInfoTrainerBox);
         showVBox(infoTrainerBox);
     }
