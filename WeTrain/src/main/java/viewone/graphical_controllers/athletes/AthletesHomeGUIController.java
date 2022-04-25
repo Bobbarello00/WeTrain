@@ -6,7 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import viewone.bean.CourseEssentialBean;
+import viewone.bean.CourseBean;
 import viewone.engeneering.ManageList;
 import viewone.list_cell_factories.CourseListCellFactory;
 
@@ -16,16 +16,16 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
-    @FXML private ListView<CourseEssentialBean> courseList;
-    @FXML private ListView<CourseEssentialBean> popularList;
+    @FXML private ListView<CourseBean> courseList;
+    @FXML private ListView<CourseBean> popularList;
     @FXML private ListView<Node> feedList;
     @FXML private Button logoutButton;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
 
     public void updateList() {
-        List<CourseEssentialBean> courseBeanList = null;
-        List<CourseEssentialBean> popularBeanList = null;
+        List<CourseBean> courseBeanList = null;
+        List<CourseBean> popularBeanList = null;
         try {
             courseBeanList = courseManagementAthleteController.getCourseList();
             popularBeanList = courseManagementAthleteController.getPopularCourseList();

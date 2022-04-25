@@ -3,7 +3,7 @@ package viewone.bean;
 import java.util.List;
 
 public class WorkoutPlanBean {
-    private int id;
+    private final int id;
     private List<WorkoutDayBean> workoutDayList;
 
     public WorkoutPlanBean(int id) {

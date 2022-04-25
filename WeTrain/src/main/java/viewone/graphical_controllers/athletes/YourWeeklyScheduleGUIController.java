@@ -1,12 +1,15 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import controller.WorkoutPlanController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import model.WorkoutPlan;
 import viewone.bean.CourseBean;
+import viewone.bean.WorkoutPlanBean;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,6 +36,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
     @FXML private Text sundayText;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final WorkoutPlanController workoutPlanController = new WorkoutPlanController();
 
     private void colorShift(Button button, Text text){
         if(previousButton!=null){
@@ -50,6 +54,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
         //TODO Possiamo togliere CourseEssentialBean?
         //List<CourseBean> courseBeanList = courseManagementAthleteController.getCourseList();
+        WorkoutPlanBean workoutPlanBean = workoutPlanController.getWorkoutPlan();
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

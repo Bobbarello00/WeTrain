@@ -33,14 +33,14 @@ public class CourseManagementAthleteController {
         new CourseDAO().unsubscribeFromACourse(courseBean.getId());
     }
 
-    public List<CourseEssentialBean> getCourseList() throws SQLException {
+    public List<CourseBean> getCourseList() throws SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
-        return getCourseEssentialBeanList(courseList);
+        return getCourseBeanList(courseList);
     }
 
-    public List<CourseEssentialBean> getPopularCourseList() throws SQLException {
+    public List<CourseBean> getPopularCourseList() throws SQLException {
         List<Course> popularCourses = new CourseDAO().loadPopularCourses();
-        return getCourseEssentialBeanList(popularCourses);
+        return getCourseBeanList(popularCourses);
     }
 
     public CourseBean getCourse(IdBean bean) throws SQLException {
@@ -67,16 +67,32 @@ public class CourseManagementAthleteController {
         return courseBean;
     }
 
-    private List<CourseEssentialBean> getCourseEssentialBeanList(List<Course> courseList) {
-        List<CourseEssentialBean> beanList = new ArrayList<>();
+    private List<CourseBean> getCourseBeanList(List<Course> courseList) {
+        List<CourseBean> beanList = new ArrayList<>();
         for(Course course : courseList) {
-            beanList.add(new CourseEssentialBean(course.getId(), course.getName(),  course.getOwner().getName() + " " + course.getOwner().getSurname()));
+            CourseBean courseBean = new CourseBean(
+                    course.getId(),
+                    course.getName(),
+                    course.getDescription(),
+                    course.getFitnessLevel(),
+                    course.getOwner().getName() + " " + course.getOwner().getSurname(),
+                    course.getEquipment());
+
+            List<LessonBean> lessonBeanList = new ArrayList<>();
+            for(Lesson lesson: course.getLessonList()){
+                lessonBeanList.add(new LessonBean(
+                        lesson.getLessonDay(),
+                        lesson.getLessonStartTime(),
+                        lesson.getLessonEndTime()));
+            }
+            courseBean.setLessonBeanList(lessonBeanList);
+            beanList.add(courseBean);
         }
         return beanList;
     }
 
-    public List<CourseEssentialBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException {
+    public List<CourseBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException {
         List<Course> courseList = new CourseDAO().searchCourses(courseSearchBean.getName(), courseSearchBean.getFitnessLevel(), courseSearchBean.getDays());
-        return getCourseEssentialBeanList(courseList);
+        return getCourseBeanList(courseList);
     }
 }

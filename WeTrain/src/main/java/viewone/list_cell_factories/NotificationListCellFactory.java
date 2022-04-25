@@ -1,7 +1,5 @@
 package viewone.list_cell_factories;
 
-import viewone.bean.CourseEssentialBean;
-
 /*
 public class NotificationListCellFactory extends ListCell<NotificationBean>{
 

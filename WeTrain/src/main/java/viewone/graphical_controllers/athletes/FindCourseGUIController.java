@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import viewone.bean.CourseEssentialBean;
+import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
 import viewone.engeneering.ManageList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
@@ -29,7 +29,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @FXML private TextField courseNameText;
     @FXML private Button fridayButton;
     @FXML private Button mondayButton;
-    @FXML private ListView<CourseEssentialBean> resultList;
+    @FXML private ListView<CourseBean> resultList;
     @FXML private Button logoutButton;
     @FXML private Button saturdayButton;
     @FXML private Button searchButton;
@@ -78,7 +78,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         String courseName = courseNameText.getText();
 
-        List<CourseEssentialBean> courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
+        List<CourseBean> courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
                 courseName,
                 fitnessLevel,
                 selectedDays

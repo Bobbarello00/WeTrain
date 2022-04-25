@@ -2,22 +2,28 @@ package viewone.bean;
 
 import java.util.List;
 
-public class CourseBean  extends CourseEssentialBean{
+public class CourseBean {
 
+    private int id;
+    private String name;
+    private String owner;
     private String description;
     private String fitnessLevel;
     private String equipment;
     private List<LessonBean> lessonBeanList;
 
     public CourseBean(int id, String name, String description, String fitnessLevel, String owner, String equipment){
-        super(id, name, owner);
+        this.id = id;
+        this.name = name;
+        this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
         this.equipment = equipment;
     }
 
     public CourseBean(String name, String description, String fitnessLevel, String owner, String equipment){
-        super(name, owner);
+        this.name = name;
+        this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
         this.equipment = equipment;
@@ -53,5 +59,29 @@ public class CourseBean  extends CourseEssentialBean{
 
     public void setFitnessLevel(String fitnessLevel) {
         this.fitnessLevel = fitnessLevel;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

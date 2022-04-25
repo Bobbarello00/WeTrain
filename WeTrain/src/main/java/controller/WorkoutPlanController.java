@@ -25,9 +25,19 @@ public class WorkoutPlanController {
         List<WorkoutDayBean> workoutDayBeanList = new ArrayList<>();
         for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
             WorkoutDayBean workoutDayBean = new WorkoutDayBean();
+            List<ExerciseBean> exerciseBeanList = new ArrayList<>();
             for(Exercise exercise: workoutDay.getExerciseList()){
-                ExerciseBean exerciseBean = new ExerciseBean();
+                ExerciseBean exerciseBean = new ExerciseBean(
+                        exercise.getId(),
+                        exercise.getName(),
+                        exercise.getInfo()
+                );
+                exerciseBeanList.add(exerciseBean);
             }
+            workoutDayBean.setExerciseBeanList(exerciseBeanList);
+            workoutDayBeanList.add(workoutDayBean);
         }
+        workoutPlanBean.setWorkoutDayList(workoutDayBeanList);
+        return workoutPlanBean;
     }
 }
