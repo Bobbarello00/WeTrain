@@ -5,10 +5,10 @@ import java.util.List;
 public class WorkoutDay {
     private Integer id;
     private final WorkoutPlan workoutPlan;
-    private int day;
+    private String day;
     private List<Exercise> exerciseList;
 
-    public WorkoutDay(int id, int day,WorkoutPlan workoutPlan){
+    public WorkoutDay(int id, String day,WorkoutPlan workoutPlan){
         this.id = id;
         this.day = day;
         this.workoutPlan = workoutPlan;
@@ -42,11 +42,11 @@ public class WorkoutDay {
         return workoutPlan;
     }
 
-    public int getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
 }

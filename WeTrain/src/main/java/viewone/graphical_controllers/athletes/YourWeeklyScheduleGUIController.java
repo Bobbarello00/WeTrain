@@ -6,20 +6,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
-import model.WorkoutPlan;
-import viewone.bean.CourseBean;
-import viewone.bean.WorkoutPlanBean;
+import viewone.bean.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.time.DayOfWeek;
+import java.util.*;
 
 public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private Button previousButton;
     private Text previousText;
+    @FXML private Label infoLabel;
     @FXML private Button mondayButton;
     @FXML private Text mondayText;
     @FXML private Button tuesdayButton;
@@ -34,6 +34,8 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
     @FXML private Text saturdayText;
     @FXML private Button sundayButton;
     @FXML private Text sundayText;
+
+    private List<Button> buttonList;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
     private final WorkoutPlanController workoutPlanController = new WorkoutPlanController();
@@ -50,15 +52,58 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
         previousButton = button;
         previousText = text;
     }
+
+    public DayOfWeek getDay(ActionEvent event) {
+        for(int i = 0; i < 7; i++) {
+            if(Objects.equals(buttonList.get(i), event.getSource())) {
+                return DayOfWeek.of(i+1);
+            }
+        }
+        return null;
+    }
+
     @FXML void dayButtonAction(ActionEvent event) throws SQLException {
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
-        //TODO Possiamo togliere CourseEssentialBean?
-        //List<CourseBean> courseBeanList = courseManagementAthleteController.getCourseList();
+        List<CourseBean> courseBeanList = courseManagementAthleteController.getCourseList();
         WorkoutPlanBean workoutPlanBean = workoutPlanController.getWorkoutPlan();
+        StringBuilder infoText = new StringBuilder();
+        String day = Objects.requireNonNull(getDay(event)).name();
+
+        if(courseBeanList.size() != 0){
+            infoText.append("You have this lessons:\n");
+            for(CourseBean course: courseBeanList){
+                for(LessonBean lesson: course.getLessonBeanList()){
+                    if(Objects.equals(lesson.getLessonDay(), day)) {
+                        infoText.append("-" + course.getName() + " " + lesson.getLessonStartTime() + "/" + lesson.getLessonEndTime() + "\n");
+                    }
+                }
+            }
+        }
+
+        infoText.append("\n\n\n");
+        if(workoutPlanBean != null) {
+            for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
+                if(Objects.equals(workoutDayBean.getDay(), day)){
+                    infoText.append("You have this exercise in your workout plan:\n");
+                    for(ExerciseBean exercise: workoutDayBean.getExerciseBeanList()){
+                        infoText.append("-" + exercise.getName() + "\n");
+                    }
+                }
+            }
+        }
+        infoLabel.setText(infoText.toString());
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         setUserInfoTab();
+        buttonList = new ArrayList<>(Arrays.asList(
+                mondayButton,
+                tuesdayButton,
+                wednesdayButton,
+                thursdayButton,
+                fridayButton,
+                saturdayButton,
+                sundayButton));
     }
 
 }
