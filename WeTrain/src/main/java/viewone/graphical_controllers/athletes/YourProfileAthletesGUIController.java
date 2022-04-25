@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
+import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
 import javafx.fxml.FXML;
@@ -55,7 +56,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 //TODO GESTIONE EXCEPTION
             } catch (ExpiredCardException | InvalidCardInfoException e) {
                 e.alert();
-                e.printStackTrace();
+            } catch (DBConnectionFailedException e) {
+                e.alert();
             }
         }
     }
@@ -94,7 +96,11 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
             paymentMethodLabel.setText("Card: Not inserted yet");
         } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
-            FatalCaseManager.erasePaymentMethod();
+            try {
+                FatalCaseManager.erasePaymentMethod();
+            } catch (DBConnectionFailedException e) {
+                e.alert();
+            }
         } else{
             String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
             paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);

@@ -41,7 +41,7 @@ public class MoreInfoGUIController implements Initializable {
 
     private final RegistrationController registrationController = new RegistrationController();
 
-    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException {
+    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException, DBConnectionFailedException {
         if(!Objects.equals(usernameText.getText(), "")
                 & !Objects.equals(firstNameText.getText(), "")
                 & !Objects.equals(lastNameText.getText(), "")
@@ -59,7 +59,6 @@ public class MoreInfoGUIController implements Initializable {
                     email,
                     password
             );
-
             registrationController.processUserInfo(user);
         } else {
             throw new EmptyFieldsException();
@@ -82,6 +81,8 @@ public class MoreInfoGUIController implements Initializable {
                     "Sorry for the inconvenience.");
         } catch (InvalidFiscalCodeException | InvalidUserInfoException | InvalidBirthException | EmptyFieldsException |
                  InvalidCredentialsException e) {
+            e.alert();
+        } catch (DBConnectionFailedException e) {
             e.alert();
         }
     }

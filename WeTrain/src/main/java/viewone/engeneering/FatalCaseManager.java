@@ -2,6 +2,7 @@ package viewone.engeneering;
 
 import controller.LoginController;
 import controller.ProfileManagementController;
+import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.User;
 
@@ -21,7 +22,7 @@ public class FatalCaseManager {
         System.exit(1);
     }
 
-    public static void erasePaymentMethod() throws SQLException {
+    public static void erasePaymentMethod() throws SQLException, DBConnectionFailedException {
         User user = loginController.getLoggedUser();
         if(user instanceof Athlete) {
             profileManagementController.removeCardInfo((Athlete) user);

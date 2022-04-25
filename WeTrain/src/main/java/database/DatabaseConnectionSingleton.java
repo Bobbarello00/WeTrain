@@ -1,5 +1,7 @@
 package database;
 
+import exception.DBConnectionFailedException;
+
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,7 +31,10 @@ public class DatabaseConnectionSingleton {
         }
     }
 
-    public Connection getConn(){
+    public Connection getConn() throws DBConnectionFailedException {
+        if(this.conn == null){
+            throw new DBConnectionFailedException();
+        }
         return conn;
     }
 

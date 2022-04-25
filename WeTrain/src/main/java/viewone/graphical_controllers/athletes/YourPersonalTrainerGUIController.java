@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.SubscriptionToTrainerController;
+import exception.DBConnectionFailedException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -82,6 +83,9 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             showVBox(addTrainerBox);
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+            logoutButton.fire();
         }
     }
 
@@ -107,6 +111,9 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException | URISyntaxException e) {
             //TODO
             throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+            logoutButton.fire();
         }
 
     }

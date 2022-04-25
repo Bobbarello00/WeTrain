@@ -95,11 +95,11 @@ public class SubscriptionToTrainerController {
         return setToUserBean(trainerList);
     }
 
-    public void subscribeToTrainer(String fc) throws SQLException {
+    public void subscribeToTrainer(String fc) throws SQLException, DBConnectionFailedException {
         new AthleteDAO().setTrainer((Athlete) loginController.getLoggedUser(), fc);
     }
 
-    public void unsubscribeFromTrainer() throws SQLException {
+    public void unsubscribeFromTrainer() throws SQLException, DBConnectionFailedException {
         new AthleteDAO().removeTrainer((Athlete) loginController.getLoggedUser());
     }
 

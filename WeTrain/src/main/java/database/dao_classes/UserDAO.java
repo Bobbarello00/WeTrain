@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import model.Athlete;
 import model.Trainer;
@@ -15,6 +16,9 @@ import java.sql.Statement;
 
 public class UserDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+
+    public UserDAO() throws DBConnectionFailedException {
+    }
 
     public User loadUser(String email, String password) throws SQLException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, email, password)) {

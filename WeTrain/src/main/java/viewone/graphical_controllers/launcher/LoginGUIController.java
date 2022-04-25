@@ -2,20 +2,20 @@ package viewone.graphical_controllers.launcher;
 
 
 import controller.LoginController;
+import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import exception.InvalidCredentialsException;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
+import viewone.engeneering.AlertFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,6 +50,8 @@ public class LoginGUIController extends LauncherGUIController{
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidCredentialsException e) {
+            e.alert();
+        } catch (DBConnectionFailedException e) {
             e.alert();
         }
     }
