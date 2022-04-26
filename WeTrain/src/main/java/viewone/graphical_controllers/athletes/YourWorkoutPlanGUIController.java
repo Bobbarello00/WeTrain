@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.WorkoutPlanController;
+import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,6 +52,8 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
             workoutPlanBean = workoutPlanController.getWorkoutPlan();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
     }
 }

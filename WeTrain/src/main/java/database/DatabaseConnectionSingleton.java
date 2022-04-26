@@ -3,8 +3,13 @@ package database;
 import exception.DBConnectionFailedException;
 
 import java.io.FileInputStream;
+import com.mysql.cj.exceptions.CJCommunicationsException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnectionSingleton {
@@ -12,10 +17,10 @@ public class DatabaseConnectionSingleton {
     private static final DatabaseConnectionSingleton dbConn = new DatabaseConnectionSingleton();
     private Connection conn;
 
-    private DatabaseConnectionSingleton() {
+    private DatabaseConnectionSingleton(){
         try(FileInputStream fileInputStream = new FileInputStream("src/main/java/database/db.properties")) {
 
-            Properties prop = new Properties() ;
+            Properties prop = new Properties();
             prop.load(fileInputStream);
 
             String username = prop.getProperty("dbUserName");
@@ -26,8 +31,8 @@ public class DatabaseConnectionSingleton {
                     url,
                     username,
                     password);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (CJCommunicationsException | SQLException| IOException e) {
+            this.conn = null;
         }
     }
 

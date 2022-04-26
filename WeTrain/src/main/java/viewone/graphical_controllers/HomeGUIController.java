@@ -1,5 +1,6 @@
 package viewone.graphical_controllers;
 
+import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
 import javafx.scene.image.Image;
@@ -63,6 +64,8 @@ public abstract class HomeGUIController {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
         return null;
     }

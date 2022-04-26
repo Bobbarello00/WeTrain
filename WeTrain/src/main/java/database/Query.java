@@ -1,5 +1,6 @@
 package database;
 
+import exception.DBConnectionFailedException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -193,7 +194,7 @@ public class Query {
                 "WHERE Trainer = '%s';", trainer.getFiscalCode()));
     }
 
-    public static int insertCourse(Course course) throws SQLException {
+    public static int insertCourse(Course course) throws SQLException, DBConnectionFailedException {
         try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
                         "VALUES ('%s', '%s', '%s', '%s', '%s');",
                 course.getName(),
@@ -339,7 +340,7 @@ public class Query {
                 exercise.getId()));
     }
 
-    public static int insertWorkoutDay(int workoutPlanKey) throws SQLException{
+    public static int insertWorkoutDay(int workoutPlanKey) throws SQLException, DBConnectionFailedException {
         try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s);", workoutPlanKey), Statement.RETURN_GENERATED_KEYS)) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
@@ -368,7 +369,7 @@ public class Query {
                 "WHERE idWorkoutDay = %s;", workoutDay.getId()));
     }
 
-    public static int insertWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException {
+    public static int insertWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException, DBConnectionFailedException {
 
         try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS)) {
             if(statement.executeUpdate() == 0){

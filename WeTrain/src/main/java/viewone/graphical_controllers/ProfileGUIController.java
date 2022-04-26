@@ -1,5 +1,6 @@
 package viewone.graphical_controllers;
 
+import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
 import viewone.engeneering.LoggedUserSingleton;
@@ -33,6 +34,8 @@ public abstract class ProfileGUIController {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
         return null;
     }

@@ -9,6 +9,7 @@ module com.wetrain.wetrain {
     requires org.kordamp.bootstrapfx.core;
     requires org.jetbrains.annotations;
     requires java.sql;
+    requires mysql.connector;
 
     exports viewone.graphical_controllers;
     opens viewone.graphical_controllers to javafx.fxml;

@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
+import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
 import viewone.PasswordBehaviorActivation;
@@ -42,7 +43,9 @@ public abstract class LauncherGUIController implements Initializable {
         } catch (ExpiredCardException | InvalidCardInfoException | SQLException e){
             e.printStackTrace();
             FatalCaseManager.killApplication();
-            return null;
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
+        return null;
     }
 }

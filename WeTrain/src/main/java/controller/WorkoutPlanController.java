@@ -1,5 +1,6 @@
 package controller;
 
+import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Exercise;
 import model.WorkoutDay;
@@ -16,7 +17,7 @@ public class WorkoutPlanController {
 
     private final LoginController loginController = new LoginController();
 
-    public WorkoutPlanBean getWorkoutPlan() throws SQLException {
+    public WorkoutPlanBean getWorkoutPlan() throws SQLException, DBConnectionFailedException {
         WorkoutPlan workoutPlan = ((Athlete) loginController.getLoggedUser()).getWorkoutPlan();
         if(workoutPlan == null) {
             return null;

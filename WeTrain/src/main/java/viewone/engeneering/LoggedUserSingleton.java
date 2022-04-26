@@ -26,7 +26,7 @@ public class LoggedUserSingleton {
         LoggedUserSingleton.fc = fc;
     }
 
-    public static UserBean getInstance() throws SQLException, ExpiredCardException, InvalidCardInfoException {
+    public static UserBean getInstance() throws SQLException, ExpiredCardException, InvalidCardInfoException, DBConnectionFailedException {
         User usr = loginController.getLoggedUser();
         try{
             if (usr instanceof Athlete) {
