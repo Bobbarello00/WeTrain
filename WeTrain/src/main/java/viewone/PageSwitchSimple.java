@@ -1,5 +1,6 @@
 package viewone;
 
+import database.DatabaseConnectionSingleton;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;
@@ -34,7 +35,8 @@ public class PageSwitchSimple {
                 view = root.load();
             } catch (LoadException e) {
                 System.out.println("I'm here");
-                ((Stage) mainPane.getScene().getWindow()).close();
+                DatabaseConnectionSingleton.deleteInstance();
+                return PageSwitchSizeChange.pageSwitch((Stage) mainPane.getScene().getWindow(), "Login", "Launcher", true);
             }
             mainPane.setCenter(view);
             return root.getController();

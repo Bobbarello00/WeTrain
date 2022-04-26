@@ -40,18 +40,18 @@ public class LoginGUIController extends LauncherGUIController{
             } else {
                 PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");
             }
-        } catch (ElementNotFoundException e){
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+        } catch (ElementNotFoundException e) {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
                     "Be sure that you have an account on WeTrain.");
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             //TODO Exception
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidCredentialsException e) {
-            e.alert();
-        } catch (DBConnectionFailedException e) {
             e.alert();
         }
     }

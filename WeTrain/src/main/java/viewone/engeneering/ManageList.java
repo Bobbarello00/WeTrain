@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.IdBean;
@@ -21,7 +22,7 @@ public class ManageList {
 
     private ManageList() {}
 
-    public static void updateList(ListView<CourseBean> courseList, List<CourseBean> courseBeanList) {
+    public static void updateList(@NotNull ListView<CourseBean> courseList, @NotNull List<CourseBean> courseBeanList) {
         ObservableList<CourseBean> courseObservableList = FXCollections.observableList(courseBeanList);
         courseList.setItems(FXCollections.observableList(courseObservableList));
     }

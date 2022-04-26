@@ -10,12 +10,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import viewone.MainPane;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
 import viewone.engeneering.ManageList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.list_cell_factories.CourseListCellFactory;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -74,7 +78,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         fitnessLevelFilter.fitnessLevelSelection(event);
     }
 
-    @FXML protected void searchButtonAction() throws SQLException {
+    @FXML protected void searchButtonAction() throws SQLException, IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
 
         String courseName = courseNameText.getText();
@@ -88,6 +92,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
             ));
         } catch (DBConnectionFailedException e) {
             e.alert();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
 
         ManageList.updateList(resultList, courseBeanList);

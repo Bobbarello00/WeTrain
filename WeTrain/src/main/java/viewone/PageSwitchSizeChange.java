@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -35,6 +36,10 @@ public class PageSwitchSizeChange {
     }
 
     public static Object pageSwitch(Button button, String page, String path, boolean closeOldStage) throws IOException {
+        return pageSwitch((Stage) button.getScene().getWindow(), page, path, closeOldStage);
+    }
+
+    public static Object pageSwitch(@NotNull Stage stage, String page, String path, boolean closeOldStage) throws IOException {
         Stage newStage;
         BorderPane actualPane = MainPane.getInstance();
         Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));
@@ -47,7 +52,7 @@ public class PageSwitchSizeChange {
             newStage = (Stage) alert.getDialogPane().getScene().getWindow();
         } else {
             newStage = new Stage();
-            ((Stage) button.getScene().getWindow()).close();
+            stage.close();
         }
         Scene newScene = new Scene(root);
         newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());

@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -71,7 +73,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "", false);
     }
 
-    @FXML void unsubscribeButtonAction() {
+    @FXML void unsubscribeButtonAction() throws IOException {
         setSelectedTrainer(null);
         try {
             subscriptionToTrainerController.unsubscribeFromTrainer();
@@ -85,11 +87,11 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alert();
-            logoutButton.fire();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
     }
 
-    @FXML void addTrainerAction() {
+    @FXML void addTrainerAction() throws IOException {
         ObservableList<UserBean> trainersObservableList = null;
         try {
             trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
@@ -98,23 +100,25 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alert();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
         hideVBox(addTrainerBox);
         showVBox(searchTrainerBox);
     }
 
-    @FXML void searchButtonAction() throws SQLException {
+    @FXML void searchButtonAction() throws SQLException, IOException {
         List<UserBean> userBeanList = null;
         try {
             userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
         } catch (DBConnectionFailedException e) {
             e.alert();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
         ObservableList<UserBean> trainersObservableList = FXCollections.observableList(userBeanList);
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
     }
 
-    @FXML void subscribeButtonAction(){
+    @FXML void subscribeButtonAction() throws IOException {
         try {
             subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
             updateTrainerBox();
@@ -127,7 +131,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alert();
-            logoutButton.fire();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
 
     }
@@ -146,7 +150,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
 
-    private void listEvent(ListView<UserBean> listView, UserBean newItem, SubscriptionToTrainerController subscriptionToTrainerController) {
+    private void listEvent(ListView<UserBean> listView, UserBean newItem, SubscriptionToTrainerController subscriptionToTrainerController) throws IOException {
         try {
             if(newItem != null) {
                 setSelectedTrainer(subscriptionToTrainerController.getTrainerUser(new FcBean(newItem.getFiscalCode())));
@@ -157,6 +161,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
             e.alert();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
     }
 
@@ -171,7 +176,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         showVBox(infoTrainerBox);
     }
 
-    private void setTrainer(){
+    private void setTrainer() throws IOException {
         try {
             TrainerBean trainerBean = subscriptionToTrainerController.getTrainer();
             if(trainerBean != null){
@@ -189,6 +194,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alert();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
     }
 
@@ -201,11 +207,19 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         trainersList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {
-                        listEvent(trainersList, newItem, subscriptionToTrainerController);
+                        try {
+                            listEvent(trainersList, newItem, subscriptionToTrainerController);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 });
         setUserInfoTab();
-        setTrainer();
+        try {
+            setTrainer();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -50,4 +50,8 @@ public class DatabaseConnectionSingleton {
         }
         return dbConn;
     }
+
+    public static void deleteInstance() {
+        dbConn = null;
+    }
 }

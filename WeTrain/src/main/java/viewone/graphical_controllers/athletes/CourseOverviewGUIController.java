@@ -10,10 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
@@ -84,7 +86,7 @@ public class CourseOverviewGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
-    public void setValue(CourseBean courseBean) throws SQLException {
+    public void setValue(CourseBean courseBean) throws SQLException, IOException {
         try {
             if(courseManagementAthleteController.checkSubscription(courseBean)){
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
@@ -93,6 +95,8 @@ public class CourseOverviewGUIController {
             }
         } catch (DBConnectionFailedException e) {
             e.alert();
+            ((Stage) subscribeButton.getScene().getWindow()).close();
+            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());

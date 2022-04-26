@@ -69,7 +69,6 @@ public abstract class HomeGUIController {
             e.printStackTrace();
         } catch (DBConnectionFailedException | CJException e) {
             new DBConnectionFailedException().alert();
-            logoutButton.fire();
         } catch (SQLException e) {
             e.printStackTrace();
         }
