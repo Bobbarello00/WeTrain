@@ -7,6 +7,7 @@ import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import model.*;
 
+import java.net.SocketException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

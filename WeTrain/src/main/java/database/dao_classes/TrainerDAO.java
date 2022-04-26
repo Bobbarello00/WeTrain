@@ -25,7 +25,7 @@ public class TrainerDAO {
         }
     }
 
-    public Trainer loadTrainer(String fc) throws SQLException {
+    public Trainer loadTrainer(String fc) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
             if (rs.next()) {
                 Trainer trainer = new Trainer(rs.getString("Name"),
@@ -51,7 +51,7 @@ public class TrainerDAO {
         }
     }
 
-    private List<Trainer> getTrainersList(ResultSet rs) throws SQLException {
+    private List<Trainer> getTrainersList(ResultSet rs) throws SQLException, DBConnectionFailedException {
         List<Trainer> myList = new ArrayList<>();
         while(rs.next()){
             Trainer newTrainer = loadTrainer(rs.getString("User"));
@@ -60,13 +60,13 @@ public class TrainerDAO {
         return myList;
     }
 
-    public List<Trainer> searchTrainers(String name) throws SQLException {
+    public List<Trainer> searchTrainers(String name) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.searchTrainer(stmt, name)){
             return getTrainersList(rs);
         }
     }
 
-    public List<Trainer> loadAllTrainers() throws SQLException{
+    public List<Trainer> loadAllTrainers() throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainers(stmt)){
             return getTrainersList(rs);
         }

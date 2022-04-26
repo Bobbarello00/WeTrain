@@ -1,9 +1,11 @@
 package database;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
 import exception.DBConnectionFailedException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
 
+import java.net.SocketException;
 import java.sql.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -162,10 +164,14 @@ public class Query {
                 " WHERE Email = '%s' AND Password = '%s';", email, password));
     }
 
-    public static ResultSet loadUser(Statement stmt, String fc) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM mydb.User " +
-                "WHERE FC = '%s';", fc));
+    public static ResultSet loadUser(Statement stmt, String fc) throws SQLException, DBConnectionFailedException {
+        try {
+            return stmt.executeQuery(String.format(SELECT_ALL +
+                    "FROM mydb.User " +
+                    "WHERE FC = '%s';", fc));
+        } catch(CJCommunicationsException e) {
+            throw new DBConnectionFailedException();
+        }
     }
 
     public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {

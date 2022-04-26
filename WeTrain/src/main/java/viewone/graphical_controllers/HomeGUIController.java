@@ -1,20 +1,21 @@
 package viewone.graphical_controllers;
 
+import com.mysql.cj.exceptions.CJException;
 import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
-import javafx.scene.image.Image;
-import javafx.scene.text.Text;
-import viewone.WeTrain;
-import viewone.engeneering.LoggedUserSingleton;
-import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import viewone.PageSwitchSizeChange;
+import viewone.WeTrain;
 import viewone.bean.UserBean;
+import viewone.engeneering.LoggedUserSingleton;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -66,11 +67,11 @@ public abstract class HomeGUIController {
         } catch (ExpiredCardException | InvalidCardInfoException e){
             e.alert();
             e.printStackTrace();
+        } catch (DBConnectionFailedException | CJException e) {
+            new DBConnectionFailedException().alert();
+            logoutButton.fire();
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBConnectionFailedException e) {
-            e.alert();
-            logoutButton.fire();
         }
         return null;
     }
