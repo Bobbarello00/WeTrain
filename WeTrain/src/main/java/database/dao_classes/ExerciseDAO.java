@@ -3,10 +3,7 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.DBConnectionFailedException;
-import model.Exercise;
-import model.ExerciseCatalogue;
-import model.Trainer;
-import model.WorkoutDay;
+import model.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -36,7 +33,7 @@ public class ExerciseDAO {
         }
     }
 
-    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay) throws SQLException, DBConnectionFailedException {
+    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutPlan workoutPlan, WorkoutDay workoutDay) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
@@ -44,7 +41,7 @@ public class ExerciseDAO {
                         rs.getInt(IDEXERCISE),
                         rs.getString(NAME),
                         rs.getString(INFO),
-                        new TrainerDAO().loadTrainer(workoutDay.getWorkoutPlan().getAthlete().getTrainer().getFiscalCode())
+                        new TrainerDAO().loadTrainer(workoutPlan.getAthlete().getTrainer().getFiscalCode())
                 ));
             }
             return exerciseList;

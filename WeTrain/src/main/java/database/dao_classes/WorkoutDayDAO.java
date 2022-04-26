@@ -37,7 +37,7 @@ public class WorkoutDayDAO {
                         rs.getInt("idWorkoutDay"),
                         rs.getString("Day"),
                         rs.getString("Info"));
-                workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutDay));
+                workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutPlan, workoutDay));
                 myList.add(workoutDay);
             }
             return myList;
