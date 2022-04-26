@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -84,10 +85,14 @@ public class CourseOverviewGUIController {
     }
 
     public void setValue(CourseBean courseBean) throws SQLException {
-        if(courseManagementAthleteController.checkSubscription(courseBean)){
-            subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
-            subscribeButton.setText("Unsubscribe");
-            subscribed = true;
+        try {
+            if(courseManagementAthleteController.checkSubscription(courseBean)){
+                subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
+                subscribeButton.setText("Unsubscribe");
+                subscribed = true;
+            }
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
@@ -116,6 +121,8 @@ public class CourseOverviewGUIController {
                             null);
                 } catch (SQLException e) {
                     e.printStackTrace();
+                } catch (DBConnectionFailedException e) {
+                    e.alert();
                 }
             }
         } else {
@@ -123,6 +130,8 @@ public class CourseOverviewGUIController {
                 courseManagementAthleteController.unsubscribeFromACourse(courseBean);
             } catch (SQLException e) {
                 e.printStackTrace();
+            } catch (DBConnectionFailedException e) {
+                e.alert();
             }
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();

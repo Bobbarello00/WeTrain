@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.DBConnectionFailedException;
 import model.Notification;
 import model.User;
 
@@ -14,6 +15,9 @@ import java.util.List;
 
 public class NotificationDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+
+    public NotificationDAO() throws DBConnectionFailedException {
+    }
 
     public void saveNotification(Notification notification) throws SQLException {
         try(Statement stmt = conn.createStatement()){

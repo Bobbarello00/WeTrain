@@ -1,6 +1,7 @@
 package controller;
 
 import database.dao_classes.CourseDAO;
+import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Course;
 import model.Lesson;
@@ -14,7 +15,7 @@ public class CourseManagementAthleteController {
 
     private final LoginController loginController = new LoginController();
 
-    public boolean checkSubscription(CourseBean courseBean) throws SQLException {
+    public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         List<Course> courseList = athlete.getCourseList();
         for(Course course: courseList){
@@ -25,25 +26,25 @@ public class CourseManagementAthleteController {
         return false;
     }
 
-    public void subscribeToACourse(CourseBean courseBean) throws SQLException {
+    public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
         new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));
     }
 
-    public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException {
+    public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
         new CourseDAO().unsubscribeFromACourse(courseBean.getId());
     }
 
-    public List<CourseBean> getCourseList() throws SQLException {
+    public List<CourseBean> getCourseList() throws SQLException, DBConnectionFailedException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
         return getCourseBeanList(courseList);
     }
 
-    public List<CourseBean> getPopularCourseList() throws SQLException {
+    public List<CourseBean> getPopularCourseList() throws SQLException, DBConnectionFailedException {
         List<Course> popularCourses = new CourseDAO().loadPopularCourses();
         return getCourseBeanList(popularCourses);
     }
 
-    public CourseBean getCourse(IdBean bean) throws SQLException {
+    public CourseBean getCourse(IdBean bean) throws SQLException, DBConnectionFailedException {
         Course course = new CourseDAO().loadCourse(bean.getId());
         CourseBean courseBean = new CourseBean(
                 course.getId(),
@@ -91,7 +92,7 @@ public class CourseManagementAthleteController {
         return beanList;
     }
 
-    public List<CourseBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException {
+    public List<CourseBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException, DBConnectionFailedException {
         List<Course> courseList = new CourseDAO().searchCourses(courseSearchBean.getName(), courseSearchBean.getFitnessLevel(), courseSearchBean.getDays());
         return getCourseBeanList(courseList);
     }

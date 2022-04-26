@@ -2,6 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
 import controller.WorkoutPlanController;
+import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,7 +65,12 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
     @FXML void dayButtonAction(ActionEvent event) throws SQLException {
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
-        List<CourseBean> courseBeanList = courseManagementAthleteController.getCourseList();
+        List<CourseBean> courseBeanList = null;
+        try {
+            courseBeanList = courseManagementAthleteController.getCourseList();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+        }
         WorkoutPlanBean workoutPlanBean = workoutPlanController.getWorkoutPlan();
         StringBuilder infoText = new StringBuilder();
         String day = Objects.requireNonNull(getDay(event)).name();

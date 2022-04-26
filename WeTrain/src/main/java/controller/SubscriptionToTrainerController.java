@@ -18,7 +18,7 @@ public class SubscriptionToTrainerController {
 
     LoginController loginController = new LoginController();
 
-    public TrainerBean getTrainer() throws SQLException {
+    public TrainerBean getTrainer() throws SQLException, DBConnectionFailedException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
         if(trainer != null){
             try {
@@ -41,7 +41,7 @@ public class SubscriptionToTrainerController {
         return null;
     }
 
-    public UserBean getTrainerUser(FcBean fcBean) throws SQLException {
+    public UserBean getTrainerUser(FcBean fcBean) throws SQLException, DBConnectionFailedException {
         Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
         try {
             return new UserBean(
@@ -85,12 +85,12 @@ public class SubscriptionToTrainerController {
         }
     }
 
-    public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException {
+    public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException, DBConnectionFailedException {
         List<Trainer> trainerList = new TrainerDAO().searchTrainers(bean.getName());
         return setToUserBean(trainerList);
     }
 
-    public List<UserBean> getTrainersList() throws SQLException{
+    public List<UserBean> getTrainersList() throws SQLException, DBConnectionFailedException {
         List<Trainer> trainerList = new TrainerDAO().loadAllTrainers();
         return setToUserBean(trainerList);
     }

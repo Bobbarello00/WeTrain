@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.DBConnectionFailedException;
 import model.Request;
 import model.Trainer;
 
@@ -20,7 +21,10 @@ public class RequestDAO {
     public static final String TRAINER = "Trainer";
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public Request loadRequest(int requestCode) throws SQLException{
+    public RequestDAO() throws DBConnectionFailedException {
+    }
+
+    public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadRequest(stmt, requestCode)) {
             if(rs.next()) {
                 return new Request(
@@ -39,7 +43,7 @@ public class RequestDAO {
             Query.deleteRequest(stmt, request);
         }
     }
-    public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException {
+    public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerRequests(stmt, trainer)){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {

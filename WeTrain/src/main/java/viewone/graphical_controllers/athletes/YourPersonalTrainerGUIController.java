@@ -95,7 +95,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
     @FXML void searchButtonAction() throws SQLException {
-        List<UserBean> userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
+        List<UserBean> userBeanList = null;
+        try {
+            userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+        }
         ObservableList<UserBean> trainersObservableList = FXCollections.observableList(userBeanList);
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
     }
@@ -141,6 +146,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
     }
 
@@ -171,6 +178,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             }
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
     }
 
@@ -185,6 +194,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
         trainersList.getSelectionModel().selectedItemProperty().

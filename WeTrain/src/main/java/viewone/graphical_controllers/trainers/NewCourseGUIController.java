@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
+import exception.DBConnectionFailedException;
 import exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,6 +74,8 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             e.alert();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
     }
 

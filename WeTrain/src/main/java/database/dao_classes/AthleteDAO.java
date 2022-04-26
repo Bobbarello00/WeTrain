@@ -24,6 +24,7 @@ public class AthleteDAO {
     private static final String CARD_NUMBER = "CardNumber";
     private static final String CARD_EXPIRATION_DATE = "CardExpirationDate";
     private static final String WORKOUT_PLAN = "WorkoutPlan";
+
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
     public AthleteDAO() throws DBConnectionFailedException {
@@ -51,7 +52,7 @@ public class AthleteDAO {
         }
     }
 
-    public Athlete loadAthlete(String fc) throws SQLException {
+    public Athlete loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
             if (rs.next()) {
                 Athlete athlete = new Athlete(rs.getString(NAME),

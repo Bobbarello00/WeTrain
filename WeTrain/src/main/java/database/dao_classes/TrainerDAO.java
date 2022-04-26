@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.DBConnectionFailedException;
 import model.Trainer;
 import model.User;
 
@@ -14,6 +15,9 @@ import java.util.List;
 
 public class TrainerDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
+
+    public TrainerDAO() throws DBConnectionFailedException {
+    }
 
     public void saveTrainer(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement()){

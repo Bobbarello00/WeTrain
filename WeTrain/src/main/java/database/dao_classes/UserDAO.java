@@ -20,7 +20,7 @@ public class UserDAO {
     public UserDAO() throws DBConnectionFailedException {
     }
 
-    public User loadUser(String email, String password) throws SQLException {
+    public User loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, email, password)) {
             if (rs.next()) {
                 String usr = rs.getString("FC");

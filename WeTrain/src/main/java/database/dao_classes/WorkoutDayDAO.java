@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.DBConnectionFailedException;
 import model.Exercise;
 import model.WorkoutDay;
 import model.WorkoutPlan;
@@ -15,7 +16,11 @@ import java.util.List;
 
 public class WorkoutDayDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
-    public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException {
+
+    public WorkoutDayDAO() throws DBConnectionFailedException {
+    }
+
+    public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
         try (Statement stmt = conn.createStatement()) {
             int id = Query.insertWorkoutDay(idWorkoutPlan);
             for (Exercise exercise : workoutDay.getExerciseList()){
@@ -24,7 +29,7 @@ public class WorkoutDayDAO {
         }
     }
 
-    public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan) throws SQLException {
+    public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllWorkoutDays(stmt, workoutPlan)){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){

@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -78,11 +79,16 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         String courseName = courseNameText.getText();
 
-        List<CourseBean> courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
-                courseName,
-                fitnessLevel,
-                selectedDays
-        ));
+        List<CourseBean> courseBeanList = null;
+        try {
+            courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
+                    courseName,
+                    fitnessLevel,
+                    selectedDays
+            ));
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+        }
 
         ManageList.updateList(resultList, courseBeanList);
 

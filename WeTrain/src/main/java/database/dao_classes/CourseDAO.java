@@ -3,6 +3,7 @@ package database.dao_classes;
 import controller.LoginController;
 import database.DatabaseConnectionSingleton;
 import database.Query;
+import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import model.*;
 
@@ -22,7 +23,10 @@ public class CourseDAO {
 
     private final LoginController loginController = new LoginController();
 
-    public void saveCourse(Course course) throws SQLException {
+    public CourseDAO() throws DBConnectionFailedException {
+    }
+
+    public void saveCourse(Course course) throws SQLException, DBConnectionFailedException {
         int idCourse = Query.insertCourse(course);
         course.setId(idCourse);
 
@@ -33,19 +37,19 @@ public class CourseDAO {
     }
 
     //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
-    public void subscribeToACourse(Course course) throws SQLException {
+    public void subscribeToACourse(Course course) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement()){
             Query.insertSubscribe(stmt, course, (Athlete) loginController.getLoggedUser());
         }
     }
 
-    public void unsubscribeFromACourse(int idCourse) throws SQLException {
+    public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement()){
             Query.deleteSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
         }
     }
 
-    public Course loadCourse(int id) throws SQLException {
+    public Course loadCourse(int id) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourse(stmt, id)) {
             if(rs.next()){
                 Course course = new Course(
@@ -64,24 +68,24 @@ public class CourseDAO {
         }
     }
 
-    public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException {
+    public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesAthlete(stmt, athlete)){
             return loadAllCourses(athlete, rs);
         }
     }
-    public List<Course> loadPopularCourses() throws SQLException {
+    public List<Course> loadPopularCourses() throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadPopularCourse(stmt)){
             return loadAllCourses(null, rs);
         }
     }
 
-    public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException {
+    public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllCoursesTrainer(stmt, trainer)){
             return loadAllCourses(trainer, rs);
         }
     }
 
-    private List<Course> loadAllCourses(User user, ResultSet rs) throws SQLException {
+    private List<Course> loadAllCourses(User user, ResultSet rs) throws SQLException, DBConnectionFailedException {
         List<Course> myList = new ArrayList<>();
         if(!rs.next()){
             return myList;
@@ -114,7 +118,7 @@ public class CourseDAO {
         return myList;
     }
 
-    public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException {
+    public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.searchCourse(stmt, name, fitnessLevel, days)){
             return loadAllCourses(loginController.getLoggedUser(), rs);
         }

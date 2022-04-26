@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import exception.DBConnectionFailedException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -31,6 +32,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             popularBeanList = courseManagementAthleteController.getPopularCourseList();
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
         ManageList.updateList(courseList, courseBeanList);
         ManageList.updateList(popularList, popularBeanList);
