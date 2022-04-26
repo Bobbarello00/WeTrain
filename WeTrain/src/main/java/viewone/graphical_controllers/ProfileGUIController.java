@@ -16,10 +16,10 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public abstract class ProfileGUIController {
-    @FXML private Label emailLabel;
-    @FXML private Label firstNameLabel;
-    @FXML private Label fiscalCodeLabel;
-    @FXML private Label lastNameLabel;
+    @FXML protected Label emailLabel;
+    @FXML protected Label firstNameLabel;
+    @FXML protected Label fiscalCodeLabel;
+    @FXML protected Label lastNameLabel;
 
     @FXML protected void closeAction(MouseEvent event){
         ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();

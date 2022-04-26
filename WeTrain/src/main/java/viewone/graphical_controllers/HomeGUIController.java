@@ -25,9 +25,13 @@ public abstract class HomeGUIController {
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
     @FXML protected Text usernameText1;
     @FXML protected ImageView userImage;
+    @FXML protected Button logoutButton;
 
     protected void setUserInfoTab() {
         UserBean user = getLoggedUser();
+        if(user == null){
+            return;
+        }
         usernameText1.setText(user.getUsername());
         char gender = user.getGender();
         String type = user.getType();
@@ -56,7 +60,7 @@ public abstract class HomeGUIController {
         }
     }
 
-    protected UserBean getLoggedUser(){
+    protected UserBean getLoggedUser() {
         try{
             return Objects.requireNonNull(LoggedUserSingleton.getInstance());
         } catch (ExpiredCardException | InvalidCardInfoException e){
@@ -66,11 +70,12 @@ public abstract class HomeGUIController {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
             e.alert();
+            logoutButton.fire();
         }
         return null;
     }
 
-    @FXML void logoutButtonAction(ActionEvent event) throws IOException {
+    @FXML protected void logoutButtonAction(ActionEvent event) throws IOException {
         PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "WeTrainGUI", "launcher", true);
     }
 

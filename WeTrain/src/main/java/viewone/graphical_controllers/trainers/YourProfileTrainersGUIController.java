@@ -11,10 +11,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class YourProfileTrainersGUIController extends ProfileGUIController implements Initializable {
-    @FXML private Label emailLabel;
-    @FXML private Label firstNameLabel;
-    @FXML private Label lastNameLabel;
-    @FXML private Label fiscalCodeLabel;
     @FXML private Label ibanLabel;
 
     @FXML protected void editIbanButtonAction(){

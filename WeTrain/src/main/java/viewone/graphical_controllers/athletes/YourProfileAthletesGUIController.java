@@ -22,10 +22,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class YourProfileAthletesGUIController extends ProfileGUIController implements Initializable {
-    @FXML private Label emailLabel;
-    @FXML private Label firstNameLabel;
-    @FXML private Label fiscalCodeLabel;
-    @FXML private Label lastNameLabel;
     @FXML private Label paymentMethodLabel;
     @FXML private Button editButton;
     @FXML private Pane editPane;

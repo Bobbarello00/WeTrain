@@ -16,6 +16,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
+import viewone.bean.UserBean;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
 
@@ -64,7 +65,16 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML void createButtonAction() throws IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
         try{
-            CourseBean courseBean = new CourseBean(courseNameText.getText(), infoTextArea.getText(), fitnessLevel, Objects.requireNonNull(getLoggedUser()).getFiscalCode(), equipmentTextArea.getText());
+            UserBean user = getLoggedUser();
+            if(user == null){
+                return;
+            }
+            CourseBean courseBean = new CourseBean(
+                    courseNameText.getText(),
+                    infoTextArea.getText(),
+                    fitnessLevel,
+                    user.getFiscalCode(),
+                    equipmentTextArea.getText());
             courseBean.setLessonBeanList(getLessonDay());
             courseManagementTrainerController.createCourse(courseBean);
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");

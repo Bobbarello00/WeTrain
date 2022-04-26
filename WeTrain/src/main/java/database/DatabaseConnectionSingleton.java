@@ -14,10 +14,10 @@ import java.util.Properties;
 
 public class DatabaseConnectionSingleton {
 
-    private static final DatabaseConnectionSingleton dbConn = new DatabaseConnectionSingleton();
+    private static DatabaseConnectionSingleton dbConn;
     private Connection conn;
 
-    private DatabaseConnectionSingleton(){
+    private DatabaseConnectionSingleton() throws DBConnectionFailedException {
         try(FileInputStream fileInputStream = new FileInputStream("src/main/java/database/db.properties")) {
 
             Properties prop = new Properties();
@@ -33,17 +33,21 @@ public class DatabaseConnectionSingleton {
                     password);
         } catch (CJCommunicationsException | SQLException| IOException e) {
             this.conn = null;
+            throw new DBConnectionFailedException();
         }
     }
 
     public Connection getConn() throws DBConnectionFailedException {
         if(this.conn == null){
-            throw new DBConnectionFailedException();
+            dbConn = new DatabaseConnectionSingleton();
         }
         return conn;
     }
 
-    public static DatabaseConnectionSingleton getInstance(){
+    public static DatabaseConnectionSingleton getInstance() throws DBConnectionFailedException {
+        if(dbConn == null){
+            dbConn = new DatabaseConnectionSingleton();
+        }
         return dbConn;
     }
 }
