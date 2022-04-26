@@ -85,7 +85,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
         }
     }
 

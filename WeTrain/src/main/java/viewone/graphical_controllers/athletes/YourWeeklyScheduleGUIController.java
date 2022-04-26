@@ -69,13 +69,13 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
         try {
             courseBeanList = courseManagementAthleteController.getCourseList();
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
         }
         WorkoutPlanBean workoutPlanBean = null;
         try {
             workoutPlanBean = workoutPlanController.getWorkoutPlan();
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
         }
         StringBuilder infoText = new StringBuilder();
         String day = Objects.requireNonNull(getDay(event)).name();

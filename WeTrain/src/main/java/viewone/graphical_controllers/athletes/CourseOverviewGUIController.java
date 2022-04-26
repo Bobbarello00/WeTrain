@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
+import database.DatabaseConnectionSingleton;
 import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -94,9 +95,9 @@ public class CourseOverviewGUIController {
                 subscribed = true;
             }
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            DatabaseConnectionSingleton.deleteInstance();
+            e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
@@ -126,7 +127,7 @@ public class CourseOverviewGUIController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 } catch (DBConnectionFailedException e) {
-                    e.alert();
+                    e.alertAndLogOff();
                 }
             }
         } else {
@@ -135,7 +136,7 @@ public class CourseOverviewGUIController {
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (DBConnectionFailedException e) {
-                e.alert();
+                e.alertAndLogOff();
             }
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();

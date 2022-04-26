@@ -44,7 +44,7 @@ public abstract class LauncherGUIController implements Initializable {
             e.printStackTrace();
             FatalCaseManager.killApplication();
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
         }
         return null;
     }

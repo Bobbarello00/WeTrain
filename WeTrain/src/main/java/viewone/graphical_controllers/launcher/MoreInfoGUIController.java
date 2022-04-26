@@ -83,7 +83,7 @@ public class MoreInfoGUIController implements Initializable {
                  InvalidCredentialsException e) {
             e.alert();
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
         }
     }
 

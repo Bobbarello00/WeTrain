@@ -13,8 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -86,8 +84,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
-            e.alert();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            e.alertAndLogOff();
         }
     }
 
@@ -99,8 +96,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
-            e.alert();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            e.alertAndLogOff();
         }
         hideVBox(addTrainerBox);
         showVBox(searchTrainerBox);
@@ -111,8 +107,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         try {
             userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
         } catch (DBConnectionFailedException e) {
-            e.alert();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            e.alertAndLogOff();
         }
         ObservableList<UserBean> trainersObservableList = FXCollections.observableList(userBeanList);
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
@@ -130,8 +125,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             //TODO
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
-            e.alert();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            e.alertAndLogOff();
         }
 
     }
@@ -160,8 +154,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
-            e.alert();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            e.alertAndLogOff();
         }
     }
 
@@ -193,8 +186,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
-            e.alert();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            e.alertAndLogOff();
         }
     }
 

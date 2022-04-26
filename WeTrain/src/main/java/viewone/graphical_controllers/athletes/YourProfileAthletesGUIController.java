@@ -18,6 +18,7 @@ import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -53,7 +54,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             } catch (ExpiredCardException | InvalidCardInfoException e) {
                 e.alert();
             } catch (DBConnectionFailedException e) {
-                e.alert();
+                e.alertAndLogOff();
             }
         }
     }
@@ -95,7 +96,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             try {
                 FatalCaseManager.erasePaymentMethod();
             } catch (DBConnectionFailedException e) {
-                e.alert();
+                e.alertAndLogOff();
             }
         } else{
             String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);

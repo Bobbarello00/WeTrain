@@ -33,18 +33,20 @@ public class PageSwitchSimple {
             FXMLLoader root = new FXMLLoader(fileUrl);
             try {
                 view = root.load();
+                mainPane.setCenter(view);
+                return root.getController();
             } catch (LoadException e) {
                 System.out.println("I'm here");
                 DatabaseConnectionSingleton.deleteInstance();
-                return PageSwitchSizeChange.pageSwitch((Stage) mainPane.getScene().getWindow(), "Login", "Launcher", true);
+                PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+                return null;
             }
-            mainPane.setCenter(view);
-            return root.getController();
         } catch (FileNotFoundException e) {
             System.out.println("File "+ pathString + "/" + fileName + EXTENSION + " non trovato, controllare il PageSwitchSimple!");
             return null;
         }
     }
+
     public static void switchPageAndMenu(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;
@@ -56,10 +58,10 @@ public class PageSwitchSimple {
             }
             view = FXMLLoader.load(fileUrl);
             menu = FXMLLoader.load(menuUrl);
+            mainPane.setCenter(view);
+            mainPane.setLeft(menu);
         } catch (FileNotFoundException e) {
             System.out.println("File "+ pathString + "/" + fileName + EXTENSION +" non trovato, controllare il PageSwitchSimple!");
         }
-        mainPane.setCenter(view);
-        mainPane.setLeft(menu);
     }
 }

@@ -91,7 +91,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
                     selectedDays
             ));
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
 

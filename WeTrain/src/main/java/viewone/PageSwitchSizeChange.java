@@ -58,8 +58,9 @@ public class PageSwitchSizeChange {
         newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
         pageLauncher(newStage, newScene);
         Object controller = PageSwitchSimple.switchPage(pane, page, path);
-
-        newStage.show();
+        if(controller != null) {
+            newStage.show();
+        }
         return controller;
     }
 

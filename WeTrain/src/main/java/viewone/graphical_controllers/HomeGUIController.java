@@ -68,7 +68,7 @@ public abstract class HomeGUIController {
             e.alert();
             e.printStackTrace();
         } catch (DBConnectionFailedException | CJException e) {
-            new DBConnectionFailedException().alert();
+            new DBConnectionFailedException().alertAndLogOff();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -35,7 +35,7 @@ public abstract class ProfileGUIController {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            return null;
         }
         return null;
     }

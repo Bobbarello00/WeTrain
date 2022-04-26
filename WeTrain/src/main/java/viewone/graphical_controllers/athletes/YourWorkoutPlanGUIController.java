@@ -53,7 +53,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
-            e.alert();
+            e.alertAndLogOff();
         }
     }
 }

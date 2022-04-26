@@ -15,6 +15,7 @@ import viewone.list_cell_factories.CourseListCellFactory;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
@@ -32,14 +33,14 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             courseBeanList = courseManagementAthleteController.getCourseList();
             popularBeanList = courseManagementAthleteController.getPopularCourseList();
         } catch (DBConnectionFailedException | CJException e) {
-            new DBConnectionFailedException().alert();
+            new DBConnectionFailedException().alertAndLogOff();
             logoutButton.fire();
             return;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        ManageList.updateList(courseList, courseBeanList);
-        ManageList.updateList(popularList, popularBeanList);
+        ManageList.updateList(courseList, Objects.requireNonNull(courseBeanList));
+        ManageList.updateList(popularList, Objects.requireNonNull(popularBeanList));
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
