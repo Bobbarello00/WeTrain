@@ -76,8 +76,8 @@ public abstract class HomeGUIController {
         return null;
     }
 
-    @FXML protected void logoutButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "WeTrainGUI", "launcher", true);
+    @FXML protected void logoutButtonAction() throws IOException {
+        PageSwitchSizeChange.pageSwitch(logoutButton, "WeTrainGUI", "launcher", true);
     }
 
     @FXML protected void closeAction(MouseEvent event){

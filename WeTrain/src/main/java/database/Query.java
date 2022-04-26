@@ -1,6 +1,7 @@
 package database;
 
-import com.mysql.cj.exceptions.CJCommunicationsException;
+import com.mysql.cj.exceptions.*;
+import com.mysql.cj.jdbc.exceptions.*;
 import exception.DBConnectionFailedException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
@@ -169,7 +170,7 @@ public class Query {
             return stmt.executeQuery(String.format(SELECT_ALL +
                     "FROM mydb.User " +
                     "WHERE FC = '%s';", fc));
-        } catch(CJCommunicationsException e) {
+        } catch(CJCommunicationsException| CommunicationsException e) {
             throw new DBConnectionFailedException();
         }
     }

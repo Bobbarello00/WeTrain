@@ -1,8 +1,10 @@
 package viewone;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,7 +30,12 @@ public class PageSwitchSimple {
                 throw new FileNotFoundException("Non ho trovato il file FXML");
             }
             FXMLLoader root = new FXMLLoader(fileUrl);
-            view = root.load();
+            try {
+                view = root.load();
+            } catch (LoadException e) {
+                System.out.println("I'm here");
+                ((Stage) mainPane.getScene().getWindow()).close();
+            }
             mainPane.setCenter(view);
             return root.getController();
         } catch (FileNotFoundException e) {

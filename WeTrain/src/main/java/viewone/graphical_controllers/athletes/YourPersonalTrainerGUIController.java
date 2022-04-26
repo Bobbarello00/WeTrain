@@ -90,6 +90,15 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
     @FXML void addTrainerAction() {
+        ObservableList<UserBean> trainersObservableList = null;
+        try {
+            trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
+            trainersList.setItems(FXCollections.observableList(trainersObservableList));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+        }
         hideVBox(addTrainerBox);
         showVBox(searchTrainerBox);
     }
@@ -189,15 +198,6 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         trainersList.setCellFactory(nodeListView -> new PersonListCellFactory());
-        ObservableList<UserBean> trainersObservableList = null;
-        try {
-            trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
-            e.alert();
-        }
-        trainersList.setItems(FXCollections.observableList(trainersObservableList));
         trainersList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {

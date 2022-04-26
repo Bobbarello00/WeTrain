@@ -45,7 +45,7 @@ public class PageSwitchSizeChange {
             MainPane.getInstance().setDisable(true);
             Alert alert = new Alert(Alert.AlertType.NONE);
             newStage = (Stage) alert.getDialogPane().getScene().getWindow();
-        }else {
+        } else {
             newStage = new Stage();
             ((Stage) button.getScene().getWindow()).close();
         }
