@@ -10,10 +10,12 @@ import viewone.bean.TrainerBean;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class LoggedUserSingleton {
 
     private static String fc;
+    private static UserInfoCarrier userInfoCarrier;
     private static final LoginController loginController = new LoginController();
 
     private LoggedUserSingleton() {}
@@ -24,6 +26,14 @@ public class LoggedUserSingleton {
 
     public static void setFc(String fc) {
         LoggedUserSingleton.fc = fc;
+    }
+
+    public static UserInfoCarrier getUserInfo() throws ExpiredCardException, SQLException, InvalidCardInfoException, DBConnectionFailedException {
+        if(userInfoCarrier == null){
+            UserBean userBean = getInstance();
+            userInfoCarrier = new UserInfoCarrier(Objects.requireNonNull(userBean).getUsername(), userBean.getType(), userBean.getGender());
+        }
+        return userInfoCarrier;
     }
 
     public static UserBean getInstance() throws SQLException, ExpiredCardException, InvalidCardInfoException, DBConnectionFailedException {

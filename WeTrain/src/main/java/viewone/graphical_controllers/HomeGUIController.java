@@ -16,6 +16,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.UserBean;
 import viewone.engeneering.LoggedUserSingleton;
+import viewone.engeneering.UserInfoCarrier;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -29,13 +30,24 @@ public abstract class HomeGUIController {
     @FXML protected Button logoutButton;
 
     protected void setUserInfoTab() {
-        UserBean user = getLoggedUser();
+        UserInfoCarrier user = null;
+        try {
+            user = LoggedUserSingleton.getUserInfo();
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+            return;
+        } catch (ExpiredCardException | InvalidCardInfoException e) {
+            e.alert();
+            e.printStackTrace();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         if(user == null){
             return;
         }
         usernameText1.setText(user.getUsername());
         char gender = user.getGender();
-        String type = user.getType();
+        String type = user.getUserType();
         if(Objects.equals(type, "Trainer")){
             if(gender == 'm') {
                 setImage("TrainerM");
@@ -59,20 +71,6 @@ public abstract class HomeGUIController {
             //TODO
             throw new RuntimeException(e);
         }
-    }
-
-    protected UserBean getLoggedUser() {
-        try{
-            return Objects.requireNonNull(LoggedUserSingleton.getInstance());
-        } catch (ExpiredCardException | InvalidCardInfoException e){
-            e.alert();
-            e.printStackTrace();
-        } catch (DBConnectionFailedException | CJException e) {
-            new DBConnectionFailedException().alertAndLogOff();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @FXML protected void logoutButtonAction() throws IOException {
