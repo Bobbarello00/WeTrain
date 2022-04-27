@@ -16,6 +16,7 @@ import viewone.bean.WorkoutPlanBean;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -37,6 +38,9 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
 
     @FXML void dayButtonAction(ActionEvent event) {
         String day = daysController.dayButtonAction(event);
+        if(workoutPlanBean == null){
+            return;
+        }
         for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
             if(Objects.equals(workoutDayBean.getDay(), day)){
                 //TODO carica esercizi nella lista
