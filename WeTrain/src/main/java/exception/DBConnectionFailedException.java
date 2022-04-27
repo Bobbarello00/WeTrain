@@ -10,15 +10,13 @@ import java.io.IOException;
 public class DBConnectionFailedException extends Exception{
 
     public void alert() {
-        AlertFactory.newWarningAlert("OOPS, FAILED TO CONNECT TO DB!",
-                "Can't establish connection with DB",
+        AlertFactory.newWarningAlert("OOPS, CONNECTION TO DATABASE TIMED OUT!",
+                "Can't reach WeTrainDB",
                 "Check your internet connection and try again... you will be logged off");
     }
 
     public void alertAndLogOff() {
-        AlertFactory.newWarningAlert("OOPS, FAILED TO CONNECT TO DB!",
-                "Can't establish connection with DB",
-                "Check your internet connection and try again... you will be logged off");
+        alert();
         try {
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         } catch (IOException e) {
