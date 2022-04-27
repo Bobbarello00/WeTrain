@@ -399,9 +399,11 @@ public class Query {
                 "WHERE idWorkoutPlan = %s;", idWorkoutPlan));
     }
 
-    public static int deleteWorkoutPlan(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.WorkoutPlan " +
-                "WHERE idWorkoutPlan = %s;", workoutPlan.getId()));
+    public static void removeWorkoutPlan(Statement stmt, Athlete athlete) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Athlete SET WorkoutPlan = null " + WHERE_USER,
+                athlete.getFiscalCode()));
+        stmt.executeUpdate(String.format("DELETE FROM mydb.WorkoutPlan " +
+                "WHERE idWorkoutPlan = %s;", athlete.getWorkoutPlan().getId()));
     }
 
     public static void insertSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
@@ -417,5 +419,4 @@ public class Query {
                 idCourse,
                 athleteFc));
     }
-
 }

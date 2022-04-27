@@ -112,4 +112,12 @@ public class AthleteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void removeWorkoutPlan(Athlete athlete) {
+        try (Statement stmt = conn.createStatement()) {
+            Query.removeWorkoutPlan(stmt, athlete);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

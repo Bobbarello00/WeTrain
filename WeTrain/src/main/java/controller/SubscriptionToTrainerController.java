@@ -101,8 +101,9 @@ public class SubscriptionToTrainerController {
 
     public void unsubscribeFromTrainer() throws SQLException, DBConnectionFailedException {
         AthleteDAO athleteDAO = new AthleteDAO();
-        athleteDAO.removeTrainer((Athlete) loginController.getLoggedUser());
-        athleteDAO.removeWorkoutPlan((Athlete) loginController.getLoggedUser());
+        Athlete athlete = (Athlete) loginController.getLoggedUser();
+        athleteDAO.removeTrainer(athlete);
+        athleteDAO.removeWorkoutPlan(athlete);
     }
 
 }
