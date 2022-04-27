@@ -31,7 +31,11 @@ public class LoggedUserSingleton {
     public static UserInfoCarrier getUserInfo() throws ExpiredCardException, SQLException, InvalidCardInfoException, DBConnectionFailedException {
         if(userInfoCarrier == null){
             UserBean userBean = getInstance();
-            userInfoCarrier = new UserInfoCarrier(Objects.requireNonNull(userBean).getUsername(), userBean.getType(), userBean.getGender());
+            userInfoCarrier = new UserInfoCarrier(
+                    Objects.requireNonNull(userBean).getUsername(),
+                    userBean.getType(),
+                    userBean.getFiscalCode(),
+                    userBean.getGender());
         }
         return userInfoCarrier;
     }

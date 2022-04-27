@@ -30,18 +30,7 @@ public abstract class HomeGUIController {
     @FXML protected Button logoutButton;
 
     protected void setUserInfoTab() {
-        UserInfoCarrier user = null;
-        try {
-            user = LoggedUserSingleton.getUserInfo();
-        } catch (DBConnectionFailedException e) {
-            e.alertAndLogOff();
-            return;
-        } catch (ExpiredCardException | InvalidCardInfoException e) {
-            e.alert();
-            e.printStackTrace();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        UserInfoCarrier user = getUserInfo();
         if(user == null){
             return;
         }
@@ -62,6 +51,21 @@ public abstract class HomeGUIController {
             }
         }
 
+    }
+
+    protected UserInfoCarrier getUserInfo(){
+        try {
+            return LoggedUserSingleton.getUserInfo();
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+            return null;
+        } catch (ExpiredCardException | InvalidCardInfoException e) {
+            e.alert();
+            e.printStackTrace();
+            return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void setImage(String str){

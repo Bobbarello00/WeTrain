@@ -16,7 +16,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.bean.UserBean;
+import viewone.engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
 
@@ -24,7 +24,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
@@ -65,7 +68,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML void createButtonAction() throws IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
         try{
-            UserBean user = getLoggedUser();
+            UserInfoCarrier user = getUserInfo();
             if(user == null){
                 return;
             }
