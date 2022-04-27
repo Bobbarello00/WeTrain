@@ -122,7 +122,6 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             hideVBox(searchTrainerBox);
             showVBox(trainerBox);
         } catch (SQLException | URISyntaxException e) {
-            //TODO
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();

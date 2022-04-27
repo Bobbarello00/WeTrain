@@ -77,16 +77,21 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
         StringBuilder infoText = new StringBuilder();
         String day = Objects.requireNonNull(getDay(event)).name();
-
+        boolean busyDay = false;
         if(courseBeanList.size() != 0){
             infoText.append("You have this lessons:\n");
             for(CourseBean course: courseBeanList){
                 for(LessonBean lesson: course.getLessonBeanList()){
                     if(Objects.equals(lesson.getLessonDay(), day)) {
+                        busyDay = true;
                         infoText.append("-" + course.getName() + " " + lesson.getLessonStartTime() + "/" + lesson.getLessonEndTime() + "\n");
                     }
                 }
             }
+        }
+        if(busyDay){
+            infoText = new StringBuilder().append("You are free for this day!\n" +
+                    "check out our popular courses from the homepage and let's train!");
         }
 
         infoText.append("\n\n\n");
