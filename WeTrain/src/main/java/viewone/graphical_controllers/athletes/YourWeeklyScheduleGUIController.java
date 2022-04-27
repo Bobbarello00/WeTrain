@@ -65,18 +65,16 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
     @FXML void dayButtonAction(ActionEvent event) throws SQLException {
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
-        List<CourseBean> courseBeanList = null;
+        List<CourseBean> courseBeanList;
+        WorkoutPlanBean workoutPlanBean;
         try {
             courseBeanList = courseManagementAthleteController.getCourseList();
-        } catch (DBConnectionFailedException e) {
-            e.alertAndLogOff();
-        }
-        WorkoutPlanBean workoutPlanBean = null;
-        try {
             workoutPlanBean = workoutPlanController.getWorkoutPlan();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
+            return;
         }
+
         StringBuilder infoText = new StringBuilder();
         String day = Objects.requireNonNull(getDay(event)).name();
 

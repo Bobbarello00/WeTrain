@@ -19,9 +19,9 @@ public class LessonDAO {
     public LessonDAO() throws DBConnectionFailedException {
     }
 
-    public void saveLesson(Lesson lesson) throws SQLException {
+    public void saveLesson(Lesson lesson, Course course) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertLesson(stmt,lesson);
+            Query.insertLesson(stmt,lesson, course);
         }
     }
 
@@ -31,7 +31,6 @@ public class LessonDAO {
             while(rs.next()){
                 myList.add(new Lesson(
                         rs.getInt("idLesson"),
-                        course,
                         rs.getString("LessonDay"),
                         rs.getTime("LessonStartTime").toLocalTime(),
                         rs.getTime("LessonEndTime").toLocalTime()));

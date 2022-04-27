@@ -32,8 +32,7 @@ public class CourseDAO {
         course.setId(idCourse);
 
         for(Lesson lesson: course.getLessonList()){
-            lesson.setCourse(course);
-            new LessonDAO().saveLesson(lesson);
+            new LessonDAO().saveLesson(lesson, course);
         }
     }
 

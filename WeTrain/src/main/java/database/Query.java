@@ -6,7 +6,6 @@ import exception.DBConnectionFailedException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.net.SocketException;
 import java.sql.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -301,13 +300,13 @@ public class Query {
                 "WHERE Course = %s;", course.getId()));
     }
 
-    public static void insertLesson(Statement stmt, Lesson lesson) throws SQLException {
+    public static void insertLesson(Statement stmt, Lesson lesson, Course course) throws SQLException {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, LessonStartTime, LessonEndTime, Course) " +
                         "VALUES ('%s', '%s', '%s', %s);",
                 lesson.getLessonDay(),
                 lesson.getLessonStartTime().toString(),
                 lesson.getLessonEndTime().toString(),
-                lesson.getCourse().getId()));
+                course.getId()));
     }
 
     public static int deleteLesson(Statement stmt, Lesson lesson) throws SQLException {
@@ -376,9 +375,12 @@ public class Query {
                 "WHERE idWorkoutDay = %s;", workoutDay.getId()));
     }
 
-    public static int insertWorkoutPlan(WorkoutPlan workoutPlan) throws SQLException, DBConnectionFailedException {
+    public static int insertWorkoutPlan(Athlete athlete) throws SQLException, DBConnectionFailedException {
 
-        try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');", workoutPlan.getAthlete().getFiscalCode()), Statement.RETURN_GENERATED_KEYS)) {
+        try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn()
+                .prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');",
+                        athlete.getFiscalCode()),
+                        Statement.RETURN_GENERATED_KEYS)) {
             if(statement.executeUpdate() == 0){
                 System.out.println("Inserimento WorkoutPlan fallito.");
             }

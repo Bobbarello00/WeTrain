@@ -33,7 +33,7 @@ public class ExerciseDAO {
         }
     }
 
-    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutPlan workoutPlan, WorkoutDay workoutDay) throws SQLException, DBConnectionFailedException {
+    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
@@ -41,8 +41,8 @@ public class ExerciseDAO {
                         rs.getInt(IDEXERCISE),
                         rs.getString(NAME),
                         rs.getString(INFO),
-                        new TrainerDAO().loadTrainer(workoutPlan.getAthlete().getTrainer().getFiscalCode())
-                ));
+                        trainer)
+                );
             }
             return exerciseList;
         }

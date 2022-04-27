@@ -6,13 +6,13 @@ import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import exception.ExpiredCardException;
 import model.Athlete;
-import model.Trainer;
 
 import java.sql.*;
 import java.time.YearMonth;
 
 public class AthleteDAO {
 
+    public static final String TRAINER = "Trainer";
     private static final String NAME = "Name";
     private static final String SURNAME = "Surname";
     private static final String USERNAME = "Username";
@@ -74,15 +74,15 @@ public class AthleteDAO {
                             cardExpirationDate = YearMonth.from(temp.toLocalDate());
                         }
                         athlete.setCardExpirationDate(cardExpirationDate);
-                        if (rs1.getInt(WORKOUT_PLAN) != 0) {
-                            athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt(WORKOUT_PLAN), athlete));
+                        if(rs1.getString(TRAINER) != null) {
+                            athlete.setTrainer(new TrainerDAO().loadTrainer(rs1.getString(TRAINER)));
+                        }
+                        if (rs1.getInt(WORKOUT_PLAN) != 0 && athlete.getTrainer() != null) {
+                            athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt(WORKOUT_PLAN), athlete.getTrainer()));
                         } else {
                             athlete.setWorkoutPlan(null);
                         }
                         athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
-                        if(rs1.getString("Trainer") != null) {
-                            athlete.setTrainer(new TrainerDAO().loadTrainer(rs1.getString("Trainer")));
-                        }
                         return athlete;
                     } else {
                         return null;
@@ -95,9 +95,6 @@ public class AthleteDAO {
                 throw new ElementNotFoundException();
             }
         }
-    }
-
-    public void setCourseAndWorkoutPlan(Athlete athlete) {
     }
 
     public void setTrainer(Athlete athlete, String fc) {

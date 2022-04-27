@@ -4,6 +4,7 @@ import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.DBConnectionFailedException;
 import model.Exercise;
+import model.Trainer;
 import model.WorkoutDay;
 import model.WorkoutPlan;
 
@@ -29,7 +30,7 @@ public class WorkoutDayDAO {
         }
     }
 
-    public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan) throws SQLException, DBConnectionFailedException {
+    public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan, Trainer trainer) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllWorkoutDays(stmt, workoutPlan)){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
@@ -37,7 +38,7 @@ public class WorkoutDayDAO {
                         rs.getInt("idWorkoutDay"),
                         rs.getString("Day"),
                         rs.getString("Info"));
-                workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutPlan, workoutDay));
+                workoutDay.addAllExercise(new ExerciseDAO().loadExerciseInWorkoutPlan(workoutDay, trainer));
                 myList.add(workoutDay);
             }
             return myList;

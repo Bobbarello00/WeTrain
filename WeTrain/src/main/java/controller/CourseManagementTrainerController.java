@@ -19,15 +19,15 @@ public class CourseManagementTrainerController {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
         Course course = new Course(bean.getName(), bean.getDescription(), bean.getFitnessLevel(), trainer, bean.getEquipment());
         if(bean.getLessonBeanList() != null){
-            course.addAllLessons(setLesson(bean.getLessonBeanList(), course));
+            course.addAllLessons(setLesson(bean.getLessonBeanList()));
         }
         new CourseDAO().saveCourse(course);
     }
 
-    private List<Lesson> setLesson(List<LessonBean> lessonBeanList, Course course) {
+    private List<Lesson> setLesson(List<LessonBean> lessonBeanList) {
         List<Lesson> list = new ArrayList<>();
         for(LessonBean bean: lessonBeanList) {
-            Lesson lesson = new Lesson(course, bean.getLessonDay(), bean.getLessonStartTime(), bean.getLessonEndTime());
+            Lesson lesson = new Lesson(bean.getLessonDay(), bean.getLessonStartTime(), bean.getLessonEndTime());
             list.add(lesson);
         }
         return list;
