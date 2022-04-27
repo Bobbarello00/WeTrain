@@ -114,29 +114,23 @@ public class CourseOverviewGUIController {
     }
 
     @FXML public void subscribeButtonAction(ActionEvent event) {
-        if(!subscribed){
-            if(courseBean != null) {
-                try {
+        try {
+            if(!subscribed){
+                if(courseBean != null) {
                     courseManagementAthleteController.subscribeToACourse(courseBean);
                     System.out.println("Subscribed!");
-                } catch (SQLIntegrityConstraintViolationException e) {
-                    AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
-                            "You are already subscribed to this course.",
-                            null);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (DBConnectionFailedException e) {
-                    e.alertAndLogOff();
                 }
-            }
-        } else {
-            try {
+            } else {
                 courseManagementAthleteController.unsubscribeFromACourse(courseBean);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } catch (DBConnectionFailedException e) {
-                e.alertAndLogOff();
             }
+        } catch (SQLIntegrityConstraintViolationException e) {
+            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "You are already subscribed to this course.",
+                    null);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DBConnectionFailedException e) {
+            e.alert();
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
