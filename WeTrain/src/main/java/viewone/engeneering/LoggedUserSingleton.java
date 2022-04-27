@@ -74,4 +74,8 @@ public class LoggedUserSingleton {
             return null;
         }
     }
+
+    public static void resetUserInfo() {
+        userInfoCarrier = null;
+    }
 }

@@ -25,6 +25,7 @@ public class LoginController {
     }
 
     public void login(CredentialsBean credentials) throws SQLException, DBConnectionFailedException {
+        LoggedUserSingleton.resetUserInfo();
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
         LoggedUserSingleton.setFc(user.getFiscalCode());
     }
