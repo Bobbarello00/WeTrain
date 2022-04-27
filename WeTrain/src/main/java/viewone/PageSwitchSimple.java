@@ -1,6 +1,7 @@
 package viewone;
 
 import database.DatabaseConnectionSingleton;
+import exception.DBConnectionFailedException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;
@@ -38,7 +39,7 @@ public class PageSwitchSimple {
             } catch (LoadException e) {
                 System.out.println("I'm here");
                 DatabaseConnectionSingleton.deleteInstance();
-                PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+                new DBConnectionFailedException().alertAndLogOff();
                 return null;
             }
         } catch (FileNotFoundException e) {

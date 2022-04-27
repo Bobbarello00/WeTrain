@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import viewone.engeneering.FatalCaseManager;
@@ -54,6 +55,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             } catch (ExpiredCardException | InvalidCardInfoException e) {
                 e.alert();
             } catch (DBConnectionFailedException e) {
+                ((Stage) editButton.getScene().getWindow()).close();
                 e.alertAndLogOff();
             }
         }
@@ -86,18 +88,16 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
-        }
+        } catch (DBConnectionFailedException e) {
+        e.alert();
+    }
     }
 
-    private void setPaymentMethodLabel() throws SQLException {
+    private void setPaymentMethodLabel() throws SQLException, DBConnectionFailedException {
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
             paymentMethodLabel.setText("Card: Not inserted yet");
         } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
-            try {
-                FatalCaseManager.erasePaymentMethod();
-            } catch (DBConnectionFailedException e) {
-                e.alertAndLogOff();
-            }
+            FatalCaseManager.erasePaymentMethod();
         } else{
             String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
             paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
