@@ -37,8 +37,6 @@ public class PageSwitchSimple {
                 mainPane.setCenter(view);
                 return root.getController();
             } catch (LoadException e) {
-                System.out.println("I'm here");
-                DatabaseConnectionSingleton.deleteInstance();
                 new DBConnectionFailedException().alertAndLogOff();
                 return null;
             }

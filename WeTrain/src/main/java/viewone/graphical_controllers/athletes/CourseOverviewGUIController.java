@@ -95,7 +95,6 @@ public class CourseOverviewGUIController {
                 subscribed = true;
             }
         } catch (DBConnectionFailedException e) {
-            DatabaseConnectionSingleton.deleteInstance();
             e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
         }

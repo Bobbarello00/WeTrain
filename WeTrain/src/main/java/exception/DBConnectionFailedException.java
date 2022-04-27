@@ -1,5 +1,6 @@
 package exception;
 
+import database.DatabaseConnectionSingleton;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
@@ -17,6 +18,7 @@ public class DBConnectionFailedException extends Exception{
 
     public void alertAndLogOff() {
         alert();
+        DatabaseConnectionSingleton.deleteInstance();
         try {
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         } catch (IOException e) {
