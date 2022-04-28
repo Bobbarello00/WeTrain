@@ -1,22 +1,29 @@
 package viewone.bean;
 
-import model.Athlete;
-import model.Trainer;
-
 import java.time.LocalDateTime;
 
 public class RequestBean {
     private int id;
     private LocalDateTime requestDate;
     private String info;
-    private String athlete;
+    private String athleteFc;
+    private String athleteUsername;
     private String trainer;
 
-    public RequestBean(int id, LocalDateTime requestDate, String info, String athlete, String trainer){
+    public RequestBean(int id, LocalDateTime requestDate, String info, String athleteFc, String athleteUsername, String trainer) {
         this.id = id;
         this.requestDate = requestDate;
         this.info = info;
-        this.athlete = athlete;
+        this.athleteFc = athleteFc;
+        this.athleteUsername = athleteUsername;
+        this.trainer = trainer;
+    }
+
+    public RequestBean(String info, String athleteFc, String athleteUsername, String trainer) {
+        this.requestDate = LocalDateTime.now();
+        setInfo(info);
+        this.athleteFc = athleteFc;
+        this.athleteUsername = athleteUsername;
         this.trainer = trainer;
     }
 
@@ -28,8 +35,8 @@ public class RequestBean {
         return requestDate;
     }
 
-    public String getAthlete() {
-        return athlete;
+    public String getAthleteFc() {
+        return athleteFc;
     }
 
     public String getTrainer() {
@@ -42,5 +49,9 @@ public class RequestBean {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public String getAthleteUsername() {
+        return athleteUsername;
     }
 }
