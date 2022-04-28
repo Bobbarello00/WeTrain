@@ -26,6 +26,6 @@ public class RegistrationController {
             Trainer trainer = new Trainer(bean.getName(), bean.getSurname(), bean.getUsername(), bean.getBirth(), bean.getFiscalCode(), bean.getGender(), bean.getEmail(), bean.getPassword());
             trainerDAO.saveTrainer(trainer);
         }
-        loginController.login(new CredentialsBean(bean.getEmail(), bean.getPassword()));
+        loginController.login(bean.getCredentials());
     }
 }

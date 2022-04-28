@@ -28,7 +28,7 @@ public class LoggedUserSingleton {
         LoggedUserSingleton.fc = fc;
     }
 
-    public static UserInfoCarrier getUserInfo() throws ExpiredCardException, SQLException, InvalidCardInfoException, DBConnectionFailedException {
+    public static UserInfoCarrier getUserInfo() throws SQLException, DBConnectionFailedException {
         if(userInfoCarrier == null){
             UserBean userBean = getInstance();
             userInfoCarrier = new UserInfoCarrier(
@@ -40,36 +40,32 @@ public class LoggedUserSingleton {
         return userInfoCarrier;
     }
 
-    public static UserBean getInstance() throws SQLException, ExpiredCardException, InvalidCardInfoException, DBConnectionFailedException {
+    public static UserBean getInstance() throws SQLException, DBConnectionFailedException {
         User usr = loginController.getLoggedUser();
-        try{
-            if (usr instanceof Athlete) {
-                return new AthleteBean(usr.getUsername(),
-                        usr.getName(),
-                        usr.getSurname(),
-                        usr.getFiscalCode(),
-                        usr.getDateOfBirth(),
-                        usr.getGender(),
-                        usr.getEmail(),
-                        usr.getPassword(),
-                        ((Athlete) usr).getCardNumber(),
-                        ((Athlete) usr).getCardExpirationDate());
-            } else if (usr instanceof Trainer) {
-                return new TrainerBean(usr.getUsername(),
-                        usr.getName(),
-                        usr.getSurname(),
-                        usr.getFiscalCode(),
-                        usr.getDateOfBirth(),
-                        usr.getGender(),
-                        usr.getEmail(),
-                        usr.getPassword(),
-                        ((Trainer) usr).getIban());
-            } else {
-                System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
-                FatalCaseManager.killApplication();
-                return null;
-            }
-        } catch (InvalidUserInfoException | InvalidCredentialsException | InvalidFiscalCodeException e) {
+
+        if (usr instanceof Athlete) {
+            return new AthleteBean(usr.getUsername(),
+                    usr.getName(),
+                    usr.getSurname(),
+                    usr.getFiscalCode(),
+                    usr.getDateOfBirth(),
+                    usr.getGender(),
+                    usr.getEmail(),
+                    usr.getPassword(),
+                    ((Athlete) usr).getCardNumber(),
+                    ((Athlete) usr).getCardExpirationDate());
+        } else if (usr instanceof Trainer) {
+            return new TrainerBean(usr.getUsername(),
+                    usr.getName(),
+                    usr.getSurname(),
+                    usr.getFiscalCode(),
+                    usr.getDateOfBirth(),
+                    usr.getGender(),
+                    usr.getEmail(),
+                    usr.getPassword(),
+                    ((Trainer) usr).getIban());
+        } else {
+            System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
             FatalCaseManager.killApplication();
             return null;
         }

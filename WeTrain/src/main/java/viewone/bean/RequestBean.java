@@ -1,5 +1,7 @@
 package viewone.bean;
 
+import exception.TextOutOfBoundException;
+
 import java.time.LocalDateTime;
 
 public class RequestBean {
@@ -19,7 +21,7 @@ public class RequestBean {
         this.trainer = trainer;
     }
 
-    public RequestBean(String info, String athleteFc, String athleteUsername, String trainer) {
+    public RequestBean(String info, String athleteFc, String athleteUsername, String trainer) throws TextOutOfBoundException {
         this.requestDate = LocalDateTime.now();
         setInfo(info);
         this.athleteFc = athleteFc;
@@ -47,7 +49,10 @@ public class RequestBean {
         return info;
     }
 
-    public void setInfo(String info) {
+    public void setInfo(String info) throws TextOutOfBoundException {
+        if(info.length() > 450) {
+            throw new TextOutOfBoundException();
+        }
         this.info = info;
     }
 

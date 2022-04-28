@@ -34,7 +34,7 @@ public class LoginGUIController extends LauncherGUIController{
 
     @FXML void submitButtonAction() {
         try {
-            loginController.login(new CredentialsBean(emailField.getText(), passwField.getText()));
+            loginController.login(CredentialsBean.ctorWithSyntaxCheck(emailField.getText(), passwField.getText()));
             if(getLoggedUser() instanceof AthleteBean){
                 PageSwitchSizeChange.loadHome(submitButton, "AthletesHome", "athletes");
             } else {

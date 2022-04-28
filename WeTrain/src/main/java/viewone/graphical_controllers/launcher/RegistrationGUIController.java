@@ -27,8 +27,7 @@ public class RegistrationGUIController extends LauncherGUIController{
     @FXML private void continueButtonAction() throws IOException {
         try {
             if (!Objects.equals(emailField.getText(), "") & !Objects.equals(passwField.getText(), "")) {
-                checkCredentialInfo();
-                CredentialsBean bean = new CredentialsBean(emailField.getText(), passwField.getText());
+                CredentialsBean bean = CredentialsBean.ctorWithSyntaxCheck(emailField.getText(), passwField.getText());
                 MoreInfoGUIController moreInfoGUIController = (MoreInfoGUIController) Objects.requireNonNull(PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME));
                 moreInfoGUIController.setCredentialInfo(bean);
                 moreInfoGUIController.setSelectedProfileString(selectedProfile);
@@ -40,10 +39,6 @@ public class RegistrationGUIController extends LauncherGUIController{
 
     @FXML private void profileTextAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"ProfileSelection", HOME);
-    }
-
-    private void checkCredentialInfo() throws InvalidCredentialsException {
-        new CredentialsBean(emailField.getText(), passwField.getText());
     }
 
     @FXML void keyHandler(KeyEvent event) throws IOException {

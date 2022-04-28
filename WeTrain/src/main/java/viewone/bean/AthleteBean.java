@@ -9,17 +9,11 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class AthleteBean extends UserBean{
-    private CardInfoBean cardInfoBean = null;
+    private final CardInfoBean cardInfoBean;
 
-    public AthleteBean(String username, String name, String surname, String fc, LocalDate birth,  char gender, String email, String password, String cardNumber, YearMonth cardExpirationDate) throws InvalidUserInfoException, InvalidCredentialsException, InvalidFiscalCodeException {
+    public AthleteBean(String username, String name, String surname, String fc, LocalDate birth,  char gender, String email, String password, String cardNumber, YearMonth cardExpirationDate) {
         super(username, name, surname, fc, birth, "Athlete", gender, email, password);
-        if(cardNumber == null & cardExpirationDate == null) {
-            cardInfoBean = new CardInfoBean(null, (YearMonth) null);
-        } else if(cardNumber == null | cardExpirationDate == null) {
-            FatalCaseManager.killApplication();
-        } else {
-            cardInfoBean = new CardInfoBean(cardNumber, cardExpirationDate);
-        }
+        cardInfoBean = new CardInfoBean(cardNumber, cardExpirationDate);
     }
 
     public String getCardType() {

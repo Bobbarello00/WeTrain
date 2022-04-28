@@ -8,11 +8,22 @@ public class CredentialsBean {
     private String email;
     private String password;
 
-    public CredentialsBean(String email, String password, int a) {}
+    private CredentialsBean() {}
 
-    public CredentialsBean(String email, String password) throws InvalidCredentialsException {
-        setEmail(email);
-        setPassword(password);
+    public static CredentialsBean ctorWithSyntaxCheck(String email, String password) throws InvalidCredentialsException {
+        /*This is a constructor with syntax check and is used by view*/
+        CredentialsBean credentialsBean = new CredentialsBean();
+        credentialsBean.setEmail(email);
+        credentialsBean.setPassword(password);
+        return credentialsBean;
+    }
+
+    public static CredentialsBean ctorWithoutSyntaxCheck(String email, String password) {
+        /*This is a constructor without syntax check and is used by controller*/
+        CredentialsBean credentialsBean = new CredentialsBean();
+        credentialsBean.email = email;
+        credentialsBean.password = password;
+        return credentialsBean;
     }
 
     public String getEmail() {

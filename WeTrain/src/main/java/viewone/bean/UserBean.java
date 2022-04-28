@@ -20,7 +20,7 @@ public class UserBean {
     private LocalDate birth;
     private String type;
     private char gender;
-    private CredentialsBean credentials;
+    private final CredentialsBean credentials;
 
     public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) {
         /*This is a constructor without syntax check and is used by controller*/
@@ -31,14 +31,14 @@ public class UserBean {
         this.birth = birth;
         this.type = type;
         this.gender = gender;
-        credentials = new CredentialsBean(email, password);
+        credentials = CredentialsBean.ctorWithoutSyntaxCheck(email, password);
     }
 
     public UserBean(String username, String name, String surname, String fiscalCode, String birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException, InvalidBirthException {
         /*This is a constructor with syntax check and is used by view*/
         setUser(username, name, surname, fiscalCode, type, gender);
         setBirth(birth);
-        credentials = new CredentialsBean(email, password);
+        credentials = CredentialsBean.ctorWithSyntaxCheck(email, password);
     }
 
     private void setUser(String username, String name, String surname, String fiscalCode, String type, char gender) throws InvalidUserInfoException, InvalidFiscalCodeException {
@@ -156,5 +156,9 @@ public class UserBean {
 
     public String getPassword() {
         return credentials.getPassword();
+    }
+
+    public CredentialsBean getCredentials() {
+        return credentials;
     }
 }

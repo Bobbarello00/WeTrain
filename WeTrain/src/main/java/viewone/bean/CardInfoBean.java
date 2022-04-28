@@ -22,7 +22,11 @@ public class CardInfoBean {
 
     public CardInfoBean(String cardNumber, YearMonth expirationDate) {
         /*This is a constructor without syntax check and is used by controller*/
-        this.cardNumber = setType(cardNumber);
+        if(cardNumber != null){
+            this.cardNumber = setType(cardNumber);
+        } else {
+            this.cardNumber = null;
+        }
         this.expirationDate = expirationDate;
     }
 

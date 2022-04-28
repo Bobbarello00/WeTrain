@@ -21,68 +21,53 @@ public class SubscriptionToTrainerController {
     public TrainerBean getTrainer() throws SQLException, DBConnectionFailedException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
         if(trainer != null){
-            try {
-                return new TrainerBean(
-                        trainer.getUsername(),
-                        trainer.getName(),
-                        trainer.getSurname(),
-                        trainer.getFiscalCode(),
-                        trainer.getDateOfBirth(),
-                        trainer.getGender(),
-                        trainer.getEmail(),
-                        trainer.getPassword(),
-                        trainer.getIban()
-                );
-            } catch (InvalidUserInfoException | InvalidFiscalCodeException | InvalidCredentialsException e) {
-                FatalCaseManager.killApplication();
-                return null;
-            }
+            return new TrainerBean(
+                    trainer.getUsername(),
+                    trainer.getName(),
+                    trainer.getSurname(),
+                    trainer.getFiscalCode(),
+                    trainer.getDateOfBirth(),
+                    trainer.getGender(),
+                    trainer.getEmail(),
+                    trainer.getPassword(),
+                    trainer.getIban()
+            );
         }
         return null;
     }
 
     public UserBean getTrainerUser(FcBean fcBean) throws SQLException, DBConnectionFailedException {
         Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
-        try {
-            return new UserBean(
-                    trainer.getUsername(),
-                    trainer.getName(),
-                    trainer.getSurname(),
-                    trainer.getFiscalCode(),
-                    trainer.getDateOfBirth(),
-                    "Trainer",
-                    trainer.getGender(),
-                    trainer.getEmail(),
-                    trainer.getPassword()
-            );
-        } catch (InvalidUserInfoException | InvalidFiscalCodeException | InvalidCredentialsException e) {
-            FatalCaseManager.killApplication();
-            return null;
-        }
+        return new UserBean(
+                trainer.getUsername(),
+                trainer.getName(),
+                trainer.getSurname(),
+                trainer.getFiscalCode(),
+                trainer.getDateOfBirth(),
+                "Trainer",
+                trainer.getGender(),
+                trainer.getEmail(),
+                trainer.getPassword()
+        );
     }
 
     public List<UserBean> setToUserBean(List<Trainer> trainerList) {
-        try {
-            List<UserBean> beanList = new ArrayList<>();
-            for (User trainer : trainerList) {
-                beanList.add(new UserBean(
-                                trainer.getUsername(),
-                                trainer.getName(),
-                                trainer.getSurname(),
-                                trainer.getFiscalCode(),
-                                trainer.getDateOfBirth(),
-                                "Trainer",
-                                trainer.getGender(),
-                                trainer.getEmail(),
-                                trainer.getPassword()
-                        )
-                );
-            }
-            return beanList;
-        } catch (InvalidUserInfoException | InvalidFiscalCodeException | InvalidCredentialsException e) {
-            FatalCaseManager.killApplication();
-            return null;
+        List<UserBean> beanList = new ArrayList<>();
+        for (User trainer : trainerList) {
+            beanList.add(new UserBean(
+                            trainer.getUsername(),
+                            trainer.getName(),
+                            trainer.getSurname(),
+                            trainer.getFiscalCode(),
+                            trainer.getDateOfBirth(),
+                            "Trainer",
+                            trainer.getGender(),
+                            trainer.getEmail(),
+                            trainer.getPassword()
+                    )
+            );
         }
+        return beanList;
     }
 
     public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException, DBConnectionFailedException {

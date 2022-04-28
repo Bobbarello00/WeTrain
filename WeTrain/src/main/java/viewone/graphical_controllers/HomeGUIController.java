@@ -59,10 +59,6 @@ public abstract class HomeGUIController {
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
             return null;
-        } catch (ExpiredCardException | InvalidCardInfoException e) {
-            e.alert();
-            e.printStackTrace();
-            return null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
