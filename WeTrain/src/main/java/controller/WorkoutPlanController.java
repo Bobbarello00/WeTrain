@@ -1,8 +1,10 @@
 package controller;
 
-import database.dao_classes.ExerciseDAO;
 import exception.DBConnectionFailedException;
-import model.*;
+import model.Athlete;
+import model.Exercise;
+import model.WorkoutDay;
+import model.WorkoutPlan;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
