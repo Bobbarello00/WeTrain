@@ -55,7 +55,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML private VBox infoTrainerBox;
     @FXML private VBox emptyInfoTrainerBox;
 
-    private UserBean selectedTrainer = new UserBean();
+    private UserBean selectedTrainer;
 
     private final SubscriptionToTrainerController subscriptionToTrainerController = new SubscriptionToTrainerController();
 

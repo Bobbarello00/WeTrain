@@ -15,11 +15,13 @@ public class CardInfoBean {
     private String type;
 
     public CardInfoBean(String cardNumber, String expirationDate) throws InvalidCardInfoException {
+        /*This is a constructor with syntax check and is used by view*/
         setCardNumber(cardNumber);
         setExpirationDate(expirationDate);
     }
 
     public CardInfoBean(String cardNumber, YearMonth expirationDate) {
+        /*This is a constructor without syntax check and is used by controller*/
         this.cardNumber = setType(cardNumber);
         this.expirationDate = expirationDate;
     }

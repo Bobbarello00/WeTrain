@@ -8,7 +8,7 @@ public class CredentialsBean {
     private String email;
     private String password;
 
-    public CredentialsBean() {}
+    public CredentialsBean(String email, String password, int a) {}
 
     public CredentialsBean(String email, String password) throws InvalidCredentialsException {
         setEmail(email);

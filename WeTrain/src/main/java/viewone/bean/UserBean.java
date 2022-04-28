@@ -11,6 +11,8 @@ import java.time.format.DateTimeParseException;
 import java.util.regex.*;
 
 public class UserBean {
+
+
     private String username;
     private String name;
     private String surname;
@@ -20,15 +22,20 @@ public class UserBean {
     private char gender;
     private CredentialsBean credentials;
 
-    public UserBean() {}
-
-    public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException {
-        setUser(username, name, surname, fiscalCode, type, gender);
-        setBirth(birth);
+    public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) {
+        /*This is a constructor without syntax check and is used by controller*/
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.fiscalCode = fiscalCode;
+        this.birth = birth;
+        this.type = type;
+        this.gender = gender;
         credentials = new CredentialsBean(email, password);
     }
 
     public UserBean(String username, String name, String surname, String fiscalCode, String birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException, InvalidBirthException {
+        /*This is a constructor with syntax check and is used by view*/
         setUser(username, name, surname, fiscalCode, type, gender);
         setBirth(birth);
         credentials = new CredentialsBean(email, password);
