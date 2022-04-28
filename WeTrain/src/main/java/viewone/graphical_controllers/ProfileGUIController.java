@@ -29,9 +29,6 @@ public abstract class ProfileGUIController {
     protected UserBean getLoggedUser(){
         try{
             return Objects.requireNonNull(LoggedUserSingleton.getInstance());
-        } catch (ExpiredCardException | InvalidCardInfoException e){
-            e.alert();
-            e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {

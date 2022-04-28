@@ -40,9 +40,8 @@ public abstract class LauncherGUIController implements Initializable {
     protected UserBean getLoggedUser(){
         try{
             return Objects.requireNonNull(LoggedUserSingleton.getInstance());
-        } catch (ExpiredCardException | InvalidCardInfoException | SQLException e){
-            e.printStackTrace();
-            FatalCaseManager.killApplication();
+        } catch (SQLException e){
+            throw new RuntimeException();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
         }

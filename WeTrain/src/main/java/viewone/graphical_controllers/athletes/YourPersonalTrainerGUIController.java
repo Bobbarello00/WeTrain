@@ -70,7 +70,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     @FXML void workoutRequestButtonAction(ActionEvent event) throws IOException {
         RequestFormGUIController controller = (RequestFormGUIController)
-                PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "", false);
+                PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "athletes", false);
         controller.setTrainer(selectedTrainer);
     }
 

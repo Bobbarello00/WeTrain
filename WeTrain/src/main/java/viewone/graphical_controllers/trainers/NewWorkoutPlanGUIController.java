@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.*;
+import viewone.bean.RequestBean;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,6 +20,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     @FXML private ListView<Node> exercisesList;
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button createButton;
+
+    private RequestBean requestBean;
 
     @FXML public void addExerciseTextAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(createButton, "AddExercise", HOME, false);
@@ -33,6 +36,10 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         if(event.getSource()==createButton) {
             System.out.println("Created");
         }
+    }
+
+    public void setRequest(RequestBean request) {
+        requestBean = request;
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
