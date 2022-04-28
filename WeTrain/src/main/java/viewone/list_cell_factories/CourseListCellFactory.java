@@ -16,9 +16,9 @@ import java.util.Objects;
 public class CourseListCellFactory extends ListCell<CourseBean> {
     private Parent parentNode = null ;
     @Override public void updateItem(CourseBean courseBean, boolean empty){
-        updateCourseListWithParameter(courseBean, empty);
+        updateCourseListWithParameters(courseBean, empty);
     }
-    public void updateCourseListWithParameter(CourseBean courseBean, boolean empty) {
+    public void updateCourseListWithParameters(CourseBean courseBean, boolean empty) {
         super.updateItem(courseBean, empty);
         if(courseBean != null){
             try {

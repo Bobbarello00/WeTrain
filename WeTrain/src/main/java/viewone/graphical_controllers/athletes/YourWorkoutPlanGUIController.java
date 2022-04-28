@@ -63,7 +63,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         exercisesList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
-                        listEvent(exercisesList, newItem, workoutPlanController);
+                        infoLabel.setText(newItem.getInfo());
                     }
                 });
         setUserInfoTab();
@@ -74,9 +74,5 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
         }
-    }
-
-    private void listEvent(ListView<ExerciseBean> exercisesList, ExerciseBean newItem, WorkoutPlanController workoutPlanController) {
-        //TODO aggiornare tab di info dell'esercizio selezionato
     }
 }

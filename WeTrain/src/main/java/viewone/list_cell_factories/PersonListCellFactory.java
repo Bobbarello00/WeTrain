@@ -14,13 +14,14 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class PersonListCellFactory extends ListCell<UserBean> {
+
     private Parent parentNode = null ;
 
     @Override public void updateItem(UserBean userBean, boolean empty){
-        updatePersonListWithParameter(userBean, empty, "person");
+        updatePersonListWithParameters(userBean, empty);
     }
 
-    public void updatePersonListWithParameter(UserBean userBean, boolean empty, String str) {
+    public void updatePersonListWithParameters(UserBean userBean, boolean empty) {
         super.updateItem(userBean, empty);
         if(userBean != null){
             try {
