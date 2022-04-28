@@ -37,10 +37,10 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     @FXML private void editConfirmation() {
         if(!Objects.equals(newCardNumber.getText(), "")
                 & !Objects.equals(newExpirationDate.getText(), "")) {
-            CardInfoBean cardInfoBean = new CardInfoBean();
             try{
-                cardInfoBean.setCardNumber(newCardNumber.getText());
-                cardInfoBean.setExpirationDate(newExpirationDate.getText());
+                CardInfoBean cardInfoBean = new CardInfoBean(
+                        newCardNumber.getText(),
+                        newExpirationDate.getText());
                 profileManagementController.updateAthleteCardInfo(cardInfoBean);
                 athlete = (AthleteBean) LoggedUserSingleton.getInstance();
                 editPane.setDisable(true);

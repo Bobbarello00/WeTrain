@@ -14,53 +14,57 @@ public class CardInfoBean {
     private YearMonth expirationDate;
     private String type;
 
-    public CardInfoBean() {}
+    public CardInfoBean(String cardNumber, String expirationDate) throws InvalidCardInfoException {
+        setCardNumber(cardNumber);
+        setExpirationDate(expirationDate);
+    }
 
-    public CardInfoBean(String cardNumber, YearMonth expirationDate) throws InvalidCardInfoException {
-        if (cardNumber == null && expirationDate == null) {
-            this.cardNumber = null;
-            this.expirationDate = null;
-        } else if(cardNumber == null | expirationDate == null){
-            FatalCaseManager.killApplication();
-        } else {
-            setCardNumber(cardNumber);
-            this.expirationDate = expirationDate;
-        }
+    public CardInfoBean(String cardNumber, YearMonth expirationDate) {
+        this.cardNumber = setType(cardNumber);
+        this.expirationDate = expirationDate;
     }
 
     public String getCardNumber() {
         return cardNumber;
     }
 
-    public void setCardNumber(String cardNumber) throws InvalidCardInfoException {
+    private void setCardNumber(String cardNumber) throws InvalidCardInfoException {
         this.cardNumber = checkAndReturnValidCardNumber(cardNumber);
     }
 
-    private String checkAndReturnValidCardNumber(String card) throws InvalidCardInfoException {
+    private String setType(String card) {
         String regex = "^(?:(?<visa>4[0-9]{12}(?:[0-9]{3})?)|" +
                 "(?<mastercard>5[1-5][0-9]{14}))";
         Pattern pattern = Pattern.compile(regex);
         card = card.replace("-", "");
-        card =card.replace(" ","");
+        card = card.replace(" ","");
         Matcher matcher = pattern.matcher(card);
         if(matcher.matches()) {
             String group = "";
             if(matcher.group("visa") != null) group = "VISA";
             else if(matcher.group("mastercard") != null) group = "MASTERCARD";
-            setType(group);
+            this.type = group;
             return card;
         }
-        System.out.printf("""
+        return null;
+    }
+
+    private String checkAndReturnValidCardNumber(String card) throws InvalidCardInfoException {
+        String cardNumber = setType(card);
+        if(cardNumber == null) {
+            System.out.printf("""
                     numero carta sbagliata -> %s
-                    """,card);
-        throw new InvalidCardInfoException();
+                    """, card);
+            throw new InvalidCardInfoException();
+        }
+        return cardNumber;
     }
 
     public YearMonth getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(String expirationDate) throws InvalidCardInfoException {
+    private void setExpirationDate(String expirationDate) throws InvalidCardInfoException {
         this.expirationDate = checkAndReturnValidDate(expirationDate);
     }
 
@@ -74,10 +78,6 @@ public class CardInfoBean {
                     """,myDateString);
             throw new InvalidCardInfoException();
         }
-    }
-
-    public void setType(String type){
-        this.type = type;
     }
 
     public String getType() {
