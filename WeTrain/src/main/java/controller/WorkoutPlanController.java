@@ -1,10 +1,8 @@
 package controller;
 
+import database.dao_classes.ExerciseDAO;
 import exception.DBConnectionFailedException;
-import model.Athlete;
-import model.Exercise;
-import model.WorkoutDay;
-import model.WorkoutPlan;
+import model.*;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
@@ -43,4 +41,5 @@ public class WorkoutPlanController {
         workoutPlanBean.setWorkoutDayList(workoutDayBeanList);
         return workoutPlanBean;
     }
+
 }

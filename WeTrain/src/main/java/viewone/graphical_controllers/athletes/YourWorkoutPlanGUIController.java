@@ -2,21 +2,24 @@ package viewone.graphical_controllers.athletes;
 
 import controller.WorkoutPlanController;
 import exception.DBConnectionFailedException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import viewone.DaysOfTheWeekButtonController;
-import viewone.ListPopulate;
+import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
+import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -33,7 +36,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
     @FXML public Button fridayButton;
     @FXML public Button saturdayButton;
     @FXML public Button sundayButton;
-    @FXML private ListView<Node> exercisesList;
+    @FXML private ListView<ExerciseBean> exercisesList;
     @FXML private Label infoLabel;
 
     @FXML void dayButtonAction(ActionEvent event) {
@@ -43,14 +46,26 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         }
         for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
             if(Objects.equals(workoutDayBean.getDay(), day)){
-                //TODO carica esercizi nella lista
+                updateListForSelectedDay(workoutDayBean);
                 infoLabel.setText(workoutDayBean.getInfo());
             }
         }
     }
 
+    private void updateListForSelectedDay(WorkoutDayBean workoutDayBean) {
+        ObservableList<ExerciseBean> exerciseObservableList = null;
+        exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
+        exercisesList.setItems(FXCollections.observableList(exerciseObservableList));
+    }
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(15,exercisesList);
+        exercisesList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        exercisesList.getSelectionModel().selectedItemProperty().
+                addListener(new ChangeListener<>() {
+                    @Override public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
+                        listEvent(exercisesList, newItem, workoutPlanController);
+                    }
+                });
         setUserInfoTab();
         try {
             workoutPlanBean = workoutPlanController.getWorkoutPlan();
@@ -59,5 +74,9 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
         }
+    }
+
+    private void listEvent(ListView<ExerciseBean> exercisesList, ExerciseBean newItem, WorkoutPlanController workoutPlanController) {
+        //TODO aggiornare tab di info dell'esercizio selezionato
     }
 }

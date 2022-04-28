@@ -16,9 +16,9 @@ import java.util.Objects;
 public class CourseListCellFactory extends ListCell<CourseBean> {
     private Parent parentNode = null ;
     @Override public void updateItem(CourseBean courseBean, boolean empty){
-        updateCourseListWithParameter(courseBean, empty, "course");
+        updateCourseListWithParameter(courseBean, empty);
     }
-    public void updateCourseListWithParameter(CourseBean courseBean, boolean empty, String str) {
+    public void updateCourseListWithParameter(CourseBean courseBean, boolean empty) {
         super.updateItem(courseBean, empty);
         if(courseBean != null){
             try {
@@ -26,7 +26,7 @@ public class CourseListCellFactory extends ListCell<CourseBean> {
                 ((Label)parentNode.lookup("#itemName")).setText(courseBean.getName());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(courseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText(courseBean.getOwner());
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + str + ".png")).toURI().toString()));
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + "course" + ".png")).toURI().toString()));
                 setGraphic(parentNode);
             } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
