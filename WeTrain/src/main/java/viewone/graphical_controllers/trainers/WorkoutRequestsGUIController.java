@@ -7,18 +7,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import viewone.ListPopulate;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.ExerciseBean;
 import viewone.bean.RequestBean;
-import viewone.list_cell_factories.ExerciseListCellFactory;
 import viewone.list_cell_factories.RequestListCellFactory;
 
 import java.io.IOException;
@@ -44,7 +40,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         requestsList.setCellFactory(nodeListView -> new RequestListCellFactory());
-        ObservableList<RequestBean> requestBeanObservableList = null;
+        ObservableList<RequestBean> requestBeanObservableList;
         //TODO fare controller e prendere richieste
         requestBeanObservableList = FXCollections.observableList(null);
         requestsList.setItems(FXCollections.observableList(requestBeanObservableList));
