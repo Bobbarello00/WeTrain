@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class WorkoutDay {
+public class WorkoutDay implements Serializable {
     private Integer id;
     private String day;
     private String info;

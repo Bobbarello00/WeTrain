@@ -1,16 +1,18 @@
-package model;
+package viewone.bean;
 
-import java.io.Serializable;
+import model.Athlete;
+import model.Trainer;
+
 import java.time.LocalDateTime;
 
-public class Request implements Serializable {
+public class RequestBean {
     private int id;
     private LocalDateTime requestDate;
     private String info;
-    private Athlete athlete;
-    private Trainer trainer;
+    private String athlete;
+    private String trainer;
 
-    public Request(int id, LocalDateTime requestDate, String info, Athlete athlete, Trainer trainer){
+    public RequestBean(int id, LocalDateTime requestDate, String info, String athlete, String trainer){
         this.id = id;
         this.requestDate = requestDate;
         this.info = info;
@@ -26,11 +28,11 @@ public class Request implements Serializable {
         return requestDate;
     }
 
-    public Athlete getAthlete() {
+    public String getAthlete() {
         return athlete;
     }
 
-    public Trainer getTrainer() {
+    public String getTrainer() {
         return trainer;
     }
 

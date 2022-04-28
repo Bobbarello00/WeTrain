@@ -1,6 +1,5 @@
 package viewone.graphical_controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -14,5 +13,9 @@ public abstract class AbstractFormGUIController{
         MainPane.getInstance().setDisable(false);
     }
 
-    @FXML abstract void sendButtonAction();
+    @FXML protected void sendButtonAction() {
+        sendAction();
+    }
+
+    protected abstract void sendAction();
 }

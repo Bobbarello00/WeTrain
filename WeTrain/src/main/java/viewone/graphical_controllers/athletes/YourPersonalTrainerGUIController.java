@@ -23,6 +23,7 @@ import viewone.bean.FcBean;
 import viewone.bean.TrainerBean;
 import viewone.bean.TrainerSearchBean;
 import viewone.bean.UserBean;
+import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
@@ -68,10 +69,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
     @FXML void workoutRequestButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "", false);
+        RequestFormGUIController controller = (RequestFormGUIController)
+                PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "RequestForm", "", false);
+        //TODO passare trainer a requestForm
     }
 
-    @FXML void unsubscribeButtonAction() throws IOException {
+    @FXML void unsubscribeButtonAction() {
         setSelectedTrainer(null);
         try {
             subscriptionToTrainerController.unsubscribeFromTrainer();
@@ -88,8 +91,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         }
     }
 
-    @FXML void addTrainerAction() throws IOException {
-        ObservableList<UserBean> trainersObservableList = null;
+    @FXML void addTrainerAction() {
+        ObservableList<UserBean> trainersObservableList;
         try {
             trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
             trainersList.setItems(FXCollections.observableList(trainersObservableList));
@@ -97,23 +100,25 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
+            return;
         }
         hideVBox(addTrainerBox);
         showVBox(searchTrainerBox);
     }
 
-    @FXML void searchButtonAction() throws SQLException, IOException {
-        List<UserBean> userBeanList = null;
+    @FXML void searchButtonAction() throws SQLException {
+        List<UserBean> userBeanList;
         try {
             userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
+            return;
         }
         ObservableList<UserBean> trainersObservableList = FXCollections.observableList(userBeanList);
         trainersList.setItems(FXCollections.observableList(trainersObservableList));
     }
 
-    @FXML void subscribeButtonAction() throws IOException {
+    @FXML void subscribeButtonAction() {
         try {
             subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
             updateTrainerBox();

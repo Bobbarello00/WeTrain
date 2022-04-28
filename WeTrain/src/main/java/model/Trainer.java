@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Trainer extends User {
+public class Trainer extends User implements Serializable {
     private String iban;
 
     public Trainer() {}

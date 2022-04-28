@@ -2,11 +2,12 @@ package model;
 
 import exception.ExpiredCardException;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
 
-public class Athlete extends User {
+public class Athlete extends User implements Serializable {
     private String cardNumber;
     private YearMonth cardExpirationDate;
     private WorkoutPlan workoutPlan;
