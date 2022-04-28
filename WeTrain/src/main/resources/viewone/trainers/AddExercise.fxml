@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="750.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.AddExerciseGUIController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="656.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.AddExerciseGUIController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
@@ -21,12 +21,12 @@
       </cursor>
       <Image url="@../images/WeTrainLogo.png" />
    </ImageView>
-   <Button fx:id="addButton" alignment="CENTER" layoutX="629.0" layoutY="406.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="23.0" prefWidth="70.0" scaleX="1.2" scaleY="1.2" text="Add" textAlignment="JUSTIFY" textFill="WHITE">
+   <Button fx:id="addButton" alignment="CENTER" layoutX="523.0" layoutY="406.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="23.0" prefWidth="70.0" scaleX="1.2" scaleY="1.2" text="Add" textAlignment="JUSTIFY" textFill="WHITE">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Button>
-   <TextField fx:id="nameText" layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="290.0" promptText="Name:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50; -fx-text-fill: black;">
+   <TextField fx:id="nameText" layoutX="44.0" layoutY="124.0" prefHeight="31.0" prefWidth="319.0" promptText="Name:" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50; -fx-text-fill: black;">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
@@ -47,14 +47,9 @@
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
    </Button>
-   <Pane layoutX="44.0" layoutY="174.0" prefHeight="214.0" prefWidth="290.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+   <Pane layoutX="45.0" layoutY="176.0" prefHeight="207.0" prefWidth="564.0" style="-fx-background-color: rgba(21,147,24,0.6); -fx-background-radius: 30;">
       <children>
-         <TextArea fx:id="equipmentTextArea" layoutX="44.0" layoutY="31.0" prefHeight="152.0" prefWidth="203.0" promptText="Insert the necessary equipment for the exercise." scaleX="1.25" scaleY="1.25" style="-fx-prompt-text-fill: white;" wrapText="true" />
-      </children>
-   </Pane>
-   <Pane layoutX="375.0" layoutY="124.0" prefHeight="270.0" prefWidth="331.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 30;">
-      <children>
-         <TextArea fx:id="descriptionTextArea" layoutX="45.0" layoutY="37.0" prefHeight="196.0" prefWidth="236.0" promptText="Insert description and advices about the exercise." scaleX="1.25" scaleY="1.25" style="-fx-prompt-text-fill: #707070; -fx-text-fill: black;" wrapText="true" />
+         <TextArea fx:id="descriptionTextArea" layoutX="66.0" layoutY="37.0" prefHeight="134.0" prefWidth="432.0" promptText="Insert description and advices about the exercise (eg. necessary equipment)." scaleX="1.25" scaleY="1.25" style="-fx-prompt-text-fill: white; -fx-text-fill: white;" wrapText="true" />
       </children>
    </Pane>
 </Pane>
