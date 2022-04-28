@@ -15,7 +15,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
-import viewone.engeneering.ManageList;
+import viewone.engeneering.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.list_cell_factories.CourseListCellFactory;
 
@@ -95,7 +95,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
 
-        ManageList.updateList(resultList, courseBeanList);
+        ManageCourseList.updateList(resultList, courseBeanList);
 
         System.out.println("Search done, showing results...");
     }
@@ -106,7 +106,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
 
-        ManageList.setCourseListener(resultList, courseManagementAthleteController, logoutButton);
+        ManageCourseList.setCourseListener(resultList, courseManagementAthleteController, logoutButton);
 
         setUserInfoTab();
     }

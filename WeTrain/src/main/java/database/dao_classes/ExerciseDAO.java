@@ -48,17 +48,17 @@ public class ExerciseDAO {
         }
     }
 
-    public ExerciseCatalogue loadTrainerExercises(Trainer trainer) throws SQLException {
+    public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerExercises(stmt, trainer)){
-            ExerciseCatalogue newCatalogue = new ExerciseCatalogue();
+            List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
-                newCatalogue.addExercise(new Exercise(
+                exerciseList.add(new Exercise(
                         rs.getInt(IDEXERCISE),
                         rs.getString(NAME),
                         rs.getString(INFO),
                         trainer));
             }
-            return newCatalogue;
+            return exerciseList;
         }
     }
 

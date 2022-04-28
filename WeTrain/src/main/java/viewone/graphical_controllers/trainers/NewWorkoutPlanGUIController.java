@@ -1,27 +1,42 @@
 package viewone.graphical_controllers.trainers;
 
+import controller.TrainerExercisesManagementController;
+import exception.DBConnectionFailedException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import viewone.*;
+import viewone.DaysOfTheWeekButtonController;
+import viewone.MainPane;
+import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
+import viewone.bean.CourseBean;
+import viewone.bean.ExerciseBean;
 import viewone.bean.RequestBean;
+import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
     public final DaysOfTheWeekButtonController daysController = new DaysOfTheWeekButtonController();
 
-    @FXML private ListView<Node> exercisesList;
-    @FXML private ListView<Node> exercisesSelectedList;
+    @FXML private ListView<ExerciseBean> exercisesList;
+    @FXML private ListView<ExerciseBean> exercisesSelectedList;
     @FXML private Button createButton;
 
     private RequestBean requestBean;
+    private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
     @FXML public void addExerciseTextAction() throws IOException {
         PageSwitchSizeChange.pageSwitch(createButton, "AddExercise", HOME, false);
@@ -43,8 +58,30 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        ListPopulate.populateList(10,exercisesList);
-        ListPopulate.populateList(10,exercisesSelectedList);
-        setUserInfoTab();
+        exercisesList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        exercisesSelectedList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        try {
+            ObservableList<ExerciseBean> exerciseBeanObservableList = FXCollections.observableList(trainerExercisesManagementController.getTrainerExercises());
+            exercisesList.setItems(exerciseBeanObservableList);
+            exercisesList.getSelectionModel().selectedItemProperty().
+                    addListener(new ChangeListener<>() {
+                        @Override
+                        public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
+                            try {
+                                //TODO EXERCISE OVERVIEW
+                                PageSwitchSizeChange.pageSwitch(logoutButton, "ExerciseOverview", "trainers", false);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    });
+            setUserInfoTab();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+        }
+
     }
+
 }

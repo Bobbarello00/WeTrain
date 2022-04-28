@@ -9,7 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.bean.CourseBean;
-import viewone.engeneering.ManageList;
+import viewone.engeneering.ManageCourseList;
 import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.net.URL;
@@ -34,13 +34,12 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             popularBeanList = courseManagementAthleteController.getPopularCourseList();
         } catch (DBConnectionFailedException | CJException e) {
             new DBConnectionFailedException().alertAndLogOff();
-            logoutButton.fire();
             return;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        ManageList.updateList(courseList, Objects.requireNonNull(courseBeanList));
-        ManageList.updateList(popularList, Objects.requireNonNull(popularBeanList));
+        ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
+        ManageCourseList.updateList(popularList, Objects.requireNonNull(popularBeanList));
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,8 +48,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
         updateList();
 
-        ManageList.setCourseListener(courseList, courseManagementAthleteController, logoutButton);
-        ManageList.setCourseListener(popularList, courseManagementAthleteController, logoutButton);
+        ManageCourseList.setCourseListener(courseList, courseManagementAthleteController, logoutButton);
+        ManageCourseList.setCourseListener(popularList, courseManagementAthleteController, logoutButton);
 
         setUserInfoTab();
     }

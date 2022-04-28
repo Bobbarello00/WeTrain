@@ -7,6 +7,8 @@ import model.Trainer;
 import viewone.bean.ExerciseBean;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrainerExercisesManagementController {
 
@@ -18,5 +20,18 @@ public class TrainerExercisesManagementController {
                 exerciseBean.getInfo(),
                 (Trainer) loginController.getLoggedUser()
         ));
+    }
+
+    public List<ExerciseBean> getTrainerExercises() throws SQLException, DBConnectionFailedException {
+        List<Exercise> exerciseList = new ExerciseDAO().loadTrainerExercises((Trainer) loginController.getLoggedUser());
+        List<ExerciseBean> exerciseBeanList = new ArrayList<>();
+        for(Exercise exercise: exerciseList){
+            exerciseBeanList.add(new ExerciseBean(
+                    exercise.getId(),
+                    exercise.getName(),
+                    exercise.getInfo()
+                    ));
+        }
+        return exerciseBeanList;
     }
 }
