@@ -1,6 +1,5 @@
 package viewone.engeneering;
 
-import controller.CourseManagementAthleteController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,7 +10,6 @@ import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
-import viewone.bean.IdBean;
 import viewone.graphical_controllers.athletes.CourseOverviewGUIController;
 
 import java.io.IOException;
@@ -27,17 +25,17 @@ public class ManageList {
         courseList.setItems(FXCollections.observableList(courseObservableList));
     }
 
-    public static void setCourseListener(ListView<CourseBean> list, CourseManagementAthleteController courseManagementAthleteController, Button button){
+    public static void setCourseListener(ListView<CourseBean> list, Button button){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
-                        eventList(list, newItem, courseManagementAthleteController, button);
+                        eventList(list, newItem, button);
                     }
                 });
     }
 
-    private static void eventList(ListView<CourseBean> listView, CourseBean newItem, CourseManagementAthleteController courseManagementAthleteController, Button button) {
+    private static void eventList(ListView<CourseBean> listView, CourseBean newItem, Button button) {
         try {
             if(newItem != null) {
                 CourseOverviewGUIController courseOverviewGUIController = (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch(button, "CourseOverview", "athletes", false);
