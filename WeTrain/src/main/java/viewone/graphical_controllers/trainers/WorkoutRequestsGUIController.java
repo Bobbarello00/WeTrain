@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.RequestWorkoutPlanController;
+import controller.WorkoutPlanRequestController;
 import exception.DBConnectionFailedException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,7 +35,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     @FXML private VBox emptyInfoBox;
     @FXML private Label requestInfoLabel;
 
-    private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
+    private final WorkoutPlanRequestController workoutPlanRequestController = new WorkoutPlanRequestController();
 
     @FXML void newWorkoutButtonAction() throws IOException {
         NewWorkoutPlanGUIController controller = (NewWorkoutPlanGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);
@@ -49,7 +49,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             requestsList.setCellFactory(nodeListView -> new RequestListCellFactory());
-            ObservableList<RequestBean> requestBeanObservableList = FXCollections.observableList(requestWorkoutPlanController.getTrainerRequests());
+            ObservableList<RequestBean> requestBeanObservableList = FXCollections.observableList(workoutPlanRequestController.getTrainerRequests());
             requestsList.setItems(FXCollections.observableList(requestBeanObservableList));
             requestsList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {

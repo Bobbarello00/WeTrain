@@ -11,6 +11,11 @@ public class ExerciseBean {
         this.info = info;
     }
 
+    public ExerciseBean(String name, String info) {
+        this.name = name;
+        this.info = info;
+    }
+
     public int getId() {
         return id;
     }

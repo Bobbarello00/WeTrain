@@ -15,6 +15,12 @@ public class Exercise implements Serializable {
         this.trainer = trainer;
     }
 
+    public Exercise(String name, String information, Trainer trainer){
+        this.name = name;
+        this.info = information;
+        this.trainer = trainer;
+    }
+
     public int getId() {
         return id;
     }
