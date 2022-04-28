@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Query {
     private static final String SELECT_ALL = "SELECT * ";
     private static final String WHERE_USER = "WHERE User = '%s';";
     private static final String LIMIT_10 = "LIMIT 10;";
-    private static final String LIMIT_50 = "LIMIT 50;";
+    private static final String LIMIT_30 = "LIMIT 30;";
 
     private Query(){}
 
@@ -26,7 +27,7 @@ public class Query {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM Notification " +
                 "WHERE Athlete = '%s' or Trainer = '%s' " +
-                LIMIT_50, user.getFiscalCode(), user.getFiscalCode()));
+                LIMIT_30, user.getFiscalCode(), user.getFiscalCode()));
     }
 
     public static void insertNotification(Statement stmt, Notification notification) throws SQLException {
@@ -314,18 +315,19 @@ public class Query {
                 "WHERE idLesson = %s;", lesson.getId()));
     }
 
-    public static int insertRequest(Statement stmt, Request request) throws SQLException {
-        return stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Athlete, Trainer) " +
-                "VALUES ('%s', '%s', '%s');",
-                Timestamp.valueOf(request.getRequestDate()),
-                request.getAthlete().getFiscalCode(),
-                request.getTrainer().getFiscalCode()));
+    public static void insertRequest(Statement stmt, LocalDateTime requestDate, String info, String athleteFc, String trainerFc) throws SQLException {
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Info, Athlete, Trainer) " +
+                        "VALUES ('%s', '%s', '%s', '%s');",
+                Timestamp.valueOf(requestDate),
+                info,
+                athleteFc,
+                trainerFc));
     }
 
     public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
         return stmt.executeQuery(String.format("SELECT Request.* " +
                 "FROM mydb.Request join mydb.Trainer on Request.Trainer = '%s' " +
-                LIMIT_50, trainer.getFiscalCode()));
+                LIMIT_30, trainer.getFiscalCode()));
     }
 
     public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {

@@ -17,7 +17,12 @@ public class CourseManagementTrainerController {
 
     public void createCourse(CourseBean bean) throws SQLException, DBConnectionFailedException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
-        Course course = new Course(bean.getName(), bean.getDescription(), bean.getFitnessLevel(), trainer, bean.getEquipment());
+        Course course = new Course(
+                bean.getName(),
+                bean.getDescription(),
+                bean.getFitnessLevel(),
+                trainer,
+                bean.getEquipment());
         if(bean.getLessonBeanList() != null){
             course.addAllLessons(setLesson(bean.getLessonBeanList()));
         }

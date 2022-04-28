@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.RequestWorkoutPlanController;
 import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
@@ -22,6 +23,8 @@ public class RequestFormGUIController extends AbstractFormGUIController {
     @FXML private TextArea requestInfoTextArea;
     private UserBean trainer;
 
+    private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
+
     public void setTrainer(UserBean trainer) {
         this.trainer = trainer;
     }
@@ -34,7 +37,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
                     userInfoCarrier.getFiscalCode(),
                     userInfoCarrier.getUsername(),
                     trainer.getFiscalCode());
-
+            requestWorkoutPlanController.sendRequest(requestBean);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
@@ -45,7 +48,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
             e.alert();
             return;
         }
-        //TODO CREAZIONE NOTIFICA E INVIO FITTIZIO DELLA RICHIESTA
+        //TODO CREAZIONE NOTIFICA
         ((Stage) sendButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }

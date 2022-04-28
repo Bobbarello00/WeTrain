@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +22,7 @@ public class RequestDAO {
     public static final String TRAINER = "Trainer";
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public RequestDAO() throws DBConnectionFailedException {
-    }
+    public RequestDAO() throws DBConnectionFailedException {}
 
     public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadRequest(stmt, requestCode)) {
@@ -43,6 +43,7 @@ public class RequestDAO {
             Query.deleteRequest(stmt, request);
         }
     }
+
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerRequests(stmt, trainer)){
             List<Request> myList = new ArrayList<>();
@@ -55,6 +56,12 @@ public class RequestDAO {
                         trainer));
             }
             return myList;
+        }
+    }
+
+    public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException {
+        try(Statement stmt = conn.createStatement()) {
+            Query.insertRequest(stmt, requestDate, info, athleteFc, trainer);
         }
     }
 }
