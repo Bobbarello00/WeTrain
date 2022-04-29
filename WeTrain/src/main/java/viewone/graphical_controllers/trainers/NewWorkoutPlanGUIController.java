@@ -2,6 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.TrainerExercisesManagementController;
 import exception.DBConnectionFailedException;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -69,7 +70,15 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
                         public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
                             try {
                                 //TODO EXERCISE OVERVIEW
-                                PageSwitchSizeChange.pageSwitch(logoutButton, "ExerciseOverview", "trainers", false);
+                                if(newItem != null){
+                                    ExerciseOverviewGUIController exerciseOverviewGUIController =
+                                            (ExerciseOverviewGUIController) PageSwitchSizeChange.pageSwitch(logoutButton,
+                                            "ExerciseOverview",
+                                            "trainers",
+                                            false);
+                                    exerciseOverviewGUIController.setValues(newItem);
+                                    Platform.runLater(() -> exercisesList.getSelectionModel().clearSelection());
+                                }
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }

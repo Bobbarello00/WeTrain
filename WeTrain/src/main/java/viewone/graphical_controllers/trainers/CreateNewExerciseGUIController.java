@@ -13,14 +13,13 @@ import viewone.bean.ExerciseBean;
 
 import java.sql.SQLException;
 
-public class AddExerciseGUIController {
-    @FXML private Button addButton;
+public class CreateNewExerciseGUIController {
     @FXML private TextArea descriptionTextArea;
     @FXML private TextField nameText;
 
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
-    @FXML void addButtonAction(ActionEvent event) {
+    @FXML void createButtonAction(ActionEvent event) {
         ExerciseBean exerciseBean = new ExerciseBean(
                 nameText.getText(),
                 descriptionTextArea.getText());
@@ -31,9 +30,7 @@ public class AddExerciseGUIController {
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
         }
-
-        ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
-        MainPane.getInstance().setDisable(false);
+        cancelButtonAction(event);
     }
 
     @FXML void cancelButtonAction(ActionEvent event) {

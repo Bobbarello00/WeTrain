@@ -1,7 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
-import database.DatabaseConnectionSingleton;
 import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
-import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
@@ -87,7 +85,7 @@ public class CourseOverviewGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
-    public void setValue(CourseBean courseBean) throws SQLException, IOException {
+    public void setValues(CourseBean courseBean) throws SQLException, IOException {
         try {
             if(courseManagementAthleteController.checkSubscription(courseBean)){
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
@@ -115,13 +113,12 @@ public class CourseOverviewGUIController {
 
     @FXML public void subscribeButtonAction(ActionEvent event) {
         try {
-            if(!subscribed){
-                if(courseBean != null) {
+            if(courseBean != null) {
+                if (!subscribed) {
                     courseManagementAthleteController.subscribeToACourse(courseBean);
-                    System.out.println("Subscribed!");
+                } else {
+                    courseManagementAthleteController.unsubscribeFromACourse(courseBean);
                 }
-            } else {
-                courseManagementAthleteController.unsubscribeFromACourse(courseBean);
             }
         } catch (SQLIntegrityConstraintViolationException e) {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",

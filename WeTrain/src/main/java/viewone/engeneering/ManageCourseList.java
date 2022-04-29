@@ -38,8 +38,12 @@ public class ManageCourseList {
     private static void eventList(ListView<CourseBean> listView, CourseBean newItem, Button button) {
         try {
             if(newItem != null) {
-                CourseOverviewGUIController courseOverviewGUIController = (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch(button, "CourseOverview", "athletes", false);
-                courseOverviewGUIController.setValue(newItem);
+                CourseOverviewGUIController courseOverviewGUIController =
+                        (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch(button,
+                                "CourseOverview",
+                                "athletes",
+                                false);
+                courseOverviewGUIController.setValues(newItem);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
         } catch (SQLException e) {

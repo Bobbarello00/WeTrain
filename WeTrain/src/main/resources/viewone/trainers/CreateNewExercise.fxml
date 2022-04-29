@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="656.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.AddExerciseGUIController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="656.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.CreateNewExerciseGUIController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
@@ -21,7 +21,7 @@
       </cursor>
       <Image url="@../images/WeTrainLogo.png" />
    </ImageView>
-   <Button fx:id="addButton" alignment="CENTER" layoutX="523.0" layoutY="406.0" mnemonicParsing="false" onAction="#addButtonAction" prefHeight="23.0" prefWidth="70.0" scaleX="1.2" scaleY="1.2" text="Add" textAlignment="JUSTIFY" textFill="WHITE">
+   <Button alignment="CENTER" layoutX="523.0" layoutY="406.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="70.0" scaleX="1.2" scaleY="1.2" text="Create" textAlignment="JUSTIFY" textFill="WHITE">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
@@ -37,7 +37,7 @@
          <Insets left="10.0" />
       </padding>
    </TextField>
-   <Text layoutX="173.0" layoutY="69.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add exercise" wrappingWidth="112.83168792724626">
+   <Text layoutX="173.0" layoutY="69.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create new exercise" wrappingWidth="112.83168792724626">
       <font>
          <Font name="ABeeZee Regular" size="12.0" />
       </font>
