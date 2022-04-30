@@ -1,9 +1,6 @@
 package viewone.graphical_controllers;
 
-import com.mysql.cj.exceptions.CJException;
 import exception.DBConnectionFailedException;
-import exception.ExpiredCardException;
-import exception.InvalidCardInfoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,7 +11,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
-import viewone.bean.UserBean;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.engeneering.UserInfoCarrier;
 
@@ -24,10 +20,12 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public abstract class HomeGUIController {
-    @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
+
     @FXML protected Text usernameText1;
     @FXML protected ImageView userImage;
     @FXML protected Button logoutButton;
+
+    @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
 
     protected void setUserInfoTab() {
         UserInfoCarrier user = getUserInfo();

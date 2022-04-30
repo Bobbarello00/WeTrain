@@ -5,6 +5,7 @@ import controller.TrainerExercisesManagementController;
 import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -12,9 +13,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
-import viewone.bean.ExerciseBean;
+import viewone.WeTrain;
 import viewone.bean.ExerciseForWorkoutPlanBean;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 
 public class ExerciseOverviewGUIController{
@@ -30,11 +34,17 @@ public class ExerciseOverviewGUIController{
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
     @FXML void addOrRemoveAction(ActionEvent event) {
-        //TODO come passiamo il workout day in cui và inserito/da cui và rimosso tale esercizio?
-        if (!alreadyAdded) {
-            satisfyWorkoutRequestsController.addExerciseToPlan(exerciseForWorkoutPlanBean);
-        } else {
-            satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
+        try{
+            if (!alreadyAdded) {
+                    satisfyWorkoutRequestsController.addExerciseToPlan(exerciseForWorkoutPlanBean);
+            } else {
+                    satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+            return;
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
@@ -42,7 +52,7 @@ public class ExerciseOverviewGUIController{
 
     @FXML void deleteAction(ActionEvent event) {
         try {
-            trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean.getExerciseBean());
+            trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
             return;
@@ -58,8 +68,8 @@ public class ExerciseOverviewGUIController{
         MainPane.getInstance().setDisable(false);
     }
 
-    public void setValues(ExerciseForWorkoutPlanBean bean){
-        this.exerciseForWorkoutPlanBean = bean;
+    public void setValues(ExerciseForWorkoutPlanBean exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController){
+        this.exerciseForWorkoutPlanBean = exerciseBean;
 
         if(satisfyWorkoutRequestsController.checkAlreadyAdded(exerciseForWorkoutPlanBean)){
             addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
@@ -67,7 +77,6 @@ public class ExerciseOverviewGUIController{
             alreadyAdded = true;
         }
 
-        ExerciseBean exerciseBean = exerciseForWorkoutPlanBean.getExerciseBean();
         nameText.setText(exerciseBean.getName());
         infoTextArea.setText(exerciseBean.getInfo());
     }

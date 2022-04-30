@@ -7,13 +7,11 @@ import java.util.Objects;
 public class WorkoutDayBean {
 
     private String day;
-    private String info;
     List<ExerciseBean> exerciseBeanList;
 
 
-    public WorkoutDayBean(String day, String info) {
+    public WorkoutDayBean(String day) {
         this.day = day;
-        this.info = info;
         this.exerciseBeanList = new ArrayList<>();
     }
 
@@ -27,10 +25,6 @@ public class WorkoutDayBean {
 
     public String getDay() {
         return day;
-    }
-
-    public String getInfo() {
-        return info;
     }
 
     public void addExerciseBean(ExerciseBean exerciseBean) {

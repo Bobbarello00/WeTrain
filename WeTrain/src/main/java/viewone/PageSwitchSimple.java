@@ -13,8 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 
 public class PageSwitchSimple {
-    private static Pane view;
-    private static Pane menu;
+
     private static final String EXTENSION = ".fxml";
 
     private PageSwitchSimple(){}
@@ -33,7 +32,7 @@ public class PageSwitchSimple {
             }
             FXMLLoader root = new FXMLLoader(fileUrl);
             try {
-                view = root.load();
+                Pane view = root.load();
                 mainPane.setCenter(view);
                 return root.getController();
             } catch (LoadException e) {
@@ -55,8 +54,8 @@ public class PageSwitchSimple {
             if(fileUrl==null || menuUrl==null){
                 throw new FileNotFoundException("Non ho trovato il file FXML");
             }
-            view = FXMLLoader.load(fileUrl);
-            menu = FXMLLoader.load(menuUrl);
+            Pane view = FXMLLoader.load(fileUrl);
+            Pane menu = FXMLLoader.load(menuUrl);
             mainPane.setCenter(view);
             mainPane.setLeft(menu);
         } catch (FileNotFoundException e) {

@@ -30,12 +30,12 @@ public class ManageCourseList {
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
-                        eventList(list, newItem, button);
+                        listEvent(list, newItem, button);
                     }
                 });
     }
 
-    private static void eventList(ListView<CourseBean> listView, CourseBean newItem, Button button) {
+    private static void listEvent(ListView<CourseBean> listView, CourseBean newItem, Button button) {
         try {
             if(newItem != null) {
                 CourseOverviewGUIController courseOverviewGUIController =

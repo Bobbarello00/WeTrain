@@ -9,18 +9,17 @@ import model.WorkoutPlan;
 import viewone.bean.*;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class SatisfyWorkoutRequestsController {
 
     private final LoginController loginController = new LoginController();
+    private final WorkoutPlan workoutPlan = new WorkoutPlan();
 
-    private final WorkoutPlanBean workoutPlanBean = new WorkoutPlanBean();
+    private Trainer trainer;
 
-    private WorkoutDayBean getWorkoutDay(String day) {
-        for(WorkoutDayBean workoutDay: workoutPlanBean.getWorkoutDayList()){
+    private WorkoutDay getWorkoutDay(String day) {
+        for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
             if(Objects.equals(workoutDay.getDay(), day)) {
                 return workoutDay;
             }
@@ -28,21 +27,28 @@ public class SatisfyWorkoutRequestsController {
         return null;
     }
 
-    public void addExerciseToPlan(ExerciseForWorkoutPlanBean bean) {
-        //TODO aggiungere inserimento delle info per ogni WorkoutDay
-        WorkoutDayBean workoutDayBean = getWorkoutDay(bean.getDay());
-        if(workoutDayBean == null) {
-            workoutDayBean = new WorkoutDayBean(bean.getDay(), null);
-            workoutPlanBean.addWorkoutDayBean(workoutDayBean);
+    public void addExerciseToPlan(ExerciseForWorkoutPlanBean bean) throws SQLException, DBConnectionFailedException {
+        WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
+        if(workoutDay == null) {
+            workoutDay = new WorkoutDay(bean.getDay());
+            workoutPlan.addWorkoutDay(workoutDay);
         }
-        workoutDayBean.addExerciseBean(bean.getExerciseBean());
+        System.out.println(workoutPlan.getWorkoutDayList().size());
+        if(trainer == null){
+            trainer = (Trainer) loginController.getLoggedUser();
+        }
+        workoutDay.addExercise(new Exercise(
+                bean.getName(),
+                bean.getInfo(),
+                trainer
+        ));
         System.out.println("Exercise added!");
     }
 
     public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
-        for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
-            for(ExerciseBean exerciseBean: workoutDayBean.getExerciseBeanList()){
-                if(Objects.equals(exerciseBean.getName(), exerciseForWorkoutPlanBean.getExerciseBean().getName())){
+        for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
+            for(Exercise exercise: workoutDay.getExerciseList()){
+                if(Objects.equals(exercise.getName(), exerciseForWorkoutPlanBean.getName())){
                     return true;
                 }
             }
@@ -51,40 +57,33 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public void removeExerciseFromPlan(ExerciseForWorkoutPlanBean bean) {
-        WorkoutDayBean workoutDayBean = getWorkoutDay(bean.getDay());
-        if(workoutDayBean == null){
+        WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
+        if(workoutDay == null){
             System.out.println("Il WorkoutDay non esiste");
             return;
         }
-        workoutDayBean.removeExerciseBean(bean.getExerciseBean());
-        System.out.println("Exercise added!");
+        workoutDay.removeExercise(bean.getName(), bean.getInfo());
+        System.out.println("Exercise removed!");
     }
 
     public void sendWorkoutRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
-        WorkoutPlan workoutPlan = getWorkoutPlan(workoutPlanBean);
         new WorkoutPlanDAO().saveWorkoutPlan(workoutPlan, requestBean.getAthleteFc());
     }
 
-    private WorkoutPlan getWorkoutPlan(WorkoutPlanBean workoutPlanBean) throws SQLException, DBConnectionFailedException {
-        Trainer trainer = (Trainer) loginController.getLoggedUser();
-        WorkoutPlan workoutPlan = new WorkoutPlan();
-        List<WorkoutDay> workoutDayList = new ArrayList<>();
-        for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
-            List<Exercise> exerciseList = new ArrayList<>();
-            for(ExerciseBean exerciseBean: workoutDayBean.getExerciseBeanList()){
-                exerciseList.add(new Exercise(
-                        exerciseBean.getId(),
-                        exerciseBean.getName(),
-                        exerciseBean.getInfo(),
-                        trainer));
+    public WorkoutDayBean getWorkoutDayBean(DayBean dayBean) {
+        for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
+            System.out.println(workoutDay.getDay());
+            if(Objects.equals(workoutDay.getDay(), dayBean.getDay())){
+                WorkoutDayBean workoutDayBean = new WorkoutDayBean(workoutDay.getDay());
+                for(Exercise exercise: workoutDay.getExerciseList()){
+                    workoutDayBean.addExerciseBean(new ExerciseBean(
+                            exercise.getName(),
+                            exercise.getInfo()
+                    ));
+                }
+                return workoutDayBean;
             }
-            workoutDayList.add(new WorkoutDay(
-                    workoutDayBean.getDay(),
-                    workoutDayBean.getInfo(),
-                    exerciseList));
         }
-        workoutPlan.addAllWorkoutDays(workoutDayList);
-        return workoutPlan;
+        return new WorkoutDayBean(dayBean.getDay());
     }
-
 }

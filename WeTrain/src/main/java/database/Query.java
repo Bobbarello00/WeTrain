@@ -348,8 +348,10 @@ public class Query {
                 exercise.getId()));
     }
 
-    public static int insertWorkoutDay(int workoutPlanKey) throws SQLException, DBConnectionFailedException {
-        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s);", workoutPlanKey), Statement.RETURN_GENERATED_KEYS)) {
+    public static int insertWorkoutDay(int workoutPlanKey, String day) throws SQLException, DBConnectionFailedException {
+        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s, '%s');",
+                        workoutPlanKey, day), Statement.RETURN_GENERATED_KEYS)) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
                 if (generatedKeys.next()) {

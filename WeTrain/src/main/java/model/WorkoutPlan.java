@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutPlan implements Serializable {
@@ -8,10 +9,13 @@ public class WorkoutPlan implements Serializable {
     private List<WorkoutDay> workoutDayList;
 
     public WorkoutPlan(int id){
+        this();
         this.id = id;
     }
 
-    public WorkoutPlan(){}
+    public WorkoutPlan(){
+        this.workoutDayList = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
@@ -23,5 +27,9 @@ public class WorkoutPlan implements Serializable {
 
     public void addAllWorkoutDays(List<WorkoutDay> workoutDayList) {
         this.workoutDayList = workoutDayList;
+    }
+
+    public void addWorkoutDay(WorkoutDay workoutDay) {
+        workoutDayList.add(workoutDay);
     }
 }

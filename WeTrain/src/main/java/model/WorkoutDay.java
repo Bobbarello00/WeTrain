@@ -1,32 +1,36 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class WorkoutDay implements Serializable {
     private Integer id;
     private String day;
-    private String info;
     private List<Exercise> exerciseList;
 
-    public WorkoutDay(int id, String day, String info){
+    public WorkoutDay(int id, String day){
+        this(day);
         this.id = id;
-        this.day = day;
-        this.info = info;
     }
 
-    public WorkoutDay(String day, String info, List<Exercise> exerciseList){
-        this.day = day;
-        this.info = info;
+    public WorkoutDay(String day, List<Exercise> exerciseList){
+        this(day);
         this.exerciseList = exerciseList;
+    }
+
+    public WorkoutDay(String day) {
+        this();
+        this.day = day;
+    }
+
+    private WorkoutDay() {
+        exerciseList = new ArrayList<>();
     }
 
     public List<Exercise> getExerciseList(){
         return exerciseList;
-    }
-
-    public void removeExercise(Exercise exercise){
-        exerciseList.remove(exercise);
     }
 
     public void addExercise(Exercise exercise){
@@ -45,11 +49,13 @@ public class WorkoutDay implements Serializable {
         return day;
     }
 
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public String getInfo() {
-        return info;
+    public void removeExercise(String name, String info) {
+        for(Exercise exercise: exerciseList) {
+            if(Objects.equals(exercise.getName(), name) && Objects.equals(exercise.getInfo(), info)) {
+                exerciseList.remove(exercise);
+                return;
+            }
+        }
+        System.out.println("Esercizio non trovato");
     }
 }

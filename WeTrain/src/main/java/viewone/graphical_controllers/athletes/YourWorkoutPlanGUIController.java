@@ -47,13 +47,12 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
             if(Objects.equals(workoutDayBean.getDay(), day)){
                 updateListForSelectedDay(workoutDayBean);
-                infoLabel.setText(workoutDayBean.getInfo());
             }
         }
     }
 
     private void updateListForSelectedDay(WorkoutDayBean workoutDayBean) {
-        ObservableList<ExerciseBean> exerciseObservableList = null;
+        ObservableList<ExerciseBean> exerciseObservableList;
         exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
         exercisesList.setItems(FXCollections.observableList(exerciseObservableList));
     }
