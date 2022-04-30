@@ -1,13 +1,11 @@
 package viewone.engeneering;
 
 import controller.SatisfyWorkoutRequestsController;
-import controller.TrainerExercisesManagementController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import viewone.DaysOfTheWeekButtonController;
@@ -15,23 +13,24 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.bean.ExerciseForWorkoutPlanBean;
 import viewone.graphical_controllers.trainers.ExerciseOverviewGUIController;
+import viewone.graphical_controllers.trainers.NewWorkoutPlanGUIController;
 
 import java.io.IOException;
 import java.util.List;
 
 public class ManageExerciseList {
 
-    public static void setListener(ListView<ExerciseBean> exerciseList, DaysOfTheWeekButtonController daysController, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
+    public static void setListener(ListView<ExerciseBean> exerciseList, DaysOfTheWeekButtonController daysController, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController) {
         exerciseList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
-                        listEvent(newItem, daysController, exerciseList, satisfyWorkoutRequestsController);
+                        listEvent(newItem, daysController, exerciseList, satisfyWorkoutRequestsController, newWorkoutPlanGUIController);
                     }
                 });
     }
 
-    private static void listEvent(ExerciseBean newItem, DaysOfTheWeekButtonController daysController, ListView<ExerciseBean> exerciseList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
+    private static void listEvent(ExerciseBean newItem, DaysOfTheWeekButtonController daysController, ListView<ExerciseBean> exerciseList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController) {
         try {
             if(newItem != null){
                 ExerciseOverviewGUIController exerciseOverviewGUIController =
@@ -42,7 +41,8 @@ public class ManageExerciseList {
                 exerciseOverviewGUIController.setValues(new ExerciseForWorkoutPlanBean(
                         newItem,
                         daysController.getDay()),
-                        satisfyWorkoutRequestsController);
+                        satisfyWorkoutRequestsController,
+                        newWorkoutPlanGUIController);
                 Platform.runLater(() -> exerciseList.getSelectionModel().clearSelection());
             }
         } catch (IOException e) {

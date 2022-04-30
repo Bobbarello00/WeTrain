@@ -5,7 +5,6 @@ import controller.TrainerExercisesManagementController;
 import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -13,12 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
-import viewone.WeTrain;
 import viewone.bean.ExerciseForWorkoutPlanBean;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 
 public class ExerciseOverviewGUIController{
@@ -30,6 +25,7 @@ public class ExerciseOverviewGUIController{
     private ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean;
     private boolean alreadyAdded = false;
 
+    private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
@@ -46,6 +42,7 @@ public class ExerciseOverviewGUIController{
             e.alertAndLogOff();
             return;
         }
+        newWorkoutPlanGUIController.updateSelectedExerciseList();
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
@@ -53,6 +50,7 @@ public class ExerciseOverviewGUIController{
     @FXML void deleteAction(ActionEvent event) {
         try {
             trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
+            newWorkoutPlanGUIController.updateExerciseList();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
             return;
@@ -68,9 +66,9 @@ public class ExerciseOverviewGUIController{
         MainPane.getInstance().setDisable(false);
     }
 
-    public void setValues(ExerciseForWorkoutPlanBean exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController){
+    public void setValues(ExerciseForWorkoutPlanBean exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController){
         this.exerciseForWorkoutPlanBean = exerciseBean;
-
+        this.newWorkoutPlanGUIController = newWorkoutPlanGUIController;
         if(satisfyWorkoutRequestsController.checkAlreadyAdded(exerciseForWorkoutPlanBean)){
             addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
             addButton.setText("Remove from Plan");

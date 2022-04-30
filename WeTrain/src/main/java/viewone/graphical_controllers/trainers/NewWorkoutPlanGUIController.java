@@ -22,7 +22,6 @@ import viewone.list_cell_factories.ExerciseListCellFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -71,6 +70,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     public void updateSelectedExerciseList() {
         WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(daysController.getDay()));
+        System.out.println("size: "+ workoutDayBean.getExerciseBeanList().size());
         ManageExerciseList.updateList(
                 selectedExerciseList,
                 workoutDayBean.getExerciseBeanList());
@@ -89,8 +89,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
         try {
 
-            ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController);
-            ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController);
+            ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController, this);
+            ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController, this);
             List<ExerciseBean> exerciseBeanList = trainerExercisesManagementController.getTrainerExercises();
             ManageExerciseList.updateList(exerciseList, exerciseBeanList);
             setUserInfoTab();
