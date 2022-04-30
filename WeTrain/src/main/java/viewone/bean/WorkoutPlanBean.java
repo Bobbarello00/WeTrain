@@ -1,14 +1,19 @@
 package viewone.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutPlanBean {
-    private final int id;
+    private int id;
     private List<WorkoutDayBean> workoutDayList;
 
     public WorkoutPlanBean(int id) {
         this.id = id;
-        this.workoutDayList = null;
+        this.workoutDayList = new ArrayList<>();
+    }
+
+    public WorkoutPlanBean() {
+        this.workoutDayList = new ArrayList<>();
     }
 
     public List<WorkoutDayBean> getWorkoutDayList() {
@@ -21,5 +26,9 @@ public class WorkoutPlanBean {
 
     public int getId() {
         return id;
+    }
+
+    public void addWorkoutDayBean(WorkoutDayBean workoutDayBean) {
+        workoutDayList.add(workoutDayBean);
     }
 }

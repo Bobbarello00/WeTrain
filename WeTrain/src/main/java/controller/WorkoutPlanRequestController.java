@@ -23,6 +23,7 @@ public class WorkoutPlanRequestController {
         );
     }
 
+    //TODO spostare in SatisfyWorkoutRequestController?
     public List<RequestBean> getTrainerRequests() throws SQLException, DBConnectionFailedException {
         List<Request> requestList = new RequestDAO().loadTrainerRequests((Trainer) loginController.getLoggedUser());
         List<RequestBean> requestBeanList = new ArrayList<>();

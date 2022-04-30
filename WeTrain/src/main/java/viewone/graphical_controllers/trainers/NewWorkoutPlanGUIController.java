@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
+import controller.SatisfyWorkoutRequestsController;
 import controller.TrainerExercisesManagementController;
 import exception.DBConnectionFailedException;
 import javafx.application.Platform;
@@ -18,6 +19,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.ExerciseBean;
+import viewone.bean.ExerciseForWorkoutPlanBean;
 import viewone.bean.RequestBean;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
@@ -34,23 +36,35 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     @FXML private ListView<ExerciseBean> exercisesList;
     @FXML private ListView<ExerciseBean> exercisesSelectedList;
+    @FXML private Button mondayButton;
     @FXML private Button createButton;
 
     private RequestBean requestBean;
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+
+    //TODO Observer per esercizi selezionati
 
     @FXML public void addExerciseTextAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(createButton, "AddExercise", HOME, false);
+        PageSwitchSizeChange.pageSwitch(createButton, "CreateNewExercise", HOME, false);
     }
 
     @FXML void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);
     }
 
-    @FXML void navigationButtonAction(ActionEvent event) throws IOException {
+    @FXML void cancelButtonAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
-        if(event.getSource()==createButton) {
-            System.out.println("Created");
+    }
+
+    @FXML void createButtonAction() throws IOException {
+        try {
+            satisfyWorkoutRequestsController.sendWorkoutRequest(requestBean);
+            PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -59,6 +73,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
+        mondayButton.fire();
         exercisesList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
         exercisesSelectedList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
         try {
@@ -76,7 +91,9 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
                                             "ExerciseOverview",
                                             "trainers",
                                             false);
-                                    exerciseOverviewGUIController.setValues(newItem);
+                                    exerciseOverviewGUIController.setValues(new ExerciseForWorkoutPlanBean(
+                                            newItem,
+                                            daysController.getDay()));
                                     Platform.runLater(() -> exercisesList.getSelectionModel().clearSelection());
                                 }
                             } catch (IOException e) {

@@ -6,12 +6,14 @@ import model.Exercise;
 import model.WorkoutDay;
 import model.WorkoutPlan;
 import viewone.bean.ExerciseBean;
+import viewone.bean.ExerciseForWorkoutPlanBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class WorkoutPlanController {
 
@@ -43,5 +45,4 @@ public class WorkoutPlanController {
         workoutPlanBean.setWorkoutDayList(workoutDayBeanList);
         return workoutPlanBean;
     }
-
 }

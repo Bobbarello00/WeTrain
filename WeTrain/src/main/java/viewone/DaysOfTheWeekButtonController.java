@@ -31,7 +31,7 @@ public class DaysOfTheWeekButtonController {
                 return DayOfWeek.of(i+1).name();
             }
         }
-        return sourceId;
+        return null;
     }
 
     private void colorShift(Button button){
@@ -43,5 +43,14 @@ public class DaysOfTheWeekButtonController {
                 "-fx-border-radius: 50;" +
                 "-fx-text-fill: rgb(24, 147, 21)");
         previousButton = button;
+    }
+
+    public String getDay() {
+        for(int i = 0; i < 7; i++){
+            if(Objects.equals(previousButton.getId(), buttonNameList.get(i))) {
+                return DayOfWeek.of(i+1).name();
+            }
+        }
+        return null;
     }
 }

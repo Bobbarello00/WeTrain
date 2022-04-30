@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.NewWorkoutPlanGUIController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.NewWorkoutPlanGUIController">
    <HBox alignment="CENTER_RIGHT" layoutX="854.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fx:id="userImage" fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
@@ -111,12 +111,12 @@
          </padding>
          <ListView fx:id="exercisesSelectedList" prefHeight="339.0" prefWidth="390.0" style="-fx-background-color: transparent; -fx-background-radius: 50;" />
       </HBox>
-      <Button fx:id="createButton" layoutX="984.0" layoutY="587.0" mnemonicParsing="false" onAction="#navigationButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="createButton" layoutX="984.0" layoutY="587.0" mnemonicParsing="false" onAction="#createButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Create" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="90.0" layoutY="587.0" mnemonicParsing="false" onAction="#navigationButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button layoutX="90.0" layoutY="587.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="Cancel" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

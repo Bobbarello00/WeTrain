@@ -1,7 +1,8 @@
 package viewone.graphical_controllers.trainers;
 
+import controller.SatisfyWorkoutRequestsController;
 import controller.TrainerExercisesManagementController;
-import controller.WorkoutPlanController;
+import exception.DBConnectionFailedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.bean.ExerciseBean;
+import viewone.bean.ExerciseForWorkoutPlanBean;
+
+import java.sql.SQLException;
 
 public class ExerciseOverviewGUIController{
 
@@ -19,29 +23,33 @@ public class ExerciseOverviewGUIController{
     @FXML private TextField nameText;
     @FXML private Button addButton;
 
-    private ExerciseBean exerciseBean;
+    private ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean;
     private boolean alreadyAdded = false;
 
-    private final WorkoutPlanController workoutPlanController = new WorkoutPlanController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
     @FXML void addOrRemoveAction(ActionEvent event) {
-        if(exerciseBean != null) {
-            //TODO come passiamo il workout day in cui và inserito/da cui và rimosso tale esercizio?
-            if (!alreadyAdded) {
-                workoutPlanController.addExerciseToPlan(exerciseBean);
-            } else {
-                workoutPlanController.removeExerciseFromPlan(exerciseBean);
-            }
+        //TODO come passiamo il workout day in cui và inserito/da cui và rimosso tale esercizio?
+        if (!alreadyAdded) {
+            satisfyWorkoutRequestsController.addExerciseToPlan(exerciseForWorkoutPlanBean);
+        } else {
+            satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
         }
+        ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
+        MainPane.getInstance().setDisable(false);
     }
 
     @FXML void deleteAction(ActionEvent event) {
-        if(exerciseBean != null) {
-            //TODO non dovrebbe mai essere null a questo punto... rimuovere il controllo?
-            trainerExercisesManagementController.removeExerciseFromTrainer(exerciseBean);
+        try {
+            trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean.getExerciseBean());
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+            return;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        ((Stage) addButton.getScene().getWindow()).close();
+        ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }
 
@@ -50,17 +58,16 @@ public class ExerciseOverviewGUIController{
         MainPane.getInstance().setDisable(false);
     }
 
-    public void setValues(ExerciseBean exerciseBean){
-        try{
-            if(workoutPlanController.checkAlreadyAdded(exerciseBean)){
-                addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
-                addButton.setText("Remove from Plan");
-                alreadyAdded = true;
-            }
-        }catch (){
-            ((Stage) (addButton.getScene().getWindow())).close();
+    public void setValues(ExerciseForWorkoutPlanBean bean){
+        this.exerciseForWorkoutPlanBean = bean;
+
+        if(satisfyWorkoutRequestsController.checkAlreadyAdded(exerciseForWorkoutPlanBean)){
+            addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
+            addButton.setText("Remove from Plan");
+            alreadyAdded = true;
         }
-        this.exerciseBean = exerciseBean;
+
+        ExerciseBean exerciseBean = exerciseForWorkoutPlanBean.getExerciseBean();
         nameText.setText(exerciseBean.getName());
         infoTextArea.setText(exerciseBean.getInfo());
     }

@@ -20,8 +20,7 @@ public class ExerciseDAO {
     private static final String TRAINER = "Trainer";
     private static final String IDEXERCISE = "idExercise";
 
-    public ExerciseDAO() throws DBConnectionFailedException {
-    }
+    public ExerciseDAO() throws DBConnectionFailedException {}
 
     public void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
         Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
@@ -59,6 +58,12 @@ public class ExerciseDAO {
                         trainer));
             }
             return exerciseList;
+        }
+    }
+
+    public void removeExercise(Exercise exercise) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.deleteExercise(stmt, exercise);
         }
     }
 

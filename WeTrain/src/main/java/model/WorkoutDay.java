@@ -15,6 +15,12 @@ public class WorkoutDay implements Serializable {
         this.info = info;
     }
 
+    public WorkoutDay(String day, String info, List<Exercise> exerciseList){
+        this.day = day;
+        this.info = info;
+        this.exerciseList = exerciseList;
+    }
+
     public List<Exercise> getExerciseList(){
         return exerciseList;
     }

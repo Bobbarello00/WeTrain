@@ -17,8 +17,8 @@ public class WorkoutPlanDAO {
     public WorkoutPlanDAO() throws DBConnectionFailedException {
     }
 
-    public void saveWorkoutPlan(WorkoutPlan workoutPlan, Athlete athlete) throws SQLException, DBConnectionFailedException {
-        int id = Query.insertWorkoutPlan(athlete);
+    public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
+        int id = Query.insertWorkoutPlan(athleteFc);
         for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
             new WorkoutDayDAO().saveWorkoutDay(workoutDay, id);
         }

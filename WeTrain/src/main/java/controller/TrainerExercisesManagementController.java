@@ -34,4 +34,13 @@ public class TrainerExercisesManagementController {
         }
         return exerciseBeanList;
     }
+
+    public void removeExerciseFromTrainer(ExerciseBean exerciseBean) throws DBConnectionFailedException, SQLException {
+        new ExerciseDAO().removeExercise(new Exercise(
+                exerciseBean.getId(),
+                exerciseBean.getName(),
+                exerciseBean.getInfo(),
+                (Trainer) loginController.getLoggedUser()
+        ));
+    }
 }

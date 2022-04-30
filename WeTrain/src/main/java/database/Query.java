@@ -277,7 +277,7 @@ public class Query {
     }
 
     public static void insertExercise(Statement stmt, Exercise exercise) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Information, Trainer) " +
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Exercise (Name, Info, Trainer) " +
                 "VALUES ('%s', '%s', '%s');",
                 exercise.getName(),
                 exercise.getInfo(),
@@ -377,16 +377,16 @@ public class Query {
                 "WHERE idWorkoutDay = %s;", workoutDay.getId()));
     }
 
-    public static int insertWorkoutPlan(Athlete athlete) throws SQLException, DBConnectionFailedException {
+    public static int insertWorkoutPlan(String athleteFc) throws SQLException, DBConnectionFailedException {
 
         try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn()
                 .prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');",
-                        athlete.getFiscalCode()),
+                        athleteFc),
                         Statement.RETURN_GENERATED_KEYS)) {
             if(statement.executeUpdate() == 0){
                 System.out.println("Inserimento WorkoutPlan fallito.");
             }
-            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+            try(ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 }
