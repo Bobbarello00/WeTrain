@@ -62,7 +62,13 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         exercisesList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
-                        infoLabel.setText(newItem.getInfo());
+                        infoLabel.setText(String.format("""
+                                Name: %s
+
+                                Description:
+                                \t\t\t %s
+
+                                """, newItem.getName(),newItem.getInfo()));
                     }
                 });
         setUserInfoTab();

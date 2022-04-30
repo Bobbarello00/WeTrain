@@ -18,6 +18,7 @@ public class CreateNewExerciseGUIController {
     @FXML private TextField nameText;
 
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
+    private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
 
     @FXML void createButtonAction(ActionEvent event) {
         ExerciseBean exerciseBean = new ExerciseBean(
@@ -25,6 +26,7 @@ public class CreateNewExerciseGUIController {
                 descriptionTextArea.getText());
         try {
             trainerExercisesManagementController.addExerciseToTrainer(exerciseBean);
+            newWorkoutPlanGUIController.updateExerciseList();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
@@ -36,5 +38,9 @@ public class CreateNewExerciseGUIController {
     @FXML void cancelButtonAction(ActionEvent event) {
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
+    }
+
+    public void setValue(NewWorkoutPlanGUIController newWorkoutPlanGUIController) {
+        this.newWorkoutPlanGUIController = newWorkoutPlanGUIController;
     }
 }

@@ -89,13 +89,14 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
                 }
             }
         }
-        if(busyDay){
+        if(!busyDay){
             infoText = new StringBuilder().append("You are free for this day!\n" +
                     "check out our popular courses from the homepage and let's train!");
         }
 
         infoText.append("\n\n\n");
         if(workoutPlanBean != null) {
+            System.out.println(workoutPlanBean.getWorkoutDayList().size());
             for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
                 if(Objects.equals(workoutDayBean.getDay(), day)){
                     infoText.append("You have this exercise in your workout plan:\n");

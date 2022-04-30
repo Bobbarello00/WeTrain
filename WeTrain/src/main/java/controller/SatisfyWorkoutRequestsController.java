@@ -1,5 +1,6 @@
 package controller;
 
+import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
 import exception.DBConnectionFailedException;
 import model.Exercise;
@@ -38,6 +39,7 @@ public class SatisfyWorkoutRequestsController {
             trainer = (Trainer) loginController.getLoggedUser();
         }
         workoutDay.addExercise(new Exercise(
+                bean.getId(),
                 bean.getName(),
                 bean.getInfo(),
                 trainer
@@ -68,6 +70,8 @@ public class SatisfyWorkoutRequestsController {
 
     public void sendWorkoutRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
         new WorkoutPlanDAO().saveWorkoutPlan(workoutPlan, requestBean.getAthleteFc());
+        //TODO eliminare richiesta
+        new RequestDAO().deleteRequest(requestBean.getId());
     }
 
     public WorkoutDayBean getWorkoutDayBean(DayBean dayBean) {

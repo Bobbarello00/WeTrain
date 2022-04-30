@@ -21,12 +21,13 @@ public class ExerciseOverviewGUIController{
     @FXML private TextArea infoTextArea;
     @FXML private TextField nameText;
     @FXML private Button addButton;
+    @FXML private Button deleteButton;
 
     private ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean;
     private boolean alreadyAdded = false;
 
     private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
-    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
     @FXML void addOrRemoveAction(ActionEvent event) {
@@ -49,6 +50,7 @@ public class ExerciseOverviewGUIController{
 
     @FXML void deleteAction(ActionEvent event) {
         try {
+            satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
             trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (DBConnectionFailedException e) {
@@ -69,12 +71,14 @@ public class ExerciseOverviewGUIController{
     public void setValues(ExerciseForWorkoutPlanBean exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController){
         this.exerciseForWorkoutPlanBean = exerciseBean;
         this.newWorkoutPlanGUIController = newWorkoutPlanGUIController;
+        this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
         if(satisfyWorkoutRequestsController.checkAlreadyAdded(exerciseForWorkoutPlanBean)){
             addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
             addButton.setText("Remove from Plan");
             alreadyAdded = true;
+            deleteButton.setDisable(true);
+            deleteButton.setVisible(false);
         }
-
         nameText.setText(exerciseBean.getName());
         infoTextArea.setText(exerciseBean.getInfo());
     }

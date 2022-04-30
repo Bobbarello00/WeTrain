@@ -42,7 +42,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     //TODO Observer per esercizi selezionati
 
     @FXML public void addExerciseTextAction() throws IOException {
-        PageSwitchSizeChange.pageSwitch(createButton, "CreateNewExercise", HOME, false);
+        CreateNewExerciseGUIController controller = (CreateNewExerciseGUIController) PageSwitchSizeChange.pageSwitch(createButton, "CreateNewExercise", HOME, false);
+        controller.setValue(this);
     }
 
     @FXML void dayButtonAction(ActionEvent event) {

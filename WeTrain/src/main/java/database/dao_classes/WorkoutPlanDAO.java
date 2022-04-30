@@ -22,6 +22,7 @@ public class WorkoutPlanDAO {
         for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
             new WorkoutDayDAO().saveWorkoutDay(workoutDay, id);
         }
+        new AthleteDAO().addWorkoutPlan(id, athleteFc);
     }
 
     public WorkoutPlan loadWorkoutPlan(Integer idWorkoutPlan, Trainer trainer) throws SQLException, DBConnectionFailedException {

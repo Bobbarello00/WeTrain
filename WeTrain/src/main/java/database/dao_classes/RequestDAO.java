@@ -38,9 +38,9 @@ public class RequestDAO {
             }
         }
     }
-    public void deleteRequest(Request request) throws SQLException {
+    public void deleteRequest(int idRequest) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.deleteRequest(stmt, request);
+            Query.deleteRequest(stmt, idRequest);
         }
     }
 

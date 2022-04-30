@@ -120,4 +120,10 @@ public class AthleteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void addWorkoutPlan(int id, String athleteFc) throws SQLException {
+        try(Statement stmt = conn.createStatement()) {
+            Query.addWorkoutPlanToAthlete(stmt, id, athleteFc);
+        }
+    }
 }

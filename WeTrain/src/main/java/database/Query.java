@@ -284,8 +284,8 @@ public class Query {
                 exercise.getTrainer().getFiscalCode()));
     }
 
-    public static int deleteExercise(Statement stmt, Exercise exercise) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Exercise" +
+    public static void deleteExercise(Statement stmt, Exercise exercise) throws SQLException {
+        stmt.executeUpdate(String.format("DELETE FROM mydb.Exercise " +
                 "WHERE idExercise = %s;", exercise.getId()));
     }
 
@@ -336,9 +336,9 @@ public class Query {
                 "WHERE idRequest = %s;", id));
     }
 
-    public static void deleteRequest(Statement stmt, Request request) throws SQLException {
-        stmt.executeUpdate(String.format("DELETE FROM mydb.Request" +
-                "WHERE idRequest = %s;", request.getId()));
+    public static void deleteRequest(Statement stmt, int idRequest) throws SQLException {
+        stmt.executeUpdate(String.format("DELETE FROM mydb.Request " +
+                "WHERE idRequest = %s;", idRequest));
     }
 
     public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
@@ -350,7 +350,7 @@ public class Query {
 
     public static int insertWorkoutDay(int workoutPlanKey, String day) throws SQLException, DBConnectionFailedException {
         try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan) VALUES (%s, '%s');",
+                String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan, Day) VALUES (%s, '%s');",
                         workoutPlanKey, day), Statement.RETURN_GENERATED_KEYS)) {
             statement2.executeUpdate();
             try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
@@ -417,10 +417,16 @@ public class Query {
                 athlete.getFiscalCode()));
     }
 
-    public static int deleteSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Subscribe " +
-                "WHERE Course = %s and Athlete = '%s';",
+    public static void deleteSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
+        stmt.executeUpdate(String.format("DELETE FROM mydb.Subscribe " +
+                        "WHERE Course = %s and Athlete = '%s';",
                 idCourse,
+                athleteFc));
+    }
+
+    public static void addWorkoutPlanToAthlete(Statement stmt, int id, String athleteFc) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Athlete SET WorkoutPlan = %s " + WHERE_USER,
+                id,
                 athleteFc));
     }
 }
