@@ -260,9 +260,9 @@ public class Query {
         }
     }
 
-    public static int deleteCourse(Statement stmt, Course course) throws SQLException {
+    public static int deleteCourse(Statement stmt, int idCourse) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Course " +
-                "WHERE idCourse = %s;", course.getId()));
+                "WHERE idCourse = %s;", idCourse));
     }
 
     public static ResultSet loadExercise(Statement stmt, int idExercise) throws SQLException {

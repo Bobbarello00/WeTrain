@@ -14,11 +14,11 @@ public class MenuTrainersGUIController {
 
     @FXML private Button createCourseButton;
     @FXML private Button workoutRequestsButton;
-    @FXML private Button manageLessonsButton;
+    @FXML private Button manageCoursesButton;
     @FXML private Button yourCollaboratorButton;
 
-    @FXML void manageLessonsButtonAction() throws IOException {
-        buttonBehavior.setBehavior(manageLessonsButton,"ManageLessons",HOME);
+    @FXML void manageCoursesButtonAction() throws IOException {
+        buttonBehavior.setBehavior(manageCoursesButton,"ManageCourses",HOME);
     }
 
     @FXML void createCourseButtonAction() throws IOException {

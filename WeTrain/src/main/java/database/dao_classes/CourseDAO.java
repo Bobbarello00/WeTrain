@@ -24,7 +24,12 @@ public class CourseDAO {
 
     private final LoginController loginController = new LoginController();
 
-    public CourseDAO() throws DBConnectionFailedException {
+    public CourseDAO() throws DBConnectionFailedException {}
+
+    public void deleteCourse(int idCourse) throws SQLException {
+        try(Statement stmt = conn.createStatement()) {
+            Query.deleteCourse(stmt, idCourse);
+        }
     }
 
     public void saveCourse(Course course) throws SQLException, DBConnectionFailedException {

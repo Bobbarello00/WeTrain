@@ -46,4 +46,8 @@ public class CourseManagementTrainerController extends CourseManagementControlle
         return getCourseBeanList(courseList);
     }
 
+    public void deleteCourse(CourseBean courseBean) throws DBConnectionFailedException, SQLException {
+        new CourseDAO().deleteCourse(courseBean.getId());
+    }
+
 }
