@@ -48,6 +48,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     @FXML void dayButtonAction(ActionEvent event) {
         daysController.dayButtonAction(event);
+        updateSelectedExerciseList();
     }
 
     @FXML void cancelButtonAction() throws IOException {

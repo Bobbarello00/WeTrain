@@ -35,7 +35,7 @@ public class ExerciseOverviewGUIController{
             if (!alreadyAdded) {
                     satisfyWorkoutRequestsController.addExerciseToPlan(exerciseForWorkoutPlanBean);
             } else {
-                    satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
+                    satisfyWorkoutRequestsController.removeExerciseFromDay(exerciseForWorkoutPlanBean);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

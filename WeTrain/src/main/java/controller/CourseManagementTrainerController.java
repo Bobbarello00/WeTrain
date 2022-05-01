@@ -3,6 +3,7 @@ package controller;
 import database.dao_classes.CourseDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBConnectionFailedException;
+import model.Athlete;
 import model.Course;
 import model.Lesson;
 import model.Trainer;
@@ -13,7 +14,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseManagementTrainerController {
+public class CourseManagementTrainerController extends CourseManagementController{
+
+    private final LoginController loginController = new LoginController();
 
     public void createCourse(CourseBean bean) throws SQLException, DBConnectionFailedException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
@@ -36,6 +39,11 @@ public class CourseManagementTrainerController {
             list.add(lesson);
         }
         return list;
+    }
+
+    public List<CourseBean> getCourseList() throws DBConnectionFailedException, SQLException {
+        List<Course> courseList = new CourseDAO().loadAllCoursesTrainer((Trainer) loginController.getLoggedUser());
+        return getCourseBeanList(courseList);
     }
 
 }

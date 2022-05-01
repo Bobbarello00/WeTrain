@@ -55,13 +55,13 @@
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
-         <ListView fx:id="coursesList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
+         <ListView fx:id="courseList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
       </HBox>
       <HBox alignment="CENTER" layoutX="35.0" layoutY="357.0" prefHeight="247.0" prefWidth="439.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
-         <ListView fx:id="requestsList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
+         <ListView fx:id="requestList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
       </HBox>
       <VBox alignment="TOP_CENTER" layoutX="514.0" layoutY="55.0" prefHeight="547.0" prefWidth="603.0" style="-fx-background-color: rgba(21,147,24,0.05); -fx-background-radius: 50;">
          <padding>

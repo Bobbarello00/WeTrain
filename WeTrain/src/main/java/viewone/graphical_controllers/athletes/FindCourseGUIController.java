@@ -106,7 +106,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
 
-        ManageCourseList.setCourseListener(resultList, logoutButton);
+        ManageCourseList.setCourseListener(resultList);
 
         setUserInfoTab();
     }

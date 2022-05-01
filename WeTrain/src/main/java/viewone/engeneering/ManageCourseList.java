@@ -5,8 +5,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
@@ -25,21 +25,21 @@ public class ManageCourseList {
         courseList.setItems(FXCollections.observableList(courseObservableList));
     }
 
-    public static void setCourseListener(ListView<CourseBean> list, Button button){
+    public static void setCourseListener(ListView<CourseBean> list){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
-                        listEvent(list, newItem, button);
+                        listEvent(list, newItem);
                     }
                 });
     }
 
-    private static void listEvent(ListView<CourseBean> listView, CourseBean newItem, Button button) {
+    private static void listEvent(ListView<CourseBean> listView, CourseBean newItem) {
         try {
             if(newItem != null) {
                 CourseOverviewGUIController courseOverviewGUIController =
-                        (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch(button,
+                        (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch((Stage) null,
                                 "CourseOverview",
                                 "athletes",
                                 false);

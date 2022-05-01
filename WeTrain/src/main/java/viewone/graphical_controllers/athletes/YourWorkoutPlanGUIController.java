@@ -20,6 +20,7 @@ import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -47,8 +48,10 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
             if(Objects.equals(workoutDayBean.getDay(), day)){
                 updateListForSelectedDay(workoutDayBean);
+                return;
             }
         }
+        updateListForSelectedDay(new WorkoutDayBean(day));
     }
 
     private void updateListForSelectedDay(WorkoutDayBean workoutDayBean) {

@@ -49,8 +49,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
         updateList();
 
-        ManageCourseList.setCourseListener(courseList, logoutButton);
-        ManageCourseList.setCourseListener(popularList, logoutButton);
+        ManageCourseList.setCourseListener(courseList);
+        ManageCourseList.setCourseListener(popularList);
 
         setUserInfoTab();
     }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseManagementAthleteController {
+public class CourseManagementAthleteController extends CourseManagementController{
 
     private final LoginController loginController = new LoginController();
 
@@ -42,54 +42,6 @@ public class CourseManagementAthleteController {
     public List<CourseBean> getPopularCourseList() throws SQLException, DBConnectionFailedException {
         List<Course> popularCourses = new CourseDAO().loadPopularCourses();
         return getCourseBeanList(popularCourses);
-    }
-
-    public CourseBean getCourse(IdBean bean) throws SQLException, DBConnectionFailedException {
-        Course course = new CourseDAO().loadCourse(bean.getId());
-        CourseBean courseBean = new CourseBean(
-                course.getId(),
-                course.getName(),
-                course.getDescription(),
-                course.getFitnessLevel(),
-                course.getOwner().getName() + " " + course.getOwner().getSurname(),
-                course.getEquipment());
-        if(course.getLessonList() != null){
-            List<LessonBean> lessonBeanList = new ArrayList<>();
-            for(Lesson lesson: course.getLessonList()){
-                lessonBeanList.add(new LessonBean(
-                        lesson.getLessonDay(),
-                        lesson.getLessonStartTime(),
-                        lesson.getLessonEndTime()));
-            }
-            courseBean.setLessonBeanList(lessonBeanList);
-        } else {
-            courseBean.setLessonBeanList(null);
-        }
-        return courseBean;
-    }
-
-    private List<CourseBean> getCourseBeanList(List<Course> courseList) {
-        List<CourseBean> beanList = new ArrayList<>();
-        for(Course course : courseList) {
-            CourseBean courseBean = new CourseBean(
-                    course.getId(),
-                    course.getName(),
-                    course.getDescription(),
-                    course.getFitnessLevel(),
-                    course.getOwner().getName() + " " + course.getOwner().getSurname(),
-                    course.getEquipment());
-
-            List<LessonBean> lessonBeanList = new ArrayList<>();
-            for(Lesson lesson: course.getLessonList()){
-                lessonBeanList.add(new LessonBean(
-                        lesson.getLessonDay(),
-                        lesson.getLessonStartTime(),
-                        lesson.getLessonEndTime()));
-            }
-            courseBean.setLessonBeanList(lessonBeanList);
-            beanList.add(courseBean);
-        }
-        return beanList;
     }
 
     public List<CourseBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException, DBConnectionFailedException {

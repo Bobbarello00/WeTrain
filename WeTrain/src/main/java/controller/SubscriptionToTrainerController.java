@@ -88,7 +88,7 @@ public class SubscriptionToTrainerController {
         AthleteDAO athleteDAO = new AthleteDAO();
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         athleteDAO.removeTrainer(athlete);
-        athleteDAO.removeWorkoutPlan(athlete);
+        athleteDAO.removeWorkoutPlan(athlete.getWorkoutPlan().getId());
     }
 
 }
