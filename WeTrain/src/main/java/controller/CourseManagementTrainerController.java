@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.CourseDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBConnectionFailedException;
-import model.Athlete;
+import exception.InvalidTimeException;
 import model.Course;
 import model.Lesson;
 import model.Trainer;
@@ -18,7 +18,7 @@ public class CourseManagementTrainerController extends CourseManagementControlle
 
     private final LoginController loginController = new LoginController();
 
-    public void createCourse(CourseBean bean) throws SQLException, DBConnectionFailedException {
+    public void createCourse(CourseBean bean) throws SQLException, DBConnectionFailedException, InvalidTimeException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
         Course course = new Course(
                 bean.getName(),
@@ -32,10 +32,19 @@ public class CourseManagementTrainerController extends CourseManagementControlle
         new CourseDAO().saveCourse(course);
     }
 
-    private List<Lesson> setLesson(List<LessonBean> lessonBeanList) {
+    private List<Lesson> setLesson(List<LessonBean> lessonBeanList) throws InvalidTimeException {
         List<Lesson> list = new ArrayList<>();
         for(LessonBean bean: lessonBeanList) {
-            Lesson lesson = new Lesson(bean.getLessonDay(), bean.getLessonStartTime(), bean.getLessonEndTime());
+            boolean cond1 = bean.getLessonStartTime().getHour() > bean.getLessonEndTime().getHour();
+            boolean cond2 = bean.getLessonStartTime().getHour() == bean.getLessonEndTime().getHour();
+            boolean cond3 = bean.getLessonStartTime().getMinute() > bean.getLessonEndTime().getMinute();
+            if(cond1 || (cond2 && cond3)) {
+                throw new InvalidTimeException();
+            }
+            Lesson lesson = new Lesson(
+                    bean.getLessonDay(),
+                    bean.getLessonStartTime(),
+                    bean.getLessonEndTime());
             list.add(lesson);
         }
         return list;
@@ -50,4 +59,15 @@ public class CourseManagementTrainerController extends CourseManagementControlle
         new CourseDAO().deleteCourse(courseBean.getId());
     }
 
+    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBConnectionFailedException {
+        new CourseDAO().modifyCourse(
+                id,
+                new Course(
+                        courseBean.getName(),
+                        courseBean.getDescription(),
+                        courseBean.getFitnessLevel(),
+                        (Trainer) loginController.getLoggedUser(),
+                        courseBean.getEquipment()
+                ));
+    }
 }

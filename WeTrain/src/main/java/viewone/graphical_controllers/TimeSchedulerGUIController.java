@@ -19,14 +19,21 @@ public class TimeSchedulerGUIController implements Initializable {
     @FXML private ComboBox<String> startMinuteBox;
     @FXML private HBox timeSchedulerHBox;
 
+    private String castValue(int time) {
+        if(time < 10) {
+            return "0" + time;
+        }
+        return String.valueOf(time);
+    }
+
     public void setEndBox(LocalTime endTime) {
-        this.endHourBox.setValue(String.valueOf(endTime.getHour()));
-        this.endMinuteBox.setValue(String.valueOf(endTime.getMinute()));
+        this.endHourBox.setValue(castValue(endTime.getHour()));
+        this.endMinuteBox.setValue(castValue(endTime.getMinute()));
     }
 
     public void setStartBox(LocalTime startTime) {
-        this.startHourBox.setValue(String.valueOf(startTime.getHour()));
-        this.startMinuteBox.setValue(String.valueOf(startTime.getMinute()));
+        this.startHourBox.setValue(castValue(startTime.getHour()));
+        this.startMinuteBox.setValue(castValue(startTime.getMinute()));
     }
 
     public LocalTime getEndTime() throws TimeNotInsertedException {

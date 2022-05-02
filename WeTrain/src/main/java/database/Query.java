@@ -427,4 +427,16 @@ public class Query {
                 id,
                 athleteFc));
     }
+
+    public static void modifyCourse(Statement stmt, int idCourse, Course course) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Course " +
+                        "SET Name = '%s', Description = '%s', FitnessLevel = '%s', Equipment = '%s', Trainer = '%s' " +
+                        "WHERE idCourse = %s;",
+                course.getName(),
+                course.getDescription(),
+                course.getFitnessLevel(),
+                course.getEquipment(),
+                course.getOwner().getFiscalCode(),
+                idCourse));
+    }
 }

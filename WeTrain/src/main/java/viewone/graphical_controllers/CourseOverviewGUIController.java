@@ -12,9 +12,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
+import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
+import viewone.graphical_controllers.trainers.NewCourseGUIController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,7 +52,6 @@ public class CourseOverviewGUIController {
     private boolean subscribed = false;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
-    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -120,8 +121,17 @@ public class CourseOverviewGUIController {
         }
     }
 
-    @FXML public void modifyButtonAction() {
-        courseManagementTrainerController.modifyCourse();
+    @FXML public void modifyButtonAction(ActionEvent event) {
+        try {
+            ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
+            MainPane.getInstance().setDisable(false);
+            NewCourseGUIController newCourseGUIController = (NewCourseGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(), "NewCourse", "trainers");
+            if(newCourseGUIController != null) {
+                newCourseGUIController.setValue(courseBean);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML public void subscribeButtonAction(ActionEvent event) {

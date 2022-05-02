@@ -29,6 +29,10 @@ public class CourseBean {
         this.equipment = equipment;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public List<LessonBean> getLessonBeanList() {
         return lessonBeanList;
     }

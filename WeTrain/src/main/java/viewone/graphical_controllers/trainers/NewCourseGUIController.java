@@ -2,6 +2,8 @@ package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
 import exception.DBConnectionFailedException;
+import exception.InvalidDataException;
+import exception.InvalidTimeException;
 import exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,11 +86,15 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             courseBean.setLessonBeanList(getLessonDay());
             if (courseToModify == null){
                 courseManagementTrainerController.createCourse(courseBean);
-            } else {}
+                System.out.println("Created!");
+            } else {
+                courseManagementTrainerController.modifyCourse(courseBean, courseToModify.getId());
+                System.out.println("Modified!");
+            }
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
             MenuTrainersGUIController.resetSelectedButton();
-            System.out.println("Created");
-        } catch (TimeNotInsertedException e){
+
+        } catch (InvalidDataException e){
             e.alert();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -107,7 +113,6 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
                         timeSchedulerGUIControllerList.get(i).getEndTime()));
             }
         }
-
         return lessonBeanList;
     }
 
@@ -153,15 +158,16 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         } else {
             advancedFitnessLevelButton.fire();
         }
+
         equipmentTextArea.setText(courseBean.getEquipment());
-        infoTextArea.setText(courseBean.getName());
+        infoTextArea.setText(courseBean.getDescription());
 
         for(LessonBean lessonBean: courseBean.getLessonBeanList()){
             for(int i = 0; i < 7; i++) {
                 if(DayOfWeek.of(i + 1).name().equals(lessonBean.getLessonDay())) {
                     buttonList.get(i).fire();
-                    timeSchedulerGUIControllerList.get(i);
-
+                    timeSchedulerGUIControllerList.get(i).setStartBox(lessonBean.getLessonStartTime());
+                    timeSchedulerGUIControllerList.get(i).setEndBox(lessonBean.getLessonEndTime());
                 }
             }
         }
@@ -189,6 +195,5 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
                 saturdayTimeSchedulerController,
                 sundayTimeSchedulerController
         );
-
     }
 }

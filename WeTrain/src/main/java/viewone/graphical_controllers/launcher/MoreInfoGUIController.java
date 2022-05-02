@@ -79,8 +79,7 @@ public class MoreInfoGUIController implements Initializable {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "Error in our database",
                     "Sorry for the inconvenience.");
-        } catch (InvalidFiscalCodeException | InvalidUserInfoException | InvalidBirthException | EmptyFieldsException |
-                 InvalidCredentialsException e) {
+        } catch (InvalidDataException e) {
             e.alert();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();

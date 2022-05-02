@@ -32,6 +32,12 @@ public class CourseDAO {
         }
     }
 
+    public void modifyCourse(int idCourse, Course course) throws SQLException {
+        try(Statement stmt = conn.createStatement()) {
+            Query.modifyCourse(stmt, idCourse, course);
+        }
+    }
+
     public void saveCourse(Course course) throws SQLException, DBConnectionFailedException {
         int idCourse = Query.insertCourse(course);
         course.setId(idCourse);
