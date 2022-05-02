@@ -2,12 +2,9 @@ package viewone.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
 import exception.DBConnectionFailedException;
-import exception.ExpiredCardException;
-import exception.InvalidCardInfoException;
 import exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import viewone.bean.AthleteBean;
@@ -44,7 +41,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 setPaymentMethodLabel();
                 editButton.setDisable(false);
                 editButton.setVisible(true);
-                moneyLabel.setVisible(true);
+                paymentMethodLabel.setVisible(true);
             } catch (SQLException e){
                 e.printStackTrace();
                 //TODO GESTIONE EXCEPTION
@@ -54,6 +51,17 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 ((Stage) editButton.getScene().getWindow()).close();
                 e.alertAndLogOff();
             }
+        }
+    }
+
+    private void setPaymentMethodLabel() throws SQLException, DBConnectionFailedException {
+        if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
+            paymentMethodLabel.setText("Card: Not inserted yet!");
+        } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
+            FatalCaseManager.erasePaymentMethod();
+        } else{
+            String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
+            paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
         }
     }
 
@@ -69,18 +77,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             e.printStackTrace();
             System.out.println(e.getMessage());
         } catch (DBConnectionFailedException e) {
-        e.alert();
-    }
-    }
-
-    private void setPaymentMethodLabel() throws SQLException, DBConnectionFailedException {
-        if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
-            moneyLabel.setText("Card: Not inserted yet");
-        } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
-            FatalCaseManager.erasePaymentMethod();
-        } else{
-            String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
-            moneyLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
+            e.alert();
         }
     }
 }

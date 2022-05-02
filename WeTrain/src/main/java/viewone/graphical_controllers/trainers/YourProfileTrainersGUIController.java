@@ -4,7 +4,6 @@ import controller.ProfileManagementController;
 import exception.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import viewone.bean.*;
@@ -26,7 +25,7 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
     @FXML private void editConfirmation() {
         if(!Objects.equals(newIban.getText(), "")) {
             try{
-                IbanBean ibanBean = new IbanBean(moneyLabel.getText());
+                IbanBean ibanBean = new IbanBean(paymentMethodLabel.getText());
                 profileManagementController.updateTrainerIban(ibanBean);
                 trainer = (TrainerBean) LoggedUserSingleton.getInstance();
                 editPane.setDisable(true);
@@ -34,7 +33,7 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
                 setIbanLabel();
                 editButton.setDisable(false);
                 editButton.setVisible(true);
-                moneyLabel.setVisible(true);
+                paymentMethodLabel.setVisible(true);
             } catch (SQLException e){
                 e.printStackTrace();
                 //TODO GESTIONE EXCEPTION
@@ -48,12 +47,17 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
     }
 
     private void setIbanLabel() {
+        if(trainer.getIban() == null){
+            paymentMethodLabel.setText("Iban: Not Inserted yet!");
+        }else {
+            paymentMethodLabel.setText("Iban: " + trainer.getIban());
+        }
     }
 
     @FXML protected void editIbanButtonAction(){
         editButton.setDisable(true);
         editButton.setVisible(false);
-        moneyLabel.setVisible(false);
+        paymentMethodLabel.setVisible(false);
         editPane.setDisable(false);
         editPane.setVisible(true);
     }
@@ -64,6 +68,6 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
         firstNameLabel.setText(trainer.getName());
         lastNameLabel.setText(trainer.getSurname());
         fiscalCodeLabel.setText("FiscalCode: " + trainer.getFiscalCode());
-        moneyLabel.setText("Iban: " + trainer.getIban());
+        setIbanLabel();
     }
 }

@@ -78,7 +78,7 @@
             </HBox>
             <Label fx:id="fiscalCodeLabel" scaleX="1.4" scaleY="1.4" text="Fiscal Code: RSS BBR 69 C 48 F839 A" />
             <Label fx:id="emailLabel" layoutX="186.0" layoutY="281.0" scaleX="1.4" scaleY="1.4" text="Email: example@gmail.com" />
-            <Label fx:id="moneyLabel" scaleX="1.4" scaleY="1.4" text="IBAN:  IT 99 C 12345 67890 123456789012" />
+            <Label fx:id="paymentMethodLabel" scaleX="1.4" scaleY="1.4" text="IBAN:  IT 99 C 12345 67890 123456789012" />
          </children>
       </VBox>
       <Button fx:id="editButton" layoutX="421.0" layoutY="546.0" mnemonicParsing="false" onAction="#editIbanButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">
