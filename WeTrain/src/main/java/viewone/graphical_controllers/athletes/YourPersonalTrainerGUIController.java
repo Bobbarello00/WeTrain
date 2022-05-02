@@ -1,5 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
+import boundary.EmailSystemBoundary;
+import boundary.PaypalBoundary;
 import controller.SubscriptionToTrainerController;
 import exception.DBConnectionFailedException;
 import exception.InvalidIbanException;
@@ -14,16 +16,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import model.Athlete;
 import viewone.PageSwitchSizeChange;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
-import viewone.bean.FcBean;
-import viewone.bean.TrainerBean;
-import viewone.bean.TrainerSearchBean;
-import viewone.bean.UserBean;
+import viewone.bean.*;
+import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 

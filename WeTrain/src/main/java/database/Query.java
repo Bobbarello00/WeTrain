@@ -4,6 +4,7 @@ import com.mysql.cj.exceptions.*;
 import com.mysql.cj.jdbc.exceptions.*;
 import exception.DBConnectionFailedException;
 import model.*;
+import model.notification.Notification;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.*;
@@ -31,22 +32,13 @@ public class Query {
     }
 
     public static void insertNotification(Statement stmt, Notification notification) throws SQLException {
-        if(notification.getUser() instanceof Athlete) {
-            stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Athlete) " +
-                            "VALUES (%s,'%s','%s','%s');",
-                    notification.getType(),
-                    notification.getDescription(),
-                    Timestamp.valueOf(notification.getNotificationDate()),
-                    notification.getUser()));
-        }
-        else {
-            stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Trainer) " +
-                            "VALUES (%s,'%s','%s','%s');",
-                    notification.getType(),
-                    notification.getDescription(),
-                    Timestamp.valueOf(notification.getNotificationDate()),
-                    notification.getUser()));
-        }
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Sender, Receiver) " +
+                        "VALUES (%s,'%s','%s','%s', '%s');",
+                notification.getType(),
+                notification.getDescription(),
+                Timestamp.valueOf(notification.getNotificationDate()),
+                notification.getSender(),
+                notification.getReceiver()));
     }
 
     public static int deleteNotification(Statement stmt, Notification notification) throws SQLException {

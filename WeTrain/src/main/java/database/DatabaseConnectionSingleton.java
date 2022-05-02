@@ -31,7 +31,7 @@ public class DatabaseConnectionSingleton {
                     url,
                     username,
                     password);
-        } catch (CJCommunicationsException | SQLException| IOException e) {
+        } catch (CJCommunicationsException | IOException | SQLException e) {
             this.conn = null;
             throw new DBConnectionFailedException();
         }

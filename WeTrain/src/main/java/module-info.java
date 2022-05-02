@@ -38,4 +38,5 @@ module com.wetrain.wetrain {
     exports exception;
     exports model;
     exports controller;
+    exports model.notification;
 }

@@ -1,10 +1,14 @@
 package controller;
 
+import boundary.EmailSystemBoundary;
+import boundary.PaypalBoundary;
 import database.dao_classes.CourseDAO;
+import database.dao_classes.UserDAO;
 import exception.DBConnectionFailedException;
 import exception.ImATrainerException;
 import model.*;
 import viewone.bean.*;
+import viewone.engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,6 +17,8 @@ import java.util.List;
 public class CourseManagementAthleteController extends CourseManagementController{
 
     private final LoginController loginController = new LoginController();
+    private final EmailSystemBoundary emailSystemBoundary = new EmailSystemBoundary();
+    private final PaypalBoundary paypalBoundary = new PaypalBoundary();
 
     public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBConnectionFailedException, ImATrainerException {
         User user = loginController.getLoggedUser();
@@ -30,7 +36,35 @@ public class CourseManagementAthleteController extends CourseManagementControlle
     }
 
     public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
-        new CourseDAO().subscribeToACourse(new CourseDAO().loadCourse(courseBean.getId()));
+        paypalBoundary.pay();
+        Course course = new CourseDAO().loadCourse(courseBean.getId());
+        new CourseDAO().subscribeToACourse(course);
+        User sender = loginController.getLoggedUser();
+        User receiver = course.getOwner();
+        emailSystemBoundary.sendEmail(new EmailBean(
+                new UserBean(
+                        sender.getUsername(),
+                        sender.getName(),
+                        sender.getSurname(),
+                        sender.getFiscalCode(),
+                        sender.getDateOfBirth(),
+                        "Athlete",
+                        sender.getGender(),
+                        sender.getEmail(),
+                        sender.getPassword()
+                ),
+                new UserBean(
+                        receiver.getUsername(),
+                        receiver.getName(),
+                        receiver.getSurname(),
+                        receiver.getFiscalCode(),
+                        receiver.getDateOfBirth(),
+                        "Trainer",
+                        receiver.getGender(),
+                        receiver.getEmail(),
+                        receiver.getPassword()
+                )
+        ));
     }
 
     public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {

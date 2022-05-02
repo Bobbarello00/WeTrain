@@ -3,8 +3,9 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.DBConnectionFailedException;
-import model.Notification;
+import model.notification.Notification;
 import model.User;
+import viewone.engeneering.NotificationFactorySingleton;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,7 +30,7 @@ public class NotificationDAO {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllNotifications(stmt, user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
-                myList.add(new Notification(
+                myList.add(NotificationFactorySingleton.getInstance().createNotification(
                         rs.getInt("idNotification"),
                         rs.getInt("Type"),
                         rs.getString("Info"),
@@ -37,6 +38,7 @@ public class NotificationDAO {
                         user)
                 );
             }
+
             return myList;
         }
     }
