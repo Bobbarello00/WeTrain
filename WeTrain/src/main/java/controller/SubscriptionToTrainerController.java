@@ -18,7 +18,7 @@ public class SubscriptionToTrainerController {
 
     LoginController loginController = new LoginController();
 
-    public TrainerBean getTrainer() throws SQLException, DBConnectionFailedException {
+    public TrainerBean getTrainer() throws SQLException, DBConnectionFailedException, InvalidIbanException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
         if(trainer != null){
             return new TrainerBean(

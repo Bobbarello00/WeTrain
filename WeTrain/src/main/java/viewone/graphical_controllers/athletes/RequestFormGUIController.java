@@ -2,6 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.RequestWorkoutPlanController;
 import exception.DBConnectionFailedException;
+import exception.InvalidIbanException;
 import exception.TextOutOfBoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -48,6 +49,9 @@ public class RequestFormGUIController extends AbstractFormGUIController {
             e.alertAndLogOff();
             return;
         } catch (TextOutOfBoundException e) {
+            e.alert();
+            return;
+        } catch (InvalidIbanException e) {
             e.alert();
             return;
         }

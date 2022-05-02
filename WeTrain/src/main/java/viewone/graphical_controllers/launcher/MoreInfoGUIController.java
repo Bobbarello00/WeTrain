@@ -76,9 +76,7 @@ public class MoreInfoGUIController implements Initializable {
                             "If you already have an account, log in.");
         } catch (SQLException e){
             //TODO gestirla meglio
-            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
-                    "Error in our database",
-                    "Sorry for the inconvenience.");
+            e.printStackTrace();
         } catch (InvalidDataException e) {
             e.alert();
         } catch (DBConnectionFailedException e) {

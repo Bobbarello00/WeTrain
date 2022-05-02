@@ -2,6 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.SubscriptionToTrainerController;
 import exception.DBConnectionFailedException;
+import exception.InvalidIbanException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -191,6 +192,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
+        } catch (InvalidIbanException e) {
+            e.alert();
         }
     }
 

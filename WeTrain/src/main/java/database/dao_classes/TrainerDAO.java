@@ -71,4 +71,11 @@ public class TrainerDAO {
             return getTrainersList(rs);
         }
     }
+
+    public void updateIban(String iban, Trainer trainer) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
+            trainer.setIban(iban);
+            Query.updateIbanTrainer(stmt, trainer);
+        }
+    }
 }

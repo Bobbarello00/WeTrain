@@ -3,6 +3,9 @@ package viewone.graphical_controllers;
 import exception.DBConnectionFailedException;
 import exception.ExpiredCardException;
 import exception.InvalidCardInfoException;
+import exception.InvalidIbanException;
+import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.MainPane;
 import javafx.fxml.FXML;
@@ -20,6 +23,26 @@ public abstract class ProfileGUIController {
     @FXML protected Label firstNameLabel;
     @FXML protected Label fiscalCodeLabel;
     @FXML protected Label lastNameLabel;
+    @FXML protected Button editButton;
+    @FXML protected Pane editPane;
+    @FXML protected Label moneyLabel;
+
+
+    @FXML protected void editAbort(){
+        editPane.setDisable(true);
+        editPane.setVisible(false);
+        editButton.setDisable(false);
+        editButton.setVisible(true);
+        moneyLabel.setVisible(true);
+    }
+
+    @FXML protected void editPaymentMethodButtonAction(){
+        editButton.setDisable(true);
+        editButton.setVisible(false);
+        moneyLabel.setVisible(false);
+        editPane.setDisable(false);
+        editPane.setVisible(true);
+    }
 
     @FXML protected void closeAction(MouseEvent event){
         ((Stage) ((ImageView)event.getSource()).getScene().getWindow()).close();
@@ -32,7 +55,9 @@ public abstract class ProfileGUIController {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
-            return null;
+            e.alertAndLogOff();
+        } catch (InvalidIbanException e) {
+            e.alert();
         }
         return null;
     }

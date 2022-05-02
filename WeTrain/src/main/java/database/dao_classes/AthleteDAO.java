@@ -32,11 +32,8 @@ public class AthleteDAO {
 
     public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
-            athlete.setCardNumber(cardNumber);
-            athlete.setCardExpirationDate(expirationDate);
+            athlete.changeCardInfo(cardNumber, expirationDate);
             Query.updateCardInfoAthlete(stmt, athlete);
-        } catch (ExpiredCardException e) {
-            throw new RuntimeException(e);
         }
     }
 

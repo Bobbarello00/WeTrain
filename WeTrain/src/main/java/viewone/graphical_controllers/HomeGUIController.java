@@ -1,6 +1,7 @@
 package viewone.graphical_controllers;
 
 import exception.DBConnectionFailedException;
+import exception.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -56,6 +57,9 @@ public abstract class HomeGUIController {
             return LoggedUserSingleton.getUserInfo();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
+            return null;
+        } catch (InvalidIbanException e) {
+            e.alert();
             return null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
