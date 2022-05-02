@@ -25,7 +25,7 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
     @FXML private void editConfirmation() {
         if(!Objects.equals(newIban.getText(), "")) {
             try{
-                IbanBean ibanBean = new IbanBean(paymentMethodLabel.getText());
+                IbanBean ibanBean = IbanBean.ctorWithSyntaxCheck(newIban.getText());
                 profileManagementController.updateTrainerIban(ibanBean);
                 trainer = (TrainerBean) LoggedUserSingleton.getInstance();
                 editPane.setDisable(true);
