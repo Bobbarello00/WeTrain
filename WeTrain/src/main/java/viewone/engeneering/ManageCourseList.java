@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
-import viewone.graphical_controllers.athletes.CourseOverviewGUIController;
+import viewone.graphical_controllers.CourseOverviewGUIController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,7 +41,7 @@ public class ManageCourseList {
                 CourseOverviewGUIController courseOverviewGUIController =
                         (CourseOverviewGUIController) PageSwitchSizeChange.pageSwitch((Stage) null,
                                 "CourseOverview",
-                                "athletes",
+                                "",
                                 false);
                 courseOverviewGUIController.setValues(newItem);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());

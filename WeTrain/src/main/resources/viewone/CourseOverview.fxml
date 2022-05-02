@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="752.0" prefWidth="1187.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.athletes.CourseOverviewGUIController">
+<Pane prefHeight="752.0" prefWidth="1187.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.CourseOverviewGUIController">
    <children>
       <Text layoutX="109.0" layoutY="143.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
       <Text layoutX="696.0" layoutY="252.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level:" wrappingWidth="74.90380859375" />
@@ -130,12 +130,17 @@
       </HBox>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1133.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/cross.png" />
+            <Image url="@images/cross.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
       <Text layoutX="176.0" layoutY="60.0" scaleX="3.5" scaleY="3.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Overview" />
+      <Button fx:id="modifyButton" disable="true" layoutX="988.0" layoutY="689.0" mnemonicParsing="false" onAction="#modifyButtonAction" prefHeight="23.0" prefWidth="91.0" scaleX="1.2" scaleY="1.2" text="Modify" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

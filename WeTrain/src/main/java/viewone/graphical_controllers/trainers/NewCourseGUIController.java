@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
@@ -24,15 +25,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class NewCourseGUIController extends HomeGUIControllerTrainers implements Initializable {
     public Boolean[] toggled = new Boolean[7];
     private final FitnessLevelFilterGUIController fitnessLevelFilter= new FitnessLevelFilterGUIController();
-    private final List<TimeSchedulerGUIController> timeSchedulerGUIControllerList = new ArrayList<>();
+    private List<TimeSchedulerGUIController> timeSchedulerGUIControllerList = new ArrayList<>();
+    private CourseBean courseToModify;
 
     @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
@@ -62,6 +61,10 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     @FXML private Button baseFitnessLevelButton;
     @FXML private Button intermediateFitnessLevelButton;
     @FXML private Button advancedFitnessLevelButton;
+    @FXML private Button createButton;
+    @FXML private Text pageTitle;
+
+    private List<Button> buttonList = new ArrayList<>();
 
     private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
 
@@ -79,7 +82,9 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
                     user.getFiscalCode(),
                     equipmentTextArea.getText());
             courseBean.setLessonBeanList(getLessonDay());
-            courseManagementTrainerController.createCourse(courseBean);
+            if (courseToModify == null){
+                courseManagementTrainerController.createCourse(courseBean);
+            } else {}
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
             MenuTrainersGUIController.resetSelectedButton();
             System.out.println("Created");
@@ -134,19 +139,56 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
         }else{
             button.setStyle(null);
         }
+    }
 
+    public void setValue(CourseBean courseBean) {
+        pageTitle.setText("Modify Course");
+        createButton.setText("Modify");
+        courseToModify = courseBean;
+        courseNameText.setText(courseBean.getName());
+        if(Objects.equals(courseBean.getFitnessLevel(), "Base")) {
+            baseFitnessLevelButton.fire();
+        } else if(Objects.equals(courseBean.getFitnessLevel(), "Intermediate")) {
+            intermediateFitnessLevelButton.fire();
+        } else {
+            advancedFitnessLevelButton.fire();
+        }
+        equipmentTextArea.setText(courseBean.getEquipment());
+        infoTextArea.setText(courseBean.getName());
+
+        for(LessonBean lessonBean: courseBean.getLessonBeanList()){
+            for(int i = 0; i < 7; i++) {
+                if(DayOfWeek.of(i + 1).name().equals(lessonBean.getLessonDay())) {
+                    buttonList.get(i).fire();
+                    timeSchedulerGUIControllerList.get(i);
+
+                }
+            }
+        }
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(toggled, Boolean.FALSE);
         setUserInfoTab();
-        timeSchedulerGUIControllerList.add(mondayTimeSchedulerController);
-        timeSchedulerGUIControllerList.add(tuesdayTimeSchedulerController);
-        timeSchedulerGUIControllerList.add(wednesdayTimeSchedulerController);
-        timeSchedulerGUIControllerList.add(thursdayTimeSchedulerController);
-        timeSchedulerGUIControllerList.add(fridayTimeSchedulerController);
-        timeSchedulerGUIControllerList.add(saturdayTimeSchedulerController);
-        timeSchedulerGUIControllerList.add(sundayTimeSchedulerController);
+        buttonList = Arrays.asList(
+                mondayButton,
+                tuesdayButton,
+                wednesdayButton,
+                thursdayButton,
+                fridayButton,
+                saturdayButton,
+                sundayButton
+        );
+        timeSchedulerGUIControllerList = Arrays.asList(
+                mondayTimeSchedulerController,
+                tuesdayTimeSchedulerController,
+                wednesdayTimeSchedulerController,
+                thursdayTimeSchedulerController,
+                fridayTimeSchedulerController,
+                saturdayTimeSchedulerController,
+                sundayTimeSchedulerController
+        );
+
     }
 }

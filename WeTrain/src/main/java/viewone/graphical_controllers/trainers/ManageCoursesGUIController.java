@@ -4,15 +4,14 @@ import controller.CourseManagementTrainerController;
 import exception.DBConnectionFailedException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
-import viewone.PageSwitchSizeChange;
+import viewone.MainPane;
+import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.ManageCourseList;
@@ -38,8 +37,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
     private CourseBean selectedCourse;
     private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
 
-    public ManageCoursesGUIController() {
-    }
+    public ManageCoursesGUIController() {}
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -49,20 +47,20 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                         @Override
                         public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
                             selectedCourse = newItem;
-                            courseNameLabel.setText(selectedCourse.getName());
-                            trainerNameLabel.setText(selectedCourse.getOwner());
-                            StringBuilder timeSchedule = new StringBuilder();
-                            for(LessonBean lessonBean: selectedCourse.getLessonBeanList()){
-                                timeSchedule.append(lessonBean.getLessonDay());
-                                timeSchedule.append(" ");
+                            if(newItem != null){
+                                courseNameLabel.setText(selectedCourse.getName());
+                                trainerNameLabel.setText(selectedCourse.getOwner());
+                                StringBuilder timeSchedule = new StringBuilder();
+                                for(LessonBean lessonBean: selectedCourse.getLessonBeanList()){
+                                    timeSchedule.append(lessonBean.getLessonDay());
+                                    timeSchedule.append(" ");
+                                }
+                                timeScheduleLabel.setText(String.valueOf(timeSchedule));
+                                fitnessLevelLabel.setText(selectedCourse.getFitnessLevel());
+                                equipmentTextArea.setText(selectedCourse.getEquipment());
+                                generalInfoTextArea.setText(selectedCourse.getDescription());
+                                setVisible(true);
                             }
-                            timeScheduleLabel.setText(String.valueOf(timeSchedule));
-                            fitnessLevelLabel.setText(selectedCourse.getFitnessLevel());
-                            equipmentTextArea.setText(selectedCourse.getEquipment());
-                            generalInfoTextArea.setText(selectedCourse.getDescription());
-                            emptyInfoBox.setVisible(false);
-                            requestInfoBox.setDisable(false);
-                            requestInfoBox.setVisible(true);
                         }
                     });
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
@@ -74,10 +72,17 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
         setUserInfoTab();
     }
 
+    private void setVisible(boolean bool) {
+        emptyInfoBox.setVisible(!bool);
+        requestInfoBox.setDisable(!bool);
+        requestInfoBox.setVisible(bool);
+    }
+
     @FXML public void deleteCourseButtonAction() {
         try {
             courseManagementTrainerController.deleteCourse(selectedCourse);
-            //TODO aggiornare lista
+            setVisible(false);
+            ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
@@ -85,8 +90,11 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
         }
     }
 
-    @FXML public void modifyCourseButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "CourseOverview", "", false);
+    @FXML public void modifyCourseButtonAction() throws IOException {
+        NewCourseGUIController newCourseGUIController = (NewCourseGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(), "NewCourse", "trainers");
+        if(newCourseGUIController != null) {
+            newCourseGUIController.setValue(selectedCourse);
+        }
     }
 }
 

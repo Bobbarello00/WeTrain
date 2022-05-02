@@ -2,9 +2,8 @@ package controller;
 
 import database.dao_classes.CourseDAO;
 import exception.DBConnectionFailedException;
-import model.Athlete;
-import model.Course;
-import model.Lesson;
+import exception.ImATrainerException;
+import model.*;
 import viewone.bean.*;
 
 import java.sql.SQLException;
@@ -15,8 +14,12 @@ public class CourseManagementAthleteController extends CourseManagementControlle
 
     private final LoginController loginController = new LoginController();
 
-    public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
-        Athlete athlete = (Athlete) loginController.getLoggedUser();
+    public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBConnectionFailedException, ImATrainerException {
+        User user = loginController.getLoggedUser();
+        if(user instanceof Trainer) {
+            throw new ImATrainerException();
+        }
+        Athlete athlete = (Athlete) user;
         List<Course> courseList = athlete.getCourseList();
         for(Course course: courseList){
             if(course.getId() == courseBean.getId()){

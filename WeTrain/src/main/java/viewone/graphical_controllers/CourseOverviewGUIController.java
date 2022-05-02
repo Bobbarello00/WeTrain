@@ -1,7 +1,9 @@
-package viewone.graphical_controllers.athletes;
+package viewone.graphical_controllers;
 
 import controller.CourseManagementAthleteController;
+import controller.CourseManagementTrainerController;
 import exception.DBConnectionFailedException;
+import exception.ImATrainerException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -43,10 +45,12 @@ public class CourseOverviewGUIController {
     @FXML private Label saturdayTimeText;
     @FXML private Label sundayTimeText;
     @FXML private Button subscribeButton;
+    @FXML private Button modifyButton;
     private CourseBean courseBean;
     private boolean subscribed = false;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -95,6 +99,11 @@ public class CourseOverviewGUIController {
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
+        } catch (ImATrainerException e) {
+            subscribeButton.setVisible(false);
+            subscribeButton.setDisable(true);
+            modifyButton.setVisible(true);
+            modifyButton.setDisable(false);
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
@@ -109,6 +118,10 @@ public class CourseOverviewGUIController {
         if(courseBean.getLessonBeanList() != null) {
             setScheduleLesson(courseBean.getLessonBeanList());
         }
+    }
+
+    @FXML public void modifyButtonAction() {
+        courseManagementTrainerController.modifyCourse();
     }
 
     @FXML public void subscribeButtonAction(ActionEvent event) {
