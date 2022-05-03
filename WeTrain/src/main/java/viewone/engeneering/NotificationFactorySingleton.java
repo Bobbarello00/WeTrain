@@ -3,6 +3,8 @@ package viewone.engeneering;
 import model.notification.DenialNotification;
 import model.notification.Notification;
 import model.User;
+import model.notification.NotificationEnum;
+import model.notification.SubscriptionNotification;
 
 import java.time.LocalDateTime;
 
@@ -20,12 +22,12 @@ public class NotificationFactorySingleton {
     }
 
     public Notification createSubscribeNotification() {
-        return new DenialNotification();
+        return new SubscriptionNotification();
     }
 
     public Notification createNotification(int idNotification, int type, String info, LocalDateTime notificationDate, User user) {
-        switch(type){
-            case 0 -> {
+        switch(NotificationEnum.of(type)){
+            case (NotificationEnum.SUBSCRIPTION) -> {
                 return new DenialNotification();
             }
         }

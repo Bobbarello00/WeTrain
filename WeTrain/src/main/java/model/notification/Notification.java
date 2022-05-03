@@ -6,18 +6,31 @@ import viewone.bean.UserBean;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public interface Notification {
-    String promptMessage();
+public abstract class Notification {
+    int id = 0;
+    User sender = null;
+    User receiver = null;
+    LocalDateTime date = null;
 
-    User getSender();
+    public abstract String promptMessage();
 
-    User getReceiver();
+    public User getSender() {
+        return sender;
+    }
 
-    int getType();
+    public User getReceiver() {
+        return receiver;
+    }
 
-    String getDescription();
+    public abstract int getType();
 
-    LocalDateTime getNotificationDate();
+    public abstract String getDescription();
 
-    int getId();
+    public LocalDateTime getNotificationDate() {
+        return date;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

@@ -116,9 +116,8 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <RadioButton fx:id="maleButton" layoutX="461.0" layoutY="310.0" mnemonicParsing="false" text="M" />
-      <RadioButton fx:id="femaleButton" layoutX="520.0" layoutY="310.0" mnemonicParsing="false" text="F" />
-      <RadioButton fx:id="nogenderButton" layoutX="574.0" layoutY="310.0" mnemonicParsing="false" text="X" />
+      <RadioButton fx:id="maleButton" layoutX="501.0" layoutY="309.0" mnemonicParsing="false" text="M" />
+      <RadioButton fx:id="femaleButton" layoutX="562.0" layoutY="309.0" mnemonicParsing="false" text="F" />
       <TextField fx:id="usernameText" layoutX="431.0" layoutY="253.0" prefHeight="31.0" prefWidth="174.0" promptText="UserName:">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />

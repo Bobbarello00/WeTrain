@@ -1,41 +1,18 @@
 package model.notification;
 
-import model.User;
-
-import java.time.LocalDateTime;
-
-public class DenialNotification implements Notification{
-    private int id;
-    private User sender;
-    private User receiver;
-    //private String description;
-    private LocalDateTime date;
+public class DenialNotification extends Notification {
 
     @Override public String promptMessage() {
         return null;
     }
 
-    @Override public User getSender() {
-        return sender;
-    }
-
-    @Override public User getReceiver() {
-        return receiver;
-    }
-
     @Override public int getType() {
-        return 1;
+        return NotificationEnum.DENIAL.ordinal();
     }
 
     @Override public String getDescription() {
         return null;
     }
+    //private String description;
 
-    @Override public LocalDateTime getNotificationDate() {
-        return date;
-    }
-
-    @Override public int getId() {
-        return id;
-    }
 }
