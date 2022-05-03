@@ -4514,7 +4514,7 @@
 											"top": 931,
 											"width": 125.74072265625,
 											"height": 13,
-											"text": "-requestCode: integer",
+											"text": "-requestCode: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -47650,14 +47650,6 @@
 				},
 				{
 					"_type": "UMLClass",
-					"_id": "AAAAAAF/XwrjiKq9lec=",
-					"_parent": {
-						"$ref": "AAAAAAF/XwMy+qklnjI="
-					},
-					"name": "Class1"
-				},
-				{
-					"_type": "UMLClass",
 					"_id": "AAAAAAF/Xwtxlar/EMs=",
 					"_parent": {
 						"$ref": "AAAAAAF/XwMy+qklnjI="
@@ -47926,14 +47918,6 @@
 				},
 				{
 					"_type": "UMLClass",
-					"_id": "AAAAAAF/X9wRfxAam4U=",
-					"_parent": {
-						"$ref": "AAAAAAF/XwMy+qklnjI="
-					},
-					"name": "Class2"
-				},
-				{
-					"_type": "UMLClass",
 					"_id": "AAAAAAF/X9wiDRCp7OA=",
 					"_parent": {
 						"$ref": "AAAAAAF/XwMy+qklnjI="
@@ -47999,17 +47983,6 @@
 							"name": "promptMessage"
 						}
 					]
-				},
-				{
-					"_type": "UMLClass",
-					"_id": "AAAAAAF/X+OQrO75aN4=",
-					"_parent": {
-						"$ref": "AAAAAAF/XwMy+qklnjI="
-					},
-					"name": "Entity2",
-					"stereotype": {
-						"$ref": "AAAAAAF/DVPdWL0xRtg="
-					}
 				}
 			]
 		}
