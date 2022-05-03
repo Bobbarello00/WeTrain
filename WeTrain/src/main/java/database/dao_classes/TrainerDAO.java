@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.DBConnectionFailedException;
+import model.Athlete;
 import model.Trainer;
 import model.User;
 
@@ -51,13 +52,32 @@ public class TrainerDAO {
         }
     }
 
+    public int getNumberOfSubscribers(String trainerFc) throws SQLException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.countTrainerSubscribers(stmt, trainerFc)) {
+            if(rs.next()){
+                return rs.getInt(1);
+            }else{
+                return 0;
+            }
+        }
+    }
+
+    private List<Athlete> getSubscribersList(ResultSet rs) throws SQLException, DBConnectionFailedException {
+        List<Athlete> subscriberList = new ArrayList<>();
+        while(rs.next()){
+            Athlete subscriber = new AthleteDAO().loadAthlete(rs.getString("User"));
+            subscriberList.add(subscriber);
+        }
+        return subscriberList;
+    }
+
     private List<Trainer> getTrainersList(ResultSet rs) throws SQLException, DBConnectionFailedException {
-        List<Trainer> myList = new ArrayList<>();
+        List<Trainer> trainerList = new ArrayList<>();
         while(rs.next()){
             Trainer newTrainer = loadTrainer(rs.getString("User"));
-            myList.add(newTrainer);
+            trainerList.add(newTrainer);
         }
-        return myList;
+        return trainerList;
     }
 
     public List<Trainer> searchTrainers(String name) throws SQLException, DBConnectionFailedException {
@@ -69,6 +89,12 @@ public class TrainerDAO {
     public List<Trainer> loadAllTrainers() throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainers(stmt)){
             return getTrainersList(rs);
+        }
+    }
+
+    public List<Athlete> loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainerSubscribers(stmt, trainerFc)) {
+            return getSubscribersList(rs);
         }
     }
 

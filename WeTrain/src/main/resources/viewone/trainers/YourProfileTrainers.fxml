@@ -2,9 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -18,24 +15,22 @@
 
 <Pane prefHeight="650.0" prefWidth="1102.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.YourProfileTrainersGUIController">
   <children>
-      <Text layoutX="596.0" layoutY="143.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="🔥 Your Popularity" wrappingWidth="138.06498718261736">
+      <Text layoutX="596.0" layoutY="143.0" scaleX="1.5" scaleY="1.5" strokeType="OUTSIDE" strokeWidth="0.0" text="🛈 More about you..." wrappingWidth="138.06498718261736">
           <font>
               <Font name="ABeeZee Regular" size="12.0" />
           </font>
       </Text>
-      <VBox layoutX="520.0" layoutY="157.0" prefHeight="458.0" prefWidth="517.0" style="-fx-background-color: rgba(24,147,21,0.5); -fx-background-radius: 50;">
+      <VBox layoutX="520.0" layoutY="157.0" prefHeight="458.0" prefWidth="517.0" style="-fx-background-color: rgba(24,147,21,0.9); -fx-background-radius: 50;">
           <padding>
               <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
           </padding>
           <children>
-              <AreaChart prefHeight="240.0" prefWidth="615.0">
-                  <xAxis>
-                      <CategoryAxis prefHeight="11.0" prefWidth="431.0" side="BOTTOM" />
-                  </xAxis>
-                  <yAxis>
-                      <NumberAxis prefHeight="133.0" prefWidth="28.0" side="LEFT" />
-                  </yAxis>
-              </AreaChart>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+               <children>
+                  <Label fx:id="fiscalCodeLabel" scaleX="1.5" scaleY="1.5" text="Fiscal Code: RSS BBR 69 C 48 F839 A" textFill="WHITE" />
+                  <Label fx:id="emailLabel" scaleX="1.5" scaleY="1.5" text="Email: example@gmail.com" textFill="WHITE" />
+               </children>
+            </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                <children>
                   <Text scaleX="3.0" scaleY="3.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N° Subscribers:" />
@@ -72,7 +67,7 @@
                   <Image url="@../images/User1.png" />
                </image>
                <VBox.margin>
-                  <Insets bottom="35.0" />
+                  <Insets bottom="35.0" top="50.0" />
                </VBox.margin>
             </ImageView>
             <HBox alignment="CENTER" prefHeight="26.0" prefWidth="397.0" spacing="95.0">
@@ -81,9 +76,10 @@
                   <Label fx:id="lastNameLabel" scaleX="2.0" scaleY="2.0" text="Last Name" />
                </children>
             </HBox>
-            <Label fx:id="fiscalCodeLabel" scaleX="1.4" scaleY="1.4" text="Fiscal Code: RSS BBR 69 C 48 F839 A" />
-            <Label fx:id="emailLabel" layoutX="186.0" layoutY="281.0" scaleX="1.4" scaleY="1.4" text="Email: example@gmail.com" />
-            <Label fx:id="paymentMethodLabel" scaleX="1.4" scaleY="1.4" text="IBAN:  IT 99 C 12345 67890 123456789012" />
+            <Label fx:id="paymentMethodLabel" scaleX="1.4" scaleY="1.4" text="IBAN:  IT 99 C 12345 67890 123456789012">
+               <VBox.margin>
+                  <Insets top="43.0" />
+               </VBox.margin></Label>
          </children>
       </VBox>
       <Button fx:id="editButton" layoutX="420.0" layoutY="542.0" mnemonicParsing="false" onAction="#editIbanButtonAction" prefHeight="23.0" prefWidth="29.0" text="🖉" textAlignment="CENTER" textFill="WHITE" wrapText="true">

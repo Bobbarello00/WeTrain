@@ -38,7 +38,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
     public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
         paypalBoundary.pay();
         Course course = new CourseDAO().loadCourse(courseBean.getId());
-        new CourseDAO().subscribeToACourse(course);
+        new CourseDAO().subscribeToACourse(course.getId());
         User sender = loginController.getLoggedUser();
         User receiver = course.getOwner();
         emailSystemBoundary.sendEmail(new EmailBean(

@@ -48,9 +48,9 @@ public class CourseDAO {
     }
 
     //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
-    public void subscribeToACourse(Course course) throws SQLException, DBConnectionFailedException {
+    public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertSubscribe(stmt, course, (Athlete) loginController.getLoggedUser());
+            Query.insertSubscribe(stmt, idCourse, (Athlete) loginController.getLoggedUser());
         }
     }
 
@@ -134,4 +134,6 @@ public class CourseDAO {
             return loadAllCourses(loginController.getLoggedUser(), rs);
         }
     }
+
+
 }

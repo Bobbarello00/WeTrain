@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
+import database.dao_classes.AthleteDAO;
 import exception.DBConnectionFailedException;
 import exception.InvalidDataException;
 import javafx.fxml.FXML;
@@ -26,7 +27,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     @FXML private TextField newCardNumber;
     @FXML private TextField newExpirationDate;
-    @FXML private Text trainingDaysText;
+    @FXML private Text numberOfCoursesText;
 
     private AthleteBean athlete;
 
@@ -76,9 +77,8 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         firstNameLabel.setText(athlete.getName());
         lastNameLabel.setText(athlete.getSurname());
         fiscalCodeLabel.setText("FiscalCode: " + athlete.getFiscalCode());
-        //TODO individuare numero di giorni di allenamento e compilare grafico + setText qui sotto
-        trainingDaysText.setText("0");
         try {
+            numberOfCoursesText.setText(String.valueOf(new AthleteDAO().getNumberOfCourses(athlete.getFiscalCode())));
             if(athlete.getGender() == 'm') {
                 usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteM.png")).toURI().toString()));
             }else{

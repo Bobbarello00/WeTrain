@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.ProfileManagementController;
+import database.dao_classes.TrainerDAO;
 import exception.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -73,17 +74,22 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
         firstNameLabel.setText(trainer.getName());
         lastNameLabel.setText(trainer.getSurname());
         fiscalCodeLabel.setText("FiscalCode: " + trainer.getFiscalCode());
-        //TODO prendere numero di iscritti e fare grafico + setText qui sotto
-        subscribersText.setText("0");
         try{
+            subscribersText.setText(String.valueOf(new TrainerDAO().getNumberOfSubscribers(trainer.getFiscalCode())));
             if(trainer.getGender() == 'm') {
                 usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
             }else{
                 usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
             }
+            setIbanLabel();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
+        } catch (DBConnectionFailedException e) {
+            e.alert();
+        } catch (SQLException e) {
+            //TODO gestione exception sql
+            throw new RuntimeException(e);
         }
-        setIbanLabel();
+
     }
 }

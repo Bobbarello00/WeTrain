@@ -95,6 +95,11 @@ public class Query {
                 WHERE_USER, athleteFc));
     }
 
+    public static ResultSet countAthleteCourses(Statement stmt, String athleteFc) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT COUNT(*) FROM mydb.Subscribe " +
+                "WHERE Athlete = '%s';",athleteFc));
+    }
+
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Athlete " +
                 WHERE_USER, athlete.getFiscalCode()));
@@ -107,6 +112,7 @@ public class Query {
     }
 
     public static ResultSet loadAllTrainers(Statement stmt) throws SQLException {
+        //TODO CORREZIONE QUERY (ordinare per popolarità)
         return stmt.executeQuery(SELECT_ALL +
                 "FROM mydb.Trainer " +
                 "GROUP BY User " +
@@ -144,6 +150,18 @@ public class Query {
         return stmt.executeUpdate(String.format("UPDATE mydb.Trainer SET Iban = '%s' " + WHERE_USER,
                 trainer.getIban(),
                 trainer.getFiscalCode()));
+    }
+
+    public static ResultSet countTrainerSubscribers(Statement stmt, String trainerFc) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT COUNT(*) FROM mydb.Athlete "+
+                "WHERE Trainer ='%s';",trainerFc));
+    }
+
+    public static ResultSet loadAllTrainerSubscribers(Statement stmt, String trainerFc) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM mydb.Athlete " +
+                "WHERE Trainer = '%s' " +
+                LIMIT_30,trainerFc));
     }
 
     public static int deleteTrainer(Statement stmt, Trainer trainer) throws SQLException {
@@ -400,10 +418,10 @@ public class Query {
                 "WHERE idWorkoutPlan = %s;", idWorkoutPlan));
     }
 
-    public static void insertSubscribe(Statement stmt, Course course, Athlete athlete) throws SQLException {
+    public static void insertSubscribe(Statement stmt, int idCourse, Athlete athlete) throws SQLException {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Subscribe (Course, Athlete) " +
                         "VALUES (%s, '%s');",
-                course.getId(),
+                idCourse,
                 athlete.getFiscalCode()));
     }
 

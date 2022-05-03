@@ -94,6 +94,16 @@ public class AthleteDAO {
         }
     }
 
+    public int getNumberOfCourses(String athleteFc) throws SQLException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.countAthleteCourses(stmt, athleteFc)) {
+            if(rs.next()){
+                return rs.getInt(1);
+            }else{
+                return 0;
+            }
+        }
+    }
+
     public void setTrainer(Athlete athlete, String fc) {
         try (Statement stmt = conn.createStatement()) {
             Query.updateTrainerAthlete(stmt, athlete.getFiscalCode(), fc);

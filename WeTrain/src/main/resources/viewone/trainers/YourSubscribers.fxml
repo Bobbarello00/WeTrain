@@ -83,11 +83,24 @@
                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
             </padding>
             <children>
-               <Pane prefHeight="519.0" prefWidth="573.0">
+               <VBox fx:id="infoSubscriberBox" alignment="CENTER" disable="true" prefHeight="547.0" prefWidth="519.0" spacing="50.0" visible="false">
                   <children>
-                     <Button fx:id="writeEmailButton" layoutX="462.0" layoutY="478.0" mnemonicParsing="false" onAction="#writeEmailButtonAction" scaleX="1.5" scaleY="1.5" text="Write Email" />
+                     <Label fx:id="infoName" scaleX="1.5" scaleY="1.5" text="Name" />
+                     <Label fx:id="infoSurname" scaleX="1.5" scaleY="1.5" text="Surname" />
+                     <Label fx:id="infoUsername" scaleX="1.5" scaleY="1.5" text="Username" />
+                     <Label fx:id="infoBirth" scaleX="1.5" scaleY="1.5" text="Birth" />
+                     <Label fx:id="infoEmail" layoutX="256.0" layoutY="392.0" scaleX="1.5" scaleY="1.5" text="Email" />
+                     <Label fx:id="infoFiscalCode" layoutX="256.0" layoutY="450.0" scaleX="1.5" scaleY="1.5" text="FiscalCode" />
+                     <Button mnemonicParsing="false" onAction="#writeEmailButtonAction" prefHeight="26.0" prefWidth="107.0" scaleX="1.2" scaleY="1.2" text="Write Email">
+                        <VBox.margin>
+                           <Insets />
+                        </VBox.margin>
+                     </Button>
                   </children>
-               </Pane>
+                  <padding>
+                     <Insets top="85.0" />
+                  </padding>
+               </VBox>
             </children>
          </VBox>
       </children>
