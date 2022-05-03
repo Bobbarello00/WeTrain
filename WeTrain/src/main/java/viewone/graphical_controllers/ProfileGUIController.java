@@ -3,7 +3,9 @@ package viewone.graphical_controllers;
 import exception.DBConnectionFailedException;
 import exception.InvalidIbanException;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import viewone.WeTrain;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.MainPane;
 import javafx.fxml.FXML;
@@ -13,10 +15,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.bean.UserBean;
 
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Objects;
 
 public abstract class ProfileGUIController {
+    @FXML protected ImageView usrImage;
     @FXML protected Label emailLabel;
     @FXML protected Label firstNameLabel;
     @FXML protected Label fiscalCodeLabel;

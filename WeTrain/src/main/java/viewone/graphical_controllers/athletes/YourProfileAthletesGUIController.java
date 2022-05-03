@@ -6,13 +6,17 @@ import exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import viewone.WeTrain;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import viewone.engeneering.FatalCaseManager;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -22,6 +26,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     @FXML private TextField newCardNumber;
     @FXML private TextField newExpirationDate;
+    @FXML private Text trainingDaysText;
 
     private AthleteBean athlete;
 
@@ -71,13 +76,22 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         firstNameLabel.setText(athlete.getName());
         lastNameLabel.setText(athlete.getSurname());
         fiscalCodeLabel.setText("FiscalCode: " + athlete.getFiscalCode());
+        //TODO individuare numero di giorni di allenamento e compilare grafico + setText qui sotto
+        trainingDaysText.setText("0");
         try {
+            if(athlete.getGender() == 'm') {
+                usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteM.png")).toURI().toString()));
+            }else{
+                usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteF.png")).toURI().toString()));
+            }
             setPaymentMethodLabel();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         } catch (DBConnectionFailedException e) {
             e.alert();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -5,11 +5,15 @@ import exception.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import viewone.WeTrain;
 import viewone.bean.*;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -17,6 +21,7 @@ import java.util.ResourceBundle;
 
 public class YourProfileTrainersGUIController extends ProfileGUIController implements Initializable {
     @FXML private TextField newIban;
+    @FXML private Text subscribersText;
 
     TrainerBean trainer;
 
@@ -68,6 +73,17 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
         firstNameLabel.setText(trainer.getName());
         lastNameLabel.setText(trainer.getSurname());
         fiscalCodeLabel.setText("FiscalCode: " + trainer.getFiscalCode());
+        //TODO prendere numero di iscritti e fare grafico + setText qui sotto
+        subscribersText.setText("0");
+        try{
+            if(trainer.getGender() == 'm') {
+                usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerM.png")).toURI().toString()));
+            }else{
+                usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
+            }
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
         setIbanLabel();
     }
 }
