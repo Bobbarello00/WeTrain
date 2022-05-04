@@ -23,15 +23,21 @@ public class NotificationFactorySingleton {
     }*/
 
     public Notification createNotification(int idNotification, int type, String info, LocalDateTime notificationDate, User sender, User receiver) {
-        /*switch (type) {
-            case (1) -> {
+        /*switch (NotificationEnum.of(type)) {
+            case (SUBSCRIPTIONTOTRAINER) -> {
                 return new SubscriptionToTrainerNotification();
             }
-            case (2) -> {
+            case (SUBSCRIPTIONTOCOURSE) -> {
+                return new SubscriptionToCourseNotification();
+            }
+            case (REJECTEDREQUEST) -> {
                 return new RejectedRequestNotification();
             }
-            case (3) -> {
+            case (WORKOUTPLANREADY) -> {
                 return new WorkoutPlanReadyNotification();
+            }
+            case (NotificationEnum.COMMUNICATION) {
+                return new CommunicationNotification();
             }
         }
         return new RejectedRequestNotification();*/

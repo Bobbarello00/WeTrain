@@ -5,17 +5,26 @@ import model.User;
 import java.time.LocalDateTime;
 
 public class CommunicationNotification extends Notification{
-
-    protected CommunicationNotification(int id, User sender, User receiver, LocalDateTime date) {
+    private final String text;
+    /*
+     COURSE COMMUNICATION!
+     *text*
+     */
+    protected CommunicationNotification(int id, User sender, User receiver, LocalDateTime date, String text) {
         super(id, sender, receiver, date);
+        this.text = text;
     }
 
     @Override public String promptMessage() {
-        return null;
+        return String.format("""
+                COURSE COMMUNICATION!
+                %s
+                """,
+                text);
     }
 
     @Override public int getType() {
-        return NotificationEnum.COMUNICATION.ordinal();
+        return NotificationEnum.COMMUNICATION.ordinal();
     }
 
     @Override public String getDescription() {

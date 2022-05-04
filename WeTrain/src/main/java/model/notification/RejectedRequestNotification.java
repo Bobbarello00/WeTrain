@@ -5,8 +5,6 @@ import model.User;
 import java.time.LocalDateTime;
 
 public class RejectedRequestNotification extends Notification {
-
-
     /*
     Bad news!
     Your Trainer '%s' just rejected your last workout plan request.
@@ -18,7 +16,12 @@ public class RejectedRequestNotification extends Notification {
     }
 
     @Override public String promptMessage() {
-        return null;
+        return String.format("""
+                Bad news!
+                Your Trainer %s just rejected your last workout plan request.
+                Before asking a new one try getting in touch with him with an email from 'Your Personal Trainer' page!
+                """,
+                sender.getName() + " " + sender.getSurname());
     }
 
     @Override public int getType() {
