@@ -1,12 +1,19 @@
 package model.notification;
 
-public class WorkoutPlanReadyNotification extends Notification{
+import model.User;
 
+import java.time.LocalDateTime;
+
+public class WorkoutPlanReadyNotification extends Notification{
     /*
     Good news!
     Your Trainer '%s' just uploaded your new workout plan.
     Be sure to check it out from 'Your Workout Plan' page!
     */
+
+    public WorkoutPlanReadyNotification(int id, User sender, User receiver, LocalDateTime date) {
+        super(id, sender, receiver, date);
+    }
 
     @Override public String promptMessage() {
         return null;

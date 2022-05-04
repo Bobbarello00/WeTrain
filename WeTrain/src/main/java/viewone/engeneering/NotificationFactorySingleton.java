@@ -14,16 +14,16 @@ public class NotificationFactorySingleton {
         return instance;
     }
 
-    public Notification createDenialNotification() {
+   /* public Notification createDenialNotification() {
         return new RejectedRequestNotification();
     }
 
     public Notification createSubscribeNotification() {
         return new SubscriptionToTrainerNotification();
-    }
+    }*/
 
-    public Notification createNotification(int idNotification, int type, String info, LocalDateTime notificationDate, User user) {
-        switch (type) {
+    public Notification createNotification(int idNotification, int type, String info, LocalDateTime notificationDate, User sender, User receiver) {
+        /*switch (type) {
             case (1) -> {
                 return new SubscriptionToTrainerNotification();
             }
@@ -34,6 +34,7 @@ public class NotificationFactorySingleton {
                 return new WorkoutPlanReadyNotification();
             }
         }
-        return new RejectedRequestNotification();
+        return new RejectedRequestNotification();*/
+        return null;
     }
 }

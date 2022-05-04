@@ -1,12 +1,21 @@
 package model.notification;
 
+import model.User;
+
+import java.time.LocalDateTime;
+
 public class RejectedRequestNotification extends Notification {
+
 
     /*
     Bad news!
     Your Trainer '%s' just rejected your last workout plan request.
     Before asking a new one try getting in touch with him with an email from 'Your Personal Trainer' page!
     */
+
+    public RejectedRequestNotification(int id, User sender, User receiver, LocalDateTime date) {
+        super(id, sender, receiver, date);
+    }
 
     @Override public String promptMessage() {
         return null;
