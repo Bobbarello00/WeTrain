@@ -1,14 +1,19 @@
 package controller;
 
 import database.dao_classes.CourseDAO;
+import database.dao_classes.NotificationDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBConnectionFailedException;
 import exception.InvalidTimeException;
 import model.Course;
 import model.Lesson;
 import model.Trainer;
+import model.notification.CommunicationNotification;
+import model.notification.Notification;
+import viewone.bean.CommunicationBean;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
+import viewone.engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -69,5 +74,13 @@ public class CourseManagementTrainerController extends CourseManagementControlle
                         (Trainer) loginController.getLoggedUser(),
                         courseBean.getEquipment()
                 ));
+    }
+
+    public void sendCourseCommunication(CommunicationBean bean) throws SQLException, DBConnectionFailedException {
+        Course course = new CourseDAO().loadCourse(bean.getCourseBean().getId());
+        new NotificationDAO().sendCourseNotification(
+                course,
+                (Trainer) loginController.getLoggedUser(),
+                bean.getText());
     }
 }

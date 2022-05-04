@@ -6,15 +6,19 @@ import java.time.LocalDateTime;
 
 public class SubscriptionToTrainerNotification extends Notification {
     private final int subscribers;
-
     /*
     Good news!
     The Athlete '%s' Subscribed to you.
     You are growing in popularity, now you have reached %d subscribers!
     */
 
-    public SubscriptionToTrainerNotification(int id, User sender, User receiver, LocalDateTime date, int subscribers) {
-        super(id, sender, receiver, date);
+    public SubscriptionToTrainerNotification(int id, User sender, User receiver, int subscribers, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
+        this.subscribers = subscribers;
+    }
+
+    public SubscriptionToTrainerNotification(User sender, User receiver, int subscribers) {
+        super(sender, receiver);
         this.subscribers = subscribers;
     }
 

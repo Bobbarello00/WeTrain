@@ -12,8 +12,13 @@ public class CourseModifiedNotification extends Notification{
     Check the modification!
     */
 
-    public CourseModifiedNotification(int id, User sender, User receiver, LocalDateTime date, Course course) {
-        super(id, sender, receiver, date);
+    public CourseModifiedNotification(int id, User sender, User receiver, Course course, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
+        this.course = course;
+    }
+
+    public CourseModifiedNotification(User sender, User receiver, Course course) {
+        super(sender, receiver);
         this.course = course;
     }
 

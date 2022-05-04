@@ -9,6 +9,10 @@ public abstract class AbstractFormGUIController{
     @FXML protected Button sendButton;
 
     @FXML protected void closeAction(){
+        close();
+    }
+
+    protected void close() {
         ((Stage) sendButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }

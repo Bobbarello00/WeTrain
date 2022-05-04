@@ -1,22 +1,25 @@
 package model.notification;
 
 import model.User;
-import viewone.bean.UserBean;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public abstract class Notification {
     int id;
     User sender;
     User receiver;
-    LocalDateTime date;
+    LocalDateTime dateTime;
 
-    protected Notification(int id, User sender, User receiver, LocalDateTime date) {
+    protected Notification(int id, User sender, User receiver, LocalDateTime dateTime) {
+        this(sender, receiver);
         this.id = id;
+        this.dateTime = dateTime;
+    }
+
+    public Notification(User sender, User receiver) {
         this.sender = sender;
         this.receiver = receiver;
-        this.date = date;
+        this.dateTime = LocalDateTime.now();
     }
 
     public abstract String promptMessage();
@@ -34,7 +37,7 @@ public abstract class Notification {
     public abstract String getDescription();
 
     public LocalDateTime getNotificationDate() {
-        return date;
+        return dateTime;
     }
 
     public int getId() {

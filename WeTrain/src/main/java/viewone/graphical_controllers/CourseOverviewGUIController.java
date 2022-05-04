@@ -13,9 +13,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
+import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
 import viewone.graphical_controllers.trainers.NewCourseGUIController;
 
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class CourseOverviewGUIController {
     @FXML private Label sundayTimeText;
     @FXML private Button subscribeButton;
     @FXML private Button modifyButton;
+    @FXML private Button sendCommunicationButton;
     private CourseBean courseBean;
     private boolean subscribed = false;
 
@@ -86,7 +89,11 @@ public class CourseOverviewGUIController {
     }
 
     @FXML protected void closeAction(MouseEvent event){
-        ((Stage) ((ImageView) event.getSource()).getScene().getWindow()).close();
+        close(((Stage) ((ImageView) event.getSource()).getScene().getWindow()));
+    }
+
+    private void close(Stage stage) {
+        stage.close();
         MainPane.getInstance().setDisable(false);
     }
 
@@ -101,10 +108,9 @@ public class CourseOverviewGUIController {
             e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
         } catch (ImATrainerException e) {
-            subscribeButton.setVisible(false);
-            subscribeButton.setDisable(true);
-            modifyButton.setVisible(true);
-            modifyButton.setDisable(false);
+            setVisibile(subscribeButton, false);
+            setVisibile(modifyButton, true);
+            setVisibile(sendCommunicationButton, true);
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
@@ -121,11 +127,29 @@ public class CourseOverviewGUIController {
         }
     }
 
+    private void setVisibile(Button button, boolean bool) {
+        button.setVisible(bool);
+        button.setDisable(!bool);
+    }
+
+    @FXML public void sendCommunicationButtonAction(ActionEvent event) {
+        try {
+            ((Stage) subscribeButton.getScene().getWindow()).close();
+            CommunicationFormGUIController communicationFormGUIController =
+                    (CommunicationFormGUIController) PageSwitchSizeChange.
+                            pageSwitch(((Button) event.getSource()), "CommunicationForm", "trainers", false);
+            communicationFormGUIController.setCourseBean(courseBean);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML public void modifyButtonAction(ActionEvent event) {
         try {
             ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
             MainPane.getInstance().setDisable(false);
-            NewCourseGUIController newCourseGUIController = (NewCourseGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(), "NewCourse", "trainers");
+            NewCourseGUIController newCourseGUIController =
+                    (NewCourseGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(), "NewCourse", "trainers");
             if(newCourseGUIController != null) {
                 newCourseGUIController.setValue(courseBean);
             }

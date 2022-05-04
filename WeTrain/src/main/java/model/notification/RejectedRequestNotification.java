@@ -11,8 +11,12 @@ public class RejectedRequestNotification extends Notification {
     Before asking a new one try getting in touch with him with an email from 'Your Personal Trainer' page!
     */
 
-    public RejectedRequestNotification(int id, User sender, User receiver, LocalDateTime date) {
-        super(id, sender, receiver, date);
+    public RejectedRequestNotification(int id, User sender, User receiver, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
+    }
+
+    public RejectedRequestNotification(User sender, User receiver) {
+        super(sender, receiver);
     }
 
     @Override public String promptMessage() {
@@ -31,6 +35,5 @@ public class RejectedRequestNotification extends Notification {
     @Override public String getDescription() {
         return null;
     }
-    //private String description;
 
 }

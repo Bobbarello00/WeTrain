@@ -14,12 +14,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class UserDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public UserDAO() throws DBConnectionFailedException {
-    }
+    public UserDAO() throws DBConnectionFailedException {}
 
     public User loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, email, password)) {

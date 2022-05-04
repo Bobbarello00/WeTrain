@@ -9,16 +9,16 @@ public class SubscriptionToCourseNotification extends Notification {
     private final int courseSubscribers;
     private final Course course;
 
-    /*
-    Good news!
-    The Athlete '%s' Subscribed to your course '%s'.
-    Your course is earning popularity and now its at %d subscribers!
-    */
-
-    public SubscriptionToCourseNotification(int id, User sender, User receiver, LocalDateTime date, int courseSubscribers, Course course) {
-        super(id, sender, receiver, date);
+    public SubscriptionToCourseNotification(int id, User sender, User receiver, int courseSubscribers, Course course, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
         this.courseSubscribers = courseSubscribers;
         this.course = course;
+    }
+
+    public SubscriptionToCourseNotification(User sender, User receiver, Course course, int courseSubscribers) {
+        super(sender, receiver);
+        this.course = course;
+        this.courseSubscribers = courseSubscribers;
     }
 
     @Override public String promptMessage() {

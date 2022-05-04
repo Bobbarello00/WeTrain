@@ -3,6 +3,9 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.DBConnectionFailedException;
+import model.Course;
+import model.Trainer;
+import model.notification.CommunicationNotification;
 import model.notification.Notification;
 import model.User;
 import viewone.engeneering.NotificationFactorySingleton;
@@ -17,8 +20,7 @@ import java.util.List;
 public class NotificationDAO {
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public NotificationDAO() throws DBConnectionFailedException {
-    }
+    public NotificationDAO() throws DBConnectionFailedException {}
 
     public void saveNotification(Notification notification) throws SQLException {
         try(Statement stmt = conn.createStatement()){
@@ -41,6 +43,21 @@ public class NotificationDAO {
             }
 
             return myList;
+        }
+    }
+
+
+
+    public void sendCourseNotification(Course course, Trainer trainer, String text) throws SQLException, DBConnectionFailedException {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadSubscribed(stmt, course)){
+            while(rs.next()){
+                Notification notification = NotificationFactorySingleton.getInstance().createCommunicationNotification(
+                        trainer,
+                        new UserDAO().loadUser(rs.getString("Athlete")), //TODO potrebbe essere evitata?
+                        course,
+                        text);
+                new NotificationDAO().saveNotification(notification);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import com.mysql.cj.exceptions.*;
 import com.mysql.cj.jdbc.exceptions.*;
 import exception.DBConnectionFailedException;
 import model.*;
+import model.notification.CommunicationNotification;
 import model.notification.Notification;
 import org.jetbrains.annotations.NotNull;
 
@@ -103,6 +104,12 @@ public class Query {
     public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
         return stmt.executeUpdate(String.format("DELETE FROM mydb.Athlete " +
                 WHERE_USER, athlete.getFiscalCode()));
+    }
+
+    public static void addWorkoutPlanToAthlete(Statement stmt, int id, String athleteFc) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Athlete SET WorkoutPlan = %s " + WHERE_USER,
+                id,
+                athleteFc));
     }
 
     public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
@@ -275,6 +282,18 @@ public class Query {
                 "WHERE idCourse = %s;", idCourse));
     }
 
+    public static void modifyCourse(Statement stmt, int idCourse, Course course) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Course " +
+                        "SET Name = '%s', Description = '%s', FitnessLevel = '%s', Equipment = '%s', Trainer = '%s' " +
+                        "WHERE idCourse = %s;",
+                course.getName(),
+                course.getDescription(),
+                course.getFitnessLevel(),
+                course.getEquipment(),
+                course.getOwner().getFiscalCode(),
+                idCourse));
+    }
+
     public static ResultSet loadExercise(Statement stmt, int idExercise) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Exercise " +
@@ -410,7 +429,8 @@ public class Query {
     public static ResultSet loadWorkoutPlan(Statement stmt, Integer idWorkoutPlan) throws SQLException {
         return stmt.executeQuery(String.format("SELECT WorkoutPlan.* " +
                 "FROM mydb.WorkoutPlan " +
-                "WHERE idWorkoutPlan = %s;", idWorkoutPlan));
+                "WHERE idWorkoutPlan = %s;",
+                idWorkoutPlan));
     }
 
     public static void removeWorkoutPlan(Statement stmt, int idWorkoutPlan) throws SQLException {
@@ -432,21 +452,10 @@ public class Query {
                 athleteFc));
     }
 
-    public static void addWorkoutPlanToAthlete(Statement stmt, int id, String athleteFc) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Athlete SET WorkoutPlan = %s " + WHERE_USER,
-                id,
-                athleteFc));
-    }
-
-    public static void modifyCourse(Statement stmt, int idCourse, Course course) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Course " +
-                        "SET Name = '%s', Description = '%s', FitnessLevel = '%s', Equipment = '%s', Trainer = '%s' " +
-                        "WHERE idCourse = %s;",
-                course.getName(),
-                course.getDescription(),
-                course.getFitnessLevel(),
-                course.getEquipment(),
-                course.getOwner().getFiscalCode(),
-                idCourse));
+    public static ResultSet loadSubscribed(Statement stmt, Course course) throws SQLException {
+        return stmt.executeQuery(String.format(SELECT_ALL +
+                "FROM mydb.Subscribe " +
+                "WHERE Course = %s;",
+                course.getId()));
     }
 }

@@ -11,8 +11,12 @@ public class WorkoutPlanReadyNotification extends Notification{
     Be sure to check it out from 'Your Workout Plan' page!
     */
 
-    public WorkoutPlanReadyNotification(int id, User sender, User receiver, LocalDateTime date) {
-        super(id, sender, receiver, date);
+    public WorkoutPlanReadyNotification(int id, User sender, User receiver, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
+    }
+
+    public WorkoutPlanReadyNotification(User sender, User receiver) {
+        super(sender, receiver);
     }
 
     @Override public String promptMessage() {

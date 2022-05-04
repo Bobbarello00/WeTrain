@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 
 public class LessonStartedNotification extends Notification{
     private final Course course;
-    /*
-    Hi!
-    Your trainer %s started the lesson of the course %s.
-    Join it.
-    */
 
-    public LessonStartedNotification(int id, User sender, User receiver, LocalDateTime date, Course course) {
-        super(id, sender, receiver, date);
+    public LessonStartedNotification(int id, User sender, User receiver, Course course, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
+        this.course = course;
+    }
+
+    public LessonStartedNotification(User sender, User receiver, Course course) {
+        super(sender, receiver);
         this.course = course;
     }
 

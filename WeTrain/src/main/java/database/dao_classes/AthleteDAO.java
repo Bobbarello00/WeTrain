@@ -6,9 +6,11 @@ import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import exception.ExpiredCardException;
 import model.Athlete;
+import model.Course;
 
 import java.sql.*;
 import java.time.YearMonth;
+import java.util.List;
 
 public class AthleteDAO {
 
@@ -27,8 +29,7 @@ public class AthleteDAO {
 
     Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public AthleteDAO() throws DBConnectionFailedException {
-    }
+    public AthleteDAO() throws DBConnectionFailedException {}
 
     public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
@@ -133,4 +134,5 @@ public class AthleteDAO {
             Query.addWorkoutPlanToAthlete(stmt, id, athleteFc);
         }
     }
+
 }
