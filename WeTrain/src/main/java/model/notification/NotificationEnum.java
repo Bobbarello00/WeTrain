@@ -2,9 +2,10 @@ package model.notification;
 
 public enum NotificationEnum {
 
-    SUBSCRIPTION,
-    DENIAL,
-    CONFIRM,
+    SUBSCRIPTIONTOCOURSE,
+    SUBSCRIPTIONTOTRAINER,
+    REJECTEDREQUEST,
+    WORKOUTPLANREADY,
     COMUNICATION;
 
     private static final NotificationEnum[] ENUMS = NotificationEnum.values();

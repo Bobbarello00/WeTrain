@@ -15,25 +15,25 @@ public class NotificationFactorySingleton {
     }
 
     public Notification createDenialNotification() {
-        return new DenialNotification();
+        return new RejectedRequestNotification();
     }
 
     public Notification createSubscribeNotification() {
-        return new SubscriptionNotification();
+        return new SubscriptionToTrainerNotification();
     }
 
     public Notification createNotification(int idNotification, int type, String info, LocalDateTime notificationDate, User user) {
         switch (type) {
             case (1) -> {
-                return new SubscriptionNotification();
+                return new SubscriptionToTrainerNotification();
             }
             case (2) -> {
-                return new DenialNotification();
+                return new RejectedRequestNotification();
             }
             case (3) -> {
-                return new ConfirmNotification();
+                return new WorkoutPlanReadyNotification();
             }
         }
-        return new DenialNotification();
+        return new RejectedRequestNotification();
     }
 }
