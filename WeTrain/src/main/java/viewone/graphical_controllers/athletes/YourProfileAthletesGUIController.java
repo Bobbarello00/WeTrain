@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.WeTrain;
@@ -28,6 +29,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     @FXML private TextField newCardNumber;
     @FXML private TextField newExpirationDate;
     @FXML private Text numberOfCoursesText;
+    @FXML private ImageView cardLogo;
 
     private AthleteBean athlete;
 
@@ -67,7 +69,16 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             FatalCaseManager.erasePaymentMethod();
         } else{
             String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
-            paymentMethodLabel.setText("Card: " + athlete.getCardType() + "  **** **** **** " + cardNumberTruncated);
+            try {
+                if(Objects.equals(athlete.getCardType(), "VISA")){
+                    cardLogo.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/Visa.png")).toURI().toString()));
+                }else{
+                    cardLogo.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/MasterCard.png")).toURI().toString()));
+                }
+            }catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+            paymentMethodLabel.setText("Card: \t\t" + "  **** **** **** " + cardNumberTruncated);
         }
     }
 
