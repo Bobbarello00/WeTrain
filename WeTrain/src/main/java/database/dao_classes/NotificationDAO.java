@@ -26,7 +26,7 @@ public class NotificationDAO {
         }
     }
 
-    public List<Notification> loadAllNotifications(User user) throws SQLException {
+    public List<Notification> loadAllNotifications(User user) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllNotifications(stmt, user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
@@ -35,6 +35,7 @@ public class NotificationDAO {
                         rs.getInt("Type"),
                         rs.getString("Info"),
                         rs.getTimestamp("NotificationDate").toLocalDateTime(),
+                        new UserDAO().loadUser(rs.getString("sender")),
                         user)
                 );
             }

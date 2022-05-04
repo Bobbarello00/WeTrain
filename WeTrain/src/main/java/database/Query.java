@@ -32,13 +32,13 @@ public class Query {
     }
 
     public static void insertNotification(Statement stmt, Notification notification) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Description, NotificationDate, Sender, Receiver) " +
+        stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
                         "VALUES (%s,'%s','%s','%s', '%s');",
                 notification.getType(),
                 notification.getDescription(),
                 Timestamp.valueOf(notification.getNotificationDate()),
-                notification.getSender(),
-                notification.getReceiver()));
+                notification.getSender().getFiscalCode(),
+                notification.getReceiver().getFiscalCode()));
     }
 
     public static int deleteNotification(Statement stmt, Notification notification) throws SQLException {

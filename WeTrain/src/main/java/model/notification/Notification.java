@@ -7,10 +7,17 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public abstract class Notification {
-    int id = 0;
-    User sender = null;
-    User receiver = null;
-    LocalDateTime date = null;
+    int id;
+    User sender;
+    User receiver;
+    LocalDateTime date;
+
+    protected Notification(int id, User sender, User receiver, LocalDateTime date) {
+        this.id = id;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.date = date;
+    }
 
     public abstract String promptMessage();
 

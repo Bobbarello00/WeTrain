@@ -35,7 +35,6 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
     private List<TimeSchedulerGUIController> timeSchedulerGUIControllerList = new ArrayList<>();
     private CourseBean courseToModify;
 
-    @FXML private ListView<Node> exercisesSelectedList;
     @FXML private Button mondayButton;
     @FXML private TimeSchedulerGUIController mondayTimeSchedulerController;
     @FXML private Parent mondayTimeScheduler;

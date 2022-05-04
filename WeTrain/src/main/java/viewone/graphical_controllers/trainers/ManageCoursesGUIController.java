@@ -92,6 +92,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
 
     @FXML public void modifyCourseButtonAction() throws IOException {
         NewCourseGUIController newCourseGUIController = (NewCourseGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(), "NewCourse", "trainers");
+        MenuTrainersGUIController.resetSelectedButton();
         if(newCourseGUIController != null) {
             newCourseGUIController.setValue(selectedCourse);
         }
