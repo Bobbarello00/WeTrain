@@ -35,6 +35,11 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
 
     private final ProfileManagementController profileManagementController = new ProfileManagementController();
 
+    @FXML private void editCardButtonAction(){
+        cardLogo.setVisible(false);
+        editPaymentMethodButtonAction();
+    }
+
     @FXML private void editConfirmation() {
         if(!Objects.equals(newCardNumber.getText(), "")
                 & !Objects.equals(newExpirationDate.getText(), "")) {
@@ -78,6 +83,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             }catch (URISyntaxException e) {
                 throw new RuntimeException(e);
             }
+            cardLogo.setVisible(true);
             paymentMethodLabel.setText("Card: \t\t" + "  **** **** **** " + cardNumberTruncated);
         }
     }
