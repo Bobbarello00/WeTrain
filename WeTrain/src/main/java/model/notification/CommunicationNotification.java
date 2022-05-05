@@ -35,7 +35,7 @@ public class CommunicationNotification extends Notification{
     }
 
     @Override public String getDescription() {
-        return text;
+        return course.getId() + "-" +text;
     }
 
     public Course getCourse() {

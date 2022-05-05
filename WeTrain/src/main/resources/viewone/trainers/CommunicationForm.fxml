@@ -50,5 +50,10 @@
             </TextArea>
          </children>
       </Pane>
+      <Text layoutX="118.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The value &quot;-&quot; is a special character and can't be use" wrappingWidth="208.83165740966814">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
