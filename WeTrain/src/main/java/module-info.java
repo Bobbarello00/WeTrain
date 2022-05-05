@@ -41,4 +41,6 @@ module com.wetrain.wetrain {
     exports model;
     exports controller;
     exports model.notification;
+    exports viewone.engeneering.manageList;
+    opens viewone.engeneering.manageList to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package viewone.engeneering;
+package viewone.engeneering.manageList;
 
 import controller.SatisfyWorkoutRequestsController;
 import javafx.application.Platform;

@@ -75,12 +75,4 @@ public class CourseManagementTrainerController extends CourseManagementControlle
                         courseBean.getEquipment()
                 ));
     }
-
-    public void sendCourseCommunication(CommunicationBean bean) throws SQLException, DBConnectionFailedException {
-        Course course = new CourseDAO().loadCourse(bean.getCourseBean().getId());
-        new NotificationDAO().sendCourseNotification(
-                course,
-                (Trainer) loginController.getLoggedUser(),
-                bean.getText());
-    }
 }

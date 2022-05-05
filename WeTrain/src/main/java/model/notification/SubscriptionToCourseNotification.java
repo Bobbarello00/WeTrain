@@ -37,6 +37,6 @@ public class SubscriptionToCourseNotification extends Notification {
     }
 
     @Override public String getDescription() {
-        return null;
+        return course.getId() + "-" + courseSubscribers;
     }
 }

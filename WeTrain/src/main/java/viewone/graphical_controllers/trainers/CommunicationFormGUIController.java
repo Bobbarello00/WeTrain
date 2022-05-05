@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.CourseManagementTrainerController;
+import controller.NotificationsController;
 import exception.DBConnectionFailedException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -14,7 +14,7 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
     @FXML private TextArea contentTextArea;
 
     private CourseBean courseBean;
-    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
+    private final NotificationsController notificationsController = new NotificationsController();
 
     public void setCourseBean(CourseBean courseBean) {
         this.courseBean = courseBean;
@@ -22,7 +22,7 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
 
     @Override protected void sendAction() {
         try {
-            courseManagementTrainerController.sendCourseCommunication(new CommunicationBean(
+            notificationsController.sendCourseCommunication(new CommunicationBean(
                     contentTextArea.getText(),
                     courseBean
             ));

@@ -12,8 +12,8 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.RequestBean;
-import viewone.engeneering.ManageCourseList;
-import viewone.engeneering.ManageRequestList;
+import viewone.engeneering.manageList.ManageCourseList;
+import viewone.engeneering.manageList.ManageRequestList;
 import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;

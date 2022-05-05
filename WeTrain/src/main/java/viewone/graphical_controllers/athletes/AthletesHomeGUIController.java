@@ -6,13 +6,12 @@ import controller.NotificationsController;
 import exception.DBConnectionFailedException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.bean.CourseBean;
 import viewone.bean.NotificationBean;
-import viewone.engeneering.ManageCourseList;
-import viewone.engeneering.ManageNotificationList;
+import viewone.engeneering.manageList.ManageCourseList;
+import viewone.engeneering.manageList.ManageNotificationList;
 import viewone.list_cell_factories.CourseListCellFactory;
 import viewone.list_cell_factories.NotificationListCellFactory;
 
@@ -31,24 +30,40 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
     private final NotificationsController notificationsController = new NotificationsController();
 
-    public void updateList() {
-        List<CourseBean> courseBeanList = null;
-        List<CourseBean> popularBeanList = null;
-        List<NotificationBean> notificationBeanList = null;
+    public void updateCourseList() {
         try {
-            courseBeanList = courseManagementAthleteController.getCourseList();
-            popularBeanList = courseManagementAthleteController.getPopularCourseList();
-            notificationBeanList = notificationsController.getMyNotification();
+            List<CourseBean> courseBeanList = courseManagementAthleteController.getCourseList();
+            ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
         } catch (DBConnectionFailedException | CJException e) {
             new DBConnectionFailedException().alertAndLogOff();
             logoutButton.fire();
-            return;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
-        ManageCourseList.updateList(popularList, Objects.requireNonNull(popularBeanList));
-        ManageNotificationList.updateList(feedList, Objects.requireNonNull(notificationBeanList));
+    }
+
+    public void updatePopularCourseList() {
+        try {
+            List<CourseBean> courseBeanList = courseManagementAthleteController.getPopularCourseList();
+            ManageCourseList.updateList(popularList, Objects.requireNonNull(courseBeanList));
+        } catch (DBConnectionFailedException | CJException e) {
+            new DBConnectionFailedException().alertAndLogOff();
+            logoutButton.fire();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateNotificationList() {
+        try {
+            List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
+            ManageNotificationList.updateList(feedList, Objects.requireNonNull(notificationBeanList));
+        } catch (DBConnectionFailedException | CJException e) {
+            new DBConnectionFailedException().alertAndLogOff();
+            logoutButton.fire();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,11 +71,13 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
         feedList.setCellFactory(nodeListView -> new NotificationListCellFactory());
 
-        updateList();
+        updateCourseList();
+        updatePopularCourseList();
+        updateNotificationList();
 
         ManageCourseList.setCourseListener(courseList);
         ManageCourseList.setCourseListener(popularList);
-        ManageNotificationList.setCourseListener(feedList);
+        ManageNotificationList.setCourseListener(feedList, this);
 
 
         setUserInfoTab();

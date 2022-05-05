@@ -8,9 +8,6 @@ import model.notification.*;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.List;
-
-import model.notification.NotificationEnum;
 
 import static model.notification.NotificationEnum.*;
 
@@ -81,6 +78,7 @@ public class NotificationFactorySingleton {
 
     public Notification createNotification(int idNotification, int type, String info, LocalDateTime dateTime, User sender, User receiver) throws DBConnectionFailedException, SQLException {
         NotificationEnum type1 = NotificationEnum.of(type);
+        String[] params = info.split("-");
         if(type1 == SUBSCRIPTIONTOTRAINER) {
             return new SubscriptionToTrainerNotification(
                     idNotification,
@@ -90,29 +88,54 @@ public class NotificationFactorySingleton {
                     dateTime
             );
         } else if (type1 == SUBSCRIPTIONTOCOURSE) {
-            /*return new SubscriptionToCourseNotification(
+            return new SubscriptionToCourseNotification(
                     idNotification,
                     sender,
                     receiver,
-                    Integer.parseInt(info),
+                    Integer.parseInt(params[1]),
+                    new CourseDAO().loadCourse(Integer.parseInt(params[0])),
                     dateTime
-            );*/
+            );
         } else if (type1 == REJECTEDREQUEST) {
-
+            return new RejectedRequestNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    dateTime
+            );
         } else if (type1 == WORKOUTPLANREADY) {
-
+            return new WorkoutPlanReadyNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    dateTime
+            );
         } else if (type1 == COMMUNICATION) {
-            String[] params = info.split("-");
             return new CommunicationNotification(
                     idNotification,
                     sender,
                     receiver,
-                    params[2],
-                    new CourseDAO().loadCourse(Integer.parseInt(params[1])),
+                    params[1],
+                    new CourseDAO().loadCourse(Integer.parseInt(params[0])),
+                    dateTime
+            );
+        } else if (type1 == COURSEMODIFIED) {
+            return new CourseModifiedNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    new CourseDAO().loadCourse(Integer.parseInt(params[0])),
+                    dateTime
+            );
+        } else if (type1 == LESSONSTARTED) {
+            return new LessonStartedNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    new CourseDAO().loadCourse(Integer.parseInt(params[0])),
                     dateTime
             );
         }
-        return null;
-
+        throw new RuntimeException();
     }
 }

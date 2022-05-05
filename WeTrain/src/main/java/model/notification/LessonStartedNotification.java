@@ -33,6 +33,6 @@ public class LessonStartedNotification extends Notification{
     }
 
     @Override public String getDescription() {
-        return null;
+        return String.valueOf(course.getId());
     }
 }

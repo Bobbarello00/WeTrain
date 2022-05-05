@@ -24,7 +24,7 @@ public class NotificationDAO {
 
     public void saveNotification(Notification notification) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertNotification(stmt,notification);
+            Query.insertNotification(stmt, notification);
         }
     }
 

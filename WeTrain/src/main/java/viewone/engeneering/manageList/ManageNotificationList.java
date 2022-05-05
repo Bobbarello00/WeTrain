@@ -1,4 +1,4 @@
-package viewone.engeneering;
+package viewone.engeneering.manageList;
 
 import controller.NotificationsController;
 import exception.DBConnectionFailedException;
@@ -10,8 +10,9 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.bean.NotificationBean;
+import viewone.engeneering.AlertFactory;
+import viewone.graphical_controllers.athletes.AthletesHomeGUIController;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,17 +27,17 @@ public class ManageNotificationList {
         notificationBeanListView.setItems(FXCollections.observableList(notificationObservableList));
     }
 
-    public static void setCourseListener(ListView<NotificationBean> list){
+    public static void setCourseListener(ListView<NotificationBean> list, AthletesHomeGUIController athletesHomeGUIController){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends NotificationBean> observableValue, NotificationBean oldItem, NotificationBean newItem) {
-                        listEvent(list, newItem);
+                        listEvent(list, newItem, athletesHomeGUIController);
                     }
                 });
     }
 
-    private static void listEvent(ListView<NotificationBean> listView, NotificationBean newItem) {
+    private static void listEvent(ListView<NotificationBean> listView, NotificationBean newItem, AthletesHomeGUIController athletesHomeGUIController) {
         try {
             if(newItem != null) {
                 AlertFactory.newWarningAlert(
@@ -44,6 +45,7 @@ public class ManageNotificationList {
                         null,
                         newItem.getText());
                 notificationsController.deleteNotification(newItem);
+                athletesHomeGUIController.updateNotificationList();
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
         } catch (SQLException e) {

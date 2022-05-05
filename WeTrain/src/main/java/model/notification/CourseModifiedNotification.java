@@ -32,6 +32,6 @@ public class CourseModifiedNotification extends Notification{
     }
 
     @Override public String getDescription() {
-        return null;
+        return String.valueOf(course.getId());
     }
 }

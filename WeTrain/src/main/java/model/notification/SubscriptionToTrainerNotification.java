@@ -32,6 +32,6 @@ public class SubscriptionToTrainerNotification extends Notification {
     }
 
     @Override public String getDescription() {
-        return null;
+        return String.valueOf(subscribers);
     }
 }

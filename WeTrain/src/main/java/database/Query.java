@@ -42,7 +42,7 @@ public class Query {
     }
 
     public static void deleteNotification(Statement stmt, int idNotification) throws SQLException {
-        stmt.executeUpdate(String.format("DELETE FROM mydb.Notification" +
+        stmt.executeUpdate(String.format("DELETE FROM mydb.Notification " +
                 "WHERE idNotification = %s;", idNotification));
     }
 

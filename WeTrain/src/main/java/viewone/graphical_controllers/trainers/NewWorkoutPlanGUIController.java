@@ -16,7 +16,7 @@ import viewone.bean.DayBean;
 import viewone.bean.ExerciseBean;
 import viewone.bean.RequestBean;
 import viewone.bean.WorkoutDayBean;
-import viewone.engeneering.ManageExerciseList;
+import viewone.engeneering.manageList.ManageExerciseList;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.io.IOException;
