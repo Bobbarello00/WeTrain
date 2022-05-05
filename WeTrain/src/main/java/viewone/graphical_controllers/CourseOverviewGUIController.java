@@ -1,7 +1,6 @@
 package viewone.graphical_controllers;
 
 import controller.CourseManagementAthleteController;
-import controller.CourseManagementTrainerController;
 import exception.DBConnectionFailedException;
 import exception.ImATrainerException;
 import javafx.event.ActionEvent;
@@ -10,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -51,6 +51,7 @@ public class CourseOverviewGUIController {
     @FXML private Button subscribeButton;
     @FXML private Button modifyButton;
     @FXML private Button sendCommunicationButton;
+    @FXML private Pane startLessonPane;
     private CourseBean courseBean;
     private boolean subscribed = false;
 
@@ -111,6 +112,8 @@ public class CourseOverviewGUIController {
             setVisibile(subscribeButton, false);
             setVisibile(modifyButton, true);
             setVisibile(sendCommunicationButton, true);
+            startLessonPane.setDisable(false);
+            startLessonPane.setVisible(true);
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
@@ -127,6 +130,8 @@ public class CourseOverviewGUIController {
         }
     }
 
+
+
     private void setVisibile(Button button, boolean bool) {
         button.setVisible(bool);
         button.setDisable(!bool);
@@ -142,6 +147,14 @@ public class CourseOverviewGUIController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML private void startLessonAction(MouseEvent event) throws IOException {
+        closeAction(event);
+        PageSwitchSizeChange.pageSwitch((Stage)MainPane.getInstance().getScene().getWindow(),
+                "StartLesson",
+                "trainers",
+                false);
     }
 
     @FXML public void modifyButtonAction(ActionEvent event) {

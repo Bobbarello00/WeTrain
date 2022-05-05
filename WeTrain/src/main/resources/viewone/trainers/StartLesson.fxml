@@ -22,7 +22,7 @@
             <Image url="@../images/WeTrainLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="sendButton" alignment="CENTER" layoutX="477.0" layoutY="275.0" mnemonicParsing="false" onAction="#sendAction" prefHeight="23.0" prefWidth="175.0" scaleX="1.25" scaleY="1.25" text="Send Url To Participants" textAlignment="JUSTIFY" textFill="WHITE">
+      <Button fx:id="sendButton" alignment="CENTER" layoutX="477.0" layoutY="275.0" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="23.0" prefWidth="175.0" scaleX="1.25" scaleY="1.25" text="Send Url To Participants" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -42,7 +42,7 @@
       </ImageView>
       <Pane layoutX="198.0" layoutY="168.0" prefHeight="59.0" prefWidth="476.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
          <children>
-            <TextField fx:id="urlTextField" layoutX="68.0" layoutY="18.0" prefHeight="25.0" prefWidth="340.0" promptText="meeting url here:" scaleX="1.3" scaleY="1.3" style="-fx-prompt-text-fill: white; -fx-text-fill: white;">
+            <TextField fx:id="urlTextField" layoutX="68.0" layoutY="17.0" prefHeight="25.0" prefWidth="340.0" promptText="meeting url here:" scaleX="1.3" scaleY="1.3" style="-fx-prompt-text-fill: white; -fx-text-fill: white;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
