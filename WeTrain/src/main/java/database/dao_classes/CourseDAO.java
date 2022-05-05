@@ -143,4 +143,14 @@ public class CourseDAO {
             Query.insertCourseStartedLessonUrl(stmt, idCourse, url);
         }
     }
+
+    public String loadStartedLessonUrl(int idCourse) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadCourseStartedLessonUrl(stmt, idCourse)){
+            if(rs.next()){
+                return rs.getString("StartedLessonUrl");
+            }else{
+                return null;
+            }
+        }
+    }
 }

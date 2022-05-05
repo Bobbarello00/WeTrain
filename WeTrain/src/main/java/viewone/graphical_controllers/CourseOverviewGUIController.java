@@ -1,6 +1,7 @@
 package viewone.graphical_controllers;
 
 import controller.CourseManagementAthleteController;
+import database.dao_classes.CourseDAO;
 import exception.DBConnectionFailedException;
 import exception.ImATrainerException;
 import javafx.event.ActionEvent;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.MainPane;
@@ -55,6 +57,7 @@ public class CourseOverviewGUIController {
     @FXML private Button subscribeButton;
     @FXML private Button modifyButton;
     @FXML private Button sendCommunicationButton;
+    @FXML private Pane startLessonPane;
     @FXML private Text lessonText;
     private CourseBean courseBean;
     private boolean subscribed = false;
@@ -105,17 +108,21 @@ public class CourseOverviewGUIController {
 
     public void setValues(CourseBean courseBean) throws SQLException, IOException {
         try {
-            lessonText.setText("Join Lesson");
             if(courseManagementAthleteController.checkSubscription(courseBean)){
+                startLessonPane.setDisable(false);
+                startLessonPane.setVisible(true);
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
                 subscribeButton.setText("Unsubscribe");
                 subscribed = true;
             }
+            lessonText.setText("Join Lesson");
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
         } catch (ImATrainerException e) {
             isTrainer = true;
+            startLessonPane.setDisable(false);
+            startLessonPane.setVisible(true);
             setVisibile(subscribeButton, false);
             setVisibile(modifyButton, true);
             setVisibile(sendCommunicationButton, true);
@@ -135,8 +142,6 @@ public class CourseOverviewGUIController {
         }
     }
 
-
-
     private void setVisibile(Button button, boolean bool) {
         button.setVisible(bool);
         button.setDisable(!bool);
@@ -155,6 +160,7 @@ public class CourseOverviewGUIController {
     }
 
     @FXML private void meetAction(MouseEvent event) throws IOException {
+        //TODO SPOSTARE NEI CONTROLLER RISPETTIVI
         if(isTrainer) {
             closeAction(event);
             StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(),
@@ -163,7 +169,14 @@ public class CourseOverviewGUIController {
                     false);
             startLessonGUIController.setCourse(courseBean);
         }else{
-            String lessonUrl = courseBean.getStartedLessonUrl();
+            String lessonUrl = null;
+            try {
+                lessonUrl = new CourseDAO().loadStartedLessonUrl(courseBean.getId());
+            } catch (DBConnectionFailedException e) {
+                e.alert();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             if(lessonUrl == null){
                 AlertFactory.newWarningAlert("SORRY...",
                         "Url not inserted yet",

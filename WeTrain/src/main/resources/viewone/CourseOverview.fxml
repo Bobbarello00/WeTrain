@@ -147,7 +147,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
-      <Pane layoutX="389.0" layoutY="11.0" prefHeight="102.0" prefWidth="99.0">
+      <Pane fx:id="startLessonPane" disable="true" layoutX="389.0" layoutY="11.0" prefHeight="102.0" prefWidth="99.0" visible="false">
          <children>
             <ImageView fitHeight="81.0" fitWidth="100.0" layoutX="10.0" layoutY="4.0" onMouseClicked="#meetAction" pickOnBounds="true" preserveRatio="true">
                <image>

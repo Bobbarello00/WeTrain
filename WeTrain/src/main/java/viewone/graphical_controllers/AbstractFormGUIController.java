@@ -19,6 +19,7 @@ public abstract class AbstractFormGUIController{
 
     @FXML protected void sendButtonAction() {
         sendAction();
+        close();
     }
 
     protected abstract void sendAction();

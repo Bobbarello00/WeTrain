@@ -276,6 +276,12 @@ public class Query {
         }
     }
 
+    public static ResultSet loadCourseStartedLessonUrl(Statement stmt, int idCourse) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT StartedLessonUrl " +
+                "FROM mydb.Course " +
+                "WHERE idCourse = %s;", idCourse));
+    }
+
     public static void insertCourseStartedLessonUrl(Statement stmt, int idCourse, String url) throws SQLException {
         stmt.executeUpdate(String.format("UPDATE mydb.Course " +
                 "SET StartedLessonUrl = '%s' " +
