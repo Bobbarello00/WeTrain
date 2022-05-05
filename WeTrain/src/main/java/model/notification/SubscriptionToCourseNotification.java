@@ -32,8 +32,8 @@ public class SubscriptionToCourseNotification extends Notification {
                 courseSubscribers);
     }
 
-    @Override public int getType() {
-        return NotificationEnum.SUBSCRIPTIONTOCOURSE.ordinal();
+    @Override public NotificationEnum getType() {
+        return NotificationEnum.SUBSCRIPTIONTOCOURSE;
     }
 
     @Override public String getDescription() {

@@ -30,8 +30,8 @@ public class CommunicationNotification extends Notification{
                 text);
     }
 
-    @Override public int getType() {
-        return NotificationEnum.COMMUNICATION.ordinal();
+    @Override public NotificationEnum getType() {
+        return NotificationEnum.COMMUNICATION;
     }
 
     @Override public String getDescription() {

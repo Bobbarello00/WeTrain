@@ -32,7 +32,7 @@ public abstract class Notification {
         return receiver;
     }
 
-    public abstract int getType();
+    public abstract NotificationEnum getType();
 
     public abstract String getDescription();
 

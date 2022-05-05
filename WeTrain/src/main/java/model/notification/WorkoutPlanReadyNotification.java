@@ -28,8 +28,8 @@ public class WorkoutPlanReadyNotification extends Notification{
                 sender.getName() + " " + sender.getSurname());
     }
 
-    @Override public int getType() {
-        return NotificationEnum.WORKOUTPLANREADY.ordinal();
+    @Override public NotificationEnum getType() {
+        return NotificationEnum.WORKOUTPLANREADY;
     }
 
     @Override public String getDescription() {

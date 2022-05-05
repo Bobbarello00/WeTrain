@@ -2,6 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import com.mysql.cj.exceptions.CJException;
 import controller.CourseManagementAthleteController;
+import controller.NotificationsController;
 import exception.DBConnectionFailedException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import javafx.scene.control.ListView;
 import viewone.bean.CourseBean;
 import viewone.bean.NotificationBean;
 import viewone.engeneering.ManageCourseList;
+import viewone.engeneering.ManageNotificationList;
 import viewone.list_cell_factories.CourseListCellFactory;
 import viewone.list_cell_factories.NotificationListCellFactory;
 
@@ -27,6 +29,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private Button logoutButton;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final NotificationsController notificationsController = new NotificationsController();
 
     public void updateList() {
         List<CourseBean> courseBeanList = null;
@@ -35,7 +38,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         try {
             courseBeanList = courseManagementAthleteController.getCourseList();
             popularBeanList = courseManagementAthleteController.getPopularCourseList();
-            notificationBeanList = ;
+            notificationBeanList = notificationsController.getMyNotification();
         } catch (DBConnectionFailedException | CJException e) {
             new DBConnectionFailedException().alertAndLogOff();
             logoutButton.fire();
@@ -45,6 +48,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         }
         ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
         ManageCourseList.updateList(popularList, Objects.requireNonNull(popularBeanList));
+        ManageNotificationList.updateList(feedList, Objects.requireNonNull(notificationBeanList));
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,6 +60,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
         ManageCourseList.setCourseListener(courseList);
         ManageCourseList.setCourseListener(popularList);
+        ManageNotificationList.setCourseListener(feedList);
 
 
         setUserInfoTab();

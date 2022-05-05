@@ -4,7 +4,6 @@ import com.mysql.cj.exceptions.*;
 import com.mysql.cj.jdbc.exceptions.*;
 import exception.DBConnectionFailedException;
 import model.*;
-import model.notification.CommunicationNotification;
 import model.notification.Notification;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,26 +24,26 @@ public class Query {
 
 
     //TODO gestione duplicate record
-    public static ResultSet loadAllNotifications(@NotNull Statement stmt, User user) throws SQLException {
+    public static ResultSet loadAllNotifications(@NotNull Statement stmt, User receiver) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM Notification " +
-                "WHERE Athlete = '%s' or Trainer = '%s' " +
-                LIMIT_30, user.getFiscalCode(), user.getFiscalCode()));
+                "FROM mydb.Notification " +
+                "WHERE Receiver = '%s' " +
+                LIMIT_30, receiver.getFiscalCode()));
     }
 
     public static void insertNotification(Statement stmt, Notification notification) throws SQLException {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
                         "VALUES (%s,'%s','%s','%s', '%s');",
-                notification.getType(),
+                notification.getType().ordinal(),
                 notification.getDescription(),
                 Timestamp.valueOf(notification.getNotificationDate()),
                 notification.getSender().getFiscalCode(),
                 notification.getReceiver().getFiscalCode()));
     }
 
-    public static int deleteNotification(Statement stmt, Notification notification) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Notification" +
-                "WHERE idNotification = %s;", notification.getId()));
+    public static void deleteNotification(Statement stmt, int idNotification) throws SQLException {
+        stmt.executeUpdate(String.format("DELETE FROM mydb.Notification" +
+                "WHERE idNotification = %s;", idNotification));
     }
 
     public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {

@@ -46,10 +46,14 @@ public class NotificationDAO {
         }
     }
 
-
+    public void deleteNotification(int idNotification) throws SQLException {
+        try(Statement stmt = conn.createStatement()) {
+            Query.deleteNotification(stmt, idNotification);
+        }
+    }
 
     public void sendCourseNotification(Course course, Trainer trainer, String text) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadSubscribed(stmt, course)){
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadSubscribed(stmt, course)) {
             while(rs.next()){
                 Notification notification = NotificationFactorySingleton.getInstance().createCommunicationNotification(
                         trainer,

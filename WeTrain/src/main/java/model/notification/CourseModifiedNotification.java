@@ -6,11 +6,6 @@ import java.time.LocalDateTime;
 
 public class CourseModifiedNotification extends Notification{
     public Course course;
-    /*
-    ATTENTION!
-    The trainer %s modified the course %s.
-    Check the modification!
-    */
 
     public CourseModifiedNotification(int id, User sender, User receiver, Course course, LocalDateTime dateTime) {
         super(id, sender, receiver, dateTime);
@@ -32,8 +27,8 @@ public class CourseModifiedNotification extends Notification{
                 course.getName());
     }
 
-    @Override public int getType() {
-        return NotificationEnum.COURSEMODIFIED.ordinal();
+    @Override public NotificationEnum getType() {
+        return NotificationEnum.COURSEMODIFIED;
     }
 
     @Override public String getDescription() {

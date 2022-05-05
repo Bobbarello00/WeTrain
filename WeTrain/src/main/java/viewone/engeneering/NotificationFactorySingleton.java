@@ -1,10 +1,18 @@
 package viewone.engeneering;
 
+import database.dao_classes.CourseDAO;
+import exception.DBConnectionFailedException;
 import model.Course;
 import model.User;
 import model.notification.*;
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import model.notification.NotificationEnum;
+
+import static model.notification.NotificationEnum.*;
 
 public class NotificationFactorySingleton {
     private static final NotificationFactorySingleton instance = new NotificationFactorySingleton();
@@ -71,38 +79,40 @@ public class NotificationFactorySingleton {
         );
     }
 
-    public Notification createNotification(int idNotification, int type, String info, LocalDateTime dateTime, User sender, User receiver) {
-        /*switch (NotificationEnum.of(type)) {
-            case (SUBSCRIPTIONTOTRAINER) -> {
-                return new SubscriptionToTrainerNotification(
-                        idNotification,
-                        sender,
-                        receiver,
-                        Integer.parseInt(info),
-                        dateTime
-                );
-            }
-            case (SUBSCRIPTIONTOCOURSE) -> {
-                List<String> stringList = info;
-                return new SubscriptionToCourseNotification(
-                        idNotification,
-                        sender,
-                        receiver,
-                        Integer.parseInt(info),
-                        dateTime
-                );
-            }
-            case (REJECTEDREQUEST) -> {
-                return new RejectedRequestNotification();
-            }
-            case (WORKOUTPLANREADY) -> {
-                return new WorkoutPlanReadyNotification();
-            }
-            case (NotificationEnum.COMMUNICATION) {
-                return new CommunicationNotification();
-            }
+    public Notification createNotification(int idNotification, int type, String info, LocalDateTime dateTime, User sender, User receiver) throws DBConnectionFailedException, SQLException {
+        NotificationEnum type1 = NotificationEnum.of(type);
+        if(type1 == SUBSCRIPTIONTOTRAINER) {
+            return new SubscriptionToTrainerNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    Integer.parseInt(info),
+                    dateTime
+            );
+        } else if (type1 == SUBSCRIPTIONTOCOURSE) {
+            /*return new SubscriptionToCourseNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    Integer.parseInt(info),
+                    dateTime
+            );*/
+        } else if (type1 == REJECTEDREQUEST) {
+
+        } else if (type1 == WORKOUTPLANREADY) {
+
+        } else if (type1 == COMMUNICATION) {
+            String[] params = info.split("-");
+            return new CommunicationNotification(
+                    idNotification,
+                    sender,
+                    receiver,
+                    params[2],
+                    new CourseDAO().loadCourse(Integer.parseInt(params[1])),
+                    dateTime
+            );
         }
-        return new RejectedRequestNotification();*/
         return null;
+
     }
 }

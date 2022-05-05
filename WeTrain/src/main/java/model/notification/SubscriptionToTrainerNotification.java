@@ -6,11 +6,6 @@ import java.time.LocalDateTime;
 
 public class SubscriptionToTrainerNotification extends Notification {
     private final int subscribers;
-    /*
-    Good news!
-    The Athlete '%s' Subscribed to you.
-    You are growing in popularity, now you have reached %d subscribers!
-    */
 
     public SubscriptionToTrainerNotification(int id, User sender, User receiver, int subscribers, LocalDateTime dateTime) {
         super(id, sender, receiver, dateTime);
@@ -32,8 +27,8 @@ public class SubscriptionToTrainerNotification extends Notification {
                 subscribers);
     }
 
-    @Override public int getType() {
-        return NotificationEnum.SUBSCRIPTIONTOTRAINER.ordinal();
+    @Override public NotificationEnum getType() {
+        return NotificationEnum.SUBSCRIPTIONTOTRAINER;
     }
 
     @Override public String getDescription() {

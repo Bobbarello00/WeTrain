@@ -28,8 +28,8 @@ public class LessonStartedNotification extends Notification{
                 course.getName());
     }
 
-    @Override public int getType() {
-        return NotificationEnum.LESSONSTARTED.ordinal();
+    @Override public NotificationEnum getType() {
+        return NotificationEnum.LESSONSTARTED;
     }
 
     @Override public String getDescription() {
