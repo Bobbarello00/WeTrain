@@ -147,9 +147,9 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
-      <Pane fx:id="startLessonPane" disable="true" layoutX="389.0" layoutY="11.0" prefHeight="102.0" prefWidth="99.0" visible="false">
+      <Pane layoutX="389.0" layoutY="11.0" prefHeight="102.0" prefWidth="99.0">
          <children>
-            <ImageView fitHeight="81.0" fitWidth="100.0" layoutX="10.0" layoutY="4.0" onMouseClicked="#startLessonAction" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="100.0" layoutX="10.0" layoutY="4.0" onMouseClicked="#meetAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/Meet.png" />
                </image>
@@ -157,7 +157,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Text fill="#159318" layoutX="18.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Lesson" />
+            <Text fx:id="lessonText" fill="#159318" layoutX="18.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Lesson" />
          </children>
       </Pane>
    </children>

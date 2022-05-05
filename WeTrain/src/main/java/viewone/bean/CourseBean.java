@@ -11,14 +11,16 @@ public class CourseBean {
     private String fitnessLevel;
     private String equipment;
     private List<LessonBean> lessonBeanList;
+    private String startedLessonUrl;
 
-    public CourseBean(int id, String name, String description, String fitnessLevel, String owner, String equipment){
+    public CourseBean(int id, String name, String description, String fitnessLevel, String owner, String equipment, String startedLessonUrl){
         this.id = id;
         this.name = name;
         this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
         this.equipment = equipment;
+        this.startedLessonUrl = startedLessonUrl;
     }
 
     public CourseBean(String name, String description, String fitnessLevel, String owner, String equipment){
@@ -83,5 +85,9 @@ public class CourseBean {
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    public String getStartedLessonUrl() {
+        return startedLessonUrl;
     }
 }

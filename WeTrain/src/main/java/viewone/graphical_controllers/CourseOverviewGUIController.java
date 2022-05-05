@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -19,8 +19,12 @@ import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
 import viewone.graphical_controllers.trainers.NewCourseGUIController;
+import viewone.graphical_controllers.trainers.StartLessonGUIController;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
@@ -51,9 +55,10 @@ public class CourseOverviewGUIController {
     @FXML private Button subscribeButton;
     @FXML private Button modifyButton;
     @FXML private Button sendCommunicationButton;
-    @FXML private Pane startLessonPane;
+    @FXML private Text lessonText;
     private CourseBean courseBean;
     private boolean subscribed = false;
+    private boolean isTrainer = false;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
 
@@ -100,6 +105,7 @@ public class CourseOverviewGUIController {
 
     public void setValues(CourseBean courseBean) throws SQLException, IOException {
         try {
+            lessonText.setText("Join Lesson");
             if(courseManagementAthleteController.checkSubscription(courseBean)){
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
                 subscribeButton.setText("Unsubscribe");
@@ -109,11 +115,10 @@ public class CourseOverviewGUIController {
             e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
         } catch (ImATrainerException e) {
+            isTrainer = true;
             setVisibile(subscribeButton, false);
             setVisibile(modifyButton, true);
             setVisibile(sendCommunicationButton, true);
-            startLessonPane.setDisable(false);
-            startLessonPane.setVisible(true);
         }
         this.courseBean = courseBean;
         courseNameText.setText(courseBean.getName());
@@ -149,12 +154,37 @@ public class CourseOverviewGUIController {
         }
     }
 
-    @FXML private void startLessonAction(MouseEvent event) throws IOException {
-        closeAction(event);
-        PageSwitchSizeChange.pageSwitch((Stage)MainPane.getInstance().getScene().getWindow(),
-                "StartLesson",
-                "trainers",
-                false);
+    @FXML private void meetAction(MouseEvent event) throws IOException {
+        if(isTrainer) {
+            closeAction(event);
+            StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(),
+                    "StartLesson",
+                    "trainers",
+                    false);
+            startLessonGUIController.setCourse(courseBean);
+        }else{
+            String lessonUrl = courseBean.getStartedLessonUrl();
+            if(lessonUrl == null){
+                AlertFactory.newWarningAlert("SORRY...",
+                        "Url not inserted yet",
+                        "Wait for the trainer to start the lesson and try again later.");
+                return;
+            }
+            Desktop desktop = Desktop.getDesktop();
+            if(desktop.isSupported(Desktop.Action.BROWSE)){
+                try{
+                    desktop.browse(new URI(lessonUrl));
+                } catch (IOException | URISyntaxException e) {
+                    AlertFactory.newWarningAlert("EXCEPTION!",
+                            "Url not working",
+                            "The url inserted by the trainer is incorrect or not working anymore.");
+                }
+            }else{
+                AlertFactory.newWarningAlert("BROWSING ERROR",
+                        "Browsing not supported",
+                        "Sorry for the inconvenience but you can't access this web resource");
+            }
+        }
     }
 
     @FXML public void modifyButtonAction(ActionEvent event) {

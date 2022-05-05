@@ -5,20 +5,22 @@ import java.util.List;
 
 public class Course implements Serializable {
     private int id;
-    private String name;
+    private final String name;
     private List<Lesson> lessonList;
-    private Trainer owner;
-    private String description;
-    private String fitnessLevel;
-    private String equipment;
+    private final Trainer owner;
+    private final String description;
+    private final String fitnessLevel;
+    private final String equipment;
+    private String startedLessonUrl;
 
-    public Course(int id, String name, String description, String fitnessLevel, Trainer owner, String equipment){
+    public Course(int id, String name, String description, String fitnessLevel, Trainer owner, String equipment, String startedLessonUrl){
         this.id = id;
         this.name = name;
         this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
         this.equipment = equipment;
+        this.startedLessonUrl = startedLessonUrl;
     }
 
     public Course(String name, String description, String fitnessLevel, Trainer owner, String equipment){
@@ -67,5 +69,9 @@ public class Course implements Serializable {
 
     public void addAllLessons(List<Lesson> list){
         lessonList = list;
+    }
+
+    public String getStartedLessonUrl() {
+        return startedLessonUrl;
     }
 }

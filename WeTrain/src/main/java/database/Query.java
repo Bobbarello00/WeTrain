@@ -276,9 +276,16 @@ public class Query {
         }
     }
 
-    public static int deleteCourse(Statement stmt, int idCourse) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Course " +
-                "WHERE idCourse = %s;", idCourse));
+    public static void insertCourseStartedLessonUrl(Statement stmt, int idCourse, String url) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Course " +
+                "SET StartedLessonUrl = '%s' " +
+                "WHERE idCourse = %s;", url, idCourse));
+    }
+
+    public static void removeCourseStartedLessonUrl(Statement stmt, int idCourse) throws SQLException {
+        stmt.executeUpdate(String.format("UPDATE mydb.Course " +
+                "SET StartedLessonUrl = NULL " +
+                "WHERE idCourse = %s;",idCourse));
     }
 
     public static void modifyCourse(Statement stmt, int idCourse, Course course) throws SQLException {
@@ -291,6 +298,11 @@ public class Query {
                 course.getEquipment(),
                 course.getOwner().getFiscalCode(),
                 idCourse));
+    }
+
+    public static int deleteCourse(Statement stmt, int idCourse) throws SQLException {
+        return stmt.executeUpdate(String.format("DELETE FROM mydb.Course " +
+                "WHERE idCourse = %s;", idCourse));
     }
 
     public static ResultSet loadExercise(Statement stmt, int idExercise) throws SQLException {

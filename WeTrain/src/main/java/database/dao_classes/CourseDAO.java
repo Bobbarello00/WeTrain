@@ -7,7 +7,6 @@ import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import model.*;
 
-import java.net.SocketException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,7 @@ public class CourseDAO {
     private static final String FITNESSLEVEL = "FitnessLevel";
     private static final String EQUIPMENT = "Equipment";
     private static final String TRAINER = "Trainer";
+    private static final String STARTEDLESSONURL = "startedLessonUrl";
 
     private final LoginController loginController = new LoginController();
 
@@ -69,7 +69,8 @@ public class CourseDAO {
                         rs.getString(DESCRIPTION),
                         rs.getString(FITNESSLEVEL),
                         new TrainerDAO().loadTrainer(rs.getString(TRAINER)),
-                        rs.getString(EQUIPMENT)
+                        rs.getString(EQUIPMENT),
+                        rs.getString(STARTEDLESSONURL)
                 );
                 course.addAllLessons(new LessonDAO().loadAllLessons(course));
                 return course;
@@ -110,7 +111,8 @@ public class CourseDAO {
                         rs.getString(DESCRIPTION),
                         rs.getString(FITNESSLEVEL),
                         (Trainer) user,
-                        rs.getString(EQUIPMENT)
+                        rs.getString(EQUIPMENT),
+                        rs.getString(STARTEDLESSONURL)
                 );
             } else {
                 course = new Course(
@@ -119,7 +121,8 @@ public class CourseDAO {
                         rs.getString(DESCRIPTION),
                         rs.getString(FITNESSLEVEL),
                         new TrainerDAO().loadTrainer(rs.getString(TRAINER)),
-                        rs.getString(EQUIPMENT)
+                        rs.getString(EQUIPMENT),
+                        rs.getString(STARTEDLESSONURL)
                 );
             }
 
@@ -135,5 +138,9 @@ public class CourseDAO {
         }
     }
 
-
+    public void setStartedLessonUrl(String url, int idCourse) throws SQLException {
+        try(Statement stmt = conn.createStatement()){
+            Query.insertCourseStartedLessonUrl(stmt, idCourse, url);
+        }
+    }
 }
