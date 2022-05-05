@@ -5,10 +5,10 @@ import model.User;
 import java.time.LocalDateTime;
 
 public abstract class Notification {
-    int id;
-    User sender;
-    User receiver;
-    LocalDateTime dateTime;
+    protected int id;
+    protected User sender;
+    protected User receiver;
+    protected LocalDateTime dateTime;
 
     protected Notification(int id, User sender, User receiver, LocalDateTime dateTime) {
         this(sender, receiver);

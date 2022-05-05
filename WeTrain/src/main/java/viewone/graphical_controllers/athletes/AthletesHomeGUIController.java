@@ -9,8 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.bean.CourseBean;
+import viewone.bean.NotificationBean;
 import viewone.engeneering.ManageCourseList;
 import viewone.list_cell_factories.CourseListCellFactory;
+import viewone.list_cell_factories.NotificationListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -21,7 +23,7 @@ import java.util.ResourceBundle;
 public class AthletesHomeGUIController extends HomeGUIControllerAthletes implements Initializable {
     @FXML private ListView<CourseBean> courseList;
     @FXML private ListView<CourseBean> popularList;
-    @FXML private ListView<Node> feedList;
+    @FXML private ListView<NotificationBean> feedList;
     @FXML private Button logoutButton;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
@@ -29,9 +31,11 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     public void updateList() {
         List<CourseBean> courseBeanList = null;
         List<CourseBean> popularBeanList = null;
+        List<NotificationBean> notificationBeanList = null;
         try {
             courseBeanList = courseManagementAthleteController.getCourseList();
             popularBeanList = courseManagementAthleteController.getPopularCourseList();
+            notificationBeanList = ;
         } catch (DBConnectionFailedException | CJException e) {
             new DBConnectionFailedException().alertAndLogOff();
             logoutButton.fire();
@@ -46,11 +50,13 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
         popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        feedList.setCellFactory(nodeListView -> new NotificationListCellFactory());
 
         updateList();
 
         ManageCourseList.setCourseListener(courseList);
         ManageCourseList.setCourseListener(popularList);
+
 
         setUserInfoTab();
     }

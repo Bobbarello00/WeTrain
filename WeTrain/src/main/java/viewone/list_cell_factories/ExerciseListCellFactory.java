@@ -24,7 +24,7 @@ public class ExerciseListCellFactory extends ListCell<ExerciseBean> {
         super.updateItem(exerciseBean,empty);
         if(exerciseBean != null){
             try {
-                if (parentNode == null)parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
+                if (parentNode == null) parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
                 ((Label)parentNode.lookup("#itemName")).setText(exerciseBean.getName());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(exerciseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
