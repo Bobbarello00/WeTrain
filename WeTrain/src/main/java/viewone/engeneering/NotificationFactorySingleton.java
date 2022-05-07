@@ -84,7 +84,7 @@ public class NotificationFactorySingleton {
                     idNotification,
                     sender,
                     receiver,
-                    Integer.parseInt(info),
+                    Integer.parseInt(params[0]),
                     dateTime
             );
         } else if (type1 == SUBSCRIPTIONTOCOURSE) {

@@ -7,11 +7,11 @@ import java.net.URLConnection;
 
 public class StartLessonBean {
     private final CourseBean courseBean;
-    private String url;
+    private final String url;
 
-    public StartLessonBean(CourseBean courseBean, String url) throws IOException {
+    public StartLessonBean(CourseBean courseBean, String url){
         this.courseBean = courseBean;
-        setUrl(url);
+        this.url = url;
     }
 
     public CourseBean getCourseBean() {
@@ -22,10 +22,4 @@ public class StartLessonBean {
         return url;
     }
 
-    public void setUrl(String url) throws IOException {
-        URL urlToCheck = new URL(url);
-        URLConnection conn = urlToCheck.openConnection();
-        conn.connect();
-        this.url = String.valueOf(urlToCheck);
-    }
 }
