@@ -5,7 +5,6 @@ import database.Query;
 import exception.DBConnectionFailedException;
 import model.Course;
 import model.Trainer;
-import model.notification.CommunicationNotification;
 import model.notification.Notification;
 import model.User;
 import viewone.engeneering.NotificationFactorySingleton;
@@ -55,7 +54,7 @@ public class NotificationDAO {
     public void sendCourseNotification(Course course, Trainer trainer, String text) throws SQLException, DBConnectionFailedException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadSubscribed(stmt, course)) {
             while(rs.next()){
-                Notification notification = NotificationFactorySingleton.getInstance().createCommunicationNotification(
+                Notification notification = NotificationFactorySingleton.getInstance().createCourseCommunicationNotification(
                         trainer,
                         new UserDAO().loadUser(rs.getString("Athlete")), //TODO potrebbe essere evitata?
                         course,

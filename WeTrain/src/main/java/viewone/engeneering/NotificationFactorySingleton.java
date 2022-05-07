@@ -20,7 +20,7 @@ public class NotificationFactorySingleton {
         return instance;
     }
 
-    public Notification createCommunicationNotification(User sender, User receiver, Course course, String text) {
+    public Notification createCourseCommunicationNotification(User sender, User receiver, Course course, String text) {
         return new CommunicationNotification(
                 sender,
                 receiver,
