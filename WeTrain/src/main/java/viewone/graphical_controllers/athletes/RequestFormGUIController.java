@@ -1,7 +1,9 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.NotificationsController;
 import controller.RequestWorkoutPlanController;
 import exception.DBConnectionFailedException;
+import exception.invalidDataException.EmptyFieldsException;
 import exception.invalidDataException.InvalidIbanException;
 import exception.TextOutOfBoundException;
 import javafx.fxml.FXML;
@@ -24,6 +26,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
     private UserBean trainer;
 
     private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
+    private final NotificationsController notificationsController = new NotificationsController();
 
     public void setTrainer(UserBean trainer) {
         this.trainer = trainer;
@@ -51,11 +54,10 @@ public class RequestFormGUIController extends AbstractFormGUIController {
         } catch (TextOutOfBoundException e) {
             e.alert();
             return;
-        } catch (InvalidIbanException e) {
+        } catch (InvalidIbanException | EmptyFieldsException e) {
             e.alert();
             return;
         }
-        //TODO CREAZIONE NOTIFICA
         close();
     }
 

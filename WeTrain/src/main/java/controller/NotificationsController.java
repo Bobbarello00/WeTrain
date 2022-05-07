@@ -77,6 +77,12 @@ public class NotificationsController {
                 ));
     }
 
+    public void sendRejectRequestNotification() {
+        Notification notification = NotificationFactorySingleton.getInstance().createRejectedRequestNotification(
+                
+        );
+    }
+
     public void deleteNotification(NotificationBean notificationBean) throws DBConnectionFailedException, SQLException {
         new NotificationDAO().deleteNotification(notificationBean.getId());
     }

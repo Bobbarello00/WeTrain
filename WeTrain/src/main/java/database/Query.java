@@ -372,7 +372,8 @@ public class Query {
 
     public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
         return stmt.executeQuery(String.format("SELECT Request.* " +
-                "FROM mydb.Request join mydb.Trainer on Request.Trainer = '%s' " +
+                "FROM mydb.Request join mydb.Trainer on Request.Trainer = Trainer.User " +
+                "WHERE Trainer = '%s' " +
                 LIMIT_30, trainer.getFiscalCode()));
     }
 

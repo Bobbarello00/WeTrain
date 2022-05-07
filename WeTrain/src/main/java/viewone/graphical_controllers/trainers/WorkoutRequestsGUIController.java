@@ -35,6 +35,18 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
 
+    @FXML void rejectButtonAction() {
+        try {
+            satisfyWorkoutRequestsController.rejectRequest(selectedRequest);
+            ManageRequestList.updateList(requestList, satisfyWorkoutRequestsController);
+            setTabVisibile(false);
+        } catch (DBConnectionFailedException e) {
+            e.alertAndLogOff();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @FXML void newWorkoutButtonAction() throws IOException {
         NewWorkoutPlanGUIController controller = (NewWorkoutPlanGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);
         Objects.requireNonNull(controller).setRequest(selectedRequest);
@@ -71,11 +83,15 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     private void activateInfoTab() {
         if(once) {
-            requestInfoBox.setDisable(false);
-            requestInfoBox.setVisible(true);
-            emptyInfoBox.setDisable(true);
-            emptyInfoBox.setVisible(false);
-            once = false;
+            setTabVisibile(true);
         }
+    }
+
+    private void setTabVisibile(boolean bool) {
+        requestInfoBox.setDisable(!bool);
+        requestInfoBox.setVisible(bool);
+        emptyInfoBox.setDisable(bool);
+        emptyInfoBox.setVisible(!bool);
+        once = !bool;
     }
 }

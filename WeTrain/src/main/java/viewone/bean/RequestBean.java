@@ -1,6 +1,7 @@
 package viewone.bean;
 
 import exception.TextOutOfBoundException;
+import exception.invalidDataException.EmptyFieldsException;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +22,7 @@ public class RequestBean {
         this.trainer = trainer;
     }
 
-    public RequestBean(String info, String athleteFc, String athleteUsername, String trainer) throws TextOutOfBoundException {
+    public RequestBean(String info, String athleteFc, String athleteUsername, String trainer) throws TextOutOfBoundException, EmptyFieldsException {
         this.requestDate = LocalDateTime.now();
         setInfo(info);
         this.athleteFc = athleteFc;
@@ -49,7 +50,10 @@ public class RequestBean {
         return info;
     }
 
-    public void setInfo(String info) throws TextOutOfBoundException {
+    public void setInfo(String info) throws TextOutOfBoundException, EmptyFieldsException {
+        if(info.isEmpty()) {
+            throw new EmptyFieldsException();
+        }
         if(info.length() > 450) {
             throw new TextOutOfBoundException();
         }

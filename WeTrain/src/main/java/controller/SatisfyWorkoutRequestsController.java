@@ -1,9 +1,11 @@
 package controller;
 
 import database.dao_classes.AthleteDAO;
+import database.dao_classes.NotificationDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
 import exception.DBConnectionFailedException;
+import exception.invalidDataException.EmptyFieldsException;
 import model.*;
 import viewone.bean.*;
 
@@ -14,10 +16,16 @@ import java.util.Objects;
 
 public class SatisfyWorkoutRequestsController {
 
+    private final NotificationsController notificationsController = new NotificationsController();
     private final LoginController loginController = new LoginController();
     private final WorkoutPlan workoutPlan = new WorkoutPlan();
 
     private Trainer trainer;
+
+    public void rejectRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
+        new RequestDAO().deleteRequest(requestBean.getId());
+        notificationsController.sendRejectRequestNotification();
+    }
 
     private WorkoutDay getWorkoutDay(String day) {
         for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
@@ -106,6 +114,7 @@ public class SatisfyWorkoutRequestsController {
         List<Request> requestList = new RequestDAO().loadTrainerRequests((Trainer) loginController.getLoggedUser());
         List<RequestBean> requestBeanList = new ArrayList<>();
         for(Request request: requestList) {
+
             requestBeanList.add(new RequestBean(
                     request.getId(),
                     request.getRequestDate(),
@@ -114,6 +123,7 @@ public class SatisfyWorkoutRequestsController {
                     request.getAthlete().getUsername(),
                     request.getTrainer().getFiscalCode()
             ));
+
         }
         return requestBeanList;
     }

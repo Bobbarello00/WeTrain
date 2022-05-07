@@ -24,7 +24,8 @@ public class CommunicationNotification extends Notification{
 
     @Override public String promptMessage() {
         return String.format("""
-                COMMUNICATION FROM COURSE "%s"!
+                COMMUNICATION FROM COURSE "%s":
+                
                 %s
                 """,
                 course.getName(),
