@@ -1,5 +1,6 @@
 package viewone.bean;
 
+import exception.invalidDataException.EmptyFieldsException;
 import exception.invalidDataException.InvalidCardInfoException;
 
 import java.time.YearMonth;
@@ -13,7 +14,7 @@ public class CardInfoBean {
     private YearMonth expirationDate;
     private String type;
 
-    public CardInfoBean(String cardNumber, String expirationDate) throws InvalidCardInfoException {
+    public CardInfoBean(String cardNumber, String expirationDate) throws InvalidCardInfoException, EmptyFieldsException {
         /*This is a constructor with syntax check and is used by view*/
         setCardNumber(cardNumber);
         setExpirationDate(expirationDate);
@@ -33,7 +34,7 @@ public class CardInfoBean {
         return cardNumber;
     }
 
-    private void setCardNumber(String cardNumber) throws InvalidCardInfoException {
+    private void setCardNumber(String cardNumber) throws InvalidCardInfoException, EmptyFieldsException {
         this.cardNumber = checkAndReturnValidCardNumber(cardNumber);
     }
 
@@ -54,12 +55,12 @@ public class CardInfoBean {
         return null;
     }
 
-    private String checkAndReturnValidCardNumber(String card) throws InvalidCardInfoException {
+    private String checkAndReturnValidCardNumber(String card) throws InvalidCardInfoException, EmptyFieldsException {
+        if(card.isEmpty()){
+            throw new EmptyFieldsException();
+        }
         String cardNumber = setType(card);
         if(cardNumber == null) {
-            System.out.printf("""
-                    numero carta sbagliata -> %s
-                    """, card);
             throw new InvalidCardInfoException();
         }
         return cardNumber;
