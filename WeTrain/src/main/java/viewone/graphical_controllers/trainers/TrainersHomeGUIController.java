@@ -13,8 +13,10 @@ import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.RequestBean;
 import viewone.engeneering.manageList.ManageCourseList;
+import viewone.engeneering.manageList.ManageNotificationList;
 import viewone.engeneering.manageList.ManageRequestList;
 import viewone.list_cell_factories.CourseListCellFactory;
+import viewone.list_cell_factories.NotificationListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,6 +46,9 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
                         }
                     });
             courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+            notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory());
+            updateNotificationList();
+            ManageNotificationList.setCourseListener(notificationList);
             ManageCourseList.setCourseListener(courseList);
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
         } catch (SQLException e) {

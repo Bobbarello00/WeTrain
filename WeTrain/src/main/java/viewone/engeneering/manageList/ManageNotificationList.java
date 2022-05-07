@@ -27,17 +27,17 @@ public class ManageNotificationList {
         notificationBeanListView.setItems(FXCollections.observableList(notificationObservableList));
     }
 
-    public static void setCourseListener(ListView<NotificationBean> list, AthletesHomeGUIController athletesHomeGUIController){
+    public static void setCourseListener(ListView<NotificationBean> list){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends NotificationBean> observableValue, NotificationBean oldItem, NotificationBean newItem) {
-                        listEvent(list, newItem, athletesHomeGUIController);
+                        listEvent(list, newItem);
                     }
                 });
     }
 
-    private static void listEvent(ListView<NotificationBean> listView, NotificationBean newItem, AthletesHomeGUIController athletesHomeGUIController) {
+    private static void listEvent(ListView<NotificationBean> listView, NotificationBean newItem) {
         try {
             if(newItem != null) {
                 AlertFactory.newWarningAlert(

@@ -1,10 +1,12 @@
 package viewone.graphical_controllers;
 
+import controller.NotificationsController;
 import exception.DBConnectionFailedException;
 import exception.invalidDataException.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -12,12 +14,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
+import viewone.bean.NotificationBean;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.engeneering.UserInfoCarrier;
+import viewone.engeneering.manageList.ManageNotificationList;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 public abstract class HomeGUIController {
@@ -25,6 +30,13 @@ public abstract class HomeGUIController {
     @FXML protected Text usernameText1;
     @FXML protected ImageView userImage;
     @FXML protected Button logoutButton;
+    @FXML protected ListView<NotificationBean> notificationList;
+    protected final NotificationsController notificationsController = new NotificationsController();
+
+    @FXML protected void updateNotificationList() throws SQLException, DBConnectionFailedException {
+        List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
+        ManageNotificationList.updateList(notificationList, Objects.requireNonNull(notificationBeanList));
+    }
 
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;
 
