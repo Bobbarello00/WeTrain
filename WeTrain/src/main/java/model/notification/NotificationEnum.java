@@ -16,9 +16,9 @@ public enum NotificationEnum {
     private static final NotificationEnum[] ENUMS = NotificationEnum.values();
 
     public static NotificationEnum of(int notificationType) {
-        if (notificationType < 1 || notificationType > NotificationEnum.ENUMS.length) {
+        if (notificationType < 0 || notificationType > NotificationEnum.ENUMS.length - 1) {
             throw new NotificationEnumException("Invalid value for NotificationEnum: " + notificationType);
         }
-        return ENUMS[notificationType - 1];
+        return ENUMS[notificationType];
     }
 }

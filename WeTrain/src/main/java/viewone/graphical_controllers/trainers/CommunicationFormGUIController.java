@@ -2,6 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.NotificationsController;
 import exception.DBConnectionFailedException;
+import exception.invalidDataException.EmptyFieldsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import viewone.bean.CommunicationBean;
@@ -30,6 +31,9 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
+        } catch (EmptyFieldsException e) {
+            e.alert();
+            return;
         }
         close();
     }

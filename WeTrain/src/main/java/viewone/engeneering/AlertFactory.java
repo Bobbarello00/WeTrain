@@ -8,15 +8,19 @@ public class AlertFactory {
 
     public static void newWarningAlert(String alertTitle, String alertHeaderText, String alertContentText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        if(alertTitle!=null) {
-            alert.setTitle(alertTitle);
-        }
-        if(alertHeaderText!=null) {
-            alert.setHeaderText(alertHeaderText);
-        }
-        if(alertContentText!=null) {
-            alert.setContentText(alertContentText);
-        }
+        newAlert(alert, alertTitle, alertHeaderText, alertContentText);
+    }
+
+    private static void newAlert(Alert alert, String alertTitle, String alertHeaderText, String alertContentText) {
+        alert.setTitle(alertTitle);
+        alert.setHeaderText(null);
+        alert.setContentText(alertContentText);
+
         alert.showAndWait();
+    }
+
+    public static void newInformationAlert(String alertTitle, String alertContentText){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        newAlert(alert, alertTitle, null, alertContentText);
     }
 }

@@ -1,10 +1,15 @@
 package viewone.bean;
 
+import exception.invalidDataException.EmptyFieldsException;
+
 public class CommunicationBean {
     private String text;
     private CourseBean courseBean;
 
-    public CommunicationBean(String text, CourseBean courseBean) {
+    public CommunicationBean(String text, CourseBean courseBean) throws EmptyFieldsException {
+        if(text.isEmpty()) {
+            throw new EmptyFieldsException();
+        }
         this.text = text;
         this.courseBean = courseBean;
     }

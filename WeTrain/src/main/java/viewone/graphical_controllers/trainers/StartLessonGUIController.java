@@ -33,6 +33,7 @@ public class StartLessonGUIController extends AbstractFormGUIController {
                 throw new RuntimeException(e);
             }
         }
+        close();
     }
 
     public void setCourse(CourseBean courseBean) {

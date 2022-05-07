@@ -40,9 +40,8 @@ public class ManageNotificationList {
     private static void listEvent(ListView<NotificationBean> listView, NotificationBean newItem) {
         try {
             if(newItem != null) {
-                AlertFactory.newWarningAlert(
+                AlertFactory.newInformationAlert(
                         "Notification",
-                        null,
                         newItem.getText());
                 notificationsController.deleteNotification(newItem);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());

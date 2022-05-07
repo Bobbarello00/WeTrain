@@ -56,8 +56,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
             return;
         }
         //TODO CREAZIONE NOTIFICA
-        ((Stage) sendButton.getScene().getWindow()).close();
-        MainPane.getInstance().setDisable(false);
+        close();
     }
 
 
