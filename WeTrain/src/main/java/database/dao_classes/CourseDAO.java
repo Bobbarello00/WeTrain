@@ -50,13 +50,13 @@ public class CourseDAO {
     //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
     public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertSubscribe(stmt, idCourse, (Athlete) loginController.getLoggedUser());
+            Query.insertCourseSubscriber(stmt, idCourse, (loginController.getLoggedUser()).getFiscalCode());
         }
     }
 
     public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement()){
-            Query.deleteSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
+            Query.deleteCourseSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
         }
     }
 

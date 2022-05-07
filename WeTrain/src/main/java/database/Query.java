@@ -455,14 +455,14 @@ public class Query {
                 "WHERE idWorkoutPlan = %s;", idWorkoutPlan));
     }
 
-    public static void insertSubscribe(Statement stmt, int idCourse, Athlete athlete) throws SQLException {
+    public static void insertCourseSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Subscribe (Course, Athlete) " +
                         "VALUES (%s, '%s');",
                 idCourse,
-                athlete.getFiscalCode()));
+                athleteFc));
     }
 
-    public static void deleteSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
+    public static void deleteCourseSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
         stmt.executeUpdate(String.format("DELETE FROM mydb.Subscribe " +
                         "WHERE Course = %s and Athlete = '%s';",
                 idCourse,

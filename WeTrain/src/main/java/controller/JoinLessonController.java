@@ -1,7 +1,7 @@
 package controller;
 
 import database.dao_classes.CourseDAO;
-import exception.BrowserException;
+import exception.BrowsingNotSupportedException;
 import exception.DBConnectionFailedException;
 import exception.UrlNotInsertedYetException;
 import viewone.bean.IdBean;
@@ -13,8 +13,7 @@ import java.sql.SQLException;
 
 public class JoinLessonController {
 
-    public void joinLesson(IdBean idBean) throws UrlNotInsertedYetException, URISyntaxException, IOException, BrowserException {
-        //TODO fare eccezioni e propagarle invece degli alert
+    public void joinLesson(IdBean idBean) throws UrlNotInsertedYetException, URISyntaxException, IOException, BrowsingNotSupportedException {
         String lessonUrl = null;
         try {
             lessonUrl = new CourseDAO().loadStartedLessonUrl(idBean.getId());
@@ -30,7 +29,7 @@ public class JoinLessonController {
         if(desktop.isSupported(Desktop.Action.BROWSE)){
             desktop.browse(new URI(lessonUrl));
         }else{
-            throw new BrowserException();
+            throw new BrowsingNotSupportedException();
         }
     }
 }

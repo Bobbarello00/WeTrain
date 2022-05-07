@@ -2,7 +2,7 @@ package viewone.graphical_controllers;
 
 import controller.CourseManagementAthleteController;
 import controller.JoinLessonController;
-import exception.BrowserException;
+import exception.BrowsingNotSupportedException;
 import exception.DBConnectionFailedException;
 import exception.ImATrainerException;
 import exception.UrlNotInsertedYetException;
@@ -178,7 +178,7 @@ public class CourseOverviewGUIController {
                 AlertFactory.newWarningAlert("EXCEPTION!",
                         "Url not working",
                         "The url inserted by the trainer is incorrect or not working anymore.");
-            } catch (BrowserException e) {
+            } catch (BrowsingNotSupportedException e) {
                 e.alert();
             }
         }

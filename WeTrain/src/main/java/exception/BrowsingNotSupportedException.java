@@ -2,11 +2,11 @@ package exception;
 
 import viewone.engeneering.AlertFactory;
 
-public class BrowserException extends Exception{
+public class BrowsingNotSupportedException extends Exception{
 
     public void alert() {
         AlertFactory.newWarningAlert("BROWSING ERROR",
-                "Browsing not supported",
+                "Failed to browse to the lesson url",
                 "Sorry for the inconvenience but you can't access this web resource");
     }
 }
