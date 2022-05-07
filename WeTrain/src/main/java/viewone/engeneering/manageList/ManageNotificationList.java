@@ -45,7 +45,6 @@ public class ManageNotificationList {
                         null,
                         newItem.getText());
                 notificationsController.deleteNotification(newItem);
-                athletesHomeGUIController.updateNotificationList();
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
         } catch (SQLException e) {

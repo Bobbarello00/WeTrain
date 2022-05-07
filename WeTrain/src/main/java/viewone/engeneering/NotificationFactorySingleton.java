@@ -118,14 +118,6 @@ public class NotificationFactorySingleton {
                     new CourseDAO().loadCourse(Integer.parseInt(params[0])),
                     dateTime
             );
-        } else if (type1 == LESSONSTARTED) {
-            return new LessonStartedNotification(
-                    idNotification,
-                    sender,
-                    receiver,
-                    new CourseDAO().loadCourse(Integer.parseInt(params[0])),
-                    dateTime
-            );
         } else if(type1 == EMAILRECEIVED) {
             return new EmailReceivedNotification(
                     idNotification,

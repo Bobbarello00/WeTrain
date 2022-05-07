@@ -57,7 +57,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     @FXML void createButtonAction() throws IOException {
         try {
-            satisfyWorkoutRequestsController.sendWorkoutRequest(requestBean);
+            satisfyWorkoutRequestsController.sendWorkoutPlan(requestBean);
             PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
@@ -72,7 +72,6 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     public void updateSelectedExerciseList() {
         WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(daysController.getDay()));
-        System.out.println("size: "+ workoutDayBean.getExerciseBeanList().size());
         ManageExerciseList.updateList(
                 selectedExerciseList,
                 workoutDayBean.getExerciseBeanList());

@@ -77,7 +77,7 @@ public class SatisfyWorkoutRequestsController {
         }
     }
 
-    public void sendWorkoutRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
+    public void sendWorkoutPlan(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
         WorkoutPlan workoutPlan1 = new AthleteDAO().loadAthlete(requestBean.getAthleteFc()).getWorkoutPlan();
         if(workoutPlan1 != null){
             new AthleteDAO().removeWorkoutPlan(workoutPlan1.getId());

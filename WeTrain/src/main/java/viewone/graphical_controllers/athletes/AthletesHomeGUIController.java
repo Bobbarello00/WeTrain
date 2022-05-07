@@ -30,34 +30,14 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
     private final NotificationsController notificationsController = new NotificationsController();
 
-    public void updateCourseList() {
-        try {
-            List<CourseBean> courseBeanList = courseManagementAthleteController.getCourseList();
-            ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
-        } catch (DBConnectionFailedException | CJException e) {
-            new DBConnectionFailedException().alertAndLogOff();
-            logoutButton.fire();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void updatePopularCourseList() {
+    public void updateLists() {
         try {
             List<CourseBean> courseBeanList = courseManagementAthleteController.getPopularCourseList();
             ManageCourseList.updateList(popularList, Objects.requireNonNull(courseBeanList));
-        } catch (DBConnectionFailedException | CJException e) {
-            new DBConnectionFailedException().alertAndLogOff();
-            logoutButton.fire();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void updateNotificationList() {
-        try {
             List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
             ManageNotificationList.updateList(feedList, Objects.requireNonNull(notificationBeanList));
+            courseBeanList = courseManagementAthleteController.getCourseList();
+            ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
         } catch (DBConnectionFailedException | CJException e) {
             new DBConnectionFailedException().alertAndLogOff();
             logoutButton.fire();
@@ -71,9 +51,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
         popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
         feedList.setCellFactory(nodeListView -> new NotificationListCellFactory());
 
-        updateCourseList();
-        updatePopularCourseList();
-        updateNotificationList();
+        updateLists();
 
         ManageCourseList.setCourseListener(courseList);
         ManageCourseList.setCourseListener(popularList);
