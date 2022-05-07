@@ -12,6 +12,7 @@ import viewone.bean.UserBean;
 import viewone.engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +78,16 @@ public class NotificationsController {
                 ));
     }
 
-    public void sendRejectRequestNotification() {
+    public void sendRejectRequestNotification(String receiver) throws SQLException, DBConnectionFailedException {
         Notification notification = NotificationFactorySingleton.getInstance().createRejectedRequestNotification(
-                
+                loginController.getLoggedUser()
+        );
+        new NotificationDAO().saveNotification(
+                notification.getType().ordinal(),
+                notification.getDescription(),
+                LocalDateTime.now(),
+                notification.getSender().getFiscalCode(),
+                receiver
         );
     }
 

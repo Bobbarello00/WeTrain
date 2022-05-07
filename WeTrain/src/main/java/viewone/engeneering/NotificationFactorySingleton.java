@@ -28,10 +28,10 @@ public class NotificationFactorySingleton {
                 course);
     }
 
-    public Notification createRejectedRequestNotification(User sender, User receiver) {
+    public Notification createRejectedRequestNotification(User sender) {
         return new RejectedRequestNotification(
                 sender,
-                receiver
+                null
         );
     }
 

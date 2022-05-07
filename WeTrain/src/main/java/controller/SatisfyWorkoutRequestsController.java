@@ -24,7 +24,7 @@ public class SatisfyWorkoutRequestsController {
 
     public void rejectRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
         new RequestDAO().deleteRequest(requestBean.getId());
-        notificationsController.sendRejectRequestNotification();
+        notificationsController.sendRejectRequestNotification(requestBean.getAthleteFc());
     }
 
     private WorkoutDay getWorkoutDay(String day) {

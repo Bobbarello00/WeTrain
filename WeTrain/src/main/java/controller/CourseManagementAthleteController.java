@@ -41,30 +41,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         new CourseDAO().subscribeToACourse(course.getId());
         User sender = loginController.getLoggedUser();
         User receiver = course.getOwner();
-        emailSystemBoundary.sendEmail(new EmailBean(
-                new UserBean(
-                        sender.getUsername(),
-                        sender.getName(),
-                        sender.getSurname(),
-                        sender.getFiscalCode(),
-                        sender.getDateOfBirth(),
-                        "Athlete",
-                        sender.getGender(),
-                        sender.getEmail(),
-                        sender.getPassword()
-                ),
-                new UserBean(
-                        receiver.getUsername(),
-                        receiver.getName(),
-                        receiver.getSurname(),
-                        receiver.getFiscalCode(),
-                        receiver.getDateOfBirth(),
-                        "Trainer",
-                        receiver.getGender(),
-                        receiver.getEmail(),
-                        receiver.getPassword()
-                )
-        ));
+        //TODO creazione notifica
     }
 
     public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {

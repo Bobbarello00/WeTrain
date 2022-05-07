@@ -32,7 +32,7 @@ public class NotificationDAO {
         );
     }
 
-    private void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
+    public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
         try(Statement stmt = conn.createStatement()){
             Query.insertNotification(stmt, type, info, dateTime, sender, receiver);
         }
