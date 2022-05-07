@@ -1,5 +1,6 @@
 package viewone.bean;
 
+import exception.invalidDataException.EmptyFieldsException;
 import exception.invalidDataException.InvalidCredentialsException;
 
 import java.util.regex.Pattern;
@@ -10,7 +11,7 @@ public class CredentialsBean {
 
     private CredentialsBean() {}
 
-    public static CredentialsBean ctorWithSyntaxCheck(String email, String password) throws InvalidCredentialsException {
+    public static CredentialsBean ctorWithSyntaxCheck(String email, String password) throws InvalidCredentialsException, EmptyFieldsException {
         /*This is a constructor with syntax check and is used by view*/
         CredentialsBean credentialsBean = new CredentialsBean();
         credentialsBean.setEmail(email);
@@ -30,16 +31,18 @@ public class CredentialsBean {
         return email;
     }
 
-    public void setEmail(String email) throws InvalidCredentialsException {
-        if(isValidEmail(email)){
+    public void setEmail(String email) throws InvalidCredentialsException, EmptyFieldsException {
+        if(email.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidEmail(email)){
             this.email = email;
-            return;
+        } else {
+            throw new InvalidCredentialsException();
         }
-        throw new InvalidCredentialsException();
     }
 
     private boolean isValidEmail(String email) {
-        final Pattern emailRegex = Pattern.compile("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", Pattern.CASE_INSENSITIVE);
+        final Pattern emailRegex = Pattern.compile("^[a-zA-Z\\d_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z\\d.-]+$", Pattern.CASE_INSENSITIVE);
 
         return emailRegex.matcher(email).matches();
     }
@@ -48,15 +51,18 @@ public class CredentialsBean {
         return password;
     }
 
-    public void setPassword(String password) throws InvalidCredentialsException {
-        if(isValidPassword(password)){
+    public void setPassword(String password) throws InvalidCredentialsException, EmptyFieldsException {
+        if(password.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidPassword(password)){
             this.password = password;
-            return;
+        } else{
+            throw new InvalidCredentialsException();
         }
-        throw new InvalidCredentialsException();
+
     }
 
     private boolean isValidPassword(String password) {
-        return Pattern.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%^&+=])(?=\\S+$).{8,45}$",password);
+        return Pattern.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%^&+=])(?=\\S+$).{8,45}$",password);
     }
 }

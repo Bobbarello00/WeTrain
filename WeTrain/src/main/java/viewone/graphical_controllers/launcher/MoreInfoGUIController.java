@@ -43,27 +43,17 @@ public class MoreInfoGUIController implements Initializable {
     private final RegistrationController registrationController = new RegistrationController();
 
     private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException, DBConnectionFailedException {
-        if(!Objects.equals(usernameText.getText(), "")
-                & !Objects.equals(firstNameText.getText(), "")
-                & !Objects.equals(lastNameText.getText(), "")
-                & !Objects.equals(fcText.getText(), "")
-                & !Objects.equals(birthPicker.getEditor().getText(), "")){
-
-            UserBean user = new UserBean(
-                    usernameText.getText(),
-                    firstNameText.getText(),
-                    lastNameText.getText(),
-                    fcText.getText(),
-                    birthPicker.getEditor().getText(),
-                    selectedProfile,
-                    gender,
-                    email,
-                    password
-            );
-            registrationController.processUserInfo(user);
-        } else {
-            throw new EmptyFieldsException();
-        }
+        UserBean user = new UserBean(
+                usernameText.getText(),
+                firstNameText.getText(),
+                lastNameText.getText(),
+                fcText.getText(),
+                birthPicker.getEditor().getText(),
+                selectedProfile,
+                gender,
+                email,
+                password);
+        registrationController.processUserInfo(user);
     }
 
     @FXML private void registerButtonAction() throws IOException {
@@ -118,10 +108,8 @@ public class MoreInfoGUIController implements Initializable {
                 (observable, oldToggle, newToggle) -> {
                     if(newToggle == maleButton) {
                         gender = 'm';
-                    } else if(newToggle == femaleButton) {
+                    } else if (newToggle == femaleButton){
                         gender = 'f';
-                    } else {
-                        gender = 'x';
                     }
                 }
         );

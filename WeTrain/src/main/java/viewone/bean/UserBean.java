@@ -1,9 +1,6 @@
 package viewone.bean;
 
-import exception.invalidDataException.InvalidBirthException;
-import exception.invalidDataException.InvalidCredentialsException;
-import exception.invalidDataException.InvalidFiscalCodeException;
-import exception.invalidDataException.InvalidUserInfoException;
+import exception.invalidDataException.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -34,14 +31,14 @@ public class UserBean {
         credentials = CredentialsBean.ctorWithoutSyntaxCheck(email, password);
     }
 
-    public UserBean(String username, String name, String surname, String fiscalCode, String birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException, InvalidBirthException {
+    public UserBean(String username, String name, String surname, String fiscalCode, String birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException, InvalidBirthException, EmptyFieldsException {
         /*This is a constructor with syntax check and is used by view*/
         setUser(username, name, surname, fiscalCode, type, gender);
         setBirth(birth);
         credentials = CredentialsBean.ctorWithSyntaxCheck(email, password);
     }
 
-    private void setUser(String username, String name, String surname, String fiscalCode, String type, char gender) throws InvalidUserInfoException, InvalidFiscalCodeException {
+    private void setUser(String username, String name, String surname, String fiscalCode, String type, char gender) throws InvalidUserInfoException, InvalidFiscalCodeException, EmptyFieldsException {
         setUsername(username);
         setName(name);
         setSurname(surname);
@@ -62,12 +59,14 @@ public class UserBean {
         return username;
     }
 
-    public void setUsername(String username) throws InvalidUserInfoException {
-        if(isValidLength(username, 20)){
+    public void setUsername(String username) throws InvalidUserInfoException, EmptyFieldsException {
+        if(username.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidLength(username, 20)){
             this.username = username;
-            return;
+        }else {
+            throw new InvalidUserInfoException();
         }
-        throw new InvalidUserInfoException();
     }
 
     private boolean isValidLength(String str, int i) {
@@ -78,56 +77,60 @@ public class UserBean {
         return name;
     }
 
-    public void setName(String name) throws InvalidUserInfoException {
-        if(isValidLength(name, 45)){
+    public void setName(String name) throws InvalidUserInfoException, EmptyFieldsException {
+        if(name.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidLength(name, 45)){
             this.name = name;
-            return;
+        }else {
+            throw new InvalidUserInfoException();
         }
-        throw new InvalidUserInfoException();
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) throws InvalidUserInfoException {
-        if(isValidLength(surname, 45)){
+    public void setSurname(String surname) throws InvalidUserInfoException, EmptyFieldsException {
+        if(surname.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidLength(surname, 45)){
             this.surname = surname;
-            return;
+        }else {
+            throw new InvalidUserInfoException();
         }
-        throw new InvalidUserInfoException();
     }
 
     public String getFiscalCode() {
         return fiscalCode;
     }
 
-    public void setFc(String fc) throws InvalidFiscalCodeException {
-        if(isValidFc(fc)) {
+    public void setFc(String fc) throws InvalidFiscalCodeException, EmptyFieldsException {
+        if(fc.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidFc(fc)) {
             this.fiscalCode = fc;
-            return;
+        }else {
+            throw new InvalidFiscalCodeException();
         }
-        throw new InvalidFiscalCodeException();
     }
 
     private boolean isValidFc(String fc) {
-        return Pattern.matches("^([A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z])$|([0-9]{11})$",fc);
+        return Pattern.matches("^([A-Z]{6}[\\dLMNPQRSTUV]{2}[ABCDEHLMPRST][\\dLMNPQRSTUV]{2}[A-Z][\\dLMNPQRSTUV]{3}[A-Z])$|(\\d{11})$",fc);
     }
 
     public LocalDate getBirth() {
         return birth;
     }
 
-    public void setBirth(String birth) throws InvalidBirthException {
-        if(isValidBirth(birth)) {
+    public void setBirth(String birth) throws InvalidBirthException, EmptyFieldsException {
+        if(birth.isEmpty()){
+            throw new EmptyFieldsException();
+        } else if(isValidBirth(birth)) {
             this.birth = LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            return;
+        }else {
+            throw new InvalidBirthException();
         }
-        throw new InvalidBirthException();
-    }
-
-    public void setBirth(LocalDate birth) {
-        this.birth = birth;
     }
 
     private static boolean isValidBirth(String value) {

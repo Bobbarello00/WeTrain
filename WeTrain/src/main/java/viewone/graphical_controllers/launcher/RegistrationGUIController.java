@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
-import exception.invalidDataException.InvalidCredentialsException;
+import exception.invalidDataException.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -26,13 +26,11 @@ public class RegistrationGUIController extends LauncherGUIController{
 
     @FXML private void continueButtonAction() throws IOException {
         try {
-            if (!Objects.equals(emailField.getText(), "") & !Objects.equals(passwField.getText(), "")) {
-                CredentialsBean bean = CredentialsBean.ctorWithSyntaxCheck(emailField.getText(), passwField.getText());
-                MoreInfoGUIController moreInfoGUIController = (MoreInfoGUIController) Objects.requireNonNull(PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME));
-                moreInfoGUIController.setCredentialInfo(bean);
-                moreInfoGUIController.setSelectedProfileString(selectedProfile);
-            }
-        } catch (InvalidCredentialsException e) {
+            CredentialsBean bean = CredentialsBean.ctorWithSyntaxCheck(emailField.getText(), passwField.getText());
+            MoreInfoGUIController moreInfoGUIController = (MoreInfoGUIController) Objects.requireNonNull(PageSwitchSimple.switchPage(MainPane.getInstance(), "MoreInfo", HOME));
+            moreInfoGUIController.setCredentialInfo(bean);
+            moreInfoGUIController.setSelectedProfileString(selectedProfile);
+        } catch (InvalidDataException e) {
             e.alert();
         }
     }

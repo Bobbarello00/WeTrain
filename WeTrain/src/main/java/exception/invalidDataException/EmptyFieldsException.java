@@ -1,6 +1,5 @@
 package exception.invalidDataException;
 
-import exception.invalidDataException.InvalidDataException;
 import viewone.engeneering.AlertFactory;
 
 public class EmptyFieldsException extends InvalidDataException {

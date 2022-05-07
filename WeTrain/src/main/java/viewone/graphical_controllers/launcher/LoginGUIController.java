@@ -4,7 +4,9 @@ package viewone.graphical_controllers.launcher;
 import controller.LoginController;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
+import exception.invalidDataException.EmptyFieldsException;
 import exception.invalidDataException.InvalidCredentialsException;
+import exception.invalidDataException.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -46,12 +48,12 @@ public class LoginGUIController extends LauncherGUIController{
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
                     "Be sure that you have an account on WeTrain.");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             //TODO Exception
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (InvalidCredentialsException e) {
+        } catch (InvalidDataException e) {
             e.alert();
         }
     }
@@ -70,7 +72,7 @@ public class LoginGUIController extends LauncherGUIController{
                 }else{
                     passwSField.requestFocus();
                 }
-            }else {
+            } else {
                 emailField.requestFocus();
             }
         }
