@@ -42,8 +42,6 @@ public abstract class LauncherGUIController implements Initializable {
             throw new RuntimeException();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
-        } catch (InvalidIbanException e) {
-            e.alert();
         }
         return null;
     }

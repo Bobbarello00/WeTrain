@@ -41,7 +41,7 @@ public class LoggedUserSingleton {
         return userInfoCarrier;
     }
 
-    public static UserBean getInstance() throws SQLException, DBConnectionFailedException, InvalidIbanException {
+    public static UserBean getInstance() throws SQLException, DBConnectionFailedException {
         User usr = loginController.getLoggedUser();
 
         if (usr instanceof Athlete) {

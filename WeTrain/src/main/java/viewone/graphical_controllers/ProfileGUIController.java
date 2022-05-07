@@ -55,8 +55,6 @@ public abstract class ProfileGUIController {
             e.printStackTrace();
         } catch (DBConnectionFailedException e) {
             e.alertAndLogOff();
-        } catch (InvalidIbanException e) {
-            e.alert();
         }
         return null;
     }

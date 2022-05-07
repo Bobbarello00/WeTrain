@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
 import viewone.bean.*;
+import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
@@ -141,7 +142,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
     @FXML void writeEmailButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "EmailForm", "", false);
+        EmailFormGUIController emailFormGUIController = (EmailFormGUIController) PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "EmailForm", "", false);
+        emailFormGUIController.setReceiver(selectedTrainer);
     }
 
 

@@ -5,8 +5,11 @@ import database.dao_classes.NotificationDAO;
 import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Course;
+import model.notification.EmailReceivedNotification;
 import model.notification.Notification;
+import model.notification.NotificationEnum;
 import viewone.bean.CommunicationBean;
+import viewone.bean.EmailReceivedNotificationBean;
 import viewone.bean.NotificationBean;
 import viewone.bean.UserBean;
 import viewone.engeneering.NotificationFactorySingleton;
@@ -93,5 +96,15 @@ public class NotificationsController {
 
     public void deleteNotification(NotificationBean notificationBean) throws DBConnectionFailedException, SQLException {
         new NotificationDAO().deleteNotification(notificationBean.getId());
+    }
+
+    public void sendEmailReceivedNotification(EmailReceivedNotificationBean emailReceivedNotificationBean) throws DBConnectionFailedException, SQLException {
+        new NotificationDAO().saveNotification(
+                NotificationEnum.EMAILRECEIVED.ordinal(),
+                "",
+                LocalDateTime.now(),
+                emailReceivedNotificationBean.getSender().getFiscalCode(),
+                emailReceivedNotificationBean.getReceiver().getFiscalCode()
+        );
     }
 }
