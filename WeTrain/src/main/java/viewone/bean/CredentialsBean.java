@@ -1,6 +1,6 @@
 package viewone.bean;
 
-import exception.InvalidCredentialsException;
+import exception.invalidDataException.InvalidCredentialsException;
 
 import java.util.regex.Pattern;
 

@@ -3,10 +3,9 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBConnectionFailedException;
-import exception.InvalidCredentialsException;
+import exception.invalidDataException.InvalidCredentialsException;
 import model.Athlete;
 import model.Trainer;
-import viewone.bean.CredentialsBean;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;

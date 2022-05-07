@@ -1,9 +1,7 @@
 package viewone.graphical_controllers.launcher;
 
 import exception.DBConnectionFailedException;
-import exception.ExpiredCardException;
-import exception.InvalidCardInfoException;
-import exception.InvalidIbanException;
+import exception.invalidDataException.InvalidIbanException;
 import viewone.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.bean.UserBean;
-import viewone.engeneering.FatalCaseManager;
 import viewone.engeneering.LoggedUserSingleton;
 
 import java.net.URL;

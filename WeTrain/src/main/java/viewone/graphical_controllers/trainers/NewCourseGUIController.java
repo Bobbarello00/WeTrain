@@ -2,16 +2,14 @@ package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
 import exception.DBConnectionFailedException;
-import exception.InvalidDataException;
-import exception.InvalidTimeException;
-import exception.TimeNotInsertedException;
+import exception.invalidDataException.InvalidDataException;
+import exception.invalidDataException.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;

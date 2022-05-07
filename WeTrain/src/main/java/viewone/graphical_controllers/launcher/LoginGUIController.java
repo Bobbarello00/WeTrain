@@ -4,7 +4,7 @@ package viewone.graphical_controllers.launcher;
 import controller.LoginController;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
-import exception.InvalidCredentialsException;
+import exception.invalidDataException.InvalidCredentialsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

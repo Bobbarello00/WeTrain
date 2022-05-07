@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
-import exception.InvalidCredentialsException;
+import exception.invalidDataException.InvalidCredentialsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="656.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.ExerciseOverviewGUIController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="656.0" style="-fx-background-radius: 50;" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.ExerciseOverviewGUIController">
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
@@ -24,7 +24,7 @@
             <Image url="@../images/WeTrainLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="addButton" alignment="CENTER" layoutX="455.0" layoutY="406.0" mnemonicParsing="false" onAction="#addOrRemoveAction" prefHeight="23.0" prefWidth="126.0" scaleX="1.2" scaleY="1.2" text="Add to Plan" textAlignment="JUSTIFY" textFill="WHITE">
+      <Button fx:id="addButton" alignment="CENTER" layoutX="384.0" layoutY="406.0" mnemonicParsing="false" onAction="#addOrRemoveAction" prefHeight="23.0" prefWidth="185.0" scaleX="1.2" scaleY="1.2" text="Add to Selected Day" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

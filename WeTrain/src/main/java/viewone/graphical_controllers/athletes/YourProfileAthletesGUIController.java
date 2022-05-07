@@ -3,7 +3,7 @@ package viewone.graphical_controllers.athletes;
 import controller.ProfileManagementController;
 import database.dao_classes.AthleteDAO;
 import exception.DBConnectionFailedException;
-import exception.InvalidDataException;
+import exception.invalidDataException.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;

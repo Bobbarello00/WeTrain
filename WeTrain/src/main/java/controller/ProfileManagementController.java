@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBConnectionFailedException;
-import exception.ExpiredCardException;
+import exception.invalidDataException.ExpiredCardException;
 import model.Athlete;
 import model.Trainer;
 import viewone.bean.CardInfoBean;

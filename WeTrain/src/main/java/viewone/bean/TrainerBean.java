@@ -1,7 +1,5 @@
 package viewone.bean;
 
-import exception.InvalidIbanException;
-
 import java.time.LocalDate;
 
 public class TrainerBean extends UserBean{

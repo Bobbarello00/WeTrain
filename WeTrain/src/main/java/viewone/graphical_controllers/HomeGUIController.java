@@ -1,7 +1,7 @@
 package viewone.graphical_controllers;
 
 import exception.DBConnectionFailedException;
-import exception.InvalidIbanException;
+import exception.invalidDataException.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

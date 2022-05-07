@@ -1,9 +1,9 @@
 package viewone.bean;
 
-import exception.InvalidBirthException;
-import exception.InvalidCredentialsException;
-import exception.InvalidFiscalCodeException;
-import exception.InvalidUserInfoException;
+import exception.invalidDataException.InvalidBirthException;
+import exception.invalidDataException.InvalidCredentialsException;
+import exception.invalidDataException.InvalidFiscalCodeException;
+import exception.invalidDataException.InvalidUserInfoException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -4,13 +4,11 @@ import database.DatabaseConnectionSingleton;
 import database.Query;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
-import exception.ExpiredCardException;
+import exception.invalidDataException.ExpiredCardException;
 import model.Athlete;
-import model.Course;
 
 import java.sql.*;
 import java.time.YearMonth;
-import java.util.List;
 
 public class AthleteDAO {
 

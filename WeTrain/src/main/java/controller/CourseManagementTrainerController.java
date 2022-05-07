@@ -1,19 +1,14 @@
 package controller;
 
 import database.dao_classes.CourseDAO;
-import database.dao_classes.NotificationDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBConnectionFailedException;
-import exception.InvalidTimeException;
+import exception.invalidDataException.InvalidTimeException;
 import model.Course;
 import model.Lesson;
 import model.Trainer;
-import model.notification.CommunicationNotification;
-import model.notification.Notification;
-import viewone.bean.CommunicationBean;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

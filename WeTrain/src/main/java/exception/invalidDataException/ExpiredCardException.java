@@ -1,8 +1,9 @@
-package exception;
+package exception.invalidDataException;
 
+import exception.invalidDataException.InvalidDataException;
 import viewone.engeneering.AlertFactory;
 
-public class ExpiredCardException extends InvalidDataException{
+public class ExpiredCardException extends InvalidDataException {
 
     @Override public void alert() {
         AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",

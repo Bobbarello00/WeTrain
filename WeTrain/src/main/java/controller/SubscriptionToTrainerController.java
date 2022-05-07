@@ -3,12 +3,11 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.*;
+import exception.invalidDataException.InvalidIbanException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
 import viewone.bean.*;
-import viewone.engeneering.FatalCaseManager;
-import viewone.engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -74,7 +74,7 @@ public class ExerciseOverviewGUIController{
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
         if(satisfyWorkoutRequestsController.checkAlreadyAdded(exerciseForWorkoutPlanBean)){
             addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
-            addButton.setText("Remove from Plan");
+            addButton.setText("Remove from Selected Day");
             alreadyAdded = true;
             deleteButton.setDisable(true);
             deleteButton.setVisible(false);

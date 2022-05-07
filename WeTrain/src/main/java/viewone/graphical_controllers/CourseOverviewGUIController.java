@@ -1,9 +1,11 @@
 package viewone.graphical_controllers;
 
 import controller.CourseManagementAthleteController;
-import database.dao_classes.CourseDAO;
+import controller.JoinLessonController;
+import exception.BrowserException;
 import exception.DBConnectionFailedException;
 import exception.ImATrainerException;
+import exception.UrlNotInsertedYetException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,15 +19,14 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
+import viewone.bean.IdBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
 import viewone.graphical_controllers.trainers.NewCourseGUIController;
 import viewone.graphical_controllers.trainers.StartLessonGUIController;
 
-import java.awt.*;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -64,6 +65,7 @@ public class CourseOverviewGUIController {
     private boolean isTrainer = false;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final JoinLessonController joinLessonController = new JoinLessonController();
 
     private void setButtonColor(Button button) {
         button.setStyle("-fx-background-color: white;" +
@@ -160,7 +162,6 @@ public class CourseOverviewGUIController {
     }
 
     @FXML private void meetAction(MouseEvent event) throws IOException {
-        //TODO SPOSTARE NEI CONTROLLER RISPETTIVI
         if(isTrainer) {
             closeAction(event);
             StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(),
@@ -169,33 +170,16 @@ public class CourseOverviewGUIController {
                     false);
             startLessonGUIController.setCourse(courseBean);
         }else{
-            String lessonUrl = null;
             try {
-                lessonUrl = new CourseDAO().loadStartedLessonUrl(courseBean.getId());
-            } catch (DBConnectionFailedException e) {
+                joinLessonController.joinLesson(new IdBean(courseBean.getId()));
+            } catch (UrlNotInsertedYetException e) {
                 e.alert();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            if(lessonUrl == null){
-                AlertFactory.newWarningAlert("SORRY...",
-                        "Url not inserted yet",
-                        "Wait for the trainer to start the lesson and try again later.");
-                return;
-            }
-            Desktop desktop = Desktop.getDesktop();
-            if(desktop.isSupported(Desktop.Action.BROWSE)){
-                try{
-                    desktop.browse(new URI(lessonUrl));
-                } catch (IOException | URISyntaxException e) {
-                    AlertFactory.newWarningAlert("EXCEPTION!",
-                            "Url not working",
-                            "The url inserted by the trainer is incorrect or not working anymore.");
-                }
-            }else{
-                AlertFactory.newWarningAlert("BROWSING ERROR",
-                        "Browsing not supported",
-                        "Sorry for the inconvenience but you can't access this web resource");
+            } catch (URISyntaxException e) {
+                AlertFactory.newWarningAlert("EXCEPTION!",
+                        "Url not working",
+                        "The url inserted by the trainer is incorrect or not working anymore.");
+            } catch (BrowserException e) {
+                e.alert();
             }
         }
     }

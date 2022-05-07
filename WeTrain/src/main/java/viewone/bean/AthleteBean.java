@@ -1,10 +1,5 @@
 package viewone.bean;
 
-import exception.InvalidCredentialsException;
-import exception.InvalidFiscalCodeException;
-import exception.InvalidUserInfoException;
-import viewone.engeneering.FatalCaseManager;
-
 import java.time.LocalDate;
 import java.time.YearMonth;
 

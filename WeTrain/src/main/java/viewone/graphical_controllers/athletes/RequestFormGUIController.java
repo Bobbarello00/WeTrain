@@ -2,7 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.RequestWorkoutPlanController;
 import exception.DBConnectionFailedException;
-import exception.InvalidIbanException;
+import exception.invalidDataException.InvalidIbanException;
 import exception.TextOutOfBoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
