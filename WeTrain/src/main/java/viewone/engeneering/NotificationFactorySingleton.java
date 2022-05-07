@@ -20,10 +20,10 @@ public class NotificationFactorySingleton {
         return instance;
     }
 
-    public Notification createCourseCommunicationNotification(User sender, User receiver, Course course, String text) {
+    public Notification createCourseCommunicationNotification(User sender, Course course, String text) {
         return new CommunicationNotification(
                 sender,
-                receiver,
+                null,
                 text,
                 course);
     }
@@ -42,15 +42,6 @@ public class NotificationFactorySingleton {
                 course
         );
     }
-
-    public Notification createLessonStartedNotification(User sender, User receiver, Course course) {
-        return new LessonStartedNotification(
-                sender,
-                receiver,
-                course
-        );
-    }
-
 
     public Notification createSubscribeToTrainerNotification(User sender, User receiver, int subscribers) {
         return new SubscriptionToTrainerNotification(
@@ -133,6 +124,13 @@ public class NotificationFactorySingleton {
                     sender,
                     receiver,
                     new CourseDAO().loadCourse(Integer.parseInt(params[0])),
+                    dateTime
+            );
+        } else if(type1 == EMAILRECEIVED) {
+            return new EmailReceivedNotification(
+                    idNotification,
+                    sender,
+                    receiver,
                     dateTime
             );
         }

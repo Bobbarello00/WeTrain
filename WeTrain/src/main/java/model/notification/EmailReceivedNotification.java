@@ -2,7 +2,13 @@ package model.notification;
 
 import model.User;
 
+import java.time.LocalDateTime;
+
 public class EmailReceivedNotification extends Notification{
+
+    public EmailReceivedNotification(int id, User sender, User receiver, LocalDateTime dateTime) {
+        super(id, sender, receiver, dateTime);
+    }
 
     public EmailReceivedNotification(User sender, User receiver) {
         super(sender, receiver);

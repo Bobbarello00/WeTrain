@@ -13,7 +13,7 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
 
     @Override protected void sendAction() {
         //TODO CREAZIONE NOTIFICA E INVIO FITTIZIO DELL'EMAIL
-        NotificationFactorySingleton.getInstance().c
+        //NotificationFactorySingleton.getInstance();
         ((Stage) sendButton.getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
     }

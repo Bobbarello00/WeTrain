@@ -22,7 +22,7 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
 
     @Override protected void sendAction() {
         try {
-            notificationsController.sendCourseCommunication(new CommunicationBean(
+            notificationsController.sendCourseCommunicationNotification(new CommunicationBean(
                     contentTextArea.getText(),
                     courseBean
             ));

@@ -31,14 +31,14 @@ public class Query {
                 LIMIT_30, receiver.getFiscalCode()));
     }
 
-    public static void insertNotification(Statement stmt, Notification notification) throws SQLException {
+    public static void insertNotification(Statement stmt, int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
         stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
                         "VALUES (%s,'%s','%s','%s', '%s');",
-                notification.getType().ordinal(),
-                notification.getDescription(),
-                Timestamp.valueOf(notification.getNotificationDate()),
-                notification.getSender().getFiscalCode(),
-                notification.getReceiver().getFiscalCode()));
+                type,
+                info,
+                dateTime,
+                sender,
+                receiver));
     }
 
     public static void deleteNotification(Statement stmt, int idNotification) throws SQLException {

@@ -5,11 +5,11 @@ import database.dao_classes.NotificationDAO;
 import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Course;
-import model.Trainer;
 import model.notification.Notification;
 import viewone.bean.CommunicationBean;
 import viewone.bean.NotificationBean;
 import viewone.bean.UserBean;
+import viewone.engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -66,12 +66,15 @@ public class NotificationsController {
         );
     }
 
-    public void sendCourseCommunication(CommunicationBean bean) throws SQLException, DBConnectionFailedException {
+    public void sendCourseCommunicationNotification(CommunicationBean bean) throws SQLException, DBConnectionFailedException {
         Course course = new CourseDAO().loadCourse(bean.getCourseBean().getId());
         new NotificationDAO().sendCourseNotification(
                 course,
-                (Trainer) loginController.getLoggedUser(),
-                bean.getText());
+                NotificationFactorySingleton.getInstance().createCourseCommunicationNotification(
+                        loginController.getLoggedUser(),
+                        course,
+                        bean.getText()
+                ));
     }
 
     public void deleteNotification(NotificationBean notificationBean) throws DBConnectionFailedException, SQLException {

@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +23,18 @@ public class NotificationDAO {
     public NotificationDAO() throws DBConnectionFailedException {}
 
     public void saveNotification(Notification notification) throws SQLException {
+        saveNotification(
+                notification.getType().ordinal(),
+                notification.getDescription(),
+                notification.getNotificationDate(),
+                notification.getSender().getFiscalCode(),
+                notification.getReceiver().getFiscalCode()
+        );
+    }
+
+    private void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertNotification(stmt, notification);
+            Query.insertNotification(stmt, type, info, dateTime, sender, receiver);
         }
     }
 
@@ -51,15 +62,16 @@ public class NotificationDAO {
         }
     }
 
-    public void sendCourseNotification(Course course, Trainer trainer, String text) throws SQLException, DBConnectionFailedException {
+    public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBConnectionFailedException {
         try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadSubscribed(stmt, course)) {
-            while(rs.next()){
-                Notification notification = NotificationFactorySingleton.getInstance().createCourseCommunicationNotification(
-                        trainer,
-                        new UserDAO().loadUser(rs.getString("Athlete")), //TODO potrebbe essere evitata?
-                        course,
-                        text);
-                new NotificationDAO().saveNotification(notification);
+            while(rs.next()) {
+                new NotificationDAO().saveNotification(
+                        notification.getType().ordinal(),
+                        notification.getDescription(),
+                        notification.getNotificationDate(),
+                        notification.getSender().getFiscalCode(),
+                        rs.getString("Athlete")
+                );
             }
         }
     }
