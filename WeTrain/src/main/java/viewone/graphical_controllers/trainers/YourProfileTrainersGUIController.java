@@ -35,15 +35,12 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
                 IbanBean ibanBean = IbanBean.ctorWithSyntaxCheck(newIban.getText());
                 profileManagementController.updateTrainerIban(ibanBean);
                 trainer = (TrainerBean) LoggedUserSingleton.getInstance();
-                editPane.setDisable(true);
-                editPane.setVisible(false);
+                setVisible(editPane, false);
                 setIbanLabel();
-                editButton.setDisable(false);
-                editButton.setVisible(true);
+                setVisible(editButton, true);
                 paymentMethodLabel.setVisible(true);
             } catch (SQLException e){
-                e.printStackTrace();
-                //TODO GESTIONE EXCEPTION
+                throw new RuntimeException();
             } catch (InvalidDataException e) {
                 e.alert();
             } catch (DBConnectionFailedException e) {

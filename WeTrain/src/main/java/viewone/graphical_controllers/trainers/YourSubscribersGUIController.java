@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
 import viewone.engeneering.UserInfoCarrier;
+import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
@@ -36,10 +37,13 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     @FXML private Label infoUsername;
     private boolean clicked = false;
 
+    private UserBean selectedSubscriber;
+
     private final SubscribersManagementController subscribersManagementController = new SubscribersManagementController();
 
     @FXML void writeEmailButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button) event.getSource(),"EmailForm","",false);
+        EmailFormGUIController emailFormGUIController = (EmailFormGUIController) PageSwitchSizeChange.pageSwitch((Button) event.getSource(),"EmailForm","",false);
+        emailFormGUIController.setReceiver(selectedSubscriber);
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,6 +70,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     }
 
     private void setInfoBox(UserBean selectedSubscriber) {
+        this.selectedSubscriber = selectedSubscriber;
         if(!clicked) {
             infoSubscriberBox.setDisable(false);
             infoSubscriberBox.setVisible(true);

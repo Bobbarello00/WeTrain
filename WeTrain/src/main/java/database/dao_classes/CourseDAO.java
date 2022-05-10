@@ -47,19 +47,6 @@ public class CourseDAO {
         }
     }
 
-    //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
-    public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.insertCourseSubscriber(stmt, idCourse, (loginController.getLoggedUser()).getFiscalCode());
-        }
-    }
-
-    public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.deleteCourseSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
-        }
-    }
-
     public Course loadCourse(int id) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadCourse(stmt, id)) {
             if(rs.next()){
@@ -151,6 +138,18 @@ public class CourseDAO {
             }else{
                 return null;
             }
+        }
+    }
+
+    public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(Statement stmt = conn.createStatement()){
+            Queries.insertCourseSubscriber(stmt, idCourse, (loginController.getLoggedUser()).getFiscalCode());
+        }
+    }
+
+    public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(Statement stmt = conn.createStatement()){
+            Queries.deleteCourseSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
         }
     }
 

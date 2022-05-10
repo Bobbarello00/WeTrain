@@ -45,7 +45,8 @@ public class Queries {
     }
 
     public static ResultSet loadAthlete(Connection conn, String fc) throws SQLException {
-        PreparedStatement pStmt = conn.prepareStatement(SELECT_ALL +"FROM mydb.Athlete WHERE User = ?");
+        PreparedStatement pStmt = conn.prepareStatement(SELECT_ALL +
+                "FROM mydb.Athlete WHERE User = ?");
         pStmt.setString(1, fc);
         return pStmt.executeQuery();
         /*return stmt.executeQuery(String.format(SELECT_ALL +
@@ -119,7 +120,6 @@ public class Queries {
     }
 
     public static ResultSet loadAllTrainers(Statement stmt) throws SQLException {
-        //TODO CORREZIONE QUERY (ordinare per popolarità)
         return stmt.executeQuery(SELECT_ALL +
                 "FROM mydb.Trainer " +
                 "GROUP BY User " +

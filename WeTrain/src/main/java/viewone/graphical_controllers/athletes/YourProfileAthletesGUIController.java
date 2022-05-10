@@ -4,6 +4,7 @@ import controller.ProfileManagementController;
 import database.dao_classes.AthleteDAO;
 import exception.DBConnectionFailedException;
 import exception.invalidDataException.InvalidDataException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -47,15 +48,12 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                     newExpirationDate.getText());
             profileManagementController.updateAthleteCardInfo(cardInfoBean);
             athlete = (AthleteBean) LoggedUserSingleton.getInstance();
-            editPane.setDisable(true);
-            editPane.setVisible(false);
+            setVisible(editPane, false);
             setPaymentMethodLabel();
-            editButton.setDisable(false);
-            editButton.setVisible(true);
+            setVisible(editButton, true);
             paymentMethodLabel.setVisible(true);
         } catch (SQLException e){
-            e.printStackTrace();
-            //TODO GESTIONE EXCEPTION
+           throw new RuntimeException();
         } catch (InvalidDataException e) {
             e.alert();
         } catch (DBConnectionFailedException e) {
@@ -67,6 +65,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     private void setPaymentMethodLabel() throws SQLException, DBConnectionFailedException {
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
             paymentMethodLabel.setText("Card: Not inserted yet!");
+            cardLogo.setVisible(false);
         } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
             FatalCaseManager.erasePaymentMethod();
         } else{

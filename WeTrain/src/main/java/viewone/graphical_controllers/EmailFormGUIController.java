@@ -31,7 +31,6 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
     }
 
     @Override protected void sendAction() {
-        //TODO CREAZIONE NOTIFICA E INVIO FITTIZIO DELL'EMAIL
         try {
             UserBean sender = LoggedUserSingleton.getInstance();
             emailSystemBoundary.sendEmail(new EmailBean(
@@ -47,7 +46,7 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBConnectionFailedException e) {
-            throw new RuntimeException(e);
+            e.alertAndLogOff();
         }
         close();
     }
