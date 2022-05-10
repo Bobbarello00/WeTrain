@@ -19,9 +19,9 @@ public class LessonDAO {
     public LessonDAO() throws DBConnectionFailedException {
     }
 
-    public void saveLesson(Lesson lesson, Course course) throws SQLException {
+    public void saveLesson(Lesson lesson, Course course) throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement()){
-            Queries.insertLesson(stmt,lesson, course);
+            Queries.insertLesson(lesson, course.getId());
         }
     }
 

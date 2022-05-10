@@ -25,7 +25,7 @@ public class RequestDAO {
     public RequestDAO() throws DBConnectionFailedException {}
 
     public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadRequest(stmt, requestCode)) {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadRequest(requestCode)) {
             if(rs.next()) {
                 return new Request(
                         rs.getInt(ID_REQUEST),
@@ -38,14 +38,12 @@ public class RequestDAO {
             }
         }
     }
-    public void deleteRequest(int idRequest) throws SQLException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.deleteRequest(stmt, idRequest);
-        }
+    public void deleteRequest(int idRequest) throws SQLException, DBConnectionFailedException {
+        Queries.deleteRequest(idRequest);
     }
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadTrainerRequests(stmt, trainer)){
+        try(ResultSet rs = Queries.loadTrainerRequests(trainer.getFiscalCode())){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -59,9 +57,7 @@ public class RequestDAO {
         }
     }
 
-    public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException {
-        try(Statement stmt = conn.createStatement()) {
-            Queries.insertRequest(stmt, requestDate, info, athleteFc, trainer);
-        }
+    public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBConnectionFailedException {
+        Queries.insertRequest(requestDate, info, athleteFc, trainer);
     }
 }

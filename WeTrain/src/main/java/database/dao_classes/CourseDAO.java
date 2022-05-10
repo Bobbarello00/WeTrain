@@ -47,8 +47,18 @@ public class CourseDAO {
         }
     }
 
-    public Course loadCourse(int id) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadCourse(stmt, id)) {
+    //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
+    public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        Queries.insertCourseSubscriber(idCourse, (loginController.getLoggedUser()).getFiscalCode());
+
+    }
+
+    public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        Queries.deleteCourseSubscriber(idCourse, loginController.getLoggedUser().getFiscalCode());
+    }
+
+    public Course loadCourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadCourse(idCourse)) {
             if(rs.next()){
                 Course course = new Course(
                         rs.getInt(IDCOURSE),
@@ -68,9 +78,7 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllCoursesAthlete(stmt, athlete)){
-            return loadAllCourses(athlete, rs);
-        }
+        return loadAllCourses(athlete, Queries.loadAllCoursesAthlete(athlete.getFiscalCode()));
     }
     public List<Course> loadPopularCourses() throws SQLException, DBConnectionFailedException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadPopularCourse(stmt)){
@@ -79,9 +87,7 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllCoursesTrainer(stmt, trainer)){
-            return loadAllCourses(trainer, rs);
-        }
+        return loadAllCourses(trainer, Queries.loadAllCoursesTrainer(trainer.getFiscalCode()));
     }
 
     private List<Course> loadAllCourses(User user, ResultSet rs) throws SQLException, DBConnectionFailedException {
@@ -131,8 +137,8 @@ public class CourseDAO {
         }
     }
 
-    public String loadStartedLessonUrl(int idCourse) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadCourseStartedLessonUrl(stmt, idCourse)){
+    public String loadStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(ResultSet rs = Queries.loadCourseStartedLessonUrl(idCourse)){
             if(rs.next()){
                 return rs.getString("StartedLessonUrl");
             }else{
@@ -141,20 +147,8 @@ public class CourseDAO {
         }
     }
 
-    public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.insertCourseSubscriber(stmt, idCourse, (loginController.getLoggedUser()).getFiscalCode());
-        }
-    }
-
-    public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.deleteCourseSubscriber(stmt, idCourse, loginController.getLoggedUser().getFiscalCode());
-        }
-    }
-
-    public int getSubscribersNumber(Course course) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.getSubscribers(stmt, course)){
+    public int getSubscribersNumber(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(ResultSet rs = Queries.getSubscribers(idCourse)){
             if(rs.next()) {
                 return rs.getInt(1);
             } else {

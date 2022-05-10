@@ -11,7 +11,6 @@ import viewone.engeneering.NotificationFactorySingleton;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ public class NotificationDAO {
 
     public NotificationDAO() throws DBConnectionFailedException {}
 
-    public void saveNotification(Notification notification) throws SQLException {
+    public void saveNotification(Notification notification) throws SQLException, DBConnectionFailedException {
         saveNotification(
                 notification.getType().ordinal(),
                 notification.getDescription(),
@@ -31,14 +30,12 @@ public class NotificationDAO {
         );
     }
 
-    public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.insertNotification(stmt, type, info, dateTime, sender, receiver);
-        }
+    public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
+        Queries.insertNotification(type, info, dateTime, sender, receiver);
     }
 
     public List<Notification> loadAllNotifications(User user) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllNotifications(stmt, user)){
+        try(ResultSet rs = Queries.loadAllNotifications(user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(NotificationFactorySingleton.getInstance().createNotification(
@@ -55,14 +52,12 @@ public class NotificationDAO {
         }
     }
 
-    public void deleteNotification(int idNotification) throws SQLException {
-        try(Statement stmt = conn.createStatement()) {
-            Queries.deleteNotification(stmt, idNotification);
-        }
+    public void deleteNotification(int idNotification) throws SQLException, DBConnectionFailedException {
+        Queries.deleteNotification(idNotification);
     }
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadSubscribed(stmt, course)) {
+        try (ResultSet rs = Queries.loadSubscribed(course.getId())) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),

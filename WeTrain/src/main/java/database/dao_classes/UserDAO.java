@@ -21,13 +21,13 @@ public class UserDAO {
     public UserDAO() throws DBConnectionFailedException {}
 
     public User loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(stmt, email, password)) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(email, password)) {
             return getUser(rs);
         }
     }
 
     public User loadUser(String fc) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(stmt, fc)) {
+        try (ResultSet rs = Queries.loadUser(fc)) {
             return getUser(rs);
         }
     }

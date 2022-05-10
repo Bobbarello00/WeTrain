@@ -29,27 +29,22 @@ public class AthleteDAO {
 
     public AthleteDAO() throws DBConnectionFailedException {}
 
-    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException {
-        try (Statement stmt = conn.createStatement()) {
-            athlete.changeCardInfo(cardNumber, expirationDate);
-            Queries.updateCardInfoAthlete(stmt, athlete);
-        }
+    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException, DBConnectionFailedException {
+        athlete.changeCardInfo(cardNumber, expirationDate);
+        Queries.updateCardInfoAthlete(athlete);
+
     }
 
-    public void removeCardInfo(String fc) throws SQLException {
-        try (Statement stmt = conn.createStatement()) {
-            Queries.removeCardInfoAthlete(stmt, fc);
-        }
+    public void removeCardInfo(String fc) throws SQLException, DBConnectionFailedException {
+        Queries.removeCardInfoAthlete(fc);
     }
 
-    public void saveAthlete(Athlete athlete) throws SQLException {
-        try (Statement stmt = conn.createStatement()) {
-            Queries.insertAthlete(stmt, athlete);
-        }
+    public void saveAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
+        Queries.insertAthlete(athlete);
     }
 
     public Athlete loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(stmt, fc)) {
+        try (ResultSet rs = Queries.loadUser(fc)) {
             if (rs.next()) {
                 Athlete athlete = new Athlete(rs.getString(NAME),
                         rs.getString(SURNAME),
@@ -61,7 +56,7 @@ public class AthleteDAO {
                         rs.getString(PASSWORD)
                 );
 
-                try (ResultSet rs1 = Queries.loadAthlete(conn, fc)) {
+                try (ResultSet rs1 = Queries.loadAthlete(fc)) {
                     if (rs1.next()) {
                         athlete.setCardNumber(rs1.getString(CARD_NUMBER));
                         Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
@@ -84,7 +79,7 @@ public class AthleteDAO {
                         return null;
                     }
                 } catch (ExpiredCardException e) {
-                    Queries.removeCardInfoAthlete(stmt, fc);
+                    Queries.removeCardInfoAthlete(fc);
                     return loadAthlete(fc);
                 }
             } else {
@@ -93,8 +88,8 @@ public class AthleteDAO {
         }
     }
 
-    public int getNumberOfCourses(String athleteFc) throws SQLException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.countAthleteCourses(stmt, athleteFc)) {
+    public int getNumberOfCourses(String athleteFc) throws SQLException, DBConnectionFailedException {
+        try (ResultSet rs = Queries.countAthleteCourses(athleteFc)) {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -103,34 +98,20 @@ public class AthleteDAO {
         }
     }
 
-    public void setTrainer(Athlete athlete, String fc) {
-        try (Statement stmt = conn.createStatement()) {
-            Queries.updateTrainerAthlete(stmt, athlete.getFiscalCode(), fc);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void setTrainer(Athlete athlete, String fc) throws SQLException, DBConnectionFailedException {
+        Queries.updateTrainerAthlete(athlete.getFiscalCode(), fc);
     }
 
-    public void removeTrainer(Athlete athlete){
-        try (Statement stmt = conn.createStatement()) {
-            Queries.removeTrainerAthlete(stmt, athlete.getFiscalCode());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void removeTrainer(Athlete athlete) throws SQLException, DBConnectionFailedException {
+        Queries.removeTrainerAthlete(athlete.getFiscalCode());
     }
 
-    public void removeWorkoutPlan(int idWorkoutPlan) {
-        try (Statement stmt = conn.createStatement()) {
-            Queries.removeWorkoutPlan(stmt, idWorkoutPlan);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
+        Queries.removeWorkoutPlan(idWorkoutPlan);
     }
 
-    public void addWorkoutPlan(int id, String athleteFc) throws SQLException {
-        try(Statement stmt = conn.createStatement()) {
-            Queries.addWorkoutPlanToAthlete(stmt, id, athleteFc);
-        }
+    public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
+            Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);
     }
 
 }

@@ -22,8 +22,8 @@ public class ExerciseDAO {
 
     public ExerciseDAO() throws DBConnectionFailedException {}
 
-    public void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
-        Queries.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
+    public void insertExerciseInWorkoutDay(Exercise exercise, int workoutDayId) throws SQLException, DBConnectionFailedException {
+        Queries.insertExerciseInWorkoutDay(exercise.getId(), workoutDayId);
     }
 
     public void saveExercise(Exercise exercise) throws SQLException {
@@ -32,8 +32,8 @@ public class ExerciseDAO {
         }
     }
 
-    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
+    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException, DBConnectionFailedException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllExerciseInWorkoutDays(workoutDay.getId())){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
                 exerciseList.add(new Exercise(

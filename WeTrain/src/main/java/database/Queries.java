@@ -6,6 +6,7 @@ import exception.DBConnectionFailedException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
 
+import javax.sound.midi.MidiChannel;
 import java.sql.*;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
@@ -15,148 +16,216 @@ import java.util.List;
 public class Queries {
 
     private static final String SELECT_ALL = "SELECT * ";
-    private static final String WHERE_USER = "WHERE User = '%s';";
-    private static final String LIMIT_10 = "LIMIT 10;";
-    private static final String LIMIT_30 = "LIMIT 30;";
+    private static final String WHERE_USER = "WHERE User = ?";
+    private static final String LIMIT_10 = "LIMIT 10";
+    private static final String LIMIT_30 = "LIMIT 30";
 
     private Queries(){}
 
     //TODO gestione duplicate record
-    public static ResultSet loadAllNotifications(@NotNull Statement stmt, User receiver) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadAllNotifications(User receiver) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Notification " +
-                "WHERE Receiver = '%s' " +
-                LIMIT_30, receiver.getFiscalCode()));
+                "WHERE Receiver = ? " +
+                LIMIT_30)) {
+            preparedStatement.setString(1, receiver.getFiscalCode());
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static void insertNotification(Statement stmt, int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
-                        "VALUES (%s,'%s','%s','%s', '%s');",
-                type,
-                info,
-                dateTime,
-                sender,
-                receiver));
+    public static void insertNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
+                "VALUES (?, ?, ?, ?, ?)")) {
+            preparedStatement.setInt(1, type);
+            preparedStatement.setString(2, info);
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(dateTime));
+            preparedStatement.setString(4, sender);
+            preparedStatement.setString(5, receiver);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static void deleteNotification(Statement stmt, int idNotification) throws SQLException {
-        stmt.executeUpdate(String.format("DELETE FROM mydb.Notification " +
-                "WHERE idNotification = %s;", idNotification));
+    public static void deleteNotification(int idNotification) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.Notification " +
+                "WHERE idNotification = ?")){
+            preparedStatement.setInt(1, idNotification);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static ResultSet loadAthlete(Connection conn, String fc) throws SQLException {
-        PreparedStatement pStmt = conn.prepareStatement(SELECT_ALL +
-                "FROM mydb.Athlete WHERE User = ?");
-        pStmt.setString(1, fc);
-        return pStmt.executeQuery();
-        /*return stmt.executeQuery(String.format(SELECT_ALL +
-                " FROM mydb.Athlete " +
-                WHERE_USER, fc));*/
+    public static ResultSet loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
+                        "FROM mydb.Athlete " +
+                        WHERE_USER)) {
+            preparedStatement.setString(1, fc);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static void insertAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
-                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-                athlete.getFiscalCode(),
-                athlete.getName(),
-                athlete.getSurname(),
-                athlete.getUsername(),
-                Date.valueOf(athlete.getDateOfBirth()),
-                athlete.getEmail(),
-                athlete.getGender(),
-                athlete.getPassword()));
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Athlete (User) VALUES ('%s');", athlete.getFiscalCode()));
+    public static void insertAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
+        PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        preparedStatement.setString(1,athlete.getFiscalCode());
+        preparedStatement.setString(2,athlete.getName());
+        preparedStatement.setString(3,athlete.getSurname());
+        preparedStatement.setString(4,athlete.getUsername());
+        preparedStatement.setDate(5,Date.valueOf(athlete.getDateOfBirth()));
+        preparedStatement.setString(6,athlete.getEmail());
+        preparedStatement.setString(7,String.valueOf(athlete.getGender()));
+        preparedStatement.setString(8,athlete.getPassword());
+        preparedStatement.executeUpdate();
+        PreparedStatement preparedStatement1 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Athlete (User) VALUES (?)");
+        preparedStatement1.setString(1, athlete.getFiscalCode());
+        preparedStatement1.executeUpdate();
     }
 
-    public static void updateCardInfoAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
-                        "SET CardNumber = '%s', CardExpirationDate = '%s' " +
-                        WHERE_USER,
-                athlete.getCardNumber(),
-                Date.valueOf((athlete.getCardExpirationDate()).atDay(1)),
-                athlete.getFiscalCode()));
+    public static void updateCardInfoAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "UPDATE mydb.Athlete " +
+                "SET CardNumber = ?, CardExpirationDate = ? " +
+                WHERE_USER)){
+            preparedStatement.setString(1, athlete.getCardNumber());
+            preparedStatement.setDate(2, Date.valueOf((athlete.getCardExpirationDate()).atDay(1)));
+            preparedStatement.setString(3, athlete.getFiscalCode());
+            preparedStatement.executeUpdate();
+        }
     }
 
 
-    public static void removeCardInfoAthlete(Statement stmt, String fc) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
-                        "SET CardNumber = NULL, CardExpirationDate = NULL " +
-                WHERE_USER,
-                fc));
+    public static void removeCardInfoAthlete(String fc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "UPDATE mydb.Athlete " +
+                "SET CardNumber = NULL, CardExpirationDate = NULL " +
+                WHERE_USER)) {
+            preparedStatement.setString(1, fc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static void updateTrainerAthlete(Statement stmt, String athleteFc, String trainerFc) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
-                        "SET Trainer = '%s' " +
-                        WHERE_USER, trainerFc, athleteFc));
+    public static void updateTrainerAthlete(String athleteFc, String trainerFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "UPDATE mydb.Athlete " +
+                "SET Trainer = ? " +
+                WHERE_USER)) {
+            preparedStatement.setString(1, trainerFc);
+            preparedStatement.setString(2, athleteFc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static void removeTrainerAthlete(Statement stmt, String athleteFc) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Athlete " +
+    public static void removeTrainerAthlete(String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "UPDATE mydb.Athlete " +
                 "SET Trainer = NULL " +
-                WHERE_USER, athleteFc));
+                WHERE_USER)) {
+            preparedStatement.setString(1, athleteFc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static ResultSet countAthleteCourses(Statement stmt, String athleteFc) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT COUNT(*) FROM mydb.Subscribe " +
-                "WHERE Athlete = '%s';",athleteFc));
+    public static ResultSet countAthleteCourses(String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT COUNT(*) FROM mydb.Subscribe " +
+                "WHERE Athlete = ?")) {
+            preparedStatement.setString(1, athleteFc);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static int deleteAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Athlete " +
-                WHERE_USER, athlete.getFiscalCode()));
+    public static int deleteAthlete(String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.Athlete " +
+                WHERE_USER)) {
+            preparedStatement.setString(1, athleteFc);
+            return preparedStatement.executeUpdate();
+        }
     }
 
-    public static void addWorkoutPlanToAthlete(Statement stmt, int id, String athleteFc) throws SQLException {
-        stmt.executeUpdate(String.format("UPDATE mydb.Athlete SET WorkoutPlan = %s " + WHERE_USER,
-                id,
-                athleteFc));
+    public static void addWorkoutPlanToAthlete(int idWorkoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "UPDATE mydb.Athlete SET WorkoutPlan = ? " +
+                WHERE_USER)) {
+            preparedStatement.setInt(1, idWorkoutPlan);
+            preparedStatement.setString(2, athleteFc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static ResultSet loadTrainer(Statement stmt, String fc) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadTrainer(String fc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Trainer " +
-                WHERE_USER, fc));
+                WHERE_USER)) {
+            preparedStatement.setString(1, fc);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadAllTrainers(Statement stmt) throws SQLException {
-        return stmt.executeQuery(SELECT_ALL +
+    public static ResultSet loadAllTrainers() throws SQLException, DBConnectionFailedException {
+        //TODO CORREZIONE QUERY (ordinare per popolarità)
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Trainer " +
                 "GROUP BY User " +
                 "ORDER BY COUNT(User) DESC " +
-                LIMIT_10);
+                LIMIT_10)){
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet searchTrainer(Statement stmt, String name) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet searchTrainer(String name) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Trainer join mydb.User on Trainer.User = User.FC " +
-                "WHERE (Name LIKE '%%%s%%' OR Surname LIKE '%%%s%%') " +
+                "WHERE (Name LIKE ? OR Surname LIKE ?) " +
                 "GROUP BY User " +
                 "ORDER BY COUNT(User) DESC " +
-                LIMIT_10,
-                name,
-                name)
-        );
+                LIMIT_10)){
+            StringBuilder myString = new StringBuilder();
+            myString.append("%%");
+            myString.append(name);
+            myString.append("%%");
+            preparedStatement.setString(1, myString.toString());
+            preparedStatement.setString(2, myString.toString());
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static void insertTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) " +
-                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s');",
-                trainer.getFiscalCode(),
-                trainer.getName(),
-                trainer.getSurname(),
-                trainer.getUsername(),
-                Date.valueOf(trainer.getDateOfBirth()),
-                trainer.getGender(),
-                trainer.getEmail(),
-                trainer.getPassword()));
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Trainer (User) VALUES ('%s');", trainer.getFiscalCode()));
+    public static void insertTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)")){
+            preparedStatement.setString(1, trainer.getFiscalCode());
+            preparedStatement.setString(2, trainer.getName());
+            preparedStatement.setString(3, trainer.getSurname());
+            preparedStatement.setString(4, trainer.getUsername());
+            preparedStatement.setDate(5, Date.valueOf(trainer.getDateOfBirth()));
+            preparedStatement.setString(6, String.valueOf(trainer.getGender()));
+            preparedStatement.setString(7, trainer.getEmail());
+            preparedStatement.setString(8, trainer.getPassword());
+            preparedStatement.executeUpdate();
+        }
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Trainer (User) VALUES (?)")){
+            preparedStatement.setString(1, trainer.getFiscalCode());
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static int updateIbanTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("UPDATE mydb.Trainer SET Iban = '%s' " + WHERE_USER,
-                trainer.getIban(),
-                trainer.getFiscalCode()));
+    public static int updateIbanTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "UPDATE mydb.Trainer SET Iban = ? " +
+                WHERE_USER)){
+            preparedStatement.setString(1, trainer.getIban());
+            preparedStatement.setString(2, trainer.getFiscalCode());
+            return preparedStatement.executeUpdate();
+        }
     }
 
     public static ResultSet countTrainerSubscribers(Statement stmt, String trainerFc) throws SQLException {
@@ -164,70 +233,101 @@ public class Queries {
                 "WHERE Trainer ='%s';",trainerFc));
     }
 
-    public static ResultSet loadAllTrainerSubscribers(Statement stmt, String trainerFc) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Athlete " +
-                "WHERE Trainer = '%s' " +
-                LIMIT_30,trainerFc));
+                "WHERE Trainer = ? " +
+                LIMIT_30)){
+            preparedStatement.setString(1, trainerFc);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static int deleteTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Trainer " +
-                WHERE_USER, trainer.getFiscalCode()));
+    public static int deleteTrainer(String trainerFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.Trainer " +
+                WHERE_USER)){
+            preparedStatement.setString(1, trainerFc);
+            return preparedStatement.executeUpdate();
+        }
     }
 
-    public static ResultSet loadUser(Statement stmt, String email, String password) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 " FROM mydb.User " +
-                " WHERE Email = '%s' AND Password = '%s';", email, password));
+                " WHERE Email = ? AND Password = ?")){
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(1, password);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadUser(Statement stmt, String fc) throws SQLException, DBConnectionFailedException {
-        try {
-            return stmt.executeQuery(String.format(SELECT_ALL +
-                    "FROM mydb.User " +
-                    "WHERE FC = '%s';", fc));
+    public static ResultSet loadUser(String fc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
+                "FROM mydb.User " +
+                "WHERE FC = ?")){
+            preparedStatement.setString(1,fc);
+            return preparedStatement.executeQuery();
         } catch(CJCommunicationsException| CommunicationsException e) {
             throw new DBConnectionFailedException();
         }
     }
 
-    public static ResultSet loadCourse(Statement stmt, int id) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadCourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Course " +
-                "WHERE idCourse = %s;", id));
+                "WHERE idCourse = ?")){
+            preparedStatement.setInt(1, idCourse);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadPopularCourse(Statement stmt) throws SQLException {
-        return stmt.executeQuery("SELECT Course.* " +
+    public static ResultSet loadPopularCourse(Statement stmt) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT Course.* " +
                 "FROM mydb.Course join mydb.Subscribe on Course.idCourse = Subscribe.Course " +
                 "GROUP BY idCourse " +
                 "ORDER BY COUNT(idCourse) DESC " +
-                LIMIT_10);
+                LIMIT_10)){
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadAllCoursesAthlete(Statement stmt, Athlete athlete) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadAllCoursesAthlete(String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Course join mydb.Subscribe on Subscribe.Course = Course.idCourse " +
-                "WHERE Subscribe.Athlete = '%s';", athlete.getFiscalCode()));
+                "WHERE Subscribe.Athlete = ?")){
+            preparedStatement.setString(1, athleteFc);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadAllCoursesTrainer(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadAllCoursesTrainer(String trainerFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Course " +
-                "WHERE Trainer = '%s';", trainer.getFiscalCode()));
+                "WHERE Trainer = ?")){
+            preparedStatement.setString(1, trainerFc);
+            return preparedStatement.executeQuery();
+        }
     }
 
     public static int insertCourse(Course course) throws SQLException, DBConnectionFailedException {
-        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(String.format("INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
-                        "VALUES ('%s', '%s', '%s', '%s', '%s');",
-                course.getName(),
-                course.getDescription(),
-                course.getFitnessLevel(),
-                course.getEquipment(),
-                course.getOwner().getFiscalCode()), Statement.RETURN_GENERATED_KEYS)) {
-            statement2.executeUpdate();
-            try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
+        try (PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
+                        "VALUES (?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS)){
+            preparedStatement.setString(1, course.getName());
+            preparedStatement.setString(2, course.getDescription());
+            preparedStatement.setString(3, course.getFitnessLevel());
+            preparedStatement.setString(4, course.getEquipment());
+            preparedStatement.setString(5, course.getOwner().getFiscalCode());
+            preparedStatement.executeUpdate();
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 }
@@ -277,10 +377,14 @@ public class Queries {
         }
     }
 
-    public static ResultSet loadCourseStartedLessonUrl(Statement stmt, int idCourse) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT StartedLessonUrl " +
+    public static ResultSet loadCourseStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT StartedLessonUrl " +
                 "FROM mydb.Course " +
-                "WHERE idCourse = %s;", idCourse));
+                "WHERE idCourse = ?")){
+            preparedStatement.setInt(1, idCourse);
+            return  preparedStatement.executeQuery();
+        }
     }
 
     public static void insertCourseStartedLessonUrl(Statement stmt, int idCourse, String url) throws SQLException {
@@ -343,65 +447,99 @@ public class Queries {
     }
 
     public static ResultSet loadAllLessons(Statement stmt, Course course) throws SQLException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT Request.* " +
+                        "FROM mydb.Request join mydb.Trainer on Request.Trainer = Trainer.User " +
+                        "WHERE Trainer = ? " +
+                        LIMIT_30)){
+            preparedStatement.setString(1, trainerFc);
+            return preparedStatement.executeQuery();
+        }
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Lesson " +
                 "WHERE Course = %s;", course.getId()));
     }
 
-    public static void insertLesson(Statement stmt, Lesson lesson, Course course) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Lesson (LessonDay, LessonStartTime, LessonEndTime, Course) " +
-                        "VALUES ('%s', '%s', '%s', %s);",
-                lesson.getLessonDay(),
-                lesson.getLessonStartTime().toString(),
-                lesson.getLessonEndTime().toString(),
-                course.getId()));
+    public static void insertLesson(Lesson lesson, int idCourse) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Lesson (LessonDay, LessonStartTime, LessonEndTime, Course) " +
+                        "VALUES (?, ?, ?, ?)")){
+            preparedStatement.setString(1, lesson.getLessonDay());
+            preparedStatement.setString(2, lesson.getLessonStartTime().toString());
+            preparedStatement.setString(3, lesson.getLessonEndTime().toString());
+            preparedStatement.setInt(4, idCourse);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static int deleteLesson(Statement stmt, Lesson lesson) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.Lesson " +
-                "WHERE idLesson = %s;", lesson.getId()));
+    public static int deleteLesson(int idLesson) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.Lesson " +
+                        "WHERE idLesson = ?")){
+            preparedStatement.setInt(1, idLesson);
+            return preparedStatement.executeUpdate();
+        }
     }
 
-    public static void insertRequest(Statement stmt, LocalDateTime requestDate, String info, String athleteFc, String trainerFc) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Request (RequestDate, Info, Athlete, Trainer) " +
-                        "VALUES ('%s', '%s', '%s', '%s');",
-                Timestamp.valueOf(requestDate),
-                info,
-                athleteFc,
-                trainerFc));
+    public static void insertRequest(LocalDateTime requestDate, String info, String athleteFc, String trainerFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Request (RequestDate, Info, Athlete, Trainer) " +
+                        "VALUES (?, ?, ?, ?)")){
+            preparedStatement.setTimestamp(1, Timestamp.valueOf(requestDate));
+            preparedStatement.setString(2, info);
+            preparedStatement.setString(3, athleteFc);
+            preparedStatement.setString(4, trainerFc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static ResultSet loadTrainerRequests(Statement stmt, Trainer trainer) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT Request.* " +
-                "FROM mydb.Request join mydb.Trainer on Request.Trainer = Trainer.User " +
-                "WHERE Trainer = '%s' " +
-                LIMIT_30, trainer.getFiscalCode()));
+    public static ResultSet loadTrainerRequests(String trainerFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT Request.* " +
+                        "FROM mydb.Request join mydb.Trainer on Request.Trainer = Trainer.User " +
+                        "WHERE Trainer = ? " +
+                        LIMIT_30)){
+            preparedStatement.setString(1, trainerFc);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadRequest(Statement stmt, int id) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
-                "FROM mydb.Request " +
-                "WHERE idRequest = %s;", id));
+    public static ResultSet loadRequest(int idRequest) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
+                        "FROM mydb.Request " +
+                        "WHERE idRequest = ?")){
+            preparedStatement.setInt(1, idRequest);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static void deleteRequest(Statement stmt, int idRequest) throws SQLException {
-        stmt.executeUpdate(String.format("DELETE FROM mydb.Request " +
-                "WHERE idRequest = %s;", idRequest));
+    public static void deleteRequest(int idRequest) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.Request " +
+                        "WHERE idRequest = ?")){
+            preparedStatement.setInt(1, idRequest);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayKey) throws SQLException{
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Contains (WorkoutDay, Exercise) " +
-                "VALUES (%s, %s);",
-                workoutDayKey,
-                exercise.getId()));
+    public static void insertExerciseInWorkoutDay(int idExercise, int workoutDayKey) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Contains (WorkoutDay, Exercise) " +
+                        "VALUES (?, ?)")){
+            preparedStatement.setInt(1, workoutDayKey);
+            preparedStatement.setInt(2, idExercise);
+            preparedStatement.executeUpdate();
+        }
     }
 
     public static int insertWorkoutDay(int workoutPlanKey, String day) throws SQLException, DBConnectionFailedException {
-        try (PreparedStatement statement2 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                String.format("INSERT INTO mydb.WorkoutDay (WorkoutPlan, Day) VALUES (%s, '%s');",
-                        workoutPlanKey, day), Statement.RETURN_GENERATED_KEYS)) {
-            statement2.executeUpdate();
-            try (ResultSet generatedKeys = statement2.getGeneratedKeys()) {
+        try (PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.WorkoutDay (WorkoutPlan, Day) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setInt(1, workoutPlanKey);
+            preparedStatement.setString(2, day);
+            preparedStatement.executeUpdate();
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 }
@@ -410,33 +548,44 @@ public class Queries {
         }
     }
 
-    public static ResultSet loadAllWorkoutDays(Statement stmt, WorkoutPlan workoutPlan) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT WorkoutDay.* " +
+    public static ResultSet loadAllWorkoutDays(int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT WorkoutDay.* " +
                 "FROM mydb.WorkoutDay " +
-                "WHERE WorkoutDay.WorkoutPlan = %s;", workoutPlan.getId()));
+                "WHERE WorkoutDay.WorkoutPlan = ?")){
+            preparedStatement.setInt(1, idWorkoutPlan);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet loadAllExerciseInWorkoutDays(Statement stmt, WorkoutDay workoutDay) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT Exercise.* " +
+    public static ResultSet loadAllExerciseInWorkoutDays(int idWorkoutDay) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT Exercise.* " +
                 "FROM mydb.Contains join mydb.Exercise on Contains.Exercise = Exercise.idExercise " +
-                "WHERE Contains.WorkoutDay = %s;", workoutDay.getId()));
+                "WHERE Contains.WorkoutDay = ?")){
+            preparedStatement.setInt(1, idWorkoutDay);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static int deleteWorkoutDay(Statement stmt, WorkoutDay workoutDay) throws SQLException {
-        return stmt.executeUpdate(String.format("DELETE FROM mydb.WorkoutDay " +
-                "WHERE idWorkoutDay = %s;", workoutDay.getId()));
+    public static int deleteWorkoutDay(int idWorkoutDay) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.WorkoutDay " +
+                "WHERE idWorkoutDay = ?")){
+            preparedStatement.setInt(1, idWorkoutDay);
+            return preparedStatement.executeUpdate();
+        }
     }
 
     public static int insertWorkoutPlan(String athleteFc) throws SQLException, DBConnectionFailedException {
-
-        try(PreparedStatement statement = DatabaseConnectionSingleton.getInstance().getConn()
-                .prepareStatement(String.format("INSERT INTO mydb.WorkoutPlan (Athlete) VALUES ('%s');",
-                        athleteFc),
-                        Statement.RETURN_GENERATED_KEYS)) {
-            if(statement.executeUpdate() == 0){
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.WorkoutPlan (Athlete) VALUES (?)",
+                Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setString(1, athleteFc);
+            if(preparedStatement.executeUpdate() == 0){
                 System.out.println("Inserimento WorkoutPlan fallito.");
             }
-            try(ResultSet generatedKeys = statement.getGeneratedKeys()) {
+            try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     return generatedKeys.getInt(1);
                 }
@@ -445,43 +594,62 @@ public class Queries {
         }
     }
 
-    public static ResultSet loadWorkoutPlan(Statement stmt, Integer idWorkoutPlan) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT WorkoutPlan.* " +
+    public static ResultSet loadWorkoutPlan(Statement stmt, Integer idWorkoutPlan) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT WorkoutPlan.* " +
                 "FROM mydb.WorkoutPlan " +
-                "WHERE idWorkoutPlan = %s;",
-                idWorkoutPlan));
+                "WHERE idWorkoutPlan = ?")){
+            preparedStatement.setInt(1, idWorkoutPlan);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static void removeWorkoutPlan(Statement stmt, int idWorkoutPlan) throws SQLException {
-        stmt.executeUpdate(String.format("DELETE FROM mydb.WorkoutPlan " +
-                "WHERE idWorkoutPlan = %s;", idWorkoutPlan));
+    public static void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.WorkoutPlan " +
+                "WHERE idWorkoutPlan = ?")){
+            preparedStatement.setInt(1, idWorkoutPlan);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static void insertCourseSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
-        stmt.executeUpdate(String.format("INSERT INTO mydb.Subscribe (Course, Athlete) " +
-                        "VALUES (%s, '%s');",
-                idCourse,
-                athleteFc));
+    public static void insertCourseSubscriber(int idCourse, String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "INSERT INTO mydb.Subscribe (Course, Athlete) " +
+                "VALUES (?, ?)")){
+            preparedStatement.setInt(1, idCourse);
+            preparedStatement.setString(2, athleteFc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static void deleteCourseSubscriber(Statement stmt, int idCourse, String athleteFc) throws SQLException {
-        stmt.executeUpdate(String.format("DELETE FROM mydb.Subscribe " +
-                        "WHERE Course = %s and Athlete = '%s';",
-                idCourse,
-                athleteFc));
+    public static void deleteCourseSubscriber(int idCourse, String athleteFc) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "DELETE FROM mydb.Subscribe " +
+                "WHERE Course = ? and Athlete = ?")){
+            preparedStatement.setInt(1, idCourse);
+            preparedStatement.setString(2, athleteFc);
+            preparedStatement.executeUpdate();
+        }
     }
 
-    public static ResultSet loadSubscribed(Statement stmt, Course course) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadSubscribed(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                SELECT_ALL +
                 "FROM mydb.Subscribe " +
-                "WHERE Course = %s;",
-                course.getId()));
+                "WHERE Course = ?")){
+            preparedStatement.setInt(1, idCourse);
+            return preparedStatement.executeQuery();
+        }
     }
 
-    public static ResultSet getSubscribers(Statement stmt, Course course) throws SQLException {
-        return stmt.executeQuery(String.format("SELECT Count(*)" +
+    public static ResultSet getSubscribers(int idCourse) throws SQLException, DBConnectionFailedException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                "SELECT Count(*)" +
                 "FROM mydb.Subscribe " +
-                "WHERE Course = %s",
-                course.getId()));
+                "WHERE Course = ?")){
+            preparedStatement.setInt(1, idCourse);
+            return preparedStatement.executeQuery();
+        }
     }
 }

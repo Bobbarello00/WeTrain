@@ -17,11 +17,11 @@ public class WorkoutPlanDAO {
     }
 
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
-        int id = Queries.insertWorkoutPlan(athleteFc);
+        int idWorkoutPlan = Queries.insertWorkoutPlan(athleteFc);
         for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
-            new WorkoutDayDAO().saveWorkoutDay(workoutDay, id);
+            new WorkoutDayDAO().saveWorkoutDay(workoutDay, idWorkoutPlan);
         }
-        new AthleteDAO().addWorkoutPlan(id, athleteFc);
+        new AthleteDAO().addWorkoutPlan(idWorkoutPlan, athleteFc);
     }
 
     public WorkoutPlan loadWorkoutPlan(Integer idWorkoutPlan, Trainer trainer) throws SQLException, DBConnectionFailedException {

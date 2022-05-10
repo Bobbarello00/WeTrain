@@ -25,13 +25,13 @@ public class WorkoutDayDAO {
         try (Statement stmt = conn.createStatement()) {
             int id = Queries.insertWorkoutDay(idWorkoutPlan, workoutDay.getDay());
             for (Exercise exercise : workoutDay.getExerciseList()){
-                new ExerciseDAO().insertExerciseInWorkoutDay(stmt, exercise, id);
+                new ExerciseDAO().insertExerciseInWorkoutDay(exercise, id);
             }
         }
     }
 
     public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan, Trainer trainer) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllWorkoutDays(stmt, workoutPlan)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllWorkoutDays(workoutPlan.getId())){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
                 WorkoutDay workoutDay = new WorkoutDay(

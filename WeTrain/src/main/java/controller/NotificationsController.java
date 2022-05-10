@@ -113,7 +113,7 @@ public class NotificationsController {
                 sender,
                 receiver,
                 course,
-                new CourseDAO().getSubscribersNumber(course)
+                new CourseDAO().getSubscribersNumber(course.getId())
         );
         new NotificationDAO().saveNotification(notification);
     }
