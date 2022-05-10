@@ -1,10 +1,9 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Course;
-import model.Trainer;
 import model.notification.Notification;
 import model.User;
 import viewone.engeneering.NotificationFactorySingleton;
@@ -34,12 +33,12 @@ public class NotificationDAO {
 
     public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertNotification(stmt, type, info, dateTime, sender, receiver);
+            Queries.insertNotification(stmt, type, info, dateTime, sender, receiver);
         }
     }
 
     public List<Notification> loadAllNotifications(User user) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllNotifications(stmt, user)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllNotifications(stmt, user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(NotificationFactorySingleton.getInstance().createNotification(
@@ -58,12 +57,12 @@ public class NotificationDAO {
 
     public void deleteNotification(int idNotification) throws SQLException {
         try(Statement stmt = conn.createStatement()) {
-            Query.deleteNotification(stmt, idNotification);
+            Queries.deleteNotification(stmt, idNotification);
         }
     }
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadSubscribed(stmt, course)) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadSubscribed(stmt, course)) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),

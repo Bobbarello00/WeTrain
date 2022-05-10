@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Course;
 import model.Lesson;
@@ -21,12 +21,12 @@ public class LessonDAO {
 
     public void saveLesson(Lesson lesson, Course course) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertLesson(stmt,lesson, course);
+            Queries.insertLesson(stmt,lesson, course);
         }
     }
 
     public List<Lesson> loadAllLessons(Course course) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllLessons(stmt, course)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllLessons(stmt, course)){
             List<Lesson> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(new Lesson(

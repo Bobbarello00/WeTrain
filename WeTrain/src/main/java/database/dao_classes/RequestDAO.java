@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Request;
 import model.Trainer;
@@ -25,7 +25,7 @@ public class RequestDAO {
     public RequestDAO() throws DBConnectionFailedException {}
 
     public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadRequest(stmt, requestCode)) {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadRequest(stmt, requestCode)) {
             if(rs.next()) {
                 return new Request(
                         rs.getInt(ID_REQUEST),
@@ -40,12 +40,12 @@ public class RequestDAO {
     }
     public void deleteRequest(int idRequest) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.deleteRequest(stmt, idRequest);
+            Queries.deleteRequest(stmt, idRequest);
         }
     }
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerRequests(stmt, trainer)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadTrainerRequests(stmt, trainer)){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -61,7 +61,7 @@ public class RequestDAO {
 
     public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException {
         try(Statement stmt = conn.createStatement()) {
-            Query.insertRequest(stmt, requestDate, info, athleteFc, trainer);
+            Queries.insertRequest(stmt, requestDate, info, athleteFc, trainer);
         }
     }
 }

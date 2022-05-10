@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import exception.invalidDataException.ExpiredCardException;
@@ -32,24 +32,24 @@ public class AthleteDAO {
     public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
             athlete.changeCardInfo(cardNumber, expirationDate);
-            Query.updateCardInfoAthlete(stmt, athlete);
+            Queries.updateCardInfoAthlete(stmt, athlete);
         }
     }
 
     public void removeCardInfo(String fc) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
-            Query.removeCardInfoAthlete(stmt, fc);
+            Queries.removeCardInfoAthlete(stmt, fc);
         }
     }
 
     public void saveAthlete(Athlete athlete) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
-            Query.insertAthlete(stmt, athlete);
+            Queries.insertAthlete(stmt, athlete);
         }
     }
 
     public Athlete loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(stmt, fc)) {
             if (rs.next()) {
                 Athlete athlete = new Athlete(rs.getString(NAME),
                         rs.getString(SURNAME),
@@ -61,7 +61,7 @@ public class AthleteDAO {
                         rs.getString(PASSWORD)
                 );
 
-                try (ResultSet rs1 = Query.loadAthlete(stmt, fc)) {
+                try (ResultSet rs1 = Queries.loadAthlete(stmt, fc)) {
                     if (rs1.next()) {
                         athlete.setCardNumber(rs1.getString(CARD_NUMBER));
                         Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
@@ -84,7 +84,7 @@ public class AthleteDAO {
                         return null;
                     }
                 } catch (ExpiredCardException e) {
-                    Query.removeCardInfoAthlete(stmt, fc);
+                    Queries.removeCardInfoAthlete(stmt, fc);
                     return loadAthlete(fc);
                 }
             } else {
@@ -94,7 +94,7 @@ public class AthleteDAO {
     }
 
     public int getNumberOfCourses(String athleteFc) throws SQLException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.countAthleteCourses(stmt, athleteFc)) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.countAthleteCourses(stmt, athleteFc)) {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -105,7 +105,7 @@ public class AthleteDAO {
 
     public void setTrainer(Athlete athlete, String fc) {
         try (Statement stmt = conn.createStatement()) {
-            Query.updateTrainerAthlete(stmt, athlete.getFiscalCode(), fc);
+            Queries.updateTrainerAthlete(stmt, athlete.getFiscalCode(), fc);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -113,7 +113,7 @@ public class AthleteDAO {
 
     public void removeTrainer(Athlete athlete){
         try (Statement stmt = conn.createStatement()) {
-            Query.removeTrainerAthlete(stmt, athlete.getFiscalCode());
+            Queries.removeTrainerAthlete(stmt, athlete.getFiscalCode());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -121,7 +121,7 @@ public class AthleteDAO {
 
     public void removeWorkoutPlan(int idWorkoutPlan) {
         try (Statement stmt = conn.createStatement()) {
-            Query.removeWorkoutPlan(stmt, idWorkoutPlan);
+            Queries.removeWorkoutPlan(stmt, idWorkoutPlan);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -129,7 +129,7 @@ public class AthleteDAO {
 
     public void addWorkoutPlan(int id, String athleteFc) throws SQLException {
         try(Statement stmt = conn.createStatement()) {
-            Query.addWorkoutPlanToAthlete(stmt, id, athleteFc);
+            Queries.addWorkoutPlanToAthlete(stmt, id, athleteFc);
         }
     }
 

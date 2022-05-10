@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
 import model.*;
 
@@ -23,17 +23,17 @@ public class ExerciseDAO {
     public ExerciseDAO() throws DBConnectionFailedException {}
 
     public void insertExerciseInWorkoutDay(Statement stmt, Exercise exercise, int workoutDayId) throws SQLException {
-        Query.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
+        Queries.insertExerciseInWorkoutDay(stmt, exercise, workoutDayId);
     }
 
     public void saveExercise(Exercise exercise) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertExercise(stmt, exercise);
+            Queries.insertExercise(stmt, exercise);
         }
     }
 
     public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllExerciseInWorkoutDays(stmt, workoutDay)){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
                 exerciseList.add(new Exercise(
@@ -48,7 +48,7 @@ public class ExerciseDAO {
     }
 
     public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadTrainerExercises(stmt, trainer)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadTrainerExercises(stmt, trainer)){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
                 exerciseList.add(new Exercise(
@@ -63,12 +63,12 @@ public class ExerciseDAO {
 
     public void removeExercise(Exercise exercise) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.deleteExercise(stmt, exercise);
+            Queries.deleteExercise(stmt, exercise);
         }
     }
 
     public Exercise loadExercise(int id) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadExercise(stmt, id)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadExercise(stmt, id)){
             return new Exercise(
                     rs.getInt(IDEXERCISE),
                     rs.getString(NAME),

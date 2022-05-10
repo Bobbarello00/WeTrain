@@ -1,11 +1,10 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Trainer;
-import model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,12 +21,12 @@ public class TrainerDAO {
 
     public void saveTrainer(Trainer trainer) throws SQLException {
         try(Statement stmt = conn.createStatement()){
-            Query.insertTrainer(stmt, trainer);
+            Queries.insertTrainer(stmt, trainer);
         }
     }
 
     public Trainer loadTrainer(String fc) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadUser(stmt, fc)) {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(stmt, fc)) {
             if (rs.next()) {
                 Trainer trainer = new Trainer(rs.getString("Name"),
                     rs.getString("Surname"),
@@ -38,7 +37,7 @@ public class TrainerDAO {
                     rs.getString("Email"),
                     rs.getString("Password")
                 );
-                try(ResultSet rs1 = Query.loadTrainer(stmt, fc)) {
+                try(ResultSet rs1 = Queries.loadTrainer(stmt, fc)) {
                     if (rs1.next()) {
                         trainer.setIban(rs1.getString("Iban"));
                         return trainer;
@@ -53,7 +52,7 @@ public class TrainerDAO {
     }
 
     public int getNumberOfSubscribers(String trainerFc) throws SQLException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.countTrainerSubscribers(stmt, trainerFc)) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.countTrainerSubscribers(stmt, trainerFc)) {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -81,19 +80,19 @@ public class TrainerDAO {
     }
 
     public List<Trainer> searchTrainers(String name) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.searchTrainer(stmt, name)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.searchTrainer(stmt, name)){
             return getTrainersList(rs);
         }
     }
 
     public List<Trainer> loadAllTrainers() throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainers(stmt)){
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllTrainers(stmt)){
             return getTrainersList(rs);
         }
     }
 
     public List<Athlete> loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Query.loadAllTrainerSubscribers(stmt, trainerFc)) {
+        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllTrainerSubscribers(stmt, trainerFc)) {
             return getSubscribersList(rs);
         }
     }
@@ -101,7 +100,7 @@ public class TrainerDAO {
     public void updateIban(String iban, Trainer trainer) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
             trainer.setIban(iban);
-            Query.updateIbanTrainer(stmt, trainer);
+            Queries.updateIbanTrainer(stmt, trainer);
         }
     }
 }

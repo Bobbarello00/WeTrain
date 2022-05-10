@@ -1,9 +1,8 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Query;
+import database.Queries;
 import exception.DBConnectionFailedException;
-import model.Athlete;
 import model.Trainer;
 import model.WorkoutDay;
 import model.WorkoutPlan;
@@ -18,7 +17,7 @@ public class WorkoutPlanDAO {
     }
 
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
-        int id = Query.insertWorkoutPlan(athleteFc);
+        int id = Queries.insertWorkoutPlan(athleteFc);
         for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()){
             new WorkoutDayDAO().saveWorkoutDay(workoutDay, id);
         }
