@@ -18,8 +18,6 @@ import java.util.*;
 
 public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes implements Initializable {
 
-    private Button previousButton;
-    private Text previousText;
     @FXML private Label infoLabel;
     @FXML private Button mondayButton;
     @FXML private Text mondayText;
@@ -36,7 +34,11 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
     @FXML private Button sundayButton;
     @FXML private Text sundayText;
 
+    private Button previousButton;
+    private Text previousText;
     private List<Button> buttonList;
+    private List<CourseBean> courseBeanList;
+    private WorkoutPlanBean workoutPlanBean;
 
     private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
     private final WorkoutPlanController workoutPlanController = new WorkoutPlanController();
@@ -65,14 +67,15 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
     @FXML void dayButtonAction(ActionEvent event) throws SQLException {
         colorShift((Button) event.getSource(), ((Text)((Button) event.getSource()).getChildrenUnmodifiable().get(0)));
-        List<CourseBean> courseBeanList;
-        WorkoutPlanBean workoutPlanBean;
-        try {
-            courseBeanList = courseManagementAthleteController.getCourseList();
-            workoutPlanBean = workoutPlanController.getWorkoutPlan();
-        } catch (DBConnectionFailedException e) {
-            e.alertAndLogOff();
-            return;
+
+        if(courseBeanList == null && workoutPlanBean == null) {
+            try {
+                courseBeanList = courseManagementAthleteController.getCourseList();
+                workoutPlanBean = workoutPlanController.getWorkoutPlan();
+            } catch (DBConnectionFailedException e) {
+                e.alertAndLogOff();
+                return;
+            }
         }
 
         StringBuilder infoText = new StringBuilder();

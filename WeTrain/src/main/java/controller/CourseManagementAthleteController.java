@@ -19,6 +19,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
     private final LoginController loginController = new LoginController();
     private final EmailSystemBoundary emailSystemBoundary = new EmailSystemBoundary();
     private final PaypalBoundary paypalBoundary = new PaypalBoundary();
+    private final NotificationsController notificationsController = new NotificationsController();
 
     public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBConnectionFailedException, ImATrainerException {
         User user = loginController.getLoggedUser();
