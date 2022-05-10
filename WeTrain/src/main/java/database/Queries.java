@@ -44,10 +44,13 @@ public class Queries {
                 "WHERE idNotification = %s;", idNotification));
     }
 
-    public static ResultSet loadAthlete(Statement stmt, String fc) throws SQLException {
-        return stmt.executeQuery(String.format(SELECT_ALL +
+    public static ResultSet loadAthlete(Connection conn, String fc) throws SQLException {
+        PreparedStatement pStmt = conn.prepareStatement(SELECT_ALL +"FROM mydb.Athlete WHERE User = ?");
+        pStmt.setString(1, fc);
+        return pStmt.executeQuery();
+        /*return stmt.executeQuery(String.format(SELECT_ALL +
                 " FROM mydb.Athlete " +
-                WHERE_USER, fc));
+                WHERE_USER, fc));*/
     }
 
     public static void insertAthlete(Statement stmt, Athlete athlete) throws SQLException {

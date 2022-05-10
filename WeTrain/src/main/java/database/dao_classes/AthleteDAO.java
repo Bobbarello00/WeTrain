@@ -61,7 +61,7 @@ public class AthleteDAO {
                         rs.getString(PASSWORD)
                 );
 
-                try (ResultSet rs1 = Queries.loadAthlete(stmt, fc)) {
+                try (ResultSet rs1 = Queries.loadAthlete(conn, fc)) {
                     if (rs1.next()) {
                         athlete.setCardNumber(rs1.getString(CARD_NUMBER));
                         Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
