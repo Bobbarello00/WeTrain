@@ -5,6 +5,7 @@ import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Trainer;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +20,8 @@ public class TrainerDAO {
     }
 
     public Trainer loadTrainer(String fc) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.loadUser(fc)) {
+        try(PreparedStatement preparedStatement = Queries.loadUser(fc)) {
+            ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 Trainer trainer = new Trainer(rs.getString("Name"),
                     rs.getString("Surname"),

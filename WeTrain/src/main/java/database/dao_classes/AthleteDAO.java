@@ -7,9 +7,11 @@ import exception.invalidDataException.ExpiredCardException;
 import model.Athlete;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.YearMonth;
+import java.util.List;
 
 public class AthleteDAO {
 
@@ -39,11 +41,16 @@ public class AthleteDAO {
     }
 
     public void saveAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
-        Queries.insertAthlete(athlete);
+        List<PreparedStatement> preparedStatementList = Queries.insertAthlete(athlete);
+        preparedStatementList.get(0).executeUpdate();
+        preparedStatementList.get(1).executeUpdate();
+        preparedStatementList.get(0).close();
+        preparedStatementList.get(1).close();
     }
 
     public Athlete loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
-        try (ResultSet rs = Queries.loadUser(fc)) {
+        try (PreparedStatement preparedStatement = Queries.loadUser(fc)) {
+            ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 Athlete athlete = new Athlete(rs.getString(NAME),
                         rs.getString(SURNAME),
@@ -55,7 +62,8 @@ public class AthleteDAO {
                         rs.getString(PASSWORD)
                 );
 
-                try (ResultSet rs1 = Queries.loadAthlete(fc)) {
+                try (PreparedStatement preparedStatement1 = Queries.loadAthlete(fc)) {
+                    ResultSet rs1 = preparedStatement1.executeQuery();
                     if (rs1.next()) {
                         athlete.setCardNumber(rs1.getString(CARD_NUMBER));
                         Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
@@ -106,7 +114,9 @@ public class AthleteDAO {
     }
 
     public void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
-        Queries.removeWorkoutPlan(idWorkoutPlan);
+        try(PreparedStatement preparedStatement = Queries.removeWorkoutPlan(idWorkoutPlan)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {

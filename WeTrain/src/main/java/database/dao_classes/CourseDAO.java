@@ -43,12 +43,15 @@ public class CourseDAO {
 
     //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
     public void subscribeToACourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        Queries.insertCourseSubscriber(idCourse, (loginController.getLoggedUser()).getFiscalCode());
-
+        try(PreparedStatement preparedStatement = Queries.insertCourseSubscriber(idCourse, (loginController.getLoggedUser()).getFiscalCode())){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void unsubscribeFromACourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        Queries.deleteCourseSubscriber(idCourse, loginController.getLoggedUser().getFiscalCode());
+        try(PreparedStatement preparedStatement = Queries.deleteCourseSubscriber(idCourse, loginController.getLoggedUser().getFiscalCode())){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public Course loadCourse(int idCourse) throws SQLException, DBConnectionFailedException {
@@ -136,7 +139,8 @@ public class CourseDAO {
     }
 
     public int getSubscribersNumber(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.getSubscribers(idCourse)){
+        try(PreparedStatement preparedStatement = Queries.getSubscribers(idCourse)){
+            ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()) {
                 return rs.getInt(1);
             } else {

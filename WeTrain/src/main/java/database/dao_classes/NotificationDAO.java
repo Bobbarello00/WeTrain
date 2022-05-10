@@ -1,12 +1,15 @@
 package database.dao_classes;
 
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Course;
-import model.User;
 import model.notification.Notification;
+import model.User;
 import viewone.engeneering.NotificationFactorySingleton;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -28,11 +31,14 @@ public class NotificationDAO {
     }
 
     public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
-        Queries.insertNotification(type, info, dateTime, sender, receiver);
+        try(PreparedStatement preparedStatement = Queries.insertNotification(type, info, dateTime, sender, receiver)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public List<Notification> loadAllNotifications(User user) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.loadAllNotifications(user)){
+        try(PreparedStatement preparedStatement = Queries.loadAllNotifications(user)){
+            ResultSet rs = preparedStatement.executeQuery();
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(NotificationFactorySingleton.getInstance().createNotification(
@@ -44,17 +50,19 @@ public class NotificationDAO {
                         user)
                 );
             }
-
             return myList;
         }
     }
 
     public void deleteNotification(int idNotification) throws SQLException, DBConnectionFailedException {
-        Queries.deleteNotification(idNotification);
+        try(PreparedStatement preparedStatement = Queries.deleteNotification(idNotification)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBConnectionFailedException {
-        try (ResultSet rs = Queries.loadSubscribed(course.getId())) {
+        try (PreparedStatement preparedStatement = Queries.loadSubscribed(course.getId())) {
+            ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),
