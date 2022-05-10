@@ -1,6 +1,5 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
@@ -10,20 +9,15 @@ import model.User;
 import org.jetbrains.annotations.Nullable;
 import viewone.engeneering.FatalCaseManager;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class UserDAO {
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public UserDAO() throws DBConnectionFailedException {}
+    public UserDAO() {}
 
     public User loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadUser(email, password)) {
-            return getUser(rs);
-        }
+        return getUser(Queries.loadUser(email, password));
     }
 
     public User loadUser(String fc) throws SQLException, DBConnectionFailedException {

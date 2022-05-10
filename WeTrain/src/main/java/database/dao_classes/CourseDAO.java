@@ -1,7 +1,6 @@
 package database.dao_classes;
 
 import controller.LoginController;
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
@@ -13,7 +12,6 @@ import java.util.List;
 
 public class CourseDAO {
 
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
     private static final String IDCOURSE = "idCourse";
     private static final String COURSENAME = "Name";
     private static final String DESCRIPTION = "Description";
@@ -24,18 +22,14 @@ public class CourseDAO {
 
     private final LoginController loginController = new LoginController();
 
-    public CourseDAO() throws DBConnectionFailedException {}
+    public CourseDAO() {}
 
-    public void deleteCourse(int idCourse) throws SQLException {
-        try(Statement stmt = conn.createStatement()) {
-            Queries.deleteCourse(stmt, idCourse);
-        }
+    public void deleteCourse(int idCourse) throws SQLException, DBConnectionFailedException {
+        Queries.deleteCourse(idCourse);
     }
 
-    public void modifyCourse(int idCourse, Course course) throws SQLException {
-        try(Statement stmt = conn.createStatement()) {
-            Queries.modifyCourse(stmt, idCourse, course);
-        }
+    public void modifyCourse(int idCourse, Course course) throws SQLException, DBConnectionFailedException {
+        Queries.modifyCourse(idCourse, course);
     }
 
     public void saveCourse(Course course) throws SQLException, DBConnectionFailedException {
@@ -58,7 +52,7 @@ public class CourseDAO {
     }
 
     public Course loadCourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadCourse(idCourse)) {
+        try(ResultSet rs = Queries.loadCourse(idCourse)) {
             if(rs.next()){
                 Course course = new Course(
                         rs.getInt(IDCOURSE),
@@ -81,9 +75,7 @@ public class CourseDAO {
         return loadAllCourses(athlete, Queries.loadAllCoursesAthlete(athlete.getFiscalCode()));
     }
     public List<Course> loadPopularCourses() throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadPopularCourse(stmt)){
-            return loadAllCourses(null, rs);
-        }
+        return loadAllCourses(null, Queries.loadPopularCourse());
     }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
@@ -126,15 +118,11 @@ public class CourseDAO {
     }
 
     public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.searchCourse(stmt, name, fitnessLevel, days)){
-            return loadAllCourses(loginController.getLoggedUser(), rs);
-        }
+        return loadAllCourses(loginController.getLoggedUser(), Queries.searchCourse(name, fitnessLevel, days));
     }
 
-    public void setStartedLessonUrl(String url, int idCourse) throws SQLException {
-        try(Statement stmt = conn.createStatement()){
-            Queries.insertCourseStartedLessonUrl(stmt, idCourse, url);
-        }
+    public void setStartedLessonUrl(String url, int idCourse) throws SQLException, DBConnectionFailedException {
+        Queries.insertCourseStartedLessonUrl(idCourse, url);
     }
 
     public String loadStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {

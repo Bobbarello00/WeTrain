@@ -1,19 +1,16 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Trainer;
 import model.WorkoutDay;
 import model.WorkoutPlan;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public class WorkoutPlanDAO {
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public WorkoutPlanDAO() throws DBConnectionFailedException {
+    public WorkoutPlanDAO() {
     }
 
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {

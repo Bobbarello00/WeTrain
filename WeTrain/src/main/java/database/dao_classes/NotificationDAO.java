@@ -1,14 +1,12 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Course;
-import model.notification.Notification;
 import model.User;
+import model.notification.Notification;
 import viewone.engeneering.NotificationFactorySingleton;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -16,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationDAO {
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public NotificationDAO() throws DBConnectionFailedException {}
+    public NotificationDAO() {}
 
     public void saveNotification(Notification notification) throws SQLException, DBConnectionFailedException {
         saveNotification(

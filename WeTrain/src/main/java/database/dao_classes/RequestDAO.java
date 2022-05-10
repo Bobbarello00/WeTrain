@@ -1,15 +1,12 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Request;
 import model.Trainer;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,12 +17,11 @@ public class RequestDAO {
     public static final String INFO = "Info";
     public static final String ATHLETE = "Athlete";
     public static final String TRAINER = "Trainer";
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public RequestDAO() throws DBConnectionFailedException {}
+    public RequestDAO() {}
 
     public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadRequest(requestCode)) {
+        try(ResultSet rs = Queries.loadRequest(requestCode)) {
             if(rs.next()) {
                 return new Request(
                         rs.getInt(ID_REQUEST),

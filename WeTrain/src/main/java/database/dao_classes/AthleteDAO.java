@@ -1,13 +1,14 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
 import exception.invalidDataException.ExpiredCardException;
 import model.Athlete;
 
-import java.sql.*;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.YearMonth;
 
 public class AthleteDAO {
@@ -25,9 +26,7 @@ public class AthleteDAO {
     private static final String CARD_EXPIRATION_DATE = "CardExpirationDate";
     private static final String WORKOUT_PLAN = "WorkoutPlan";
 
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
-
-    public AthleteDAO() throws DBConnectionFailedException {}
+    public AthleteDAO(){}
 
     public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException, DBConnectionFailedException {
         athlete.changeCardInfo(cardNumber, expirationDate);

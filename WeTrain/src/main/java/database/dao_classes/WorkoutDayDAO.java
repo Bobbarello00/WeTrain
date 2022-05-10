@@ -1,6 +1,5 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Exercise;
@@ -8,30 +7,25 @@ import model.Trainer;
 import model.WorkoutDay;
 import model.WorkoutPlan;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutDayDAO {
-    Connection conn = DatabaseConnectionSingleton.getInstance().getConn();
 
-    public WorkoutDayDAO() throws DBConnectionFailedException {
+    public WorkoutDayDAO() {
     }
 
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
-        try (Statement stmt = conn.createStatement()) {
             int id = Queries.insertWorkoutDay(idWorkoutPlan, workoutDay.getDay());
             for (Exercise exercise : workoutDay.getExerciseList()){
                 new ExerciseDAO().insertExerciseInWorkoutDay(exercise, id);
             }
-        }
     }
 
     public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan, Trainer trainer) throws SQLException, DBConnectionFailedException {
-        try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.loadAllWorkoutDays(workoutPlan.getId())){
+        try(ResultSet rs = Queries.loadAllWorkoutDays(workoutPlan.getId())){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
                 WorkoutDay workoutDay = new WorkoutDay(
