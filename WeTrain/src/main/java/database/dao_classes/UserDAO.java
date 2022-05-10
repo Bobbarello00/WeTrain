@@ -17,7 +17,9 @@ public class UserDAO {
     public UserDAO() {}
 
     public User loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
-        return getUser(Queries.loadUser(email, password));
+        try (ResultSet rs = Queries.loadUser(email, password)) {
+            return getUser(rs);
+        }
     }
 
     public User loadUser(String fc) throws SQLException, DBConnectionFailedException {

@@ -265,7 +265,7 @@ public class Queries {
                 " FROM mydb.User " +
                 " WHERE Email = ? AND Password = ?")){
             preparedStatement.setString(1, email);
-            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, password);
             return preparedStatement.executeQuery();
         }
     }
