@@ -157,7 +157,7 @@ public class CourseDAO {
     public int getSubscribersNumber(Course course) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.getSubscribers(stmt, course)){
             if(rs.next()) {
-                return rs.getInt(0);
+                return rs.getInt(1);
             } else {
                 throw new RuntimeException();
             }

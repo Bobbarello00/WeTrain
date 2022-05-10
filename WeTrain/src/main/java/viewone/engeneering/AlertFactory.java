@@ -8,12 +8,13 @@ public class AlertFactory {
 
     public static void newWarningAlert(String alertTitle, String alertHeaderText, String alertContentText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setResizable(true);
         newAlert(alert, alertTitle, alertHeaderText, alertContentText);
     }
 
     private static void newAlert(Alert alert, String alertTitle, String alertHeaderText, String alertContentText) {
         alert.setTitle(alertTitle);
-        alert.setHeaderText(null);
+        alert.setHeaderText(alertHeaderText);
         alert.setContentText(alertContentText);
 
         alert.showAndWait();
@@ -21,6 +22,8 @@ public class AlertFactory {
 
     public static void newInformationAlert(String alertTitle, String alertContentText){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeight(500);
+        alert.setWidth(1000);
         newAlert(alert, alertTitle, null, alertContentText);
     }
 }
