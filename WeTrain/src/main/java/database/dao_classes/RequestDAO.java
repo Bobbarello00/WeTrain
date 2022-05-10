@@ -5,6 +5,7 @@ import exception.DBConnectionFailedException;
 import model.Request;
 import model.Trainer;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -21,7 +22,8 @@ public class RequestDAO {
     public RequestDAO() {}
 
     public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.loadRequest(requestCode)) {
+        try(PreparedStatement preparedStatement = Queries.loadRequest(requestCode);
+            ResultSet rs = preparedStatement.executeQuery()) {
             if(rs.next()) {
                 return new Request(
                         rs.getInt(ID_REQUEST),
@@ -35,11 +37,13 @@ public class RequestDAO {
         }
     }
     public void deleteRequest(int idRequest) throws SQLException, DBConnectionFailedException {
-        Queries.deleteRequest(idRequest);
+        try(PreparedStatement preparedStatement = Queries.deleteRequest(idRequest)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.loadTrainerRequests(trainer.getFiscalCode())){
+        try(PreparedStatement preparedStatement = Queries.loadTrainerRequests(trainer.getFiscalCode()); ResultSet rs = preparedStatement.executeQuery()){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -54,6 +58,8 @@ public class RequestDAO {
     }
 
     public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBConnectionFailedException {
-        Queries.insertRequest(requestDate, info, athleteFc, trainer);
+        try(PreparedStatement preparedStatement = Queries.insertRequest(requestDate, info, athleteFc, trainer)){
+            preparedStatement.executeUpdate();
+        }
     }
 }

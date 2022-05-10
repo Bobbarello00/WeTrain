@@ -61,8 +61,7 @@ public class NotificationDAO {
     }
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBConnectionFailedException {
-        try (PreparedStatement preparedStatement = Queries.loadSubscribed(course.getId())) {
-            ResultSet rs = preparedStatement.executeQuery();
+        try (PreparedStatement preparedStatement = Queries.loadSubscribed(course.getId()); ResultSet rs = preparedStatement.executeQuery()) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),

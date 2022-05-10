@@ -25,19 +25,32 @@ public class CourseDAO {
     public CourseDAO() {}
 
     public void deleteCourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        Queries.deleteCourse(idCourse);
+        try(PreparedStatement preparedStatement = Queries.deleteCourse(idCourse)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void modifyCourse(int idCourse, Course course) throws SQLException, DBConnectionFailedException {
-        Queries.modifyCourse(idCourse, course);
+        try(PreparedStatement preparedStatement = Queries.modifyCourse(idCourse, course)) {
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void saveCourse(Course course) throws SQLException, DBConnectionFailedException {
-        int idCourse = Queries.insertCourse(course);
-        course.setId(idCourse);
+        try(PreparedStatement preparedStatement = Queries.insertCourse(course)) {
+            int idCourse;
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    idCourse = generatedKeys.getInt(1);
+                } else {
+                    throw new RuntimeException();
+                }
+            }
+            course.setId(idCourse);
 
-        for(Lesson lesson: course.getLessonList()){
-            new LessonDAO().saveLesson(lesson, course);
+            for (Lesson lesson : course.getLessonList()) {
+                new LessonDAO().saveLesson(lesson, course);
+            }
         }
     }
 
@@ -75,14 +88,23 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
-        return loadAllCourses(athlete, Queries.loadAllCoursesAthlete(athlete.getFiscalCode()));
+        try(PreparedStatement preparedStatement = Queries.loadAllCoursesAthlete(athlete.getFiscalCode());
+            ResultSet rs = preparedStatement.executeQuery()) {
+            return loadAllCourses(athlete, rs);
+        }
     }
     public List<Course> loadPopularCourses() throws SQLException, DBConnectionFailedException {
-        return loadAllCourses(null, Queries.loadPopularCourse());
+        try(PreparedStatement preparedStatement = Queries.loadPopularCourse();
+            ResultSet rs = preparedStatement.executeQuery()) {
+            return loadAllCourses(null, rs);
+        }
     }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
-        return loadAllCourses(trainer, Queries.loadAllCoursesTrainer(trainer.getFiscalCode()));
+        try(PreparedStatement preparedStatement = Queries.loadAllCoursesTrainer(trainer.getFiscalCode());
+            ResultSet rs = preparedStatement.executeQuery()) {
+            return loadAllCourses(trainer, rs);
+        }
     }
 
     private List<Course> loadAllCourses(User user, ResultSet rs) throws SQLException, DBConnectionFailedException {
@@ -125,11 +147,13 @@ public class CourseDAO {
     }
 
     public void setStartedLessonUrl(String url, int idCourse) throws SQLException, DBConnectionFailedException {
-        Queries.insertCourseStartedLessonUrl(idCourse, url);
+        try(PreparedStatement preparedStatement = Queries.insertCourseStartedLessonUrl(idCourse, url)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public String loadStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.loadCourseStartedLessonUrl(idCourse)){
+        try(PreparedStatement preparedStatement = Queries.loadCourseStartedLessonUrl(idCourse); ResultSet rs = preparedStatement.executeQuery()){
             if(rs.next()){
                 return rs.getString("StartedLessonUrl");
             }else{
@@ -139,8 +163,7 @@ public class CourseDAO {
     }
 
     public int getSubscribersNumber(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = Queries.getSubscribers(idCourse)){
-            ResultSet rs = preparedStatement.executeQuery();
+        try(PreparedStatement preparedStatement = Queries.getSubscribers(idCourse); ResultSet rs = preparedStatement.executeQuery()){
             if(rs.next()) {
                 return rs.getInt(1);
             } else {
