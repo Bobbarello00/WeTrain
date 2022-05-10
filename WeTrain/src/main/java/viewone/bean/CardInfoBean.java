@@ -70,11 +70,14 @@ public class CardInfoBean {
         return expirationDate;
     }
 
-    private void setExpirationDate(String expirationDate) throws InvalidCardInfoException {
+    private void setExpirationDate(String expirationDate) throws InvalidCardInfoException, EmptyFieldsException {
         this.expirationDate = checkAndReturnValidDate(expirationDate);
     }
 
-    private YearMonth checkAndReturnValidDate(String myDateString) throws InvalidCardInfoException {
+    private YearMonth checkAndReturnValidDate(String myDateString) throws InvalidCardInfoException, EmptyFieldsException {
+        if(myDateString.isEmpty()){
+            throw new EmptyFieldsException();
+        }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yyyy");
         try {
             return YearMonth.parse(myDateString, formatter);

@@ -41,29 +41,26 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     @FXML private void editConfirmation() {
-        if(!Objects.equals(newCardNumber.getText(), "")
-                & !Objects.equals(newExpirationDate.getText(), "")) {
-            try{
-                CardInfoBean cardInfoBean = new CardInfoBean(
-                        newCardNumber.getText(),
-                        newExpirationDate.getText());
-                profileManagementController.updateAthleteCardInfo(cardInfoBean);
-                athlete = (AthleteBean) LoggedUserSingleton.getInstance();
-                editPane.setDisable(true);
-                editPane.setVisible(false);
-                setPaymentMethodLabel();
-                editButton.setDisable(false);
-                editButton.setVisible(true);
-                paymentMethodLabel.setVisible(true);
-            } catch (SQLException e){
-                e.printStackTrace();
-                //TODO GESTIONE EXCEPTION
-            } catch (InvalidDataException e) {
-                e.alert();
-            } catch (DBConnectionFailedException e) {
-                ((Stage) editButton.getScene().getWindow()).close();
-                e.alertAndLogOff();
-            }
+        try{
+            CardInfoBean cardInfoBean = new CardInfoBean(
+                    newCardNumber.getText(),
+                    newExpirationDate.getText());
+            profileManagementController.updateAthleteCardInfo(cardInfoBean);
+            athlete = (AthleteBean) LoggedUserSingleton.getInstance();
+            editPane.setDisable(true);
+            editPane.setVisible(false);
+            setPaymentMethodLabel();
+            editButton.setDisable(false);
+            editButton.setVisible(true);
+            paymentMethodLabel.setVisible(true);
+        } catch (SQLException e){
+            e.printStackTrace();
+            //TODO GESTIONE EXCEPTION
+        } catch (InvalidDataException e) {
+            e.alert();
+        } catch (DBConnectionFailedException e) {
+            ((Stage) editButton.getScene().getWindow()).close();
+            e.alertAndLogOff();
         }
     }
 
@@ -73,7 +70,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
             FatalCaseManager.erasePaymentMethod();
         } else{
-            String cardNumberTruncated = athlete.getCardNumber().substring(12, 16);
+            String truncatedCardNumber = athlete.getCardNumber().substring(12, 16);
             try {
                 if(Objects.equals(athlete.getCardType(), "VISA")){
                     cardLogo.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/Visa.png")).toURI().toString()));
@@ -84,7 +81,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                 throw new RuntimeException(e);
             }
             cardLogo.setVisible(true);
-            paymentMethodLabel.setText("Card: \t\t" + "  **** **** **** " + cardNumberTruncated);
+            paymentMethodLabel.setText("Card: \t\t" + "  **** **** **** " + truncatedCardNumber);
         }
     }
 
