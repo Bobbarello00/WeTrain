@@ -108,12 +108,13 @@ public class NotificationsController {
         );
     }
 
-    public void sendSubscriptionToACourseNotification(User sender, User receiver, Course course) {
-       /* NotificationFactorySingleton.getInstance().createSubscribeToCourseNotification(
+    public void sendSubscriptionToACourseNotification(User sender, User receiver, Course course) throws DBConnectionFailedException, SQLException {
+        Notification notification = NotificationFactorySingleton.getInstance().createSubscribeToCourseNotification(
                 sender,
                 receiver,
                 course,
-                new CourseDAO()
-        );*/
+                new CourseDAO().getSubscribersNumber(course)
+        );
+        new NotificationDAO().saveNotification(notification);
     }
 }

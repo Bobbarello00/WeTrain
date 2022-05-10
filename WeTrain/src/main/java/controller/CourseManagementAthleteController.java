@@ -39,7 +39,6 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         new CourseDAO().subscribeToACourse(course.getId());
         User sender = loginController.getLoggedUser();
         User receiver = course.getOwner();
-        //TODO creazione notifica
         notificationsController.sendSubscriptionToACourseNotification(
                 sender,
                 receiver,

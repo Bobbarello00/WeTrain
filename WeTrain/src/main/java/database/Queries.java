@@ -21,7 +21,6 @@ public class Queries {
 
     private Queries(){}
 
-
     //TODO gestione duplicate record
     public static ResultSet loadAllNotifications(@NotNull Statement stmt, User receiver) throws SQLException {
         return stmt.executeQuery(String.format(SELECT_ALL +
@@ -473,6 +472,13 @@ public class Queries {
         return stmt.executeQuery(String.format(SELECT_ALL +
                 "FROM mydb.Subscribe " +
                 "WHERE Course = %s;",
+                course.getId()));
+    }
+
+    public static ResultSet getSubscribers(Statement stmt, Course course) throws SQLException {
+        return stmt.executeQuery(String.format("SELECT Count(*)" +
+                "FROM mydb.Subscribe " +
+                "WHERE Course = %s",
                 course.getId()));
     }
 }

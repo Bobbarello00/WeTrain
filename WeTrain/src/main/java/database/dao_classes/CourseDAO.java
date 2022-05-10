@@ -156,12 +156,11 @@ public class CourseDAO {
 
     public int getSubscribersNumber(Course course) throws SQLException {
         try(Statement stmt = conn.createStatement(); ResultSet rs = Queries.getSubscribers(stmt, course)){
-            if(rs.next()){
-                return rs.getString("StartedLessonUrl");
-            }else{
-                return null;
+            if(rs.next()) {
+                return rs.getInt(0);
+            } else {
+                throw new RuntimeException();
             }
         }
-        return 0;
     }
 }
