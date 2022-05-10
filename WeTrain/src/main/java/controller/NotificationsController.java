@@ -5,7 +5,7 @@ import database.dao_classes.NotificationDAO;
 import exception.DBConnectionFailedException;
 import model.Athlete;
 import model.Course;
-import model.notification.EmailReceivedNotification;
+import model.User;
 import model.notification.Notification;
 import model.notification.NotificationEnum;
 import viewone.bean.CommunicationBean;
@@ -106,5 +106,14 @@ public class NotificationsController {
                 emailReceivedNotificationBean.getSender().getFiscalCode(),
                 emailReceivedNotificationBean.getReceiver().getFiscalCode()
         );
+    }
+
+    public void sendSubscriptionToACourseNotification(User sender, User receiver, Course course) {
+       /* NotificationFactorySingleton.getInstance().createSubscribeToCourseNotification(
+                sender,
+                receiver,
+                course,
+                new CourseDAO()
+        );*/
     }
 }

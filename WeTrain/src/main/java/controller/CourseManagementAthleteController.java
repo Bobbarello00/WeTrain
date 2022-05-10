@@ -3,15 +3,12 @@ package controller;
 import boundary.EmailSystemBoundary;
 import boundary.PaypalBoundary;
 import database.dao_classes.CourseDAO;
-import database.dao_classes.UserDAO;
 import exception.DBConnectionFailedException;
 import exception.ImATrainerException;
 import model.*;
 import viewone.bean.*;
-import viewone.engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CourseManagementAthleteController extends CourseManagementController{
@@ -43,6 +40,11 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         User sender = loginController.getLoggedUser();
         User receiver = course.getOwner();
         //TODO creazione notifica
+        notificationsController.sendSubscriptionToACourseNotification(
+                sender,
+                receiver,
+                course
+        );
     }
 
     public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {

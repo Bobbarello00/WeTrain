@@ -153,4 +153,15 @@ public class CourseDAO {
             }
         }
     }
+
+    public int getSubscribersNumber(Course course) throws SQLException {
+        try(Statement stmt = conn.createStatement(); ResultSet rs = Query.getSubscribers(stmt, course)){
+            if(rs.next()){
+                return rs.getString("StartedLessonUrl");
+            }else{
+                return null;
+            }
+        }
+        return 0;
+    }
 }

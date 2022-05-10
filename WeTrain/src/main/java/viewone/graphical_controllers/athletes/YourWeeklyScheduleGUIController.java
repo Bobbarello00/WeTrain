@@ -99,7 +99,6 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
         infoText.append("\n\n\n");
         if(workoutPlanBean != null) {
-            System.out.println(workoutPlanBean.getWorkoutDayList().size());
             for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
                 if(Objects.equals(workoutDayBean.getDay(), day)){
                     infoText.append("You have this exercise in your workout plan:\n");
