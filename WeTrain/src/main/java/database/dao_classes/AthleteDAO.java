@@ -1,5 +1,7 @@
 package database.dao_classes;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.ElementNotFoundException;
@@ -32,12 +34,16 @@ public class AthleteDAO {
 
     public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException, DBConnectionFailedException {
         athlete.changeCardInfo(cardNumber, expirationDate);
-        Queries.updateCardInfoAthlete(athlete);
+        try(PreparedStatement preparedStatement =Queries.updateCardInfoAthlete(athlete)) {
+            preparedStatement.executeUpdate();
+        }
 
     }
 
     public void removeCardInfo(String fc) throws SQLException, DBConnectionFailedException {
-        Queries.removeCardInfoAthlete(fc);
+        try(PreparedStatement preparedStatement = Queries.removeCardInfoAthlete(fc)) {
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void saveAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
@@ -86,17 +92,22 @@ public class AthleteDAO {
                         return null;
                     }
                 } catch (ExpiredCardException e) {
-                    Queries.removeCardInfoAthlete(fc);
+                    try(PreparedStatement preparedStatement1 = Queries.removeCardInfoAthlete(fc)) {
+                        preparedStatement1.executeUpdate();
+                    }
                     return loadAthlete(fc);
                 }
             } else {
                 throw new ElementNotFoundException();
             }
+        } catch(CJCommunicationsException | CommunicationsException e) {
+        throw new DBConnectionFailedException();
         }
     }
 
     public int getNumberOfCourses(String athleteFc) throws SQLException, DBConnectionFailedException {
-        try (ResultSet rs = Queries.countAthleteCourses(athleteFc)) {
+        try (PreparedStatement preparedStatement = Queries.countAthleteCourses(athleteFc)) {
+            ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -106,11 +117,15 @@ public class AthleteDAO {
     }
 
     public void setTrainer(Athlete athlete, String fc) throws SQLException, DBConnectionFailedException {
-        Queries.updateTrainerAthlete(athlete.getFiscalCode(), fc);
+        try(PreparedStatement preparedStatement = Queries.updateTrainerAthlete(athlete.getFiscalCode(), fc)){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void removeTrainer(Athlete athlete) throws SQLException, DBConnectionFailedException {
-        Queries.removeTrainerAthlete(athlete.getFiscalCode());
+        try(PreparedStatement preparedStatement = Queries.removeTrainerAthlete(athlete.getFiscalCode())){
+            preparedStatement.executeUpdate();
+        }
     }
 
     public void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
@@ -120,7 +135,9 @@ public class AthleteDAO {
     }
 
     public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
-            Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);
+        try(PreparedStatement preparedStatement = Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);){
+            preparedStatement.executeUpdate();
+        }
     }
 
 }

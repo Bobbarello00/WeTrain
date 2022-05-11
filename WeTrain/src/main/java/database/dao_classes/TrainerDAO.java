@@ -1,5 +1,7 @@
 package database.dao_classes;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import model.Athlete;
@@ -16,7 +18,11 @@ public class TrainerDAO {
     public TrainerDAO() {}
 
     public void saveTrainer(Trainer trainer) throws SQLException, DBConnectionFailedException {
-        Queries.insertTrainer(trainer);
+        List<PreparedStatement> preparedStatementList = Queries.insertTrainer(trainer);
+        preparedStatementList.get(0).executeUpdate();
+        preparedStatementList.get(1).executeUpdate();
+        preparedStatementList.get(0).close();
+        preparedStatementList.get(1).close();
     }
 
     public Trainer loadTrainer(String fc) throws SQLException, DBConnectionFailedException {
@@ -32,7 +38,8 @@ public class TrainerDAO {
                     rs.getString("Email"),
                     rs.getString("Password")
                 );
-                try(ResultSet rs1 = Queries.loadTrainer(fc)) {
+                try(PreparedStatement preparedStatement1 = Queries.loadTrainer(fc)) {
+                    ResultSet rs1 = preparedStatement1.executeQuery();
                     if (rs1.next()) {
                         trainer.setIban(rs1.getString("Iban"));
                         return trainer;
@@ -43,11 +50,14 @@ public class TrainerDAO {
             } else {
                 return null;
             }
+        } catch(CJCommunicationsException | CommunicationsException e) {
+        throw new DBConnectionFailedException();
         }
     }
 
     public int getNumberOfSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
-        try (ResultSet rs = Queries.countTrainerSubscribers(trainerFc)) {
+        try (PreparedStatement preparedStatement = Queries.countTrainerSubscribers(trainerFc)) {
+            ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -75,19 +85,27 @@ public class TrainerDAO {
     }
 
     public List<Trainer> searchTrainers(String name) throws SQLException, DBConnectionFailedException {
-        return getTrainersList(Queries.searchTrainer(name));
+        try(PreparedStatement preparedStatement = Queries.searchTrainer(name) ){
+            return getTrainersList(preparedStatement.executeQuery());
+        }
     }
 
     public List<Trainer> loadAllTrainers() throws SQLException, DBConnectionFailedException {
-        return getTrainersList(Queries.loadAllTrainers());
+        try(PreparedStatement preparedStatement = Queries.loadAllTrainers()){
+            return getTrainersList(preparedStatement.executeQuery());
+        }
     }
 
     public List<Athlete> loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
-        return getSubscribersList(Queries.loadAllTrainerSubscribers(trainerFc));
+        try(PreparedStatement preparedStatement = Queries.loadAllTrainerSubscribers(trainerFc)){
+            return getSubscribersList(preparedStatement.executeQuery());
+        }
     }
 
     public void updateIban(String iban, Trainer trainer) throws SQLException, DBConnectionFailedException {
         trainer.setIban(iban);
-        Queries.updateIbanTrainer(trainer);
+        try(PreparedStatement preparedStatement = Queries.updateIbanTrainer(trainer)) {
+                preparedStatement.executeUpdate();
+        }
     }
 }

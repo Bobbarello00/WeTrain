@@ -68,7 +68,8 @@ public class CourseDAO {
     }
 
     public Course loadCourse(int idCourse) throws SQLException, DBConnectionFailedException {
-        try(ResultSet rs = Queries.loadCourse(idCourse)) {
+        try(PreparedStatement preparedStatement = Queries.loadCourse(idCourse)) {
+            ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
                 Course course = new Course(
                         rs.getInt(IDCOURSE),
@@ -143,7 +144,9 @@ public class CourseDAO {
     }
 
     public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBConnectionFailedException {
-        return loadAllCourses(loginController.getLoggedUser(), Queries.searchCourse(name, fitnessLevel, days));
+        try(PreparedStatement preparedStatement = Queries.searchCourse(name, fitnessLevel, days)){
+            return loadAllCourses(loginController.getLoggedUser(), preparedStatement.executeQuery());
+        }
     }
 
     public void setStartedLessonUrl(String url, int idCourse) throws SQLException, DBConnectionFailedException {

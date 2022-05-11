@@ -29,6 +29,8 @@ public class UserDAO {
     public User loadUser(String fc) throws SQLException, DBConnectionFailedException {
         try(PreparedStatement preparedStatement = Queries.loadUser(fc)){
             return getUser(preparedStatement.executeQuery());
+        } catch(CJCommunicationsException | CommunicationsException e) {
+        throw new DBConnectionFailedException();
         }
     }
 
