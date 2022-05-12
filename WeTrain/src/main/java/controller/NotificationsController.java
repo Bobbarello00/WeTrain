@@ -66,8 +66,8 @@ public class NotificationsController {
                 sender,
                 receiver,
                 notification.getNotificationDate(),
-                notification.promptMessage()
-        );
+                notification.getType().name(),
+                notification.promptMessage());
     }
 
     public void sendCourseCommunicationNotification(CommunicationBean bean) throws SQLException, DBUnreachableException {

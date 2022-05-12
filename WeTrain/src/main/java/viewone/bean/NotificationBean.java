@@ -11,11 +11,12 @@ public class NotificationBean {
     private String text;
 
 
-    public NotificationBean(int id, UserBean sender, UserBean receiver, LocalDateTime dateTime, String text) {
+    public NotificationBean(int id, UserBean sender, UserBean receiver, LocalDateTime dateTime, String type, String text) {
         this.id = id;
         this.sender = sender;
         this.receiver = receiver;
         this.dateTime = dateTime;
+        this.type = type;
         this.text = text;
     }
 
