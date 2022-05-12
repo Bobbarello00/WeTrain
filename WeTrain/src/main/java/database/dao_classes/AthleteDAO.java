@@ -6,6 +6,9 @@ import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import exception.invalid_data_exception.ExpiredCardException;
 import model.Athlete;
+import model.record.Card;
+import model.record.Credentials;
+import model.record.PersonalInfo;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.Date;
@@ -30,9 +33,8 @@ public class AthleteDAO {
     private static final String CARD_EXPIRATION_DATE = "CardExpirationDate";
     private static final String WORKOUT_PLAN = "WorkoutPlan";
 
-    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException, DBUnreachableException {
-        athlete.changeCardInfo(cardNumber, expirationDate);
-        try(PreparedStatement preparedStatement =Queries.updateCardInfoAthlete(athlete)) {
+    public void updateCardInfo(Card card, Athlete athlete) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.updateCardInfoAthlete(athlete, card)) {
             preparedStatement.executeUpdate();
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -67,14 +69,19 @@ public class AthleteDAO {
         try (PreparedStatement preparedStatement = Queries.loadUser(fc)) {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                Athlete athlete = new Athlete(rs.getString(NAME),
-                        rs.getString(SURNAME),
+                Athlete athlete = new Athlete(
                         rs.getString(USERNAME),
-                        rs.getDate(BIRTH).toLocalDate(),
-                        rs.getString(FC),
-                        rs.getString(GENDER).charAt(0),
-                        rs.getString(EMAIL),
-                        rs.getString(PASSWORD)
+                        new PersonalInfo(
+                                rs.getString(NAME),
+                                rs.getString(SURNAME),
+                                rs.getDate(BIRTH).toLocalDate(),
+                                rs.getString(FC),
+                                rs.getString(GENDER).charAt(0)
+                        ),
+                        new Credentials(
+                                rs.getString(EMAIL),
+                                rs.getString(PASSWORD)
+                        )
                 );
                 return completeAthleteInfo(fc, athlete);
             } else {
@@ -91,13 +98,13 @@ public class AthleteDAO {
         try (PreparedStatement preparedStatement1 = Queries.loadAthlete(fc)) {
             ResultSet rs1 = preparedStatement1.executeQuery();
             if (rs1.next()) {
-                athlete.setCardNumber(rs1.getString(CARD_NUMBER));
+                String cardNumber = rs1.getString(CARD_NUMBER);
                 Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
                 YearMonth cardExpirationDate = null;
                 if (temp != null) {
                     cardExpirationDate = YearMonth.from(temp.toLocalDate());
                 }
-                athlete.setCardExpirationDate(cardExpirationDate);
+                athlete.setCard(new Card(cardNumber, cardExpirationDate));
                 if(rs1.getString(TRAINER) != null) {
                     athlete.setTrainer(new TrainerDAO().loadTrainer(rs1.getString(TRAINER)));
                 }

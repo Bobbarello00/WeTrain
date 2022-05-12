@@ -5,6 +5,8 @@ import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import model.Athlete;
 import model.Trainer;
+import model.record.Credentials;
+import model.record.PersonalInfo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrainerDAO {
+
+    private static final String NAME = "Name";
+    private static final String SURNAME = "Surname";
+    private static final String USERNAME = "Username";
+    private static final String BIRTH = "Birth";
+    private static final String FC = "FC";
+    private static final String GENDER = "Gender";
+    private static final String EMAIL = "Email";
+    private static final String PASSWORD = "Password";
 
     public void saveTrainer(Trainer trainer) throws SQLException, DBUnreachableException {
         try {
@@ -31,14 +42,19 @@ public class TrainerDAO {
         try(PreparedStatement preparedStatement = Queries.loadUser(fc)) {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                Trainer trainer = new Trainer(rs.getString("Name"),
-                    rs.getString("Surname"),
-                    rs.getString("Username"),
-                    rs.getDate("Birth").toLocalDate(),
-                    rs.getString("FC"),
-                    rs.getString("Gender").charAt(0),
-                    rs.getString("Email"),
-                    rs.getString("Password")
+                Trainer trainer = new Trainer(
+                        rs.getString(USERNAME),
+                        new PersonalInfo(
+                                rs.getString(NAME),
+                                rs.getString(SURNAME),
+                                rs.getDate(BIRTH).toLocalDate(),
+                                rs.getString(FC),
+                                rs.getString(GENDER).charAt(0)
+                        ),
+                        new Credentials(
+                                rs.getString(EMAIL),
+                                rs.getString(PASSWORD)
+                        )
                 );
                 try(PreparedStatement preparedStatement1 = Queries.loadTrainer(fc)) {
                     ResultSet rs1 = preparedStatement1.executeQuery();

@@ -1,19 +1,19 @@
 package model;
 
+import model.record.Credentials;
+import model.record.PersonalInfo;
+
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Trainer extends User implements Serializable {
     private String iban;
 
-    public Trainer() {}
-
-    public Trainer(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password){
-        super(name, surname, username, dateOfBirth, fc, gender, email, password);
+    public Trainer(String username, PersonalInfo personalInfo, Credentials credentials){
+        super(username, personalInfo, credentials);
     }
 
-    public Trainer(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password, String iban){
-        super(name, surname, username, dateOfBirth, fc, gender, email, password);
+    public Trainer(String username, PersonalInfo personalInfo, Credentials credentials, String iban){
+        super(username, personalInfo, credentials);
         this.iban = iban;
     }
 

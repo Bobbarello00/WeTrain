@@ -44,4 +44,5 @@ module com.wetrain.wetrain {
     exports viewone.engeneering.manageList;
     opens viewone.engeneering.manageList to javafx.fxml;
     exports exception.invalid_data_exception;
+    exports model.record;
 }

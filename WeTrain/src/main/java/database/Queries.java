@@ -2,6 +2,7 @@ package database;
 
 import exception.DBConnectionFailedException;
 import model.*;
+import model.record.Card;
 
 import java.sql.*;
 import java.time.DayOfWeek;
@@ -84,13 +85,13 @@ public class Queries {
         return Arrays.asList(preparedStatement, preparedStatement1);
     }
 
-    public static PreparedStatement updateCardInfoAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
+    public static PreparedStatement updateCardInfoAthlete(Athlete athlete, Card card) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 UPDATE_MYDB_ATHLETE +
                 "SET CardNumber = ?, CardExpirationDate = ? " +
                 WHERE_USER);
-        preparedStatement.setString(1, athlete.getCardNumber());
-        preparedStatement.setDate(2, Date.valueOf((athlete.getCardExpirationDate()).atDay(1)));
+        preparedStatement.setString(1, card.cardNumber());
+        preparedStatement.setDate(2, Date.valueOf((card.cardExpirationDate()).atDay(1)));
         preparedStatement.setString(3, athlete.getFiscalCode());
         return preparedStatement;
     }

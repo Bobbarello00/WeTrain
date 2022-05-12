@@ -6,6 +6,7 @@ import exception.DBUnreachableException;
 import exception.invalid_data_exception.ExpiredCardException;
 import model.Athlete;
 import model.Trainer;
+import model.record.Card;
 import viewone.bean.CardInfoBean;
 import viewone.bean.IbanBean;
 
@@ -30,7 +31,13 @@ public class ProfileManagementController {
 
             throw new ExpiredCardException();
         }
-        new AthleteDAO().updateCardInfo(cardInfoBean.getCardNumber(),cardInfoBean.getExpirationDate(), athlete);
+        new AthleteDAO().updateCardInfo(
+                new Card(
+                        cardInfoBean.getCardNumber(),
+                        cardInfoBean.getExpirationDate()
+                ),
+                athlete
+        );
     }
 
     public void removeCardInfo(Athlete athlete) throws SQLException, DBUnreachableException {

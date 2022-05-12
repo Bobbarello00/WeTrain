@@ -1,68 +1,50 @@
 package model;
 
+import model.record.Credentials;
+import model.record.PersonalInfo;
+
 import java.time.LocalDate;
 
 public abstract class User {
-    private String name;
-    private String surname;
-    private String username;
-    private LocalDate dateOfBirth;
-    private String fiscalCode;
-    private String email;
-    private char gender;
-    private String password;
+    private final String username;
+    private final Credentials credentials;
+    private final PersonalInfo personalInfo;
 
-    protected User() {}
-
-    protected User(String name, String surname, String username, LocalDate dateOfBirth, String fc, char gender, String email, String password){
-        this.name = name;
-        this.surname = surname;
+    protected User(String username, PersonalInfo personalInfo, Credentials credentials){
+        this.personalInfo = personalInfo;
         this.username = username;
-        this.dateOfBirth = dateOfBirth;
-        this.fiscalCode = fc;
-        this.email = email;
-        this.gender = gender;
-        this.password = password;
+        this.credentials = credentials;
     }
 
-
     public String getName() {
-        return name;
+        return personalInfo.name();
     }
 
     public String getSurname() {
-        return surname;
+        return personalInfo.surname();
     }
 
     public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+        return personalInfo.dateOfBirth();
     }
 
     public String getFiscalCode() {
-        return fiscalCode;
+        return personalInfo.fc();
     }
 
     public String getEmail() {
-        return email;
+        return credentials.email();
     }
 
     public String getPassword() {
-        return password;
+        return credentials.password();
     }
 
     public char getGender() {
-        return gender;
-    }
-
-    public void setGender(char gender) {
-        this.gender = gender;
+        return personalInfo.gender();
     }
 
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 }
