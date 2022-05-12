@@ -4,9 +4,12 @@ import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
+import exception.runtime_exception.IsNotATrainerOrAnAthlete;
+import exception.runtime_exception.ResultSetIsNullException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import viewone.engeneering.FatalCaseManager;
 
@@ -34,7 +37,7 @@ public class UserDAO {
         }
     }
 
-    @Nullable private User getUser(ResultSet rs) throws SQLException, DBUnreachableException {
+    private @NotNull User getUser(ResultSet rs) throws SQLException, DBUnreachableException {
         if (rs.next()) {
             String usr = rs.getString("FC");
             AthleteDAO aDao = new AthleteDAO();
@@ -47,8 +50,7 @@ public class UserDAO {
                 if(ret1 != null) {
                     return ret1;
                 }
-                FatalCaseManager.killApplication();
-                return null;
+                throw new IsNotATrainerOrAnAthlete();
             }
         } else {
             throw new ElementNotFoundException();

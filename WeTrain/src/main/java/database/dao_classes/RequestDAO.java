@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
+import exception.runtime_exception.ResultSetIsNullException;
 import model.Request;
 import model.Trainer;
 
@@ -31,7 +32,7 @@ public class RequestDAO {
                         new AthleteDAO().loadAthlete(rs.getString(ATHLETE)),
                         new TrainerDAO().loadTrainer(rs.getString(TRAINER)));
             } else {
-                return null;
+                throw new ResultSetIsNullException();
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

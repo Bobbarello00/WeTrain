@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
+import exception.runtime_exception.ResultSetIsNullException;
 import model.Athlete;
 import model.Trainer;
 import model.record.Credentials;
@@ -62,11 +63,11 @@ public class TrainerDAO {
                         trainer.setIban(rs1.getString("Iban"));
                         return trainer;
                     } else {
-                        return null;
+                        throw new ResultSetIsNullException();
                     }
                 }
             } else {
-                return null;
+                throw new ResultSetIsNullException();
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -80,7 +81,7 @@ public class TrainerDAO {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
-                return 0;
+                throw new ResultSetIsNullException();
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

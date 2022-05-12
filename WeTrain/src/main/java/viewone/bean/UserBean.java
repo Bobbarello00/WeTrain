@@ -1,6 +1,7 @@
 package viewone.bean;
 
 import exception.invalid_data_exception.*;
+import model.record.PersonalInfo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,49 +10,41 @@ import java.util.regex.*;
 
 public class UserBean {
 
-
     private String username;
-    private String name;
-    private String surname;
-    private String fiscalCode;
-    private LocalDate birth;
+    private PersonalInfo personalInfo;
     private String type;
-    private char gender;
     private final CredentialsBean credentials;
 
-    public UserBean(String username, String name, String surname, String fiscalCode, LocalDate birth, String type, char gender, String email, String password) {
+    public UserBean(String username, String type, PersonalInfo personalInfo, CredentialsBean credentials) {
         /*This is a constructor without syntax check and is used by controller*/
         this.username = username;
-        this.name = name;
-        this.surname = surname;
-        this.fiscalCode = fiscalCode;
-        this.birth = birth;
+        this.personalInfo = personalInfo;
         this.type = type;
-        this.gender = gender;
-        credentials = CredentialsBean.ctorWithoutSyntaxCheck(email, password);
+        this.credentials = CredentialsBean.ctorWithoutSyntaxCheck(credentials.getEmail(), credentials.getPassword());
     }
 
     public UserBean(String username, String name, String surname, String fiscalCode, String birth, String type, char gender, String email, String password) throws InvalidUserInfoException, InvalidFiscalCodeException, InvalidCredentialsException, InvalidBirthException, EmptyFieldsException {
         /*This is a constructor with syntax check and is used by view*/
         setUser(username, name, surname, fiscalCode, type, gender);
-        setBirth(birth);
+        birth = checkBirth(birth);
         credentials = CredentialsBean.ctorWithSyntaxCheck(email, password);
     }
 
     private void setUser(String username, String name, String surname, String fiscalCode, String type, char gender) throws InvalidUserInfoException, InvalidFiscalCodeException, EmptyFieldsException {
         setUsername(username);
-        setName(name);
-        setSurname(surname);
-        setFc(fiscalCode);
         setType(type);
-        setGender(gender);
+        checkName(name);
+        checkSurname(surname);
+        checkFc(fiscalCode);
+        checkGender(gender);
+        this.personalInfo = personalInfo;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    private void setType(String type) {
         this.type = type;
     }
 
@@ -59,7 +52,7 @@ public class UserBean {
         return username;
     }
 
-    public void setUsername(String username) throws InvalidUserInfoException, EmptyFieldsException {
+    private void setUsername(String username) throws InvalidUserInfoException, EmptyFieldsException {
         if(username.isEmpty()){
             throw new EmptyFieldsException();
         } else if(isValidLength(username, 20)){
@@ -74,43 +67,37 @@ public class UserBean {
     }
 
     public String getName() {
-        return name;
+        return personalInfo.name();
     }
 
-    public void setName(String name) throws InvalidUserInfoException, EmptyFieldsException {
+    private void checkName(String name) throws InvalidUserInfoException, EmptyFieldsException {
         if(name.isEmpty()){
             throw new EmptyFieldsException();
-        } else if(isValidLength(name, 45)){
-            this.name = name;
-        }else {
+        } else if(!isValidLength(name, 45)) {
             throw new InvalidUserInfoException();
         }
     }
 
     public String getSurname() {
-        return surname;
+        return personalInfo.surname();
     }
 
-    public void setSurname(String surname) throws InvalidUserInfoException, EmptyFieldsException {
+    private void checkSurname(String surname) throws InvalidUserInfoException, EmptyFieldsException {
         if(surname.isEmpty()){
             throw new EmptyFieldsException();
-        } else if(isValidLength(surname, 45)){
-            this.surname = surname;
-        }else {
+        } else if(!isValidLength(surname, 45)){
             throw new InvalidUserInfoException();
         }
     }
 
     public String getFiscalCode() {
-        return fiscalCode;
+        return personalInfo.fc();
     }
 
-    public void setFc(String fc) throws InvalidFiscalCodeException, EmptyFieldsException {
+    private void checkFc(String fc) throws InvalidFiscalCodeException, EmptyFieldsException {
         if(fc.isEmpty()){
             throw new EmptyFieldsException();
-        } else if(isValidFc(fc)) {
-            this.fiscalCode = fc;
-        }else {
+        } else if(!isValidFc(fc)) {
             throw new InvalidFiscalCodeException();
         }
     }
@@ -120,14 +107,14 @@ public class UserBean {
     }
 
     public LocalDate getBirth() {
-        return birth;
+        return personalInfo.dateOfBirth();
     }
 
-    public void setBirth(String birth) throws InvalidBirthException, EmptyFieldsException {
+    private LocalDate checkBirth(String birth) throws InvalidBirthException, EmptyFieldsException {
         if(birth.isEmpty()){
             throw new EmptyFieldsException();
         } else if(isValidBirth(birth)) {
-            this.birth = LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            return LocalDate.parse(birth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         }else {
             throw new InvalidBirthException();
         }
@@ -146,11 +133,11 @@ public class UserBean {
     }
 
     public char getGender() {
-        return gender;
+        return personalInfo.gender();
     }
 
-    public void setGender(char gender) {
-        this.gender = gender;
+    private void checkGender(char gender) {
+        return;
     }
 
     public String getEmail() {

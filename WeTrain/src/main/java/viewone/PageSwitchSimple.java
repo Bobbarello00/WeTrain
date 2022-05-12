@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,17 +30,21 @@ public class PageSwitchSimple {
                 throw new FileNotFoundException("Non ho trovato il file FXML");
             }
             FXMLLoader root = new FXMLLoader(fileUrl);
-            try {
-                Pane view = root.load();
-                mainPane.setCenter(view);
-                return root.getController();
-            } catch (LoadException e) {
-                e.printStackTrace();
-                new DBUnreachableException().logOff();
-                return null;
-            }
+            return setViewAndGetController(mainPane, root);
         } catch (FileNotFoundException e) {
             System.out.println("File "+ pathString + "/" + fileName + EXTENSION + " non trovato, controllare il PageSwitchSimple!");
+            return null;
+        }
+    }
+
+    @Nullable private static Object setViewAndGetController(BorderPane mainPane, FXMLLoader root) throws IOException {
+        try {
+            Pane view = root.load();
+            mainPane.setCenter(view);
+            return root.getController();
+        } catch (LoadException e) {
+            e.printStackTrace();
+            new DBUnreachableException().logOff();
             return null;
         }
     }

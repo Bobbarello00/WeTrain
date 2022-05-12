@@ -16,7 +16,7 @@ public abstract class Notification {
         this.dateTime = dateTime;
     }
 
-    public Notification(User sender, User receiver) {
+    protected Notification(User sender, User receiver) {
         this.sender = sender;
         this.receiver = receiver;
         this.dateTime = LocalDateTime.now();

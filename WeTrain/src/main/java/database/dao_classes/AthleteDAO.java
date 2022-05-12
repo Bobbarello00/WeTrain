@@ -5,6 +5,7 @@ import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import exception.invalid_data_exception.ExpiredCardException;
+import exception.runtime_exception.ResultSetIsNullException;
 import model.Athlete;
 import model.record.Card;
 import model.record.Credentials;
@@ -116,7 +117,7 @@ public class AthleteDAO {
                 athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
                 return athlete;
             } else {
-                return null;
+                throw new ResultSetIsNullException();
             }
         } catch (ExpiredCardException e) {
             try(PreparedStatement preparedStatement1 = Queries.removeCardInfoAthlete(fc)) {
@@ -132,7 +133,7 @@ public class AthleteDAO {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
-                return 0;
+                throw new ResultSetIsNullException();
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

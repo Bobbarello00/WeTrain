@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
+import exception.runtime_exception.NoGeneratedKeyException;
 import model.Exercise;
 import model.Trainer;
 import model.WorkoutDay;
@@ -23,7 +24,7 @@ public class WorkoutDayDAO {
                 if (generatedKeys.next()) {
                     idWorkoutDay = generatedKeys.getInt(1);
                 } else {
-                    return;
+                    throw new NoGeneratedKeyException();
                 }
             }
             for (Exercise exercise : workoutDay.getExerciseList()){

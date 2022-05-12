@@ -3,6 +3,7 @@ package controller;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.EmptyFieldsException;
+import exception.runtime_exception.FatalErrorException;
 import viewone.bean.CommunicationBean;
 import viewone.bean.StartLessonBean;
 
@@ -24,7 +25,7 @@ public class StartLessonController {
                             startLessonBean.getCourseBean())
             );
         } catch (EmptyFieldsException e) {
-            throw new RuntimeException(e);
+            throw new FatalErrorException();
         }
     }
 }

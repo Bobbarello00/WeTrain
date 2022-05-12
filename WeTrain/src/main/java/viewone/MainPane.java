@@ -1,5 +1,6 @@
 package viewone;
 
+import exception.runtime_exception.MainPaneNotExistException;
 import javafx.scene.layout.BorderPane;
 
 public class MainPane {
@@ -14,7 +15,7 @@ public class MainPane {
 
     public static synchronized BorderPane getInstance(){
         if(pane == null){
-            System.out.println("Error: mainPane is null");
+            throw new MainPaneNotExistException();
         }
         return pane;
     }

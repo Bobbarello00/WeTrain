@@ -3,7 +3,7 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
-import exception.FatalErrorException;
+import exception.runtime_exception.NoGeneratedKeyException;
 import model.Trainer;
 import model.WorkoutDay;
 import model.WorkoutPlan;
@@ -22,7 +22,7 @@ public class WorkoutPlanDAO {
                 if (generatedKeys.next()) {
                     idWorkoutPlan = generatedKeys.getInt(1);
                 } else {
-                    throw new FatalErrorException();
+                    throw new NoGeneratedKeyException();
                 }
             }
             for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()) {

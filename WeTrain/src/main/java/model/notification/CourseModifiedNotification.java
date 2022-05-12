@@ -5,7 +5,7 @@ import model.User;
 import java.time.LocalDateTime;
 
 public class CourseModifiedNotification extends Notification{
-    public Course course;
+    public final Course course;
 
     public CourseModifiedNotification(int id, User sender, User receiver, Course course, LocalDateTime dateTime) {
         super(id, sender, receiver, dateTime);

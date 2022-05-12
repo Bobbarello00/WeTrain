@@ -5,6 +5,7 @@ import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
+import exception.runtime_exception.ResultSetIsNullException;
 import model.*;
 
 import java.sql.*;
@@ -49,7 +50,7 @@ public class CourseDAO {
                 if (generatedKeys.next()) {
                     idCourse = generatedKeys.getInt(1);
                 } else {
-                    return;
+                    throw new ResultSetIsNullException();
                 }
             }
             course.setId(idCourse);
@@ -193,7 +194,7 @@ public class CourseDAO {
             if(rs.next()){
                 return rs.getString("StartedLessonUrl");
             }else{
-                return null;
+                throw new ResultSetIsNullException();
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -206,7 +207,7 @@ public class CourseDAO {
             if(rs.next()) {
                 return rs.getInt(1);
             } else {
-                return -1;
+                throw new ResultSetIsNullException();
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
