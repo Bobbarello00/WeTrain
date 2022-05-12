@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.TrainerExercisesManagementController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import viewone.MainPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +29,7 @@ public class CreateNewExerciseGUIController {
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
         cancelButtonAction(event);

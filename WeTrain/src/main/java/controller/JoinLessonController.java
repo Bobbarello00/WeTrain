@@ -2,7 +2,7 @@ package controller;
 
 import database.dao_classes.CourseDAO;
 import exception.BrowsingNotSupportedException;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.UrlNotInsertedYetException;
 import viewone.bean.IdBean;
 import java.awt.*;
@@ -17,7 +17,7 @@ public class JoinLessonController {
         String lessonUrl = null;
         try {
             lessonUrl = new CourseDAO().loadStartedLessonUrl(idBean.getId());
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alert();
         } catch (SQLException e) {
             throw new RuntimeException(e);

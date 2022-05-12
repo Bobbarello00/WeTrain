@@ -1,12 +1,10 @@
 package viewone;
 
-import database.DatabaseConnectionSingleton;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,7 +35,7 @@ public class PageSwitchSimple {
                 return root.getController();
             } catch (LoadException e) {
                 e.printStackTrace();
-                new DBConnectionFailedException().alertAndLogOff();
+                new DBUnreachableException().logOff();
                 return null;
             }
         } catch (FileNotFoundException e) {

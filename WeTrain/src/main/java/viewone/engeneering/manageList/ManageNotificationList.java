@@ -1,7 +1,7 @@
 package viewone.engeneering.manageList;
 
 import controller.NotificationsController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,7 +11,6 @@ import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.bean.NotificationBean;
 import viewone.engeneering.AlertFactory;
-import viewone.graphical_controllers.athletes.AthletesHomeGUIController;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -48,7 +47,7 @@ public class ManageNotificationList {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }

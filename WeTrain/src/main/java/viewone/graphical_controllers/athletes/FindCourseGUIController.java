@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -90,7 +90,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
                     fitnessLevel,
                     selectedDays
             ));
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }

@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.SubscriptionToTrainerController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.InvalidIbanException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -84,7 +84,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             showVBox(addTrainerBox);
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }
@@ -96,7 +96,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             trainersList.setItems(FXCollections.observableList(trainersObservableList));
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             return;
         }
@@ -108,7 +108,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         List<UserBean> userBeanList;
         try {
             userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             return;
         }
@@ -126,7 +126,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             showVBox(trainerBox);
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
 
@@ -156,7 +156,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }
@@ -188,7 +188,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             }
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (InvalidIbanException e) {
             e.alert();

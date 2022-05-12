@@ -3,7 +3,7 @@ package viewone.graphical_controllers;
 import controller.CourseManagementAthleteController;
 import controller.JoinLessonController;
 import exception.BrowsingNotSupportedException;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.ImATrainerException;
 import exception.UrlNotInsertedYetException;
 import javafx.event.ActionEvent;
@@ -118,7 +118,7 @@ public class CourseOverviewGUIController {
                 subscribed = true;
             }
             lessonText.setText("Join Lesson");
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
         } catch (ImATrainerException e) {
@@ -213,7 +213,7 @@ public class CourseOverviewGUIController {
                     null);
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alert();
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();

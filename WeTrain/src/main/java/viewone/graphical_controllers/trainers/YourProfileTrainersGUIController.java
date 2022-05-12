@@ -43,7 +43,7 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
                 throw new RuntimeException();
             } catch (InvalidDataException e) {
                 e.alert();
-            } catch (DBConnectionFailedException e) {
+            } catch (DBUnreachableException e) {
                 ((Stage) editButton.getScene().getWindow()).close();
                 e.alertAndLogOff();
             }
@@ -82,7 +82,7 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
             setIbanLabel();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alert();
         } catch (SQLException e) {
             //TODO gestione exception sql

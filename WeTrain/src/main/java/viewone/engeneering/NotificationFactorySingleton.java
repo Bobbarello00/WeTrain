@@ -1,7 +1,7 @@
 package viewone.engeneering;
 
 import database.dao_classes.CourseDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Course;
 import model.User;
 import model.notification.*;
@@ -67,7 +67,7 @@ public class NotificationFactorySingleton {
         );
     }
 
-    public Notification createNotification(int idNotification, int type, String info, LocalDateTime dateTime, User sender, User receiver) throws DBConnectionFailedException, SQLException {
+    public Notification createNotification(int idNotification, int type, String info, LocalDateTime dateTime, User sender, User receiver) throws DBUnreachableException, SQLException {
         NotificationEnum type1 = NotificationEnum.of(type);
         String[] params = info.split("-");
         if(type1 == SUBSCRIPTIONTOTRAINER) {

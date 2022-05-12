@@ -1,25 +1,23 @@
 package controller;
 
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Athlete;
 import model.Exercise;
 import model.WorkoutDay;
 import model.WorkoutPlan;
 import viewone.bean.ExerciseBean;
-import viewone.bean.ExerciseForWorkoutPlanBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class WorkoutPlanController {
 
     private final LoginController loginController = new LoginController();
 
-    public WorkoutPlanBean getWorkoutPlan() throws SQLException, DBConnectionFailedException {
+    public WorkoutPlanBean getWorkoutPlan() throws SQLException, DBUnreachableException {
         WorkoutPlan workoutPlan = ((Athlete) loginController.getLoggedUser()).getWorkoutPlan();
         if(workoutPlan == null) {
             return null;

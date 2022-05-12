@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Course;
 import model.Lesson;
 
@@ -13,15 +14,16 @@ import java.util.List;
 
 public class LessonDAO {
 
-    public LessonDAO() {}
-
-    public void saveLesson(Lesson lesson, Course course) throws SQLException, DBConnectionFailedException {
+    public void saveLesson(Lesson lesson, Course course) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertLesson(lesson, course.getId())){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public List<Lesson> loadAllLessons(Course course) throws SQLException, DBConnectionFailedException {
+    public List<Lesson> loadAllLessons(Course course) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadAllLessons(course.getId());
             ResultSet rs = preparedStatement.executeQuery()){
             List<Lesson> myList = new ArrayList<>();
@@ -33,6 +35,9 @@ public class LessonDAO {
                         rs.getTime("LessonEndTime").toLocalTime()));
             }
             return myList;
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 }

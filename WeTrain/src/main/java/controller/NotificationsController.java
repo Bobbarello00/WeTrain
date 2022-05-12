@@ -2,7 +2,7 @@ package controller;
 
 import database.dao_classes.CourseDAO;
 import database.dao_classes.NotificationDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Athlete;
 import model.Course;
 import model.User;
@@ -23,7 +23,7 @@ public class NotificationsController {
 
     private final LoginController loginController = new LoginController();
 
-    public List<NotificationBean> getMyNotification() throws SQLException, DBConnectionFailedException {
+    public List<NotificationBean> getMyNotification() throws SQLException, DBUnreachableException {
         List<Notification> notificationList = new NotificationDAO().loadAllNotifications(loginController.getLoggedUser());
         List<NotificationBean> notificationBeanList = new ArrayList<>();
         for(Notification notification: notificationList) {
@@ -70,7 +70,7 @@ public class NotificationsController {
         );
     }
 
-    public void sendCourseCommunicationNotification(CommunicationBean bean) throws SQLException, DBConnectionFailedException {
+    public void sendCourseCommunicationNotification(CommunicationBean bean) throws SQLException, DBUnreachableException {
         Course course = new CourseDAO().loadCourse(bean.getCourseBean().getId());
         new NotificationDAO().sendCourseNotification(
                 course,
@@ -81,7 +81,7 @@ public class NotificationsController {
                 ));
     }
 
-    public void sendRejectRequestNotification(String receiver) throws SQLException, DBConnectionFailedException {
+    public void sendRejectRequestNotification(String receiver) throws SQLException, DBUnreachableException {
         Notification notification = NotificationFactorySingleton.getInstance().createRejectedRequestNotification(
                 loginController.getLoggedUser()
         );
@@ -94,11 +94,11 @@ public class NotificationsController {
         );
     }
 
-    public void deleteNotification(NotificationBean notificationBean) throws DBConnectionFailedException, SQLException {
+    public void deleteNotification(NotificationBean notificationBean) throws DBUnreachableException, SQLException {
         new NotificationDAO().deleteNotification(notificationBean.getId());
     }
 
-    public void sendEmailReceivedNotification(EmailReceivedNotificationBean emailReceivedNotificationBean) throws DBConnectionFailedException, SQLException {
+    public void sendEmailReceivedNotification(EmailReceivedNotificationBean emailReceivedNotificationBean) throws DBUnreachableException, SQLException {
         new NotificationDAO().saveNotification(
                 NotificationEnum.EMAILRECEIVED.ordinal(),
                 "",
@@ -108,7 +108,7 @@ public class NotificationsController {
         );
     }
 
-    public void sendSubscriptionToACourseNotification(User sender, User receiver, Course course) throws DBConnectionFailedException, SQLException {
+    public void sendSubscriptionToACourseNotification(User sender, User receiver, Course course) throws DBUnreachableException, SQLException {
         Notification notification = NotificationFactorySingleton.getInstance().createSubscribeToCourseNotification(
                 sender,
                 receiver,

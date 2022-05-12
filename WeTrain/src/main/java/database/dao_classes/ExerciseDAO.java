@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Exercise;
 import model.Trainer;
 import model.WorkoutDay;
@@ -19,21 +20,25 @@ public class ExerciseDAO {
     private static final String TRAINER = "Trainer";
     private static final String IDEXERCISE = "idExercise";
 
-    public ExerciseDAO() {}
-
-    public void insertExerciseInWorkoutDay(Exercise exercise, int workoutDayId) throws SQLException, DBConnectionFailedException {
+    public void insertExerciseInWorkoutDay(Exercise exercise, int workoutDayId) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertExerciseInWorkoutDay(exercise.getId(), workoutDayId)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void saveExercise(Exercise exercise) throws SQLException, DBConnectionFailedException {
+    public void saveExercise(Exercise exercise) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertExercise(exercise)) {
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException, DBConnectionFailedException {
+    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadAllExerciseInWorkoutDays(workoutDay.getId()); ResultSet rs = preparedStatement.executeQuery()){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
@@ -45,10 +50,13 @@ public class ExerciseDAO {
                 );
             }
             return exerciseList;
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException, DBConnectionFailedException {
+    public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadTrainerExercises(trainer.getFiscalCode());
             ResultSet rs = preparedStatement.executeQuery()){
             List<Exercise> exerciseList = new ArrayList<>();
@@ -60,16 +68,22 @@ public class ExerciseDAO {
                         trainer));
             }
             return exerciseList;
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void removeExercise(Exercise exercise) throws SQLException, DBConnectionFailedException {
+    public void removeExercise(Exercise exercise) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.deleteExercise(exercise.getId())){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public Exercise loadExercise(int id) throws SQLException, DBConnectionFailedException {
+    public Exercise loadExercise(int id) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadExercise(id); ResultSet rs = preparedStatement.executeQuery()){
             return new Exercise(
                     rs.getInt(IDEXERCISE),
@@ -77,6 +91,9 @@ public class ExerciseDAO {
                     rs.getString(INFO),
                     new TrainerDAO().loadTrainer(rs.getString(TRAINER))
             );
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 }

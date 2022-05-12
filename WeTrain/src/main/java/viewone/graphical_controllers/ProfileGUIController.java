@@ -1,7 +1,6 @@
 package viewone.graphical_controllers;
 
-import exception.DBConnectionFailedException;
-import exception.invalidDataException.InvalidIbanException;
+import exception.DBUnreachableException;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.bean.UserBean;
 
-import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
@@ -80,7 +78,7 @@ public abstract class ProfileGUIController {
             return Objects.requireNonNull(LoggedUserSingleton.getInstance());
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
         return null;

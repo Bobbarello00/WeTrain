@@ -2,7 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import com.mysql.cj.exceptions.CJException;
 import controller.CourseManagementAthleteController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -34,8 +34,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             updateNotificationList();
             courseBeanList = courseManagementAthleteController.getCourseList();
             ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
-        } catch (DBConnectionFailedException | CJException e) {
-            new DBConnectionFailedException().alertAndLogOff();
+        } catch (DBUnreachableException | CJException e) {
+            new DBUnreachableException().alertAndLogOff();
             logoutButton.fire();
         } catch (SQLException e) {
             e.printStackTrace();

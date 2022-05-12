@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.InvalidDataException;
 import exception.invalidDataException.TimeNotInsertedException;
 import javafx.event.ActionEvent;
@@ -95,7 +95,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             e.alert();
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }

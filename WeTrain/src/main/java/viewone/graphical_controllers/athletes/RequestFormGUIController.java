@@ -2,14 +2,13 @@ package viewone.graphical_controllers.athletes;
 
 import controller.NotificationsController;
 import controller.RequestWorkoutPlanController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.EmptyFieldsException;
 import exception.invalidDataException.InvalidIbanException;
-import exception.TextOutOfBoundException;
+import exception.invalidDataException.TextOutOfBoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import viewone.MainPane;
 import viewone.bean.RequestBean;
 import viewone.bean.UserBean;
 import viewone.engeneering.AlertFactory;
@@ -47,7 +46,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
                     "Wait for your request to be evaluated by the Trainer");
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             ((Stage) sendButton.getScene().getWindow()).close();
             e.alertAndLogOff();
             return;

@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MoreInfoGUIController implements Initializable {
@@ -42,7 +41,7 @@ public class MoreInfoGUIController implements Initializable {
 
     private final RegistrationController registrationController = new RegistrationController();
 
-    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException, DBConnectionFailedException {
+    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException, DBUnreachableException {
         UserBean user = new UserBean(
                 usernameText.getText(),
                 firstNameText.getText(),
@@ -70,7 +69,7 @@ public class MoreInfoGUIController implements Initializable {
             e.printStackTrace();
         } catch (InvalidDataException e) {
             e.alert();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }

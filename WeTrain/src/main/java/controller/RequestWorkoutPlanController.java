@@ -1,14 +1,14 @@
 package controller;
 
 import database.dao_classes.RequestDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import viewone.bean.RequestBean;
 
 import java.sql.SQLException;
 
 public class RequestWorkoutPlanController {
 
-    public void sendRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
+    public void sendRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         //TODO richiedi il pagamento
         new RequestDAO().saveRequest(
                 requestBean.getRequestDate(),

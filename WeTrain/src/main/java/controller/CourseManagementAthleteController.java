@@ -3,7 +3,7 @@ package controller;
 import boundary.EmailSystemBoundary;
 import boundary.PaypalBoundary;
 import database.dao_classes.CourseDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.ImATrainerException;
 import model.*;
 import viewone.bean.*;
@@ -18,7 +18,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
     private final PaypalBoundary paypalBoundary = new PaypalBoundary();
     private final NotificationsController notificationsController = new NotificationsController();
 
-    public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBConnectionFailedException, ImATrainerException {
+    public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
         User user = loginController.getLoggedUser();
         if(user instanceof Trainer) {
             throw new ImATrainerException();
@@ -33,7 +33,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         return false;
     }
 
-    public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
+    public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBUnreachableException {
         paypalBoundary.pay();
         Course course = new CourseDAO().loadCourse(courseBean.getId());
         new CourseDAO().subscribeToACourse(course.getId());
@@ -46,21 +46,21 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         );
     }
 
-    public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBConnectionFailedException {
+    public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBUnreachableException {
         new CourseDAO().unsubscribeFromACourse(courseBean.getId());
     }
 
-    public List<CourseBean> getCourseList() throws SQLException, DBConnectionFailedException {
+    public List<CourseBean> getCourseList() throws SQLException, DBUnreachableException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
         return getCourseBeanList(courseList);
     }
 
-    public List<CourseBean> getPopularCourseList() throws SQLException, DBConnectionFailedException {
+    public List<CourseBean> getPopularCourseList() throws SQLException, DBUnreachableException {
         List<Course> popularCourses = new CourseDAO().loadPopularCourses();
         return getCourseBeanList(popularCourses);
     }
 
-    public List<CourseBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException, DBConnectionFailedException {
+    public List<CourseBean> searchCourse(CourseSearchBean courseSearchBean) throws SQLException, DBUnreachableException {
         List<Course> courseList = new CourseDAO().searchCourses(courseSearchBean.getName(), courseSearchBean.getFitnessLevel(), courseSearchBean.getDays());
         return getCourseBeanList(courseList);
     }

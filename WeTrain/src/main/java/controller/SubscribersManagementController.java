@@ -1,9 +1,8 @@
 package controller;
 
 import database.dao_classes.TrainerDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Athlete;
-import model.Trainer;
 import model.User;
 import viewone.bean.UserBean;
 
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class SubscribersManagementController {
 
-    public List<UserBean> getSubscriberList(String trainerFc) throws SQLException, DBConnectionFailedException {
+    public List<UserBean> getSubscriberList(String trainerFc) throws SQLException, DBUnreachableException {
         List<Athlete> subscriberList = new TrainerDAO().loadAllTrainerSubscribers(trainerFc);
         return setToUserBean(subscriberList);
     }

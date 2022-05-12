@@ -1,8 +1,8 @@
-package exception;
+package exception.invalidDataException;
 
 import viewone.engeneering.AlertFactory;
 
-public class TextOutOfBoundException extends Exception{
+public class TextOutOfBoundException extends InvalidDataException {
 
     public void alert() {
         AlertFactory.newWarningAlert("WARNING!",

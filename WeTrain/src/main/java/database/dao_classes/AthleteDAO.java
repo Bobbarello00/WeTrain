@@ -1,12 +1,12 @@
 package database.dao_classes;
 
-import com.mysql.cj.exceptions.CJCommunicationsException;
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import exception.invalidDataException.ExpiredCardException;
 import model.Athlete;
+import org.jetbrains.annotations.Nullable;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -30,31 +30,40 @@ public class AthleteDAO {
     private static final String CARD_EXPIRATION_DATE = "CardExpirationDate";
     private static final String WORKOUT_PLAN = "WorkoutPlan";
 
-    public AthleteDAO(){}
-
-    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException, DBConnectionFailedException {
+    public void updateCardInfo(String cardNumber, YearMonth expirationDate, Athlete athlete) throws SQLException, DBUnreachableException {
         athlete.changeCardInfo(cardNumber, expirationDate);
         try(PreparedStatement preparedStatement =Queries.updateCardInfoAthlete(athlete)) {
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
 
     }
 
-    public void removeCardInfo(String fc) throws SQLException, DBConnectionFailedException {
+    public void removeCardInfo(String fc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.removeCardInfoAthlete(fc)) {
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void saveAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
-        List<PreparedStatement> preparedStatementList = Queries.insertAthlete(athlete);
-        preparedStatementList.get(0).executeUpdate();
-        preparedStatementList.get(1).executeUpdate();
-        preparedStatementList.get(0).close();
-        preparedStatementList.get(1).close();
+    public void saveAthlete(Athlete athlete) throws SQLException, DBUnreachableException {
+        try {
+            List<PreparedStatement> preparedStatementList = Queries.insertAthlete(athlete);
+            preparedStatementList.get(0).executeUpdate();
+            preparedStatementList.get(1).executeUpdate();
+            preparedStatementList.get(0).close();
+            preparedStatementList.get(1).close();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
+        }
     }
 
-    public Athlete loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
+    public Athlete loadAthlete(String fc) throws SQLException, DBUnreachableException {
         try (PreparedStatement preparedStatement = Queries.loadUser(fc)) {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
@@ -67,45 +76,50 @@ public class AthleteDAO {
                         rs.getString(EMAIL),
                         rs.getString(PASSWORD)
                 );
-
-                try (PreparedStatement preparedStatement1 = Queries.loadAthlete(fc)) {
-                    ResultSet rs1 = preparedStatement1.executeQuery();
-                    if (rs1.next()) {
-                        athlete.setCardNumber(rs1.getString(CARD_NUMBER));
-                        Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
-                        YearMonth cardExpirationDate = null;
-                        if (temp != null) {
-                            cardExpirationDate = YearMonth.from(temp.toLocalDate());
-                        }
-                        athlete.setCardExpirationDate(cardExpirationDate);
-                        if(rs1.getString(TRAINER) != null) {
-                            athlete.setTrainer(new TrainerDAO().loadTrainer(rs1.getString(TRAINER)));
-                        }
-                        if (rs1.getInt(WORKOUT_PLAN) != 0 && athlete.getTrainer() != null) {
-                            athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt(WORKOUT_PLAN), athlete.getTrainer()));
-                        } else {
-                            athlete.setWorkoutPlan(null);
-                        }
-                        athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
-                        return athlete;
-                    } else {
-                        return null;
-                    }
-                } catch (ExpiredCardException e) {
-                    try(PreparedStatement preparedStatement1 = Queries.removeCardInfoAthlete(fc)) {
-                        preparedStatement1.executeUpdate();
-                    }
-                    return loadAthlete(fc);
-                }
+                return completeAthleteInfo(fc, athlete);
             } else {
                 throw new ElementNotFoundException();
             }
-        } catch(CJCommunicationsException | CommunicationsException e) {
-        throw new DBConnectionFailedException();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public int getNumberOfCourses(String athleteFc) throws SQLException, DBConnectionFailedException {
+    @Nullable
+    private Athlete completeAthleteInfo(String fc, Athlete athlete) throws SQLException, DBUnreachableException, DBConnectionFailedException {
+        try (PreparedStatement preparedStatement1 = Queries.loadAthlete(fc)) {
+            ResultSet rs1 = preparedStatement1.executeQuery();
+            if (rs1.next()) {
+                athlete.setCardNumber(rs1.getString(CARD_NUMBER));
+                Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
+                YearMonth cardExpirationDate = null;
+                if (temp != null) {
+                    cardExpirationDate = YearMonth.from(temp.toLocalDate());
+                }
+                athlete.setCardExpirationDate(cardExpirationDate);
+                if(rs1.getString(TRAINER) != null) {
+                    athlete.setTrainer(new TrainerDAO().loadTrainer(rs1.getString(TRAINER)));
+                }
+                if (rs1.getInt(WORKOUT_PLAN) != 0 && athlete.getTrainer() != null) {
+                    athlete.setWorkoutPlan(new WorkoutPlanDAO().loadWorkoutPlan(rs1.getInt(WORKOUT_PLAN), athlete.getTrainer()));
+                } else {
+                    athlete.setWorkoutPlan(null);
+                }
+                athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
+                return athlete;
+            } else {
+                return null;
+            }
+        } catch (ExpiredCardException e) {
+            try(PreparedStatement preparedStatement1 = Queries.removeCardInfoAthlete(fc)) {
+                preparedStatement1.executeUpdate();
+            }
+            return loadAthlete(fc);
+        }
+    }
+
+    public int getNumberOfCourses(String athleteFc) throws SQLException, DBUnreachableException {
         try (PreparedStatement preparedStatement = Queries.countAthleteCourses(athleteFc)) {
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
@@ -113,30 +127,45 @@ public class AthleteDAO {
             }else{
                 return 0;
             }
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void setTrainer(Athlete athlete, String fc) throws SQLException, DBConnectionFailedException {
+    public void setTrainer(Athlete athlete, String fc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.updateTrainerAthlete(athlete.getFiscalCode(), fc)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void removeTrainer(Athlete athlete) throws SQLException, DBConnectionFailedException {
+    public void removeTrainer(Athlete athlete) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.removeTrainerAthlete(athlete.getFiscalCode())){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
+    public void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.removeWorkoutPlan(idWorkoutPlan)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
+    public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 

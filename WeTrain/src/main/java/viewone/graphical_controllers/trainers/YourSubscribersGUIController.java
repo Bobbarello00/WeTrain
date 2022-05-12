@@ -2,7 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.SubscribersManagementController;
 import database.dao_classes.TrainerDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -61,7 +61,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
             ObservableList<UserBean> requestBeanObservableList = FXCollections.observableList(subscribersManagementController.getSubscriberList(trainerInfo.getFiscalCode()));
             subscribersList.setItems(FXCollections.observableList(requestBeanObservableList));
             setUserInfoTab();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);

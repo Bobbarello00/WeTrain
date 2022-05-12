@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -64,7 +64,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                         }
                     });
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -83,7 +83,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
             courseManagementTrainerController.deleteCourse(selectedCourse);
             setVisible(false);
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);

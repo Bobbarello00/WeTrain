@@ -2,7 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.CourseManagementAthleteController;
 import controller.WorkoutPlanController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -72,7 +72,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
             try {
                 courseBeanList = courseManagementAthleteController.getCourseList();
                 workoutPlanBean = workoutPlanController.getWorkoutPlan();
-            } catch (DBConnectionFailedException e) {
+            } catch (DBUnreachableException e) {
                 e.alertAndLogOff();
                 return;
             }

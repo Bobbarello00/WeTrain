@@ -1,7 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
-import exception.DBConnectionFailedException;
-import exception.invalidDataException.InvalidIbanException;
+import exception.DBUnreachableException;
 import viewone.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,7 +39,7 @@ public abstract class LauncherGUIController implements Initializable {
             return Objects.requireNonNull(LoggedUserSingleton.getInstance());
         } catch (SQLException e){
             throw new RuntimeException();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
         return null;

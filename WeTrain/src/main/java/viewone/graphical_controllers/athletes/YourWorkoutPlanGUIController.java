@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.WorkoutPlanController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,7 +20,6 @@ import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -79,7 +78,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
             workoutPlanBean = workoutPlanController.getWorkoutPlan();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }

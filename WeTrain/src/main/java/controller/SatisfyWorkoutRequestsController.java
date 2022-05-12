@@ -1,11 +1,9 @@
 package controller;
 
 import database.dao_classes.AthleteDAO;
-import database.dao_classes.NotificationDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
-import exception.DBConnectionFailedException;
-import exception.invalidDataException.EmptyFieldsException;
+import exception.DBUnreachableException;
 import model.*;
 import viewone.bean.*;
 
@@ -22,7 +20,7 @@ public class SatisfyWorkoutRequestsController {
 
     private Trainer trainer;
 
-    public void rejectRequest(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
+    public void rejectRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         new RequestDAO().deleteRequest(requestBean.getId());
         notificationsController.sendRejectRequestNotification(requestBean.getAthleteFc());
     }
@@ -36,7 +34,7 @@ public class SatisfyWorkoutRequestsController {
         return null;
     }
 
-    public void addExerciseToPlan(ExerciseForWorkoutPlanBean bean) throws SQLException, DBConnectionFailedException {
+    public void addExerciseToPlan(ExerciseForWorkoutPlanBean bean) throws SQLException, DBUnreachableException {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null) {
             workoutDay = new WorkoutDay(bean.getDay());
@@ -51,7 +49,6 @@ public class SatisfyWorkoutRequestsController {
                 bean.getInfo(),
                 trainer
         ));
-        System.out.println("Exercise added!");
     }
 
     public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
@@ -70,11 +67,10 @@ public class SatisfyWorkoutRequestsController {
     public void removeExerciseFromDay(ExerciseForWorkoutPlanBean bean) {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null){
-            System.out.println("Il WorkoutDay non esiste");
+            //throw exception
             return;
         }
         workoutDay.removeExercise(bean.getName(), bean.getInfo());
-        System.out.println("Exercise removed!");
     }
 
     public void removeExerciseFromPlan(ExerciseBean bean) {
@@ -85,7 +81,7 @@ public class SatisfyWorkoutRequestsController {
         }
     }
 
-    public void sendWorkoutPlan(RequestBean requestBean) throws DBConnectionFailedException, SQLException {
+    public void sendWorkoutPlan(RequestBean requestBean) throws DBUnreachableException, SQLException {
         WorkoutPlan workoutPlan1 = new AthleteDAO().loadAthlete(requestBean.getAthleteFc()).getWorkoutPlan();
         if(workoutPlan1 != null){
             new AthleteDAO().removeWorkoutPlan(workoutPlan1.getId());
@@ -110,7 +106,7 @@ public class SatisfyWorkoutRequestsController {
         return new WorkoutDayBean(dayBean.getDay());
     }
 
-    public List<RequestBean> getTrainerRequests() throws SQLException, DBConnectionFailedException {
+    public List<RequestBean> getTrainerRequests() throws SQLException, DBUnreachableException {
         List<Request> requestList = new RequestDAO().loadTrainerRequests((Trainer) loginController.getLoggedUser());
         List<RequestBean> requestBeanList = new ArrayList<>();
         for(Request request: requestList) {

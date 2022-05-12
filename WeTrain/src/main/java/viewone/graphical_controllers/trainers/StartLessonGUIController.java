@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.StartLessonController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import viewone.bean.CourseBean;
@@ -27,7 +27,7 @@ public class StartLessonGUIController extends AbstractFormGUIController {
                 startLessonController.startLesson(new StartLessonBean(
                         courseBean,
                         urlTextField.getText()));
-            } catch (DBConnectionFailedException e) {
+            } catch (DBUnreachableException e) {
                 e.alert();
             } catch (SQLException e) {
                 throw new RuntimeException(e);

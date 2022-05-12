@@ -2,7 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.SatisfyWorkoutRequestsController;
 import controller.TrainerExercisesManagementController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -39,7 +39,7 @@ public class ExerciseOverviewGUIController{
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             return;
         }
@@ -53,7 +53,7 @@ public class ExerciseOverviewGUIController{
             satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
             trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
             newWorkoutPlanGUIController.updateExerciseList();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             return;
         } catch (SQLException e) {

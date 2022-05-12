@@ -1,11 +1,11 @@
 package database;
 
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 
 import java.io.FileInputStream;
 import com.mysql.cj.exceptions.CJCommunicationsException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +14,7 @@ import java.util.Properties;
 
 public class DatabaseConnectionSingleton {
 
+    private static final int DBTIMEOUT = 2;
     private static DatabaseConnectionSingleton dbConn;
     private Connection conn;
 
@@ -37,9 +38,9 @@ public class DatabaseConnectionSingleton {
         }
     }
 
-    public Connection getConn() throws DBConnectionFailedException {
-        if(this.conn == null){
-            dbConn = new DatabaseConnectionSingleton();
+    public Connection getConn() throws DBConnectionFailedException, SQLException {
+        if(!conn.isValid(DBTIMEOUT)){
+            throw new DBConnectionFailedException();
         }
         return conn;
     }

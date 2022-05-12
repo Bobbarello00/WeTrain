@@ -1,7 +1,7 @@
 package controller;
 
 import database.dao_classes.ExerciseDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Exercise;
 import model.Trainer;
 import viewone.bean.ExerciseBean;
@@ -14,7 +14,7 @@ public class TrainerExercisesManagementController {
 
     private final LoginController loginController = new LoginController();
 
-    public void addExerciseToTrainer(ExerciseBean exerciseBean) throws SQLException, DBConnectionFailedException {
+    public void addExerciseToTrainer(ExerciseBean exerciseBean) throws SQLException, DBUnreachableException {
         new ExerciseDAO().saveExercise(new Exercise(
                 exerciseBean.getName(),
                 exerciseBean.getInfo(),
@@ -22,7 +22,7 @@ public class TrainerExercisesManagementController {
         ));
     }
 
-    public List<ExerciseBean> getTrainerExercises() throws SQLException, DBConnectionFailedException {
+    public List<ExerciseBean> getTrainerExercises() throws SQLException, DBUnreachableException {
         List<Exercise> exerciseList = new ExerciseDAO().loadTrainerExercises((Trainer) loginController.getLoggedUser());
         List<ExerciseBean> exerciseBeanList = new ArrayList<>();
         for(Exercise exercise: exerciseList){
@@ -35,7 +35,7 @@ public class TrainerExercisesManagementController {
         return exerciseBeanList;
     }
 
-    public void removeExerciseFromTrainer(ExerciseBean exerciseBean) throws DBConnectionFailedException, SQLException {
+    public void removeExerciseFromTrainer(ExerciseBean exerciseBean) throws DBUnreachableException, SQLException {
         new ExerciseDAO().removeExercise(new Exercise(
                 exerciseBean.getId(),
                 exerciseBean.getName(),

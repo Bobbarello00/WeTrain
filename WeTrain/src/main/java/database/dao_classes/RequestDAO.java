@@ -2,6 +2,7 @@ package database.dao_classes;
 
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Request;
 import model.Trainer;
 
@@ -19,9 +20,7 @@ public class RequestDAO {
     public static final String ATHLETE = "Athlete";
     public static final String TRAINER = "Trainer";
 
-    public RequestDAO() {}
-
-    public Request loadRequest(int requestCode) throws SQLException, DBConnectionFailedException {
+    public Request loadRequest(int requestCode) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadRequest(requestCode);
             ResultSet rs = preparedStatement.executeQuery()) {
             if(rs.next()) {
@@ -34,15 +33,21 @@ public class RequestDAO {
             } else {
                 return null;
             }
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
-    public void deleteRequest(int idRequest) throws SQLException, DBConnectionFailedException {
+    public void deleteRequest(int idRequest) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.deleteRequest(idRequest)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBConnectionFailedException {
+    public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadTrainerRequests(trainer.getFiscalCode()); ResultSet rs = preparedStatement.executeQuery()){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
@@ -54,12 +59,18 @@ public class RequestDAO {
                         trainer));
             }
             return myList;
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBConnectionFailedException {
+    public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertRequest(requestDate, info, athleteFc, trainer)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 }

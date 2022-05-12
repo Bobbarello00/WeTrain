@@ -2,10 +2,8 @@ package viewone.graphical_controllers.launcher;
 
 
 import controller.LoginController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
-import exception.invalidDataException.EmptyFieldsException;
-import exception.invalidDataException.InvalidCredentialsException;
 import exception.invalidDataException.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -42,7 +40,7 @@ public class LoginGUIController extends LauncherGUIController{
             } else {
                 PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");
             }
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alert();
         } catch (ElementNotFoundException e) {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",

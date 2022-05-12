@@ -1,8 +1,7 @@
 package viewone.engeneering.manageList;
 
 import controller.SatisfyWorkoutRequestsController;
-import exception.DBConnectionFailedException;
-import exception.invalidDataException.EmptyFieldsException;
+import exception.DBUnreachableException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
@@ -13,12 +12,12 @@ import java.sql.SQLException;
 
 public class ManageRequestList {
 
-    public static void setRequestList(ListView<RequestBean> requestList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) throws SQLException, DBConnectionFailedException {
+    public static void setRequestList(ListView<RequestBean> requestList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) throws SQLException, DBUnreachableException {
         requestList.setCellFactory(nodeListView -> new RequestListCellFactory());
         updateList(requestList, satisfyWorkoutRequestsController);
     }
 
-    public static void updateList(ListView<RequestBean> requestList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) throws SQLException, DBConnectionFailedException {
+    public static void updateList(ListView<RequestBean> requestList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) throws SQLException, DBUnreachableException {
         ObservableList<RequestBean> requestBeanObservableList = FXCollections.observableList(satisfyWorkoutRequestsController.getTrainerRequests());
         requestList.setItems(FXCollections.observableList(requestBeanObservableList));
     }

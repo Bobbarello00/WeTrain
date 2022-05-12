@@ -1,14 +1,13 @@
 package database.dao_classes;
 
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import model.Course;
 import model.notification.Notification;
 import model.User;
 import viewone.engeneering.NotificationFactorySingleton;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,9 +17,7 @@ import java.util.List;
 
 public class NotificationDAO {
 
-    public NotificationDAO() {}
-
-    public void saveNotification(Notification notification) throws SQLException, DBConnectionFailedException {
+    public void saveNotification(Notification notification) throws SQLException, DBUnreachableException {
         saveNotification(
                 notification.getType().ordinal(),
                 notification.getDescription(),
@@ -30,13 +27,16 @@ public class NotificationDAO {
         );
     }
 
-    public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
+    public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertNotification(type, info, dateTime, sender, receiver)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public List<Notification> loadAllNotifications(User user) throws SQLException, DBConnectionFailedException {
+    public List<Notification> loadAllNotifications(User user) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadAllNotifications(user)){
             ResultSet rs = preparedStatement.executeQuery();
             List<Notification> myList = new ArrayList<>();
@@ -51,16 +51,22 @@ public class NotificationDAO {
                 );
             }
             return myList;
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void deleteNotification(int idNotification) throws SQLException, DBConnectionFailedException {
+    public void deleteNotification(int idNotification) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.deleteNotification(idNotification)){
             preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBConnectionFailedException {
+    public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBUnreachableException {
         try (PreparedStatement preparedStatement = Queries.loadSubscribed(course.getId()); ResultSet rs = preparedStatement.executeQuery()) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
@@ -71,6 +77,9 @@ public class NotificationDAO {
                         rs.getString("Athlete")
                 );
             }
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 }

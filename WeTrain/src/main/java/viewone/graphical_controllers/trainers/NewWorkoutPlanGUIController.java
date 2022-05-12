@@ -2,7 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.SatisfyWorkoutRequestsController;
 import controller.TrainerExercisesManagementController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -59,7 +59,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         try {
             satisfyWorkoutRequestsController.sendWorkoutPlan(requestBean);
             PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -77,7 +77,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
                 workoutDayBean.getExerciseBeanList());
     }
 
-    public void updateExerciseList() throws SQLException, DBConnectionFailedException {
+    public void updateExerciseList() throws SQLException, DBUnreachableException {
         ManageExerciseList.updateList(
                 exerciseList,
                 trainerExercisesManagementController.getTrainerExercises()
@@ -97,7 +97,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
             setUserInfoTab();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
 

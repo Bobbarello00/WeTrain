@@ -1,7 +1,7 @@
 package controller;
 
 import database.dao_classes.CourseDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.EmptyFieldsException;
 import viewone.bean.CommunicationBean;
 import viewone.bean.StartLessonBean;
@@ -12,7 +12,7 @@ public class StartLessonController {
 
     private final NotificationsController notificationsController = new NotificationsController();
 
-    public void startLesson(StartLessonBean startLessonBean) throws DBConnectionFailedException, SQLException {
+    public void startLesson(StartLessonBean startLessonBean) throws DBUnreachableException, SQLException {
         new CourseDAO().setStartedLessonUrl(startLessonBean.getUrl(), startLessonBean.getCourseBean().getId());
         try {
             notificationsController.sendCourseCommunicationNotification(

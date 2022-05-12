@@ -2,7 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
 import controller.SatisfyWorkoutRequestsController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -53,7 +53,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
         setUserInfoTab();

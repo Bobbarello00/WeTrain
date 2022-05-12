@@ -1,10 +1,8 @@
 package database.dao_classes;
 
-import com.mysql.cj.exceptions.CJCommunicationsException;
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
-import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import model.Athlete;
 import model.Trainer;
@@ -18,24 +16,25 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public UserDAO() {}
-
-    public User loadUser(String email, String password) throws SQLException, DBConnectionFailedException {
+    public User loadUser(String email, String password) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadUser(email, password)){
             return getUser(preparedStatement.executeQuery());
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public User loadUser(String fc) throws SQLException, DBConnectionFailedException {
+    public User loadUser(String fc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.loadUser(fc)){
             return getUser(preparedStatement.executeQuery());
-        } catch(CJCommunicationsException | CommunicationsException e) {
-        throw new DBConnectionFailedException();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    @Nullable
-    private User getUser(ResultSet rs) throws SQLException, DBConnectionFailedException {
+    @Nullable private User getUser(ResultSet rs) throws SQLException, DBUnreachableException {
         if (rs.next()) {
             String usr = rs.getString("FC");
             AthleteDAO aDao = new AthleteDAO();

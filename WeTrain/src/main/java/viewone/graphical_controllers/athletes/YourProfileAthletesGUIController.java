@@ -2,9 +2,8 @@ package viewone.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
 import database.dao_classes.AthleteDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.InvalidDataException;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -56,13 +55,13 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
            throw new RuntimeException();
         } catch (InvalidDataException e) {
             e.alert();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             ((Stage) editButton.getScene().getWindow()).close();
             e.alertAndLogOff();
         }
     }
 
-    private void setPaymentMethodLabel() throws SQLException, DBConnectionFailedException {
+    private void setPaymentMethodLabel() throws SQLException, DBUnreachableException {
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
             paymentMethodLabel.setText("Card: Not inserted yet!");
             cardLogo.setVisible(false);
@@ -77,7 +76,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
                     cardLogo.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/MasterCard.png")).toURI().toString()));
                 }
             }catch (URISyntaxException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
             cardLogo.setVisible(true);
             paymentMethodLabel.setText("Card: \t\t" + "  **** **** **** " + truncatedCardNumber);
@@ -85,26 +84,25 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        athlete = (AthleteBean) getLoggedUser();
-        emailLabel.setText("Email: " + athlete.getEmail());
-        firstNameLabel.setText(athlete.getName());
-        lastNameLabel.setText(athlete.getSurname());
-        fiscalCodeLabel.setText("FiscalCode: " + athlete.getFiscalCode());
         try {
-            numberOfCoursesText.setText(String.valueOf(new AthleteDAO().getNumberOfCourses(athlete.getFiscalCode())));
-            if(athlete.getGender() == 'm') {
-                usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteM.png")).toURI().toString()));
-            }else{
-                usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteF.png")).toURI().toString()));
+            athlete = (AthleteBean) getLoggedUser();
+            if(athlete != null) {
+                emailLabel.setText("Email: " + athlete.getEmail());
+                firstNameLabel.setText(athlete.getName());
+                lastNameLabel.setText(athlete.getSurname());
+                fiscalCodeLabel.setText("FiscalCode: " + athlete.getFiscalCode());
+                numberOfCoursesText.setText(String.valueOf(new AthleteDAO().getNumberOfCourses(athlete.getFiscalCode())));
+                if (athlete.getGender() == 'm') {
+                    usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteM.png")).toURI().toString()));
+                } else {
+                    usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/AthleteF.png")).toURI().toString()));
+                }
+                setPaymentMethodLabel();
             }
-            setPaymentMethodLabel();
-        } catch (SQLException e) {
+        } catch (SQLException | URISyntaxException e) {
             e.printStackTrace();
-            System.out.println(e.getMessage());
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alert();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
         }
     }
 }

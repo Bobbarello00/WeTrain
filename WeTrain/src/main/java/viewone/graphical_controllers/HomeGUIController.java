@@ -1,7 +1,7 @@
 package viewone.graphical_controllers;
 
 import controller.NotificationsController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ public abstract class HomeGUIController {
     @FXML protected ListView<NotificationBean> notificationList;
     protected final NotificationsController notificationsController = new NotificationsController();
 
-    @FXML protected void updateNotificationList() throws SQLException, DBConnectionFailedException {
+    @FXML protected void updateNotificationList() throws SQLException, DBUnreachableException {
         List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
         ManageNotificationList.updateList(notificationList, Objects.requireNonNull(notificationBeanList));
     }
@@ -67,7 +67,7 @@ public abstract class HomeGUIController {
     protected UserInfoCarrier getUserInfo(){
         try {
             return LoggedUserSingleton.getUserInfo();
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             return null;
         } catch (InvalidIbanException e) {

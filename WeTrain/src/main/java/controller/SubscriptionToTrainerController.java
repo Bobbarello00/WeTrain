@@ -17,7 +17,7 @@ public class SubscriptionToTrainerController {
 
     LoginController loginController = new LoginController();
 
-    public TrainerBean getTrainer() throws SQLException, DBConnectionFailedException, InvalidIbanException {
+    public TrainerBean getTrainer() throws SQLException, DBUnreachableException, InvalidIbanException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
         if(trainer != null){
             return new TrainerBean(
@@ -35,7 +35,7 @@ public class SubscriptionToTrainerController {
         return null;
     }
 
-    public UserBean getTrainerUser(FcBean fcBean) throws SQLException, DBConnectionFailedException {
+    public UserBean getTrainerUser(FcBean fcBean) throws SQLException, DBUnreachableException {
         Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
         return new UserBean(
                 trainer.getUsername(),
@@ -69,21 +69,21 @@ public class SubscriptionToTrainerController {
         return beanList;
     }
 
-    public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException, DBConnectionFailedException {
+    public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException, DBUnreachableException {
         List<Trainer> trainerList = new TrainerDAO().searchTrainers(bean.getName());
         return setToUserBean(trainerList);
     }
 
-    public List<UserBean> getTrainersList() throws SQLException, DBConnectionFailedException {
+    public List<UserBean> getTrainersList() throws SQLException, DBUnreachableException {
         List<Trainer> trainerList = new TrainerDAO().loadAllTrainers();
         return setToUserBean(trainerList);
     }
 
-    public void subscribeToTrainer(String fc) throws SQLException, DBConnectionFailedException {
+    public void subscribeToTrainer(String fc) throws SQLException, DBUnreachableException {
         new AthleteDAO().setTrainer((Athlete) loginController.getLoggedUser(), fc);
     }
 
-    public void unsubscribeFromTrainer() throws SQLException, DBConnectionFailedException {
+    public void unsubscribeFromTrainer() throws SQLException, DBUnreachableException {
         AthleteDAO athleteDAO = new AthleteDAO();
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         athleteDAO.removeTrainer(athlete);

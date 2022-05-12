@@ -2,6 +2,8 @@ package database.dao_classes;
 
 import database.Queries;
 import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
+import exception.FatalErrorException;
 import model.Trainer;
 import model.WorkoutDay;
 import model.WorkoutPlan;
@@ -12,31 +14,28 @@ import java.sql.SQLException;
 
 public class WorkoutPlanDAO {
 
-    public WorkoutPlanDAO() {
-    }
-
-    public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
+    public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertWorkoutPlan(athleteFc)) {
-            if(preparedStatement.executeUpdate() == 0){
-                System.out.println("Inserimento WorkoutPlan fallito.");
-            }
+            preparedStatement.executeUpdate();
             int idWorkoutPlan;
             try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     idWorkoutPlan = generatedKeys.getInt(1);
                 } else {
-                    //TODO va bene lanciarla?
-                    throw new SQLException();
+                    throw new FatalErrorException();
                 }
             }
             for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()) {
                 new WorkoutDayDAO().saveWorkoutDay(workoutDay, idWorkoutPlan);
             }
             new AthleteDAO().addWorkoutPlan(idWorkoutPlan, athleteFc);
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
         }
     }
 
-    public WorkoutPlan loadWorkoutPlan(Integer idWorkoutPlan, Trainer trainer) throws SQLException, DBConnectionFailedException {
+    public WorkoutPlan loadWorkoutPlan(Integer idWorkoutPlan, Trainer trainer) throws SQLException, DBUnreachableException {
         WorkoutPlan workoutPlan = new WorkoutPlan(idWorkoutPlan);
         workoutPlan.addAllWorkoutDays(new WorkoutDayDAO().loadAllWorkoutDays(workoutPlan, trainer));
         return workoutPlan;

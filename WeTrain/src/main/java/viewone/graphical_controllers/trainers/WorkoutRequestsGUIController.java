@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.SatisfyWorkoutRequestsController;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -40,7 +40,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
             satisfyWorkoutRequestsController.rejectRequest(selectedRequest);
             ManageRequestList.updateList(requestList, satisfyWorkoutRequestsController);
             setTabVisibile(false);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,7 +70,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
             setUserInfoTab();
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (DBConnectionFailedException e) {
+        } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         }
     }

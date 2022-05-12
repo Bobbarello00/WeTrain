@@ -2,7 +2,7 @@ package controller;
 
 import database.dao_classes.CourseDAO;
 import database.dao_classes.TrainerDAO;
-import exception.DBConnectionFailedException;
+import exception.DBUnreachableException;
 import exception.invalidDataException.InvalidTimeException;
 import model.Course;
 import model.Lesson;
@@ -18,7 +18,7 @@ public class CourseManagementTrainerController extends CourseManagementControlle
 
     private final LoginController loginController = new LoginController();
 
-    public void createCourse(CourseBean bean) throws SQLException, DBConnectionFailedException, InvalidTimeException {
+    public void createCourse(CourseBean bean) throws SQLException, DBUnreachableException, InvalidTimeException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
         Course course = new Course(
                 bean.getName(),
@@ -50,16 +50,16 @@ public class CourseManagementTrainerController extends CourseManagementControlle
         return list;
     }
 
-    public List<CourseBean> getCourseList() throws DBConnectionFailedException, SQLException {
+    public List<CourseBean> getCourseList() throws DBUnreachableException, SQLException {
         List<Course> courseList = new CourseDAO().loadAllCoursesTrainer((Trainer) loginController.getLoggedUser());
         return getCourseBeanList(courseList);
     }
 
-    public void deleteCourse(CourseBean courseBean) throws DBConnectionFailedException, SQLException {
+    public void deleteCourse(CourseBean courseBean) throws DBUnreachableException, SQLException {
         new CourseDAO().deleteCourse(courseBean.getId());
     }
 
-    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBConnectionFailedException {
+    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBUnreachableException {
         new CourseDAO().modifyCourse(
                 id,
                 new Course(
