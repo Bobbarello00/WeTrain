@@ -8,7 +8,7 @@ import viewone.engeneering.AlertFactory;
 
 import java.io.IOException;
 
-public class DBUnreachableException extends Throwable{
+public class DBUnreachableException extends Exception{
 
     public void alert() {
         AlertFactory.newWarningAlert("OOPS, CONNECTION TO DATABASE TIMED OUT!",

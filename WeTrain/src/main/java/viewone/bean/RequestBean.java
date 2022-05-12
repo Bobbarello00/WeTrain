@@ -1,7 +1,7 @@
 package viewone.bean;
 
-import exception.invalidDataException.TextOutOfBoundException;
-import exception.invalidDataException.EmptyFieldsException;
+import exception.invalid_data_exception.TextOutOfBoundException;
+import exception.invalid_data_exception.EmptyFieldsException;
 
 import java.time.LocalDateTime;
 

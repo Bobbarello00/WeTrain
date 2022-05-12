@@ -2,7 +2,7 @@ package exception;
 
 import database.DatabaseConnectionSingleton;
 
-public class DBConnectionFailedException extends Throwable{
+public class DBConnectionFailedException extends Exception{
 
     public void deleteDatabaseConn() {
         DatabaseConnectionSingleton.deleteInstance();

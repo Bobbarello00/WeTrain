@@ -2,8 +2,8 @@ package viewone.graphical_controllers.trainers;
 
 import controller.CourseManagementTrainerController;
 import exception.DBUnreachableException;
-import exception.invalidDataException.InvalidDataException;
-import exception.invalidDataException.TimeNotInsertedException;
+import exception.invalid_data_exception.InvalidDataException;
+import exception.invalid_data_exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

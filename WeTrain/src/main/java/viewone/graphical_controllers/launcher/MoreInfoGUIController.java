@@ -3,7 +3,7 @@ package viewone.graphical_controllers.launcher;
 
 import controller.RegistrationController;
 import exception.*;
-import exception.invalidDataException.*;
+import exception.invalid_data_exception.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;

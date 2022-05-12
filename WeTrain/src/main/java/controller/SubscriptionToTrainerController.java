@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.*;
-import exception.invalidDataException.InvalidIbanException;
+import exception.invalid_data_exception.InvalidIbanException;
 import model.Athlete;
 import model.Trainer;
 import model.User;

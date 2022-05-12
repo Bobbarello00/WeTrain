@@ -2,7 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.SubscriptionToTrainerController;
 import exception.DBUnreachableException;
-import exception.invalidDataException.InvalidIbanException;
+import exception.invalid_data_exception.InvalidIbanException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

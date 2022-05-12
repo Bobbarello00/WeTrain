@@ -4,7 +4,7 @@ import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
-import exception.invalidDataException.ExpiredCardException;
+import exception.invalid_data_exception.ExpiredCardException;
 import model.Athlete;
 import org.jetbrains.annotations.Nullable;
 

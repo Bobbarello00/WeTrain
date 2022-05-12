@@ -1,7 +1,7 @@
 package viewone.bean;
 
-import exception.invalidDataException.EmptyFieldsException;
-import exception.invalidDataException.InvalidCredentialsException;
+import exception.invalid_data_exception.EmptyFieldsException;
+import exception.invalid_data_exception.InvalidCredentialsException;
 
 import java.util.regex.Pattern;
 

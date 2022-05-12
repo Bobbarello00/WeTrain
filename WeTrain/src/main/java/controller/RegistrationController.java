@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
-import exception.invalidDataException.InvalidCredentialsException;
+import exception.invalid_data_exception.InvalidCredentialsException;
 import model.Athlete;
 import model.Trainer;
 import viewone.bean.UserBean;

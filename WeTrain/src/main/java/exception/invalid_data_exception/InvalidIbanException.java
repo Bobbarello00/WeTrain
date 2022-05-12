@@ -1,4 +1,4 @@
-package exception.invalidDataException;
+package exception.invalid_data_exception;
 
 import viewone.engeneering.AlertFactory;
 

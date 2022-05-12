@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
-import exception.invalidDataException.InvalidDataException;
+import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;

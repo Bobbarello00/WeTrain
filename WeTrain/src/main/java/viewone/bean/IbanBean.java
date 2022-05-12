@@ -1,6 +1,6 @@
 package viewone.bean;
 
-import exception.invalidDataException.InvalidIbanException;
+import exception.invalid_data_exception.InvalidIbanException;
 
 import java.util.regex.Pattern;
 

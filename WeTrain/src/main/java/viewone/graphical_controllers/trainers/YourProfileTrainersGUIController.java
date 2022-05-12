@@ -3,7 +3,7 @@ package viewone.graphical_controllers.trainers;
 import controller.ProfileManagementController;
 import database.dao_classes.TrainerDAO;
 import exception.*;
-import exception.invalidDataException.InvalidDataException;
+import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;

@@ -1,6 +1,6 @@
 package viewone.graphical_controllers;
 
-import exception.invalidDataException.TimeNotInsertedException;
+import exception.invalid_data_exception.TimeNotInsertedException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

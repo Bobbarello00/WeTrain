@@ -2,7 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.NotificationsController;
 import exception.DBUnreachableException;
-import exception.invalidDataException.EmptyFieldsException;
+import exception.invalid_data_exception.EmptyFieldsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import viewone.bean.CommunicationBean;

@@ -2,7 +2,7 @@ package viewone.graphical_controllers;
 
 import controller.NotificationsController;
 import exception.DBUnreachableException;
-import exception.invalidDataException.InvalidIbanException;
+import exception.invalid_data_exception.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

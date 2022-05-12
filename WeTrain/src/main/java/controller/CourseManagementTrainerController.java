@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.CourseDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
-import exception.invalidDataException.InvalidTimeException;
+import exception.invalid_data_exception.InvalidTimeException;
 import model.Course;
 import model.Lesson;
 import model.Trainer;

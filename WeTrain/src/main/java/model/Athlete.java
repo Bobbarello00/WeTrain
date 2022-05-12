@@ -1,6 +1,6 @@
 package model;
 
-import exception.invalidDataException.ExpiredCardException;
+import exception.invalid_data_exception.ExpiredCardException;
 
 import java.io.Serializable;
 import java.time.LocalDate;

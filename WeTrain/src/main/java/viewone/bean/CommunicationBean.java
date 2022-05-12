@@ -1,6 +1,6 @@
 package viewone.bean;
 
-import exception.invalidDataException.EmptyFieldsException;
+import exception.invalid_data_exception.EmptyFieldsException;
 
 public class CommunicationBean {
     private String text;

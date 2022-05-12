@@ -1,7 +1,7 @@
 package viewone.bean;
 
-import exception.invalidDataException.EmptyFieldsException;
-import exception.invalidDataException.InvalidCardInfoException;
+import exception.invalid_data_exception.EmptyFieldsException;
+import exception.invalid_data_exception.InvalidCardInfoException;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;

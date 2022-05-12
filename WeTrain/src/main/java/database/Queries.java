@@ -21,6 +21,7 @@ public class Queries {
     public static final String WHERE_ID_COURSE = "WHERE idCourse = ?";
     public static final String UPDATE_MYDB_COURSE = "UPDATE mydb.Course ";
     public static final String WHERE_COURSE = "WHERE Course = ?";
+    public static final String FROM_MYDB_ATHLETE = "FROM mydb.Athlete ";
 
     private Queries(){}
 
@@ -58,7 +59,7 @@ public class Queries {
     public static PreparedStatement loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 SELECT_ALL +
-                        "FROM mydb.Athlete " +
+                        FROM_MYDB_ATHLETE +
                         WHERE_USER);
         preparedStatement.setString(1, fc);
         return preparedStatement;
@@ -213,7 +214,7 @@ public class Queries {
     public static PreparedStatement countTrainerSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "SELECT COUNT(*) " +
-                        "FROM mydb.Athlete "+
+                        FROM_MYDB_ATHLETE +
                         "WHERE Trainer = ?");
         preparedStatement.setString(1, trainerFc);
         return preparedStatement;
@@ -222,7 +223,7 @@ public class Queries {
     public static PreparedStatement loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 SELECT_ALL +
-                "FROM mydb.Athlete " +
+                        FROM_MYDB_ATHLETE +
                 "WHERE Trainer = ? " +
                 LIMIT_30);
         preparedStatement.setString(1, trainerFc);

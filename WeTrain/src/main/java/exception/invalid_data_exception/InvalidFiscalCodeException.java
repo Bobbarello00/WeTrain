@@ -1,12 +1,12 @@
-package exception.invalidDataException;
+package exception.invalid_data_exception;
 
 import viewone.engeneering.AlertFactory;
 
-public class InvalidBirthException extends InvalidDataException{
+public class InvalidFiscalCodeException extends InvalidDataException{
 
     @Override public void alert() {
         AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
-                "Birth date not valid.",
+                "Fiscal code not valid",
                 "Be sure to fill all fields correctly, thanks for your collaboration!");
     }
 }
