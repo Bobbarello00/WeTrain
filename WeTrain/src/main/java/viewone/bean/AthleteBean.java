@@ -1,15 +1,12 @@
 package viewone.bean;
 
-import model.record.PersonalInfo;
-
-import java.time.LocalDate;
 import java.time.YearMonth;
 
 public class AthleteBean extends UserBean{
     private final CardInfoBean cardInfoBean;
 
-    public AthleteBean(String username, PersonalInfo personalInfo, CardInfoBean cardInfoBean) {
-        super(username, personalInfo, "Athlete", cardInfoBean);
+    public AthleteBean(String username, PersonalInfoBean personalInfo, CredentialsBean credentialsBean, CardInfoBean cardInfoBean) {
+        super(username, "Athlete", personalInfo, credentialsBean);
         this.cardInfoBean = cardInfoBean;
     }
 

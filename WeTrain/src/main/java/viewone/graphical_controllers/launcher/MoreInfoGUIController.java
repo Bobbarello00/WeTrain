@@ -11,6 +11,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import viewone.bean.CredentialsBean;
+import viewone.bean.PersonalInfoBean;
 import viewone.engeneering.AlertFactory;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
@@ -44,14 +45,15 @@ public class MoreInfoGUIController implements Initializable {
     private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException, DBUnreachableException {
         UserBean user = new UserBean(
                 usernameText.getText(),
-                firstNameText.getText(),
-                lastNameText.getText(),
-                fcText.getText(),
-                birthPicker.getEditor().getText(),
+                new PersonalInfoBean(
+                        firstNameText.getText(),
+                        lastNameText.getText(),
+                        birthPicker.getEditor().getText(),
+                        fcText.getText(),
+                        gender),
                 selectedProfile,
-                gender,
-                email,
-                password);
+                CredentialsBean.ctorWithSyntaxCheck(email, password)
+        );
         registrationController.processUserInfo(user);
     }
 

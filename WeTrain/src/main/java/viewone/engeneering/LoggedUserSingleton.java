@@ -3,12 +3,12 @@ package viewone.engeneering;
 import controller.LoginController;
 import exception.*;
 import exception.invalid_data_exception.InvalidIbanException;
+import exception.runtime_exception.FatalErrorException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
-import viewone.bean.AthleteBean;
-import viewone.bean.TrainerBean;
-import viewone.bean.UserBean;
+import model.record.PersonalInfo;
+import viewone.bean.*;
 
 import java.sql.SQLException;
 import java.util.Objects;
@@ -45,30 +45,40 @@ public class LoggedUserSingleton {
         User usr = loginController.getLoggedUser();
 
         if (usr instanceof Athlete) {
-            return new AthleteBean(usr.getUsername(),
-                    usr.getName(),
-                    usr.getSurname(),
-                    usr.getFiscalCode(),
-                    usr.getDateOfBirth(),
-                    usr.getGender(),
-                    usr.getEmail(),
-                    usr.getPassword(),
-                    ((Athlete) usr).getCardNumber(),
-                    ((Athlete) usr).getCardExpirationDate());
+            return new AthleteBean(
+                    usr.getUsername(),
+                    new PersonalInfoBean(usr.getName(),
+                            usr.getSurname(),
+                            usr.getDateOfBirth(),
+                            usr.getFiscalCode(),
+                            usr.getGender()
+                    ),
+                    CredentialsBean.ctorWithoutSyntaxCheck(
+                            usr.getEmail(),
+                            usr.getPassword()
+                    ),
+                    new CardInfoBean(
+                            ((Athlete) usr).getCardNumber(),
+                            ((Athlete) usr).getCardExpirationDate()
+                    ));
         } else if (usr instanceof Trainer) {
-            return new TrainerBean(usr.getUsername(),
-                    usr.getName(),
-                    usr.getSurname(),
-                    usr.getFiscalCode(),
-                    usr.getDateOfBirth(),
-                    usr.getGender(),
-                    usr.getEmail(),
-                    usr.getPassword(),
+            return new TrainerBean(
+                    usr.getUsername(),
+                    new PersonalInfoBean(
+                            usr.getName(),
+                            usr.getSurname(),
+                            usr.getDateOfBirth(),
+                            usr.getFiscalCode(),
+                            usr.getGender()
+                    ),
+                    CredentialsBean.ctorWithoutSyntaxCheck(
+                            usr.getEmail(),
+                            usr.getPassword()
+                    ),
                     ((Trainer) usr).getIban());
         } else {
             System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
-            FatalCaseManager.killApplication();
-            return null;
+            throw new FatalErrorException();
         }
     }
 

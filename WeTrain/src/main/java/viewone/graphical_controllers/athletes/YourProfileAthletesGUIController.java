@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import viewone.WeTrain;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
-import viewone.engeneering.FatalCaseManager;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
@@ -65,9 +64,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {
             paymentMethodLabel.setText("Card: Not inserted yet!");
             cardLogo.setVisible(false);
-        } else if(athlete.getCardNumber() == null || athlete.getCardExpirationDate() == null){
-            FatalCaseManager.erasePaymentMethod();
-        } else{
+        } else {
             String truncatedCardNumber = athlete.getCardNumber().substring(12, 16);
             try {
                 if(Objects.equals(athlete.getCardType(), "VISA")){

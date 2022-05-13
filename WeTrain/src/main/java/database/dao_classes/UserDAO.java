@@ -5,13 +5,10 @@ import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import exception.runtime_exception.IsNotATrainerOrAnAthlete;
-import exception.runtime_exception.ResultSetIsNullException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import viewone.engeneering.FatalCaseManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

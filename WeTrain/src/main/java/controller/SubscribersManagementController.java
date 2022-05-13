@@ -4,6 +4,8 @@ import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
 import model.Athlete;
 import model.User;
+import viewone.bean.CredentialsBean;
+import viewone.bean.PersonalInfoBean;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;
@@ -22,14 +24,17 @@ public class SubscribersManagementController {
         for (User subscriber : subscriberList) {
             beanList.add(new UserBean(
                             subscriber.getUsername(),
-                            subscriber.getName(),
-                            subscriber.getSurname(),
-                            subscriber.getFiscalCode(),
-                            subscriber.getDateOfBirth(),
                             "Athlete",
-                            subscriber.getGender(),
-                            subscriber.getEmail(),
-                            subscriber.getPassword()
+                            new PersonalInfoBean(
+                                    subscriber.getName(),
+                                    subscriber.getSurname(),
+                                    subscriber.getDateOfBirth(),
+                                    subscriber.getFiscalCode(),
+                                    subscriber.getGender()
+                            ),
+                            CredentialsBean.ctorWithoutSyntaxCheck(
+                                    subscriber.getEmail(),
+                                    subscriber.getPassword())
                     )
             );
         }

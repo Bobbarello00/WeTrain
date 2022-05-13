@@ -22,15 +22,18 @@ public class SubscriptionToTrainerController {
         if(trainer != null){
             return new TrainerBean(
                     trainer.getUsername(),
-                    trainer.getName(),
-                    trainer.getSurname(),
-                    trainer.getFiscalCode(),
-                    trainer.getDateOfBirth(),
-                    trainer.getGender(),
-                    trainer.getEmail(),
-                    trainer.getPassword(),
-                    trainer.getIban()
-            );
+                    new PersonalInfoBean(
+                            trainer.getName(),
+                            trainer.getSurname(),
+                            trainer.getDateOfBirth(),
+                            trainer.getFiscalCode(),
+                            trainer.getGender()
+                    ),
+                    CredentialsBean.ctorWithoutSyntaxCheck(
+                            trainer.getEmail(),
+                            trainer.getPassword()
+                    ),
+                    trainer.getIban());
         }
         return null;
     }
@@ -39,31 +42,37 @@ public class SubscriptionToTrainerController {
         Trainer trainer = new TrainerDAO().loadTrainer(fcBean.getFc());
         return new UserBean(
                 trainer.getUsername(),
-                trainer.getName(),
-                trainer.getSurname(),
-                trainer.getFiscalCode(),
-                trainer.getDateOfBirth(),
                 "Trainer",
-                trainer.getGender(),
-                trainer.getEmail(),
-                trainer.getPassword()
-        );
+                new PersonalInfoBean(
+                        trainer.getName(),
+                        trainer.getSurname(),
+                        trainer.getDateOfBirth(),
+                        trainer.getFiscalCode(),
+                        trainer.getGender()
+                ),
+                CredentialsBean.ctorWithoutSyntaxCheck(
+                        trainer.getEmail(),
+                        trainer.getPassword()
+                ));
     }
 
     public List<UserBean> setToUserBean(List<Trainer> trainerList) {
         List<UserBean> beanList = new ArrayList<>();
         for (User trainer : trainerList) {
             beanList.add(new UserBean(
-                            trainer.getUsername(),
+                    trainer.getUsername(),
+                    "Trainer",
+                    new PersonalInfoBean(
                             trainer.getName(),
                             trainer.getSurname(),
-                            trainer.getFiscalCode(),
                             trainer.getDateOfBirth(),
-                            "Trainer",
-                            trainer.getGender(),
+                            trainer.getFiscalCode(),
+                            trainer.getGender()
+                    ),
+                    CredentialsBean.ctorWithoutSyntaxCheck(
                             trainer.getEmail(),
                             trainer.getPassword()
-                    )
+                    ))
             );
         }
         return beanList;

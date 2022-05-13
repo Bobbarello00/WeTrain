@@ -8,10 +8,7 @@ import model.Course;
 import model.User;
 import model.notification.Notification;
 import model.notification.NotificationEnum;
-import viewone.bean.CommunicationBean;
-import viewone.bean.EmailReceivedNotificationBean;
-import viewone.bean.NotificationBean;
-import viewone.bean.UserBean;
+import viewone.bean.*;
 import viewone.engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
@@ -41,25 +38,33 @@ public class NotificationsController {
         }
         UserBean sender = new UserBean(
                 notification.getSender().getUsername(),
-                notification.getSender().getName(),
-                notification.getSender().getSurname(),
-                notification.getSender().getFiscalCode(),
-                notification.getSender().getDateOfBirth(),
                 type,
-                notification.getSender().getGender(),
-                notification.getSender().getEmail(),
-                notification.getSender().getPassword()
+                new PersonalInfoBean(
+                        notification.getSender().getName(),
+                        notification.getSender().getSurname(),
+                        notification.getSender().getDateOfBirth(),
+                        notification.getSender().getFiscalCode(),
+                        notification.getSender().getGender()
+                ),
+                CredentialsBean.ctorWithoutSyntaxCheck(
+                        notification.getSender().getEmail(),
+                        notification.getSender().getPassword())
+
         );
         UserBean receiver = new UserBean(
                 notification.getReceiver().getUsername(),
-                notification.getReceiver().getName(),
-                notification.getReceiver().getSurname(),
-                notification.getReceiver().getFiscalCode(),
-                notification.getReceiver().getDateOfBirth(),
                 type,
-                notification.getReceiver().getGender(),
-                notification.getReceiver().getEmail(),
-                notification.getReceiver().getPassword()
+                new PersonalInfoBean(
+                        notification.getReceiver().getName(),
+                        notification.getReceiver().getSurname(),
+                        notification.getReceiver().getDateOfBirth(),
+                        notification.getReceiver().getFiscalCode(),
+                        notification.getReceiver().getGender()
+                ),
+                CredentialsBean.ctorWithoutSyntaxCheck(
+                        notification.getReceiver().getEmail(),
+                        notification.getReceiver().getPassword()
+                )
         );
         return new NotificationBean(
                 notification.getId(),
