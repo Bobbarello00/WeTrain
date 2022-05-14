@@ -1,9 +1,24 @@
 package boundary;
 
+import exception.BrowsingNotSupportedException;
 import viewone.bean.EmailBean;
 
-public class EmailSystemBoundary {
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-    //TODO
-    public void sendEmail(EmailBean emailBean) {}
+public class EmailSystemBoundary {
+    
+    public void sendEmail(EmailBean emailBean) throws BrowsingNotSupportedException, URISyntaxException, IOException {
+        Desktop desktop = Desktop.getDesktop();
+        if(desktop.isSupported(Desktop.Action.BROWSE)){
+            desktop.mail(new URI(String.format("mailto:%s?subject=%s&body=%s",
+                    emailBean.getReceiver().getEmail(),
+                    emailBean.getObject(),
+                    emailBean.getBody())));
+        }else{
+            throw new BrowsingNotSupportedException();
+        }
+    }
 }

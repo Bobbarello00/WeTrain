@@ -2,6 +2,7 @@ package viewone.graphical_controllers;
 
 import boundary.EmailSystemBoundary;
 import controller.NotificationsController;
+import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -11,6 +12,8 @@ import viewone.bean.EmailReceivedNotificationBean;
 import viewone.bean.UserBean;
 import viewone.engeneering.LoggedUserSingleton;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 public class EmailFormGUIController extends  AbstractFormGUIController{
@@ -29,7 +32,7 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
         try {
             UserBean sender = LoggedUserSingleton.getInstance();
             emailSystemBoundary.sendEmail(new EmailBean(
-                    LoggedUserSingleton.getInstance(),
+                    sender,
                     receiver,
                     objectTextField.getText(),
                     emailTextArea.getText()
@@ -38,10 +41,12 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
                     sender,
                     receiver
             ));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException | URISyntaxException | IOException e) {
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             e.alertAndLogOff();
+        } catch (BrowsingNotSupportedException e) {
+            e.alert();
         }
         close();
     }

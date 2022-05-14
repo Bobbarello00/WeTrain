@@ -4,13 +4,13 @@ public class EmailBean {
     private UserBean sender;
     private UserBean receiver;
     private String object;
-    private String text;
+    private String body;
 
     public EmailBean(UserBean sender, UserBean receiver, String object, String text) {
         this.sender = sender;
         this.receiver = receiver;
         this.object = object;
-        this.text = text;
+        this.body = text;
     }
 
 
@@ -20,5 +20,13 @@ public class EmailBean {
 
     public UserBean getReceiver() {
         return receiver;
+    }
+
+    public String getObject() {
+        return object;
+    }
+
+    public String getBody() {
+        return body;
     }
 }
