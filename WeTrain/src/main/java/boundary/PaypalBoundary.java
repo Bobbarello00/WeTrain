@@ -2,5 +2,7 @@ package boundary;
 
 public class PaypalBoundary {
 
-    public void pay() {}
+    public void pay() {
+
+    }
 }
