@@ -3,6 +3,7 @@ package viewone.graphical_controllers.trainers;
 import controller.SatisfyWorkoutRequestsController;
 import controller.TrainerExercisesManagementController;
 import exception.DBUnreachableException;
+import exception.ElementNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -38,9 +39,11 @@ public class ExerciseOverviewGUIController{
                     satisfyWorkoutRequestsController.removeExerciseFromDay(exerciseForWorkoutPlanBean);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             e.alertAndLogOff();
+            return;
+        } catch (ElementNotFoundException e) {
             return;
         }
         newWorkoutPlanGUIController.updateSelectedExerciseList();
@@ -58,6 +61,8 @@ public class ExerciseOverviewGUIController{
             return;
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (ElementNotFoundException e) {
+            return;
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

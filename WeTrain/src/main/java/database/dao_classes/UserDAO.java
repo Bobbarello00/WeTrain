@@ -4,7 +4,8 @@ import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
-import exception.runtime_exception.IsNotATrainerOrAnAthlete;
+import exception.UserNotFoundException;
+import exception.runtime_exception.IsNeitherATrainerNorAnAthleteException;
 import model.Athlete;
 import model.Trainer;
 import model.User;
@@ -16,7 +17,7 @@ import java.sql.SQLException;
 
 public class UserDAO {
 
-    public User loadUser(String email, String password) throws SQLException, DBUnreachableException {
+    public User loadUser(String email, String password) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = Queries.loadUser(email, password)){
             return getUser(preparedStatement.executeQuery());
         } catch (DBConnectionFailedException e) {
@@ -25,7 +26,7 @@ public class UserDAO {
         }
     }
 
-    public User loadUser(String fc) throws SQLException, DBUnreachableException {
+    public User loadUser(String fc) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = Queries.loadUser(fc)){
             return getUser(preparedStatement.executeQuery());
         } catch (DBConnectionFailedException e) {
@@ -34,7 +35,7 @@ public class UserDAO {
         }
     }
 
-    private @NotNull User getUser(ResultSet rs) throws SQLException, DBUnreachableException {
+    private @NotNull User getUser(ResultSet rs) throws SQLException, DBUnreachableException, UserNotFoundException {
         if (rs.next()) {
             String usr = rs.getString("FC");
             AthleteDAO aDao = new AthleteDAO();
@@ -47,10 +48,10 @@ public class UserDAO {
                 if(ret1 != null) {
                     return ret1;
                 }
-                throw new IsNotATrainerOrAnAthlete();
+                throw new IsNeitherATrainerNorAnAthleteException();
             }
         } else {
-            throw new ElementNotFoundException();
+            throw new UserNotFoundException();
         }
     }
 

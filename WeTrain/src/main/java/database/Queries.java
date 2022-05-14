@@ -26,7 +26,6 @@ public class Queries {
 
     private Queries(){}
 
-    //TODO gestione duplicate record
     public static PreparedStatement loadAllNotifications(User receiver) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 SELECT_ALL +

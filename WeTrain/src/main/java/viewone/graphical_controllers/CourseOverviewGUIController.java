@@ -2,10 +2,7 @@ package viewone.graphical_controllers;
 
 import controller.CourseManagementAthleteController;
 import controller.JoinLessonController;
-import exception.BrowsingNotSupportedException;
-import exception.DBUnreachableException;
-import exception.ImATrainerException;
-import exception.UrlNotInsertedYetException;
+import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

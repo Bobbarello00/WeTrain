@@ -12,6 +12,8 @@ module com.wetrain.wetrain {
     requires mysql.connector;
     requires java.datatransfer;
     requires java.desktop;
+    requires org.testng;
+    requires org.junit.jupiter.api;
 
     exports viewone.graphical_controllers;
     opens viewone.graphical_controllers to javafx.fxml;

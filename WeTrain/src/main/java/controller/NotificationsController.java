@@ -4,6 +4,7 @@ import database.dao_classes.CourseDAO;
 import database.dao_classes.NotificationDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
+import exception.UserNotFoundException;
 import model.Athlete;
 import model.Course;
 import model.Trainer;
@@ -22,7 +23,7 @@ public class NotificationsController {
 
     private final LoginController loginController = new LoginController();
 
-    public List<NotificationBean> getMyNotification() throws SQLException, DBUnreachableException {
+    public List<NotificationBean> getMyNotification() throws SQLException, DBUnreachableException, UserNotFoundException {
         List<Notification> notificationList = new NotificationDAO().loadAllNotifications(loginController.getLoggedUser());
         List<NotificationBean> notificationBeanList = new ArrayList<>();
         for(Notification notification: notificationList) {

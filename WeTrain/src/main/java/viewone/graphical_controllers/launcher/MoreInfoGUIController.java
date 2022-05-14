@@ -42,7 +42,7 @@ public class MoreInfoGUIController implements Initializable {
 
     private final RegistrationController registrationController = new RegistrationController();
 
-    private void sendUserInfo() throws SQLException, InvalidUserInfoException, InvalidFiscalCodeException, InvalidBirthException, EmptyFieldsException, InvalidCredentialsException, DBUnreachableException {
+    private void sendUserInfo() throws SQLException, InvalidDataException, DBUnreachableException, ElementNotFoundException, UserNotFoundException {
         UserBean user = new UserBean(
                 usernameText.getText(),
                 new PersonalInfoBean(
@@ -67,13 +67,12 @@ public class MoreInfoGUIController implements Initializable {
                     "Fiscal code, username or email already existing in our database. \n" +
                             "If you already have an account, log in.");
         } catch (SQLException e){
-            //TODO gestirla meglio
             e.printStackTrace();
         } catch (InvalidDataException e) {
             e.alert();
         } catch (DBUnreachableException e) {
             e.alertAndLogOff();
-        }
+        } catch (UserNotFoundException ignored) {}
     }
 
     @FXML protected void closeAction(){

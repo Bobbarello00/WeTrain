@@ -91,8 +91,8 @@ public class PersonalInfoBean {
             LocalDate ld = LocalDate.parse(value, formatter);
             String result = ld.format(formatter);
             return result.equals(value);
-        } catch (DateTimeParseException exp) {
-            //exp.printStackTrace();
+        } catch (DateTimeParseException e) {
+            e.printStackTrace();
         }
         return false;
     }

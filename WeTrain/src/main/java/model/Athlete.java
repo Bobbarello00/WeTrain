@@ -40,12 +40,10 @@ public class Athlete extends User implements Serializable {
     }
 
     public void checkCardExpirationDate(YearMonth cardExpirationDate) throws ExpiredCardException {
-        if(cardExpirationDate != null) {
-            if (!((cardExpirationDate.getYear() > LocalDate.now().getYear()) ||
-                    ((cardExpirationDate.getYear() == LocalDate.now().getYear()) &&
-                            (cardExpirationDate.getMonthValue() > LocalDate.now().getMonthValue())))) {
-                throw new ExpiredCardException();
-            }
+        if ((cardExpirationDate != null) && !((cardExpirationDate.getYear() > LocalDate.now().getYear()) ||
+                ((cardExpirationDate.getYear() == LocalDate.now().getYear()) &&
+                        (cardExpirationDate.getMonthValue() > LocalDate.now().getMonthValue())))) {
+            throw new ExpiredCardException();
         }
     }
 

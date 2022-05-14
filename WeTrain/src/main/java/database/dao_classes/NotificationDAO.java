@@ -3,6 +3,8 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
+import exception.ElementNotFoundException;
+import exception.UserNotFoundException;
 import model.Course;
 import model.notification.Notification;
 import model.User;
@@ -36,7 +38,7 @@ public class NotificationDAO {
         }
     }
 
-    public List<Notification> loadAllNotifications(User user) throws SQLException, DBUnreachableException {
+    public List<Notification> loadAllNotifications(User user) throws SQLException, DBUnreachableException, ElementNotFoundException, UserNotFoundException {
         try(PreparedStatement preparedStatement = Queries.loadAllNotifications(user)){
             ResultSet rs = preparedStatement.executeQuery();
             List<Notification> myList = new ArrayList<>();

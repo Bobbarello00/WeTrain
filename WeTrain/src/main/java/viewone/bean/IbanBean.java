@@ -39,6 +39,6 @@ public class IbanBean {
     }
 
     private boolean checkAndReturnValidIban(String iban) {
-        return Pattern.matches("^([A-Z]{2}[ \\-]?\\d{2})(?=(?:[ \\-]?[A-Z\\d]){9,30}$)((?:[ \\-]?[A-Z\\d]{3,5}){2,7})([ \\-]?[A-Z\\d]{1,3})?$", iban);
+        return Pattern.matches("^(it|IT)\\d{2}[A-Za-z]\\d{10}[\\dA-Za-z]{12}$", iban);
     }
 }

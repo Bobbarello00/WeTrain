@@ -3,7 +3,7 @@ package controller;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidCredentialsException;
+import exception.UserNotFoundException;
 import model.Athlete;
 import model.Trainer;
 import model.record.Credentials;
@@ -17,7 +17,7 @@ public class RegistrationController {
 
     private final LoginController loginController = new LoginController();
 
-    public void processUserInfo(UserBean bean) throws SQLException, InvalidCredentialsException, DBUnreachableException {
+    public void processUserInfo(UserBean bean) throws SQLException, DBUnreachableException, UserNotFoundException {
         if (Objects.equals(bean.getType(), "Athlete")) {
             AthleteDAO athleteDAO = new AthleteDAO();
             Athlete athlete = new Athlete(

@@ -5,8 +5,12 @@ import boundary.PaypalBoundary;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
 import exception.ImATrainerException;
-import model.*;
-import viewone.bean.*;
+import model.Athlete;
+import model.Course;
+import model.Trainer;
+import model.User;
+import viewone.bean.CourseBean;
+import viewone.bean.CourseSearchBean;
 
 import java.sql.SQLException;
 import java.util.List;

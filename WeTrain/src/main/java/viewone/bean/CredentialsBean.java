@@ -42,7 +42,7 @@ public class CredentialsBean {
     }
 
     private boolean isValidEmail(String email) {
-        final Pattern emailRegex = Pattern.compile("^[a-zA-Z\\d_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z\\d.-]+$", Pattern.CASE_INSENSITIVE);
+        final Pattern emailRegex = Pattern.compile("^[a-z\\d_!#$%&’*+/=?`{|}~^.-]+@[a-z\\d.-]+$", Pattern.CASE_INSENSITIVE);
 
         return emailRegex.matcher(email).matches();
     }

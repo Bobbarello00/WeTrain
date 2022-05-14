@@ -59,11 +59,11 @@ public class CardInfoBean {
         if(card.isEmpty()){
             throw new EmptyFieldsException();
         }
-        String cardNumber = setType(card);
-        if(cardNumber == null) {
+        String number = setType(card);
+        if(number == null) {
             throw new InvalidCardInfoException();
         }
-        return cardNumber;
+        return number;
     }
 
     public YearMonth getExpirationDate() {
@@ -82,9 +82,6 @@ public class CardInfoBean {
         try {
             return YearMonth.parse(myDateString, formatter);
         } catch (DateTimeParseException e) {
-            System.out.printf("""
-                    data carta sbagliata -> %s
-                    """,myDateString);
             throw new InvalidCardInfoException();
         }
     }

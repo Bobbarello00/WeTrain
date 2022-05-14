@@ -2,6 +2,8 @@ package viewone.graphical_controllers;
 
 import controller.NotificationsController;
 import exception.DBUnreachableException;
+import exception.ElementNotFoundException;
+import exception.UserNotFoundException;
 import exception.invalid_data_exception.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,8 +36,13 @@ public abstract class HomeGUIController {
     protected final NotificationsController notificationsController = new NotificationsController();
 
     @FXML protected void updateNotificationList() throws SQLException, DBUnreachableException {
-        List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
-        ManageNotificationList.updateList(notificationList, Objects.requireNonNull(notificationBeanList));
+        try {
+            List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
+            ManageNotificationList.updateList(notificationList, Objects.requireNonNull(notificationBeanList));
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;

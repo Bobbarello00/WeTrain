@@ -4,6 +4,7 @@ import database.dao_classes.AthleteDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
 import exception.DBUnreachableException;
+import exception.ElementNotFoundException;
 import model.*;
 import viewone.bean.*;
 
@@ -64,16 +65,15 @@ public class SatisfyWorkoutRequestsController {
         return false;
     }
 
-    public void removeExerciseFromDay(ExerciseForWorkoutPlanBean bean) {
+    public void removeExerciseFromDay(ExerciseForWorkoutPlanBean bean) throws ElementNotFoundException {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null){
-            //throw exception
-            return;
+            throw new ElementNotFoundException();
         }
         workoutDay.removeExercise(bean.getName(), bean.getInfo());
     }
 
-    public void removeExerciseFromPlan(ExerciseBean bean) {
+    public void removeExerciseFromPlan(ExerciseBean bean) throws ElementNotFoundException {
         for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
             removeExerciseFromDay(new ExerciseForWorkoutPlanBean(
                     bean,

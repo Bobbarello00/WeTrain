@@ -4,6 +4,8 @@ import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import database.dao_classes.UserDAO;
 import exception.DBUnreachableException;
+import exception.UserNotFoundException;
+import exception.runtime_exception.IsNeitherATrainerNorAnAthleteException;
 import model.User;
 import viewone.bean.CredentialsBean;
 import viewone.engeneering.LoggedUserSingleton;
@@ -18,12 +20,12 @@ public class LoginController {
             user = new TrainerDAO().loadTrainer(LoggedUserSingleton.getFc());
         }
         if(user == null){
-            System.out.println("Error - Logged User is null.");
+            throw new IsNeitherATrainerNorAnAthleteException();
         }
         return user;
     }
 
-    public void login(CredentialsBean credentials) throws SQLException, DBUnreachableException {
+    public void login(CredentialsBean credentials) throws SQLException, DBUnreachableException, UserNotFoundException {
         LoggedUserSingleton.resetUserInfo();
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
         LoggedUserSingleton.setFc(user.getFiscalCode());

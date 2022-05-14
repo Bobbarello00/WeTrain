@@ -86,7 +86,7 @@ public class AthleteDAO {
                 );
                 return completeAthleteInfo(fc, athlete);
             } else {
-                throw new ElementNotFoundException();
+                return null;
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

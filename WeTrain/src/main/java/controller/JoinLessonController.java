@@ -20,7 +20,8 @@ public class JoinLessonController {
         } catch (DBUnreachableException e) {
             e.alert();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return;
         }
         if(lessonUrl == null){
             throw new UrlNotInsertedYetException();

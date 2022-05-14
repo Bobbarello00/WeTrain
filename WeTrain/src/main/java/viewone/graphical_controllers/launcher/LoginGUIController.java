@@ -4,6 +4,7 @@ package viewone.graphical_controllers.launcher;
 import controller.LoginController;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
+import exception.UserNotFoundException;
 import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -42,7 +43,7 @@ public class LoginGUIController extends LauncherGUIController{
             }
         } catch (DBUnreachableException e) {
             e.alert();
-        } catch (ElementNotFoundException e) {
+        } catch (UserNotFoundException e) {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
                     "Be sure that you have an account on WeTrain.");

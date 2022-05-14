@@ -64,7 +64,6 @@ public class CourseDAO {
         }
     }
 
-    //TODO inserimenti in Subscribe vanno fatti in CourseDAO?
     public void subscribeToACourse(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertCourseSubscriber(idCourse, (loginController.getLoggedUser()).getFiscalCode())){
             preparedStatement.executeUpdate();
@@ -83,7 +82,7 @@ public class CourseDAO {
         }
     }
 
-    public Course loadCourse(int idCourse) throws SQLException, DBUnreachableException {
+    public Course loadCourse(int idCourse) throws SQLException, DBUnreachableException, ElementNotFoundException {
         try(PreparedStatement preparedStatement = Queries.loadCourse(idCourse)) {
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
