@@ -1,4 +1,4 @@
-package viewone.engeneering.manageList;
+package viewone.engeneering.manage_list;
 
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -46,9 +46,7 @@ public class ManageCourseList {
                 courseOverviewGUIController.setValues(newItem);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }

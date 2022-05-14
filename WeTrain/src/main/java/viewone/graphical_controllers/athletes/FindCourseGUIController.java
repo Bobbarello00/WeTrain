@@ -15,7 +15,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
-import viewone.engeneering.manageList.ManageCourseList;
+import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.list_cell_factories.CourseListCellFactory;
 

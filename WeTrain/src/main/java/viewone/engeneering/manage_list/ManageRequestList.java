@@ -1,4 +1,4 @@
-package viewone.engeneering.manageList;
+package viewone.engeneering.manage_list;
 
 import controller.SatisfyWorkoutRequestsController;
 import exception.DBUnreachableException;
@@ -11,6 +11,8 @@ import viewone.list_cell_factories.RequestListCellFactory;
 import java.sql.SQLException;
 
 public class ManageRequestList {
+
+    private ManageRequestList() {}
 
     public static void setRequestList(ListView<RequestBean> requestList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) throws SQLException, DBUnreachableException {
         requestList.setCellFactory(nodeListView -> new RequestListCellFactory());

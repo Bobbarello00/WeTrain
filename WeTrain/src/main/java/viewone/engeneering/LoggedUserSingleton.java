@@ -61,7 +61,7 @@ public class LoggedUserSingleton {
                             ((Athlete) usr).getCardNumber(),
                             ((Athlete) usr).getCardExpirationDate()
                     ));
-        } else if (usr instanceof Trainer) {
+        } else {
             return new TrainerBean(
                     usr.getUsername(),
                     new PersonalInfoBean(
@@ -76,9 +76,6 @@ public class LoggedUserSingleton {
                             usr.getPassword()
                     ),
                     ((Trainer) usr).getIban());
-        } else {
-            System.out.println("User in LoggedUserSingleton is neither an Athlete nor Trainer.");
-            throw new FatalErrorException();
         }
     }
 

@@ -2,7 +2,6 @@ package viewone.graphical_controllers;
 
 import controller.NotificationsController;
 import exception.DBUnreachableException;
-import exception.ElementNotFoundException;
 import exception.UserNotFoundException;
 import exception.invalid_data_exception.InvalidIbanException;
 import javafx.event.ActionEvent;
@@ -19,7 +18,7 @@ import viewone.WeTrain;
 import viewone.bean.NotificationBean;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.engeneering.UserInfoCarrier;
-import viewone.engeneering.manageList.ManageNotificationList;
+import viewone.engeneering.manage_list.ManageNotificationList;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -81,7 +80,8 @@ public abstract class HomeGUIController {
             e.alert();
             return null;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -89,8 +89,7 @@ public abstract class HomeGUIController {
         try {
             userImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/"+str+".png")).toURI().toString()));
         } catch (URISyntaxException e) {
-            //TODO
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

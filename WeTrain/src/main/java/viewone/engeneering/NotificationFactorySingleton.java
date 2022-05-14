@@ -2,6 +2,7 @@ package viewone.engeneering;
 
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
+import exception.runtime_exception.NotificationTypeNotFoundException;
 import model.Course;
 import model.User;
 import model.notification.*;
@@ -126,6 +127,6 @@ public class NotificationFactorySingleton {
                     dateTime
             );
         }
-        throw new RuntimeException();
+        throw new NotificationTypeNotFoundException();
     }
 }

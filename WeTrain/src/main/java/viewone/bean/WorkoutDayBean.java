@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class WorkoutDayBean {
 
-    private String day;
+    private final String day;
     List<ExerciseBean> exerciseBeanList;
 
 
@@ -31,13 +31,4 @@ public class WorkoutDayBean {
         exerciseBeanList.add(exerciseBean);
     }
 
-    public void removeExerciseBean(ExerciseBean exerciseBean) {
-        for(ExerciseBean exercise: exerciseBeanList){
-            if(Objects.equals(exercise.getName(), exerciseBean.getName())){
-                exerciseBeanList.remove(exercise);
-                return;
-            }
-        }
-        System.out.println("L'esercizio non appartiene a nessun WorkoutDay");
-    }
 }

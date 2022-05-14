@@ -8,8 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.bean.CourseBean;
-import viewone.engeneering.manageList.ManageCourseList;
-import viewone.engeneering.manageList.ManageNotificationList;
+import viewone.engeneering.manage_list.ManageCourseList;
+import viewone.engeneering.manage_list.ManageNotificationList;
 import viewone.list_cell_factories.CourseListCellFactory;
 import viewone.list_cell_factories.NotificationListCellFactory;
 

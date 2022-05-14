@@ -12,9 +12,9 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CourseBean;
 import viewone.bean.RequestBean;
-import viewone.engeneering.manageList.ManageCourseList;
-import viewone.engeneering.manageList.ManageNotificationList;
-import viewone.engeneering.manageList.ManageRequestList;
+import viewone.engeneering.manage_list.ManageCourseList;
+import viewone.engeneering.manage_list.ManageNotificationList;
+import viewone.engeneering.manage_list.ManageRequestList;
 import viewone.list_cell_factories.CourseListCellFactory;
 import viewone.list_cell_factories.NotificationListCellFactory;
 

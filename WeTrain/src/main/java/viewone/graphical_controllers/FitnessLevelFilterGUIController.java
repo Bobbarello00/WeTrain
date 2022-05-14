@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class FitnessLevelFilterGUIController {
     private Button selectedFitnessLevel;
-    private String selectedFitnessLevelString;
 
     public void fitnessLevelSelection(ActionEvent event){
         if(selectedFitnessLevel!=null) {

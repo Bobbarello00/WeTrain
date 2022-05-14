@@ -1,4 +1,4 @@
-package viewone.engeneering.manageList;
+package viewone.engeneering.manage_list;
 
 import controller.SatisfyWorkoutRequestsController;
 import javafx.application.Platform;
@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class ManageExerciseList {
+
+    private ManageExerciseList() {}
 
     public static void setListener(ListView<ExerciseBean> exerciseList, DaysOfTheWeekButtonController daysController, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController) {
         exerciseList.getSelectionModel().selectedItemProperty().
@@ -46,7 +48,7 @@ public class ManageExerciseList {
                 Platform.runLater(() -> exerciseList.getSelectionModel().clearSelection());
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

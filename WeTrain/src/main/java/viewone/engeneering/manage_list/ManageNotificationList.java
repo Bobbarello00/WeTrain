@@ -1,4 +1,4 @@
-package viewone.engeneering.manageList;
+package viewone.engeneering.manage_list;
 
 import controller.NotificationsController;
 import exception.DBUnreachableException;
