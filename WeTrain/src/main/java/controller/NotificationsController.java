@@ -2,9 +2,11 @@ package controller;
 
 import database.dao_classes.CourseDAO;
 import database.dao_classes.NotificationDAO;
+import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
 import model.Athlete;
 import model.Course;
+import model.Trainer;
 import model.User;
 import model.notification.Notification;
 import model.notification.NotificationEnum;
@@ -73,6 +75,21 @@ public class NotificationsController {
                 notification.getNotificationDate(),
                 notification.getType().name(),
                 notification.promptMessage());
+    }
+
+    public void sendSubscriptionToTrainerNotification(Trainer trainer) throws DBUnreachableException, SQLException {
+        Notification notification = NotificationFactorySingleton.getInstance().createSubscribeToTrainerNotification(
+                loginController.getLoggedUser(),
+                trainer,
+                new TrainerDAO().getNumberOfSubscribers(trainer.getFiscalCode())
+        );
+        new NotificationDAO().saveNotification(
+                notification.getType().ordinal(),
+                notification.getDescription(),
+                LocalDateTime.now(),
+                notification.getSender().getFiscalCode(),
+                notification.getReceiver().getFiscalCode()
+        );
     }
 
     public void sendCourseCommunicationNotification(CommunicationBean bean) throws SQLException, DBUnreachableException {

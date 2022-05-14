@@ -67,7 +67,7 @@ public class TrainerDAO {
                     }
                 }
             } else {
-                throw new ResultSetIsNullException();
+                return null;
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

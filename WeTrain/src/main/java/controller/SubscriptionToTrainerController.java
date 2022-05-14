@@ -12,10 +12,12 @@ import viewone.bean.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class SubscriptionToTrainerController {
 
     LoginController loginController = new LoginController();
+    NotificationsController notificationsController = new NotificationsController();
 
     public TrainerBean getTrainer() throws SQLException, DBUnreachableException, InvalidIbanException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
@@ -90,13 +92,16 @@ public class SubscriptionToTrainerController {
 
     public void subscribeToTrainer(String fc) throws SQLException, DBUnreachableException {
         new AthleteDAO().setTrainer((Athlete) loginController.getLoggedUser(), fc);
+        notificationsController.sendSubscriptionToTrainerNotification(new TrainerDAO().loadTrainer(fc));
     }
 
     public void unsubscribeFromTrainer() throws SQLException, DBUnreachableException {
         AthleteDAO athleteDAO = new AthleteDAO();
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         athleteDAO.removeTrainer(athlete);
-        athleteDAO.removeWorkoutPlan(athlete.getWorkoutPlan().getId());
+        if(!Objects.equals(athlete.getWorkoutPlan(), null)) {
+            athleteDAO.removeWorkoutPlan(athlete.getWorkoutPlan().getId());
+        }
     }
 
 }

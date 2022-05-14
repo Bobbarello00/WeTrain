@@ -133,12 +133,11 @@ public class Queries {
         return preparedStatement;
     }
 
-    public static PreparedStatement deleteAthlete(String athleteFc) throws SQLException, DBConnectionFailedException {
-        //TODO non lo usiamo
+    public static PreparedStatement deleteUser(String userFc) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                "DELETE FROM mydb.Athlete " +
-                WHERE_USER);
-        preparedStatement.setString(1, athleteFc);
+                "DELETE FROM mydb.User " +
+                "WHERE FC = ?");
+        preparedStatement.setString(1, userFc);
         return preparedStatement;
     }
 
@@ -229,16 +228,6 @@ public class Queries {
                 LIMIT_30);
         preparedStatement.setString(1, trainerFc);
         return preparedStatement;
-    }
-
-    public static int deleteTrainer(String trainerFc) throws SQLException, DBConnectionFailedException {
-        //TODO non lo usiamo
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                "DELETE FROM mydb.Trainer " +
-                WHERE_USER)){
-            preparedStatement.setString(1, trainerFc);
-            return preparedStatement.executeUpdate();
-        }
     }
 
     public static PreparedStatement loadUser(String email, String password) throws SQLException, DBConnectionFailedException {

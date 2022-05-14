@@ -117,7 +117,7 @@ public class AthleteDAO {
                 athlete.setCourseList(new CourseDAO().loadAllCoursesAthlete(athlete));
                 return athlete;
             } else {
-                throw new ResultSetIsNullException();
+                return null;
             }
         } catch (ExpiredCardException e) {
             try(PreparedStatement preparedStatement1 = Queries.removeCardInfoAthlete(fc)) {
@@ -176,5 +176,4 @@ public class AthleteDAO {
             throw new DBUnreachableException();
         }
     }
-
 }

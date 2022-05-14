@@ -28,7 +28,7 @@ public class RejectedRequestNotification extends Notification {
     }
 
     @Override public String getDescription() {
-        return null;
+        return "";
     }
 
 }

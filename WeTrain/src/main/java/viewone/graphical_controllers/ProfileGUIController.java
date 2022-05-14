@@ -1,5 +1,6 @@
 package viewone.graphical_controllers;
 
+import controller.ProfileManagementController;
 import exception.DBUnreachableException;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -30,6 +31,7 @@ public abstract class ProfileGUIController {
     @FXML protected Label paymentMethodLabel;
     @FXML protected Button deleteButton;
 
+    private final ProfileManagementController profileManagementController = new ProfileManagementController();
 
     @FXML protected void editAbort(){
         editPane.setDisable(true);
@@ -53,13 +55,16 @@ public abstract class ProfileGUIController {
         alert.setHeaderText("CONFIRMATION");
         alert.setContentText("Do you want delete your account? " +
                 "The operation can't be undone.");
-        //TODO provare a cambiare scritte bottoni e implementare eliminazione account
         Optional<ButtonType> result = alert.showAndWait();
-        if(result.isPresent() && result.get() == ButtonType.OK) {
-            System.out.println("True");
-
-        } else {
-            System.out.println("False");
+        try {
+            if(result.isPresent() && result.get() == ButtonType.OK) {
+                profileManagementController.deleteUser();
+                new DBUnreachableException().logOff();
+            }
+        } catch (DBUnreachableException e) {
+            e.alertAndLogOff();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

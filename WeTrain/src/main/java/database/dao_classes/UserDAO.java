@@ -53,4 +53,13 @@ public class UserDAO {
             throw new ElementNotFoundException();
         }
     }
+
+    public void deleteUser(User user) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.deleteUser(user.getFiscalCode())){
+            preparedStatement.executeUpdate();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
+        }
+    }
 }

@@ -2,10 +2,12 @@ package controller;
 
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
+import database.dao_classes.UserDAO;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.ExpiredCardException;
 import model.Athlete;
 import model.Trainer;
+import model.User;
 import model.record.Card;
 import viewone.bean.CardInfoBean;
 import viewone.bean.IbanBean;
@@ -40,7 +42,8 @@ public class ProfileManagementController {
         );
     }
 
-    public void removeCardInfo(Athlete athlete) throws SQLException, DBUnreachableException {
-        new AthleteDAO().removeCardInfo(athlete.getFiscalCode());
+    public void deleteUser() throws DBUnreachableException, SQLException {
+        User user = loginController.getLoggedUser();
+        new UserDAO().deleteUser(user);
     }
 }
