@@ -9,7 +9,6 @@ import java.sql.SQLException;
 public class RequestWorkoutPlanController {
 
     public void sendRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
-        //TODO richiedi il pagamento
         new RequestDAO().saveRequest(
                 requestBean.getRequestDate(),
                 requestBean.getInfo(),

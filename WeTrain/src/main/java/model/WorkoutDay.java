@@ -15,11 +15,6 @@ public class WorkoutDay implements Serializable {
         this.id = id;
     }
 
-    public WorkoutDay(String day, List<Exercise> exerciseList){
-        this(day);
-        this.exerciseList = exerciseList;
-    }
-
     public WorkoutDay(String day) {
         this();
         this.day = day;
@@ -56,6 +51,5 @@ public class WorkoutDay implements Serializable {
                 return;
             }
         }
-        System.out.println("Esercizio non trovato");
     }
 }

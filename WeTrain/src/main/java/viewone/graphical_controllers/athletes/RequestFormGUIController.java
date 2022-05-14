@@ -1,12 +1,8 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.NotificationsController;
 import controller.RequestWorkoutPlanController;
 import exception.DBUnreachableException;
-import exception.invalid_data_exception.EmptyFieldsException;
 import exception.invalid_data_exception.InvalidDataException;
-import exception.invalid_data_exception.InvalidIbanException;
-import exception.invalid_data_exception.TextOutOfBoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;

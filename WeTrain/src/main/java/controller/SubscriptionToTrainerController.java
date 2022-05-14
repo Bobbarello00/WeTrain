@@ -1,5 +1,6 @@
 package controller;
 
+import boundary.PaypalBoundary;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.*;
@@ -16,8 +17,11 @@ import java.util.Objects;
 
 public class SubscriptionToTrainerController {
 
-    LoginController loginController = new LoginController();
-    NotificationsController notificationsController = new NotificationsController();
+    private static final float SUBSCRIPTION_FEE = 5;
+
+    private final LoginController loginController = new LoginController();
+    private final NotificationsController notificationsController = new NotificationsController();
+    private final PaypalBoundary paypalBoundary = new PaypalBoundary();
 
     public TrainerBean getTrainer() throws SQLException, DBUnreachableException, InvalidIbanException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
@@ -90,9 +94,12 @@ public class SubscriptionToTrainerController {
         return setToUserBean(trainerList);
     }
 
-    public void subscribeToTrainer(String fc) throws SQLException, DBUnreachableException {
-        new AthleteDAO().setTrainer((Athlete) loginController.getLoggedUser(), fc);
-        notificationsController.sendSubscriptionToTrainerNotification(new TrainerDAO().loadTrainer(fc));
+    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException {
+        Trainer trainer = new TrainerDAO().loadTrainer(trainerFc);
+        Athlete athlete = (Athlete) loginController.getLoggedUser();
+        new AthleteDAO().setTrainer(athlete, trainerFc);
+        paypalBoundary.pay(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE);
+        notificationsController.sendSubscriptionToTrainerNotification(trainer);
     }
 
     public void unsubscribeFromTrainer() throws SQLException, DBUnreachableException {
