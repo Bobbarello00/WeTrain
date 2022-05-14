@@ -17,10 +17,11 @@ public class EmailReceivedNotification extends Notification{
     @Override
     public String promptMessage() {
         return String.format("""
-                Check your inbox!
-                %s sent you an email.
+                Hi %s!
+                %s tried contacting you via email.
                 Check your inbox, if it's not there be sure to have inserted the right email on your profile!
                 """,
+                receiver.getName(),
                 sender.getName() + " " + sender.getSurname());
     }
 
