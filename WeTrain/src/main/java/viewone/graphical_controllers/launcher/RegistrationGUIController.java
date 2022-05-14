@@ -8,8 +8,10 @@ import javafx.scene.input.KeyEvent;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CredentialsBean;
+import viewone.engeneering.AlertFactory;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class RegistrationGUIController extends LauncherGUIController{
@@ -31,7 +33,11 @@ public class RegistrationGUIController extends LauncherGUIController{
             moreInfoGUIController.setCredentialInfo(bean);
             moreInfoGUIController.setSelectedProfileString(selectedProfile);
         } catch (InvalidDataException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));;
         }
     }
 

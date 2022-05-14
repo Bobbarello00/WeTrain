@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.NotificationBean;
 import viewone.engeneering.AlertFactory;
 
@@ -48,7 +49,12 @@ public class ManageNotificationList {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
     }
 }

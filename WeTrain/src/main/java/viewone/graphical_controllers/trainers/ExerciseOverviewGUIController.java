@@ -13,9 +13,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseForWorkoutPlanBean;
+import viewone.engeneering.AlertFactory;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class ExerciseOverviewGUIController{
 
@@ -41,7 +44,12 @@ public class ExerciseOverviewGUIController{
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             return;
         } catch (ElementNotFoundException e) {
             return;
@@ -57,7 +65,12 @@ public class ExerciseOverviewGUIController{
             trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             return;
         } catch (SQLException e) {
             throw new RuntimeException(e);

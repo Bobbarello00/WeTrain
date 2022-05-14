@@ -116,7 +116,12 @@ public class CourseOverviewGUIController {
             }
             lessonText.setText("Join Lesson");
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             ((Stage) subscribeButton.getScene().getWindow()).close();
         } catch (ImATrainerException e) {
             isTrainer = true;
@@ -169,14 +174,16 @@ public class CourseOverviewGUIController {
         }else{
             try {
                 joinLessonController.joinLesson(new IdBean(courseBean.getId()));
-            } catch (UrlNotInsertedYetException e) {
-                e.alert();
+            } catch (UrlNotInsertedYetException | BrowsingNotSupportedException e) {
+                List<String> errorStrings = e.getErrorStrings();
+                AlertFactory.newWarningAlert(
+                        errorStrings.get(0),
+                        errorStrings.get(1),
+                        errorStrings.get(2));
             } catch (URISyntaxException e) {
                 AlertFactory.newWarningAlert("EXCEPTION!",
                         "Url not working",
                         "The url inserted by the trainer is incorrect or not working anymore.");
-            } catch (BrowsingNotSupportedException e) {
-                e.alert();
             }
         }
     }
@@ -210,10 +217,12 @@ public class CourseOverviewGUIController {
                     null);
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (DBUnreachableException e) {
-            e.alert();
-        } catch (PaymentFailedException e) {
-            e.alert();
+        } catch (DBUnreachableException | PaymentFailedException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

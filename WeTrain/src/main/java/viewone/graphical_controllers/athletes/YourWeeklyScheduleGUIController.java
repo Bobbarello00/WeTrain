@@ -9,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
+import viewone.engeneering.AlertFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -73,11 +75,15 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
                 courseBeanList = courseManagementAthleteController.getCourseList();
                 workoutPlanBean = workoutPlanController.getWorkoutPlan();
             } catch (DBUnreachableException e) {
-                e.alertAndLogOff();
+                List<String> errorStrings = e.getErrorStrings();
+                AlertFactory.newWarningAlert(
+                        errorStrings.get(0),
+                        errorStrings.get(1),
+                        errorStrings.get(2));
+                PageSwitchSizeChange.logOff();
                 return;
             }
         }
-
         StringBuilder infoText = new StringBuilder();
         String day = Objects.requireNonNull(getDay(event)).name();
         boolean busyDay = false;
@@ -96,7 +102,6 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
             infoText = new StringBuilder().append("You are free for this day!\n" +
                     "check out our popular courses from the homepage and let's train!");
         }
-
         infoText.append("\n\n\n");
         if(workoutPlanBean != null) {
             for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){

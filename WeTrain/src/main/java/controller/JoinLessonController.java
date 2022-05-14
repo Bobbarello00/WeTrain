@@ -4,12 +4,16 @@ import database.dao_classes.CourseDAO;
 import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
 import exception.UrlNotInsertedYetException;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.IdBean;
+import viewone.engeneering.AlertFactory;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class JoinLessonController {
 
@@ -18,7 +22,11 @@ public class JoinLessonController {
         try {
             lessonUrl = new CourseDAO().loadStartedLessonUrl(idBean.getId());
         } catch (DBUnreachableException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         } catch (SQLException e) {
             e.printStackTrace();
             return;

@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
 import viewone.bean.*;
+import viewone.engeneering.AlertFactory;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 
@@ -86,7 +87,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
     }
 
@@ -98,7 +104,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             return;
         }
         hideVBox(addTrainerBox);
@@ -110,7 +121,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         try {
             userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             return;
         }
         ObservableList<UserBean> trainersObservableList = FXCollections.observableList(userBeanList);
@@ -128,9 +144,18 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (PaymentFailedException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         }
 
     }
@@ -160,7 +185,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
     }
 
@@ -192,9 +222,18 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (InvalidIbanException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         }
     }
 

@@ -1,8 +1,12 @@
 package exception;
 
-public class PaymentFailedException extends Exception{
+public class PaymentFailedException extends PersonalizedException{
 
-    public void alert() {
-
+    public PaymentFailedException() {
+        super(
+                "PAYMENT ERROR",
+                "Payment failed",
+                "Couldn't complete the payment. Try again later..."
+        );
     }
 }

@@ -12,14 +12,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ManageCoursesGUIController extends HomeGUIControllerTrainers implements Initializable {
@@ -65,7 +68,12 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                     });
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -84,7 +92,12 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
             setVisible(false);
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

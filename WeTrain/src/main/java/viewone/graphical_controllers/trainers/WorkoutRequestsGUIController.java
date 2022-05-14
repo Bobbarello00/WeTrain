@@ -15,11 +15,13 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.RequestBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageRequestList;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -41,7 +43,12 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
             ManageRequestList.updateList(requestList, satisfyWorkoutRequestsController);
             setTabVisibile(false);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +78,12 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
     }
 

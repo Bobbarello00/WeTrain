@@ -9,9 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
+import viewone.engeneering.AlertFactory;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CreateNewExerciseGUIController {
     @FXML private TextArea descriptionTextArea;
@@ -30,7 +33,12 @@ public class CreateNewExerciseGUIController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
         cancelButtonAction(event);
     }

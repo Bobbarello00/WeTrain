@@ -10,8 +10,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.RequestBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.engeneering.manage_list.ManageNotificationList;
 import viewone.engeneering.manage_list.ManageRequestList;
@@ -21,6 +23,7 @@ import viewone.list_cell_factories.NotificationListCellFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrainersHomeGUIController extends HomeGUIControllerTrainers implements Initializable {
@@ -54,7 +57,12 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
         setUserInfoTab();
     }

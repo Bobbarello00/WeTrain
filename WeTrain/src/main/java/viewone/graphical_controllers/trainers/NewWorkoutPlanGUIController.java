@@ -16,6 +16,7 @@ import viewone.bean.DayBean;
 import viewone.bean.ExerciseBean;
 import viewone.bean.RequestBean;
 import viewone.bean.WorkoutDayBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageExerciseList;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
@@ -60,7 +61,12 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
             satisfyWorkoutRequestsController.sendWorkoutPlan(requestBean);
             PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -98,7 +104,12 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
 
     }

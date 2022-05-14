@@ -2,11 +2,14 @@ package viewone.graphical_controllers;
 
 import controller.ProfileManagementController;
 import exception.DBUnreachableException;
+import exception.PersonalizedException;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
+import viewone.PageSwitchSizeChange;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.MainPane;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.stage.Stage;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -59,10 +63,15 @@ public abstract class ProfileGUIController {
         try {
             if(result.isPresent() && result.get() == ButtonType.OK) {
                 profileManagementController.deleteUser();
-                new DBUnreachableException().logOff();
+                PageSwitchSizeChange.logOff();
             }
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -84,7 +93,12 @@ public abstract class ProfileGUIController {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
         return null;
     }

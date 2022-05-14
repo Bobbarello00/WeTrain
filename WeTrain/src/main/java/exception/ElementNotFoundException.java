@@ -1,3 +1,3 @@
 package exception;
 
-public class ElementNotFoundException extends RuntimeException { }
+public class ElementNotFoundException extends RuntimeException {}

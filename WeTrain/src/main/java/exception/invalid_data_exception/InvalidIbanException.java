@@ -1,12 +1,12 @@
 package exception.invalid_data_exception;
 
-import viewone.engeneering.AlertFactory;
-
 public class InvalidIbanException extends InvalidDataException{
 
-    @Override public void alert() {
-        AlertFactory.newWarningAlert("WRONG IBAN!",
+    public InvalidIbanException() {
+        super(
+                "WRONG IBAN!",
                 "Couldn't verify your iban",
-                "Sorry for the inconvenience, be sure to write your IBAN correctly.");
+                "Sorry for the inconvenience, be sure to write your IBAN correctly."
+        );
     }
 }

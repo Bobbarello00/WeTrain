@@ -15,8 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
@@ -92,11 +94,20 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             MenuTrainersGUIController.resetSelectedButton();
 
         } catch (InvalidDataException e){
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
     }
 

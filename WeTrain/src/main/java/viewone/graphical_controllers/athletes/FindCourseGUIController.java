@@ -15,6 +15,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.list_cell_factories.CourseListCellFactory;
@@ -91,7 +92,12 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
                     selectedDays
             ));
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
 

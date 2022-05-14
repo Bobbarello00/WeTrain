@@ -13,13 +13,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import viewone.DaysOfTheWeekButtonController;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
+import viewone.engeneering.AlertFactory;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -79,7 +82,12 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
     }
 }

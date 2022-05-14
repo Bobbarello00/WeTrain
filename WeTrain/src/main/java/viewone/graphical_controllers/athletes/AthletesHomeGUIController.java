@@ -1,13 +1,14 @@
 package viewone.graphical_controllers.athletes;
 
-import com.mysql.cj.exceptions.CJException;
 import controller.CourseManagementAthleteController;
 import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.engeneering.manage_list.ManageNotificationList;
 import viewone.list_cell_factories.CourseListCellFactory;
@@ -34,9 +35,13 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             updateNotificationList();
             courseBeanList = courseManagementAthleteController.getCourseList();
             ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
-        } catch (DBUnreachableException | CJException e) {
-            new DBUnreachableException().alertAndLogOff();
-            logoutButton.fire();
+        } catch (DBUnreachableException e){
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             e.printStackTrace();
         }

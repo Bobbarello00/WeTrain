@@ -5,11 +5,14 @@ import exception.DBUnreachableException;
 import exception.invalid_data_exception.EmptyFieldsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.CommunicationBean;
 import viewone.bean.CourseBean;
+import viewone.engeneering.AlertFactory;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CommunicationFormGUIController extends AbstractFormGUIController {
     @FXML private TextArea contentTextArea;
@@ -30,9 +33,18 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (EmptyFieldsException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
             return;
         }
         close();

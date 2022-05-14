@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.NotificationBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.engeneering.UserInfoCarrier;
 import viewone.engeneering.manage_list.ManageNotificationList;
@@ -73,7 +74,12 @@ public abstract class HomeGUIController {
         try {
             return LoggedUserSingleton.getUserInfo();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
             return null;
         } catch (SQLException e) {
             e.printStackTrace();

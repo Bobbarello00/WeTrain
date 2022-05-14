@@ -16,6 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
@@ -23,6 +24,7 @@ import viewone.list_cell_factories.PersonListCellFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class YourSubscribersGUIController extends HomeGUIControllerTrainers implements Initializable {
@@ -62,7 +64,12 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
             subscribersList.setItems(FXCollections.observableList(requestBeanObservableList));
             setUserInfoTab();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

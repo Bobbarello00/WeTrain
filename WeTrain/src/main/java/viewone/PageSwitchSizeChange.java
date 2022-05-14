@@ -19,6 +19,14 @@ public class PageSwitchSizeChange {
 
     private PageSwitchSizeChange() {}
 
+    public static void logOff() {
+        try {
+            pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void loadHome(Button button, String page, String path) throws IOException {
         Stage newStage;
         Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));

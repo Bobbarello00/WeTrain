@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MoreInfoGUIController implements Initializable {
@@ -69,9 +70,18 @@ public class MoreInfoGUIController implements Initializable {
         } catch (SQLException e){
             e.printStackTrace();
         } catch (InvalidDataException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         } catch (UserNotFoundException ignored) {}
     }
 

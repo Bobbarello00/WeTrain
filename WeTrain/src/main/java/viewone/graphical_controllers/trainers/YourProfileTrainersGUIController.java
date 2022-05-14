@@ -10,14 +10,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.*;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -42,10 +45,19 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
             } catch (SQLException e){
                 throw new RuntimeException();
             } catch (InvalidDataException e) {
-                e.alert();
+                List<String> errorStrings = e.getErrorStrings();
+                AlertFactory.newWarningAlert(
+                        errorStrings.get(0),
+                        errorStrings.get(1),
+                        errorStrings.get(2));
             } catch (DBUnreachableException e) {
                 ((Stage) editButton.getScene().getWindow()).close();
-                e.alertAndLogOff();
+                List<String> errorStrings = e.getErrorStrings();
+                AlertFactory.newWarningAlert(
+                        errorStrings.get(0),
+                        errorStrings.get(1),
+                        errorStrings.get(2));
+                PageSwitchSizeChange.logOff();
             }
         }
     }
@@ -83,10 +95,13 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
-            e.alert();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         } catch (SQLException e) {
-            //TODO gestione exception sql
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }

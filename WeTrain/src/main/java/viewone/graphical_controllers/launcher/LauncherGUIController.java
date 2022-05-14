@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.launcher;
 
 import exception.DBUnreachableException;
+import viewone.PageSwitchSizeChange;
 import viewone.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,10 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.bean.UserBean;
+import viewone.engeneering.AlertFactory;
 import viewone.engeneering.LoggedUserSingleton;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -40,7 +43,12 @@ public abstract class LauncherGUIController implements Initializable {
         } catch (SQLException e){
             throw new RuntimeException();
         } catch (DBUnreachableException e) {
-            e.alertAndLogOff();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
         }
         return null;
     }

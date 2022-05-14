@@ -20,6 +20,7 @@ import viewone.engeneering.AlertFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class LoginGUIController extends LauncherGUIController{
     @FXML private Button submitButton;
@@ -41,8 +42,12 @@ public class LoginGUIController extends LauncherGUIController{
             } else {
                 PageSwitchSizeChange.loadHome(submitButton, "TrainersHome", "trainers");
             }
-        } catch (DBUnreachableException e) {
-            e.alert();
+        } catch (DBUnreachableException | InvalidDataException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         } catch (UserNotFoundException e) {
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
@@ -52,8 +57,6 @@ public class LoginGUIController extends LauncherGUIController{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (InvalidDataException e) {
-            e.alert();
         }
     }
 
