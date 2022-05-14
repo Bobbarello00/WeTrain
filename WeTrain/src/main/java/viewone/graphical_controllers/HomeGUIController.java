@@ -41,7 +41,6 @@ public abstract class HomeGUIController {
         } catch (UserNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML protected abstract void editButtonAction(ActionEvent event) throws IOException;

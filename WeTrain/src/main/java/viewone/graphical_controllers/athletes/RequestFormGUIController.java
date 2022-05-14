@@ -4,6 +4,7 @@ import controller.NotificationsController;
 import controller.RequestWorkoutPlanController;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.EmptyFieldsException;
+import exception.invalid_data_exception.InvalidDataException;
 import exception.invalid_data_exception.InvalidIbanException;
 import exception.invalid_data_exception.TextOutOfBoundException;
 import javafx.fxml.FXML;
@@ -25,7 +26,6 @@ public class RequestFormGUIController extends AbstractFormGUIController {
     private UserBean trainer;
 
     private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
-    private final NotificationsController notificationsController = new NotificationsController();
 
     public void setTrainer(UserBean trainer) {
         this.trainer = trainer;
@@ -45,15 +45,12 @@ public class RequestFormGUIController extends AbstractFormGUIController {
                     "Request already send.",
                     "Wait for your request to be evaluated by the Trainer");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             ((Stage) sendButton.getScene().getWindow()).close();
             e.alertAndLogOff();
             return;
-        } catch (TextOutOfBoundException e) {
-            e.alert();
-            return;
-        } catch (InvalidIbanException | EmptyFieldsException e) {
+        } catch (InvalidDataException e) {
             e.alert();
             return;
         }

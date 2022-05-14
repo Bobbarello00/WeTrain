@@ -64,7 +64,7 @@ public abstract class ProfileGUIController {
         } catch (DBUnreachableException e) {
             e.alertAndLogOff();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
