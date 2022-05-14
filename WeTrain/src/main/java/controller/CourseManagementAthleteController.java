@@ -1,10 +1,10 @@
 package controller;
 
-import boundary.EmailSystemBoundary;
 import boundary.PaypalBoundary;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
 import exception.ImATrainerException;
+import exception.PaymentFailedException;
 import model.Athlete;
 import model.Course;
 import model.Trainer;
@@ -17,8 +17,8 @@ import java.util.List;
 
 public class CourseManagementAthleteController extends CourseManagementController{
 
+    private final static float SUBSCRIPTIONTOTRAINERFEE = 5;
     private final LoginController loginController = new LoginController();
-    private final EmailSystemBoundary emailSystemBoundary = new EmailSystemBoundary();
     private final PaypalBoundary paypalBoundary = new PaypalBoundary();
     private final NotificationsController notificationsController = new NotificationsController();
 
@@ -37,10 +37,15 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         return false;
     }
 
-    public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBUnreachableException {
-        paypalBoundary.pay();
+    public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException {
         Course course = new CourseDAO().loadCourse(courseBean.getId());
-        new CourseDAO().subscribeToACourse(course.getId());
+        Athlete athlete = (Athlete) loginController.getLoggedUser();
+        new CourseDAO().subscribeToACourse(course.getId(), athlete);
+        paypalBoundary.pay(
+                course.getOwner().getIban(),
+                athlete.getCardNumber(),
+                athlete.getCardExpirationDate(),
+                SUBSCRIPTIONTOTRAINERFEE);
         User sender = loginController.getLoggedUser();
         User receiver = course.getOwner();
         notificationsController.sendSubscriptionToACourseNotification(

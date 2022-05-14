@@ -1,12 +1,12 @@
 package exception.invalid_data_exception;
 
-import viewone.engeneering.AlertFactory;
-
 public class EmptyFieldsException extends InvalidDataException {
 
-    @Override public void alert() {
-        AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+    public EmptyFieldsException() {
+        super(
+                "OOPS, SOMETHING WENT WRONG!",
                 "Empty fields.",
-                "Be sure to fill all fields, thanks for your collaboration!");
+                "Be sure to fill all fields, thanks for your collaboration!"
+        );
     }
 }

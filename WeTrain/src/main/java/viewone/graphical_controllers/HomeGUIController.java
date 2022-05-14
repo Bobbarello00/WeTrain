@@ -75,9 +75,6 @@ public abstract class HomeGUIController {
         } catch (DBUnreachableException e) {
             e.alertAndLogOff();
             return null;
-        } catch (InvalidIbanException e) {
-            e.alert();
-            return null;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

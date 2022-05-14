@@ -2,6 +2,7 @@ package viewone.graphical_controllers.athletes;
 
 import controller.SubscriptionToTrainerController;
 import exception.DBUnreachableException;
+import exception.PaymentFailedException;
 import exception.invalid_data_exception.InvalidIbanException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -128,6 +129,8 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {
             e.alertAndLogOff();
+        } catch (PaymentFailedException e) {
+            e.alert();
         }
 
     }

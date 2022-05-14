@@ -1,6 +1,5 @@
 package exception;
 
-import database.DatabaseConnectionSingleton;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;

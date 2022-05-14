@@ -94,7 +94,7 @@ public class SubscriptionToTrainerController {
         return setToUserBean(trainerList);
     }
 
-    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException {
+    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException, PaymentFailedException {
         Trainer trainer = new TrainerDAO().loadTrainer(trainerFc);
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         new AthleteDAO().setTrainer(athlete, trainerFc);

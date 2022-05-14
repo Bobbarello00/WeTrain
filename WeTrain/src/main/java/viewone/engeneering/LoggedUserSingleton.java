@@ -29,7 +29,7 @@ public class LoggedUserSingleton {
         LoggedUserSingleton.fc = fc;
     }
 
-    public static UserInfoCarrier getUserInfo() throws SQLException, DBUnreachableException, InvalidIbanException {
+    public static UserInfoCarrier getUserInfo() throws SQLException, DBUnreachableException {
         if(userInfoCarrier == null){
             UserBean userBean = getInstance();
             userInfoCarrier = new UserInfoCarrier(

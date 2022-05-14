@@ -212,6 +212,8 @@ public class CourseOverviewGUIController {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             e.alert();
+        } catch (PaymentFailedException e) {
+            e.alert();
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);
