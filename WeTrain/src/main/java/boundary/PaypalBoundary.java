@@ -3,19 +3,21 @@ package boundary;
 import exception.PaymentFailedException;
 
 import java.time.YearMonth;
+import java.util.Random;
 
 public class PaypalBoundary {
 
     public void pay(String iban, String cardNumber, YearMonth cardExpirationDate, float subscriptionFee) throws PaymentFailedException {
         /*
-        This is a dummy payment implementation
+         This is a dummy payment implementation
          */
-        if(cardNumber == null || cardExpirationDate == null || iban == null){
+        if(cardNumber == null || cardExpirationDate == null || iban == null || subscriptionFee == -1){
             throw new PaymentFailedException();
         }
-        String string = iban + cardNumber + cardExpirationDate + subscriptionFee + (Math.random()*100);
-        if(string.length() % 2 == 0) {
-            throw new PaymentFailedException();
+        Random rand = new Random();
+        int val = rand.nextInt(4);
+        if (val == 0) {
+            throw new PaymentFailedException();/* <-- 1/4 of the time.*/
         }
     }
 }
