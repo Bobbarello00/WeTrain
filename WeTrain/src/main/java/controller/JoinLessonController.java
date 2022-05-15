@@ -58,9 +58,9 @@ public class JoinLessonController {
     }
 
     private boolean isValidTime(LessonBean lessonBean) {
-        return ((LocalTime.now().getHour() >= lessonBean.getLessonStartTime().getHour())
-                && (LocalTime.now().getMinute() >= lessonBean.getLessonStartTime().getMinute()))
-                && (((LocalTime.now().getHour() <= lessonBean.getLessonEndTime().getHour())
-                && (LocalTime.now().getMinute() <= lessonBean.getLessonEndTime().getMinute())));
+        return LocalTime.now().getHour() >= lessonBean.getLessonStartTime().getHour()
+                && LocalTime.now().getMinute() >= lessonBean.getLessonStartTime().getMinute()
+                && LocalTime.now().getHour() <= lessonBean.getLessonEndTime().getHour()
+                && LocalTime.now().getMinute() <= lessonBean.getLessonEndTime().getMinute();
     }
 }

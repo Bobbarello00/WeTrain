@@ -361,7 +361,6 @@ public class Queries {
     }
 
     public static PreparedStatement removeCourseStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
-        //TODO non lo usiamo
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 UPDATE_MYDB_COURSE +
                         "SET StartedLessonUrl = NULL " +

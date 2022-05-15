@@ -57,7 +57,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
             ManageCourseList.setCourseListener(courseList);
             ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(

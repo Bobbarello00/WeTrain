@@ -3,7 +3,6 @@ package viewone.graphical_controllers.launcher;
 
 import controller.LoginController;
 import exception.DBUnreachableException;
-import exception.ElementNotFoundException;
 import exception.UserNotFoundException;
 import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
@@ -52,10 +51,7 @@ public class LoginGUIController extends LauncherGUIController{
             AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
                     "Be sure that you have an account on WeTrain.");
-        } catch (SQLException e) {
-            //TODO Exception
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }

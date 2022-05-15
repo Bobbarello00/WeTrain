@@ -3,7 +3,6 @@ package boundary;
 import exception.PaymentFailedException;
 
 import java.time.YearMonth;
-import java.util.Random;
 
 public class PaypalBoundary {
 
@@ -14,9 +13,7 @@ public class PaypalBoundary {
         if(cardNumber == null || cardExpirationDate == null || iban == null || subscriptionFee == -1){
             throw new PaymentFailedException();
         }
-        Random rand = new Random();
-        int val = rand.nextInt(4);
-        if (val == 0) {
+        if (Math.random() > 0.75) {
             throw new PaymentFailedException();/* <-- 1/4 of the time.*/
         }
     }

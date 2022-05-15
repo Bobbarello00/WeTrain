@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PersonalizedException extends Exception{
-    protected String title;
-    protected String header;
-    protected String content;
+    protected final String title;
+    protected final String header;
+    protected final String content;
 
     protected PersonalizedException(String title, String header, String content) {
         this.title = title;

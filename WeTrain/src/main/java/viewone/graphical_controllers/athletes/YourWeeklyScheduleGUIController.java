@@ -96,20 +96,31 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
         boolean busyDay = false;
         if(!courseBeanList.isEmpty()){
             infoText.append("You have this lessons:\n");
-            for(CourseBean course: courseBeanList){
-                for(LessonBean lesson: course.getLessonBeanList()){
-                    if(Objects.equals(lesson.getLessonDay(), day)) {
-                        busyDay = true;
-                        infoText.append("-" + course.getName() + " " + lesson.getLessonStartTime() + "/" + lesson.getLessonEndTime() + "\n");
-                    }
-                }
-            }
+            busyDay = isBusyDay(infoText, day);
         }
         if(!busyDay){
             infoText = new StringBuilder().append("You are free for this day!\n" +
                     "check out our popular courses from the homepage and let's train!");
         }
         infoText.append("\n\n\n");
+        appendWorkoutPlanString(infoText, day);
+        return infoText;
+    }
+
+    private boolean isBusyDay(StringBuilder infoText, String day) {
+        boolean busyDay = false;
+        for(CourseBean course: courseBeanList){
+            for(LessonBean lesson: course.getLessonBeanList()){
+                if(Objects.equals(lesson.getLessonDay(), day)) {
+                    busyDay = true;
+                    infoText.append("-" + course.getName() + " " + lesson.getLessonStartTime() + "/" + lesson.getLessonEndTime() + "\n");
+                }
+            }
+        }
+        return busyDay;
+    }
+
+    private void appendWorkoutPlanString(StringBuilder infoText, String day) {
         if(workoutPlanBean != null) {
             for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()){
                 if(Objects.equals(workoutDayBean.getDay(), day)){
@@ -120,7 +131,6 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
                 }
             }
         }
-        return infoText;
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

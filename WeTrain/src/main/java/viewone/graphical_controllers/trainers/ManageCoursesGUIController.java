@@ -51,12 +51,12 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                             if(newItem != null){
                                 courseNameLabel.setText(selectedCourse.getName());
                                 trainerNameLabel.setText(selectedCourse.getOwner());
-                                StringBuilder timeSchedule = new StringBuilder();
+                                String timeSchedule = "";
                                 for(LessonBean lessonBean: selectedCourse.getLessonBeanList()){
-                                    timeSchedule.append(lessonBean.getLessonDay());
-                                    timeSchedule.append(" ");
+                                    timeSchedule += lessonBean.getLessonDay();
+                                    timeSchedule += " ";
                                 }
-                                timeScheduleLabel.setText(timeSchedule.toString());
+                                timeScheduleLabel.setText(timeSchedule);
                                 fitnessLevelLabel.setText(selectedCourse.getFitnessLevel());
                                 equipmentTextArea.setText(selectedCourse.getEquipment());
                                 generalInfoTextArea.setText(selectedCourse.getDescription());

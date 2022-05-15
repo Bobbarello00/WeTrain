@@ -2,7 +2,6 @@ package viewone.engeneering;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import viewone.PageSwitchSizeChange;
 
 import java.util.Optional;
 
@@ -18,11 +17,7 @@ public class AlertFactory {
         alert.setContentText(alertContentText);
         alert.setResizable(true);
         Optional<ButtonType> result = alert.showAndWait();
-        if(result.isPresent() && result.get() == ButtonType.OK) {
-            return true;
-        }else{
-            return false;
-        }
+        return result.isPresent() && result.get() == ButtonType.OK;
     }
 
     public static void newWarningAlert(String alertTitle, String alertHeaderText, String alertContentText){
