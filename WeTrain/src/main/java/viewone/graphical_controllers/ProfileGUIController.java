@@ -54,14 +54,12 @@ public abstract class ProfileGUIController {
     }
 
     @FXML protected void deleteButtonAction() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("ATTENTION!");
-        alert.setHeaderText("CONFIRMATION");
-        alert.setContentText("Do you want delete your account? " +
-                "The operation can't be undone.");
-        Optional<ButtonType> result = alert.showAndWait();
         try {
-            if(result.isPresent() && result.get() == ButtonType.OK) {
+            if(AlertFactory.newConfirmationAlert(
+                    "ATTENTION!",
+                    "CONFIRMATION",
+                    "Do you want delete your account? " +
+                            "The operation can't be undone.")) {
                 profileManagementController.deleteUser();
                 PageSwitchSizeChange.logOff();
             }

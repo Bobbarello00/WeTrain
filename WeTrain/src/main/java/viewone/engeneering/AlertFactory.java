@@ -1,14 +1,32 @@
 package viewone.engeneering;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import viewone.PageSwitchSizeChange;
+
+import java.util.Optional;
 
 public class AlertFactory {
 
-    private AlertFactory() {}
+    private AlertFactory() {
+    }
+
+    public static boolean newConfirmationAlert(String alertTitle, String alertHeaderText, String alertContentText){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(alertTitle);
+        alert.setHeaderText(alertHeaderText);
+        alert.setContentText(alertContentText);
+        alert.setResizable(true);
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.isPresent() && result.get() == ButtonType.OK) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public static void newWarningAlert(String alertTitle, String alertHeaderText, String alertContentText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setResizable(true);
         newAlert(alert, alertTitle, alertHeaderText, alertContentText);
     }
 
@@ -16,7 +34,7 @@ public class AlertFactory {
         alert.setTitle(alertTitle);
         alert.setHeaderText(alertHeaderText);
         alert.setContentText(alertContentText);
-
+        alert.setResizable(true);
         alert.showAndWait();
     }
 

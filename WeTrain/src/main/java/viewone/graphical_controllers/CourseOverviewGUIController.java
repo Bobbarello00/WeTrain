@@ -6,6 +6,7 @@ import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -28,6 +29,7 @@ import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
+import java.util.Optional;
 
 public class CourseOverviewGUIController {
 
@@ -206,7 +208,12 @@ public class CourseOverviewGUIController {
         try {
             if(courseBean != null) {
                 if (!subscribed) {
-                    courseManagementAthleteController.subscribeToACourse(courseBean);
+                    if(AlertFactory.newConfirmationAlert(
+                            "PURCHASE CONFIRMATION",
+                            "Subscription fee is 5$",
+                            "if you click ok a payment will be sent from your selected payment method")) {
+                        courseManagementAthleteController.subscribeToACourse(courseBean);
+                    }
                 } else {
                     courseManagementAthleteController.unsubscribeFromACourse(courseBean);
                 }
