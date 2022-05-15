@@ -37,7 +37,7 @@ public class RegistrationGUIController extends LauncherGUIController{
             AlertFactory.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
-                    errorStrings.get(2));;
+                    errorStrings.get(2));
         }
     }
 

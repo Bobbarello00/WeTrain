@@ -2,27 +2,24 @@ package viewone.graphical_controllers;
 
 import controller.ProfileManagementController;
 import exception.DBUnreachableException;
-import exception.PersonalizedException;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
-import viewone.PageSwitchSizeChange;
-import viewone.engeneering.AlertFactory;
-import viewone.engeneering.LoggedUserSingleton;
-import viewone.MainPane;
+import exception.invalid_data_exception.*;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import viewone.MainPane;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
+import viewone.engeneering.AlertFactory;
+import viewone.engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 public abstract class ProfileGUIController {
     @FXML protected ImageView usrImage;
@@ -36,6 +33,30 @@ public abstract class ProfileGUIController {
     @FXML protected Button deleteButton;
 
     private final ProfileManagementController profileManagementController = new ProfileManagementController();
+
+    @FXML protected void editConfirmation() {
+        try{
+            editAction();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } catch (InvalidDataException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+        } catch (DBUnreachableException e) {
+            ((Stage) editButton.getScene().getWindow()).close();
+            List<String> errorStrings = e.getErrorStrings();
+            AlertFactory.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
+        }
+    }
+
+    protected abstract void editAction() throws InvalidCardInfoException, EmptyFieldsException, DBUnreachableException, ExpiredCardException, SQLException, InvalidIbanException;
 
     @FXML protected void editAbort(){
         editPane.setDisable(true);
@@ -86,18 +107,6 @@ public abstract class ProfileGUIController {
     }
 
     protected UserBean getLoggedUser(){
-        try{
-            return Objects.requireNonNull(LoggedUserSingleton.getInstance());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        }
-        return null;
+        return Objects.requireNonNull(LoggedUserSingleton.getInstance());
     }
 }

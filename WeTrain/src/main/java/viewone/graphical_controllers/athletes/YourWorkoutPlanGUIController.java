@@ -80,7 +80,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
         try {
             workoutPlanBean = workoutPlanController.getWorkoutPlan();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(

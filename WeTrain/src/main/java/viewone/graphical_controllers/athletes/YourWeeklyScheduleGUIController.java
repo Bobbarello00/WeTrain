@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
 import viewone.engeneering.AlertFactory;
@@ -84,10 +85,16 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
                 return;
             }
         }
+        StringBuilder infoText = getStringBuilder(event);
+        infoLabel.setText(infoText.toString());
+    }
+
+    @NotNull
+    private StringBuilder getStringBuilder(ActionEvent event) {
         StringBuilder infoText = new StringBuilder();
         String day = Objects.requireNonNull(getDay(event)).name();
         boolean busyDay = false;
-        if(courseBeanList.size() != 0){
+        if(!courseBeanList.isEmpty()){
             infoText.append("You have this lessons:\n");
             for(CourseBean course: courseBeanList){
                 for(LessonBean lesson: course.getLessonBeanList()){
@@ -113,7 +120,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
                 }
             }
         }
-        infoLabel.setText(infoText.toString());
+        return infoText;
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

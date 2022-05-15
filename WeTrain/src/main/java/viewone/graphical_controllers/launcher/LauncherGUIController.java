@@ -1,8 +1,5 @@
 package viewone.graphical_controllers.launcher;
 
-import exception.DBUnreachableException;
-import viewone.PageSwitchSizeChange;
-import viewone.PasswordBehaviorActivation;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
@@ -11,13 +8,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import viewone.PasswordBehaviorActivation;
 import viewone.bean.UserBean;
-import viewone.engeneering.AlertFactory;
 import viewone.engeneering.LoggedUserSingleton;
 
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -38,18 +33,6 @@ public abstract class LauncherGUIController implements Initializable {
     }
 
     protected UserBean getLoggedUser(){
-        try{
-            return Objects.requireNonNull(LoggedUserSingleton.getInstance());
-        } catch (SQLException e){
-            throw new RuntimeException();
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        }
-        return null;
+        return Objects.requireNonNull(LoggedUserSingleton.getInstance());
     }
 }

@@ -4,17 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PersonalizedException extends Exception{
-    protected static String TITLE;
-    protected static String HEADER;
-    protected static String CONTENT;
+    protected String title;
+    protected String header;
+    protected String content;
 
     protected PersonalizedException(String title, String header, String content) {
-        TITLE = title;
-        HEADER = header;
-        CONTENT = content;
+        this.title = title;
+        this.header = header;
+        this.content = content;
     }
 
     public List<String> getErrorStrings() {
-        return Arrays.asList(TITLE, HEADER, CONTENT);
+        return Arrays.asList(title, header, content);
     }
 }

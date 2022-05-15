@@ -3,15 +3,15 @@ package viewone.graphical_controllers.athletes;
 import controller.ProfileManagementController;
 import database.dao_classes.AthleteDAO;
 import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidDataException;
+import exception.invalid_data_exception.EmptyFieldsException;
+import exception.invalid_data_exception.ExpiredCardException;
+import exception.invalid_data_exception.InvalidCardInfoException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
@@ -42,35 +42,17 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
         editPaymentMethodButtonAction();
     }
 
-    @FXML private void editConfirmation() {
-        try{
-            CardInfoBean cardInfoBean = new CardInfoBean(
-                    newCardNumber.getText(),
-                    newExpirationDate.getText());
-            profileManagementController.updateAthleteCardInfo(cardInfoBean);
-            athlete = (AthleteBean) LoggedUserSingleton.getInstance();
-            setVisible(editPane, false);
-            setPaymentMethodLabel();
-            setVisible(editButton, true);
-            paymentMethodLabel.setVisible(true);
-        } catch (SQLException e){
-           throw new RuntimeException();
-        } catch (InvalidDataException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-        } catch (DBUnreachableException e) {
-            ((Stage) editButton.getScene().getWindow()).close();
-            List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        }
-    }
+   @Override protected void editAction() throws InvalidCardInfoException, EmptyFieldsException, DBUnreachableException, ExpiredCardException, SQLException {
+       CardInfoBean cardInfoBean = new CardInfoBean(
+               newCardNumber.getText(),
+               newExpirationDate.getText());
+       profileManagementController.updateAthleteCardInfo(cardInfoBean);
+       athlete = (AthleteBean) LoggedUserSingleton.getInstance();
+       setVisible(editPane, false);
+       setPaymentMethodLabel();
+       setVisible(editButton, true);
+       paymentMethodLabel.setVisible(true);
+   }
 
     private void setPaymentMethodLabel() throws SQLException, DBUnreachableException {
         if (athlete.getCardNumber() == null && athlete.getCardExpirationDate() == null) {

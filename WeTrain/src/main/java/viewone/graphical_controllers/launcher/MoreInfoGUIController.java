@@ -82,7 +82,13 @@ public class MoreInfoGUIController implements Initializable {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
-        } catch (UserNotFoundException ignored) {}
+        } catch (UserNotFoundException e) {
+            AlertFactory.newWarningAlert(
+                    "OOPS, SOMETHING WENT WRONG!",
+                    "Your subscription failed",
+                    "Try again."
+            );
+        }
     }
 
     @FXML protected void closeAction(){

@@ -17,7 +17,6 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
-import viewone.bean.IdBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertFactory;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
@@ -175,8 +174,9 @@ public class CourseOverviewGUIController {
             startLessonGUIController.setCourse(courseBean);
         }else{
             try {
-                joinLessonController.joinLesson(new IdBean(courseBean.getId()));
-            } catch (UrlNotInsertedYetException | BrowsingNotSupportedException e) {
+                joinLessonController.joinLesson(courseBean);
+            } catch (UrlNotInsertedYetException | BrowsingNotSupportedException | DBUnreachableException |
+                     NoScheduledLessonException e) {
                 List<String> errorStrings = e.getErrorStrings();
                 AlertFactory.newWarningAlert(
                         errorStrings.get(0),
@@ -186,6 +186,8 @@ public class CourseOverviewGUIController {
                 AlertFactory.newWarningAlert("EXCEPTION!",
                         "Url not working",
                         "The url inserted by the trainer is incorrect or not working anymore.");
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
     }

@@ -85,7 +85,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             showVBox(emptyInfoTrainerBox);
             showVBox(addTrainerBox);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
@@ -102,7 +102,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
             trainersList.setItems(FXCollections.observableList(trainersObservableList));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
@@ -146,7 +146,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                 showVBox(trainerBox);
             }
         } catch (SQLException | URISyntaxException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
@@ -224,7 +224,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                 setSelectedTrainer(null);
             }
         } catch (SQLException | URISyntaxException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
@@ -261,7 +261,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
         try {
             setTrainer();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

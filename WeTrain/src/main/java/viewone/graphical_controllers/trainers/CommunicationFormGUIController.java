@@ -31,7 +31,8 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
                     courseBean
             ));
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return;
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(

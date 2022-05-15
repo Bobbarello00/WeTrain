@@ -201,6 +201,15 @@ public class CourseDAO {
         }
     }
 
+    public void deleteStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.removeCourseStartedLessonUrl(idCourse)){
+            preparedStatement.executeQuery();
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
+        }
+    }
+
     public int getSubscribersNumber(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.getSubscribers(idCourse); ResultSet rs = preparedStatement.executeQuery()){
             if(rs.next()) {

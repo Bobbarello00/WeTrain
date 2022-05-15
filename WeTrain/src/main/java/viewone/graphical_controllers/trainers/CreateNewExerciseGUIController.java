@@ -31,7 +31,7 @@ public class CreateNewExerciseGUIController {
             trainerExercisesManagementController.addExerciseToTrainer(exerciseBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(

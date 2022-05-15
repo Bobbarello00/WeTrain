@@ -73,7 +73,7 @@ public class ExerciseOverviewGUIController{
             PageSwitchSizeChange.logOff();
             return;
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (ElementNotFoundException e) {
             return;
         }

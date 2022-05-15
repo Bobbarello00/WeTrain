@@ -2,17 +2,16 @@ package viewone.graphical_controllers.trainers;
 
 import controller.ProfileManagementController;
 import database.dao_classes.TrainerDAO;
-import exception.*;
-import exception.invalid_data_exception.InvalidDataException;
+import exception.DBUnreachableException;
+import exception.invalid_data_exception.InvalidIbanException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
-import viewone.bean.*;
+import viewone.bean.IbanBean;
+import viewone.bean.TrainerBean;
 import viewone.engeneering.AlertFactory;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
@@ -32,34 +31,14 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
 
     private final ProfileManagementController profileManagementController = new ProfileManagementController();
 
-    @FXML private void editConfirmation() {
-        if(!Objects.equals(newIban.getText(), "")) {
-            try{
-                IbanBean ibanBean = IbanBean.ctorWithSyntaxCheck(newIban.getText());
-                profileManagementController.updateTrainerIban(ibanBean);
-                trainer = (TrainerBean) LoggedUserSingleton.getInstance();
-                setVisible(editPane, false);
-                setIbanLabel();
-                setVisible(editButton, true);
-                paymentMethodLabel.setVisible(true);
-            } catch (SQLException e){
-                throw new RuntimeException();
-            } catch (InvalidDataException e) {
-                List<String> errorStrings = e.getErrorStrings();
-                AlertFactory.newWarningAlert(
-                        errorStrings.get(0),
-                        errorStrings.get(1),
-                        errorStrings.get(2));
-            } catch (DBUnreachableException e) {
-                ((Stage) editButton.getScene().getWindow()).close();
-                List<String> errorStrings = e.getErrorStrings();
-                AlertFactory.newWarningAlert(
-                        errorStrings.get(0),
-                        errorStrings.get(1),
-                        errorStrings.get(2));
-                PageSwitchSizeChange.logOff();
-            }
-        }
+    @Override protected void editAction() throws InvalidIbanException, DBUnreachableException, SQLException {
+        IbanBean ibanBean = IbanBean.ctorWithSyntaxCheck(newIban.getText());
+        profileManagementController.updateTrainerIban(ibanBean);
+        trainer = (TrainerBean) LoggedUserSingleton.getInstance();
+        setVisible(editPane, false);
+        setIbanLabel();
+        setVisible(editButton, true);
+        paymentMethodLabel.setVisible(true);
     }
 
     private void setIbanLabel() {
@@ -92,16 +71,14 @@ public class YourProfileTrainersGUIController extends ProfileGUIController imple
                 usrImage.setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/TrainerF.png")).toURI().toString()));
             }
             setIbanLabel();
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
+        } catch (URISyntaxException | SQLException e) {
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
     }

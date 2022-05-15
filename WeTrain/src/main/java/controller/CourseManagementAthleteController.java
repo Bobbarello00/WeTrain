@@ -17,7 +17,7 @@ import java.util.List;
 
 public class CourseManagementAthleteController extends CourseManagementController{
 
-    private final static float SUBSCRIPTIONTOTRAINERFEE = 5;
+    private static final float SUBSCRIPTIONTOTRAINERFEE = 5;
     private final LoginController loginController = new LoginController();
     private final PaypalBoundary paypalBoundary = new PaypalBoundary();
     private final NotificationsController notificationsController = new NotificationsController();
