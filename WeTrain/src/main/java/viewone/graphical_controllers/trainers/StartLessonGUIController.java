@@ -4,7 +4,6 @@ import controller.StartLessonController;
 import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.StartLessonBean;
 import viewone.engeneering.AlertFactory;
@@ -36,7 +35,7 @@ public class StartLessonGUIController extends AbstractFormGUIController {
                         errorStrings.get(1),
                         errorStrings.get(2));
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         close();

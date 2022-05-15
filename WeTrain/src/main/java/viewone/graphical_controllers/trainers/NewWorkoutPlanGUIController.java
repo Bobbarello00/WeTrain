@@ -68,7 +68,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -102,7 +102,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
             ManageExerciseList.updateList(exerciseList, exerciseBeanList);
             setUserInfoTab();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(

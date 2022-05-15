@@ -30,10 +30,8 @@ public class NotificationListCellFactory extends ListCell<NotificationBean> {
                 ((Label)parentNode.lookup("#itemOwner")).setText(notificationBean.getDateTime().toString());
                 ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + notificationBean.getType() + ".png")).toURI().toString()));
                 setGraphic(parentNode);
-            } catch (IOException e) {
+            } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
-            } catch (URISyntaxException e) {
-                throw new RuntimeException(e);
             }
         }else{
             setGraphic(null);

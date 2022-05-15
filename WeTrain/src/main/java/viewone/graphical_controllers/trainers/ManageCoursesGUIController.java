@@ -40,8 +40,6 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
     private CourseBean selectedCourse;
     private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
 
-    public ManageCoursesGUIController() {}
-
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
@@ -58,7 +56,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                                     timeSchedule.append(lessonBean.getLessonDay());
                                     timeSchedule.append(" ");
                                 }
-                                timeScheduleLabel.setText(String.valueOf(timeSchedule));
+                                timeScheduleLabel.setText(timeSchedule.toString());
                                 fitnessLevelLabel.setText(selectedCourse.getFitnessLevel());
                                 equipmentTextArea.setText(selectedCourse.getEquipment());
                                 generalInfoTextArea.setText(selectedCourse.getDescription());
@@ -75,7 +73,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         setUserInfoTab();
     }
@@ -99,7 +97,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

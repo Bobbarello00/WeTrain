@@ -71,9 +71,8 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
     }
 
     private void setInfoBox(UserBean selectedSubscriber) {
@@ -83,11 +82,11 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
             infoSubscriberBox.setVisible(true);
             clicked = true;
         }
-        infoName.setText("Name: " + selectedSubscriber.getName());
-        infoSurname.setText("Surname: " + selectedSubscriber.getSurname());
-        infoUsername.setText("Username: " + selectedSubscriber.getUsername());
-        infoBirth.setText("Birth: " + String.valueOf(selectedSubscriber.getBirth()));
-        infoEmail.setText("Email: " + selectedSubscriber.getEmail());
-        infoFiscalCode.setText("FiscalCode: " + selectedSubscriber.getFiscalCode());
+        infoName.setText(" Name: " + selectedSubscriber.getName());
+        infoSurname.setText(" Surname: " + selectedSubscriber.getSurname());
+        infoUsername.setText(" Username: " + selectedSubscriber.getUsername());
+        infoBirth.setText(" Birth: " + selectedSubscriber.getBirth());
+        infoEmail.setText(" Email: " + selectedSubscriber.getEmail());
+        infoFiscalCode.setText(" FiscalCode: " + selectedSubscriber.getFiscalCode());
     }
 }

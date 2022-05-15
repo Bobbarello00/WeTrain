@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class TrainersHomeGUIController extends HomeGUIControllerTrainers implements Initializable {
@@ -41,10 +42,11 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
                         @Override
                         public void changed(ObservableValue<? extends RequestBean> observableValue, RequestBean oldItem, RequestBean newItem) {
                             try {
-                                WorkoutRequestsGUIController workoutRequestsGUIController = (WorkoutRequestsGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(), "WorkoutRequests", "trainers");
-                                if(workoutRequestsGUIController != null) workoutRequestsGUIController.setSelectedRequest(newItem);
+                                ((WorkoutRequestsGUIController) Objects.requireNonNull(
+                                        PageSwitchSimple.switchPage(MainPane.getInstance(), "WorkoutRequests", "trainers")))
+                                        .setSelectedRequest(newItem);
                             } catch (IOException e) {
-                                throw new RuntimeException(e);
+                                e.printStackTrace();
                             }
                         }
                     });
