@@ -20,6 +20,7 @@ public class EmailReceivedNotification extends Notification{
                 Hi %s!
                 %s tried contacting you via email.
                 Check your inbox, if it's not there be sure to have inserted the right email on your profile!
+                (don't worry... it is also possible that he never actually sent the email)
                 """,
                 receiver.getName(),
                 sender.getName() + " " + sender.getSurname());
