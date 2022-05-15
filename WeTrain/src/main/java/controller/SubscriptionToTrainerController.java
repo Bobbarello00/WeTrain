@@ -98,7 +98,12 @@ public class SubscriptionToTrainerController {
         Trainer trainer = new TrainerDAO().loadTrainer(trainerFc);
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         new AthleteDAO().setTrainer(athlete, trainerFc);
-        paypalBoundary.pay(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE);
+        try {
+            paypalBoundary.pay(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE);
+        }catch (PaymentFailedException e){
+            new AthleteDAO().removeTrainer(athlete);
+            throw new PaymentFailedException();
+        }
         notificationsController.sendSubscriptionToTrainerNotification(trainer);
     }
 

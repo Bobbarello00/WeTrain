@@ -135,12 +135,16 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     @FXML void subscribeButtonAction() {
         try {
-            subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
-            updateTrainerBox();
-            subscribeButton.setDisable(true);
-            subscribeButton.setVisible(false);
-            hideVBox(searchTrainerBox);
-            showVBox(trainerBox);
+            if(AlertFactory.newConfirmationAlert("PURCHASE CONFIRMATION",
+                    "Trainer subscription fee is 5$",
+                    "if you click ok a payment will be sent from your selected payment method")) {
+                subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
+                updateTrainerBox();
+                subscribeButton.setDisable(true);
+                subscribeButton.setVisible(false);
+                hideVBox(searchTrainerBox);
+                showVBox(trainerBox);
+            }
         } catch (SQLException | URISyntaxException e) {
             throw new RuntimeException(e);
         } catch (DBUnreachableException e) {

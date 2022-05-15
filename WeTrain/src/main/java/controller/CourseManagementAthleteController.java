@@ -40,12 +40,17 @@ public class CourseManagementAthleteController extends CourseManagementControlle
     public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException {
         Course course = new CourseDAO().loadCourse(courseBean.getId());
         Athlete athlete = (Athlete) loginController.getLoggedUser();
-        new CourseDAO().subscribeToACourse(course.getId(), athlete);
-        paypalBoundary.pay(
-                course.getOwner().getIban(),
-                athlete.getCardNumber(),
-                athlete.getCardExpirationDate(),
-                SUBSCRIPTIONTOTRAINERFEE);
+        new CourseDAO().subscribeToACourse(course.getId(), athlete.getFiscalCode());
+        try {
+            paypalBoundary.pay(
+                    course.getOwner().getIban(),
+                    athlete.getCardNumber(),
+                    athlete.getCardExpirationDate(),
+                    SUBSCRIPTIONTOTRAINERFEE);
+        }catch(PaymentFailedException e){
+            new CourseDAO().unsubscribeFromACourse(course.getId());
+            throw new PaymentFailedException();
+        }
         User sender = loginController.getLoggedUser();
         User receiver = course.getOwner();
         notificationsController.sendSubscriptionToACourseNotification(

@@ -210,7 +210,7 @@ public class CourseOverviewGUIController {
                 if (!subscribed) {
                     if(AlertFactory.newConfirmationAlert(
                             "PURCHASE CONFIRMATION",
-                            "Subscription fee is 5$",
+                            "Course subscription fee is 5$",
                             "if you click ok a payment will be sent from your selected payment method")) {
                         courseManagementAthleteController.subscribeToACourse(courseBean);
                     }

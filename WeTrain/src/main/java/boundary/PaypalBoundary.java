@@ -10,6 +10,9 @@ public class PaypalBoundary {
         /*
         This is a dummy payment implementation
          */
+        if(cardNumber == null || cardExpirationDate == null || iban == null){
+            throw new PaymentFailedException();
+        }
         String string = iban + cardNumber + cardExpirationDate + subscriptionFee + (Math.random()*100);
         if(string.length() % 2 == 0) {
             throw new PaymentFailedException();

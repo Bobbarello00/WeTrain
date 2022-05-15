@@ -64,8 +64,8 @@ public class CourseDAO {
         }
     }
 
-    public void subscribeToACourse(int idCourse, Athlete athlete) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertCourseSubscriber(idCourse, (athlete.getFiscalCode()))){
+    public void subscribeToACourse(int idCourse, String athleteFc) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.insertCourseSubscriber(idCourse, athleteFc)){
             preparedStatement.executeUpdate();
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
