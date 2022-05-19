@@ -2,9 +2,10 @@ package model.notification;
 
 import model.User;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public abstract class Notification {
+public abstract class Notification implements Serializable {
     protected int id;
     protected User sender;
     protected User receiver;

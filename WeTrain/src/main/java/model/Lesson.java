@@ -5,15 +5,13 @@ import java.time.LocalTime;
 
 public class Lesson implements Serializable {
     private int id;
-    private String lessonDay;
-    private LocalTime lessonStartTime;
-    private LocalTime lessonEndTime;
+    private final String lessonDay;
+    private final LocalTime lessonStartTime;
+    private final LocalTime lessonEndTime;
 
     public Lesson(int id, String lessonDay, LocalTime lessonStartTime, LocalTime lessonEndTime){
+        this(lessonDay, lessonStartTime, lessonEndTime);
         this.id = id;
-        this.lessonDay = lessonDay;
-        this.lessonStartTime = lessonStartTime;
-        this.lessonEndTime = lessonEndTime;
     }
 
     public Lesson(String lessonDay, LocalTime lessonStartTime, LocalTime lessonEndTime){
@@ -34,15 +32,7 @@ public class Lesson implements Serializable {
         return lessonStartTime;
     }
 
-    public void setLessonStartTime(LocalTime lessonStartTime) {
-        this.lessonStartTime = lessonStartTime;
-    }
-
     public LocalTime getLessonEndTime() {
         return lessonEndTime;
-    }
-
-    public void setLessonEndTime(LocalTime lessonEndTime) {
-        this.lessonEndTime = lessonEndTime;
     }
 }

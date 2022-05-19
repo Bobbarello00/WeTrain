@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class Exercise implements Serializable {
     private int id;
-    private String name;
-    private String info;
-    private Trainer trainer;
+    private final String name;
+    private final String info;
+    private final Trainer trainer;
 
     public Exercise(int id, String name, String information, Trainer trainer){
         this.id = id;
@@ -35,9 +35,5 @@ public class Exercise implements Serializable {
 
     public Trainer getTrainer() {
         return trainer;
-    }
-
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
     }
 }

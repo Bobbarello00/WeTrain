@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Request implements Serializable {
-    private int id;
-    private LocalDateTime requestDate;
-    private String info;
-    private Athlete athlete;
-    private Trainer trainer;
+    private final int id;
+    private final LocalDateTime requestDate;
+    private final String info;
+    private final Athlete athlete;
+    private final Trainer trainer;
 
     public Request(int id, LocalDateTime requestDate, String info, Athlete athlete, Trainer trainer){
         this.id = id;
@@ -36,9 +36,5 @@ public class Request implements Serializable {
 
     public String getInfo() {
         return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
     }
 }
