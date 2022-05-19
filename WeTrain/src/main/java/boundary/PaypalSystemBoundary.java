@@ -4,7 +4,7 @@ import exception.PaymentFailedException;
 
 import java.time.YearMonth;
 
-public class PaypalBoundary {
+public class PaypalSystemBoundary {
 
     public void pay(String iban, String cardNumber, YearMonth cardExpirationDate, float subscriptionFee) throws PaymentFailedException {
         /*

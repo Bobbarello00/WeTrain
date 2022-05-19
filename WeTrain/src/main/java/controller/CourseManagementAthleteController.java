@@ -1,6 +1,6 @@
 package controller;
 
-import boundary.PaypalBoundary;
+import boundary.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
 import exception.ImATrainerException;
@@ -19,7 +19,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
 
     private static final float SUBSCRIPTIONTOTRAINERFEE = 5;
     private final LoginController loginController = new LoginController();
-    private final PaypalBoundary paypalBoundary = new PaypalBoundary();
+    private final PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
     private final NotificationsController notificationsController = new NotificationsController();
 
     public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
@@ -42,7 +42,7 @@ public class CourseManagementAthleteController extends CourseManagementControlle
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         new CourseDAO().subscribeToACourse(course.getId(), athlete.getFiscalCode());
         try {
-            paypalBoundary.pay(
+            paypalSystemBoundary.pay(
                     course.getOwner().getIban(),
                     athlete.getCardNumber(),
                     athlete.getCardExpirationDate(),

@@ -203,7 +203,7 @@ public class CourseDAO {
 
     public void deleteStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.removeCourseStartedLessonUrl(idCourse)){
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

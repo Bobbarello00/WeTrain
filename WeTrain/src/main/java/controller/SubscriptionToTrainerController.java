@@ -1,6 +1,6 @@
 package controller;
 
-import boundary.PaypalBoundary;
+import boundary.PaypalSystemBoundary;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exception.*;
@@ -21,7 +21,7 @@ public class SubscriptionToTrainerController {
 
     private final LoginController loginController = new LoginController();
     private final NotificationsController notificationsController = new NotificationsController();
-    private final PaypalBoundary paypalBoundary = new PaypalBoundary();
+    private final PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
 
     public TrainerBean getTrainer() throws SQLException, DBUnreachableException, InvalidIbanException {
         Trainer trainer = ((Athlete) loginController.getLoggedUser()).getTrainer();
@@ -99,7 +99,7 @@ public class SubscriptionToTrainerController {
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         new AthleteDAO().setTrainer(athlete, trainerFc);
         try {
-            paypalBoundary.pay(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE);
+            paypalSystemBoundary.pay(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE);
         }catch (PaymentFailedException e){
             new AthleteDAO().removeTrainer(athlete);
             throw new PaymentFailedException();
