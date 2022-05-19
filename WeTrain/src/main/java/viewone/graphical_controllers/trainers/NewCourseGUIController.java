@@ -87,6 +87,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
                 courseManagementTrainerController.createCourse(courseBean);
                 System.out.println("Created!");
             } else {
+                courseBean.setId(courseToModify.getId());
                 courseManagementTrainerController.modifyCourse(courseBean, courseToModify.getId());
                 System.out.println("Modified!");
             }

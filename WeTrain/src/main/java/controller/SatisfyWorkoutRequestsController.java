@@ -82,12 +82,14 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public void sendWorkoutPlan(RequestBean requestBean) throws DBUnreachableException, SQLException {
-        WorkoutPlan workoutPlan1 = new AthleteDAO().loadAthlete(requestBean.getAthleteFc()).getWorkoutPlan();
-        if(workoutPlan1 != null){
-            new AthleteDAO().removeWorkoutPlan(workoutPlan1.getId());
+        Athlete receiver = new AthleteDAO().loadAthlete(requestBean.getAthleteFc());
+        WorkoutPlan workoutPlan = receiver.getWorkoutPlan();
+        if(workoutPlan != null){
+            new AthleteDAO().removeWorkoutPlan(workoutPlan.getId());
         }
-        new WorkoutPlanDAO().saveWorkoutPlan(workoutPlan, requestBean.getAthleteFc());
+        new WorkoutPlanDAO().saveWorkoutPlan(this.workoutPlan, requestBean.getAthleteFc());
         new RequestDAO().deleteRequest(requestBean.getId());
+        notificationsController.sendWorkoutPlanReadyNotification(receiver);
     }
 
     public WorkoutDayBean getWorkoutDayBean(DayBean dayBean) {

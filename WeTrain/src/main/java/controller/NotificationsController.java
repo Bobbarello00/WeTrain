@@ -78,6 +78,20 @@ public class NotificationsController {
                 notification.promptMessage());
     }
 
+    public void sendWorkoutPlanReadyNotification(Athlete receiver) throws DBUnreachableException, SQLException {
+        Notification notification = NotificationFactorySingleton.getInstance().createWorkoutPlanReadyNotification(
+                loginController.getLoggedUser(),
+                receiver
+        );
+        new NotificationDAO().saveNotification(
+                notification.getType().ordinal(),
+                notification.getDescription(),
+                LocalDateTime.now(),
+                notification.getSender().getFiscalCode(),
+                notification.getReceiver().getFiscalCode()
+        );
+    }
+
     public void sendSubscriptionToTrainerNotification(Trainer trainer) throws DBUnreachableException, SQLException {
         Notification notification = NotificationFactorySingleton.getInstance().createSubscribeToTrainerNotification(
                 loginController.getLoggedUser(),

@@ -9,7 +9,6 @@ public enum NotificationEnum {
     REJECTEDREQUEST,
     WORKOUTPLANREADY,
     COMMUNICATION,
-    COURSEMODIFIED,
     EMAILRECEIVED;
 
     private static final NotificationEnum[] ENUMS = NotificationEnum.values();

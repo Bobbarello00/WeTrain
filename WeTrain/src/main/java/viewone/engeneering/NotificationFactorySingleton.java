@@ -36,14 +36,6 @@ public class NotificationFactorySingleton {
         );
     }
 
-    public Notification createCourseModifiedNotification(User sender, User receiver, Course course) {
-        return new CourseModifiedNotification(
-                sender,
-                receiver,
-                course
-        );
-    }
-
     public Notification createSubscribeToTrainerNotification(User sender, User receiver, int subscribers) {
         return new SubscriptionToTrainerNotification(
                 sender,
@@ -108,14 +100,6 @@ public class NotificationFactorySingleton {
                     sender,
                     receiver,
                     params[1],
-                    new CourseDAO().loadCourse(Integer.parseInt(params[0])),
-                    dateTime
-            );
-        } else if (type1 == COURSEMODIFIED) {
-            return new CourseModifiedNotification(
-                    idNotification,
-                    sender,
-                    receiver,
                     new CourseDAO().loadCourse(Integer.parseInt(params[0])),
                     dateTime
             );

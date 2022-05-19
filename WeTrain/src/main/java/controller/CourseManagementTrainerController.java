@@ -3,10 +3,12 @@ package controller;
 import database.dao_classes.CourseDAO;
 import database.dao_classes.TrainerDAO;
 import exception.DBUnreachableException;
+import exception.invalid_data_exception.EmptyFieldsException;
 import exception.invalid_data_exception.InvalidTimeException;
 import model.Course;
 import model.Lesson;
 import model.Trainer;
+import viewone.bean.CommunicationBean;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 
@@ -17,6 +19,7 @@ import java.util.List;
 public class CourseManagementTrainerController extends CourseManagementController{
 
     private final LoginController loginController = new LoginController();
+    private final NotificationsController notificationsController = new NotificationsController();
 
     public void createCourse(CourseBean bean) throws SQLException, DBUnreachableException, InvalidTimeException {
         Trainer trainer = new TrainerDAO().loadTrainer(bean.getOwner());
@@ -59,7 +62,7 @@ public class CourseManagementTrainerController extends CourseManagementControlle
         new CourseDAO().deleteCourse(courseBean.getId());
     }
 
-    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBUnreachableException {
+    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBUnreachableException, EmptyFieldsException {
         new CourseDAO().modifyCourse(
                 id,
                 new Course(
@@ -69,5 +72,15 @@ public class CourseManagementTrainerController extends CourseManagementControlle
                         (Trainer) loginController.getLoggedUser(),
                         courseBean.getEquipment()
                 ));
+        notificationsController.sendCourseCommunicationNotification(
+                new CommunicationBean(
+                        """
+                        ATTENTION!
+                        The trainer %s modified the course %s.
+                        Be sure to check the modification!
+                        """,
+                        courseBean
+                )
+        );
     }
 }

@@ -10,10 +10,6 @@ public class EmailReceivedNotification extends Notification{
         super(id, sender, receiver, dateTime);
     }
 
-    public EmailReceivedNotification(User sender, User receiver) {
-        super(sender, receiver);
-    }
-
     @Override
     public String promptMessage() {
         return String.format("""
