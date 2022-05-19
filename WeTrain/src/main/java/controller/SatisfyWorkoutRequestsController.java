@@ -23,7 +23,7 @@ public class SatisfyWorkoutRequestsController {
 
     public void rejectRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         new RequestDAO().deleteRequest(requestBean.getId());
-        notificationsController.sendRejectRequestNotification(requestBean.getAthleteFc());
+        notificationsController.sendRejectRequestNotification(requestBean.getAthleteBean().getFiscalCode());
     }
 
     private WorkoutDay getWorkoutDay(String day) {
@@ -82,12 +82,12 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public void sendWorkoutPlan(RequestBean requestBean) throws DBUnreachableException, SQLException {
-        Athlete receiver = new AthleteDAO().loadAthlete(requestBean.getAthleteFc());
+        Athlete receiver = new AthleteDAO().loadAthlete(requestBean.getAthleteBean().getFiscalCode());
         WorkoutPlan workoutPlan = receiver.getWorkoutPlan();
         if(workoutPlan != null){
             new AthleteDAO().removeWorkoutPlan(workoutPlan.getId());
         }
-        new WorkoutPlanDAO().saveWorkoutPlan(this.workoutPlan, requestBean.getAthleteFc());
+        new WorkoutPlanDAO().saveWorkoutPlan(this.workoutPlan, requestBean.getAthleteBean().getFiscalCode());
         new RequestDAO().deleteRequest(requestBean.getId());
         notificationsController.sendWorkoutPlanReadyNotification(receiver);
     }
@@ -112,13 +112,29 @@ public class SatisfyWorkoutRequestsController {
         List<Request> requestList = new RequestDAO().loadTrainerRequests((Trainer) loginController.getLoggedUser());
         List<RequestBean> requestBeanList = new ArrayList<>();
         for(Request request: requestList) {
-
+            Athlete usr = request.getAthlete();
+            AthleteBean athleteBean = new AthleteBean(
+                    usr.getUsername(),
+                    new PersonalInfoBean(
+                            usr.getName(),
+                            usr.getSurname(),
+                            usr.getDateOfBirth(),
+                            usr.getFiscalCode(),
+                            usr.getGender()
+                    ),
+                    CredentialsBean.ctorWithoutSyntaxCheck(
+                            usr.getEmail(),
+                            usr.getPassword()
+                    ),
+                    new CardInfoBean(
+                            usr.getCardNumber(),
+                            usr.getCardExpirationDate()
+                    ));
             requestBeanList.add(new RequestBean(
                     request.getId(),
                     request.getRequestDate(),
                     request.getInfo(),
-                    request.getAthlete().getFiscalCode(),
-                    request.getAthlete().getUsername(),
+                    athleteBean,
                     request.getTrainer().getFiscalCode()
             ));
 

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
+import viewone.bean.AthleteBean;
 import viewone.bean.RequestBean;
 import viewone.bean.UserBean;
 import viewone.engeneering.AlertFactory;
@@ -31,11 +32,9 @@ public class RequestFormGUIController extends AbstractFormGUIController {
 
     @Override protected void sendAction() {
         try {
-            UserInfoCarrier userInfoCarrier = LoggedUserSingleton.getUserInfo();
             RequestBean requestBean = new RequestBean(
                     requestInfoTextArea.getText(),
-                    userInfoCarrier.getFiscalCode(),
-                    userInfoCarrier.getUsername(),
+                    (AthleteBean) LoggedUserSingleton.getInstance(),
                     trainer.getFiscalCode());
             requestWorkoutPlanController.sendRequest(requestBean);
         } catch (SQLIntegrityConstraintViolationException e){

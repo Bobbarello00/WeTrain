@@ -7,27 +7,24 @@ import java.time.LocalDateTime;
 
 public class RequestBean {
     private int id;
-    private LocalDateTime requestDate;
+    private final LocalDateTime requestDate;
     private String info;
-    private String athleteFc;
-    private String athleteUsername;
-    private String trainer;
+    private final AthleteBean athleteBean;
+    private final String trainerFc;
 
-    public RequestBean(int id, LocalDateTime requestDate, String info, String athleteFc, String athleteUsername, String trainer) {
+    public RequestBean(int id, LocalDateTime requestDate, String info, AthleteBean athleteBean, String trainer) {
         this.id = id;
         this.requestDate = requestDate;
         this.info = info;
-        this.athleteFc = athleteFc;
-        this.athleteUsername = athleteUsername;
-        this.trainer = trainer;
+        this.athleteBean = athleteBean;
+        this.trainerFc = trainer;
     }
 
-    public RequestBean(String info, String athleteFc, String athleteUsername, String trainer) throws TextOutOfBoundException, EmptyFieldsException {
+    public RequestBean(String info, AthleteBean athleteBean, String trainerFc) throws TextOutOfBoundException, EmptyFieldsException {
         this.requestDate = LocalDateTime.now();
         setInfo(info);
-        this.athleteFc = athleteFc;
-        this.athleteUsername = athleteUsername;
-        this.trainer = trainer;
+        this.athleteBean = athleteBean;
+        this.trainerFc = trainerFc;
     }
 
     public int getId() {
@@ -38,12 +35,12 @@ public class RequestBean {
         return requestDate;
     }
 
-    public String getAthleteFc() {
-        return athleteFc;
+    public AthleteBean getAthleteBean() {
+        return athleteBean;
     }
 
-    public String getTrainer() {
-        return trainer;
+    public String getTrainerFc() {
+        return trainerFc;
     }
 
     public String getInfo() {
@@ -58,9 +55,5 @@ public class RequestBean {
             throw new TextOutOfBoundException();
         }
         this.info = info;
-    }
-
-    public String getAthleteUsername() {
-        return athleteUsername;
     }
 }

@@ -17,6 +17,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.RequestBean;
 import viewone.engeneering.AlertFactory;
 import viewone.engeneering.manage_list.ManageRequestList;
+import viewone.graphical_controllers.EmailFormGUIController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,7 +61,8 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     }
 
     @FXML void clarificationEmailButtonAction(ActionEvent event) throws IOException {
-        PageSwitchSizeChange.pageSwitch((Button)event.getSource(),"EmailForm","",false);
+        EmailFormGUIController emailFormGUIController = (EmailFormGUIController) PageSwitchSizeChange.pageSwitch((Button) event.getSource(), "EmailForm", "", false);
+        emailFormGUIController.setReceiver(selectedRequest.getAthleteBean());
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

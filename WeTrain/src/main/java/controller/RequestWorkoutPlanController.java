@@ -12,8 +12,8 @@ public class RequestWorkoutPlanController {
         new RequestDAO().saveRequest(
                 requestBean.getRequestDate(),
                 requestBean.getInfo(),
-                requestBean.getAthleteFc(),
-                requestBean.getTrainer()
+                requestBean.getAthleteBean().getFiscalCode(),
+                requestBean.getTrainerFc()
         );
     }
 }

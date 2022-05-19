@@ -26,7 +26,7 @@ public class RequestListCellFactory extends ListCell<RequestBean> {
         if(requestBean != null){
             try {
                 if (parentNode == null)parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
-                ((Label)parentNode.lookup("#itemName")).setText(requestBean.getAthleteUsername());
+                ((Label)parentNode.lookup("#itemName")).setText(requestBean.getAthleteBean().getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(requestBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
                 ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + "request" + ".png")).toURI().toString()));
