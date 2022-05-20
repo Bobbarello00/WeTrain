@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -77,7 +77,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
                 workoutPlanBean = workoutPlanController.getWorkoutPlan();
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();
-                AlertFactory.newWarningAlert(
+                AlertGenerator.newWarningAlert(
                         errorStrings.get(0),
                         errorStrings.get(1),
                         errorStrings.get(2));

@@ -12,7 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import viewone.bean.CredentialsBean;
 import viewone.bean.PersonalInfoBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
@@ -63,7 +63,7 @@ public class MoreInfoGUIController implements Initializable {
             sendUserInfo();
             PageSwitchSizeChange.loadHome(registerButton, selectedProfile + "sHome", selectedProfile + "s");
         } catch (SQLIntegrityConstraintViolationException e) {
-            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+            AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "Error in user registration",
                     "Fiscal code, username or email already existing in our database. \n" +
                             "If you already have an account, log in.");
@@ -71,19 +71,19 @@ public class MoreInfoGUIController implements Initializable {
             e.printStackTrace();
         } catch (InvalidDataException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (UserNotFoundException e) {
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     "OOPS, SOMETHING WENT WRONG!",
                     "Your subscription failed",
                     "Try again."

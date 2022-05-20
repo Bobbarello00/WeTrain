@@ -8,7 +8,7 @@ import javafx.scene.input.KeyEvent;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.bean.CredentialsBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +34,7 @@ public class RegistrationGUIController extends LauncherGUIController{
             moreInfoGUIController.setSelectedProfileString(selectedProfile);
         } catch (InvalidDataException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

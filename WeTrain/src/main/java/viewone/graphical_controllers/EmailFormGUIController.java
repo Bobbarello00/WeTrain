@@ -11,7 +11,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.EmailBean;
 import viewone.bean.EmailReceivedNotificationBean;
 import viewone.bean.UserBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.LoggedUserSingleton;
 
 import java.io.IOException;
@@ -48,14 +48,14 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (BrowsingNotSupportedException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

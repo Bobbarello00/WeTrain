@@ -5,9 +5,9 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class AlertFactory {
+public class AlertGenerator {
 
-    private AlertFactory() {
+    private AlertGenerator() {
     }
 
     public static boolean newConfirmationAlert(String alertTitle, String alertHeaderText, String alertContentText){
@@ -22,10 +22,10 @@ public class AlertFactory {
 
     public static void newWarningAlert(String alertTitle, String alertHeaderText, String alertContentText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        newAlert(alert, alertTitle, alertHeaderText, alertContentText);
+        setAlertAttributes(alert, alertTitle, alertHeaderText, alertContentText);
     }
 
-    private static void newAlert(Alert alert, String alertTitle, String alertHeaderText, String alertContentText) {
+    private static void setAlertAttributes(Alert alert, String alertTitle, String alertHeaderText, String alertContentText) {
         alert.setTitle(alertTitle);
         alert.setHeaderText(alertHeaderText);
         alert.setContentText(alertContentText);
@@ -37,6 +37,6 @@ public class AlertFactory {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeight(500);
         alert.setWidth(1000);
-        newAlert(alert, alertTitle, null, alertContentText);
+        setAlertAttributes(alert, alertTitle, null, alertContentText);
     }
 }

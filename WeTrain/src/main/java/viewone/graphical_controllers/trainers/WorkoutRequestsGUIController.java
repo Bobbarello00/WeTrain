@@ -15,7 +15,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.RequestBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.manage_list.ManageRequestList;
 import viewone.graphical_controllers.EmailFormGUIController;
 
@@ -45,7 +45,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
             setTabVisibile(false);
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -81,7 +81,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

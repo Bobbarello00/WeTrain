@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import viewone.WeTrain;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
@@ -94,7 +94,7 @@ public class YourProfileAthletesGUIController extends ProfileGUIController imple
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

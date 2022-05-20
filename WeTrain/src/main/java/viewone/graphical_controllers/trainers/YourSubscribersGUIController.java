@@ -16,7 +16,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
@@ -65,7 +65,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
             setUserInfoTab();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.engeneering.manage_list.ManageNotificationList;
 import viewone.list_cell_factories.CourseListCellFactory;
@@ -37,7 +37,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
         } catch (DBUnreachableException e){
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -54,8 +54,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
         updateLists();
 
-        ManageCourseList.setCourseListener(courseList);
-        ManageCourseList.setCourseListener(popularList);
+        ManageCourseList.setListener(courseList);
+        ManageCourseList.setListener(popularList);
         ManageNotificationList.setCourseListener(notificationList);
 
 

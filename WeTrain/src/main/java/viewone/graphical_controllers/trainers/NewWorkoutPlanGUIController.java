@@ -16,7 +16,7 @@ import viewone.bean.DayBean;
 import viewone.bean.ExerciseBean;
 import viewone.bean.RequestBean;
 import viewone.bean.WorkoutDayBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.manage_list.ManageExerciseList;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
@@ -62,7 +62,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
             PageSwitchSimple.switchPage(MainPane.getInstance(),"WorkoutRequests", HOME);
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -105,7 +105,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

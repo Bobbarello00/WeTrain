@@ -22,7 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
 import viewone.bean.*;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 
@@ -88,7 +88,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -105,7 +105,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -122,7 +122,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             userBeanList = subscribeToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -135,7 +135,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     @FXML void subscribeButtonAction() {
         try {
-            if(AlertFactory.newConfirmationAlert("PURCHASE CONFIRMATION",
+            if(AlertGenerator.newConfirmationAlert("PURCHASE CONFIRMATION",
                     "Trainer subscription fee is 5$",
                     "if you click ok a payment will be sent from your selected payment method")) {
                 subscribeToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
@@ -149,14 +149,14 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (PaymentFailedException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -190,7 +190,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -227,14 +227,14 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (InvalidIbanException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

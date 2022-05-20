@@ -10,9 +10,8 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.RequestBean;
 import viewone.bean.UserBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.LoggedUserSingleton;
-import viewone.engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;
@@ -38,7 +37,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
                     trainer.getFiscalCode());
             requestWorkoutPlanController.sendRequest(requestBean);
         } catch (SQLIntegrityConstraintViolationException e){
-            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+            AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "Request already send.",
                     "Wait for your request to be evaluated by the Trainer");
         } catch (SQLException e) {
@@ -46,7 +45,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
         } catch (DBUnreachableException e) {
             ((Stage) sendButton.getScene().getWindow()).close();
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -54,7 +53,7 @@ public class RequestFormGUIController extends AbstractFormGUIController {
             return;
         } catch (InvalidDataException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

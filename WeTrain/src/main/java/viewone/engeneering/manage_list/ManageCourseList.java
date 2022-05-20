@@ -25,7 +25,7 @@ public class ManageCourseList {
         courseList.setItems(FXCollections.observableList(courseObservableList));
     }
 
-    public static void setCourseListener(ListView<CourseBean> list){
+    public static void setListener(ListView<CourseBean> list){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override

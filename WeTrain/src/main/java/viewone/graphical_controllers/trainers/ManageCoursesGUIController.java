@@ -15,7 +15,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.list_cell_factories.CourseListCellFactory;
 
@@ -67,7 +67,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
             ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -91,7 +91,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
             ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

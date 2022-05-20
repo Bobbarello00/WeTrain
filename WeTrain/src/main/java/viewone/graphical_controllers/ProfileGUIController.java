@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
@@ -41,14 +41,14 @@ public abstract class ProfileGUIController {
             e.printStackTrace();
         } catch (InvalidDataException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
         } catch (DBUnreachableException e) {
             ((Stage) editButton.getScene().getWindow()).close();
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -76,7 +76,7 @@ public abstract class ProfileGUIController {
 
     @FXML protected void deleteButtonAction() {
         try {
-            if(AlertFactory.newConfirmationAlert(
+            if(AlertGenerator.newConfirmationAlert(
                     "ATTENTION!",
                     "CONFIRMATION",
                     "Do you want delete your account? " +
@@ -86,7 +86,7 @@ public abstract class ProfileGUIController {
             }
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

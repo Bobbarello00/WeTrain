@@ -8,7 +8,7 @@ import exception.NoScheduledLessonException;
 import exception.UrlNotInsertedYetException;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 
 import java.awt.*;
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class JoinLessonController {
                 lessonUrl =  new LessonDAO().loadStartedLessonUrl(idLesson);
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();
-                AlertFactory.newWarningAlert(
+                AlertGenerator.newWarningAlert(
                         errorStrings.get(0),
                         errorStrings.get(1),
                         errorStrings.get(2));

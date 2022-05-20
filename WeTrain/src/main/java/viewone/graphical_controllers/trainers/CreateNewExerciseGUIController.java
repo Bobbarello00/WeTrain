@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -34,7 +34,7 @@ public class CreateNewExerciseGUIController {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

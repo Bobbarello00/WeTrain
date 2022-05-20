@@ -17,7 +17,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
@@ -83,7 +83,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

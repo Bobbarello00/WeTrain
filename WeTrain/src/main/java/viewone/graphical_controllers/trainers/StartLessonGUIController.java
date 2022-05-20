@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import viewone.bean.CourseBean;
 import viewone.bean.StartLessonBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;
@@ -20,7 +20,7 @@ public class StartLessonGUIController extends AbstractFormGUIController {
 
     @Override protected void sendAction() {
         if(!(urlTextField.getText().startsWith("https://meet.google.com/"))){
-            AlertFactory.newWarningAlert("URL NOT FROM GOOGLE MEET!",
+            AlertGenerator.newWarningAlert("URL NOT FROM GOOGLE MEET!",
                     "Invalid Url",
                     "The inserted url seems not to be from google meet, try again.");
         }else {
@@ -30,7 +30,7 @@ public class StartLessonGUIController extends AbstractFormGUIController {
                         urlTextField.getText()));
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();
-                AlertFactory.newWarningAlert(
+                AlertGenerator.newWarningAlert(
                         errorStrings.get(0),
                         errorStrings.get(1),
                         errorStrings.get(2));

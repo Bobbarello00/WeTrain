@@ -9,13 +9,12 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.manage_list.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.list_cell_factories.CourseListCellFactory;
@@ -25,6 +24,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FindCourseGUIController extends HomeGUIControllerAthletes implements Initializable {
@@ -36,18 +36,15 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @FXML private Button fridayButton;
     @FXML private Button mondayButton;
     @FXML private ListView<CourseBean> resultList;
-    @FXML private Button logoutButton;
     @FXML private Button saturdayButton;
     @FXML private Button searchButton;
     @FXML private Button sundayButton;
     @FXML private Button thursdayButton;
     @FXML private Button tuesdayButton;
     @FXML private Button wednesdayButton;
-    @FXML private Text usernameText;
 
     private final Boolean[] selectedDays = new Boolean[7];
     private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
-
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     @FXML private void dayButtonAction(ActionEvent event) {
@@ -93,7 +90,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
             ));
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -101,7 +98,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
 
-        ManageCourseList.updateList(resultList, courseBeanList);
+        ManageCourseList.updateList(resultList, Objects.requireNonNull(courseBeanList));
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -110,7 +107,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
 
-        ManageCourseList.setCourseListener(resultList);
+        ManageCourseList.setListener(resultList);
 
         setUserInfoTab();
     }

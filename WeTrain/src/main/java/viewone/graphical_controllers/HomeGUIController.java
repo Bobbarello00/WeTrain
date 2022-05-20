@@ -3,7 +3,6 @@ package viewone.graphical_controllers;
 import controller.NotificationsController;
 import exception.DBUnreachableException;
 import exception.UserNotFoundException;
-import exception.invalid_data_exception.InvalidIbanException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +15,7 @@ import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.NotificationBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.LoggedUserSingleton;
 import viewone.engeneering.UserInfoCarrier;
 import viewone.engeneering.manage_list.ManageNotificationList;
@@ -75,7 +74,7 @@ public abstract class HomeGUIController {
             return LoggedUserSingleton.getUserInfo();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

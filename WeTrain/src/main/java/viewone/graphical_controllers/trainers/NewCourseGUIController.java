@@ -18,7 +18,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
@@ -96,7 +96,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
 
         } catch (InvalidDataException e){
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -104,7 +104,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

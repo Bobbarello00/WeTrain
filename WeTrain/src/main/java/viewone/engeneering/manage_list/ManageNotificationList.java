@@ -11,7 +11,7 @@ import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.NotificationBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -40,7 +40,7 @@ public class ManageNotificationList {
     private static void listEvent(ListView<NotificationBean> listView, NotificationBean newItem) {
         try {
             if(newItem != null) {
-                AlertFactory.newInformationAlert(
+                AlertGenerator.newInformationAlert(
                         "Notification",
                         newItem.getText());
                 notificationsController.deleteNotification(newItem);
@@ -50,7 +50,7 @@ public class ManageNotificationList {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

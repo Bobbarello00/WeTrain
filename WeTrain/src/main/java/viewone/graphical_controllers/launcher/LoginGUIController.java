@@ -15,7 +15,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -43,12 +43,12 @@ public class LoginGUIController extends LauncherGUIController{
             }
         } catch (DBUnreachableException | InvalidDataException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
         } catch (UserNotFoundException e) {
-            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+            AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
                     "Be sure that you have an account on WeTrain.");
         } catch (SQLException | IOException e) {

@@ -8,7 +8,7 @@ import javafx.scene.control.TextArea;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CommunicationBean;
 import viewone.bean.CourseBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;
@@ -35,14 +35,14 @@ public class CommunicationFormGUIController extends AbstractFormGUIController {
             return;
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
         } catch (EmptyFieldsException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));

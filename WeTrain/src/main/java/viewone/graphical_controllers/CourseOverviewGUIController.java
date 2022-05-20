@@ -17,7 +17,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertFactory;
+import viewone.engeneering.AlertGenerator;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
 import viewone.graphical_controllers.trainers.NewCourseGUIController;
 import viewone.graphical_controllers.trainers.StartLessonGUIController;
@@ -116,7 +116,7 @@ public class CourseOverviewGUIController {
             lessonText.setText("Join Lesson");
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
@@ -176,12 +176,12 @@ public class CourseOverviewGUIController {
             } catch (UrlNotInsertedYetException | BrowsingNotSupportedException | DBUnreachableException |
                      NoScheduledLessonException e) {
                 List<String> errorStrings = e.getErrorStrings();
-                AlertFactory.newWarningAlert(
+                AlertGenerator.newWarningAlert(
                         errorStrings.get(0),
                         errorStrings.get(1),
                         errorStrings.get(2));
             } catch (URISyntaxException e) {
-                AlertFactory.newWarningAlert("EXCEPTION!",
+                AlertGenerator.newWarningAlert("EXCEPTION!",
                         "Url not working",
                         "The url inserted by the trainer is incorrect or not working anymore.");
             } catch (SQLException e) {
@@ -208,7 +208,7 @@ public class CourseOverviewGUIController {
         try {
             if(courseBean != null) {
                 if (!subscribed) {
-                    if(AlertFactory.newConfirmationAlert(
+                    if(AlertGenerator.newConfirmationAlert(
                             "PURCHASE CONFIRMATION",
                             "Course subscription fee is 5$",
                             "if you click ok a payment will be sent from your selected payment method")) {
@@ -219,14 +219,14 @@ public class CourseOverviewGUIController {
                 }
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            AlertFactory.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+            AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "You are already subscribed to this course.",
                     null);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException | PaymentFailedException e) {
             List<String> errorStrings = e.getErrorStrings();
-            AlertFactory.newWarningAlert(
+            AlertGenerator.newWarningAlert(
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
