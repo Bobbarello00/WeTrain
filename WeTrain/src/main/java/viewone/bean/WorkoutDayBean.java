@@ -2,13 +2,11 @@ package viewone.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class WorkoutDayBean {
 
     private final String day;
     List<ExerciseBean> exerciseBeanList;
-
 
     public WorkoutDayBean(String day) {
         this.day = day;
