@@ -1,10 +1,10 @@
 package viewone.bean;
 
 public class EmailBean {
-    private UserBean sender;
-    private UserBean receiver;
-    private String object;
-    private String body;
+    private final UserBean sender;
+    private final UserBean receiver;
+    private final String object;
+    private final String body;
 
     public EmailBean(UserBean sender, UserBean receiver, String object, String text) {
         this.sender = sender;

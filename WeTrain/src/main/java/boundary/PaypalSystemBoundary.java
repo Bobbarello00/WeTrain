@@ -1,16 +1,15 @@
 package boundary;
 
 import exception.PaymentFailedException;
-
-import java.time.YearMonth;
+import viewone.bean.PaymentBean;
 
 public class PaypalSystemBoundary {
 
-    public void pay(String iban, String cardNumber, YearMonth cardExpirationDate, float subscriptionFee) throws PaymentFailedException {
+    public void pay(PaymentBean paymentBean) throws PaymentFailedException {
         /*
          This is a dummy payment implementation
          */
-        if(cardNumber == null || cardExpirationDate == null || iban == null || subscriptionFee == -1){
+        if(paymentBean.getCardNumber() == null || paymentBean.getCardExpirationDate() == null || paymentBean.getIban() == null || paymentBean.getPriceToPay() == -1){
             throw new PaymentFailedException();
         }
         if (Math.random() > 0.75) {

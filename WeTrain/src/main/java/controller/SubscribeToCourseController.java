@@ -1,5 +1,6 @@
 package controller;
 
+import viewone.bean.PaymentBean;
 import boundary.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
@@ -22,7 +23,7 @@ public class SubscribeToCourseController extends CourseManagementController{
     private final PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
     private final NotificationsController notificationsController = new NotificationsController();
 
-    public boolean checkSubscription(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
+    public boolean checkIfAlreadySubscribed(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
         User user = loginController.getLoggedUser();
         if(user instanceof Trainer) {
             throw new ImATrainerException();
@@ -43,10 +44,7 @@ public class SubscribeToCourseController extends CourseManagementController{
         new CourseDAO().subscribeToCourse(course.getId(), athlete.getFiscalCode());
         try {
             paypalSystemBoundary.pay(
-                    course.getOwner().getIban(),
-                    athlete.getCardNumber(),
-                    athlete.getCardExpirationDate(),
-                    SUBSCRIPTIONTOTRAINERFEE);
+                    new PaymentBean(course.getOwner().getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTIONTOTRAINERFEE));
         }catch(PaymentFailedException e){
             new CourseDAO().unsubscribeFromACourse(course.getId());
             throw new PaymentFailedException();

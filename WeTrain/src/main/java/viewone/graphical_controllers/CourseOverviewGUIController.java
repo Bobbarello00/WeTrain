@@ -106,7 +106,7 @@ public class CourseOverviewGUIController {
 
     public void setValues(CourseBean courseBean) throws SQLException, IOException {
         try {
-            if(subscribeToCourseController.checkSubscription(courseBean)){
+            if(subscribeToCourseController.checkIfAlreadySubscribed(courseBean)){
                 startLessonPane.setDisable(false);
                 startLessonPane.setVisible(true);
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");

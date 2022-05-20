@@ -1,5 +1,6 @@
 package controller;
 
+import viewone.bean.PaymentBean;
 import boundary.PaypalSystemBoundary;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
@@ -99,7 +100,7 @@ public class SubscribeToTrainerController {
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         new AthleteDAO().setTrainer(athlete, trainerFc);
         try {
-            paypalSystemBoundary.pay(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE);
+            paypalSystemBoundary.pay(new PaymentBean(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE));
         }catch (PaymentFailedException e){
             new AthleteDAO().removeTrainer(athlete);
             throw new PaymentFailedException();
