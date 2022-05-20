@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class SubscriptionToTrainerController {
+public class SubscribeToTrainerController {
 
     private static final float SUBSCRIPTION_FEE = 5;
 

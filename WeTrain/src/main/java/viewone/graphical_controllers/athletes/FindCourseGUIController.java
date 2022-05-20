@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.CourseManagementAthleteController;
+import controller.SubscribeToCourseController;
 import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,7 +48,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     private final Boolean[] selectedDays = new Boolean[7];
     private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
 
-    private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     @FXML private void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
@@ -86,7 +86,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         List<CourseBean> courseBeanList = null;
         try {
-            courseBeanList = courseManagementAthleteController.searchCourse(new CourseSearchBean(
+            courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
                     courseName,
                     fitnessLevel,
                     selectedDays

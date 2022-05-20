@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.CourseManagementTrainerController;
+import controller.ManageCoursesController;
 import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -38,7 +38,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
 
 
     private CourseBean selectedCourse;
-    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
+    private final ManageCoursesController manageCoursesController = new ManageCoursesController();
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -64,7 +64,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
                             }
                         }
                     });
-            ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
+            ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
@@ -86,9 +86,9 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
 
     @FXML public void deleteCourseButtonAction() {
         try {
-            courseManagementTrainerController.deleteCourse(selectedCourse);
+            manageCoursesController.deleteCourse(selectedCourse);
             setVisible(false);
-            ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
+            ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(

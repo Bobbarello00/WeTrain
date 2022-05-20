@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.CourseManagementTrainerController;
+import controller.ManageCoursesController;
 import controller.SatisfyWorkoutRequestsController;
 import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
@@ -32,7 +32,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
     @FXML private ListView<RequestBean> requestList;
 
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
-    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
+    private final ManageCoursesController manageCoursesController = new ManageCoursesController();
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -55,7 +55,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
             updateNotificationList();
             ManageNotificationList.setCourseListener(notificationList);
             ManageCourseList.setCourseListener(courseList);
-            ManageCourseList.updateList(courseList, courseManagementTrainerController.getCourseList());
+            ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

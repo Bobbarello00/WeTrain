@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseManagementTrainerController extends CourseManagementController{
+public class ManageCoursesController extends CourseManagementController{
 
     private final LoginController loginController = new LoginController();
     private final NotificationsController notificationsController = new NotificationsController();

@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.SubscriptionToTrainerController;
+import controller.SubscribeToTrainerController;
 import exception.DBUnreachableException;
 import exception.PaymentFailedException;
 import exception.invalid_data_exception.InvalidIbanException;
@@ -57,7 +57,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     private UserBean selectedTrainer;
 
-    private final SubscriptionToTrainerController subscriptionToTrainerController = new SubscriptionToTrainerController();
+    private final SubscribeToTrainerController subscribeToTrainerController = new SubscribeToTrainerController();
 
     private void showVBox(VBox vbox){
         vbox.setDisable(false);
@@ -77,7 +77,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML void unsubscribeButtonAction() {
         setSelectedTrainer(null);
         try {
-            subscriptionToTrainerController.unsubscribeFromTrainer();
+            subscribeToTrainerController.unsubscribeFromTrainer();
             subscribeButton.setDisable(false);
             subscribeButton.setVisible(true);
             hideVBox(trainerBox);
@@ -99,7 +99,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML void addTrainerAction() {
         ObservableList<UserBean> trainersObservableList;
         try {
-            trainersObservableList = FXCollections.observableList(subscriptionToTrainerController.getTrainersList());
+            trainersObservableList = FXCollections.observableList(subscribeToTrainerController.getTrainersList());
             trainersList.setItems(FXCollections.observableList(trainersObservableList));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -119,7 +119,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML void searchButtonAction() throws SQLException {
         List<UserBean> userBeanList;
         try {
-            userBeanList = subscriptionToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
+            userBeanList = subscribeToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertFactory.newWarningAlert(
@@ -138,7 +138,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
             if(AlertFactory.newConfirmationAlert("PURCHASE CONFIRMATION",
                     "Trainer subscription fee is 5$",
                     "if you click ok a payment will be sent from your selected payment method")) {
-                subscriptionToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
+                subscribeToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
                 updateTrainerBox();
                 subscribeButton.setDisable(true);
                 subscribeButton.setVisible(false);
@@ -179,10 +179,10 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
 
-    private void listEvent(ListView<UserBean> listView, UserBean newItem, SubscriptionToTrainerController subscriptionToTrainerController) throws IOException {
+    private void listEvent(ListView<UserBean> listView, UserBean newItem, SubscribeToTrainerController subscribeToTrainerController) throws IOException {
         try {
             if(newItem != null) {
-                setSelectedTrainer(subscriptionToTrainerController.getTrainerUser(new FcBean(newItem.getFiscalCode())));
+                setSelectedTrainer(subscribeToTrainerController.getTrainerUser(new FcBean(newItem.getFiscalCode())));
                 updateInfoTrainerBox();
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
@@ -211,7 +211,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
 
     private void setTrainer() throws IOException {
         try {
-            TrainerBean trainerBean = subscriptionToTrainerController.getTrainer();
+            TrainerBean trainerBean = subscribeToTrainerController.getTrainer();
             if(trainerBean != null){
                 setSelectedTrainer(trainerBean);
                 updateInfoTrainerBox();
@@ -251,7 +251,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {
                         try {
-                            listEvent(trainersList, newItem, subscriptionToTrainerController);
+                            listEvent(trainersList, newItem, subscribeToTrainerController);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }

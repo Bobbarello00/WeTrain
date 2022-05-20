@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.CourseManagementTrainerController;
+import controller.ManageCoursesController;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.InvalidDataException;
 import exception.invalid_data_exception.TimeNotInsertedException;
@@ -67,7 +67,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
 
     private List<Button> buttonList = new ArrayList<>();
 
-    private final CourseManagementTrainerController courseManagementTrainerController = new CourseManagementTrainerController();
+    private final ManageCoursesController manageCoursesController = new ManageCoursesController();
 
     @FXML void createButtonAction() throws IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
@@ -84,11 +84,11 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
                     equipmentTextArea.getText());
             courseBean.setLessonBeanList(getLessonDay());
             if (courseToModify == null){
-                courseManagementTrainerController.createCourse(courseBean);
+                manageCoursesController.createCourse(courseBean);
                 System.out.println("Created!");
             } else {
                 courseBean.setId(courseToModify.getId());
-                courseManagementTrainerController.modifyCourse(courseBean, courseToModify.getId());
+                manageCoursesController.modifyCourse(courseBean, courseToModify.getId());
                 System.out.println("Modified!");
             }
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");

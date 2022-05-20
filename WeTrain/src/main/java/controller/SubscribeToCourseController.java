@@ -15,7 +15,7 @@ import viewone.bean.CourseSearchBean;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CourseManagementAthleteController extends CourseManagementController{
+public class SubscribeToCourseController extends CourseManagementController{
 
     private static final float SUBSCRIPTIONTOTRAINERFEE = 5;
     private final LoginController loginController = new LoginController();

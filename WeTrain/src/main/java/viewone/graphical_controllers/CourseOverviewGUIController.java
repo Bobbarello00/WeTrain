@@ -1,6 +1,6 @@
 package viewone.graphical_controllers;
 
-import controller.CourseManagementAthleteController;
+import controller.SubscribeToCourseController;
 import controller.JoinLessonController;
 import exception.*;
 import javafx.event.ActionEvent;
@@ -60,7 +60,7 @@ public class CourseOverviewGUIController {
     private boolean subscribed = false;
     private boolean isTrainer = false;
 
-    private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final SubscribeToCourseController courseManagementAthleteController = new SubscribeToCourseController();
     private final JoinLessonController joinLessonController = new JoinLessonController();
 
     private void setButtonColor(Button button) {

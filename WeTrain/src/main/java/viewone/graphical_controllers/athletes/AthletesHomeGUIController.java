@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.CourseManagementAthleteController;
+import controller.SubscribeToCourseController;
 import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,14 +26,14 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
     @FXML private Button logoutButton;
 
-    private final CourseManagementAthleteController courseManagementAthleteController = new CourseManagementAthleteController();
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     public void updateLists() {
         try {
-            List<CourseBean> courseBeanList = courseManagementAthleteController.getPopularCourseList();
+            List<CourseBean> courseBeanList = subscribeToCourseController.getPopularCourseList();
             ManageCourseList.updateList(popularList, Objects.requireNonNull(courseBeanList));
             updateNotificationList();
-            courseBeanList = courseManagementAthleteController.getCourseList();
+            courseBeanList = subscribeToCourseController.getCourseList();
             ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
         } catch (DBUnreachableException e){
             List<String> errorStrings = e.getErrorStrings();
