@@ -341,12 +341,12 @@ public class Queries {
         return preparedStatement;
     }
 
-    public static PreparedStatement loadCourseStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
+    public static PreparedStatement loadStartedLessonUrl(int idLesson) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "SELECT StartedLessonUrl " +
-                        FROM_MYDB_COURSE +
-                        WHERE_ID_COURSE);
-        preparedStatement.setInt(1, idCourse);
+                        "FROM mydb.Lesson " +
+                        "WHERE idLesson = ?");
+        preparedStatement.setInt(1, idLesson);
         return preparedStatement;
     }
 

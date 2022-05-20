@@ -28,14 +28,12 @@ public class ManageCoursesController extends CourseManagementController{
                 bean.getDescription(),
                 bean.getFitnessLevel(),
                 trainer,
-                bean.getEquipment());
-        if(bean.getLessonBeanList() != null){
-            course.setLessons(setLesson(bean.getLessonBeanList()));
-        }
+                bean.getEquipment(),
+                getLessonFromBean(bean.getLessonBeanList()));
         new CourseDAO().saveCourse(course);
     }
 
-    private List<Lesson> setLesson(List<LessonBean> lessonBeanList) throws InvalidTimeException {
+    private List<Lesson> getLessonFromBean(List<LessonBean> lessonBeanList) throws InvalidTimeException {
         List<Lesson> list = new ArrayList<>();
         for(LessonBean bean: lessonBeanList) {
             boolean cond1 = bean.getLessonStartTime().getHour() > bean.getLessonEndTime().getHour();
@@ -47,7 +45,8 @@ public class ManageCoursesController extends CourseManagementController{
             Lesson lesson = new Lesson(
                     bean.getLessonDay(),
                     bean.getLessonStartTime(),
-                    bean.getLessonEndTime());
+                    bean.getLessonEndTime()
+            );
             list.add(lesson);
         }
         return list;
@@ -62,7 +61,7 @@ public class ManageCoursesController extends CourseManagementController{
         new CourseDAO().deleteCourse(courseBean.getId());
     }
 
-    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBUnreachableException, EmptyFieldsException {
+    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBUnreachableException, EmptyFieldsException, InvalidTimeException {
         new CourseDAO().modifyCourse(
                 id,
                 new Course(
@@ -70,7 +69,8 @@ public class ManageCoursesController extends CourseManagementController{
                         courseBean.getDescription(),
                         courseBean.getFitnessLevel(),
                         (Trainer) loginController.getLoggedUser(),
-                        courseBean.getEquipment()
+                        courseBean.getEquipment(),
+                        getLessonFromBean(courseBean.getLessonBeanList())
                 ));
         notificationsController.sendCourseCommunicationNotification(
                 new CommunicationBean(

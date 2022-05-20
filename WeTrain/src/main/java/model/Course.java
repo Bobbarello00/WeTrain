@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Course implements Serializable {
@@ -11,24 +12,25 @@ public class Course implements Serializable {
     private final String description;
     private final String fitnessLevel;
     private final String equipment;
-    private String startedLessonUrl;
 
-    public Course(int id, String name, String description, String fitnessLevel, Trainer owner, String equipment, String startedLessonUrl){
+
+    public Course(int id, String name, String description, String fitnessLevel, Trainer owner, String equipment, List<Lesson> lessonList){
         this.id = id;
         this.name = name;
         this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
         this.equipment = equipment;
-        this.startedLessonUrl = startedLessonUrl;
+        setLessons(lessonList);
     }
 
-    public Course(String name, String description, String fitnessLevel, Trainer owner, String equipment){
+    public Course(String name, String description, String fitnessLevel, Trainer owner, String equipment, List<Lesson> lessonList){
         this.name = name;
         this.owner = owner;
         this.description = description;
         this.fitnessLevel = fitnessLevel;
         this.equipment = equipment;
+        setLessons(lessonList);
     }
 
     public int getId() {
@@ -63,11 +65,16 @@ public class Course implements Serializable {
         return equipment;
     }
 
-    public void setLessons(List<Lesson> list){
-        lessonList = list;
-    }
-
-    public String getStartedLessonUrl() {
-        return startedLessonUrl;
+    private void setLessons(List<Lesson> list){
+        lessonList = new ArrayList<>();
+        for(Lesson lesson: list) {
+            lessonList.add(new Lesson(
+                    lesson.getId(),
+                    lesson.getLessonDay(),
+                    lesson.getLessonStartTime(),
+                    lesson.getLessonEndTime(),
+                    lesson.getStartedLessonUrl()
+            ));
+        }
     }
 }

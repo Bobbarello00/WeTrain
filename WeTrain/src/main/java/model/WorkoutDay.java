@@ -10,9 +10,10 @@ public class WorkoutDay implements Serializable {
     private String day;
     private List<Exercise> exerciseList;
 
-    public WorkoutDay(int id, String day){
+    public WorkoutDay(int id, String day, List<Exercise> exerciseList){
         this(day);
         this.id = id;
+        addAllExercise(exerciseList);
     }
 
     public WorkoutDay(String day) {
@@ -32,8 +33,16 @@ public class WorkoutDay implements Serializable {
         exerciseList.add(exercise);
     }
 
-    public void addAllExercise(List<Exercise> list){
-        exerciseList = list;
+    public void addAllExercise(List<Exercise> exerciseList){
+        this.exerciseList = new ArrayList<>();
+        for(Exercise exercise: exerciseList) {
+            this.exerciseList.add(new Exercise(
+                    exercise.getId(),
+                    exercise.getName(),
+                    exercise.getInfo(),
+                    exercise.getTrainer()
+            ));
+        }
     }
 
     public int getId() {

@@ -3,9 +3,15 @@ package viewone.bean;
 import java.time.LocalTime;
 
 public class LessonBean {
-    private String lessonDay;
-    private LocalTime lessonStartTime;
-    private LocalTime lessonEndTime;
+    private int id;
+    private final String lessonDay;
+    private final LocalTime lessonStartTime;
+    private final LocalTime lessonEndTime;
+
+    public LessonBean(int id, String lessonDay, LocalTime lessonStartTime, LocalTime lessonEndTime){
+        this(lessonDay, lessonStartTime, lessonEndTime);
+        this.id = id;
+    }
 
     public LessonBean(String lessonDay, LocalTime lessonStartTime, LocalTime lessonEndTime){
         this.lessonDay = lessonDay;
@@ -17,23 +23,15 @@ public class LessonBean {
         return lessonDay;
     }
 
-    public void setLessonDay(String lessonDay) {
-        this.lessonDay = lessonDay;
-    }
-
     public LocalTime getLessonStartTime() {
         return lessonStartTime;
-    }
-
-    public void setLessonStartTime(LocalTime lessonStartTime) {
-        this.lessonStartTime = lessonStartTime;
     }
 
     public LocalTime getLessonEndTime() {
         return lessonEndTime;
     }
 
-    public void setLessonEndTime(LocalTime lessonEndTime) {
-        this.lessonEndTime = lessonEndTime;
+    public int getId() {
+        return id;
     }
 }

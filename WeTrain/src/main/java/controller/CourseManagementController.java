@@ -19,12 +19,12 @@ public abstract class CourseManagementController {
                     course.getDescription(),
                     course.getFitnessLevel(),
                     course.getOwner().getName() + " " + course.getOwner().getSurname(),
-                    course.getEquipment(),
-                    course.getStartedLessonUrl());
+                    course.getEquipment());
 
             List<LessonBean> lessonBeanList = new ArrayList<>();
             for(Lesson lesson: course.getLessonList()){
                 lessonBeanList.add(new LessonBean(
+                        lesson.getId(),
                         lesson.getLessonDay(),
                         lesson.getLessonStartTime(),
                         lesson.getLessonEndTime()));

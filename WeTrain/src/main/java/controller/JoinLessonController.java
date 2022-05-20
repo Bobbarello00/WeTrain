@@ -1,6 +1,7 @@
 package controller;
 
 import database.dao_classes.CourseDAO;
+import database.dao_classes.LessonDAO;
 import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
 import exception.NoScheduledLessonException;
@@ -22,16 +23,16 @@ import java.util.List;
 public class JoinLessonController {
 
     public void joinLesson(CourseBean courseBean) throws UrlNotInsertedYetException, URISyntaxException, IOException, BrowsingNotSupportedException, NoScheduledLessonException, DBUnreachableException, SQLException {
-        boolean condition = false;
+        int idLesson = 0;
         for(LessonBean lessonBean: courseBean.getLessonBeanList()) {
             if((DayOfWeek.from(LocalDate.now()).name().equals(lessonBean.getLessonDay())) && (isValidTime(lessonBean))) {
-                condition = true;
+                idLesson = lessonBean.getId();
             }
         }
-        if(condition){
+        if(idLesson != 0){
             String lessonUrl = null;
             try {
-                lessonUrl = new CourseDAO().loadStartedLessonUrl(courseBean.getId());
+                lessonUrl = new LessonDAO().loadStartedLessonUrl(idLesson);
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();
                 AlertFactory.newWarningAlert(

@@ -3,6 +3,7 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
+import exception.runtime_exception.ResultSetIsNullException;
 import model.Course;
 import model.Lesson;
 
@@ -23,8 +24,8 @@ public class LessonDAO {
         }
     }
 
-    public List<Lesson> loadAllLessons(Course course) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllLessons(course.getId());
+    public List<Lesson> loadAllLessons(int idCourse) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.loadAllLessons(idCourse);
             ResultSet rs = preparedStatement.executeQuery()){
             List<Lesson> myList = new ArrayList<>();
             while(rs.next()){
@@ -32,9 +33,24 @@ public class LessonDAO {
                         rs.getInt("idLesson"),
                         rs.getString("LessonDay"),
                         rs.getTime("LessonStartTime").toLocalTime(),
-                        rs.getTime("LessonEndTime").toLocalTime()));
+                        rs.getTime("LessonEndTime").toLocalTime(),
+                        rs.getString("StartedLessonUrl"))
+                );
             }
             return myList;
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
+        }
+    }
+
+    public String loadStartedLessonUrl(int idLesson) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.loadStartedLessonUrl(idLesson); ResultSet rs = preparedStatement.executeQuery()){
+            if(rs.next()){
+                return rs.getString("StartedLessonUrl");
+            }else{
+                throw new ResultSetIsNullException();
+            }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

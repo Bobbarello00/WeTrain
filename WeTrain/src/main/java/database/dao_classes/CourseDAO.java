@@ -20,7 +20,6 @@ public class CourseDAO {
     private static final String FITNESSLEVEL = "FitnessLevel";
     private static final String EQUIPMENT = "Equipment";
     private static final String TRAINER = "Trainer";
-    private static final String STARTEDLESSONURL = "startedLessonUrl";
 
     private final LoginController loginController = new LoginController();
 
@@ -86,17 +85,15 @@ public class CourseDAO {
         try(PreparedStatement preparedStatement = Queries.loadCourse(idCourse)) {
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
-                Course course = new Course(
+                return new Course(
                         rs.getInt(IDCOURSE),
                         rs.getString(COURSENAME),
                         rs.getString(DESCRIPTION),
                         rs.getString(FITNESSLEVEL),
                         new TrainerDAO().loadTrainer(rs.getString(TRAINER)),
                         rs.getString(EQUIPMENT),
-                        rs.getString(STARTEDLESSONURL)
+                        new LessonDAO().loadAllLessons(rs.getInt(IDCOURSE))
                 );
-                course.setLessons(new LessonDAO().loadAllLessons(course));
-                return course;
             } else {
                 throw new ElementNotFoundException();
             }
@@ -150,7 +147,7 @@ public class CourseDAO {
                         rs.getString(FITNESSLEVEL),
                         (Trainer) user,
                         rs.getString(EQUIPMENT),
-                        rs.getString(STARTEDLESSONURL)
+                        new LessonDAO().loadAllLessons(rs.getInt(IDCOURSE))
                 );
             } else {
                 course = new Course(
@@ -160,11 +157,10 @@ public class CourseDAO {
                         rs.getString(FITNESSLEVEL),
                         new TrainerDAO().loadTrainer(rs.getString(TRAINER)),
                         rs.getString(EQUIPMENT),
-                        rs.getString(STARTEDLESSONURL)
+                        new LessonDAO().loadAllLessons(rs.getInt(IDCOURSE))
                 );
             }
 
-            course.setLessons(new LessonDAO().loadAllLessons(course));
             myList.add(course);
         }while(rs.next());
         return myList;
@@ -182,19 +178,6 @@ public class CourseDAO {
     public void setStartedLessonUrl(String url, int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertCourseStartedLessonUrl(idCourse, url)){
             preparedStatement.executeUpdate();
-        } catch (DBConnectionFailedException e) {
-            e.deleteDatabaseConn();
-            throw new DBUnreachableException();
-        }
-    }
-
-    public String loadStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadCourseStartedLessonUrl(idCourse); ResultSet rs = preparedStatement.executeQuery()){
-            if(rs.next()){
-                return rs.getString("StartedLessonUrl");
-            }else{
-                throw new ResultSetIsNullException();
-            }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

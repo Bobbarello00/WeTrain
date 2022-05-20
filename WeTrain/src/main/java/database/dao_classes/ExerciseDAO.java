@@ -5,7 +5,6 @@ import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import model.Exercise;
 import model.Trainer;
-import model.WorkoutDay;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,8 +37,8 @@ public class ExerciseDAO {
         }
     }
 
-    public List<Exercise> loadExerciseInWorkoutPlan(WorkoutDay workoutDay, Trainer trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllExerciseInWorkoutDays(workoutDay.getId()); ResultSet rs = preparedStatement.executeQuery()){
+    public List<Exercise> loadExerciseInWorkoutPlan(int idWorkoutDay, Trainer trainer) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = Queries.loadAllExerciseInWorkoutDays(idWorkoutDay); ResultSet rs = preparedStatement.executeQuery()){
             List<Exercise> exerciseList = new ArrayList<>();
             while(rs.next()){
                 exerciseList.add(new Exercise(
