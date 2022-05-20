@@ -63,11 +63,7 @@ public class Course implements Serializable {
         return equipment;
     }
 
-    public void setLessonList(List<Lesson> lessonList) {
-        this.lessonList = lessonList;
-    }
-
-    public void addAllLessons(List<Lesson> list){
+    public void setLessons(List<Lesson> list){
         lessonList = list;
     }
 

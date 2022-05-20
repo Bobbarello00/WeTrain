@@ -37,10 +37,10 @@ public class SubscribeToCourseController extends CourseManagementController{
         return false;
     }
 
-    public void subscribeToACourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException {
+    public void subscribeToCourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException {
         Course course = new CourseDAO().loadCourse(courseBean.getId());
         Athlete athlete = (Athlete) loginController.getLoggedUser();
-        new CourseDAO().subscribeToACourse(course.getId(), athlete.getFiscalCode());
+        new CourseDAO().subscribeToCourse(course.getId(), athlete.getFiscalCode());
         try {
             paypalSystemBoundary.pay(
                     course.getOwner().getIban(),
@@ -60,7 +60,7 @@ public class SubscribeToCourseController extends CourseManagementController{
         );
     }
 
-    public void unsubscribeFromACourse(CourseBean courseBean) throws SQLException, DBUnreachableException {
+    public void unsubscribeFromCourse(CourseBean courseBean) throws SQLException, DBUnreachableException {
         new CourseDAO().unsubscribeFromACourse(courseBean.getId());
     }
 

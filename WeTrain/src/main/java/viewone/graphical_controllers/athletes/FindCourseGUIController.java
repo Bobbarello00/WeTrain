@@ -102,8 +102,6 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         }
 
         ManageCourseList.updateList(resultList, courseBeanList);
-
-        System.out.println("Search done, showing results...");
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

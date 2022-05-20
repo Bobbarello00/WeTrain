@@ -60,7 +60,7 @@ public class CourseOverviewGUIController {
     private boolean subscribed = false;
     private boolean isTrainer = false;
 
-    private final SubscribeToCourseController courseManagementAthleteController = new SubscribeToCourseController();
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
     private final JoinLessonController joinLessonController = new JoinLessonController();
 
     private void setButtonColor(Button button) {
@@ -106,7 +106,7 @@ public class CourseOverviewGUIController {
 
     public void setValues(CourseBean courseBean) throws SQLException, IOException {
         try {
-            if(courseManagementAthleteController.checkSubscription(courseBean)){
+            if(subscribeToCourseController.checkSubscription(courseBean)){
                 startLessonPane.setDisable(false);
                 startLessonPane.setVisible(true);
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");
@@ -212,10 +212,10 @@ public class CourseOverviewGUIController {
                             "PURCHASE CONFIRMATION",
                             "Course subscription fee is 5$",
                             "if you click ok a payment will be sent from your selected payment method")) {
-                        courseManagementAthleteController.subscribeToACourse(courseBean);
+                        subscribeToCourseController.subscribeToCourse(courseBean);
                     }
                 } else {
-                    courseManagementAthleteController.unsubscribeFromACourse(courseBean);
+                    subscribeToCourseController.unsubscribeFromCourse(courseBean);
                 }
             }
         } catch (SQLIntegrityConstraintViolationException e) {

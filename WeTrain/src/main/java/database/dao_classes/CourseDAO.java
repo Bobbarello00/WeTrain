@@ -64,7 +64,7 @@ public class CourseDAO {
         }
     }
 
-    public void subscribeToACourse(int idCourse, String athleteFc) throws SQLException, DBUnreachableException {
+    public void subscribeToCourse(int idCourse, String athleteFc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertCourseSubscriber(idCourse, athleteFc)){
             preparedStatement.executeUpdate();
         } catch (DBConnectionFailedException e) {
@@ -95,7 +95,7 @@ public class CourseDAO {
                         rs.getString(EQUIPMENT),
                         rs.getString(STARTEDLESSONURL)
                 );
-                course.addAllLessons(new LessonDAO().loadAllLessons(course));
+                course.setLessons(new LessonDAO().loadAllLessons(course));
                 return course;
             } else {
                 throw new ElementNotFoundException();
@@ -164,7 +164,7 @@ public class CourseDAO {
                 );
             }
 
-            course.addAllLessons(new LessonDAO().loadAllLessons(course));
+            course.setLessons(new LessonDAO().loadAllLessons(course));
             myList.add(course);
         }while(rs.next());
         return myList;

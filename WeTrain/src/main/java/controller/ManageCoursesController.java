@@ -30,7 +30,7 @@ public class ManageCoursesController extends CourseManagementController{
                 trainer,
                 bean.getEquipment());
         if(bean.getLessonBeanList() != null){
-            course.addAllLessons(setLesson(bean.getLessonBeanList()));
+            course.setLessons(setLesson(bean.getLessonBeanList()));
         }
         new CourseDAO().saveCourse(course);
     }

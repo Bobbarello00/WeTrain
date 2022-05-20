@@ -44,15 +44,6 @@ public class AthleteDAO {
 
     }
 
-    public void removeCardInfo(String fc) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.removeCardInfoAthlete(fc)) {
-            preparedStatement.executeUpdate();
-        } catch (DBConnectionFailedException e) {
-            e.deleteDatabaseConn();
-            throw new DBUnreachableException();
-        }
-    }
-
     public void saveAthlete(Athlete athlete) throws SQLException, DBUnreachableException {
         try {
             List<PreparedStatement> preparedStatementList = Queries.insertAthlete(athlete);
