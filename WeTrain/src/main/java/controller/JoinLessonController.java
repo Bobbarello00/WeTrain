@@ -1,6 +1,5 @@
 package controller;
 
-import database.dao_classes.CourseDAO;
 import database.dao_classes.LessonDAO;
 import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
@@ -53,15 +52,17 @@ public class JoinLessonController {
                 throw new BrowsingNotSupportedException();
             }
         } else {
-            new CourseDAO().deleteStartedLessonUrl(courseBean.getId());
+            new LessonDAO().deleteStartedLessonUrl(courseBean.getId());
             throw new NoScheduledLessonException();
         }
     }
 
     private boolean isValidTime(LessonBean lessonBean) {
-        return LocalTime.now().getHour() >= lessonBean.getLessonStartTime().getHour()
-                && LocalTime.now().getMinute() >= lessonBean.getLessonStartTime().getMinute()
-                && LocalTime.now().getHour() <= lessonBean.getLessonEndTime().getHour()
-                && LocalTime.now().getMinute() <= lessonBean.getLessonEndTime().getMinute();
+        return LocalTime.now().getHour() > lessonBean.getLessonStartTime().getHour()
+                ||(LocalTime.now().getHour() == lessonBean.getLessonStartTime().getHour()
+                && LocalTime.now().getMinute() >= lessonBean.getLessonStartTime().getMinute())
+                && (LocalTime.now().getHour() < lessonBean.getLessonEndTime().getHour()
+                || (LocalTime.now().getHour() == lessonBean.getLessonEndTime().getHour()
+                && LocalTime.now().getMinute() <= lessonBean.getLessonEndTime().getMinute()));
     }
 }

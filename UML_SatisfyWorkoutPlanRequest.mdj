@@ -66,7 +66,7 @@
 											"top": 308,
 											"width": 335,
 											"height": 13,
-											"text": "SatisfyWorkoutPlanRequestTrainerBoundary"
+											"text": "SatisfyWorkoutPlanRequestBoundary"
 										},
 										{
 											"_type": "LabelView",
@@ -367,7 +367,7 @@
 											"top": 676,
 											"width": 325.453125,
 											"height": 13,
-											"text": "SatisfyWorkoutPlanRequestEmailSystemBoundary"
+											"text": "EmailSystemBoundary"
 										},
 										{
 											"_type": "LabelView",
@@ -11229,7 +11229,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SatisfyWorkoutPlanRequestTrainerBoundary",
+					"name": "SatisfyWorkoutPlanRequestBoundary",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -11734,7 +11734,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SatisfyWorkoutPlanRequestEmailSystemBoundary",
+					"name": "EmailSystemBoundary",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -39186,7 +39186,7 @@
 											"top": 940,
 											"width": 325.453125,
 											"height": 13,
-											"text": "SatisfyWorkoutPlanRequestEmailSystemBoundary"
+											"text": "EmailSystemBoundary"
 										},
 										{
 											"_type": "LabelView",

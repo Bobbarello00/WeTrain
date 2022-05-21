@@ -2,6 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.StartLessonController;
 import exception.DBUnreachableException;
+import exception.NoScheduledLessonException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import viewone.bean.CourseBean;
@@ -28,7 +29,7 @@ public class StartLessonGUIController extends AbstractFormGUIController {
                 startLessonController.startLesson(new StartLessonBean(
                         courseBean,
                         urlTextField.getText()));
-            } catch (DBUnreachableException e) {
+            } catch (DBUnreachableException | NoScheduledLessonException e) {
                 List<String> errorStrings = e.getErrorStrings();
                 AlertGenerator.newWarningAlert(
                         errorStrings.get(0),

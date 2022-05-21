@@ -350,21 +350,21 @@ public class Queries {
         return preparedStatement;
     }
 
-    public static PreparedStatement insertCourseStartedLessonUrl(int idCourse, String url) throws SQLException, DBConnectionFailedException {
+    public static PreparedStatement insertLessonStartedLessonUrl(int idLesson, String url) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                UPDATE_MYDB_COURSE +
+                "UPDATE mydb.Lesson " +
                         "SET StartedLessonUrl = ? " +
-                        WHERE_ID_COURSE);
+                        "WHERE idLesson = ?");
         preparedStatement.setString(1, url);
-        preparedStatement.setInt(2, idCourse);
+        preparedStatement.setInt(2, idLesson);
         return preparedStatement;
     }
 
-    public static PreparedStatement removeCourseStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
+    public static PreparedStatement removeLessonStartedLessonUrl(int idCourse) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                UPDATE_MYDB_COURSE +
+                "UPDATE mydb.Lesson " +
                         "SET StartedLessonUrl = NULL " +
-                        WHERE_ID_COURSE);
+                        "WHERE Course = ?");
         preparedStatement.setInt(1, idCourse);
         return preparedStatement;
     }

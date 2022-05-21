@@ -174,26 +174,6 @@ public class CourseDAO {
         }
     }
 
-    public void setStartedLessonUrl(String url, int idCourse) throws SQLException, DBUnreachableException {
-        //TODO spostare in LessonDAO?
-        try(PreparedStatement preparedStatement = Queries.insertCourseStartedLessonUrl(idCourse, url)){
-            preparedStatement.executeUpdate();
-        } catch (DBConnectionFailedException e) {
-            e.deleteDatabaseConn();
-            throw new DBUnreachableException();
-        }
-    }
-
-    public void deleteStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
-        //TODO spostare in LessonDAO?
-        try(PreparedStatement preparedStatement = Queries.removeCourseStartedLessonUrl(idCourse)){
-            preparedStatement.executeUpdate();
-        } catch (DBConnectionFailedException e) {
-            e.deleteDatabaseConn();
-            throw new DBUnreachableException();
-        }
-    }
-
     public int getSubscribersNumber(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.getSubscribers(idCourse); ResultSet rs = preparedStatement.executeQuery()){
             if(rs.next()) {
