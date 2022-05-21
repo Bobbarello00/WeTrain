@@ -1,5 +1,5 @@
-1] The system shall provide three kinds of profile during registration: one for personal trainers, one for nutritionists and one for athletes.
+1] The system shall notify all subscribers when a course is modified.
 
-2] The system shall provide different payment methods.
+2] The system shall provide the creation of workout plans and courses.
 
-3] The system shall provide a private appointment-booking system.
+3] The system shall filter courses by name, fitness level and preferred days.
