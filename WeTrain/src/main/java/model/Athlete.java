@@ -54,11 +54,7 @@ public class Athlete extends User implements Serializable {
     public void setWorkoutPlan(WorkoutPlan workoutPlan) {
         if(workoutPlan != null) {
             this.workoutPlan = new WorkoutPlan();
-            for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()) {
-                WorkoutDay newWorkoutDay = new WorkoutDay(workoutDay.getDay());
-                newWorkoutDay.addAllExercise(workoutDay.getExerciseList());
-                this.workoutPlan.addWorkoutDay(newWorkoutDay);
-            }
+            this.workoutPlan.addAllWorkoutDays(workoutPlan.getWorkoutDayList());
         } else {
             this.workoutPlan = null;
         }

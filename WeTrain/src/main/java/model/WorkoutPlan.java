@@ -26,7 +26,12 @@ public class WorkoutPlan implements Serializable {
     }
 
     public void addAllWorkoutDays(List<WorkoutDay> workoutDayList) {
-        this.workoutDayList = workoutDayList;
+        this.workoutDayList = new ArrayList<>();
+        for (WorkoutDay workoutDay : workoutDayList) {
+            WorkoutDay newWorkoutDay = new WorkoutDay(workoutDay.getDay());
+            newWorkoutDay.addAllExercise(workoutDay.getExerciseList());
+            addWorkoutDay(newWorkoutDay);
+        }
     }
 
     public void addWorkoutDay(WorkoutDay workoutDay) {
