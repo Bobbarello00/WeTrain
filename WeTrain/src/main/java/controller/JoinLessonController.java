@@ -32,7 +32,7 @@ public class JoinLessonController {
         if(idLesson != 0){
             String lessonUrl = null;
             try {
-                lessonUrl =  new LessonDAO().loadStartedLessonUrl(idLesson);
+                lessonUrl = new LessonDAO().loadStartedLessonUrl(idLesson);
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();
                 AlertGenerator.newWarningAlert(
