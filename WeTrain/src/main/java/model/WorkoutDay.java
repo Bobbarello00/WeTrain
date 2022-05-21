@@ -34,15 +34,7 @@ public class WorkoutDay implements Serializable {
     }
 
     public void addAllExercise(List<Exercise> exerciseList){
-        this.exerciseList = new ArrayList<>();
-        for(Exercise exercise: exerciseList) {
-            this.exerciseList.add(new Exercise(
-                    exercise.getId(),
-                    exercise.getName(),
-                    exercise.getInfo(),
-                    exercise.getTrainer()
-            ));
-        }
+        this.exerciseList = exerciseList;
     }
 
     public int getId() {
