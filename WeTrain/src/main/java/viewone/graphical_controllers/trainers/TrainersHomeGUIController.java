@@ -34,6 +34,8 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
     private final ManageCoursesController manageCoursesController = new ManageCoursesController();
 
+    public TrainersHomeGUIController() throws DBUnreachableException, SQLException {}
+
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             ManageRequestList.setRequestList(requestList, satisfyWorkoutRequestsController);

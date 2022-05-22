@@ -26,7 +26,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
 public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers implements Initializable {
     private static final String HOME = "trainers";
     public final DaysOfTheWeekButtonController daysController = new DaysOfTheWeekButtonController();
@@ -39,6 +38,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     private RequestBean requestBean;
     private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+
+    public NewWorkoutPlanGUIController() throws DBUnreachableException, SQLException {}
 
     //TODO Observer per esercizi selezionati
 

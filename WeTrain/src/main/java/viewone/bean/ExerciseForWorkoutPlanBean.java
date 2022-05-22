@@ -1,7 +1,7 @@
 package viewone.bean;
 
 public class ExerciseForWorkoutPlanBean extends  ExerciseBean{
-    private String day;
+    private final String day;
 
     public ExerciseForWorkoutPlanBean(ExerciseBean exerciseBean, String day) {
         super(exerciseBean.getId(), exerciseBean.getName(), exerciseBean.getInfo());

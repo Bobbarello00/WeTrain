@@ -62,6 +62,7 @@ public class ExerciseOverviewGUIController{
     @FXML void deleteAction(ActionEvent event) {
         try {
             satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
+            //gli observer possono essere di diverso tipo? WorkoutDay, lista
             trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (DBUnreachableException e) {

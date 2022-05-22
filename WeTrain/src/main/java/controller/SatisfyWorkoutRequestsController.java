@@ -19,7 +19,9 @@ public class SatisfyWorkoutRequestsController {
     private final LoginController loginController = new LoginController();
     private final WorkoutPlan workoutPlan = new WorkoutPlan();
 
-    private Trainer trainer;
+    private Trainer trainer = (Trainer) loginController.getLoggedUser();
+
+    public SatisfyWorkoutRequestsController() throws DBUnreachableException, SQLException {}
 
     public void rejectRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         new RequestDAO().deleteRequest(requestBean.getId());

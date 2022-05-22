@@ -38,6 +38,8 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
 
+    public WorkoutRequestsGUIController() throws DBUnreachableException, SQLException {}
+
     @FXML void rejectButtonAction() {
         try {
             satisfyWorkoutRequestsController.rejectRequest(selectedRequest);
