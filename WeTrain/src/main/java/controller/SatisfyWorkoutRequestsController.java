@@ -54,19 +54,6 @@ public class SatisfyWorkoutRequestsController {
         ));
     }
 
-    public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
-        for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
-            if(Objects.equals(workoutDay.getDay(), exerciseForWorkoutPlanBean.getDay())) {
-                for (Exercise exercise : workoutDay.getExerciseList()) {
-                    if (Objects.equals(exercise.getName(), exerciseForWorkoutPlanBean.getName())) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
     public void removeExerciseFromDay(ExerciseForWorkoutPlanBean bean) throws ElementNotFoundException {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null){

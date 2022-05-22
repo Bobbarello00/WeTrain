@@ -30,7 +30,7 @@ public class TrainerExercisesManagementController {
                     exercise.getId(),
                     exercise.getName(),
                     exercise.getInfo()
-                    ));
+            ));
         }
         return exerciseBeanList;
     }

@@ -14,11 +14,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
+import viewone.bean.DayBean;
+import viewone.bean.ExerciseBean;
 import viewone.bean.ExerciseForWorkoutPlanBean;
+import viewone.bean.WorkoutDayBean;
 import viewone.engeneering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 public class ExerciseOverviewGUIController{
 
@@ -62,7 +66,6 @@ public class ExerciseOverviewGUIController{
     @FXML void deleteAction(ActionEvent event) {
         try {
             satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
-            //gli observer possono essere di diverso tipo? WorkoutDay, lista
             trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (DBUnreachableException e) {
@@ -87,11 +90,21 @@ public class ExerciseOverviewGUIController{
         MainPane.getInstance().setDisable(false);
     }
 
+    public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
+        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(exerciseForWorkoutPlanBean.getDay()));
+        for (ExerciseBean exercise : workoutDayBean.getExerciseBeanList()) {
+            if (Objects.equals(exercise.getName(), exerciseForWorkoutPlanBean.getName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setValues(ExerciseForWorkoutPlanBean exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController){
         this.exerciseForWorkoutPlanBean = exerciseBean;
         this.newWorkoutPlanGUIController = newWorkoutPlanGUIController;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
-        if(satisfyWorkoutRequestsController.checkAlreadyAdded(exerciseForWorkoutPlanBean)){
+        if(checkAlreadyAdded(exerciseForWorkoutPlanBean)){
             addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
             addButton.setText("Remove from Selected Day");
             alreadyAdded = true;

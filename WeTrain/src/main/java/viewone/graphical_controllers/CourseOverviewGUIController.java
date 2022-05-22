@@ -1,7 +1,7 @@
 package viewone.graphical_controllers;
 
-import controller.SubscribeToCourseController;
 import controller.JoinLessonController;
+import controller.SubscribeToCourseController;
 import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -104,9 +104,19 @@ public class CourseOverviewGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
+    private boolean checkIfAlreadySubscribed(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
+        List<CourseBean> courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
+        for(CourseBean course: courseBeanList){
+            if(course.getId() == courseBean.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setValues(CourseBean courseBean) throws SQLException, IOException {
         try {
-            if(subscribeToCourseController.checkIfAlreadySubscribed(courseBean)){
+            if(checkIfAlreadySubscribed(courseBean)){
                 startLessonPane.setDisable(false);
                 startLessonPane.setVisible(true);
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");

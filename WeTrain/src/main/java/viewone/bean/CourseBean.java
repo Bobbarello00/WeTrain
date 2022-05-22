@@ -43,7 +43,7 @@ public class CourseBean {
     public void setLessonBeanList(List<LessonBean> lessonBeanList) {
         this.lessonBeanList = new ArrayList<>();
         for(LessonBean lessonBean: lessonBeanList) {
-            lessonBeanList.add(new LessonBean(
+            this.lessonBeanList.add(new LessonBean(
                     lessonBean.getId(),
                     lessonBean.getLessonDay(),
                     lessonBean.getLessonStartTime(),
