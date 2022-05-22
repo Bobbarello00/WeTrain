@@ -73,7 +73,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
 
         if(courseBeanList == null && workoutPlanBean == null) {
             try {
-                courseBeanList = subscribeToCourseController.getCourseList();
+                courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
                 workoutPlanBean = workoutPlanController.getWorkoutPlan();
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();

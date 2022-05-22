@@ -62,7 +62,7 @@ public class SubscribeToCourseController extends CourseManagementController{
         new CourseDAO().unsubscribeFromACourse(courseBean.getId());
     }
 
-    public List<CourseBean> getCourseList() throws SQLException, DBUnreachableException {
+    public List<CourseBean> getLoggedAthleteCourseList() throws SQLException, DBUnreachableException {
         List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
         return getCourseBeanList(courseList);
     }

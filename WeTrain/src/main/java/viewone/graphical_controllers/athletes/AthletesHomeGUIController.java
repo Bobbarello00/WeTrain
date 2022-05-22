@@ -33,7 +33,7 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
             List<CourseBean> courseBeanList = subscribeToCourseController.getPopularCourseList();
             ManageCourseList.updateList(popularList, Objects.requireNonNull(courseBeanList));
             updateNotificationList();
-            courseBeanList = subscribeToCourseController.getCourseList();
+            courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
             ManageCourseList.updateList(courseList, Objects.requireNonNull(courseBeanList));
         } catch (DBUnreachableException e){
             List<String> errorStrings = e.getErrorStrings();
