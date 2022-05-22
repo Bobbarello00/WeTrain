@@ -9,6 +9,7 @@ import exception.ElementNotFoundException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
 import viewone.bean.*;
+import viewone.engeneering.ExerciseCatalogue;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,8 +20,8 @@ public class SatisfyWorkoutRequestsController {
 
     private final NotificationsController notificationsController = new NotificationsController();
     private final WorkoutPlan workoutPlan = new WorkoutPlan();
-
     private final Trainer trainer = (Trainer) new LoginController().getLoggedUser();
+    private final ExerciseCatalogue exerciseCatalogue = new ExerciseCatalogue(new ExerciseDAO().loadTrainerExercises(trainer));
 
     public SatisfyWorkoutRequestsController() throws DBUnreachableException, SQLException {}
 
@@ -38,7 +39,7 @@ public class SatisfyWorkoutRequestsController {
         return null;
     }
 
-    public void addExerciseToPlan(ExerciseForWorkoutPlanBean bean) throws SQLException, DBUnreachableException {
+    public void addExerciseToWorkoutDay(ExerciseForWorkoutPlanBean bean) throws SQLException, DBUnreachableException {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null) {
             workoutDay = new WorkoutDay(bean.getDay());
@@ -52,21 +53,12 @@ public class SatisfyWorkoutRequestsController {
         ));
     }
 
-    public void removeExerciseFromDay(ExerciseForWorkoutPlanBean bean) throws ElementNotFoundException {
+    public void removeExerciseFromWorkoutDay(ExerciseForWorkoutPlanBean bean) throws ElementNotFoundException {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null){
             throw new ElementNotFoundException();
         }
         workoutDay.removeExercise(bean.getName(), bean.getInfo());
-    }
-
-    public void removeExerciseFromPlan(ExerciseBean bean) throws ElementNotFoundException {
-        for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
-            removeExerciseFromDay(new ExerciseForWorkoutPlanBean(
-                    bean,
-                    workoutDay.getDay())
-            );
-        }
     }
 
     public void sendWorkoutPlan(RequestBean requestBean) throws DBUnreachableException, SQLException {
@@ -131,10 +123,12 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public List<ExerciseBean> searchExercise(SearchBean searchBean) throws DBUnreachableException, SQLException {
-        List<Exercise> exerciseList = new ExerciseDAO().searchExercises(
-                searchBean.getName(),
-                trainer
-        );
+        List<Exercise> exerciseList = new ArrayList<>();
+        for(Exercise exercise: exerciseCatalogue.getExerciseList()) {
+            if((exercise.getName().toLowerCase()).contains(searchBean.getName().toLowerCase())) {
+                exerciseList.add(exercise);
+            }
+        }
         return getExerciseBeanList(exerciseList);
     }
 
@@ -147,12 +141,10 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public List<ExerciseBean> getTrainerExercises() throws SQLException, DBUnreachableException {
-        List<Exercise> exerciseList = new ExerciseDAO().loadTrainerExercises(trainer);
-        return getExerciseBeanList(exerciseList);
+        return getExerciseBeanList(exerciseCatalogue.getExerciseList());
     }
 
-    @NotNull
-    private List<ExerciseBean> getExerciseBeanList(List<Exercise> exerciseList) {
+    @NotNull private List<ExerciseBean> getExerciseBeanList(List<Exercise> exerciseList) {
         List<ExerciseBean> exerciseBeanList = new ArrayList<>();
         for(Exercise exercise: exerciseList){
             exerciseBeanList.add(new ExerciseBean(
@@ -165,11 +157,12 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public void removeExerciseFromTrainer(ExerciseBean exerciseBean) throws DBUnreachableException, SQLException {
-        new ExerciseDAO().removeExercise(new Exercise(
+        Exercise exerciseToDelete = new Exercise(
                 exerciseBean.getId(),
                 exerciseBean.getName(),
                 exerciseBean.getInfo(),
-                trainer
-        ));
+                trainer);
+        new ExerciseDAO().removeExercise(exerciseToDelete);
+        exerciseCatalogue.notifyDeletedExercise(exerciseToDelete);
     }
 }

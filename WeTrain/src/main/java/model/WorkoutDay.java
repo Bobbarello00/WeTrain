@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class WorkoutDay implements Serializable {
-    private Integer id;
-    private String day;
-    private List<Exercise> exerciseList;
+    protected Integer id;
+    protected String day;
+    protected List<Exercise> exerciseList;
 
     public WorkoutDay(int id, String day, List<Exercise> exerciseList){
         this(day);

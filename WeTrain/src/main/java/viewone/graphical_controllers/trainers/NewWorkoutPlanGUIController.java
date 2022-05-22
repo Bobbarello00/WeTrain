@@ -90,6 +90,11 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         requestBean = request;
     }
 
+    public void updateLists() throws DBUnreachableException, SQLException {
+        updateExerciseList();
+        updateSelectedExerciseList();
+    }
+
     public void updateSelectedExerciseList() {
         WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(daysController.getDay()));
         ManageExerciseList.updateList(

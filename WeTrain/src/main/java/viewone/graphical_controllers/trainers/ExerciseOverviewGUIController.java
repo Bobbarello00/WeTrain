@@ -28,7 +28,6 @@ public class ExerciseOverviewGUIController{
     @FXML private TextArea infoTextArea;
     @FXML private TextField nameText;
     @FXML private Button addButton;
-    @FXML private Button deleteButton;
 
     private ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean;
     private boolean alreadyAdded = false;
@@ -39,9 +38,9 @@ public class ExerciseOverviewGUIController{
     @FXML void addOrRemoveAction(ActionEvent event) {
         try{
             if (!alreadyAdded) {
-                    satisfyWorkoutRequestsController.addExerciseToPlan(exerciseForWorkoutPlanBean);
+                    satisfyWorkoutRequestsController.addExerciseToWorkoutDay(exerciseForWorkoutPlanBean);
             } else {
-                    satisfyWorkoutRequestsController.removeExerciseFromDay(exerciseForWorkoutPlanBean);
+                    satisfyWorkoutRequestsController.removeExerciseFromWorkoutDay(exerciseForWorkoutPlanBean);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,9 +62,8 @@ public class ExerciseOverviewGUIController{
 
     @FXML void deleteAction(ActionEvent event) {
         try {
-            satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
             satisfyWorkoutRequestsController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
-            newWorkoutPlanGUIController.updateExerciseList();
+            newWorkoutPlanGUIController.updateLists();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -106,8 +104,6 @@ public class ExerciseOverviewGUIController{
             addButton.setStyle("-fx-background-color:  rgb(225, 100, 0)");
             addButton.setText("Remove from Selected Day");
             alreadyAdded = true;
-            deleteButton.setDisable(true);
-            deleteButton.setVisible(false);
         }
         nameText.setText(exerciseBean.getName());
         infoTextArea.setText(exerciseBean.getInfo());

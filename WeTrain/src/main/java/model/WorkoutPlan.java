@@ -37,4 +37,8 @@ public class WorkoutPlan implements Serializable {
     public void addWorkoutDay(WorkoutDay workoutDay) {
         workoutDayList.add(workoutDay);
     }
+
+    public void removeWorkoutDay(WorkoutDay workoutDay) {
+        workoutDayList.remove(workoutDay);
+    }
 }

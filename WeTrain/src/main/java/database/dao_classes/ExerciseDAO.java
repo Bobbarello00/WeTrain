@@ -77,14 +77,4 @@ public class ExerciseDAO {
             throw new DBUnreachableException();
         }
     }
-
-    public List<Exercise> searchExercises(String name, Trainer trainer) throws DBUnreachableException, SQLException {
-        try(PreparedStatement preparedStatement = Queries.searchExercises(name, trainer.getFiscalCode());
-            ResultSet rs = preparedStatement.executeQuery()){
-            return getExercises(trainer, rs);
-        } catch (DBConnectionFailedException e) {
-            e.deleteDatabaseConn();
-            throw new DBUnreachableException();
-        }
-    }
 }

@@ -391,19 +391,6 @@ public class Queries {
         return preparedStatement;
     }
 
-    public static PreparedStatement searchExercises(String name, String trainerFc) throws DBConnectionFailedException, SQLException {
-        PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                SELECT_ALL +
-                        "FROM mydb.Exercise " +
-                        "WHERE (Name LIKE ?) " +
-                        "and Trainer = ?" +
-                        LIMIT_10);
-        String myString = "%%" + name + "%%";
-        preparedStatement.setString(1, myString);
-        preparedStatement.setString(2, trainerFc);
-        return preparedStatement;
-    }
-
     public static PreparedStatement loadTrainerExercises(String trainerFc) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "SELECT Exercise.* " +
