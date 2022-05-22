@@ -1,21 +1,18 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.SatisfyWorkoutRequestsController;
-import controller.TrainerExercisesManagementController;
 import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import viewone.DaysOfTheWeekButtonController;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.DayBean;
-import viewone.bean.ExerciseBean;
-import viewone.bean.RequestBean;
-import viewone.bean.WorkoutDayBean;
+import viewone.bean.*;
 import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.manage_list.ManageExerciseList;
 import viewone.list_cell_factories.ExerciseListCellFactory;
@@ -34,14 +31,30 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     @FXML private ListView<ExerciseBean> selectedExerciseList;
     @FXML private Button mondayButton;
     @FXML private Button createButton;
+    @FXML private TextField searchExerciseText;
 
     private RequestBean requestBean;
-    private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
 
     public NewWorkoutPlanGUIController() throws DBUnreachableException, SQLException {}
 
     //TODO Observer per esercizi selezionati
+
+    @FXML public void searchButtonAction() {
+        try {
+            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.searchExercise(new SearchBean(searchExerciseText.getText()));
+            ManageExerciseList.updateList(exerciseList, exerciseBeanList);
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML public void addExerciseTextAction() throws IOException {
         CreateNewExerciseGUIController controller = (CreateNewExerciseGUIController) PageSwitchSizeChange.pageSwitch(createButton, "CreateNewExercise", HOME, false);
@@ -87,7 +100,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     public void updateExerciseList() throws SQLException, DBUnreachableException {
         ManageExerciseList.updateList(
                 exerciseList,
-                trainerExercisesManagementController.getTrainerExercises()
+                satisfyWorkoutRequestsController.getTrainerExercises()
         );
     }
 
@@ -96,10 +109,9 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
         selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
         try {
-
             ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController, this);
             ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController, this);
-            List<ExerciseBean> exerciseBeanList = trainerExercisesManagementController.getTrainerExercises();
+            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
             ManageExerciseList.updateList(exerciseList, exerciseBeanList);
             setUserInfoTab();
         } catch (SQLException e) {

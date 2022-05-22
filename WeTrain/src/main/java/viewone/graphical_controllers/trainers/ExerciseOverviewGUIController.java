@@ -1,7 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.SatisfyWorkoutRequestsController;
-import controller.TrainerExercisesManagementController;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import javafx.event.ActionEvent;
@@ -36,7 +35,6 @@ public class ExerciseOverviewGUIController{
 
     private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
-    private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
 
     @FXML void addOrRemoveAction(ActionEvent event) {
         try{
@@ -66,7 +64,7 @@ public class ExerciseOverviewGUIController{
     @FXML void deleteAction(ActionEvent event) {
         try {
             satisfyWorkoutRequestsController.removeExerciseFromPlan(exerciseForWorkoutPlanBean);
-            trainerExercisesManagementController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
+            satisfyWorkoutRequestsController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();

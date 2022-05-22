@@ -1,11 +1,13 @@
 package controller;
 
 import database.dao_classes.AthleteDAO;
+import database.dao_classes.ExerciseDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import model.*;
+import org.jetbrains.annotations.NotNull;
 import viewone.bean.*;
 
 import java.sql.SQLException;
@@ -16,10 +18,9 @@ import java.util.Objects;
 public class SatisfyWorkoutRequestsController {
 
     private final NotificationsController notificationsController = new NotificationsController();
-    private final LoginController loginController = new LoginController();
     private final WorkoutPlan workoutPlan = new WorkoutPlan();
 
-    private Trainer trainer = (Trainer) loginController.getLoggedUser();
+    private final Trainer trainer = (Trainer) new LoginController().getLoggedUser();
 
     public SatisfyWorkoutRequestsController() throws DBUnreachableException, SQLException {}
 
@@ -43,9 +44,6 @@ public class SatisfyWorkoutRequestsController {
             workoutDay = new WorkoutDay(bean.getDay());
             workoutPlan.addWorkoutDay(workoutDay);
         }
-        if(trainer == null){
-            trainer = (Trainer) loginController.getLoggedUser();
-        }
         workoutDay.addExercise(new Exercise(
                 bean.getId(),
                 bean.getName(),
@@ -66,7 +64,8 @@ public class SatisfyWorkoutRequestsController {
         for(WorkoutDay workoutDay: workoutPlan.getWorkoutDayList()){
             removeExerciseFromDay(new ExerciseForWorkoutPlanBean(
                     bean,
-                    workoutDay.getDay()));
+                    workoutDay.getDay())
+            );
         }
     }
 
@@ -98,7 +97,7 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public List<RequestBean> getTrainerRequests() throws SQLException, DBUnreachableException {
-        List<Request> requestList = new RequestDAO().loadTrainerRequests((Trainer) loginController.getLoggedUser());
+        List<Request> requestList = new RequestDAO().loadTrainerRequests(trainer);
         List<RequestBean> requestBeanList = new ArrayList<>();
         for(Request request: requestList) {
             Athlete usr = request.getAthlete();
@@ -129,5 +128,48 @@ public class SatisfyWorkoutRequestsController {
 
         }
         return requestBeanList;
+    }
+
+    public List<ExerciseBean> searchExercise(SearchBean searchBean) throws DBUnreachableException, SQLException {
+        List<Exercise> exerciseList = new ExerciseDAO().searchExercises(
+                searchBean.getName(),
+                trainer
+        );
+        return getExerciseBeanList(exerciseList);
+    }
+
+    public void addExerciseToTrainer(ExerciseBean exerciseBean) throws SQLException, DBUnreachableException {
+        new ExerciseDAO().saveExercise(new Exercise(
+                exerciseBean.getName(),
+                exerciseBean.getInfo(),
+                trainer
+        ));
+    }
+
+    public List<ExerciseBean> getTrainerExercises() throws SQLException, DBUnreachableException {
+        List<Exercise> exerciseList = new ExerciseDAO().loadTrainerExercises(trainer);
+        return getExerciseBeanList(exerciseList);
+    }
+
+    @NotNull
+    private List<ExerciseBean> getExerciseBeanList(List<Exercise> exerciseList) {
+        List<ExerciseBean> exerciseBeanList = new ArrayList<>();
+        for(Exercise exercise: exerciseList){
+            exerciseBeanList.add(new ExerciseBean(
+                    exercise.getId(),
+                    exercise.getName(),
+                    exercise.getInfo()
+            ));
+        }
+        return exerciseBeanList;
+    }
+
+    public void removeExerciseFromTrainer(ExerciseBean exerciseBean) throws DBUnreachableException, SQLException {
+        new ExerciseDAO().removeExercise(new Exercise(
+                exerciseBean.getId(),
+                exerciseBean.getName(),
+                exerciseBean.getInfo(),
+                trainer
+        ));
     }
 }

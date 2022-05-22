@@ -48,7 +48,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField fx:id="exerciseNameText" layoutX="714.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Exercise name                                                  🔎" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
+      <TextField fx:id="searchExerciseText" layoutX="714.0" layoutY="82.0" prefHeight="32.0" prefWidth="291.0" promptText="Exercise name" scaleX="1.4" scaleY="1.4" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-Prompt-text-fill: #707070; -fx-background-radius: 50;">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
@@ -121,6 +121,7 @@
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
       </Button>
+      <Button fx:id="searchButton" layoutX="1015.0" layoutY="80.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-text-fill: #707070;" text="🔎" />
    </Pane>
    <Text layoutX="229.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Workout Plan" textAlignment="JUSTIFY" wrappingWidth="122.86976432800293">
       <font>

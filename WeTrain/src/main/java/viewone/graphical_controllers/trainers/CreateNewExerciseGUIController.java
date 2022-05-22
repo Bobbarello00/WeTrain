@@ -1,14 +1,14 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.TrainerExercisesManagementController;
+import controller.SatisfyWorkoutRequestsController;
 import exception.DBUnreachableException;
-import viewone.MainPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.engeneering.AlertGenerator;
@@ -20,15 +20,17 @@ public class CreateNewExerciseGUIController {
     @FXML private TextArea descriptionTextArea;
     @FXML private TextField nameText;
 
-    private final TrainerExercisesManagementController trainerExercisesManagementController = new TrainerExercisesManagementController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
     private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
+
+    public CreateNewExerciseGUIController() throws DBUnreachableException, SQLException {}
 
     @FXML void createButtonAction(ActionEvent event) {
         ExerciseBean exerciseBean = new ExerciseBean(
                 nameText.getText(),
                 descriptionTextArea.getText());
         try {
-            trainerExercisesManagementController.addExerciseToTrainer(exerciseBean);
+            satisfyWorkoutRequestsController.addExerciseToTrainer(exerciseBean);
             newWorkoutPlanGUIController.updateExerciseList();
         } catch (SQLException e) {
             e.printStackTrace();

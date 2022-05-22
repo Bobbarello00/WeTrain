@@ -119,7 +119,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML void searchButtonAction() throws SQLException {
         List<UserBean> userBeanList;
         try {
-            userBeanList = subscribeToTrainerController.searchTrainers(new TrainerSearchBean(trainerNameSearch.getText()));
+            userBeanList = subscribeToTrainerController.searchTrainers(new SearchBean(trainerNameSearch.getText()));
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(

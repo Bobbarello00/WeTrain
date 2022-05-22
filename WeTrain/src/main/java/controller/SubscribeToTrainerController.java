@@ -85,7 +85,7 @@ public class SubscribeToTrainerController {
         return beanList;
     }
 
-    public List<UserBean> searchTrainers(TrainerSearchBean bean) throws SQLException, DBUnreachableException {
+    public List<UserBean> searchTrainers(SearchBean bean) throws SQLException, DBUnreachableException {
         List<Trainer> trainerList = new TrainerDAO().searchTrainers(bean.getName());
         return setToUserBean(trainerList);
     }

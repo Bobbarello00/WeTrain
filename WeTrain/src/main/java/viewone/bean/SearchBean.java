@@ -1,9 +1,9 @@
 package viewone.bean;
 
-public class TrainerSearchBean {
+public class SearchBean {
     private String name;
 
-    public TrainerSearchBean(String name){
+    public SearchBean(String name){
         this.name = name;
     }
 

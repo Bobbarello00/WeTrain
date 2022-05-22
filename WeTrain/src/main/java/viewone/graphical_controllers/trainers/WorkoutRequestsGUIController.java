@@ -73,9 +73,11 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
             requestList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {
                         @Override public void changed(ObservableValue<? extends RequestBean> observableValue, RequestBean oldItem, RequestBean newItem) {
-                            requestInfoLabel.setText(newItem.getInfo());
-                            selectedRequest = newItem;
-                            activateInfoTab();
+                            if(newItem != null){
+                                requestInfoLabel.setText(newItem.getInfo());
+                                selectedRequest = newItem;
+                                activateInfoTab();
+                            }
                         }
                     });
             setUserInfoTab();
