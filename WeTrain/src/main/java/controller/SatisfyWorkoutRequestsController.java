@@ -170,6 +170,6 @@ public class SatisfyWorkoutRequestsController {
                 exerciseBean.getInfo(),
                 trainer);
         new ExerciseDAO().removeExercise(exerciseToDelete);
-        exerciseCatalogue.notifyDeletedExercise(exerciseToDelete);
+        exerciseCatalogue.removeExercise(exerciseToDelete);
     }
 }
