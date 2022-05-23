@@ -97,7 +97,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
             PageSwitchSizeChange.logOff();
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
-
+        //TODO ricontrollare generazione di NullPointer quando non trova i corsi forse(?)
         ManageCourseList.updateList(resultList, Objects.requireNonNull(courseBeanList));
     }
 
