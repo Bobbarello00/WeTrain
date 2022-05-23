@@ -41,9 +41,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     @FXML private VBox trainerBox;
     @FXML private VBox addTrainerBox;
     @FXML private VBox searchTrainerBox;
-    @FXML private Button logoutButton;
     @FXML private TextField trainerNameSearch;
-    @FXML private Button searchButton;
     @FXML private Button subscribeButton;
     @FXML private ListView<UserBean> trainersList;
     @FXML private Label infoName;

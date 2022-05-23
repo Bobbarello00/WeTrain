@@ -18,6 +18,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import viewone.engeneering.AlertGenerator;
+import viewone.graphical_controllers.athletes.MenuAthletesGUIController;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
 import viewone.graphical_controllers.trainers.NewCourseGUIController;
 import viewone.graphical_controllers.trainers.StartLessonGUIController;
@@ -168,7 +169,7 @@ public class CourseOverviewGUIController {
                             pageSwitch(((Button) event.getSource()), "CommunicationForm", "trainers", false);
             communicationFormGUIController.setCourseBean(courseBean);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -210,7 +211,7 @@ public class CourseOverviewGUIController {
                 newCourseGUIController.setValue(courseBean);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -223,16 +224,19 @@ public class CourseOverviewGUIController {
                             "Course subscription fee is 5$",
                             "if you click ok a payment will be sent from your selected payment method")) {
                         subscribeToCourseController.subscribeToCourse(courseBean);
+
                     }
                 } else {
                     subscribeToCourseController.unsubscribeFromCourse(courseBean);
                 }
+                PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", "athletes");
+                MenuAthletesGUIController.resetSelectedButton();
             }
         } catch (SQLIntegrityConstraintViolationException e) {
             AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "You are already subscribed to this course.",
                     null);
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         } catch (DBUnreachableException | PaymentFailedException e) {
             List<String> errorStrings = e.getErrorStrings();

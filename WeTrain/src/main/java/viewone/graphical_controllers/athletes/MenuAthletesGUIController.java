@@ -27,6 +27,10 @@ public class MenuAthletesGUIController {
     }
     @FXML void logoAction() throws IOException {
         PageSwitchSimple.switchPage(MainPane.getInstance(),"AthletesHome", HOME);
+        resetSelectedButton();
+    }
+
+    public static void resetSelectedButton(){
         buttonBehavior.resetSelectedButton();
     }
 }

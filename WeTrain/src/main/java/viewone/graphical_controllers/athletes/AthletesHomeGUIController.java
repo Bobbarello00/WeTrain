@@ -24,8 +24,6 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private ListView<CourseBean> courseList;
     @FXML private ListView<CourseBean> popularList;
 
-    @FXML private Button logoutButton;
-
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     public void updateLists() {
