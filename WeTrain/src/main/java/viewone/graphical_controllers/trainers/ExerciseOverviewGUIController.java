@@ -106,7 +106,9 @@ public class ExerciseOverviewGUIController{
             alreadyAdded = true;
         }
         nameText.setText(exerciseBean.getName());
+        nameText.setEditable(false);
         infoTextArea.setText(exerciseBean.getInfo());
+        infoTextArea.setEditable(false);
     }
 
 }

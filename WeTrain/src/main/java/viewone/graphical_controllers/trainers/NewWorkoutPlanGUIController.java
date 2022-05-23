@@ -58,7 +58,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     @FXML public void addExerciseTextAction() throws IOException {
         CreateNewExerciseGUIController controller = (CreateNewExerciseGUIController) PageSwitchSizeChange.pageSwitch(createButton, "CreateNewExercise", HOME, false);
-        controller.setValue(this);
+        controller.setValue(this, satisfyWorkoutRequestsController);
     }
 
     @FXML void dayButtonAction(ActionEvent event) {

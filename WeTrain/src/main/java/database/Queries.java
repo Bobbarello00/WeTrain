@@ -403,7 +403,8 @@ public class Queries {
     public static PreparedStatement insertExercise(Exercise exercise) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "INSERT INTO mydb.Exercise (Name, Info, Trainer) " +
-                        "VALUES (?, ?, ?)");
+                        "VALUES (?, ?, ?)",
+                Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, exercise.getName());
         preparedStatement.setString(2, exercise.getInfo());
         preparedStatement.setString(3, exercise.getTrainer().getFiscalCode());

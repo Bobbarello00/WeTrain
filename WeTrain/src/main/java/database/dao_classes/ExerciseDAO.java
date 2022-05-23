@@ -28,13 +28,18 @@ public class ExerciseDAO {
         }
     }
 
-    public void saveExercise(Exercise exercise) throws SQLException, DBUnreachableException {
+    public int saveExercise(Exercise exercise) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertExercise(exercise)) {
             preparedStatement.executeUpdate();
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if(generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
         }
+        return 0;
     }
 
     public List<Exercise> loadExerciseInWorkoutPlan(int idWorkoutDay, Trainer trainer) throws SQLException, DBUnreachableException {

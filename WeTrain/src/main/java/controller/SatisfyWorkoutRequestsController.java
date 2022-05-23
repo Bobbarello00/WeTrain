@@ -42,7 +42,10 @@ public class SatisfyWorkoutRequestsController {
     public void addExerciseToWorkoutDay(ExerciseForWorkoutPlanBean bean) throws SQLException, DBUnreachableException {
         WorkoutDay workoutDay = getWorkoutDay(bean.getDay());
         if(workoutDay == null) {
-            workoutDay = new WorkoutDay(bean.getDay());
+            workoutDay = new WorkoutDayObserver(
+                    bean.getDay(),
+                    exerciseCatalogue,
+                    workoutPlan);
             workoutPlan.addWorkoutDay(workoutDay);
         }
         workoutDay.addExercise(new Exercise(
@@ -63,11 +66,13 @@ public class SatisfyWorkoutRequestsController {
 
     public void sendWorkoutPlan(RequestBean requestBean) throws DBUnreachableException, SQLException {
         Athlete receiver = new AthleteDAO().loadAthlete(requestBean.getAthleteBean().getFiscalCode());
-        WorkoutPlan workoutPlan = receiver.getWorkoutPlan();
-        if(workoutPlan != null){
-            new AthleteDAO().removeWorkoutPlan(workoutPlan.getId());
+        if(receiver.getWorkoutPlan() != null){
+            new AthleteDAO().removeWorkoutPlan(receiver.getWorkoutPlan().getId());
         }
-        new WorkoutPlanDAO().saveWorkoutPlan(this.workoutPlan, requestBean.getAthleteBean().getFiscalCode());
+        new WorkoutPlanDAO().saveWorkoutPlan(
+                this.workoutPlan,
+                requestBean.getAthleteBean().getFiscalCode()
+        );
         new RequestDAO().deleteRequest(requestBean.getId());
         notificationsController.sendWorkoutPlanReadyNotification(receiver);
     }
@@ -79,8 +84,8 @@ public class SatisfyWorkoutRequestsController {
                 for(Exercise exercise: workoutDay.getExerciseList()){
                     workoutDayBean.addExerciseBean(new ExerciseBean(
                             exercise.getName(),
-                            exercise.getInfo()
-                    ));
+                            exercise.getInfo())
+                    );
                 }
                 return workoutDayBean;
             }
@@ -133,11 +138,13 @@ public class SatisfyWorkoutRequestsController {
     }
 
     public void addExerciseToTrainer(ExerciseBean exerciseBean) throws SQLException, DBUnreachableException {
-        new ExerciseDAO().saveExercise(new Exercise(
+        Exercise exercise = new Exercise(
                 exerciseBean.getName(),
                 exerciseBean.getInfo(),
                 trainer
-        ));
+        );
+        exercise.setId(new ExerciseDAO().saveExercise(exercise));
+        exerciseCatalogue.addExercise(exercise);
     }
 
     public List<ExerciseBean> getTrainerExercises() throws SQLException, DBUnreachableException {

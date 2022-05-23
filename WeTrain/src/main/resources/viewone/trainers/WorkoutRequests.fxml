@@ -107,7 +107,7 @@
             </VBox>
          </children>
       </Pane>
-      <Text layoutX="184.0" layoutY="83.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Lessons" textAlignment="JUSTIFY" wrappingWidth="93.46977043151855">
+      <Text layoutX="213.0" layoutY="87.0" scaleX="4.0" scaleY="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Workout Requests" textAlignment="JUSTIFY" wrappingWidth="112.99999999999977">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>

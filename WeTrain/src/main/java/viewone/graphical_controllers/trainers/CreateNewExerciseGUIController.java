@@ -20,7 +20,7 @@ public class CreateNewExerciseGUIController {
     @FXML private TextArea descriptionTextArea;
     @FXML private TextField nameText;
 
-    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
     private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
 
     public CreateNewExerciseGUIController() throws DBUnreachableException, SQLException {}
@@ -50,7 +50,8 @@ public class CreateNewExerciseGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
-    public void setValue(NewWorkoutPlanGUIController newWorkoutPlanGUIController) {
+    public void setValue(NewWorkoutPlanGUIController newWorkoutPlanGUIController, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
         this.newWorkoutPlanGUIController = newWorkoutPlanGUIController;
+        this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
     }
 }

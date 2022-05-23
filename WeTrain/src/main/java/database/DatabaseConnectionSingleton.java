@@ -1,11 +1,9 @@
 package database;
 
+import com.mysql.cj.exceptions.CJCommunicationsException;
 import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
 
 import java.io.FileInputStream;
-import com.mysql.cj.exceptions.CJCommunicationsException;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +12,7 @@ import java.util.Properties;
 
 public class DatabaseConnectionSingleton {
 
-    private static final int DBTIMEOUT = 2;
+    private static final int DBTIMEOUT = 5;
     private static DatabaseConnectionSingleton dbConn;
     private Connection conn;
 
