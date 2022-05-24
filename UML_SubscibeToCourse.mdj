@@ -34524,7 +34524,7 @@
 									"font": "Arial;13;0",
 									"left": 644.5,
 									"top": 475,
-									"width": 137.13720703125,
+									"width": 136,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGA4oW/tp1HOuk="
@@ -34944,7 +34944,7 @@
 									"font": "Arial;13;0",
 									"left": 808.5,
 									"top": 684.5,
-									"width": 116.88818359375,
+									"width": 116,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAGA4oafxp2pCMk="
@@ -45296,6 +45296,34 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAGA8UGyxCvTOZQ="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGA9mTs04T81FU=",
+							"_parent": {
+								"$ref": "AAAAAAGA4oBJlZdavc8="
+							},
+							"fillColor": "#ff8282",
+							"font": "Arial;13;0",
+							"left": 544,
+							"top": 808,
+							"width": 83.59716796875,
+							"height": 90,
+							"text": "spostare Activate refund procedure* dopo timeout"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGA9m1f0oULqsc=",
+							"_parent": {
+								"$ref": "AAAAAAGA4oBJlZdavc8="
+							},
+							"fillColor": "#ff8282",
+							"font": "Arial;13;0",
+							"left": 1240,
+							"top": 392,
+							"width": 83.59716796875,
+							"height": 57,
+							"text": "dove avviene la selezione?"
 						}
 					]
 				}
