@@ -1,10 +1,10 @@
 package viewone;
 
+import exception.DBUnreachableException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.FileNotFoundException;
@@ -43,8 +43,11 @@ public class PageSwitchSimple {
             mainPane.setCenter(view);
             return root.getController();
         } catch (LoadException e) {
-            e.printStackTrace();
-            PageSwitchSizeChange.logOff();
+            if(e.getCause() instanceof DBUnreachableException){
+                PageSwitchSizeChange.logOff();
+            } else {
+                e.printStackTrace();
+            }
             return null;
         }
     }
