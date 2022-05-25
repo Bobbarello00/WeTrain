@@ -215,7 +215,7 @@ public class CourseOverviewGUIController {
         }
     }
 
-    @FXML public void subscribeButtonAction(ActionEvent event) {
+    @FXML public void subscribe(ActionEvent event) {
         try {
             if(courseBean != null) {
                 if (!subscribed) {
@@ -224,7 +224,6 @@ public class CourseOverviewGUIController {
                             "Course subscription fee is 5$",
                             "if you click ok a payment will be sent from your selected payment method")) {
                         subscribeToCourseController.subscribeToCourse(courseBean);
-
                     }
                 } else {
                     subscribeToCourseController.unsubscribeFromCourse(courseBean);

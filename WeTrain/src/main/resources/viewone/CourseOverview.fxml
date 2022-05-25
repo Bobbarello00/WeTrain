@@ -89,7 +89,7 @@
             <Button fx:id="advancedFitnessLevelButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🏋" />
          </children>
       </HBox>
-      <Button fx:id="subscribeButton" layoutX="988.0" layoutY="689.0" mnemonicParsing="false" onAction="#subscribeButtonAction" prefHeight="23.0" prefWidth="91.0" scaleX="1.2" scaleY="1.2" text="Subscribe" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="subscribeButton" layoutX="988.0" layoutY="689.0" mnemonicParsing="false" onAction="#subscribe" prefHeight="23.0" prefWidth="91.0" scaleX="1.2" scaleY="1.2" text="Subscribe" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font name="ABeeZee Regular" size="12.0" />
          </font>
