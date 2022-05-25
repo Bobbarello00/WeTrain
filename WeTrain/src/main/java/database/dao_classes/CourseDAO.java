@@ -165,7 +165,7 @@ public class CourseDAO {
         return myList;
     }
 
-    public List<Course> searchCourses(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBUnreachableException {
+    public List<Course> searchCoursesByFilters(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.searchCourse(name, fitnessLevel, days)){
             return loadAllCourses(loginController.getLoggedUser(), preparedStatement.executeQuery());
         } catch (DBConnectionFailedException e) {

@@ -76,7 +76,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         fitnessLevelFilter.fitnessLevelSelection(event);
     }
 
-    @FXML protected void searchButtonAction() throws SQLException, IOException {
+    @FXML protected void searchByFilters() throws SQLException, IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
 
         String courseName = courseNameText.getText();

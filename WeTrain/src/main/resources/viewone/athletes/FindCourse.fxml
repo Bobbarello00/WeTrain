@@ -118,7 +118,7 @@
                   <Font name="ABeeZee Regular" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="searchButton" layoutX="396.0" layoutY="571.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="🔍  Search" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Button fx:id="searchButton" layoutX="396.0" layoutY="571.0" mnemonicParsing="false" onAction="#searchByFilters" prefHeight="23.0" prefWidth="83.0" scaleX="1.5" scaleY="1.5" text="🔍  Search" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="ABeeZee Regular" size="12.0" />
                </font>
