@@ -3,7 +3,6 @@ package database.dao_classes;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
-import exception.runtime_exception.ResultSetIsNullException;
 import model.Request;
 import model.Trainer;
 
@@ -19,26 +18,7 @@ public class RequestDAO {
     public static final String REQUEST_DATE = "RequestDate";
     public static final String INFO = "Info";
     public static final String ATHLETE = "Athlete";
-    public static final String TRAINER = "Trainer";
 
-    public Request loadRequest(int requestCode) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadRequest(requestCode);
-            ResultSet rs = preparedStatement.executeQuery()) {
-            if(rs.next()) {
-                return new Request(
-                        rs.getInt(ID_REQUEST),
-                        rs.getTimestamp(REQUEST_DATE).toLocalDateTime(),
-                        rs.getString(INFO),
-                        new AthleteDAO().loadAthlete(rs.getString(ATHLETE)),
-                        new TrainerDAO().loadTrainer(rs.getString(TRAINER)));
-            } else {
-                throw new ResultSetIsNullException();
-            }
-        } catch (DBConnectionFailedException e) {
-            e.deleteDatabaseConn();
-            throw new DBUnreachableException();
-        }
-    }
     public void deleteRequest(int idRequest) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.deleteRequest(idRequest)){
             preparedStatement.executeUpdate();

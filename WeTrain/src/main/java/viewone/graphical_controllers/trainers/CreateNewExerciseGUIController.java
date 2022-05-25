@@ -23,8 +23,6 @@ public class CreateNewExerciseGUIController {
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
     private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
 
-    public CreateNewExerciseGUIController() throws DBUnreachableException, SQLException {}
-
     @FXML void createButtonAction(ActionEvent event) {
         ExerciseBean exerciseBean = new ExerciseBean(
                 nameText.getText(),
