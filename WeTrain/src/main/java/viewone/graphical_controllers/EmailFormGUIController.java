@@ -1,15 +1,12 @@
 package viewone.graphical_controllers;
 
-import boundary.EmailSystemBoundary;
-import controller.NotificationsController;
+import controller.SatisfyWorkoutRequestsController;
 import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.EmailBean;
-import viewone.bean.EmailReceivedNotificationBean;
 import viewone.bean.UserBean;
 import viewone.engeneering.AlertGenerator;
 import viewone.engeneering.LoggedUserSingleton;
@@ -24,8 +21,9 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
     @FXML private TextField objectTextField;
 
     private UserBean receiver;
-    private final EmailSystemBoundary emailSystemBoundary = new EmailSystemBoundary();
-    private final NotificationsController notificationsController = new NotificationsController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+
+    public EmailFormGUIController() throws DBUnreachableException, SQLException {}
 
     public void setReceiver(UserBean userBean) {
         receiver = userBean;
@@ -34,16 +32,11 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
     @Override protected void sendAction() {
         try {
             UserBean sender = LoggedUserSingleton.getInstance();
-            emailSystemBoundary.sendEmail(new EmailBean(
+            satisfyWorkoutRequestsController.sendClarificationEmail(
                     sender,
                     receiver,
                     objectTextField.getText(),
-                    emailTextArea.getText()
-            ));
-            notificationsController.sendEmailReceivedNotification(new EmailReceivedNotificationBean(
-                    sender,
-                    receiver
-            ));
+                    emailTextArea.getText());
         } catch (SQLException | URISyntaxException | IOException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

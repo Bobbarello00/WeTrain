@@ -24,7 +24,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FindCourseGUIController extends HomeGUIControllerAthletes implements Initializable {
@@ -78,16 +77,14 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
     @FXML protected void searchByFilters() throws SQLException, IOException {
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
-
         String courseName = courseNameText.getText();
-
-        List<CourseBean> courseBeanList = null;
         try {
-            courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
+            List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
                     courseName,
                     fitnessLevel,
                     selectedDays
             ));
+            ManageCourseList.updateList(resultList, courseBeanList);
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -97,8 +94,6 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
             PageSwitchSizeChange.logOff();
             PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
         }
-        //TODO ricontrollare generazione di NullPointer quando non trova i corsi forse(?)
-        ManageCourseList.updateList(resultList, Objects.requireNonNull(courseBeanList));
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {

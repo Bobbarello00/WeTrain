@@ -1,9 +1,11 @@
 package controller;
 
+import boundary.EmailSystemBoundary;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.ExerciseDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
+import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import model.*;
@@ -11,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import viewone.bean.*;
 import viewone.engeneering.ExerciseCatalogue;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -145,6 +149,19 @@ public class SatisfyWorkoutRequestsController {
         );
         exercise.setId(new ExerciseDAO().saveExercise(exercise));
         exerciseCatalogue.addExercise(exercise);
+    }
+
+    public void sendClarificationEmail(UserBean sender, UserBean receiver, String object, String content) throws BrowsingNotSupportedException, URISyntaxException, IOException, DBUnreachableException, SQLException {
+        new EmailSystemBoundary().sendEmail(new EmailBean(
+                sender,
+                receiver,
+                object,
+                content
+        ));
+        notificationsController.sendEmailReceivedNotification(
+                sender.getFiscalCode(),
+                receiver.getFiscalCode()
+        );
     }
 
     public List<ExerciseBean> getTrainerExercises() throws SQLException, DBUnreachableException {

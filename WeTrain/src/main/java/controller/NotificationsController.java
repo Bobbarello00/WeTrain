@@ -135,13 +135,13 @@ public class NotificationsController {
         new NotificationDAO().deleteNotification(notificationBean.getId());
     }
 
-    public void sendEmailReceivedNotification(EmailReceivedNotificationBean emailReceivedNotificationBean) throws DBUnreachableException, SQLException {
+    public void sendEmailReceivedNotification(String senderFc, String receiverFc) throws DBUnreachableException, SQLException {
         new NotificationDAO().saveNotification(
                 NotificationEnum.EMAILRECEIVED.ordinal(),
                 "",
                 LocalDateTime.now(),
-                emailReceivedNotificationBean.getSender().getFiscalCode(),
-                emailReceivedNotificationBean.getReceiver().getFiscalCode()
+                senderFc,
+                receiverFc
         );
     }
 

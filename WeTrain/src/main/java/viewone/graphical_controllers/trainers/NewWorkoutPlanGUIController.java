@@ -38,8 +38,6 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     public NewWorkoutPlanGUIController() throws DBUnreachableException, SQLException {}
 
-    //TODO Observer per esercizi selezionati
-
     @FXML public void searchButtonAction() {
         try {
             List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.searchExercise(new SearchBean(searchExerciseText.getText()));
