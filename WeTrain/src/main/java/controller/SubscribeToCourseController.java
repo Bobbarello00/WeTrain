@@ -22,7 +22,7 @@ public class SubscribeToCourseController extends CourseManagementController{
         LoginController loginController = new LoginController();
         Course course = new CourseDAO().loadCourse(courseBean.getId());
         Athlete athlete = (Athlete) loginController.getLoggedUser();
-        new CourseDAO().subscribeToCourse(course.getId(), athlete.getFiscalCode());
+        new CourseDAO().subscribeToCourse(course, athlete);
         try {
             PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
             paypalSystemBoundary.pay(
