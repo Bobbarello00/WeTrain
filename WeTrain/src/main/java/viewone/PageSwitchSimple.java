@@ -15,7 +15,7 @@ public class PageSwitchSimple {
 
     private static final String EXTENSION = ".fxml";
 
-    private PageSwitchSimple(){}
+    private PageSwitchSimple() {}
 
     public static Object switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{
