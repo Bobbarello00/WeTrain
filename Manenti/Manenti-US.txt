@@ -1,5 +1,5 @@
-1] As a beginner, i want to subscribe to a trainer, so that i can request a workout plan that suits me best.
+1] As a beginner, i want to subscribe to a trainer, so that i can request a workout plan and contact him when in need.
 
 2] As a personal trainer, i want to increase my customer base, so that i can earn more money and increase my visibility.
 
-3] As a gym enthusiast, i want to look for a course by fitness level, so that i can challenge myself with the advanced ones.
+3] As a gym enthusiast, i want to look for a course by fitness level, so that i can easily find the advanced ones.
