@@ -1,5 +1,7 @@
-1] The system shall send a notification of your lessons for the day.
+1] The system shall provide a weekly schedule.
 
 2] The system shall list courses based on fitness level and time schedule.
 
 3] The system shall provide to join a course.
+
+The system shall provide online course lessons.

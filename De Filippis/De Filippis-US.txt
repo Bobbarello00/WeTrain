@@ -1,5 +1,5 @@
-1] As a user with a hectic schedule, i want online live courses, so that i can squeeze in a convenient workout.
+1] As a person that travels a lot, i want online course lessons, so that I can train even when I am away.
 
-2] As a personal trainer, i want to keep track of all my courses, so i can organize my job better.
+2] As a personal trainer, i want to keep track of my courses and my subscribers, so i can organize my job better.
 
-3] As an overweight person, i want to have a diet with related exercises, so i can lose weight fast.
+3] As a busy person, i want to see my weekly schedule, so i can organize better my time.
