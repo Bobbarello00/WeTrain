@@ -56,7 +56,7 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
             notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory());
             updateNotificationList();
             ManageNotificationList.setCourseListener(notificationList);
-            ManageCourseList.setListener(courseList);
+            ManageCourseList.setListener(courseList, null);
             ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
         } catch (SQLException e) {
             e.printStackTrace();

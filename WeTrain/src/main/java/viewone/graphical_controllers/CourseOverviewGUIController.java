@@ -61,7 +61,7 @@ public class CourseOverviewGUIController {
     private boolean subscribed = false;
     private boolean isTrainer = false;
 
-    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
+    private SubscribeToCourseController subscribeToCourseController;
     private final JoinLessonController joinLessonController = new JoinLessonController();
 
     private void setButtonColor(Button button) {
@@ -106,6 +106,9 @@ public class CourseOverviewGUIController {
     }
 
     private boolean checkIfAlreadySubscribed(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
+        if(subscribeToCourseController==null){
+            throw new ImATrainerException();
+        }
         List<CourseBean> courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
         for(CourseBean course: courseBeanList){
             if(course.getId() == courseBean.getId()){
@@ -115,8 +118,9 @@ public class CourseOverviewGUIController {
         return false;
     }
 
-    public void setValues(CourseBean courseBean) throws SQLException, IOException {
+    public void setValues(CourseBean courseBean, SubscribeToCourseController subscribeToCourseController) throws SQLException, IOException {
         try {
+            this.subscribeToCourseController = subscribeToCourseController;
             if(checkIfAlreadySubscribed(courseBean)){
                 startLessonPane.setDisable(false);
                 startLessonPane.setVisible(true);

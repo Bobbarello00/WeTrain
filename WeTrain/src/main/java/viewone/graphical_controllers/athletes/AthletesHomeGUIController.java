@@ -4,7 +4,6 @@ import controller.SubscribeToCourseController;
 import exception.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
@@ -52,8 +51,8 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
         updateLists();
 
-        ManageCourseList.setListener(courseList);
-        ManageCourseList.setListener(popularList);
+        ManageCourseList.setListener(courseList, subscribeToCourseController);
+        ManageCourseList.setListener(popularList, subscribeToCourseController);
         ManageNotificationList.setCourseListener(notificationList);
 
 

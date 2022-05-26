@@ -1,5 +1,6 @@
 package viewone.engeneering.manage_list;
 
+import controller.SubscribeToCourseController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -25,17 +26,17 @@ public class ManageCourseList {
         courseList.setItems(FXCollections.observableList(courseObservableList));
     }
 
-    public static void setListener(ListView<CourseBean> list){
+    public static void setListener(ListView<CourseBean> list, SubscribeToCourseController subscribeToCourseController){
         list.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override
                     public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
-                        listEvent(list, newItem);
+                        listEvent(list, newItem, subscribeToCourseController);
                     }
                 });
     }
 
-    private static void listEvent(ListView<CourseBean> listView, CourseBean newItem) {
+    private static void listEvent(ListView<CourseBean> listView, CourseBean newItem, SubscribeToCourseController subscribeToCourseController) {
         try {
             if(newItem != null) {
                 CourseOverviewGUIController courseOverviewGUIController =
@@ -43,7 +44,7 @@ public class ManageCourseList {
                                 "CourseOverview",
                                 "",
                                 false);
-                courseOverviewGUIController.setValues(newItem);
+                courseOverviewGUIController.setValues(newItem, subscribeToCourseController);
                 Platform.runLater(() -> listView.getSelectionModel().clearSelection());
             }
         } catch (SQLException | IOException e) {

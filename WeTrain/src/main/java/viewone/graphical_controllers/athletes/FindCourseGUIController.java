@@ -102,7 +102,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
 
         resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
 
-        ManageCourseList.setListener(resultList);
+        ManageCourseList.setListener(resultList, subscribeToCourseController);
 
         setUserInfoTab();
     }
