@@ -59,7 +59,7 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
 
     @FXML void newWorkoutButtonAction() throws IOException {
         NewWorkoutPlanGUIController controller = (NewWorkoutPlanGUIController) PageSwitchSimple.switchPage(MainPane.getInstance(),"NewWorkoutPlan",HOME);
-        Objects.requireNonNull(controller).setRequest(selectedRequest);
+        Objects.requireNonNull(controller).setRequest(selectedRequest, satisfyWorkoutRequestsController);
     }
 
     @FXML void clarificationEmailButtonAction(ActionEvent event) throws IOException {

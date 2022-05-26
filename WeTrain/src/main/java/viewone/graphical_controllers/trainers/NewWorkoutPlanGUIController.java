@@ -34,9 +34,9 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     @FXML private TextField searchExerciseText;
 
     private RequestBean requestBean;
-    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
 
-    public NewWorkoutPlanGUIController() throws DBUnreachableException, SQLException {}
+    public NewWorkoutPlanGUIController() {}
 
     @FXML public void searchButtonAction() {
         try {
@@ -84,8 +84,9 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         }
     }
 
-    public void setRequest(RequestBean request) {
+    public void setRequest(RequestBean request, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
         requestBean = request;
+        this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
     }
 
     public void updateLists() throws DBUnreachableException, SQLException {

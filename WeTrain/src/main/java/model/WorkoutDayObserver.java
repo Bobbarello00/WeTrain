@@ -26,8 +26,8 @@ public class WorkoutDayObserver extends WorkoutDay implements Observer {
             }
         }
         if(exerciseList.isEmpty()) {
-            workoutPlan.removeWorkoutDay(this);
             detachFromObservable();
+            workoutPlan.removeWorkoutDay(this);
         }
     }
 }
