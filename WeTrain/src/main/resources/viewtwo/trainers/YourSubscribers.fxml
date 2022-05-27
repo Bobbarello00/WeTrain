@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
+   <children>
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="92.0" prefHeight="247.0" prefWidth="370.0" style="-fx-background-color: rgba(21,147,24,0.3); -fx-background-radius: 50;">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+         <children>
+            <ListView fx:id="subscriberList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
+         </children>
+      </HBox>
+      <Text layoutX="59.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Subscribers">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+      <Button layoutX="20.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
+      <Pane fx:id="masterDataPane" disable="true" layoutX="394.0" layoutY="88.0" prefHeight="247.0" prefWidth="200.0" visible="false">
+         <children>
+            <TextArea fx:id="masterDataTextArea" layoutX="9.0" layoutY="24.0" prefHeight="223.0" prefWidth="183.0" />
+            <Text layoutX="39.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subscriber master data" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
