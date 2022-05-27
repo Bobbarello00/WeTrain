@@ -1,5 +1,7 @@
 package viewtwo.graphical_controllers.launcher;
 
+import engeneering.AlertGenerator;
+import exception.runtime_exception.FatalErrorException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -18,11 +20,27 @@ public class ProfileSelectionGUIController implements Initializable {
     @FXML protected void backAction() throws IOException {
         PageSwitchSimple.switchPage("WeTrainGUI","launcher");
     }
+
     @FXML protected void nextAction() throws IOException {
-        PageSwitchSimple.switchPage("Registration","launcher");
+        String selectedProfile;
+        if(trainerSelection.isSelected()) {
+            selectedProfile = "Trainer";
+        } else if (athleteSelection.isSelected()) {
+            selectedProfile = "Athlete";
+        } else {
+            AlertGenerator.newWarningAlert("OOPS... SOMETHING WENT WRONG!",
+                    "Gender not selected.",
+                    "Select your gender with the checkbox at the bottom of the page");
+            return;
+        }
+        RegistrationGUIController controller = (RegistrationGUIController) PageSwitchSimple.switchPage("Registration","launcher");
+        if(controller == null) {
+            throw new FatalErrorException();
+        }
+        controller.setSelectedProfile(selectedProfile);
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         ToggleGroup toggleGroup = new ToggleGroup();
         notSelected.setToggleGroup(toggleGroup);
         trainerSelection.setToggleGroup(toggleGroup);

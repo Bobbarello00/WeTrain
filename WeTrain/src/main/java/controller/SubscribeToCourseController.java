@@ -3,7 +3,6 @@ package controller;
 import boundary.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
-import exception.FatalErrorException;
 import exception.PaymentFailedException;
 import model.Athlete;
 import model.Course;

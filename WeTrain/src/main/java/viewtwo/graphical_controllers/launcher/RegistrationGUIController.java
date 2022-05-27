@@ -8,7 +8,6 @@ import exception.invalid_data_exception.InvalidBirthException;
 import exception.invalid_data_exception.InvalidDataException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
@@ -51,8 +50,8 @@ public class RegistrationGUIController implements Initializable {
         PageSwitchSimple.switchPage("WeTrainGUI", "launcher");
     }
 
-    @FXML void registerAction(ActionEvent event) {
-        UserBean user = null;
+    @FXML void registerAction() {
+        UserBean user;
         try {
             LocalDate birth = LocalDate.of(daySelection.getValue(), monthSelection.getValue(), yearSelection.getValue());
             char gender;
