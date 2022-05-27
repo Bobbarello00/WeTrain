@@ -2,4 +2,4 @@
 
 2] The system shall provide to join a course.
 
-3] The system shall provide online course lessons.
+3] The system shall provide online course lessons support.
