@@ -8,21 +8,21 @@
     -fx-background-color: rgb(124, 0, 221);
 }
 .button:pressed {
-    -fx-background-color: rgb(124, 77, 221);
+    -fx-background-color: rgb(124, 97, 221);
 }
 .check-box{
     -fx-cursor: hand;
 }
 .check-box .box {
-    -fx-background-color: rgb(124, 47, 221);
-    -fx-border-color:grey;
+    -fx-background-color: transparent;
+    -fx-border-color:rgb(124, 47, 221);
     -fx-border-radius:3px;
 }
 .check-box:selected .mark {
-    -fx-background-color: white;
+    -fx-background-color: rgb(124, 47, 221);
 }
 .check-box:selected .box {
-    -fx-background-color: rgb(124, 47, 221);
+    -fx-background-color: transparent;
 }
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color: rgba(255,255,255,0.5);
@@ -68,9 +68,12 @@
     -fx-color: rgb(255, 0, 255) ;
 }
 .text-field{
+    -fx-border-color: rgb(124, 47, 221);
+    -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-Prompt-text-fill: #707070;
 }
+
 .text-area {
     -fx-background-color: transparent;
     -fx-prompt-text-fill: rgba(255,255,255,0.8);
@@ -88,4 +91,35 @@
 }
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
+}
+
+.spinner {
+    -fx-background-color: transparent;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-radius: 50;
+    -fx-background-color: rgb(124, 47, 221);
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-radius: 50;
+    -fx-background-color: rgb(124, 0, 221);
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-radius: 50;
+    -fx-background-color: rgb(124, 97, 221);
+    -fx-cursor: hand;
+}
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color:white;
 }
