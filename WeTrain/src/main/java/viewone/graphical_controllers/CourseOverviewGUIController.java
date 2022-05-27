@@ -17,7 +17,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 import viewone.graphical_controllers.athletes.MenuAthletesGUIController;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;
 import viewone.graphical_controllers.trainers.NewCourseGUIController;

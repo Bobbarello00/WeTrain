@@ -22,7 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
 import viewone.bean.*;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 

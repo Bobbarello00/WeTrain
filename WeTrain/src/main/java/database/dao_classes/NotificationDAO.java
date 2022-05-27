@@ -8,7 +8,7 @@ import exception.UserNotFoundException;
 import model.Course;
 import model.notification.Notification;
 import model.User;
-import viewone.engeneering.NotificationFactorySingleton;
+import engeneering.NotificationFactorySingleton;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 
 import java.net.URL;
 import java.sql.SQLException;

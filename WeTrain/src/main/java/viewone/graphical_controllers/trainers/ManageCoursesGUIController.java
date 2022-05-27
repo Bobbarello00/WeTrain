@@ -15,8 +15,8 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.manage_list.ManageCourseList;
+import engeneering.AlertGenerator;
+import engeneering.manage_list.ManageCourseList;
 import viewone.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;

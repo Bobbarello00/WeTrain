@@ -8,7 +8,7 @@ import exception.UserNotFoundException;
 import exception.runtime_exception.IsNeitherATrainerNorAnAthleteException;
 import model.User;
 import viewone.bean.CredentialsBean;
-import viewone.engeneering.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 
 import java.sql.SQLException;
 

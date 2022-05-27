@@ -7,7 +7,7 @@ import exception.NoScheduledLessonException;
 import exception.UrlNotInsertedYetException;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 
 import java.awt.*;
 import java.io.IOException;

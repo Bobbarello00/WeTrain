@@ -12,7 +12,7 @@ import model.User;
 import model.notification.Notification;
 import model.notification.NotificationEnum;
 import viewone.bean.*;
-import viewone.engeneering.NotificationFactorySingleton;
+import engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;

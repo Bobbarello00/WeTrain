@@ -8,7 +8,7 @@ import javafx.scene.control.TextArea;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CommunicationBean;
 import viewone.bean.CourseBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;

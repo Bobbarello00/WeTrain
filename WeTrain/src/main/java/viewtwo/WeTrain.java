@@ -5,8 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import viewone.MainPane;
-import viewtwo.graphical_controllers.PageSwitchSimple;
+import viewtwo.graphical_controllers.MainPane;
 
 import java.io.IOException;
 

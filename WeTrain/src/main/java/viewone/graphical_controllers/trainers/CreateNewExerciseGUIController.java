@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;

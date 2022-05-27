@@ -13,8 +13,8 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.manage_list.ManageExerciseList;
+import engeneering.AlertGenerator;
+import engeneering.manage_list.ManageExerciseList;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.io.IOException;

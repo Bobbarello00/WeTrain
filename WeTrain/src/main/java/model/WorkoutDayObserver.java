@@ -1,7 +1,7 @@
 package model;
 
-import viewone.engeneering.ExerciseCatalogue;
-import viewone.engeneering.Observer;
+import engeneering.ExerciseCatalogue;
+import engeneering.Observer;
 
 public class WorkoutDayObserver extends WorkoutDay implements Observer {
     private final ExerciseCatalogue exerciseCatalogue;

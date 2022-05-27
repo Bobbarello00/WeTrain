@@ -10,7 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.PasswordBehaviorActivation;
 import viewone.bean.UserBean;
-import viewone.engeneering.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 
 import java.net.URL;
 import java.util.Objects;

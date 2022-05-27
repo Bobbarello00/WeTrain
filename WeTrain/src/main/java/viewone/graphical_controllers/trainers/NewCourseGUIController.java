@@ -18,8 +18,8 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.UserInfoCarrier;
+import engeneering.AlertGenerator;
+import engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
 

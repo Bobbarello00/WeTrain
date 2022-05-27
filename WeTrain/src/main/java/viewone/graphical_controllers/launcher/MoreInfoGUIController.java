@@ -12,7 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import viewone.bean.CredentialsBean;
 import viewone.bean.PersonalInfoBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;

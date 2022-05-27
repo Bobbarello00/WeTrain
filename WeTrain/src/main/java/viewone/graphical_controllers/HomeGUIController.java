@@ -15,10 +15,10 @@ import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.NotificationBean;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.LoggedUserSingleton;
-import viewone.engeneering.UserInfoCarrier;
-import viewone.engeneering.manage_list.ManageNotificationList;
+import engeneering.AlertGenerator;
+import engeneering.LoggedUserSingleton;
+import engeneering.UserInfoCarrier;
+import engeneering.manage_list.ManageNotificationList;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

@@ -15,7 +15,7 @@ import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 
 import java.io.IOException;
 import java.sql.SQLException;

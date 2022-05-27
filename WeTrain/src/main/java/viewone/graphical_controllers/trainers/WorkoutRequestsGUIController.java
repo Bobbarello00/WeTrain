@@ -15,8 +15,8 @@ import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.RequestBean;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.manage_list.ManageRequestList;
+import engeneering.AlertGenerator;
+import engeneering.manage_list.ManageRequestList;
 import viewone.graphical_controllers.EmailFormGUIController;
 
 import java.io.IOException;

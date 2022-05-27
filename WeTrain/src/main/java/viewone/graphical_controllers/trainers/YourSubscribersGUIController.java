@@ -16,8 +16,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.UserInfoCarrier;
+import engeneering.AlertGenerator;
+import engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.EmailFormGUIController;
 import viewone.list_cell_factories.PersonListCellFactory;
 

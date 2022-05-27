@@ -7,9 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
-import viewone.engeneering.AlertGenerator;
-import viewone.engeneering.manage_list.ManageCourseList;
-import viewone.engeneering.manage_list.ManageNotificationList;
+import engeneering.AlertGenerator;
+import engeneering.manage_list.ManageCourseList;
+import engeneering.manage_list.ManageNotificationList;
 import viewone.list_cell_factories.CourseListCellFactory;
 import viewone.list_cell_factories.NotificationListCellFactory;
 

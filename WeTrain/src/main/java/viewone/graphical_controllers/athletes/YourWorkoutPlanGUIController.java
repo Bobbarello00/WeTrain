@@ -17,7 +17,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;

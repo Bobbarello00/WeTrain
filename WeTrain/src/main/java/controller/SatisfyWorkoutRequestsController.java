@@ -11,7 +11,7 @@ import exception.ElementNotFoundException;
 import model.*;
 import org.jetbrains.annotations.NotNull;
 import viewone.bean.*;
-import viewone.engeneering.ExerciseCatalogue;
+import engeneering.ExerciseCatalogue;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

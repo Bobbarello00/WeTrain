@@ -24,8 +24,8 @@ module com.wetrain.wetrain {
     opens viewone.graphical_controllers.launcher to javafx.fxml;
     exports viewone.bean;
     opens viewone.bean to javafx.fxml;
-    exports viewone.engeneering;
-    opens viewone.engeneering to javafx.fxml;
+    exports engeneering;
+    opens engeneering to javafx.fxml;
     exports viewone;
     opens viewone to javafx.fxml;
 
@@ -42,8 +42,8 @@ module com.wetrain.wetrain {
     exports model;
     exports controller;
     exports model.notification;
-    exports viewone.engeneering.manage_list;
-    opens viewone.engeneering.manage_list to javafx.fxml;
+    exports engeneering.manage_list;
+    opens engeneering.manage_list to javafx.fxml;
     exports exception.invalid_data_exception;
     exports model.record;
     exports exception.runtime_exception;

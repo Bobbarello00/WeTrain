@@ -1,20 +1,22 @@
 package viewtwo.graphical_controllers.athletes;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import viewtwo.PageSwitchSimple;
+
+import java.io.IOException;
 
 public class AthletesHomeGUIController {
 
-    @FXML void coursesButtonAction(ActionEvent event) {
-
+    @FXML void coursesButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("CoursesPage", "athletes");
     }
 
-    @FXML void trainerButtonAction(ActionEvent event) {
-
+    @FXML void trainerButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("TrainerPage", "athletes");
     }
 
-    @FXML void workoutPlanButtonAction(ActionEvent event) {
-
+    @FXML void workoutPlanButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("TrainingPage", "athletes");
     }
 
 }

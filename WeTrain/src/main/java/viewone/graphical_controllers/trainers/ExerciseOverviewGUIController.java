@@ -17,7 +17,7 @@ import viewone.bean.DayBean;
 import viewone.bean.ExerciseBean;
 import viewone.bean.ExerciseForWorkoutPlanBean;
 import viewone.bean.WorkoutDayBean;
-import viewone.engeneering.AlertGenerator;
+import engeneering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;
