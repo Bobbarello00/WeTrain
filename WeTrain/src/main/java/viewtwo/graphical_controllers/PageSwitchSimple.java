@@ -3,7 +3,7 @@ package viewtwo.graphical_controllers;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import viewtwo.WeTrain1;
+import viewtwo.WeTrain;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,10 +19,10 @@ public class PageSwitchSimple {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = WeTrain1.class.getResource(fileName + EXTENSION);
+                fileUrl = WeTrain.class.getResource(fileName + EXTENSION);
             }
             else {
-                fileUrl = WeTrain1.class.getResource(pathString + "/" + fileName + EXTENSION);
+                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
             }
             if(fileUrl==null){
                 throw new FileNotFoundException("FXML non trovato");
