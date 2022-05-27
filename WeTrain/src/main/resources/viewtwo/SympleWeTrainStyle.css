@@ -1,20 +1,20 @@
 .button{
-    -fx-background-color: rgb(124, 147, 221);
+    -fx-background-color: rgb(124, 47, 221);
     -fx-background-radius: 10;
     -fx-text-fill: white;
     -fx-cursor: hand;
 }
 .button:hover {
-    -fx-background-color: rgb(124, 127, 221);
+    -fx-background-color: rgb(124, 0, 221);
 }
 .button:pressed {
-    -fx-background-color: rgb(124, 177, 221);
+    -fx-background-color: rgb(124, 77, 221);
 }
 .check-box{
     -fx-cursor: hand;
 }
 .check-box .box {
-    -fx-background-color: rgba(124, 147, 221,0.6);
+    -fx-background-color: rgb(124, 47, 221);
     -fx-border-color:grey;
     -fx-border-radius:3px;
 }
@@ -22,7 +22,7 @@
     -fx-background-color: white;
 }
 .check-box:selected .box {
-    -fx-background-color: rgb(124, 147, 221);
+    -fx-background-color: rgb(124, 47, 221);
 }
 .scroll-bar:horizontal, .scroll-bar:vertical{
     -fx-background-color: rgba(255,255,255,0.5);
@@ -37,12 +37,12 @@
     -fx-background-radius: 0em;
 }
 .scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
-    -fx-background-color: rgba(124,147,221,0.7);
+    -fx-background-color: rgba(124,47,221,0.7);
     -fx-background-radius: 5em;
     -fx-cursor: hand;
 }
 .scroll-bar:horizontal .thumb:pressed, .scroll-bar:vertical .thumb:pressed {
-    -fx-background-color: rgba(124, 177, 221, 0.7);
+    -fx-background-color: rgba(124, 77, 221, 0.7);
     -fx-background-radius: 5em;
     -fx-cursor: hand;
 }
@@ -65,7 +65,7 @@
     -fx-border-radius:20;
 }
 .radio-button .dot{
-    -fx-color: rgb(100,200,200) ;
+    -fx-color: rgb(100,0,200) ;
 }
 .text-field{
     -fx-background-radius: 10;
