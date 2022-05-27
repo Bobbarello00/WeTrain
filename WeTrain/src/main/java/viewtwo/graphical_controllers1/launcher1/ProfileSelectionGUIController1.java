@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ProfileSelectionGUIController1 implements Initializable {
-    private RadioButton notSelected=new RadioButton();
+    private final RadioButton notSelected = new RadioButton();
     @FXML
     private RadioButton trainerSelection;
     @FXML

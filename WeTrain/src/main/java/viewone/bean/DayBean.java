@@ -1,7 +1,7 @@
 package viewone.bean;
 
 public class DayBean {
-    private String day;
+    private final String day;
 
     public DayBean(String day) {
         this.day = day;

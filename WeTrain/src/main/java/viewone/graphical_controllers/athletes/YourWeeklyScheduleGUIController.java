@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
+import controller.RequestWorkoutPlanController;
 import controller.SubscribeToCourseController;
-import controller.WorkoutPlanController;
 import exception.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +44,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
     private WorkoutPlanBean workoutPlanBean;
 
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
-    private final WorkoutPlanController workoutPlanController = new WorkoutPlanController();
+    private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
 
     private void colorShift(Button button, Text text){
         if(previousButton!=null){
@@ -74,7 +74,7 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
         if(courseBeanList == null && workoutPlanBean == null) {
             try {
                 courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
-                workoutPlanBean = workoutPlanController.getWorkoutPlan();
+                workoutPlanBean = requestWorkoutPlanController.getWorkoutPlan();
             } catch (DBUnreachableException e) {
                 List<String> errorStrings = e.getErrorStrings();
                 AlertGenerator.newWarningAlert(

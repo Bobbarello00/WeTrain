@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.WorkoutPlanController;
+import controller.RequestWorkoutPlanController;
 import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes implements Initializable {
 
     private final DaysOfTheWeekButtonController daysController = new DaysOfTheWeekButtonController();
-    private final WorkoutPlanController workoutPlanController = new WorkoutPlanController();
+    private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
     private WorkoutPlanBean workoutPlanBean;
 
     @FXML public Button mondayButton;
@@ -78,7 +78,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
                 });
         setUserInfoTab();
         try {
-            workoutPlanBean = workoutPlanController.getWorkoutPlan();
+            workoutPlanBean = requestWorkoutPlanController.getWorkoutPlan();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

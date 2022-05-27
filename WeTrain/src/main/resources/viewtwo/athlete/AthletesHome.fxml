@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.athlete.AthletesHomeGUIController">
+   <children>
+      <HBox alignment="CENTER" layoutX="8.0" layoutY="115.0" prefHeight="169.0" prefWidth="583.0" spacing="100.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#coursesButtonAction" prefHeight="46.0" prefWidth="96.0" text="Courses" />
+            <Button mnemonicParsing="false" onAction="#trainerButtonAction" prefHeight="46.0" prefWidth="96.0" text="Trainer" />
+            <Button mnemonicParsing="false" onAction="#workoutPlanButtonAction" prefHeight="46.0" prefWidth="96.0" text="WorkoutPlan" />
+         </children>
+      </HBox>
+      <Text layoutX="152.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Athletes Home">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

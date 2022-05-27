@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.ManageCoursesGUIController">
+<Pane prefHeight="785.0" prefWidth="1219.0" stylesheets="@../../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.trainers.ManageCoursesGUIController">
    <HBox alignment="CENTER_RIGHT" layoutX="854.0" layoutY="14.0" prefHeight="89.0" prefWidth="315.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.60);">
       <VBox alignment="CENTER" prefHeight="154.0" prefWidth="137.0" style="-fx-background-radius: 50;">
          <ImageView fx:id="userImage" fitHeight="99.0" fitWidth="207.0" pickOnBounds="true" preserveRatio="true">
