@@ -17,8 +17,8 @@ public class WeTrain extends Application {
         URL url = new File("src/main/resources/viewtwo/MainPane.fxml").toURI().toURL();
         FXMLLoader mainPane = new FXMLLoader(url);
         Scene scene = new Scene(mainPane.load());
-        //url = new File("src/main/resources/viewone/WeTrainStyle.css").toURI().toURL();
-        //scene.getStylesheets().add(url.toExternalForm());
+        url = new File("src/main/resources/viewtwo/SimpleWeTrainStyle.css").toURI().toURL();
+        scene.getStylesheets().add(url.toExternalForm());
         stage.setTitle("WeTrain - BasicLauncher");
         stage.getIcons().add(new Image("file:src/main/resources/viewone/images/WeTrainLogo.png"));
         stage.setScene(scene);

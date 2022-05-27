@@ -65,7 +65,7 @@
     -fx-border-radius:20;
 }
 .radio-button .dot{
-    -fx-color: rgb(100,0,200) ;
+    -fx-color: rgb(255, 0, 255) ;
 }
 .text-field{
     -fx-background-radius: 10;

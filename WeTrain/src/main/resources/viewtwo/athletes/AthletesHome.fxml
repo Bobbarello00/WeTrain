@@ -6,13 +6,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../viewone/WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.athlete.AthletesHomeGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../viewone/WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.AthletesHomeGUIController">
    <children>
       <HBox alignment="CENTER" layoutX="8.0" layoutY="90.0" prefHeight="131.0" prefWidth="583.0" spacing="100.0">
          <children>
             <Button mnemonicParsing="false" onAction="#coursesButtonAction" prefHeight="46.0" prefWidth="96.0" text="Courses 🏃" />
             <Button mnemonicParsing="false" onAction="#trainerButtonAction" prefHeight="46.0" prefWidth="96.0" text="Trainer 👤" />
-            <Button mnemonicParsing="false" onAction="#workoutPlanButtonAction" prefHeight="46.0" prefWidth="105.0" text="WorkoutPlan 📓" />
+            <Button mnemonicParsing="false" onAction="#trainingButtonAction" prefHeight="46.0" prefWidth="105.0" text="Training 📓" />
          </children>
       </HBox>
       <Text layoutX="152.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Athletes Home">

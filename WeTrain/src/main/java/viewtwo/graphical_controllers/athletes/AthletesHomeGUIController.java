@@ -11,13 +11,28 @@ public class AthletesHomeGUIController {
         PageSwitchSimple.switchPage("CoursesPage", "athletes");
     }
 
+    @FXML void logoutButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("Login", "launcher");
+    }
+
+    @FXML void notificationsButtonAction() {
+        //TODO
+    }
+
+    @FXML void paymentMethodButtonAction() {
+
+    }
+
+    @FXML void personalInfoButtonAction() {
+
+    }
+
     @FXML void trainerButtonAction() throws IOException {
         PageSwitchSimple.switchPage("TrainerPage", "athletes");
     }
 
-    @FXML void workoutPlanButtonAction() throws IOException {
+    @FXML void trainingButtonAction() throws IOException {
         PageSwitchSimple.switchPage("TrainingPage", "athletes");
     }
 
 }
-

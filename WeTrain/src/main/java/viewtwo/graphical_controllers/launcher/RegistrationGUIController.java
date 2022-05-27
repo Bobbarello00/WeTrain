@@ -109,13 +109,13 @@ public class RegistrationGUIController implements Initializable {
         setIntegerValueFactory(monthSelection, 1, 12);
         setIntegerValueFactory(yearSelection, 2000, LocalDate.now().getYear());
         maleCheck.fire();
-        maleCheck.selectedProperty().addListener(new ChangeListener<Boolean>() {
+        maleCheck.selectedProperty().addListener(new ChangeListener<>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
                 femaleCheck.fire();
             }
         });
-        femaleCheck.selectedProperty().addListener(new ChangeListener<Boolean>() {
+        femaleCheck.selectedProperty().addListener(new ChangeListener<>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
                 maleCheck.fire();
