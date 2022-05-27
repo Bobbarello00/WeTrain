@@ -1,4 +1,4 @@
-package viewtwo.graphical_controllers1;
+package viewtwo.graphical_controllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;
@@ -9,13 +9,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 
-public class PageSwitchSimple1 {
+public class PageSwitchSimple {
     private static Pane view;
     private static final String EXTENSION = ".fxml";
 
-    private PageSwitchSimple1(){}
+    private PageSwitchSimple(){}
 
-    public static void switchPage(BorderPane mainPane1, String fileName, String pathString) throws IOException {
+    public static void switchPage(BorderPane mainPane, String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
@@ -31,6 +31,6 @@ public class PageSwitchSimple1 {
         } catch (FileNotFoundException e) {
             System.out.println("Non trovo il File "+ pathString + "/" + fileName + EXTENSION + ", controllare il PageSwitchSimple1!");
         }
-        mainPane1.setCenter(view);
+        mainPane.setCenter(view);
     }
 }

@@ -1,11 +1,11 @@
-package viewtwo.graphical_controllers1.launcher1;
+package viewtwo.graphical_controllers.launcher;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import viewone.MainPane;
-import viewtwo.graphical_controllers1.PageSwitchSimple1;
+import viewtwo.graphical_controllers.PageSwitchSimple;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,11 +19,11 @@ public class ProfileSelectionGUIController1 implements Initializable {
     private RadioButton athleteSelection;
     @FXML
     protected void backAction() throws IOException {
-        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
     }
     @FXML
     protected void nextAction() throws IOException {
-        PageSwitchSimple1.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
+        PageSwitchSimple.switchPage(MainPane.getInstance(),"WeTrainGUI1","launcher1");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

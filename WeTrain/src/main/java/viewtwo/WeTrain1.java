@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import viewone.MainPane;
-import viewtwo.graphical_controllers1.PageSwitchSimple1;
+import viewtwo.graphical_controllers.PageSwitchSimple;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class WeTrain1 extends Application {
         stage.getIcons().add(new Image("file:src/main/resources/viewone/images/WeTrainLogo.png"));
         stage.setScene(scene);
         stage.setResizable(false);
-        PageSwitchSimple1.switchPage(MainPane.getInstance(), "WeTrainGUI1", "launcher1");
+        PageSwitchSimple.switchPage(MainPane.getInstance(), "WeTrainGUI1", "launcher1");
         stage.show();
     }
 
