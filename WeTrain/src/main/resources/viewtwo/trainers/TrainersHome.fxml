@@ -10,9 +10,9 @@
    <children>
       <HBox alignment="CENTER" layoutX="8.0" layoutY="96.0" prefHeight="132.0" prefWidth="583.0" spacing="100.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#coursesButtonAction" prefHeight="46.0" prefWidth="96.0" text="Courses 🏃" />
+            <Button mnemonicParsing="false" onAction="#coursesButtonAction" prefHeight="46.0" prefWidth="127.0" text="Manage Courses 🏃" />
             <Button mnemonicParsing="false" onAction="#subscribersButtonAction" prefHeight="46.0" prefWidth="124.0" text="Your Subscribers 👤" />
-            <Button mnemonicParsing="false" onAction="#requestsButtonAction" prefHeight="46.0" prefWidth="96.0" text="Requests 📫" />
+            <Button mnemonicParsing="false" onAction="#requestsButtonAction" prefHeight="46.0" prefWidth="133.0" text="Workout Requests 📫" />
          </children>
       </HBox>
       <Text layoutX="152.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainers Home">
