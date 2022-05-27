@@ -13,7 +13,7 @@ import java.io.IOException;
 public class WeTrain1 extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader mainPane = new FXMLLoader(WeTrain1.class.getResource("MainPane1.fxml"));
+        FXMLLoader mainPane = new FXMLLoader(WeTrain1.class.getResource("MainPane.fxml"));
         Scene scene = new Scene(mainPane.load());
         stage.setTitle("WeTrain - BasicLauncher");
         stage.getIcons().add(new Image("file:src/main/resources/viewone/images/WeTrainLogo.png"));
