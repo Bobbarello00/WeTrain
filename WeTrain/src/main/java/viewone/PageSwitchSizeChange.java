@@ -10,10 +10,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class PageSwitchSizeChange {
 
@@ -29,14 +28,14 @@ public class PageSwitchSizeChange {
 
     public static void loadHome(Button button, String page, String path) throws IOException {
         Stage newStage;
-        Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));
+        Parent root = FXMLLoader.load(new File("src/main/resources/viewone/MainPane.fxml").toURI().toURL());
         BorderPane pane = (BorderPane) root;
 
         newStage = new Stage();
         ((Stage) button.getScene().getWindow()).close();
 
         Scene newScene = new Scene(root);
-        newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
+        newScene.getStylesheets().add(new File("src/main/resources/viewone/WeTrainStyle.css").toURI().toURL().toExternalForm());
         pageLauncher(newStage, newScene);
         PageSwitchSimple.switchPageAndMenu(pane, page, path);
 
@@ -50,7 +49,7 @@ public class PageSwitchSizeChange {
     public static Object pageSwitch(Stage stage, String page, String path, boolean closeOldStage) throws IOException {
         Stage newStage;
         BorderPane actualPane = MainPane.getInstance();
-        Parent root = FXMLLoader.load(Objects.requireNonNull(WeTrain.class.getResource("MainPane.fxml")));
+        Parent root = FXMLLoader.load(new File("src/main/resources/viewone/MainPane.fxml").toURI().toURL());
         BorderPane pane = (BorderPane) root;
 
         if(!closeOldStage) {
@@ -63,7 +62,7 @@ public class PageSwitchSizeChange {
             stage.close();
         }
         Scene newScene = new Scene(root);
-        newScene.getStylesheets().add(Objects.requireNonNull(WeTrain.class.getResource("WeTrainStyle.css")).toExternalForm());
+        newScene.getStylesheets().add(new File("src/main/resources/viewone/WeTrainStyle.css").toURI().toURL().toExternalForm());
         pageLauncher(newStage, newScene);
         Object controller = PageSwitchSimple.switchPage(pane, page, path);
         if(controller != null) {

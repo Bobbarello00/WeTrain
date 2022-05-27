@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -21,13 +22,10 @@ public class PageSwitchSimple {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = WeTrain.class.getResource(fileName + EXTENSION);
+                fileUrl = new File("src/main/resources/viewone/" + fileName + EXTENSION).toURI().toURL();
             }
             else {
-                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
-            }
-            if(fileUrl==null){
-                throw new FileNotFoundException("Non ho trovato il file FXML");
+                fileUrl = new File("src/main/resources/viewone/"  + pathString + "/" + fileName + EXTENSION).toURI().toURL();
             }
             FXMLLoader root = new FXMLLoader(fileUrl);
             return setViewAndGetController(mainPane, root);
@@ -55,11 +53,8 @@ public class PageSwitchSimple {
     public static void switchPageAndMenu(BorderPane mainPane, String fileName, String pathString) throws IOException {
         URL fileUrl;
         URL menuUrl;
-        fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
-        menuUrl = WeTrain.class.getResource(pathString + "/Menu" + pathString + EXTENSION);
-        if(fileUrl==null || menuUrl==null){
-            throw new FileNotFoundException("Non ho trovato il file FXML");
-        }
+        fileUrl = new File("src/main/resources/viewone/"  + pathString + "/" + fileName + EXTENSION).toURI().toURL();
+        menuUrl = new File("src/main/resources/viewone/" + pathString + "/Menu" + pathString + EXTENSION).toURI().toURL();
         Pane view = FXMLLoader.load(fileUrl);
         Pane menu = FXMLLoader.load(menuUrl);
         mainPane.setCenter(view);

@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import viewtwo.graphical_controllers.MainPane;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -17,15 +18,12 @@ public class PageSwitchSimple {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = WeTrain.class.getResource(fileName + EXTENSION);
+                fileUrl = new File("src/main/resources/viewtwo/" + fileName + EXTENSION).toURI().toURL();
             }
             else {
-                fileUrl = WeTrain.class.getResource(pathString + "/" + fileName + EXTENSION);
+                fileUrl = new File("src/main/resources/viewtwo/"  + pathString + "/" + fileName + EXTENSION).toURI().toURL();
             }
-            if(fileUrl==null){
-                throw new FileNotFoundException("FXML non trovato");
-            }
-            FXMLLoader root = new FXMLLoader();
+            FXMLLoader root = new FXMLLoader(fileUrl);
             Pane view = root.load();
             MainPane.getInstance().setCenter(view);
             return root.getController();
@@ -35,4 +33,7 @@ public class PageSwitchSimple {
         return null;
     }
 
+    public static void logOff() throws IOException {
+        switchPage("Login", "launcher");
+    }
 }

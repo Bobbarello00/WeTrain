@@ -5,20 +5,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import viewtwo.graphical_controllers.MainPane;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class WeTrain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader mainPane = new FXMLLoader(WeTrain.class.getResource("MainPane.fxml"));
+        System.setProperty("javafx.sg.warn", "true");
+        URL url = new File("src/main/resources/viewtwo/MainPane.fxml").toURI().toURL();
+        FXMLLoader mainPane = new FXMLLoader(url);
         Scene scene = new Scene(mainPane.load());
+        //url = new File("src/main/resources/viewone/WeTrainStyle.css").toURI().toURL();
+        //scene.getStylesheets().add(url.toExternalForm());
         stage.setTitle("WeTrain - BasicLauncher");
         stage.getIcons().add(new Image("file:src/main/resources/viewone/images/WeTrainLogo.png"));
         stage.setScene(scene);
         stage.setResizable(false);
-        PageSwitchSimple.switchPage(MainPane.getInstance(), "WeTrainGUI", "launcher");
+        PageSwitchSimple.switchPage("WeTrainGUI", "launcher");
         stage.show();
     }
 

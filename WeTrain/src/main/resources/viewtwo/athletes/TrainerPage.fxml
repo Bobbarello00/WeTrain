@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.athlete.TrainerPage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../viewone/WeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.athlete.TrainerPage">
    <children>
       <HBox alignment="CENTER" layoutX="9.0" layoutY="115.0" prefHeight="169.0" prefWidth="583.0" spacing="100.0">
          <children>

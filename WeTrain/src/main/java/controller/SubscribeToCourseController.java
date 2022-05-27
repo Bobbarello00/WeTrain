@@ -4,6 +4,7 @@ import boundary.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
 import exception.DBUnreachableException;
 import exception.PaymentFailedException;
+import exception.runtime_exception.FatalErrorException;
 import model.Athlete;
 import model.Course;
 import model.User;

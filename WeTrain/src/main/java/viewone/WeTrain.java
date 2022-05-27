@@ -5,16 +5,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
+import java.net.URL;
 
 public class WeTrain extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         System.setProperty("javafx.sg.warn", "true");
-        FXMLLoader mainPane = new FXMLLoader(WeTrain.class.getResource("MainPane.fxml"));
+        URL url = new File("src/main/resources/viewone/MainPane.fxml").toURI().toURL();
+        FXMLLoader mainPane = new FXMLLoader(url);
         Scene scene = new Scene(mainPane.load());
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("WeTrainStyle.css")).toExternalForm());
+        url = new File("src/main/resources/viewone/WeTrainStyle.css").toURI().toURL();
+        scene.getStylesheets().add(url.toExternalForm());
         PageSwitchSizeChange.pageLauncher(stage, scene);
         PageSwitchSimple.switchPage(MainPane.getInstance(), "WeTrainGUI", "launcher");
         stage.show();

@@ -14,7 +14,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
-import viewone.PageSwitchSizeChange;
 import viewone.bean.CredentialsBean;
 import viewone.bean.PersonalInfoBean;
 import viewone.bean.UserBean;
@@ -25,7 +24,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -47,13 +45,16 @@ public class RegistrationGUIController implements Initializable {
     private final RegistrationController registrationController = new RegistrationController();
 
     @FXML void backAction() throws IOException {
-        PageSwitchSimple.switchPage("WeTrainGUI", "launcher");
+        PageSwitchSimple.switchPage("ProfileSelection", "launcher");
     }
 
-    @FXML void registerAction() {
+    @FXML void registerAction() throws IOException {
         UserBean user;
         try {
-            LocalDate birth = LocalDate.of(daySelection.getValue(), monthSelection.getValue(), yearSelection.getValue());
+            LocalDate birth = LocalDate.of(
+                    daySelection.getValue(),
+                    monthSelection.getValue(),
+                    yearSelection.getValue());
             char gender;
             if(maleCheck.isSelected()) {
                 gender = 'm';
@@ -72,6 +73,7 @@ public class RegistrationGUIController implements Initializable {
                     CredentialsBean.ctorWithSyntaxCheck(emailTextField.getText(), passwordTextField.getText())
             );
             registrationController.processUserInfo(user);
+            PageSwitchSimple.switchPage(selectedProfile + "Home", selectedProfile + "s");
         } catch (DateTimeException e) {
             List<String> errorStrings = new InvalidBirthException().getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -84,7 +86,7 @@ public class RegistrationGUIController implements Initializable {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
+            PageSwitchSimple.logOff();
         } catch (InvalidDataException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -105,7 +107,7 @@ public class RegistrationGUIController implements Initializable {
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         setIntegerValueFactory(daySelection, 1, 31);
         setIntegerValueFactory(monthSelection, 1, 12);
-        setIntegerValueFactory(yearSelection, 2000, LocalTime.now().getHour());
+        setIntegerValueFactory(yearSelection, 2000, LocalDate.now().getYear());
         maleCheck.fire();
         maleCheck.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
