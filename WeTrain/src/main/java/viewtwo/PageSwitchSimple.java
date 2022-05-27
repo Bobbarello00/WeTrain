@@ -13,7 +13,7 @@ public class PageSwitchSimple {
     private static final String EXTENSION = ".fxml";
 
     private PageSwitchSimple(){}
-
+    
     public static void switchPage(String fileName, String pathString) throws IOException {
         try{
             URL fileUrl;

@@ -19,11 +19,11 @@ public class ProfileSelectionGUIController implements Initializable {
         PageSwitchSimple.switchPage("WeTrainGUI","launcher");
     }
     @FXML protected void nextAction() throws IOException {
-        PageSwitchSimple.switchPage("WeTrainGUI","launcher");
+        PageSwitchSimple.switchPage("Registration","launcher");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ToggleGroup toggleGroup=new ToggleGroup();
+        ToggleGroup toggleGroup = new ToggleGroup();
         notSelected.setToggleGroup(toggleGroup);
         trainerSelection.setToggleGroup(toggleGroup);
         athleteSelection.setToggleGroup(toggleGroup);
