@@ -4,6 +4,7 @@ import controller.RegistrationController;
 import engeneering.AlertGenerator;
 import exception.DBUnreachableException;
 import exception.UserNotFoundException;
+import exception.invalid_data_exception.EmptyFieldsException;
 import exception.invalid_data_exception.InvalidBirthException;
 import exception.invalid_data_exception.InvalidDataException;
 import javafx.beans.value.ChangeListener;
@@ -22,6 +23,7 @@ import viewtwo.PageSwitchSimple;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
@@ -52,14 +54,16 @@ public class RegistrationGUIController implements Initializable {
         UserBean user;
         try {
             LocalDate birth = LocalDate.of(
-                    daySelection.getValue(),
+                    yearSelection.getValue(),
                     monthSelection.getValue(),
-                    yearSelection.getValue());
+                    daySelection.getValue());
             char gender;
             if(maleCheck.isSelected()) {
                 gender = 'm';
-            } else {
+            } else if(femaleCheck.isSelected()){
                 gender = 'f';
+            } else {
+                throw new EmptyFieldsException();
             }
             user = new UserBean(
                     usernameTextField.getText(),
@@ -73,7 +77,12 @@ public class RegistrationGUIController implements Initializable {
                     CredentialsBean.ctorWithSyntaxCheck(emailTextField.getText(), passwordTextField.getText())
             );
             registrationController.processUserInfo(user);
-            PageSwitchSimple.switchPage(selectedProfile + "Home", selectedProfile + "s");
+            PageSwitchSimple.switchPage(selectedProfile + "sHome", selectedProfile + "s");
+        } catch (SQLIntegrityConstraintViolationException e) {
+            AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "Error in user registration",
+                    "Fiscal code, username or email already existing in our database. \n" +
+                            "If you already have an account, log in.");
         } catch (DateTimeException e) {
             List<String> errorStrings = new InvalidBirthException().getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -111,14 +120,18 @@ public class RegistrationGUIController implements Initializable {
         maleCheck.fire();
         maleCheck.selectedProperty().addListener(new ChangeListener<>() {
             @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                femaleCheck.fire();
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldBool, Boolean newBool) {
+                if(newBool) {
+                    femaleCheck.setSelected(false);
+                }
             }
         });
         femaleCheck.selectedProperty().addListener(new ChangeListener<>() {
             @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
-                maleCheck.fire();
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldBool, Boolean newBool) {
+                if(newBool) {
+                    maleCheck.setSelected(false);
+                }
             }
         });
     }

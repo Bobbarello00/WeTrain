@@ -80,7 +80,7 @@ public class Queries {
 
         PreparedStatement preparedStatement1 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "INSERT INTO mydb.Athlete (User) VALUES (?)");
-        preparedStatement.setString(1, athlete.getFiscalCode());
+        preparedStatement1.setString(1, athlete.getFiscalCode());
         return Arrays.asList(preparedStatement, preparedStatement1);
     }
 

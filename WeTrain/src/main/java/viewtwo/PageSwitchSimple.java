@@ -28,7 +28,7 @@ public class PageSwitchSimple {
             MainPane.getInstance().setCenter(view);
             return root.getController();
         } catch (FileNotFoundException e) {
-            System.out.println("Non trovo il File "+ pathString + "/" + fileName + EXTENSION + ", controllare il PageSwitchSimple1!");
+            System.out.println("Non trovo il File src/main/resources/viewtwo/" + pathString + "/" + fileName + EXTENSION + ", controllare il PageSwitchSimple1!");
         }
         return null;
     }
