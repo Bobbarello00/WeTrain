@@ -20,7 +20,7 @@ public class WeTrain extends Application {
         url = new File("src/main/resources/viewtwo/SimpleWeTrainStyle.css").toURI().toURL();
         scene.getStylesheets().add(url.toExternalForm());
         stage.setTitle("WeTrain - BasicLauncher");
-        stage.getIcons().add(new Image("file:src/main/resources/viewone/images/WeTrainLogo.png"));
+        stage.getIcons().add(new Image("file:src/main/resources/viewtwo/WeTrainLogo2.png"));
         stage.setScene(scene);
         stage.setResizable(false);
         PageSwitchSimple.switchPage("WeTrainGUI", "launcher");
