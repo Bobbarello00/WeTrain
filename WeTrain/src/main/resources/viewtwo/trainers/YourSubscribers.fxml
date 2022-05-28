@@ -32,5 +32,10 @@
             <Text layoutX="39.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subscriber master data" />
          </children>
       </Pane>
+      <Text fill="#792fe0" layoutX="414.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="👤">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

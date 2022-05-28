@@ -34,9 +34,9 @@
          </children>
       </VBox>
       <Button layoutX="450.0" layoutY="363.0" mnemonicParsing="false" onAction="#createNewCourseButtonAction" text="Create new Course +" />
-      <Text fill="#782fe0" layoutX="422.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃">
+      <Text fill="#792fe0" layoutX="422.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃">
          <font>
-            <Font size="23.0" />
+            <Font size="30.0" />
          </font>
       </Text>
    </children>

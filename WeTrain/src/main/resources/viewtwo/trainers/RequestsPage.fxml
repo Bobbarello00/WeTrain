@@ -32,5 +32,10 @@
             <Button mnemonicParsing="false" onAction="#rejectRequestAction" style="-fx-background-color: red;" text="Reject Request" />
          </children>
       </VBox>
+      <Text fill="#792fe0" layoutX="439.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📫">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
