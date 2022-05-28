@@ -1,19 +1,21 @@
 package viewtwo.graphical_controllers.athletes;
 
 import controller.RequestWorkoutPlanController;
+import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import exception.DBUnreachableException;
-import exception.invalid_data_exception.EmptyFieldsException;
-import exception.invalid_data_exception.TextOutOfBoundException;
-import javafx.event.ActionEvent;
+import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.RequestBean;
+import viewone.bean.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class RequestFormGUIController {
 
@@ -21,25 +23,34 @@ public class RequestFormGUIController {
 
     private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
 
-    @FXML void backButtonAction(ActionEvent event) throws IOException {
+    @FXML void backButtonAction() throws IOException {
         PageSwitchSimple.switchPage("TrainingPage", "athletes");
     }
 
-    @FXML void sendButtonAction(ActionEvent event) {
+    @FXML void sendButtonAction() {
         try {
+            List<UserBean> userBeanList = LoggedUserSingleton.getAthleteAndTrainer();
             RequestBean requestBean = new RequestBean(
                     contentTextArea.getText(),
-                    (AthleteBean) LoggedUserSingleton.getInstance(),
-                    trainer.getFiscalCode());
+                    (AthleteBean) userBeanList.get(0),
+                    userBeanList.get(1).getFiscalCode());
             requestWorkoutPlanController.sendRequest(requestBean);
+            PageSwitchSimple.switchPage("AthletesHome", "athletes");
+        }  catch (SQLException | IOException e){
+            e.printStackTrace();
         } catch (DBUnreachableException e) {
-            throw new RuntimeException(e);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (TextOutOfBoundException e) {
-            throw new RuntimeException(e);
-        } catch (EmptyFieldsException e) {
-            throw new RuntimeException(e);
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
+        } catch (InvalidDataException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         }
     }
 }

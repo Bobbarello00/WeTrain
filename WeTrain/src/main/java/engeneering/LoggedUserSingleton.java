@@ -9,6 +9,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -38,6 +39,43 @@ public class LoggedUserSingleton {
                     userBean.getGender());
         }
         return userInfoCarrier;
+    }
+
+    public static List<UserBean> getAthleteAndTrainer() throws DBUnreachableException, SQLException {
+        Athlete usr = (Athlete) loginController.getLoggedUser();
+        Trainer trainer = usr.getTrainer();
+        AthleteBean athleteBean = new AthleteBean(
+                usr.getUsername(),
+                new PersonalInfoBean(
+                        usr.getName(),
+                        usr.getSurname(),
+                        usr.getDateOfBirth(),
+                        usr.getFiscalCode(),
+                        usr.getGender()
+                ),
+                CredentialsBean.ctorWithoutSyntaxCheck(
+                        usr.getEmail(),
+                        usr.getPassword()
+                ),
+                new CardInfoBean(
+                        usr.getCardNumber(),
+                        usr.getCardExpirationDate()
+                ));
+        TrainerBean trainerBean = new TrainerBean(
+                trainer.getUsername(),
+                new PersonalInfoBean(
+                        trainer.getName(),
+                        trainer.getSurname(),
+                        trainer.getDateOfBirth(),
+                        trainer.getFiscalCode(),
+                        trainer.getGender()
+                ),
+                CredentialsBean.ctorWithoutSyntaxCheck(
+                        trainer.getEmail(),
+                        trainer.getPassword()
+                ),
+                trainer.getIban());
+        return Arrays.asList(athleteBean, trainerBean);
     }
 
     public static UserBean getInstance() {
