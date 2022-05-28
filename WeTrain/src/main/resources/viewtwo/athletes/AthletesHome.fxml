@@ -6,13 +6,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.AthletesHomeGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.AthletesHomeGUIController">
    <children>
-      <HBox alignment="CENTER" layoutX="8.0" layoutY="90.0" prefHeight="131.0" prefWidth="583.0" spacing="100.0">
+      <HBox alignment="CENTER" layoutX="-2.0" layoutY="90.0" prefHeight="131.0" prefWidth="602.0" spacing="70.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#coursesButtonAction" prefHeight="46.0" prefWidth="96.0" text="Courses 🏃" />
-            <Button mnemonicParsing="false" onAction="#trainerButtonAction" prefHeight="46.0" prefWidth="96.0" text="Trainer 👤" />
-            <Button mnemonicParsing="false" onAction="#trainingButtonAction" prefHeight="46.0" prefWidth="105.0" text="Training 📓" />
+            <Button mnemonicParsing="false" onAction="#coursesButtonAction" prefHeight="46.0" prefWidth="134.0" text="Courses 🏃" />
+            <Button mnemonicParsing="false" onAction="#trainerButtonAction" prefHeight="46.0" prefWidth="134.0" text="Trainer 👤" />
+            <Button mnemonicParsing="false" onAction="#trainingButtonAction" prefHeight="46.0" prefWidth="134.0" text="Training 📓" />
          </children>
       </HBox>
       <Text layoutX="152.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Athletes Home">
@@ -20,13 +20,13 @@
             <Font size="45.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" layoutX="18.0" layoutY="233.0" prefHeight="86.0" prefWidth="583.0" spacing="100.0">
+      <HBox alignment="CENTER" layoutY="233.0" prefHeight="86.0" prefWidth="601.0" spacing="70.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#personalInfoButtonAction" prefHeight="46.0" prefWidth="103.0" text="Personal info 🛈" />
+            <Button mnemonicParsing="false" onAction="#personalInfoButtonAction" prefHeight="46.0" prefWidth="134.0" text="Personal info 🛈" />
             <Button mnemonicParsing="false" onAction="#paymentMethodButtonAction" prefHeight="46.0" prefWidth="134.0" text="Payment Method 💸" />
-            <Button mnemonicParsing="false" onAction="#notificationsButtonAction" prefHeight="46.0" prefWidth="103.0" text="Notifications 🔔" />
+            <Button mnemonicParsing="false" onAction="#notificationsButtonAction" prefHeight="46.0" prefWidth="134.0" text="Notifications 🔔" />
          </children>
       </HBox>
-      <Button layoutX="285.0" layoutY="370.0" mnemonicParsing="false" onAction="#logoutButtonAction" style="-fx-background-color: red;" text="LOGOUT" />
+      <Button layoutX="269.0" layoutY="348.0" mnemonicParsing="false" onAction="#logoutButtonAction" style="-fx-background-color: red;" text="LOGOUT" />
    </children>
 </AnchorPane>
