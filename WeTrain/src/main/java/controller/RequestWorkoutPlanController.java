@@ -17,6 +17,8 @@ import java.util.List;
 
 public class RequestWorkoutPlanController {
 
+    private final LoginController loginController = new LoginController();
+
     public void sendRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         new RequestDAO().saveRequest(
                 requestBean.getRequestDate(),
@@ -25,8 +27,6 @@ public class RequestWorkoutPlanController {
                 requestBean.getTrainerFc()
         );
     }
-
-    private final LoginController loginController = new LoginController();
 
     public WorkoutPlanBean getWorkoutPlan() throws SQLException, DBUnreachableException {
         WorkoutPlan workoutPlan = ((Athlete) loginController.getLoggedUser()).getWorkoutPlan();
