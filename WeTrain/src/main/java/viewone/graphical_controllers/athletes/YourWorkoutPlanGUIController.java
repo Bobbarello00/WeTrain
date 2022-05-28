@@ -18,7 +18,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
-import viewone.list_cell_factories.ExerciseListCellFactory;
+import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;

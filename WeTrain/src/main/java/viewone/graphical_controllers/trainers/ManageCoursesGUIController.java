@@ -17,7 +17,7 @@ import viewone.bean.CourseBean;
 import viewone.bean.LessonBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
-import viewone.list_cell_factories.CourseListCellFactory;
+import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;

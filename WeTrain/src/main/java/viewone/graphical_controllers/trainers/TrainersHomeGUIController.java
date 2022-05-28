@@ -17,8 +17,8 @@ import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import engeneering.manage_list.ManageNotificationList;
 import engeneering.manage_list.ManageRequestList;
-import viewone.list_cell_factories.CourseListCellFactory;
-import viewone.list_cell_factories.NotificationListCellFactory;
+import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
+import engeneering.manage_list.list_cell_factories.NotificationListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;

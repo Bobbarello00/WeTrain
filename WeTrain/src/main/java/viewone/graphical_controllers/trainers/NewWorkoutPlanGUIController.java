@@ -15,7 +15,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.*;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageExerciseList;
-import viewone.list_cell_factories.ExerciseListCellFactory;
+import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;

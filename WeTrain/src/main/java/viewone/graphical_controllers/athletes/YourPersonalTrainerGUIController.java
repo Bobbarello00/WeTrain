@@ -24,7 +24,7 @@ import viewone.WeTrain;
 import viewone.bean.*;
 import engeneering.AlertGenerator;
 import viewone.graphical_controllers.EmailFormGUIController;
-import viewone.list_cell_factories.PersonListCellFactory;
+import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
