@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.trainers.ChooseCourse">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.trainers.ChooseCourse">
    <children>
       <Text layoutX="66.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Courses">
          <font>
@@ -17,7 +17,7 @@
          </font>
       </Text>
       <Button layoutX="14.0" layoutY="363.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
-      <HBox alignment="CENTER" layoutX="23.0" layoutY="90.0" prefHeight="247.0" prefWidth="408.0" style="-fx-background-color: rgba(21,147,24,0.6); -fx-background-radius: 50;">
+      <HBox alignment="CENTER" layoutX="23.0" layoutY="90.0" prefHeight="247.0" prefWidth="408.0" style="-fx-background-color: rgba(121,47,224,0.6); -fx-background-radius: 50;">
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
@@ -28,11 +28,16 @@
       <VBox fx:id="courseActions" alignment="CENTER" disable="true" layoutX="442.0" layoutY="90.0" prefHeight="247.0" prefWidth="144.0" spacing="30.0">
          <children>
             <Button mnemonicParsing="false" onAction="#sendCommunicationButtonAction" text="Send Communication" />
-            <Button mnemonicParsing="false" onAction="#startLessonButtonAction" style="-fx-background-color: blue;" text="Start Lesson" />
+            <Button mnemonicParsing="false" onAction="#startLessonButtonAction" style="-fx-background-color: green;" text="Start Lesson" />
             <Button mnemonicParsing="false" onAction="#modifyCourseButtonAction" style="-fx-background-color: orange;" text="Modify " />
             <Button mnemonicParsing="false" onAction="#deleteCourseButtonAction" style="-fx-background-color: red;" text="Delete" />
          </children>
       </VBox>
       <Button layoutX="450.0" layoutY="363.0" mnemonicParsing="false" onAction="#createNewCourseButtonAction" text="Create new Course +" />
+      <Text fill="#782fe0" layoutX="422.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="$CONTROLLER_NAME$">
    <children>
       <Text layoutX="202.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Info ">
          <font>
@@ -24,7 +24,7 @@
             <Text layoutX="39.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subscriber master data" />
          </children>
       </Pane>
-      <VBox fx:id="infoTrainerBox" alignment="CENTER" layoutX="84.0" layoutY="88.0" prefHeight="262.0" prefWidth="431.0" spacing="25.0" style="-fx-background-color: rgba(21,147,24,0.15); -fx-background-radius: 50;">
+      <VBox fx:id="infoTrainerBox" alignment="CENTER" layoutX="84.0" layoutY="88.0" prefHeight="262.0" prefWidth="431.0" spacing="25.0" style="-fx-background-color: rgba(121,47,224,0.15); -fx-background-radius: 50;">
          <children>
             <Label fx:id="infoName" scaleX="1.5" scaleY="1.5" text="Name" />
             <Label fx:id="infoSurname" scaleX="1.5" scaleY="1.5" text="Surname" />
