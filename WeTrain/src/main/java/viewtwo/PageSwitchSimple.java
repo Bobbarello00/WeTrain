@@ -1,6 +1,9 @@
 package viewtwo;
 
+import exception.DBUnreachableException;
+import exception.runtime_exception.FatalErrorException;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.LoadException;
 import javafx.scene.layout.Pane;
 import viewtwo.graphical_controllers.MainPane;
 
@@ -29,6 +32,13 @@ public class PageSwitchSimple {
             return root.getController();
         } catch (FileNotFoundException e) {
             System.out.println("Non trovo il File src/main/resources/viewtwo/" + pathString + "/" + fileName + EXTENSION + ", controllare il PageSwitchSimple1!");
+        } catch (LoadException e) {
+            if(e.getCause() instanceof DBUnreachableException) {
+                logOff();
+            } else {
+                e.printStackTrace();
+                throw new FatalErrorException();
+            }
         }
         return null;
     }

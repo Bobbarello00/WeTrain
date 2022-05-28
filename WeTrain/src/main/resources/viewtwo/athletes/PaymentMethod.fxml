@@ -15,7 +15,7 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Label fx:id="cardExpirationDateLabel" layoutX="305.0" layoutY="205.0" prefHeight="34.0" prefWidth="95.0" text="12/3456">
+      <Label fx:id="cardExpirationDateLabel" layoutX="305.0" layoutY="205.0" prefHeight="34.0" prefWidth="118.0" text="12/3456" textAlignment="RIGHT">
          <font>
             <Font size="23.0" />
          </font>
@@ -31,7 +31,7 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Label fx:id="cardNumberLabel" layoutX="204.0" layoutY="152.0" prefHeight="34.0" prefWidth="190.0" text="**** **** **** 1234">
+      <Label fx:id="cardNumberLabel" layoutX="204.0" layoutY="152.0" prefHeight="34.0" prefWidth="219.0" text="**** **** **** 1234" textAlignment="RIGHT">
          <font>
             <Font size="23.0" />
          </font>

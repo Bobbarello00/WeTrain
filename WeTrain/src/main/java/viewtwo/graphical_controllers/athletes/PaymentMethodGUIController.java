@@ -15,6 +15,7 @@ import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import viewtwo.PageSwitchSimple;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -33,12 +34,12 @@ public class PaymentMethodGUIController implements Initializable {
 
     private final ProfileManagementController profileManagementController = new ProfileManagementController();
 
-    @FXML void backButtonAction() {
-
+    @FXML void backButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("AthletesHome", "athletes");
     }
 
     @FXML void editCancelButtonAction() {
-
+        setVisiblePane(false);
     }
 
     @FXML void editConfirmButtonAction() {

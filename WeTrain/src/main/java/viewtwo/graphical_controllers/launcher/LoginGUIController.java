@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
+import viewone.bean.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
@@ -30,7 +31,9 @@ public class LoginGUIController {
 
     @FXML void loginAction() {
         try {
-            loginController.login(CredentialsBean.ctorWithSyntaxCheck(emailTextField.getText(), passwordField.getText()));
+            LoggedUserSingleton.resetUserInfo();
+            UserBean user = loginController.login(CredentialsBean.ctorWithSyntaxCheck(emailTextField.getText(), passwordField.getText()));
+            LoggedUserSingleton.setFc(user.getFiscalCode());
             if(LoggedUserSingleton.getInstance() instanceof AthleteBean){
                 PageSwitchSimple.switchPage("AthletesHome", "athletes");
             } else {
