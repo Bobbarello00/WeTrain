@@ -1,5 +1,6 @@
 package viewtwo;
 
+import engeneering.LoggedUserSingleton;
 import exception.DBUnreachableException;
 import exception.runtime_exception.FatalErrorException;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,7 @@ public class PageSwitchSimple {
 
     public static void logOff() {
         try {
+            LoggedUserSingleton.resetUserInfo();
             switchPage("Login", "launcher");
         } catch (IOException e) {
             e.printStackTrace();
