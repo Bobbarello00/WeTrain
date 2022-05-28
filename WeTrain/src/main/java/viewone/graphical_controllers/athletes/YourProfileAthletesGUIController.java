@@ -16,7 +16,7 @@ import viewone.WeTrain;
 import viewone.bean.AthleteBean;
 import viewone.bean.CardInfoBean;
 import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import viewone.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URISyntaxException;

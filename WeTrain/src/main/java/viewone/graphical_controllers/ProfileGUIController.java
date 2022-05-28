@@ -15,7 +15,7 @@ import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
 import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import viewone.LoggedUserSingleton;
 
 import java.sql.SQLException;
 import java.util.List;

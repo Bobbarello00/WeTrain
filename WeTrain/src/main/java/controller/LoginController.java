@@ -8,7 +8,9 @@ import exception.UserNotFoundException;
 import exception.runtime_exception.IsNeitherATrainerNorAnAthleteException;
 import model.User;
 import viewone.bean.CredentialsBean;
-import engeneering.LoggedUserSingleton;
+import viewone.LoggedUserSingleton;
+import viewone.bean.PersonalInfoBean;
+import viewone.bean.UserBean;
 
 import java.sql.SQLException;
 
@@ -26,8 +28,20 @@ public class LoginController {
     }
 
     public void login(CredentialsBean credentials) throws SQLException, DBUnreachableException, UserNotFoundException {
-        LoggedUserSingleton.resetUserInfo();
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
-        LoggedUserSingleton.setFc(user.getFiscalCode());
+        return new UserBean(
+                trainer.getUsername(),
+                "Trainer",
+                new PersonalInfoBean(
+                        trainer.getName(),
+                        trainer.getSurname(),
+                        trainer.getDateOfBirth(),
+                        trainer.getFiscalCode(),
+                        trainer.getGender()
+                ),
+                CredentialsBean.ctorWithoutSyntaxCheck(
+                        trainer.getEmail(),
+                        trainer.getPassword()
+                ));
     }
 }

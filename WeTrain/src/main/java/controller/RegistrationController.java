@@ -8,6 +8,7 @@ import model.Athlete;
 import model.Trainer;
 import model.record.Credentials;
 import model.record.PersonalInfo;
+import viewone.LoggedUserSingleton;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;
@@ -53,6 +54,8 @@ public class RegistrationController {
             );
             trainerDAO.saveTrainer(trainer);
         }
+        LoggedUserSingleton.resetUserInfo();
         loginController.login(bean.getCredentials());
+        LoggedUserSingleton.setFc(bean.getFiscalCode());
     }
 }

@@ -19,8 +19,8 @@ public class AthletesHomeGUIController {
         //TODO
     }
 
-    @FXML void paymentMethodButtonAction() {
-
+    @FXML void paymentMethodButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("PaymentMethod", "athletes");
     }
 
     @FXML void personalInfoButtonAction() {

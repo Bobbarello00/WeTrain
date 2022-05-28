@@ -2,7 +2,7 @@ package viewtwo.graphical_controllers.athletes;
 
 import controller.RequestWorkoutPlanController;
 import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import viewtwo.LoggedUserSingleton;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;

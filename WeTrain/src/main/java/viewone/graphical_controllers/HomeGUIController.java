@@ -16,7 +16,7 @@ import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
 import viewone.bean.NotificationBean;
 import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import viewone.LoggedUserSingleton;
 import engeneering.UserInfoCarrier;
 import engeneering.manage_list.ManageNotificationList;
 
