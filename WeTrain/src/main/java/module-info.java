@@ -35,6 +35,8 @@ module com.wetrain.wetrain {
     opens viewtwo.graphical_controllers.launcher to javafx.fxml;
     exports viewtwo.graphical_controllers.athletes;
     opens viewtwo.graphical_controllers.athletes to javafx.fxml;
+    exports viewtwo.graphical_controllers.trainers;
+    opens viewtwo.graphical_controllers.trainers to javafx.fxml;
     exports viewtwo;
     opens viewtwo to javafx.fxml;
     exports database;

@@ -1,7 +1,9 @@
 package viewone.graphical_controllers.trainers;
 
 import controller.SubscribersManagementController;
-import database.dao_classes.TrainerDAO;
+import engeneering.AlertGenerator;
+import engeneering.UserInfoCarrier;
+import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
 import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,10 +18,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.UserBean;
-import engeneering.AlertGenerator;
-import engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.EmailFormGUIController;
-import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,7 +50,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
             UserInfoCarrier trainerInfo = getUserInfo();
-            subscribersCountLabel.setText(String.valueOf( new TrainerDAO().getNumberOfSubscribers(trainerInfo.getFiscalCode())));
+            subscribersCountLabel.setText(String.valueOf(subscribersManagementController.getSubscribersNumber()));
             subscribersList.setCellFactory(nodeListView -> new PersonListCellFactory());
             subscribersList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {
@@ -60,7 +59,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
                             setInfoBox(newItem);
                         }
                     });
-            ObservableList<UserBean> requestBeanObservableList = FXCollections.observableList(subscribersManagementController.getSubscriberList(trainerInfo.getFiscalCode()));
+            ObservableList<UserBean> requestBeanObservableList = FXCollections.observableList(subscribersManagementController.getSubscriberList());
             subscribersList.setItems(FXCollections.observableList(requestBeanObservableList));
             setUserInfoTab();
         } catch (DBUnreachableException e) {

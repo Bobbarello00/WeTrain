@@ -26,6 +26,8 @@ public class ChooseCourse implements Initializable {
     @FXML private VBox courseActions;
     @FXML private ListView<CourseBean> courseList;
 
+    private CourseBean selectedCourse;
+
     private final ManageCoursesController manageCoursesController = new ManageCoursesController();
 
     @FXML void backButtonAction() throws IOException {
@@ -37,7 +39,24 @@ public class ChooseCourse implements Initializable {
     }
 
     @FXML void deleteCourseButtonAction() {
+        try {
+            manageCoursesController.deleteCourse(selectedCourse);
+            updateList();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSimple.logOff();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void updateList() throws DBUnreachableException, SQLException {
+        ObservableList<CourseBean> courseObservableList = FXCollections.observableList(manageCoursesController.getCourseList());
+        courseList.setItems(FXCollections.observableList(courseObservableList));
     }
 
     @FXML void modifyCourseButtonAction() {
@@ -48,20 +67,23 @@ public class ChooseCourse implements Initializable {
 
     }
 
-    @FXML void startLessonButtonAction() {
-
+    @FXML void startLessonButtonAction() throws IOException {
+        StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSimple.switchPage("StartLesson", "trainers");
+        if(startLessonGUIController != null) {
+            startLessonGUIController.setCourseBean(selectedCourse);
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
-            ObservableList<CourseBean> courseObservableList = FXCollections.observableList(manageCoursesController.getCourseList());
-            courseList.setItems(FXCollections.observableList(courseObservableList));
-            courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseBean>() {
+            updateList();
+            courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
                 @Override
-                public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean courseBean, CourseBean t1) {
-                    
+                public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
+                    selectedCourse = newItem;
+                    setDisable();
                 }
             });
         } catch (DBUnreachableException e) {
@@ -73,5 +95,9 @@ public class ChooseCourse implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private void setDisable() {
+        courseActions.setDisable(false);
     }
 }
