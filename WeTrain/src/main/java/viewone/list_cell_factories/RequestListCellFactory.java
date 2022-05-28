@@ -6,12 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import viewone.WeTrain;
 import viewone.bean.RequestBean;
 
+import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Objects;
 
 public class RequestListCellFactory extends ListCell<RequestBean> {
 
@@ -25,13 +23,13 @@ public class RequestListCellFactory extends ListCell<RequestBean> {
         super.updateItem(requestBean, empty);
         if(requestBean != null){
             try {
-                if (parentNode == null)parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
+                if (parentNode == null)parentNode = new FXMLLoader(new File("src/main/resources/ListItem.fxml").toURI().toURL()).load();
                 ((Label)parentNode.lookup("#itemName")).setText(requestBean.getAthleteBean().getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(requestBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/" + "request" + ".png")).toURI().toString()));
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/images/request.png").toURI().toString()));
                 setGraphic(parentNode);
-            } catch (IOException | URISyntaxException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }else{

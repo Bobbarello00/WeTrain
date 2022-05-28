@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.RequestWorkoutPlanController;
+import engeneering.AlertGenerator;
 import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,7 +18,6 @@ import viewone.PageSwitchSizeChange;
 import viewone.bean.ExerciseBean;
 import viewone.bean.WorkoutDayBean;
 import viewone.bean.WorkoutPlanBean;
-import engeneering.AlertGenerator;
 import viewone.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
@@ -39,7 +39,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
     @FXML public Button fridayButton;
     @FXML public Button saturdayButton;
     @FXML public Button sundayButton;
-    @FXML private ListView<ExerciseBean> exercisesList;
+    @FXML private ListView<ExerciseBean> exerciseList;
     @FXML private Label infoLabel;
 
     @FXML void dayButtonAction(ActionEvent event) {
@@ -57,14 +57,13 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
     }
 
     private void updateListForSelectedDay(WorkoutDayBean workoutDayBean) {
-        ObservableList<ExerciseBean> exerciseObservableList;
-        exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
-        exercisesList.setItems(FXCollections.observableList(exerciseObservableList));
+        ObservableList<ExerciseBean> exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
+        exerciseList.setItems(FXCollections.observableList(exerciseObservableList));
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        exercisesList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
-        exercisesList.getSelectionModel().selectedItemProperty().
+        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        exerciseList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
                         infoLabel.setText(String.format("""

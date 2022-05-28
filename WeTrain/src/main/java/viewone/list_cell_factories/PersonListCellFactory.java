@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import viewone.WeTrain;
 import viewone.bean.UserBean;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Objects;
@@ -25,7 +26,7 @@ public class PersonListCellFactory extends ListCell<UserBean> {
         super.updateItem(userBean, empty);
         if(userBean != null){
             try {
-                if (parentNode == null)parentNode = new FXMLLoader(WeTrain.class.getResource("ListItem.fxml")).load();
+                if (parentNode == null)parentNode = new FXMLLoader(new File("src/main/resources/ListItem.fxml").toURI().toURL()).load();
                 ((Label)parentNode.lookup("#itemName")).setText(userBean.getName() + " " + userBean.getSurname());
                 ((Label)parentNode.lookup("#itemOwner")).setText(userBean.getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(userBean.getFiscalCode());

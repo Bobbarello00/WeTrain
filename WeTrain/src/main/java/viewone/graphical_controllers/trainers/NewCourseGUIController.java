@@ -2,6 +2,7 @@ package viewone.graphical_controllers.trainers;
 
 import controller.ManageCoursesController;
 import exception.DBUnreachableException;
+import exception.invalid_data_exception.EmptyFieldsException;
 import exception.invalid_data_exception.InvalidDataException;
 import exception.invalid_data_exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
@@ -76,6 +77,9 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             if(user == null){
                 return;
             }
+            if(Objects.equals(courseNameText.getText(), "")) {
+                throw new EmptyFieldsException();
+            }
             CourseBean courseBean = new CourseBean(
                     courseNameText.getText(),
                     infoTextArea.getText(),
@@ -85,15 +89,12 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
             courseBean.setLessonBeanList(getLessonDay());
             if (courseToModify == null){
                 manageCoursesController.createCourse(courseBean);
-                System.out.println("Created!");
             } else {
                 courseBean.setId(courseToModify.getId());
                 manageCoursesController.modifyCourse(courseBean, courseToModify.getId());
-                System.out.println("Modified!");
             }
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
             MenuTrainersGUIController.resetSelectedButton();
-
         } catch (InvalidDataException e){
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(

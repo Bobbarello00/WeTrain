@@ -33,7 +33,11 @@ public class PageSwitchSimple {
         return null;
     }
 
-    public static void logOff() throws IOException {
-        switchPage("Login", "launcher");
+    public static void logOff() {
+        try {
+            switchPage("Login", "launcher");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

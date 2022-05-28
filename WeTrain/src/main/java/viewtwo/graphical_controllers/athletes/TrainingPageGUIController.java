@@ -20,6 +20,6 @@ public class TrainingPageGUIController {
     }
 
     @FXML void yourWorkoutPlanButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("YourWorkoutPlan", "athletes");
+        PageSwitchSimple.switchPage("YourWorkoutPlanPage", "athletes");
     }
 }

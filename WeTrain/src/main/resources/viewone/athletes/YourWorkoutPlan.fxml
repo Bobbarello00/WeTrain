@@ -73,7 +73,7 @@
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
-         <ListView fx:id="exercisesList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
+         <ListView fx:id="exerciseList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
       </HBox>
       <Button fx:id="mondayButton" layoutX="40.0" layoutY="75.0" mnemonicParsing="false" onAction="#dayButtonAction" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>

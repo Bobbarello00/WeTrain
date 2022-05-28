@@ -15,7 +15,7 @@
             <Insets left="5.0" />
          </HBox.margin>
          <image>
-            <Image url="@images/WeTrainLogo.png" />
+            <Image url="@viewone/images/WeTrainLogo.png" />
          </image>
       </ImageView>
       <Label fx:id="itemName" prefHeight="15.0" prefWidth="254.0" scaleX="1.5" scaleY="1.5" text="Item name ">
