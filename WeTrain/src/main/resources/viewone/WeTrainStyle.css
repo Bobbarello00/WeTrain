@@ -163,7 +163,7 @@ BorderPane {
 }
 
 .choice-box .context-menu {
-    -fx-background-color: rgba(255,255,255,0.5);
+    -fx-background-color: white;
     -fx-border-color: rgb(24,147,21);
     -fx-background-radius: 10;
     -fx-border-radius: 10;
