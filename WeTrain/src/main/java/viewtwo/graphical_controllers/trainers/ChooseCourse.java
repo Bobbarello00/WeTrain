@@ -83,7 +83,7 @@ public class ChooseCourse implements Initializable {
                 @Override
                 public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
                     selectedCourse = newItem;
-                    setDisable();
+                    courseActions.setDisable(false);
                 }
             });
         } catch (DBUnreachableException e) {
@@ -95,9 +95,5 @@ public class ChooseCourse implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    private void setDisable() {
-        courseActions.setDisable(false);
     }
 }
