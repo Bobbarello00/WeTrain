@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.YourWorkoutPlanPageGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.YourWorkoutPlanPageGUIController">
    <children>
       <Text layoutX="112.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Workout Plan">
          <font>
@@ -16,9 +16,10 @@
          </font>
       </Text>
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
-      <ListView fx:id="exerciseListView" layoutX="66.0" layoutY="162.0" prefHeight="171.0" prefWidth="200.0" />
-      <TextArea fx:id="infoTextArea" layoutX="310.0" layoutY="114.0" prefHeight="218.0" prefWidth="225.0" style="-fx-text-fill: black;" />
-      <ChoiceBox fx:id="dayChoiceBox" layoutX="65.0" layoutY="124.0" prefHeight="26.0" prefWidth="177.0" />
-      <Text fx:id="text" layoutX="131.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You haven't a workout plan! Request one in the previous page" visible="false" />
+      <ListView fx:id="exerciseListView" layoutX="65.0" layoutY="160.0" prefHeight="188.0" prefWidth="226.0" style="-fx-background-color: rgba(121,47,224,0.5); -fx-background-radius: 10;" />
+      <TextArea fx:id="infoTextArea" layoutX="332.0" layoutY="141.0" prefHeight="205.0" prefWidth="226.0" style="-fx-text-fill: black; -fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #792fe0; -fx-border-radius: 10;" />
+      <ChoiceBox fx:id="dayChoiceBox" layoutX="66.0" layoutY="114.0" prefHeight="26.0" prefWidth="177.0" />
+      <Text fx:id="text" layoutX="131.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Couldn't find any workout plan! Request one in the previous page..." visible="false" />
+      <Text fill="#792fe0" layoutX="353.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise info:" />
    </children>
 </AnchorPane>
