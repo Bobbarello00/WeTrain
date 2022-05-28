@@ -27,7 +27,7 @@ public class RequestListCellFactory extends ListCell<RequestBean> {
                 ((Label)parentNode.lookup("#itemName")).setText(requestBean.getAthleteBean().getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(requestBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/images/request.png").toURI().toString()));
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/request.png").toURI().toString()));
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -26,7 +26,7 @@ public class ExerciseListCellFactory extends ListCell<ExerciseBean> {
                 ((Label)parentNode.lookup("#itemName")).setText(exerciseBean.getName());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(exerciseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/images/exercise.png").toURI().toString()));
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/exercise.png").toURI().toString()));
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

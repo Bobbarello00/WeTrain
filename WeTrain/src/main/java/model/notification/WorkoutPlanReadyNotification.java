@@ -5,11 +5,6 @@ import model.User;
 import java.time.LocalDateTime;
 
 public class WorkoutPlanReadyNotification extends Notification{
-    /*
-    Good news!
-    Your Trainer '%s' just uploaded your new workout plan.
-    Be sure to check it out from 'Your Workout Plan' page!
-    */
 
     public WorkoutPlanReadyNotification(int id, User sender, User receiver, LocalDateTime dateTime) {
         super(id, sender, receiver, dateTime);
@@ -33,6 +28,6 @@ public class WorkoutPlanReadyNotification extends Notification{
     }
 
     @Override public String getDescription() {
-        return null;
+        return "";
     }
 }

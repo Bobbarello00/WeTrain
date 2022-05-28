@@ -6,12 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import viewone.WeTrain;
 import viewone.bean.UserBean;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class PersonListCellFactory extends ListCell<UserBean> {
@@ -57,10 +55,6 @@ public class PersonListCellFactory extends ListCell<UserBean> {
     }
 
     private void setImage(String str){
-        try {
-            ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(Objects.requireNonNull(WeTrain.class.getResource("images/"+str+".png")).toURI().toString()));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/" + str + ".png").toURI().toString()));
     }
 }

@@ -15,6 +15,7 @@ import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 public class RequestFormGUIController {
@@ -36,7 +37,11 @@ public class RequestFormGUIController {
                     userBeanList.get(1).getFiscalCode());
             requestWorkoutPlanController.sendRequest(requestBean);
             PageSwitchSimple.switchPage("AthletesHome", "athletes");
-        }  catch (SQLException | IOException e){
+        } catch (SQLIntegrityConstraintViolationException e){
+            AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                    "Request already send.",
+                    "Wait for your request to be evaluated by the Trainer");
+        } catch (SQLException | IOException e){
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();

@@ -20,6 +20,7 @@ public class WorkoutDayDAO {
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = Queries.insertWorkoutDay(idWorkoutPlan, workoutDay.getDay())) {
             int idWorkoutDay;
+            preparedStatement.executeUpdate();
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     idWorkoutDay = generatedKeys.getInt(1);

@@ -29,9 +29,9 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
 
     @FXML private ListView<ExerciseBean> exerciseList;
     @FXML private ListView<ExerciseBean> selectedExerciseList;
-    @FXML private Button mondayButton;
     @FXML private Button createButton;
     @FXML private TextField searchExerciseText;
+    @FXML private Button mondayButton;
 
     private RequestBean requestBean;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
@@ -84,9 +84,26 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
         }
     }
 
-    public void setRequest(RequestBean request, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
+    public void setValue(RequestBean request, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
         requestBean = request;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
+        try {
+            ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController, this);
+            ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController, this);
+            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
+            ManageExerciseList.updateList(exerciseList, exerciseBeanList);
+            setUserInfoTab();
+            mondayButton.fire();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSizeChange.logOff();
+        }
     }
 
     public void updateLists() throws DBUnreachableException, SQLException {
@@ -109,26 +126,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        mondayButton.fire();
         exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
         selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
-        try {
-            ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController, this);
-            ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController, this);
-            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
-            ManageExerciseList.updateList(exerciseList, exerciseBeanList);
-            setUserInfoTab();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        }
-
     }
 
 }

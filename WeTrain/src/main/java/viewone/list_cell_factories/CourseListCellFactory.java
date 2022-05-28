@@ -24,7 +24,7 @@ public class CourseListCellFactory extends ListCell<CourseBean> {
                 ((Label)parentNode.lookup("#itemName")).setText(courseBean.getName());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(courseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText(courseBean.getOwner());
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/images/course.png").toURI().toString()));
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/course.png").toURI().toString()));
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();
