@@ -10,13 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import viewone.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 import viewone.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
 import engeneering.AlertGenerator;
+import viewone.bean.UserBean;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -37,8 +38,8 @@ public class LoginGUIController extends LauncherGUIController{
     @FXML void submitButtonAction() {
         try {
             LoggedUserSingleton.resetUserInfo();
-            loginController.login(CredentialsBean.ctorWithSyntaxCheck(emailField.getText(), passwField.getText()));
-            LoggedUserSingleton.setFc(bean.getFiscalCode());
+            UserBean user = loginController.login(CredentialsBean.ctorWithSyntaxCheck(emailField.getText(), passwField.getText()));
+            LoggedUserSingleton.setFc(user.getFiscalCode());
             if(getLoggedUser() instanceof AthleteBean){
                 PageSwitchSizeChange.loadHome(submitButton, "AthletesHome", "athletes");
             } else {

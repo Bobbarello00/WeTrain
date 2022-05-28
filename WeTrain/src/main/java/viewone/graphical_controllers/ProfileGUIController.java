@@ -1,6 +1,7 @@
 package viewone.graphical_controllers;
 
 import controller.ProfileManagementController;
+import engeneering.AlertGenerator;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.*;
 import javafx.fxml.FXML;
@@ -13,15 +14,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import viewone.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.UserBean;
-import engeneering.AlertGenerator;
-import viewone.LoggedUserSingleton;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Objects;
 
-public abstract class ProfileGUIController {
+public abstract class ProfileGUIController extends GUIController {
     @FXML protected ImageView usrImage;
     @FXML protected Label emailLabel;
     @FXML protected Label firstNameLabel;
@@ -104,9 +101,5 @@ public abstract class ProfileGUIController {
     protected void setVisible(Node node, boolean bool) {
         node.setDisable(!bool);
         node.setVisible(bool);
-    }
-
-    protected UserBean getLoggedUser(){
-        return Objects.requireNonNull(LoggedUserSingleton.getInstance());
     }
 }

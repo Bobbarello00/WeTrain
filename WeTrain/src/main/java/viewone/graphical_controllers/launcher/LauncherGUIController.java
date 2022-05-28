@@ -9,14 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import viewone.PasswordBehaviorActivation;
-import viewone.bean.UserBean;
-import viewone.LoggedUserSingleton;
+import viewone.graphical_controllers.GUIController;
 
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public abstract class LauncherGUIController implements Initializable {
+public abstract class LauncherGUIController extends GUIController implements Initializable {
     @FXML private TextField passwSField;
     @FXML private PasswordField passwField;
     @FXML private CheckBox checkVisible;
@@ -32,7 +30,5 @@ public abstract class LauncherGUIController implements Initializable {
         PasswordBehaviorActivation.passwordFieldBind(passwSField, passwField, checkVisible);
     }
 
-    protected UserBean getLoggedUser(){
-        return Objects.requireNonNull(LoggedUserSingleton.getInstance());
-    }
+
 }

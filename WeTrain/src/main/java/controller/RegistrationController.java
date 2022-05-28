@@ -8,7 +8,7 @@ import model.Athlete;
 import model.Trainer;
 import model.record.Credentials;
 import model.record.PersonalInfo;
-import viewone.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 import viewone.bean.UserBean;
 
 import java.sql.SQLException;

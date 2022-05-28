@@ -2,7 +2,7 @@ package viewtwo.graphical_controllers.launcher;
 
 import controller.LoginController;
 import engeneering.AlertGenerator;
-import viewone.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 import exception.DBUnreachableException;
 import exception.UserNotFoundException;
 import exception.invalid_data_exception.InvalidDataException;

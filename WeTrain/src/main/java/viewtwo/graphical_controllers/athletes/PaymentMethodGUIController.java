@@ -2,7 +2,7 @@ package viewtwo.graphical_controllers.athletes;
 
 import controller.ProfileManagementController;
 import engeneering.AlertGenerator;
-import viewone.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 import exception.DBUnreachableException;
 import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
@@ -90,7 +90,15 @@ public class PaymentMethodGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        athlete = (AthleteBean) LoggedUserSingleton.getInstance();
+        try {
+            athlete = (AthleteBean) LoggedUserSingleton.getInstance();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+        }
         cardNumberLabel.setText(athlete.getCardNumber());
         cardExpirationDateLabel.setText(athlete.getCardExpirationDate().toString());
     }

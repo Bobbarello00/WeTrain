@@ -13,7 +13,7 @@ import viewone.WeTrain;
 import viewone.bean.IbanBean;
 import viewone.bean.TrainerBean;
 import engeneering.AlertGenerator;
-import viewone.LoggedUserSingleton;
+import engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URISyntaxException;
