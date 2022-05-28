@@ -75,9 +75,11 @@
 }
 
 .text-area {
-    -fx-background-color: transparent;
-    -fx-prompt-text-fill: rgba(255,255,255,0.8);
-    -fx-text-fill: white;
+    -fx-background-color: white;
+    -fx-border-color: rgb(121,47,224);
+    -fx-Prompt-text-fill: #707070;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 .text-area .scroll-bar{
     -fx-background-radius: 20;
