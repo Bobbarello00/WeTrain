@@ -61,7 +61,7 @@
 }
 .radio-button .radio{
     -fx-background-color: transparent;
-    -fx-border-color: #707070 ;
+    -fx-border-color: rgb(124, 47, 221) ;
     -fx-border-radius:20;
 }
 .radio-button .dot{
