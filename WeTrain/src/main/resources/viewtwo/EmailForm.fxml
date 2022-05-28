@@ -20,9 +20,9 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <TextField layoutX="98.0" layoutY="114.0" prefHeight="26.0" prefWidth="198.0" promptText="Email object here:" />
-      <TextArea layoutX="98.0" layoutY="165.0" prefHeight="167.0" prefWidth="396.0" promptText="Email body here:" />
-      <Button layoutX="25.0" layoutY="361.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Close" />
-      <Button layoutX="508.0" layoutY="361.0" mnemonicParsing="false" text="Send Email" />
+      <TextField fx:id="emailObject" layoutX="98.0" layoutY="114.0" prefHeight="26.0" prefWidth="198.0" promptText="Email object here:" />
+      <TextArea fx:id="emailBody" layoutX="98.0" layoutY="165.0" prefHeight="167.0" prefWidth="396.0" promptText="Email body here:" />
+      <Button layoutX="25.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" style="-fx-background-color: red;" text="Cancel" />
+      <Button layoutX="508.0" layoutY="361.0" mnemonicParsing="false" onAction="#sendEmailAction" text="Send Email" />
    </children>
 </AnchorPane>
