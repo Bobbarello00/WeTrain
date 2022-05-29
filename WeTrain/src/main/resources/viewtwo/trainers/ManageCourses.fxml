@@ -25,8 +25,9 @@
             <ListView fx:id="courseList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
          </children>
       </HBox>
-      <VBox fx:id="courseActions" alignment="CENTER" disable="true" layoutX="442.0" layoutY="90.0" prefHeight="247.0" prefWidth="144.0" spacing="30.0">
+      <VBox fx:id="courseActions" alignment="CENTER" disable="true" layoutX="442.0" layoutY="90.0" prefHeight="247.0" prefWidth="144.0" spacing="25.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#courseInfoButtonAction" text="ⓘ" />
             <Button mnemonicParsing="false" onAction="#sendCommunicationButtonAction" text="Send Communication" />
             <Button mnemonicParsing="false" onAction="#startLessonButtonAction" style="-fx-background-color: green;" text="Start Lesson" />
             <Button mnemonicParsing="false" onAction="#modifyCourseButtonAction" style="-fx-background-color: orange;" text="Modify " />

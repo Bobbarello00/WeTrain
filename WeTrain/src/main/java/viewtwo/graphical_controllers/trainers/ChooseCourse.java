@@ -67,6 +67,10 @@ public class ChooseCourse implements Initializable {
 
     }
 
+    @FXML void courseInfoButtonAction(){
+        
+    }
+
     @FXML void startLessonButtonAction() throws IOException {
         StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSimple.switchPage("StartLesson", "trainers");
         if(startLessonGUIController != null) {
