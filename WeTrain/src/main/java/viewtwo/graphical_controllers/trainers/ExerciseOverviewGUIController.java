@@ -26,6 +26,7 @@ public class ExerciseOverviewGUIController {
     private ExerciseForWorkoutPlanBean exercise;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
     private boolean alreadyAdded = false;
+    private int day;
 
     public ExerciseOverviewGUIController() {}
 
@@ -69,7 +70,7 @@ public class ExerciseOverviewGUIController {
     private void closeAction() throws IOException {
         CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController) PageSwitchSimple.switchPage("CreateWorkoutPlan", "trainers");
         if(controller != null) {
-            controller.setValue(selectedRequest, satisfyWorkoutRequestsController);
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, day);
         }
     }
 
@@ -91,12 +92,13 @@ public class ExerciseOverviewGUIController {
         closeAction();
     }
 
-    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, ExerciseForWorkoutPlanBean exercise) {
+    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, ExerciseForWorkoutPlanBean exercise, int intDay) {
         selectedRequest = requestBean;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
         this.exercise = exercise;
+        day = intDay;
         if(checkAlreadyAdded(exercise)) {
-            addButton.setText("Remove from Plan -");
+            addButton.setText("Remove from Plan");
             alreadyAdded = true;
         }
         exerciseName.setText(exercise.getName());

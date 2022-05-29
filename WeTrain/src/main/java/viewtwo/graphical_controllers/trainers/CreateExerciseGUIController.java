@@ -21,6 +21,7 @@ public class CreateExerciseGUIController {
 
     private RequestBean selectedRequest;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
+    private int day;
 
     @FXML void createExerciseButtonAction() throws IOException {
         ExerciseBean exerciseBean = new ExerciseBean(
@@ -44,7 +45,7 @@ public class CreateExerciseGUIController {
     private void backAction() throws IOException {
         CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController) PageSwitchSimple.switchPage("CreateWorkoutPlan", "trainers");
         if(controller != null) {
-            controller.setValue(selectedRequest, satisfyWorkoutRequestsController);
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, day);
         }
     }
 
@@ -52,8 +53,9 @@ public class CreateExerciseGUIController {
         backAction();
     }
 
-    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
+    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, int intDay) {
         this.selectedRequest = requestBean;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
+        this.day = intDay;
     }
 }

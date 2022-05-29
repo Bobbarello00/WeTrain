@@ -22,7 +22,7 @@
       <TextField fx:id="exerciseName" editable="false" layoutX="86.0" layoutY="117.0" prefHeight="27.0" prefWidth="239.0" />
       <TextArea fx:id="exerciseInfoTextArea" editable="false" layoutX="86.0" layoutY="172.0" prefHeight="174.0" prefWidth="374.0" style="-fx-border-color: #792fe0; -fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: white; -fx-prompt-text-fill: #707070; -fx-text-fill: black;" />
       <Button layoutX="355.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteExerciseButtonAction" style="-fx-background-color: red;" text="Delete Exercise 🗑" />
-      <Button fx:id="addButton" layoutX="458.0" layoutY="354.0" mnemonicParsing="false" onAction="#addToPlanButtonAction" prefHeight="26.0" prefWidth="119.0" text="Add to Plan +" />
+      <Button fx:id="addButton" layoutX="424.0" layoutY="354.0" mnemonicParsing="false" onAction="#addToPlanButtonAction" prefHeight="26.0" prefWidth="153.0" text="Add to Plan +" />
       <Button layoutX="28.0" layoutY="355.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
       <Text layoutX="93.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise name:" />
       <Text layoutX="93.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise description:" />

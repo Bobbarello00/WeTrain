@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import viewone.bean.*;
 import viewtwo.PageSwitchSimple;
 
@@ -41,39 +42,21 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     @FXML private RadioButton wednesdayRadioButton;
 
     private List<RadioButton> radioButtonList;
-    private List<String> dayList;
+    private final List<String> dayList = new ArrayList<>();
     private RequestBean selectedRequest;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
 
     public CreateWorkoutPlanGUIController() {}
 
-    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
+    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, int day) {
         try {
             this.selectedRequest = requestBean;
             this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
             List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
             exerciseList.setItems(FXCollections.observableList(exerciseBeanList));
-            exerciseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ExerciseBean>() {
-                @Override
-                public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
-                    try {
-                        if (newItem != null) {
-                            ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", "trainers");
-                            if(controller != null) {
-                                controller.setValue(requestBean, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()));
-                            }
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (NoDayIsSelectedException e) {
-                        List<String> errorStrings = e.getErrorStrings();
-                        AlertGenerator.newWarningAlert(
-                                errorStrings.get(0),
-                                errorStrings.get(1),
-                                errorStrings.get(2));
-                    }
-                }
-            });
+            setListener(exerciseList);
+            setListener(selectedExerciseList);
+            radioButtonList.get(day).fire();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -86,6 +69,39 @@ public class CreateWorkoutPlanGUIController implements Initializable {
         }
     }
 
+    private void setListener(ListView<ExerciseBean> exerciseList) {
+        exerciseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ExerciseBean>() {
+            @Override
+            public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
+                try {
+                    if (newItem != null) {
+                        ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", "trainers");
+                        if(controller != null) {
+                            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()), getIntDay());
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (NoDayIsSelectedException e) {
+                    List<String> errorStrings = e.getErrorStrings();
+                    AlertGenerator.newWarningAlert(
+                            errorStrings.get(0),
+                            errorStrings.get(1),
+                            errorStrings.get(2));
+                }
+            }
+        });
+    }
+
+    private int getIntDay() {
+        for(int i = 0; i < 7; i++) {
+            if(radioButtonList.get(i).isSelected()) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
 
     @FXML void backButtonAction() throws IOException {
         PageSwitchSimple.switchPage("RequestsPage", "trainers");
@@ -94,7 +110,7 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     @FXML void createNewExerciseAction() throws IOException {
         CreateExerciseGUIController controller = (CreateExerciseGUIController) PageSwitchSimple.switchPage("CreateExercise", "trainers");
         if(controller != null) {
-            controller.setValue(selectedRequest, satisfyWorkoutRequestsController);
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, getIntDay());
         }
     }
 
@@ -182,5 +198,13 @@ public class CreateWorkoutPlanGUIController implements Initializable {
         for(int i = 1; i <= 7; i++) {
             dayList.add(DayOfWeek.of(i).name());
         }
+        ToggleGroup group = new ToggleGroup();
+        mondayRadioButton.setToggleGroup(group);
+        tuesdayRadioButton.setToggleGroup(group);
+        wednesdayRadioButton.setToggleGroup(group);
+        thursdayRadioButton.setToggleGroup(group);
+        fridayRadioButton.setToggleGroup(group);
+        saturdayRadioButton.setToggleGroup(group);
+        sundayRadioButton.setToggleGroup(group);
     }
 }

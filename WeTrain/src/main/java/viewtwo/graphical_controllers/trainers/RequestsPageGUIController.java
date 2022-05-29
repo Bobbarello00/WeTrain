@@ -55,7 +55,7 @@ public class RequestsPageGUIController implements Initializable {
     @FXML void satisfyRequestAction() throws IOException {
         CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController)PageSwitchSimple.switchPage("CreateWorkoutPlan", "trainers");
         if(controller != null) {
-            controller.setValue(selectedRequest, satisfyWorkoutRequestsController);
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, 0);
         }
     }
 
