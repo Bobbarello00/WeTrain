@@ -13,6 +13,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class ExerciseListCellFactory extends ListCell<ExerciseBean> {
+    private final boolean small;
+    public ExerciseListCellFactory(boolean small){
+        this.small = small;
+    }
     private Parent parentNode = null ;
     @Override public void updateItem(ExerciseBean exerciseBean, boolean empty){
         updateExerciseListWithParameters(exerciseBean, empty);
@@ -27,6 +31,10 @@ public class ExerciseListCellFactory extends ListCell<ExerciseBean> {
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(exerciseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
                 ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/exercise.png").toURI().toString()));
+                if(small){
+                    parentNode.scaleXProperty().setValue(0.8);
+                    parentNode.scaleYProperty().setValue(0.8);
+                }
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

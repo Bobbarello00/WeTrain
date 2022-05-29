@@ -12,6 +12,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class CourseListCellFactory extends ListCell<CourseBean> {
+    private final boolean small;
+    public CourseListCellFactory(boolean small){
+        this.small = small;
+    }
     private Parent parentNode = null ;
     @Override public void updateItem(CourseBean courseBean, boolean empty){
         updateCourseListWithParameters(courseBean, empty);
@@ -25,6 +29,10 @@ public class CourseListCellFactory extends ListCell<CourseBean> {
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(courseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText(courseBean.getOwner());
                 ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/course.png").toURI().toString()));
+                if(small){
+                    parentNode.scaleXProperty().setValue(0.8);
+                    parentNode.scaleYProperty().setValue(0.8);
+                }
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

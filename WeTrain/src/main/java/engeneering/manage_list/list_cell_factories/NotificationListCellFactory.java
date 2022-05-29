@@ -13,6 +13,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class NotificationListCellFactory extends ListCell<NotificationBean> {
+    private final boolean small;
+    public NotificationListCellFactory(boolean small){
+        this.small = small;
+    }
     private Parent parentNode = null ;
     @Override public void updateItem(NotificationBean notificationBean, boolean empty){
         updateNotificationListWithParameters(notificationBean, empty);
@@ -27,6 +31,10 @@ public class NotificationListCellFactory extends ListCell<NotificationBean> {
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(notificationBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText(notificationBean.getDateTime().toString());
                 ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/" + notificationBean.getType() + ".png").toURI().toString()));
+                if(small){
+                    parentNode.scaleXProperty().setValue(0.8);
+                    parentNode.scaleYProperty().setValue(0.8);
+                }
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

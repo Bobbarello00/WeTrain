@@ -2,6 +2,7 @@ package viewtwo.graphical_controllers.athletes;
 
 import controller.SubscribeToCourseController;
 import engeneering.AlertGenerator;
+import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
 import exception.DBUnreachableException;
 import exception.PaymentFailedException;
 import javafx.beans.value.ChangeListener;
@@ -20,6 +21,7 @@ import viewtwo.PageSwitchSimple;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,7 +42,7 @@ public class FindCourseGUIController implements Initializable {
 
     private CourseBean selectedCourse;
     private int selectedFitnessLevel = 0;
-    private List<String> selectedDays = List.of();
+    private List<String> selectedDays = new ArrayList<>();
     private static final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     @FXML void backButtonAction() throws IOException {
@@ -70,10 +72,9 @@ public class FindCourseGUIController implements Initializable {
         String name = courseNameText.getText();
         Boolean[] days = new Boolean[7];
         Arrays.fill(days, Boolean.FALSE);
-        String dayString = selectedDays.toString();
         List<String> stringList = Arrays.asList("mo","tu","we","th","fr","sa","su");
         for(int i=0; i<6; i++){
-            days[i] = dayString.contains(stringList.get(i));
+            days[i] = selectedDays.contains(stringList.get(i));
         }
         try {
             List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
@@ -150,6 +151,7 @@ public class FindCourseGUIController implements Initializable {
                 }
             }
         });
+        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
         courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseBean>() {
               @Override
               public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldCourse, CourseBean newCourse) {

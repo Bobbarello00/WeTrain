@@ -12,6 +12,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class RequestListCellFactory extends ListCell<RequestBean> {
+    private final boolean small;
+    public RequestListCellFactory(boolean small){
+        this.small = small;
+    }
 
     private Parent parentNode = null ;
 
@@ -28,6 +32,10 @@ public class RequestListCellFactory extends ListCell<RequestBean> {
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(requestBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
                 ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/request.png").toURI().toString()));
+                if(small){
+                    parentNode.scaleXProperty().setValue(0.8);
+                    parentNode.scaleYProperty().setValue(0.8);
+                }
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

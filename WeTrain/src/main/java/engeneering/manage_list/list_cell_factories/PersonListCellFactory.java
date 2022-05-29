@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PersonListCellFactory extends ListCell<UserBean> {
+    private final boolean small;
+    public PersonListCellFactory(boolean small){
+        this.small = small;
+    }
 
     private Parent parentNode = null ;
 
@@ -29,6 +33,10 @@ public class PersonListCellFactory extends ListCell<UserBean> {
                 ((Label)parentNode.lookup("#itemOwner")).setText(userBean.getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(userBean.getFiscalCode());
                 setPicture(userBean);
+                if(small){
+                    parentNode.scaleXProperty().setValue(0.8);
+                    parentNode.scaleYProperty().setValue(0.8);
+                }
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();
