@@ -244,7 +244,7 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        trainersList.setCellFactory(nodeListView -> new PersonListCellFactory());
+        trainersList.setCellFactory(nodeListView -> new PersonListCellFactory(false));
         trainersList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {

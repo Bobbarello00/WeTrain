@@ -12,9 +12,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class RequestListCellFactory extends ListCell<RequestBean> {
-    private final boolean small;
-    public RequestListCellFactory(boolean small){
-        this.small = small;
+    private final boolean viewtwo;
+    public RequestListCellFactory(boolean viewtwo){
+        this.viewtwo = viewtwo;
     }
 
     private Parent parentNode = null ;
@@ -27,15 +27,15 @@ public class RequestListCellFactory extends ListCell<RequestBean> {
         super.updateItem(requestBean, empty);
         if(requestBean != null){
             try {
-                if (parentNode == null)parentNode = new FXMLLoader(new File("src/main/resources/ListItem.fxml").toURI().toURL()).load();
+                String view = "viewone";
+                if(viewtwo) {
+                    view = "viewtwo";
+                }
+                if (parentNode == null)parentNode = new FXMLLoader(new File("src/main/resources/"+view+"/ListItem.fxml").toURI().toURL()).load();
                 ((Label)parentNode.lookup("#itemName")).setText(requestBean.getAthleteBean().getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(requestBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText("");
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/request.png").toURI().toString()));
-                if(small){
-                    parentNode.scaleXProperty().setValue(0.8);
-                    parentNode.scaleYProperty().setValue(0.8);
-                }
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/"+view+"/images/request.png").toURI().toString()));
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

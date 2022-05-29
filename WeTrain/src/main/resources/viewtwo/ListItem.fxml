@@ -8,23 +8,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="355.0" spacing="10.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.5); -fx-border-radius: 50; -fx-border-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="257.0" style="-fx-background-radius: 50; -fx-background-color: rgba(255,255,255,0.5); -fx-border-radius: 50; -fx-border-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="itemIcon" fitHeight="40.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
          <HBox.margin>
             <Insets left="5.0" />
          </HBox.margin>
          <image>
-            <Image url="@viewone/images/WeTrainLogo.png" />
+            <Image url="@images/WeTrainLogo2.png" />
          </image>
       </ImageView>
-      <Label fx:id="itemName" prefHeight="15.0" prefWidth="254.0" scaleX="1.5" scaleY="1.5" text="Item name ">
-         <font>
-            <Font name="ABeeZee Regular" size="12.0" />
-         </font>
+      <Label fx:id="itemName" prefHeight="26.0" prefWidth="284.0" text="Item name ">
          <HBox.margin>
-            <Insets left="20.0" />
+            <Insets left="5.0" />
          </HBox.margin>
+         <font>
+            <Font size="16.0" />
+         </font>
       </Label>
       <Label fx:id="itemCode" prefHeight="15.0" prefWidth="0.0" text="Item name " visible="false">
          <font>

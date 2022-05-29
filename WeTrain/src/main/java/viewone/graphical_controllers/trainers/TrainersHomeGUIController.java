@@ -52,8 +52,8 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
                             }
                         }
                     });
-            courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
-            notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory());
+            courseList.setCellFactory(nodeListView -> new CourseListCellFactory(false));
+            notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory(false));
             updateNotificationList();
             ManageNotificationList.setCourseListener(notificationList);
             ManageCourseList.setListener(courseList, null);

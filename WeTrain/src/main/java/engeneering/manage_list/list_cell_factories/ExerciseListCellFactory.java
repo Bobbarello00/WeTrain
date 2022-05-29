@@ -13,9 +13,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class ExerciseListCellFactory extends ListCell<ExerciseBean> {
-    private final boolean small;
-    public ExerciseListCellFactory(boolean small){
-        this.small = small;
+    private final boolean viewtwo;
+    public ExerciseListCellFactory(boolean viewtwo){
+        this.viewtwo = viewtwo;
     }
     private Parent parentNode = null ;
     @Override public void updateItem(ExerciseBean exerciseBean, boolean empty){
@@ -26,15 +26,16 @@ public class ExerciseListCellFactory extends ListCell<ExerciseBean> {
         super.updateItem(exerciseBean, empty);
         if(exerciseBean != null){
             try {
-                if (parentNode == null) parentNode = new FXMLLoader(new File("src/main/resources/ListItem.fxml").toURI().toURL()).load();
-                ((Label)parentNode.lookup("#itemName")).setText(exerciseBean.getName());
-                ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(exerciseBean.getId()));
-                ((Label)parentNode.lookup("#itemOwner")).setText("");
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/exercise.png").toURI().toString()));
-                if(small){
-                    parentNode.scaleXProperty().setValue(0.8);
-                    parentNode.scaleYProperty().setValue(0.8);
+                String view = "viewone";
+                if(viewtwo) {
+                    view = "viewtwo";
                 }
+                if (parentNode == null)
+                    parentNode = new FXMLLoader(new File("src/main/resources/"+view+"/ListItem.fxml").toURI().toURL()).load();
+                ((Label) parentNode.lookup("#itemOwner")).setText("");
+                ((Label) parentNode.lookup("#itemCode")).setText(Integer.toString(exerciseBean.getId()));
+                ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/"+view+"/images/exercise.png").toURI().toString()));
+                ((Label) parentNode.lookup("#itemName")).setText(exerciseBean.getName());
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

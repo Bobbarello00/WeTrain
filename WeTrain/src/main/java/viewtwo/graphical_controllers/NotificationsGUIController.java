@@ -40,7 +40,7 @@ public class NotificationsGUIController implements Initializable {
 
     @FXML void updateNotificationList() {
         try {
-            notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory());
+            notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory(true));
             List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
             notificationList.setItems(FXCollections.observableList(notificationBeanList));
             notificationList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<NotificationBean>() {

@@ -12,9 +12,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class CourseListCellFactory extends ListCell<CourseBean> {
-    private final boolean small;
-    public CourseListCellFactory(boolean small){
-        this.small = small;
+    private final boolean viewtwo;
+    public CourseListCellFactory(boolean viewtwo){
+        this.viewtwo = viewtwo;
     }
     private Parent parentNode = null ;
     @Override public void updateItem(CourseBean courseBean, boolean empty){
@@ -24,15 +24,15 @@ public class CourseListCellFactory extends ListCell<CourseBean> {
         super.updateItem(courseBean, empty);
         if(courseBean != null){
             try {
-                if (parentNode == null)parentNode = new FXMLLoader(new File("src/main/resources/ListItem.fxml").toURI().toURL()).load();
+                String view = "viewone";
+                if(viewtwo) {
+                    view = "viewtwo";
+                }
+                if (parentNode == null)parentNode = new FXMLLoader(new File("src/main/resources/"+view+"/ListItem.fxml").toURI().toURL()).load();
                 ((Label)parentNode.lookup("#itemName")).setText(courseBean.getName());
                 ((Label)parentNode.lookup("#itemCode")).setText(Integer.toString(courseBean.getId()));
                 ((Label)parentNode.lookup("#itemOwner")).setText(courseBean.getOwner());
-                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/course.png").toURI().toString()));
-                if(small){
-                    parentNode.scaleXProperty().setValue(0.8);
-                    parentNode.scaleYProperty().setValue(0.8);
-                }
+                ((ImageView)parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/"+view+"/images/course.png").toURI().toString()));
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -61,7 +61,7 @@ public class RequestsPageGUIController implements Initializable {
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            requestList.setCellFactory(nodeListView -> new RequestListCellFactory());
+            requestList.setCellFactory(nodeListView -> new RequestListCellFactory(true));
             ObservableList<RequestBean> requestBeanObservableList = FXCollections.observableList(satisfyWorkoutRequestsController.getTrainerRequests());
             requestList.setItems(FXCollections.observableList(requestBeanObservableList));
             requestList.getSelectionModel().selectedItemProperty().

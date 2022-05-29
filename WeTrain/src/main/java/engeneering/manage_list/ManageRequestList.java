@@ -15,7 +15,7 @@ public class ManageRequestList {
     private ManageRequestList() {}
 
     public static void setRequestList(ListView<RequestBean> requestList, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) throws SQLException, DBUnreachableException {
-        requestList.setCellFactory(nodeListView -> new RequestListCellFactory());
+        requestList.setCellFactory(nodeListView -> new RequestListCellFactory(false));
         updateList(requestList, satisfyWorkoutRequestsController);
     }
 

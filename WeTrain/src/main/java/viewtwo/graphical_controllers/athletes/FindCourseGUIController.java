@@ -151,7 +151,7 @@ public class FindCourseGUIController implements Initializable {
                 }
             }
         });
-        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        courseList.setCellFactory(nodeListView -> new CourseListCellFactory(true));
         courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseBean>() {
               @Override
               public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldCourse, CourseBean newCourse) {

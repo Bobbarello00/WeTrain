@@ -60,7 +60,7 @@ public class YourWorkoutPlanGUIController implements Initializable {
             dayChoiceBox.setItems(daysList);
             dayChoiceBox.setValue("Select day");
 
-            exerciseListView.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+            exerciseListView.setCellFactory(nodeListView -> new ExerciseListCellFactory(true));
             exerciseListView.getSelectionModel().selectedItemProperty().
                     addListener((observableValue, oldItem, newItem) -> {
                         if (newItem != null) {

@@ -16,7 +16,7 @@
       </Text>
       <ImageView fitHeight="109.0" fitWidth="104.0" layoutX="9.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../WeTrainLogo2.png" />
+            <Image url="@../images/WeTrainLogo.png" />
          </image>
       </ImageView>
       <Button layoutX="256.0" layoutY="185.0" mnemonicParsing="false" onAction="#loginAction" text="LOGIN" textFill="WHITE">

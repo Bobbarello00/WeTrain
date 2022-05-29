@@ -38,7 +38,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
             subscribersCountLabel.setText(String.valueOf(subscribersManagementController.getSubscribersNumber().getSubscribersNumber()));
-            subscribersList.setCellFactory(nodeListView -> new PersonListCellFactory());
+            subscribersList.setCellFactory(nodeListView -> new PersonListCellFactory(false));
             subscribersList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {
                         @Override

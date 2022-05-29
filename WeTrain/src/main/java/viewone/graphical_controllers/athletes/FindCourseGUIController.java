@@ -105,7 +105,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         baseFitnessLevelButton.fire();
         Arrays.fill(selectedDays, Boolean.FALSE);
-        resultList.setCellFactory(nodeListView -> new CourseListCellFactory());
+        resultList.setCellFactory(nodeListView -> new CourseListCellFactory(false));
         ManageCourseList.setListener(resultList, subscribeToCourseController);
         setUserInfoTab();
     }

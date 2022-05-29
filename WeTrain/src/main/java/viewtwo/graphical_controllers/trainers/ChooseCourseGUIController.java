@@ -81,7 +81,7 @@ public class ChooseCourseGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+            courseList.setCellFactory(nodeListView -> new CourseListCellFactory(true));
             updateList();
             courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
                 @Override

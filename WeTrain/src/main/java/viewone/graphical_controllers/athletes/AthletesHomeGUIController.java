@@ -45,9 +45,9 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
-        popularList.setCellFactory(nodeListView -> new CourseListCellFactory());
-        notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory());
+        courseList.setCellFactory(nodeListView -> new CourseListCellFactory(false));
+        popularList.setCellFactory(nodeListView -> new CourseListCellFactory(false));
+        notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory(false));
 
         updateLists();
 

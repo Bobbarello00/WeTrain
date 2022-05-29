@@ -37,7 +37,7 @@ public class YourSubscribersGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            subscriberList.setCellFactory(nodeListView -> new PersonListCellFactory());
+            subscriberList.setCellFactory(nodeListView -> new PersonListCellFactory(true));
             subscriberList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {
                         @Override

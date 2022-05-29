@@ -184,8 +184,8 @@ public class CreateWorkoutPlanGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
-        selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory(true));
+        selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory(true));
         radioButtonList = Arrays.asList(
                 mondayRadioButton,
                 tuesdayRadioButton,

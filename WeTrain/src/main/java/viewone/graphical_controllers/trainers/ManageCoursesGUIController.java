@@ -42,7 +42,7 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            courseList.setCellFactory(nodeListView -> new CourseListCellFactory());
+            courseList.setCellFactory(nodeListView -> new CourseListCellFactory(false));
             courseList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {
                         @Override

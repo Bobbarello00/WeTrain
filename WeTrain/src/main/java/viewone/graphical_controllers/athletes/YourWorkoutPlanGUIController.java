@@ -62,7 +62,7 @@ public class YourWorkoutPlanGUIController extends HomeGUIControllerAthletes impl
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory(false));
         exerciseList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {

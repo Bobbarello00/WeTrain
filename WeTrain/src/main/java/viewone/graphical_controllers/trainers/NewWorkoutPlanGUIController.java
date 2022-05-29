@@ -126,8 +126,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
-        selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory());
+        exerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory(false));
+        selectedExerciseList.setCellFactory(nodeListView -> new ExerciseListCellFactory(false));
     }
 
 }
