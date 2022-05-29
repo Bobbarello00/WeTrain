@@ -10,16 +10,20 @@
    <children>
       <HBox alignment="CENTER" layoutX="4.0" layoutY="150.0" prefHeight="100.0" prefWidth="590.0" spacing="100.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#yourCoursesButtonAction" prefHeight="46.0" prefWidth="96.0" text="Your Courses" />
-            <Button mnemonicParsing="false" onAction="#findCourseButtonAction" prefHeight="46.0" prefWidth="96.0" text="Find Course" />
-            <Button mnemonicParsing="false" onAction="#joinLessonButtonAction" prefHeight="46.0" prefWidth="96.0" text="Join Lesson" />
+            <Button mnemonicParsing="false" onAction="#yourCoursesButtonAction" prefHeight="46.0" prefWidth="130.0" text="Your Courses 💪 " />
+            <Button mnemonicParsing="false" onAction="#findCourseButtonAction" prefHeight="46.0" prefWidth="130.0" text="Find Course 🔍" />
          </children>
       </HBox>
-      <Text layoutX="166.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses Page">
+      <Text layoutX="142.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses Page">
          <font>
             <Font size="45.0" />
          </font>
       </Text>
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
+      <Text fill="#792fe0" layoutX="435.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🏃">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

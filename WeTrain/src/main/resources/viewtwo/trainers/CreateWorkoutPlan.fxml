@@ -50,7 +50,7 @@
             <ListView fx:id="selectedExerciseList" prefHeight="339.0" prefWidth="390.0" style="-fx-background-color: transparent; -fx-background-radius: 10;" />
          </children>
       </HBox>
-      <Button fx:id="searchButton" layoutX="550.0" layoutY="87.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="32.0" prefWidth="36.0" text="🔎" />
+      <Button layoutX="550.0" layoutY="87.0" mnemonicParsing="false" onAction="#searchButtonAction" prefHeight="32.0" prefWidth="36.0" text="🔎" />
       <Text layoutX="340.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or click " />
       <Text layoutX="413.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to create a new Exercise !" />
       <Text fill="#792fe0" layoutX="383.0" layoutY="142.0" onMouseClicked="#createNewExerciseAction" strokeType="OUTSIDE" strokeWidth="0.0" text="here">
