@@ -33,13 +33,13 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
          <children>
-            <RadioButton fx:id="mondayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="Mo" />
-            <RadioButton fx:id="tuesdayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="Tu" />
-            <RadioButton fx:id="wednesdayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="We" />
-            <RadioButton fx:id="thursdayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="Th" />
-            <RadioButton fx:id="fridayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="Fr" />
-            <RadioButton fx:id="saturdayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="Sa" />
-            <RadioButton fx:id="sundayRadioButton" mnemonicParsing="false" onAction="#dayButtonAction" text="Su" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="Mo" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="Tu" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="We" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="Th" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="Fr" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="Sa" />
+            <RadioButton mnemonicParsing="false" onAction="#dayButtonAction" text="Su" />
          </children>
       </HBox>
       <Button layoutX="495.0" layoutY="58.0" mnemonicParsing="false" onAction="#searchCourseByFilters" prefHeight="32.0" prefWidth="36.0" text="🔎" />

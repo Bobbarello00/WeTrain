@@ -33,17 +33,10 @@ public class FindCourseGUIController implements Initializable {
     @FXML private ListView<CourseBean> courseList;
     @FXML private TextField courseNameText;
     @FXML private ChoiceBox<String> fitnessLevelChoiceBox;
-    @FXML private RadioButton fridayRadioButton;
-    @FXML private RadioButton mondayRadioButton;
-    @FXML private RadioButton saturdayRadioButton;
-    @FXML private RadioButton sundayRadioButton;
-    @FXML private RadioButton thursdayRadioButton;
-    @FXML private RadioButton tuesdayRadioButton;
-    @FXML private RadioButton wednesdayRadioButton;
 
     private CourseBean selectedCourse;
     private int selectedFitnessLevel = 0;
-    private List<String> selectedDays = new ArrayList<>();
+    private final List<String> selectedDays = new ArrayList<>();
     private static final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     @FXML void backButtonAction() throws IOException {
@@ -58,7 +51,7 @@ public class FindCourseGUIController implements Initializable {
     }
 
     @FXML void dayButtonAction(ActionEvent event) {
-        String day = ((Button)event.getSource()).getId().substring(0,2);
+        String day = ((RadioButton)event.getSource()).getId().substring(0,2);
         if(selectedDays.contains(day)){
             selectedDays.remove(day);
         }else{
@@ -66,7 +59,7 @@ public class FindCourseGUIController implements Initializable {
         }
     }
 
-    @FXML void searchCourseByFilters(ActionEvent event) {
+    @FXML void searchCourseByFilters() {
         String fitnessLevel = null;
         switch (selectedFitnessLevel){
             case 0 -> fitnessLevel = "Base";
@@ -147,7 +140,7 @@ public class FindCourseGUIController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fitnessLevelChoiceBox.setValue("Select fitness level");
         fitnessLevelChoiceBox.setItems(FXCollections.observableArrayList("Basic","Intermediate","Advanced"));
-        fitnessLevelChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        fitnessLevelChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
                 switch (newString) {
@@ -158,13 +151,13 @@ public class FindCourseGUIController implements Initializable {
             }
         });
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory(true));
-        courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseBean>() {
+        courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
               @Override
               public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldCourse, CourseBean newCourse) {
-                  if(newCourse!=null) {
+                  if (newCourse != null) {
                       courseActions.setDisable(false);
                       selectedCourse = newCourse;
-                  }else{
+                  } else {
                       courseActions.setDisable(true);
                   }
               }
