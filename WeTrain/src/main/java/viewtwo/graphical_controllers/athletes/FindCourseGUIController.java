@@ -17,6 +17,7 @@ import javafx.scene.layout.VBox;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;
 import viewtwo.PageSwitchSimple;
+import viewtwo.graphical_controllers.CourseInfoGUIController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -50,7 +51,10 @@ public class FindCourseGUIController implements Initializable {
     }
 
     @FXML void courseInfoButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("CourseInfo", "");
+        CourseInfoGUIController controller = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", "");
+        if(controller!=null){
+            controller.setBackPathAndValues("FindCourse","athletes",selectedCourse);
+        }
     }
 
     @FXML void dayButtonAction(ActionEvent event) {
@@ -114,10 +118,12 @@ public class FindCourseGUIController implements Initializable {
                         "Course subscription fee is 5$",
                         "if you click ok a payment will be sent from your selected payment method")) {
                     subscribeToCourseController.subscribeToCourse(selectedCourse);
+                    PageSwitchSimple.switchPage("AthletesHome", "athletes");
                 }else {
-                    subscribeToCourseController.unsubscribeFromCourse(selectedCourse);
+                    AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                            "You are already subscribed to this course.",
+                            null);
                 }
-                PageSwitchSimple.switchPage("AthletesHome", "athletes");
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();

@@ -25,20 +25,20 @@
       </Text>
       <TextArea fx:id="equipmentTextArea" editable="false" layoutX="409.0" layoutY="137.0" prefHeight="97.0" prefWidth="186.0" promptText="Required equipment here:" />
       <TextArea fx:id="infoTextArea" editable="false" layoutX="409.0" layoutY="241.0" prefHeight="115.0" prefWidth="186.0" promptText="General course info here:" />
-      <Text fill="#792fe0" layoutX="413.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME:" />
-      <Label fx:id="courseNameLabel" layoutX="462.0" layoutY="68.0" text="Name of the course here" />
-      <Text fill="#792fe0" layoutX="413.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FITNESS LEVEL:" wrappingWidth="48.71600341796875" />
-      <Label fx:id="fitnessLevelLabel" layoutX="462.0" layoutY="111.0" text="Fitness level here" />
+      <Text fill="#792fe0" layoutX="412.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NAME:" />
+      <Label fx:id="courseNameLabel" layoutX="463.0" layoutY="47.0" text="Name of the course here" />
+      <Text fill="#792fe0" layoutX="412.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FITNESS LEVEL:" wrappingWidth="48.71600341796875" />
+      <Label fx:id="fitnessLevelLabel" layoutX="463.0" layoutY="111.0" text="Fitness level here" />
       <Button layoutX="481.0" layoutY="366.0" mnemonicParsing="false" onAction="#backButtonAction" text="Close" />
       <VBox alignment="CENTER_LEFT" layoutX="3.0" layoutY="48.0" prefHeight="344.0" prefWidth="78.0" spacing="30.0" style="-fx-border-color: #792fe0; -fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: rgba(255,255,255,0.7);">
          <children>
-            <RadioButton fx:id="mondayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="Mo" />
-            <RadioButton fx:id="tuesdayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="Tu" />
-            <RadioButton fx:id="wednesdayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="We" />
-            <RadioButton fx:id="thursdayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="Th" />
-            <RadioButton fx:id="fridayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="Fr" />
-            <RadioButton fx:id="saturdayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="Sa" />
-            <RadioButton fx:id="sundayRadioButton" mnemonicParsing="false" mouseTransparent="true" onAction="#dayButtonAction" text="Su" />
+            <RadioButton fx:id="mondayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="Mo" />
+            <RadioButton fx:id="tuesdayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="Tu" />
+            <RadioButton fx:id="wednesdayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="We" />
+            <RadioButton fx:id="thursdayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="Th" />
+            <RadioButton fx:id="fridayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="Fr" />
+            <RadioButton fx:id="saturdayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="Sa" />
+            <RadioButton fx:id="sundayRadioButton" mnemonicParsing="false" mouseTransparent="true" text="Su" />
          </children>
          <padding>
             <Insets bottom="5.0" left="18.0" right="5.0" top="5.0" />
@@ -142,7 +142,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="StartHourWe" text="Label" textFill="#792fe0">
+                  <Label fx:id="startHourWe" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -345,5 +345,7 @@
             </HBox>
          </children>
       </HBox>
+      <Text fill="#792fe0" layoutX="411.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TRAINER:" />
+      <Label fx:id="trainerNameLabel" layoutX="462.0" layoutY="71.0" text="Name of the trainer here" />
    </children>
 </AnchorPane>
