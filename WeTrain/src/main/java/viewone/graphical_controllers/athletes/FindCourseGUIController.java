@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import viewone.MainPane;
+import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;
 import viewone.bean.CourseSearchBean;

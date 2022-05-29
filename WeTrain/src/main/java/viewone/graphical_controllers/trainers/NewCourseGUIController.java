@@ -14,7 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import viewone.MainPane;
+import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;

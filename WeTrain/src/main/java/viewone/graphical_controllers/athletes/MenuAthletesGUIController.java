@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import viewone.ButtonBehavior;
-import viewone.MainPane;
+import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

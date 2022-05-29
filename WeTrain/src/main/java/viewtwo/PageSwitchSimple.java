@@ -1,12 +1,12 @@
 package viewtwo;
 
 import engeneering.LoggedUserSingleton;
+import engeneering.MainPane;
 import exception.DBUnreachableException;
 import exception.runtime_exception.FatalErrorException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.Pane;
-import viewtwo.graphical_controllers.MainPane;
 
 import java.io.File;
 import java.io.FileNotFoundException;

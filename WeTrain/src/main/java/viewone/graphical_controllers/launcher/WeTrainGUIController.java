@@ -1,6 +1,6 @@
 package viewone.graphical_controllers.launcher;
 
-import viewone.MainPane;
+import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

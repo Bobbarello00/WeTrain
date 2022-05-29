@@ -8,7 +8,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import viewone.MainPane;
+import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import viewone.bean.CourseBean;

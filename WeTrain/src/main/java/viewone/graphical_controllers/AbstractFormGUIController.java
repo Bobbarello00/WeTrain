@@ -3,7 +3,7 @@ package viewone.graphical_controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import viewone.MainPane;
+import engeneering.MainPane;
 
 public abstract class AbstractFormGUIController{
     @FXML protected Button sendButton;
