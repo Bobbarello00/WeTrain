@@ -1,19 +1,27 @@
 package viewtwo.graphical_controllers.athletes;
 
 import controller.SubscribeToCourseController;
+import engeneering.AlertGenerator;
+import exception.DBUnreachableException;
+import exception.PaymentFailedException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import viewone.bean.CourseBean;
+import viewone.bean.CourseSearchBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FindCourseGUIController implements Initializable {
@@ -32,7 +40,7 @@ public class FindCourseGUIController implements Initializable {
 
     private CourseBean selectedCourse;
     private int selectedFitnessLevel = 0;
-    private StringBuilder selectedDays = new StringBuilder();
+    private List<String> selectedDays = List.of();
     private static final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     @FXML void backButtonAction() throws IOException {
@@ -40,21 +48,92 @@ public class FindCourseGUIController implements Initializable {
     }
 
     @FXML void courseInfoButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("CourseInfo", "athletes");
+        PageSwitchSimple.switchPage("CourseInfo", "");
     }
 
     @FXML void dayButtonAction(ActionEvent event) {
-        selectedDays.append(((Button)event.getSource()).getId(), 0, 2);
-        selectedDays.append(" ");
+        String day = ((Button)event.getSource()).getId().substring(0,2);
+        if(selectedDays.contains(day)){
+            selectedDays.remove(day);
+        }else{
+            selectedDays.add(day);
+        }
     }
 
     @FXML void searchCourseByFilters(ActionEvent event) {
-        //TODO
-        //courseList.setItems();
+        String fitnessLevel = null;
+        switch (selectedFitnessLevel){
+            case 0 -> fitnessLevel = "Base";
+            case 1 -> fitnessLevel = "Intermediate";
+            case 2 -> fitnessLevel = "Advanced";
+        }
+        String name = courseNameText.getText();
+        Boolean[] days = new Boolean[7];
+        Arrays.fill(days, Boolean.FALSE);
+        String dayString = selectedDays.toString();
+        List<String> stringList = Arrays.asList("mo","tu","we","th","fr","sa","su");
+        for(int i=0; i<6; i++){
+            days[i] = dayString.contains(stringList.get(i));
+        }
+        try {
+            List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
+                    name,
+                    fitnessLevel,
+                    days
+            ));
+            ObservableList<CourseBean> courseObservableList = FXCollections.observableList(courseBeanList);
+            courseList.setItems(FXCollections.observableList(courseObservableList));
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSimple.logOff();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @FXML void subscribeButtonAction(ActionEvent event) {
-        //TODO
+    private boolean checkIfAlreadySubscribed() throws DBUnreachableException, SQLException {
+        List<CourseBean> courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
+        for(CourseBean course: courseBeanList){
+            if(course.getId() == selectedCourse.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @FXML void subscribe() {
+        try {
+            if(!checkIfAlreadySubscribed()){
+                if(AlertGenerator.newConfirmationAlert(
+                        "PURCHASE CONFIRMATION",
+                        "Course subscription fee is 5$",
+                        "if you click ok a payment will be sent from your selected payment method")) {
+                    subscribeToCourseController.subscribeToCourse(selectedCourse);
+                }else {
+                    subscribeToCourseController.unsubscribeFromCourse(selectedCourse);
+                }
+                PageSwitchSimple.switchPage("AthletesHome", "athletes");
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSimple.logOff();
+        } catch (PaymentFailedException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+        }
     }
 
     @Override

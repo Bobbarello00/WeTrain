@@ -46,7 +46,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
-    @FXML private void dayButtonAction(ActionEvent event) {
+    @FXML void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){
             case "mondayButton" -> selectedDayButtonAction(mondayButton,0);
@@ -75,7 +75,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         fitnessLevelFilter.fitnessLevelSelection(event);
     }
 
-    @FXML protected void searchCourseByFilters() throws SQLException, IOException {
+    @FXML protected void searchCourseByFilters(){
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
         String courseName = courseNameText.getText();
         try {
@@ -92,7 +92,13 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
-            PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            try {
+                PageSwitchSizeChange.pageSwitch((Stage) MainPane.getInstance().getScene().getWindow(), "Login", "Launcher", true);
+            } catch (IOException ex) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
