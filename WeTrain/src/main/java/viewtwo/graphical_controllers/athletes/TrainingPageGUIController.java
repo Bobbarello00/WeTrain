@@ -16,7 +16,7 @@ public class TrainingPageGUIController {
     }
 
     @FXML void weeklyScheduleButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("YourWeeklySchedule", "athletes");
+        PageSwitchSimple.switchPage("WeeklySchedule", "athletes");
     }
 
     @FXML void yourWorkoutPlanButtonAction() throws IOException {

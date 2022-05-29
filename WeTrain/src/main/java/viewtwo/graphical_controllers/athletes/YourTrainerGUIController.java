@@ -80,7 +80,7 @@ public class YourTrainerGUIController implements Initializable {
                         trainer.getFiscalCode())
                 );
             } else {
-                trainerDataTextArea.setText("You are not subscribed to any trainer");
+                trainerDataTextArea.setText("You are not subscribed to any trainer.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
