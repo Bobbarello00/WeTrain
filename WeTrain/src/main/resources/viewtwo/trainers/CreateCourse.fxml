@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.trainers.CreateCourse">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.trainers.CreateCourseGUIController">
    <children>
       <Text layoutX="147.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Course" wrappingWidth="279.0087890625">
          <font>
@@ -40,8 +40,8 @@
          </font>
       </Text>
       <TextField fx:id="courseNameText" layoutX="411.0" layoutY="64.0" prefHeight="27.0" prefWidth="174.0" promptText="Course name here:" />
-      <TextArea fx:id="equipmentTextArea" layoutX="411.0" layoutY="153.0" prefHeight="97.0" prefWidth="186.0" promptText="Required equipment here:" />
-      <TextArea fx:id="infoTextArea" layoutX="412.0" layoutY="256.0" prefHeight="105.0" prefWidth="186.0" promptText="General course info here:" />
+      <TextArea fx:id="equipmentTextArea" layoutX="411.0" layoutY="153.0" prefHeight="97.0" prefWidth="186.0" promptText="Required equipment here:" wrapText="true" />
+      <TextArea fx:id="infoTextArea" layoutX="412.0" layoutY="256.0" prefHeight="105.0" prefWidth="186.0" promptText="General course info here:" wrapText="true" />
       <HBox fx:id="timeSchedulerMo" alignment="CENTER" disable="true" layoutX="67.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -231,7 +231,7 @@
             </HBox>
          </children>
       </HBox>
-      <Button layoutX="413.0" layoutY="367.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Cancel" />
+      <Button layoutX="413.0" layoutY="367.0" mnemonicParsing="false" onAction="#cancelButtonAction" style="-fx-background-color: red;" text="Cancel" />
       <Button layoutX="498.0" layoutY="367.0" mnemonicParsing="false" onAction="#createCourseButtonAction" text="Create Course" />
    </children>
 </AnchorPane>

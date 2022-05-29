@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ChooseCourse implements Initializable {
+public class ChooseCourseGUIController implements Initializable {
 
     @FXML private VBox courseActions;
     @FXML private ListView<CourseBean> courseList;

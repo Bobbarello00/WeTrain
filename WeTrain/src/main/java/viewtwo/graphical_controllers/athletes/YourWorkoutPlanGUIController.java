@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class YourWorkoutPlanPageGUIController implements Initializable {
+public class YourWorkoutPlanGUIController implements Initializable {
 
     @FXML private ListView<ExerciseBean> exerciseListView;
     @FXML private ChoiceBox<String> dayChoiceBox;
