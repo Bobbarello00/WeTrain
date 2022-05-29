@@ -1,6 +1,9 @@
 package viewtwo.graphical_controllers.athletes;
 
+import controller.SubscribeToCourseController;
+import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
+import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,14 +17,18 @@ import viewtwo.graphical_controllers.CourseInfoGUIController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class YourCoursesGUIController implements Initializable {
 
     public static final String ATHLETES = "athletes";
     @FXML private VBox courseActions;
-    private CourseBean selectedCourse;
     @FXML private ListView<CourseBean> courseList;
+
+    private CourseBean selectedCourse;
+    private static final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
     @FXML void backButtonAction() throws IOException {
         PageSwitchSimple.switchPage("Courses", ATHLETES);
@@ -38,8 +45,20 @@ public class YourCoursesGUIController implements Initializable {
 
     }
 
-    @FXML void unsubscribeButtonAction(ActionEvent event) {
-
+    @FXML void unsubscribeButtonAction() {
+        try {
+            subscribeToCourseController.unsubscribeFromCourse(selectedCourse);
+            PageSwitchSimple.switchPage("AthletesHome", "athletes");
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSimple.logOff();
+        }
     }
 
     @Override
