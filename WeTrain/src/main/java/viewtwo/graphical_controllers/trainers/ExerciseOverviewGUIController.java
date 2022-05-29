@@ -1,9 +1,12 @@
 package viewtwo.graphical_controllers.trainers;
 
+import controller.SatisfyWorkoutRequestsController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import viewone.bean.ExerciseBean;
+import viewone.bean.RequestBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
@@ -12,6 +15,11 @@ public class ExerciseOverviewGUIController {
 
     @FXML private TextArea exerciseInfoTextArea;
     @FXML private TextField exerciseName;
+
+    private RequestBean selectedRequest;
+    private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
+
+    public ExerciseOverviewGUIController() {}
 
     @FXML void addToPlanButtonAction(ActionEvent event) {
 
@@ -28,4 +36,8 @@ public class ExerciseOverviewGUIController {
 
     }
 
+    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, ExerciseBean newItem) {
+        selectedRequest = requestBean;
+        this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
+    }
 }
