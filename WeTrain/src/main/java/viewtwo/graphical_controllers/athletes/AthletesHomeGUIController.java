@@ -8,23 +8,23 @@ import java.io.IOException;
 public class AthletesHomeGUIController {
 
     @FXML void coursesButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("CoursesPage", "athletes");
+        PageSwitchSimple.switchPage("Courses", "athletes");
     }
 
     @FXML void logoutButtonAction() throws IOException {
         PageSwitchSimple.switchPage("Login", "launcher");
     }
 
-    @FXML void notificationsButtonAction() {
-        //TODO
+    @FXML void notificationsButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("Notifications", "");
     }
 
     @FXML void paymentMethodButtonAction() throws IOException {
         PageSwitchSimple.switchPage("PaymentMethod", "athletes");
     }
 
-    @FXML void personalInfoButtonAction() {
-
+    @FXML void personalInfoButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("PersonalInfo", "");
     }
 
     @FXML void trainerButtonAction() throws IOException {
