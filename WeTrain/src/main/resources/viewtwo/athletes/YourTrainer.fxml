@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.TrainerPageGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.YourTrainerGUIController">
    <children>
       <Text layoutX="154.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Trainer">
          <font>
@@ -27,7 +27,7 @@
       </Text>
       <TextArea fx:id="trainerDataTextArea" layoutX="171.0" layoutY="119.0" prefHeight="201.0" prefWidth="164.0" />
       <Text fill="#792fe0" layoutX="181.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainer master data:" />
-      <VBox fx:id="courseActions" alignment="CENTER" disable="true" layoutX="365.0" layoutY="118.0" prefHeight="202.0" prefWidth="144.0" spacing="25.0">
+      <VBox fx:id="trainerActions" alignment="CENTER" disable="true" layoutX="365.0" layoutY="118.0" prefHeight="202.0" prefWidth="144.0" spacing="25.0">
          <children>
             <Button mnemonicParsing="false" onAction="#sendEmailButtonAction" text="Send Email" />
             <Button mnemonicParsing="false" onAction="#unsubscribeButtonAction" style="-fx-background-color: red;" text="Unsubscribe" />
