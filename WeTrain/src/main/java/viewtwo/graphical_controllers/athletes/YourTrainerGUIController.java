@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import viewone.bean.TrainerBean;
 import viewtwo.PageSwitchSimple;
+import viewtwo.graphical_controllers.EmailFormGUIController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,15 +27,30 @@ public class YourTrainerGUIController implements Initializable {
     private final SubscribeToTrainerController subscribeToTrainerController = new SubscribeToTrainerController();
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("TrainerPage", "trainers");
+        PageSwitchSimple.switchPage("TrainerPage", "athletes");
     }
 
-    @FXML void sendEmailButtonAction() {
-
+    @FXML void sendEmailButtonAction() throws IOException {
+        EmailFormGUIController controller = (EmailFormGUIController) PageSwitchSimple.switchPage("EmailForm", "");
+        if(controller != null) {
+            controller.setBackPathAndReceiver("YourTrainer", "athletes", trainer);
+        }
     }
 
     @FXML void unsubscribeButtonAction() {
-
+        try {
+            subscribeToTrainerController.unsubscribeFromTrainer();
+            PageSwitchSimple.switchPage("YourTrainer", "athletes");
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSimple.logOff();
+        }
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,6 +79,8 @@ public class YourTrainerGUIController implements Initializable {
                         trainer.getEmail(),
                         trainer.getFiscalCode())
                 );
+            } else {
+                trainerDataTextArea.setText("You are not subscribed to any trainer");
             }
         } catch (SQLException e) {
             e.printStackTrace();

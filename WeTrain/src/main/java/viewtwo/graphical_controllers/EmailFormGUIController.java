@@ -31,7 +31,6 @@ public class EmailFormGUIController {
         this.filename = filename;
         path = pathString;
         receiver = userBean;
-        System.out.println(receiver.getFiscalCode());
     }
 
     @FXML void backButtonAction() throws IOException {

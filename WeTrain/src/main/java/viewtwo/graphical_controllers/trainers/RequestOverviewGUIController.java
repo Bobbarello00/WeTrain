@@ -23,7 +23,7 @@ public class RequestOverviewGUIController {
     }
 
     @FXML void askClarificationAction() throws IOException {
-        EmailFormGUIController controller = (EmailFormGUIController) PageSwitchSimple.switchPage("CreateWorkoutPlan", "trainers");
+        EmailFormGUIController controller = (EmailFormGUIController) PageSwitchSimple.switchPage("EmailForm", "");
         if(controller != null) {
             controller.setBackPathAndReceiver("RequestsPage", "trainers", selectedRequest.getAthleteBean());
         }
