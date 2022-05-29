@@ -22,6 +22,7 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
 
     private UserBean receiver;
     private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    //TODO usiamo sempre SatisfyWorkoutRequestsController per inviare le email... non va bene
 
     public EmailFormGUIController() throws DBUnreachableException, SQLException {}
 

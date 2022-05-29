@@ -84,4 +84,11 @@ public class RequestsPageGUIController implements Initializable {
             PageSwitchSimple.logOff();
         }
     }
+
+    @FXML public void infoButtonAction() throws IOException {
+        RequestOverviewGUIController controller = (RequestOverviewGUIController) PageSwitchSimple.switchPage("RequestOverview", "trainers");
+        if(controller != null) {
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController);
+        }
+    }
 }

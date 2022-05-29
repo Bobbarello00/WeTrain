@@ -50,7 +50,7 @@ public class FindCourseGUIController implements Initializable {
 
     @FXML void searchCourseByFilters(ActionEvent event) {
         //TODO
-        courseList.setItems();
+        //courseList.setItems();
     }
 
     @FXML void subscribeButtonAction(ActionEvent event) {

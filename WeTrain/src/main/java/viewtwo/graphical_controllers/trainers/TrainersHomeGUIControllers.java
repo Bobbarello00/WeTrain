@@ -23,8 +23,11 @@ public class TrainersHomeGUIControllers {
         PageSwitchSimple.switchPage("GetPaidPage", "trainers");
     }
 
-    @FXML void personalInfoButtonAction() {
-
+    @FXML void personalInfoButtonAction() throws IOException {
+        PersonalInfoGUIController controller = (PersonalInfoGUIController) PageSwitchSimple.switchPage("PersonalInfo", "");
+        if(controller != null) {
+            controller.setBackPath("TrainersHome", "trainers");
+        }
     }
 
     @FXML void requestsButtonAction() throws IOException {

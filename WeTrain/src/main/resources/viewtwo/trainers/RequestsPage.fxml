@@ -27,6 +27,7 @@
       <Button layoutX="20.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
       <VBox fx:id="requestActions" alignment="CENTER" disable="true" layoutX="439.0" layoutY="88.0" prefHeight="247.0" prefWidth="150.0" spacing="40.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#infoButtonAction" text="ⓘ" />
             <Button mnemonicParsing="false" onAction="#satisfyRequestAction" text="Satisfy Request" />
             <Button mnemonicParsing="false" onAction="#rejectRequestAction" style="-fx-background-color: red;" text="Reject Request" />
          </children>
