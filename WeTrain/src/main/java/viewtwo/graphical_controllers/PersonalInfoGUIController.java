@@ -1,4 +1,4 @@
-package viewtwo.graphical_controllers.trainers;
+package viewtwo.graphical_controllers;
 
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;

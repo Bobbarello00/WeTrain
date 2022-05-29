@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -61,13 +62,17 @@ public class YourWorkoutPlanGUIController implements Initializable {
 
             exerciseListView.setCellFactory(nodeListView -> new ExerciseListCellFactory());
             exerciseListView.getSelectionModel().selectedItemProperty().
-                    addListener((observableValue, oldItem, newItem) -> infoTextArea.setText(String.format("""
-                        Name: %s
-
-                        Description:
-                        \t\t\t %s
-
-                        """, newItem.getName(),newItem.getInfo())));
+                    addListener((observableValue, oldItem, newItem) -> {
+                        if (newItem != null) {
+                            infoTextArea.setText(String.format("""
+                                    Name: %s
+    
+                                    Description:
+                                    \t\t\t %s
+    
+                                    """, newItem.getName(), newItem.getInfo()));
+                        }
+                    });
 
             dayChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
                 @Override
@@ -76,11 +81,12 @@ public class YourWorkoutPlanGUIController implements Initializable {
                         if(Objects.equals(workoutDayBean.getDay(), newString)) {
                             ObservableList<ExerciseBean> exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
                             exerciseListView.setItems(FXCollections.observableList(exerciseObservableList));
+                            return;
                         }
                     }
+                    exerciseListView.setItems(FXCollections.observableList(new ArrayList<>()));
                 }
             });
-
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

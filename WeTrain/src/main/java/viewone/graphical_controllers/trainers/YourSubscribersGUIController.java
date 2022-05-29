@@ -2,7 +2,6 @@ package viewone.graphical_controllers.trainers;
 
 import controller.SubscribersManagementController;
 import engeneering.AlertGenerator;
-import engeneering.UserInfoCarrier;
 import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
 import exception.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
@@ -49,8 +48,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
-            UserInfoCarrier trainerInfo = getUserInfo();
-            subscribersCountLabel.setText(String.valueOf(subscribersManagementController.getSubscribersNumber()));
+            subscribersCountLabel.setText(String.valueOf(subscribersManagementController.getSubscribersNumber().getSubscribersNumber()));
             subscribersList.setCellFactory(nodeListView -> new PersonListCellFactory());
             subscribersList.getSelectionModel().selectedItemProperty().
                     addListener(new ChangeListener<>() {
@@ -60,7 +58,7 @@ public class YourSubscribersGUIController extends HomeGUIControllerTrainers impl
                         }
                     });
             ObservableList<UserBean> requestBeanObservableList = FXCollections.observableList(subscribersManagementController.getSubscriberList());
-            subscribersList.setItems(FXCollections.observableList(requestBeanObservableList));
+            subscribersList.setItems(requestBeanObservableList);
             setUserInfoTab();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();

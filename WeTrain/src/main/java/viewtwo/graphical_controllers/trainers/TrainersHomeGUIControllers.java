@@ -2,6 +2,8 @@ package viewtwo.graphical_controllers.trainers;
 
 import javafx.fxml.FXML;
 import viewtwo.PageSwitchSimple;
+import viewtwo.graphical_controllers.NotificationsGUIController;
+import viewtwo.graphical_controllers.PersonalInfoGUIController;
 
 import java.io.IOException;
 
@@ -15,8 +17,11 @@ public class TrainersHomeGUIControllers {
         PageSwitchSimple.logOff();
     }
 
-    @FXML void notificationsButtonAction() {
-
+    @FXML void notificationsButtonAction() throws IOException {
+        NotificationsGUIController controller = (NotificationsGUIController) PageSwitchSimple.switchPage("Notifications", "");
+        if(controller != null) {
+            controller.setBackPath("TrainersHome", "trainers");
+        }
     }
 
     @FXML void paymentMethodButtonAction() throws IOException {

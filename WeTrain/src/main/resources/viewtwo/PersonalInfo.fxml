@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.trainers.PersonalInfoGUIController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.PersonalInfoGUIController">
    <children>
       <Text layoutX="202.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Info ">
          <font>
