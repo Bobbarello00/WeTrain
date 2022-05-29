@@ -100,7 +100,10 @@ public class CourseInfoGUIController {
     }
 
     private void setDaySchedule(HBox timeScheduler, Label startHour, Label startMinute, Label endHour, Label endMinute,RadioButton radioButton, LessonBean lessonBean) {
-
+        startHour.setText(String.valueOf(lessonBean.getLessonStartTime().getHour()));
+        startMinute.setText(String.valueOf(lessonBean.getLessonStartTime().getMinute()));
+        endHour.setText(String.valueOf(lessonBean.getLessonEndTime().getHour()));
+        endMinute.setText(String.valueOf(lessonBean.getLessonEndTime().getMinute()));
         timeScheduler.setVisible(true);
         radioButton.selectedProperty().setValue(true);
     }
