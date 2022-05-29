@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.trainers.CreateCourse">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.trainers.CreateExerciseGUIController">
    <children>
       <Text layoutX="73.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Exercise" wrappingWidth="309.1199877929689">
          <font>
@@ -24,196 +21,7 @@
       </Text>
       <TextField fx:id="exerciseNameText" layoutX="73.0" layoutY="90.0" prefHeight="27.0" prefWidth="258.0" promptText="Exercise name here:" />
       <TextArea fx:id="exerciseInfoTextArea" layoutX="73.0" layoutY="144.0" prefHeight="182.0" prefWidth="417.0" promptText="Insert description and advices about the exercise (eg. necessary equipment)." style="-fx-border-color: #792fe0; -fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: white; -fx-prompt-text-fill: #707070; -fx-text-fill: black;" />
-      <HBox fx:id="timeSchedulerMo" alignment="CENTER" disable="true" layoutX="67.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourMo" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteMo" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourMo" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteMo" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox fx:id="timeSchedulerTu" alignment="CENTER" disable="true" layoutX="67.0" layoutY="99.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourTu" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteTu" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourTu" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteTu" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox fx:id="timeSchedulerWe" alignment="CENTER" disable="true" layoutX="67.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourWe" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteWe" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourWe" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteWe" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox fx:id="timeSchedulerTh" alignment="CENTER" disable="true" layoutX="67.0" layoutY="197.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourTh" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteTh" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourTh" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteTh" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox fx:id="timeSchedulerFr" alignment="CENTER" disable="true" layoutX="67.0" layoutY="245.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourFr" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteFr" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourFr" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteFr" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox fx:id="timeSchedulerSa" alignment="CENTER" disable="true" layoutX="67.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourSa" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteSa" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourSa" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteSa" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <HBox fx:id="timeSchedulerSu" alignment="CENTER" disable="true" layoutX="67.0" layoutY="343.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
-         <padding>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </padding>
-         <children>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="from">
-               <font>
-                  <Font name="ABeeZee Regular" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="startHourSu" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="startMinuteSu" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-            <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-            <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
-               <children>
-                  <ChoiceBox fx:id="endHourSu" prefHeight="27.0" prefWidth="60.0" />
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <ChoiceBox fx:id="endMinuteSu" prefHeight="27.0" prefWidth="65.0" />
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-      <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" style="-fx-background-color: red;" text="Cancel" />
+      <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelButtonAction" style="-fx-background-color: red;" text="Cancel" />
       <Button layoutX="494.0" layoutY="355.0" mnemonicParsing="false" onAction="#createExerciseButtonAction" text="Create Exercise" />
    </children>
 </AnchorPane>

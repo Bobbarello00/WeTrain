@@ -23,7 +23,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Objects;
 
-public class ExerciseOverviewGUIController{
+public class ExerciseOverviewGUIController {
 
     @FXML private TextArea infoTextArea;
     @FXML private TextField nameText;
