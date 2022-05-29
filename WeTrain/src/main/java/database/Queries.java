@@ -23,6 +23,8 @@ public class Queries {
     public static final String UPDATE_MYDB_COURSE = "UPDATE mydb.Course ";
     public static final String WHERE_COURSE = "WHERE Course = ?";
     public static final String FROM_MYDB_ATHLETE = "FROM mydb.Athlete ";
+    public static final String WHERE_TRAINER = "WHERE Trainer = ?";
+    public static final String FROM_MYDB_LESSON = "FROM mydb.Lesson ";
 
     private Queries(){}
 
@@ -214,7 +216,7 @@ public class Queries {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "SELECT COUNT(*) " +
                         FROM_MYDB_ATHLETE +
-                        "WHERE Trainer = ?");
+                        WHERE_TRAINER);
         preparedStatement.setString(1, trainerFc);
         return preparedStatement;
     }
@@ -279,7 +281,7 @@ public class Queries {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 SELECT_ALL +
                         FROM_MYDB_COURSE +
-                "WHERE Trainer = ?");
+                        WHERE_TRAINER);
         preparedStatement.setString(1, trainerFc);
         return preparedStatement;
     }
@@ -315,7 +317,7 @@ public class Queries {
         }
 
         String nestedQuery = "(SELECT * " +
-                "FROM mydb.Lesson " +
+                FROM_MYDB_LESSON +
                 "WHERE Lesson.Course = Course.idCourse " +
                 queryString + ")";
         String myString = "%%" + name + "%%";
@@ -344,7 +346,7 @@ public class Queries {
     public static PreparedStatement loadStartedLessonUrl(int idLesson) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "SELECT StartedLessonUrl " +
-                        "FROM mydb.Lesson " +
+                        FROM_MYDB_LESSON +
                         "WHERE idLesson = ?");
         preparedStatement.setInt(1, idLesson);
         return preparedStatement;
@@ -364,7 +366,7 @@ public class Queries {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "UPDATE mydb.Lesson " +
                         "SET StartedLessonUrl = NULL " +
-                        "WHERE Course = ?");
+                        WHERE_COURSE);
         preparedStatement.setInt(1, idCourse);
         return preparedStatement;
     }
@@ -395,7 +397,7 @@ public class Queries {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 "SELECT Exercise.* " +
                         "FROM mydb.Exercise " +
-                        "WHERE Trainer = ?");
+                        WHERE_TRAINER);
         preparedStatement.setString(1, trainerFc);
         return preparedStatement;
     }
@@ -422,7 +424,7 @@ public class Queries {
     public static PreparedStatement loadAllLessons(int idCourse) throws SQLException, DBConnectionFailedException {
         PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 SELECT_ALL +
-                        "FROM mydb.Lesson " +
+                        FROM_MYDB_LESSON +
                         WHERE_COURSE);
         preparedStatement.setInt(1, idCourse);
         return preparedStatement;

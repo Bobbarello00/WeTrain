@@ -36,9 +36,11 @@ public class WorkoutRequestsGUIController extends HomeGUIControllerTrainers impl
     @FXML private VBox emptyInfoBox;
     @FXML private Label requestInfoLabel;
 
-    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
 
-    public WorkoutRequestsGUIController() throws DBUnreachableException, SQLException {}
+    public WorkoutRequestsGUIController() throws DBUnreachableException, SQLException {
+        satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    }
 
     @FXML void rejectButtonAction() {
         try {

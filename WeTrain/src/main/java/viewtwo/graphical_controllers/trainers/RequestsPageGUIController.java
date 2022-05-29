@@ -23,16 +23,19 @@ import java.util.ResourceBundle;
 
 public class RequestsPageGUIController implements Initializable {
 
+    public static final String TRAINERS = "trainers";
     @FXML private VBox requestActions;
     @FXML private ListView<RequestBean> requestList;
 
     private RequestBean selectedRequest;
-    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
 
-    public RequestsPageGUIController() throws DBUnreachableException, SQLException {}
+    public RequestsPageGUIController() throws DBUnreachableException, SQLException {
+        satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    }
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("TrainersHome", "trainers");
+        PageSwitchSimple.switchPage("TrainersHome", TRAINERS);
     }
 
     @FXML void rejectRequestAction() {
@@ -53,7 +56,7 @@ public class RequestsPageGUIController implements Initializable {
     }
 
     @FXML void satisfyRequestAction() throws IOException {
-        CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController)PageSwitchSimple.switchPage("CreateWorkoutPlan", "trainers");
+        CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController)PageSwitchSimple.switchPage("CreateWorkoutPlan", TRAINERS);
         if(controller != null) {
             controller.setValue(selectedRequest, satisfyWorkoutRequestsController, 0);
         }
@@ -86,7 +89,7 @@ public class RequestsPageGUIController implements Initializable {
     }
 
     @FXML public void infoButtonAction() throws IOException {
-        RequestOverviewGUIController controller = (RequestOverviewGUIController) PageSwitchSimple.switchPage("RequestOverview", "trainers");
+        RequestOverviewGUIController controller = (RequestOverviewGUIController) PageSwitchSimple.switchPage("RequestOverview", TRAINERS);
         if(controller != null) {
             controller.setValue(selectedRequest, satisfyWorkoutRequestsController);
         }

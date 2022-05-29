@@ -7,15 +7,17 @@ import java.io.IOException;
 
 public class TrainerPageGUIController {
 
+    public static final String ATHLETES = "athletes";
+
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("AthletesHome", "athletes");
+        PageSwitchSimple.switchPage("AthletesHome", ATHLETES);
     }
 
-    @FXML void findTrainerButtonAction() {
-        //PageSwitchSimple.switchPage("AthletesHome", "athletes");
+    @FXML void findTrainerButtonAction() throws IOException {
+        PageSwitchSimple.switchPage("FindTrainer", ATHLETES);
     }
 
     @FXML void yourTrainerButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("YourTrainer", "athletes");
+        PageSwitchSimple.switchPage("YourTrainer", ATHLETES);
     }
 }

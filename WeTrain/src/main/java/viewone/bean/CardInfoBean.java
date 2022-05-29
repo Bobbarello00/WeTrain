@@ -39,8 +39,8 @@ public class CardInfoBean {
     }
 
     private String setType(String card) {
-        String regex = "^(?:(?<visa>4[0-9]{12}(?:[0-9]{3})?)|" +
-                "(?<mastercard>5[1-5][0-9]{14}))";
+        String regex = "^(?:(?<visa>4\\d{12}(?:\\d{3})?)|" +
+                "(?<mastercard>5[1-5]\\d{14}))";
         Pattern pattern = Pattern.compile(regex);
         card = card.replace("-", "");
         card = card.replace(" ","");

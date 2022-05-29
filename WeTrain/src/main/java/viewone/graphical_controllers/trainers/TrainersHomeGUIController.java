@@ -31,10 +31,13 @@ public class TrainersHomeGUIController extends HomeGUIControllerTrainers impleme
     @FXML private ListView<CourseBean> courseList;
     @FXML private ListView<RequestBean> requestList;
 
-    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
-    private final ManageCoursesController manageCoursesController = new ManageCoursesController();
+    private final SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
+    private final ManageCoursesController manageCoursesController;
 
-    public TrainersHomeGUIController() throws DBUnreachableException, SQLException {}
+    public TrainersHomeGUIController() throws DBUnreachableException, SQLException {
+        manageCoursesController = new ManageCoursesController();
+        satisfyWorkoutRequestsController = new SatisfyWorkoutRequestsController();
+    }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

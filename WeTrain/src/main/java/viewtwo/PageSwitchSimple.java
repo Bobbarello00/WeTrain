@@ -15,6 +15,8 @@ import java.net.URL;
 
 public class PageSwitchSimple {
     private static final String EXTENSION = ".fxml";
+    public static final String SRC_MAIN_RESOURCES_VIEWTWO = "src/main/resources/viewtwo/";
+    public static final String SLASH = "/";
 
     private PageSwitchSimple(){}
 
@@ -22,17 +24,17 @@ public class PageSwitchSimple {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = new File("src/main/resources/viewtwo/" + fileName + EXTENSION).toURI().toURL();
+                fileUrl = new File(SRC_MAIN_RESOURCES_VIEWTWO + fileName + EXTENSION).toURI().toURL();
             }
             else {
-                fileUrl = new File("src/main/resources/viewtwo/"  + pathString + "/" + fileName + EXTENSION).toURI().toURL();
+                fileUrl = new File(SRC_MAIN_RESOURCES_VIEWTWO + pathString + SLASH + fileName + EXTENSION).toURI().toURL();
             }
             FXMLLoader root = new FXMLLoader(fileUrl);
             Pane view = root.load();
             MainPane.getInstance().setCenter(view);
             return root.getController();
         } catch (FileNotFoundException e) {
-            System.out.println("Non trovo il File src/main/resources/viewtwo/" + pathString + "/" + fileName + EXTENSION + ", controllare il PageSwitchSimple1!");
+            return null;
         } catch (LoadException e) {
             if(e.getCause() instanceof DBUnreachableException) {
                 logOff();

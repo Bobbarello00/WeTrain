@@ -15,6 +15,8 @@ import java.net.URL;
 public class PageSwitchSimple {
 
     private static final String EXTENSION = ".fxml";
+    public static final String SRC_MAIN_RESOURCES_VIEWONE = "src/main/resources/viewone/";
+    public static final String SLASH = "/";
 
     private PageSwitchSimple() {}
 
@@ -22,10 +24,10 @@ public class PageSwitchSimple {
         try{
             URL fileUrl;
             if(pathString.isEmpty()) {
-                fileUrl = new File("src/main/resources/viewone/" + fileName + EXTENSION).toURI().toURL();
+                fileUrl = new File(SRC_MAIN_RESOURCES_VIEWONE + fileName + EXTENSION).toURI().toURL();
             }
             else {
-                fileUrl = new File("src/main/resources/viewone/"  + pathString + "/" + fileName + EXTENSION).toURI().toURL();
+                fileUrl = new File(SRC_MAIN_RESOURCES_VIEWONE + pathString + SLASH + fileName + EXTENSION).toURI().toURL();
             }
             FXMLLoader root = new FXMLLoader(fileUrl);
             return setViewAndGetController(mainPane, root);
@@ -53,8 +55,8 @@ public class PageSwitchSimple {
     public static void switchPageAndMenu(BorderPane mainPane, String fileName, String pathString) throws IOException {
         URL fileUrl;
         URL menuUrl;
-        fileUrl = new File("src/main/resources/viewone/"  + pathString + "/" + fileName + EXTENSION).toURI().toURL();
-        menuUrl = new File("src/main/resources/viewone/" + pathString + "/Menu" + pathString + EXTENSION).toURI().toURL();
+        fileUrl = new File(SRC_MAIN_RESOURCES_VIEWONE + pathString + SLASH + fileName + EXTENSION).toURI().toURL();
+        menuUrl = new File(SRC_MAIN_RESOURCES_VIEWONE + pathString + "/Menu" + pathString + EXTENSION).toURI().toURL();
         Pane view = FXMLLoader.load(fileUrl);
         Pane menu = FXMLLoader.load(menuUrl);
         mainPane.setCenter(view);

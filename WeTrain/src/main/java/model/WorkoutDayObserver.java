@@ -4,7 +4,7 @@ import engeneering.ExerciseCatalogue;
 import engeneering.Observer;
 
 public class WorkoutDayObserver extends WorkoutDay implements Observer {
-    private final ExerciseCatalogue exerciseCatalogue;
+    private final transient ExerciseCatalogue exerciseCatalogue;
     private final WorkoutPlan workoutPlan;
 
     public WorkoutDayObserver(String day, ExerciseCatalogue exerciseCatalogue, WorkoutPlan workoutPlan) {

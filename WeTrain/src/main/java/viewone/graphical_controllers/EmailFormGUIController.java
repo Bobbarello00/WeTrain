@@ -24,8 +24,6 @@ public class EmailFormGUIController extends  AbstractFormGUIController{
 
     private UserBean receiver;
 
-    public EmailFormGUIController() {}
-
     public void setReceiver(UserBean userBean) {
         receiver = userBean;
     }

@@ -62,15 +62,18 @@ public class YourWorkoutPlanGUIController implements Initializable {
 
             exerciseListView.setCellFactory(nodeListView -> new ExerciseListCellFactory(true));
             exerciseListView.getSelectionModel().selectedItemProperty().
-                    addListener((observableValue, oldItem, newItem) -> {
-                        if (newItem != null) {
-                            infoTextArea.setText(String.format("""
-                                    Name: %s
-    
-                                    Description:
-                                    \t\t\t %s
-    
-                                    """, newItem.getName(), newItem.getInfo()));
+                    addListener(new ChangeListener<ExerciseBean>() {
+                        @Override
+                        public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
+                            if (newItem != null) {
+                                infoTextArea.setText(String.format("""
+                                        Name: %s
+                                            
+                                        Description:
+                                        \t\t\t %s
+                                            
+                                        """, newItem.getName(), newItem.getInfo()));
+                            }
                         }
                     });
 

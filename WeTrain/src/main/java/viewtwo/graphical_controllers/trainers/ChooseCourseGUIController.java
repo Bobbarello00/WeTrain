@@ -23,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class ChooseCourseGUIController implements Initializable {
 
+    public static final String TRAINERS = "trainers";
     @FXML private VBox courseActions;
     @FXML private ListView<CourseBean> courseList;
 
@@ -31,11 +32,11 @@ public class ChooseCourseGUIController implements Initializable {
     private final ManageCoursesController manageCoursesController = new ManageCoursesController();
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("TrainersHome", "trainers");
+        PageSwitchSimple.switchPage("TrainersHome", TRAINERS);
     }
 
     @FXML void createNewCourseButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("CreateCourse", "trainers");
+        PageSwitchSimple.switchPage("CreateCourse", TRAINERS);
     }
 
     @FXML void deleteCourseButtonAction() {
@@ -72,7 +73,7 @@ public class ChooseCourseGUIController implements Initializable {
     }
 
     @FXML void startLessonButtonAction() throws IOException {
-        StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSimple.switchPage("StartLesson", "trainers");
+        StartLessonGUIController startLessonGUIController = (StartLessonGUIController) PageSwitchSimple.switchPage("StartLesson", TRAINERS);
         if(startLessonGUIController != null) {
             startLessonGUIController.setCourseBean(selectedCourse);
         }

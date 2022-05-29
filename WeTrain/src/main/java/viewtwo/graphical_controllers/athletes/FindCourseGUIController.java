@@ -120,6 +120,12 @@ public class FindCourseGUIController implements Initializable {
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();
+        } catch (PaymentFailedException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -127,12 +133,6 @@ public class FindCourseGUIController implements Initializable {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSimple.logOff();
-        } catch (PaymentFailedException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
         }
     }
 

@@ -66,21 +66,21 @@ public class CreateCourseGUIController implements Initializable {
     @FXML private ChoiceBox<String> startMinuteFr;
     @FXML private ChoiceBox<String> startMinuteMo;
     @FXML private ChoiceBox<String> startMinuteSa;
+    @FXML private HBox timeSchedulerFr;
+    @FXML private HBox timeSchedulerMo;
     @FXML private ChoiceBox<String> startMinuteSu;
     @FXML private ChoiceBox<String> startMinuteTh;
     @FXML private ChoiceBox<String> startMinuteTu;
     @FXML private ChoiceBox<String> startMinuteWe;
     @FXML private RadioButton sundayRadioButton;
     @FXML private RadioButton thursdayRadioButton;
-    @FXML private HBox timeSchedulerFr;
-    @FXML private HBox timeSchedulerMo;
     @FXML private HBox timeSchedulerSa;
     @FXML private HBox timeSchedulerSu;
     @FXML private HBox timeSchedulerTh;
-    @FXML private HBox timeSchedulerTu;
-    @FXML private HBox timeSchedulerWe;
     @FXML private RadioButton tuesdayRadioButton;
     @FXML private RadioButton wednesdayRadioButton;
+    @FXML private HBox timeSchedulerTu;
+    @FXML private HBox timeSchedulerWe;
 
     private List<RadioButton> radioButtonList;
     private List<ChoiceBox<String>> startMinuteBoxList;
@@ -145,7 +145,7 @@ public class CreateCourseGUIController implements Initializable {
     private List<LessonBean> getLessonDay() throws TimeNotInsertedException {
         List<LessonBean> lessonBeanList = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            if (selected[i]) {
+            if (Boolean.TRUE.equals(selected[i])) {
                 lessonBeanList.add(new LessonBean(
                         DayOfWeek.of(i+1).name(),
                         getTime(startMinuteBoxList.get(i), startHourBoxList.get(i)),

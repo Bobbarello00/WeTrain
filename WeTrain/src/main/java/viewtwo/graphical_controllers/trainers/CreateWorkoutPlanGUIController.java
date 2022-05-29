@@ -30,6 +30,7 @@ import java.util.ResourceBundle;
 
 public class CreateWorkoutPlanGUIController implements Initializable {
 
+    public static final String TRAINERS = "trainers";
     @FXML private ListView<ExerciseBean> exerciseList;
     @FXML private RadioButton fridayRadioButton;
     @FXML private RadioButton mondayRadioButton;
@@ -45,8 +46,6 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     private final List<String> dayList = new ArrayList<>();
     private RequestBean selectedRequest;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
-
-    public CreateWorkoutPlanGUIController() {}
 
     public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, int day) {
         try {
@@ -64,8 +63,6 @@ public class CreateWorkoutPlanGUIController implements Initializable {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSimple.logOff();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
 
@@ -75,7 +72,7 @@ public class CreateWorkoutPlanGUIController implements Initializable {
             public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
                 try {
                     if (newItem != null) {
-                        ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", "trainers");
+                        ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", TRAINERS);
                         if(controller != null) {
                             controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()), getIntDay());
                         }
@@ -104,11 +101,11 @@ public class CreateWorkoutPlanGUIController implements Initializable {
 
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("RequestsPage", "trainers");
+        PageSwitchSimple.switchPage("RequestsPage", TRAINERS);
     }
 
     @FXML void createNewExerciseAction() throws IOException {
-        CreateExerciseGUIController controller = (CreateExerciseGUIController) PageSwitchSimple.switchPage("CreateExercise", "trainers");
+        CreateExerciseGUIController controller = (CreateExerciseGUIController) PageSwitchSimple.switchPage("CreateExercise", TRAINERS);
         if(controller != null) {
             controller.setValue(selectedRequest, satisfyWorkoutRequestsController, getIntDay());
         }
@@ -169,7 +166,7 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     @FXML void sendWorkoutPlanButtonAction() {
         try {
             satisfyWorkoutRequestsController.sendWorkoutPlan(selectedRequest);
-            PageSwitchSimple.switchPage("RequestsPage", "trainers");
+            PageSwitchSimple.switchPage("RequestsPage", TRAINERS);
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(

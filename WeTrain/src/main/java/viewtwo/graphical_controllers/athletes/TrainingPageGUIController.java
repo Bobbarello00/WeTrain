@@ -7,19 +7,21 @@ import java.io.IOException;
 
 public class TrainingPageGUIController {
 
+    public static final String ATHLETES = "athletes";
+
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("AthletesHome", "athletes");
+        PageSwitchSimple.switchPage("AthletesHome", ATHLETES);
     }
 
     @FXML void requestWorkoutPlanButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("RequestForm", "athletes");
+        PageSwitchSimple.switchPage("RequestForm", ATHLETES);
     }
 
     @FXML void weeklyScheduleButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("WeeklySchedule", "athletes");
+        PageSwitchSimple.switchPage("WeeklySchedule", ATHLETES);
     }
 
     @FXML void yourWorkoutPlanButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("YourWorkoutPlan", "athletes");
+        PageSwitchSimple.switchPage("YourWorkoutPlan", ATHLETES);
     }
 }

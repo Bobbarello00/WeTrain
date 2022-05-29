@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class YourTrainerGUIController implements Initializable {
 
+    public static final String ATHLETES = "athletes";
     @FXML private VBox trainerActions;
     @FXML private TextArea trainerDataTextArea;
 
@@ -27,20 +28,20 @@ public class YourTrainerGUIController implements Initializable {
     private final SubscribeToTrainerController subscribeToTrainerController = new SubscribeToTrainerController();
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("TrainerPage", "athletes");
+        PageSwitchSimple.switchPage("TrainerPage", ATHLETES);
     }
 
     @FXML void sendEmailButtonAction() throws IOException {
         EmailFormGUIController controller = (EmailFormGUIController) PageSwitchSimple.switchPage("EmailForm", "");
         if(controller != null) {
-            controller.setBackPathAndReceiver("YourTrainer", "athletes", trainer);
+            controller.setBackPathAndReceiver("YourTrainer", ATHLETES, trainer);
         }
     }
 
     @FXML void unsubscribeButtonAction() {
         try {
             subscribeToTrainerController.unsubscribeFromTrainer();
-            PageSwitchSimple.switchPage("YourTrainer", "athletes");
+            PageSwitchSimple.switchPage("YourTrainer", ATHLETES);
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

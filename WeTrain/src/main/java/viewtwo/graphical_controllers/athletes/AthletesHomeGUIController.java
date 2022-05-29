@@ -9,15 +9,17 @@ import java.io.IOException;
 
 public class AthletesHomeGUIController {
 
+    public static final String ATHLETES = "athletes";
+
     @FXML void notificationsButtonAction() throws IOException {
         NotificationsGUIController controller = (NotificationsGUIController) PageSwitchSimple.switchPage("Notifications", "");
         if(controller != null) {
-            controller.setBackPath("AthletesHome", "athletes");
+            controller.setBackPath("AthletesHome", ATHLETES);
         }
     }
 
     @FXML void coursesButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("Courses", "athletes");
+        PageSwitchSimple.switchPage("Courses", ATHLETES);
     }
 
     @FXML void logoutButtonAction() throws IOException {
@@ -29,19 +31,19 @@ public class AthletesHomeGUIController {
     @FXML void personalInfoButtonAction() throws IOException {
         PersonalInfoGUIController controller = (PersonalInfoGUIController) PageSwitchSimple.switchPage("PersonalInfo", "");
         if(controller != null) {
-            controller.setBackPath("AthletesHome", "athletes");
+            controller.setBackPath("AthletesHome", ATHLETES);
         }
     }
 
     @FXML void trainerButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("TrainerPage", "athletes");
+        PageSwitchSimple.switchPage("TrainerPage", ATHLETES);
     }
 
     @FXML void trainingButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("TrainingPage", "athletes");
+        PageSwitchSimple.switchPage("TrainingPage", ATHLETES);
     }
 
     @FXML void paymentMethodButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("PaymentMethod", "athletes");
+        PageSwitchSimple.switchPage("PaymentMethod", ATHLETES);
     }
 }

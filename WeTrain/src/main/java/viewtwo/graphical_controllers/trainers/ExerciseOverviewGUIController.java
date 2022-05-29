@@ -28,12 +28,10 @@ public class ExerciseOverviewGUIController {
     private boolean alreadyAdded = false;
     private int day;
 
-    public ExerciseOverviewGUIController() {}
-
     public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
         WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(exerciseForWorkoutPlanBean.getDay()));
-        for (ExerciseBean exercise : workoutDayBean.getExerciseBeanList()) {
-            if (Objects.equals(exercise.getName(), exerciseForWorkoutPlanBean.getName())) {
+        for (ExerciseBean exerciseBean : workoutDayBean.getExerciseBeanList()) {
+            if (Objects.equals(exerciseBean.getName(), exerciseForWorkoutPlanBean.getName())) {
                 return true;
             }
         }

@@ -23,11 +23,15 @@ import java.util.Objects;
 public class SatisfyWorkoutRequestsController {
 
     private final NotificationsController notificationsController = new NotificationsController();
-    private final WorkoutPlan workoutPlan = new WorkoutPlan();
-    private final Trainer trainer = (Trainer) new LoginController().getLoggedUser();
-    private final ExerciseCatalogue exerciseCatalogue = new ExerciseCatalogue(new ExerciseDAO().loadTrainerExercises(trainer));
+    private final WorkoutPlan workoutPlan;
+    private final Trainer trainer;
+    private final ExerciseCatalogue exerciseCatalogue;
 
-    public SatisfyWorkoutRequestsController() throws DBUnreachableException, SQLException {}
+    public SatisfyWorkoutRequestsController() throws DBUnreachableException, SQLException {
+        workoutPlan = new WorkoutPlan();
+        trainer = (Trainer) new LoginController().getLoggedUser();
+        exerciseCatalogue = new ExerciseCatalogue(new ExerciseDAO().loadTrainerExercises(trainer));
+    }
 
     public void rejectRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         new RequestDAO().deleteRequest(requestBean.getId());
@@ -164,7 +168,7 @@ public class SatisfyWorkoutRequestsController {
         );
     }
 
-    public List<ExerciseBean> getTrainerExercises() throws SQLException, DBUnreachableException {
+    public List<ExerciseBean> getTrainerExercises() throws DBUnreachableException {
         return getExerciseBeanList(exerciseCatalogue.getExerciseList());
     }
 

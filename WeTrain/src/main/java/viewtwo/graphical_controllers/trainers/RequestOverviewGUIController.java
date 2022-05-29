@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class RequestOverviewGUIController {
 
+    public static final String TRAINERS = "trainers";
     @FXML private TextArea requestDescription;
 
     private RequestBean selectedRequest;
@@ -25,16 +26,16 @@ public class RequestOverviewGUIController {
     @FXML void askClarificationAction() throws IOException {
         EmailFormGUIController controller = (EmailFormGUIController) PageSwitchSimple.switchPage("EmailForm", "");
         if(controller != null) {
-            controller.setBackPathAndReceiver("RequestsPage", "trainers", selectedRequest.getAthleteBean());
+            controller.setBackPathAndReceiver("RequestsPage", TRAINERS, selectedRequest.getAthleteBean());
         }
     }
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("RequestsPage", "trainers");
+        PageSwitchSimple.switchPage("RequestsPage", TRAINERS);
     }
 
     @FXML void createWorkoutAction() throws IOException {
-        CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController)PageSwitchSimple.switchPage("CreateWorkoutPlan", "trainers");
+        CreateWorkoutPlanGUIController controller = (CreateWorkoutPlanGUIController)PageSwitchSimple.switchPage("CreateWorkoutPlan", TRAINERS);
         if(controller != null) {
             controller.setValue(selectedRequest, satisfyWorkoutRequestsController, 0);
         }

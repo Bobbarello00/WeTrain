@@ -80,9 +80,6 @@ public abstract class HomeGUIController {
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
             return null;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
         }
     }
 

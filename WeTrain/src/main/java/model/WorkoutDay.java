@@ -8,7 +8,7 @@ import java.util.Objects;
 public class WorkoutDay implements Serializable {
     protected Integer id;
     protected String day;
-    protected List<Exercise> exerciseList;
+    protected transient List<Exercise> exerciseList;
 
     public WorkoutDay(int id, String day, List<Exercise> exerciseList){
         this(day);

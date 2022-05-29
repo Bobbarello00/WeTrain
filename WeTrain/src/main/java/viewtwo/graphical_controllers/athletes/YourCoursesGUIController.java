@@ -18,18 +18,19 @@ import java.util.ResourceBundle;
 
 public class YourCoursesGUIController implements Initializable {
 
+    public static final String ATHLETES = "athletes";
     @FXML private VBox courseActions;
     private CourseBean selectedCourse;
     @FXML private ListView<CourseBean> courseList;
 
     @FXML void backButtonAction() throws IOException {
-        PageSwitchSimple.switchPage("Courses", "athletes");
+        PageSwitchSimple.switchPage("Courses", ATHLETES);
     }
 
     @FXML void courseInfoButtonAction() throws IOException {
-        CourseInfoGUIController controller = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", "athletes");
+        CourseInfoGUIController controller = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", ATHLETES);
         if(controller!=null) {
-            controller.setBackPathAndValues("YourCourses", "athletes", selectedCourse);
+            controller.setBackPathAndValues("YourCourses", ATHLETES, selectedCourse);
         }
     }
 
