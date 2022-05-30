@@ -23,16 +23,17 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class YourWeeklyScheduleGUIController implements Initializable {
+public class YourWeeklyScheduleGUIController implements Initializable{
 
     @FXML private RadioButton fridayRadioButton;
     @FXML private RadioButton mondayRadioButton;
     @FXML private RadioButton saturdayRadioButton;
-    @FXML private TextArea scheduleTextArea;
     @FXML private RadioButton sundayRadioButton;
     @FXML private RadioButton thursdayRadioButton;
     @FXML private RadioButton tuesdayRadioButton;
     @FXML private RadioButton wednesdayRadioButton;
+    @FXML private ToggleGroup weekToggleGroup;
+    @FXML private TextArea scheduleTextArea;
 
     private List<CourseBean> courseBeanList;
     private WorkoutPlanBean workoutPlanBean;
@@ -99,7 +100,6 @@ public class YourWeeklyScheduleGUIController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ToggleGroup group = new ToggleGroup();
         radioButtonList = Arrays.asList(
                 mondayRadioButton,
                 tuesdayRadioButton,
@@ -109,8 +109,5 @@ public class YourWeeklyScheduleGUIController implements Initializable {
                 saturdayRadioButton,
                 sundayRadioButton
         );
-        for(RadioButton radioButton: radioButtonList) {
-            radioButton.setToggleGroup(group);
-        }
     }
 }

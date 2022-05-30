@@ -6,25 +6,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.athletes.TrainingPageGUIController">
-   <children>
-      <HBox alignment="CENTER" layoutX="4.0" layoutY="150.0" prefHeight="100.0" prefWidth="590.0" spacing="70.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#yourWorkoutPlanButtonAction" prefHeight="46.0" prefWidth="140.0" text="Your Workout Plan 📋" />
-            <Button mnemonicParsing="false" onAction="#requestWorkoutPlanButtonAction" prefHeight="46.0" prefWidth="140.0" text="Request New Plan ➕" />
-            <Button mnemonicParsing="false" onAction="#weeklyScheduleButtonAction" prefHeight="46.0" prefWidth="140.0" text="Weekly Schedule 🗓" />
-         </children>
-      </HBox>
-      <Text layoutX="139.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training Page">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Text>
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
-      <Text fill="#792fe0" layoutX="432.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🏋">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css"
+            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="viewtwo.graphical_controllers.athletes.TrainingPageGUIController">
+   <HBox alignment="CENTER" layoutX="4.0" layoutY="150.0" prefHeight="100.0" prefWidth="590.0" spacing="70.0">
+      <Button mnemonicParsing="false" onAction="#yourWorkoutPlanButtonAction" prefHeight="46.0" prefWidth="140.0"
+              text="Your Workout Plan 📋"/>
+      <Button mnemonicParsing="false" onAction="#requestWorkoutPlanButtonAction" prefHeight="46.0" prefWidth="140.0"
+              text="Request New Plan ➕"/>
+      <Button mnemonicParsing="false" onAction="#weeklyScheduleButtonAction" prefHeight="46.0" prefWidth="140.0"
+              text="Weekly Schedule 🗓"/>
+   </HBox>
+   <Text layoutX="139.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training Page">
+      <font>
+         <Font size="45.0"/>
+      </font>
+   </Text>
+   <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back"/>
+   <Text fill="#792fe0" layoutX="432.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🏋">
+      <font>
+         <Font size="30.0"/>
+      </font>
+   </Text>
 </AnchorPane>

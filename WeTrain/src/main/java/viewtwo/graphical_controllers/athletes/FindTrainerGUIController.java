@@ -12,10 +12,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import viewone.bean.SearchBean;
 import viewone.bean.UserBean;
 import viewtwo.PageSwitchSimple;
@@ -32,6 +30,7 @@ public class FindTrainerGUIController implements Initializable {
     @FXML private ListView<UserBean> trainerList;
     @FXML private TextField trainerNameText;
     @FXML private Button subscribeButton;
+    @FXML private Text adviceText;
 
     private UserBean selectedTrainer;
     private final SubscribeToTrainerController subscribeToTrainerController = new SubscribeToTrainerController();
@@ -44,6 +43,7 @@ public class FindTrainerGUIController implements Initializable {
         try {
             List<UserBean> userBeanList = subscribeToTrainerController.searchTrainers(new SearchBean(trainerNameText.getText()));
             trainerList.setItems(FXCollections.observableList(userBeanList));
+            adviceText.setVisible(false);
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
