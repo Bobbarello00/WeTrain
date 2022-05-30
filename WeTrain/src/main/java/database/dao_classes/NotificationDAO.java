@@ -2,16 +2,15 @@ package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
 import database.Queries;
+import engeneering.NotificationFactorySingleton;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
 import exception.ElementNotFoundException;
 import exception.UserNotFoundException;
 import model.Course;
-import model.notification.Notification;
 import model.User;
-import engeneering.NotificationFactorySingleton;
+import model.notification.Notification;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
