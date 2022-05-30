@@ -13,35 +13,14 @@ public class AthleteQueries extends Queries{
     public static final String LOAD_ATHLETE_QUERY = SELECT_ALL +
             FROM_MYDB_ATHLETE +
             WHERE_USER;
-
-    public static final String INSERT_ATHLETE_QUERY_1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    public static final String INSERT_ATHLETE_QUERY_2 = "INSERT INTO mydb.Athlete (User) VALUES (?)";
-
-    public static final String UPDATE_CARD_INFO_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
-            "SET CardNumber = ?, CardExpirationDate = ? " +
-            WHERE_USER;
-
-    public static final String REMOVE_CARD_INFO_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
-            "SET CardNumber = NULL, CardExpirationDate = NULL " +
-            WHERE_USER;
-
-    public static final String UPDATE_TRAINER_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
-            "SET Trainer = ? " +
-            WHERE_USER;
-
-    public static final String REMOVE_TRAINER_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
-            "SET Trainer = NULL " +
-            WHERE_USER;
-
-    public static final String COUNT_ATHLETE_COURSES_QUERY = "SELECT COUNT(*) FROM mydb.Subscribe " +
-            "WHERE Athlete = ?";
-
     public static ResultSet loadAthlete(PreparedStatement preparedStatement, String fc) throws SQLException {
         preparedStatement.setString(1, fc);
         return preparedStatement.executeQuery();
     }
 
+    public static final String INSERT_ATHLETE_QUERY_1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public static final String INSERT_ATHLETE_QUERY_2 = "INSERT INTO mydb.Athlete (User) VALUES (?)";
     public static void insertAthlete(PreparedStatement preparedStatement, PreparedStatement preparedStatement1, Athlete athlete) throws SQLException {
         preparedStatement.setString(1, athlete.getFiscalCode());
         preparedStatement.setString(2, athlete.getName());
@@ -57,6 +36,9 @@ public class AthleteQueries extends Queries{
         preparedStatement1.executeUpdate();
     }
 
+    public static final String UPDATE_CARD_INFO_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
+            "SET CardNumber = ?, CardExpirationDate = ? " +
+            WHERE_USER;
     public static void updateCardInfoAthlete(PreparedStatement preparedStatement, Athlete athlete, Card card) throws SQLException {
         preparedStatement.setString(1, card.cardNumber());
         preparedStatement.setDate(2, Date.valueOf((card.cardExpirationDate()).atDay(1)));
@@ -64,22 +46,33 @@ public class AthleteQueries extends Queries{
         preparedStatement.executeUpdate();
     }
 
+    public static final String REMOVE_CARD_INFO_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
+            "SET CardNumber = NULL, CardExpirationDate = NULL " +
+            WHERE_USER;
     public static void removeCardInfoAthlete(PreparedStatement preparedStatement, String fc) throws SQLException {
         preparedStatement.setString(1, fc);
         preparedStatement.executeUpdate();
     }
 
+    public static final String UPDATE_TRAINER_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
+            "SET Trainer = ? " +
+            WHERE_USER;
     public static void updateTrainerAthlete(PreparedStatement preparedStatement, String athleteFc, String trainerFc) throws SQLException {
         preparedStatement.setString(1, trainerFc);
         preparedStatement.setString(2, athleteFc);
         preparedStatement.executeUpdate();
     }
 
+    public static final String REMOVE_TRAINER_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
+            "SET Trainer = NULL " +
+            WHERE_USER;
     public static void removeTrainerAthlete(PreparedStatement preparedStatement, String athleteFc) throws SQLException {
         preparedStatement.setString(1, athleteFc);
         preparedStatement.executeUpdate();
     }
 
+    public static final String COUNT_ATHLETE_COURSES_QUERY = "SELECT COUNT(*) FROM mydb.Subscribe " +
+            "WHERE Athlete = ?";
     public static ResultSet countAthleteCourses(PreparedStatement preparedStatement, String athleteFc) throws SQLException {
         preparedStatement.setString(1, athleteFc);
         return preparedStatement.executeQuery();
