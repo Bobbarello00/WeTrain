@@ -25,8 +25,9 @@ public class CourseDAO {
     private final LoginController loginController = new LoginController();
 
     public void deleteCourse(int idCourse) throws SQLException, DBUnreachableException {
-        try{
-            Queries.deleteCourse(idCourse);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.deleteCourseQuery)){
+            Queries.deleteCourse(preparedStatement, idCourse);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -34,8 +35,9 @@ public class CourseDAO {
     }
 
     public void modifyCourse(int idCourse, Course course) throws SQLException, DBUnreachableException {
-        try{
-            Queries.modifyCourse(idCourse, course);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.modifyCourseQuery)){
+            Queries.modifyCourse(preparedStatement, idCourse, course);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -57,8 +59,9 @@ public class CourseDAO {
     }
 
     public void subscribeToCourse(Course course, Athlete athlete) throws SQLException, DBUnreachableException {
-        try{
-            Queries.insertCourseSubscriber(course.getId(), athlete.getFiscalCode());
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertCourseSubscriberQuery)){
+            Queries.insertCourseSubscriber(preparedStatement, course.getId(), athlete.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -66,8 +69,9 @@ public class CourseDAO {
     }
 
     public void unsubscribeFromACourse(int idCourse) throws SQLException, DBUnreachableException {
-        try{
-            Queries.deleteCourseSubscriber(idCourse, loginController.getLoggedUser().getFiscalCode());
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.deleteCourseSubscriberQuery)) {
+            Queries.deleteCourseSubscriber(preparedStatement, idCourse, loginController.getLoggedUser().getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -169,7 +173,8 @@ public class CourseDAO {
     }
 
     public int getSubscribersNumber(int idCourse) throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.getSubscribers(idCourse)){
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.getSubscribersQuery); ResultSet rs = Queries.getSubscribers(preparedStatement, idCourse)){
             if(rs.next()) {
                 return rs.getInt(1);
             } else {

@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
@@ -12,6 +13,7 @@ import model.WorkoutPlan;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,9 @@ public class WorkoutDayDAO {
 
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException, DBUnreachableException {
         int idWorkoutDay;
-        try (ResultSet generatedKeys = Queries.insertWorkoutDay(idWorkoutPlan, workoutDay.getDay())) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertWorkoutDayQuery,
+                Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = Queries.insertWorkoutDay(preparedStatement, idWorkoutPlan, workoutDay.getDay())) {
             if (generatedKeys.next()) {
                 idWorkoutDay = generatedKeys.getInt(1);
             } else {
@@ -35,7 +39,8 @@ public class WorkoutDayDAO {
     }
 
     public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan, Trainer trainer) throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.loadAllWorkoutDays(workoutPlan.getId())){
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadAllWorkoutDaysQuery); ResultSet rs = Queries.loadAllWorkoutDays(preparedStatement, workoutPlan.getId())){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
                 WorkoutDay workoutDay = new WorkoutDay(

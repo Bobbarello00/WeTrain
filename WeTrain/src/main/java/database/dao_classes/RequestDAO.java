@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
@@ -20,8 +21,9 @@ public class RequestDAO {
     public static final String ATHLETE = "Athlete";
 
     public void deleteRequest(int idRequest) throws SQLException, DBUnreachableException {
-        try{
-            Queries.deleteRequest(idRequest);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.deleteRequestQuery)){
+            Queries.deleteRequest(preparedStatement, idRequest);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -29,7 +31,8 @@ public class RequestDAO {
     }
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.loadTrainerRequests(trainer.getFiscalCode())){
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadTrainerRequestsQuery); ResultSet rs = Queries.loadTrainerRequests(preparedStatement, trainer.getFiscalCode())){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -47,8 +50,9 @@ public class RequestDAO {
     }
 
     public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBUnreachableException {
-        try{
-            Queries.insertRequest(requestDate, info, athleteFc, trainer);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertRequestQuery)){
+            Queries.insertRequest(preparedStatement, requestDate, info, athleteFc, trainer);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

@@ -153,8 +153,9 @@ public class AthleteDAO {
     }
 
     public void removeWorkoutPlan(int idWorkoutPlan) throws SQLException, DBUnreachableException {
-        try{
-            Queries.removeWorkoutPlan(idWorkoutPlan);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.removeWorkoutPlanQuery)) {
+            Queries.removeWorkoutPlan(preparedStatement, idWorkoutPlan);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

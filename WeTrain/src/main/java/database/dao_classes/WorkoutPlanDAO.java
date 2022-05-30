@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
@@ -11,12 +12,15 @@ import model.WorkoutPlan;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class WorkoutPlanDAO {
 
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
         int idWorkoutPlan;
-        try(ResultSet generatedKeys = Queries.insertWorkoutPlan(athleteFc)) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertWorkoutPlanQuery,
+                Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = Queries.insertWorkoutPlan(preparedStatement, athleteFc)) {
             if (generatedKeys.next()) {
                 idWorkoutPlan = generatedKeys.getInt(1);
             } else {
