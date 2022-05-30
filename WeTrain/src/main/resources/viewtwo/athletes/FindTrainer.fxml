@@ -23,16 +23,16 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="trainerNameText" layoutX="121.0" layoutY="63.0" prefHeight="27.0" prefWidth="178.0" promptText="Name of the trainer here:" />
-      <Text layoutX="27.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter by name:" />
-      <Text fx:id="adviceLabel" layoutX="27.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or just take a look at the most popular trainers in WeTrain:" />
-      <Button layoutX="309.0" layoutY="64.0" mnemonicParsing="false" onAction="#searchButtonAction" text="🔍" />
-      <HBox alignment="CENTER" layoutX="12.0" layoutY="121.0" prefHeight="231.0" prefWidth="342.0" style="-fx-background-color: rgba(121,47,224,0.6); -fx-background-radius: 50;">
+      <TextField fx:id="trainerNameText" layoutX="140.0" layoutY="63.0" prefHeight="27.0" prefWidth="178.0" promptText="Name of the trainer here:" />
+      <Text layoutX="46.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter by name:" />
+      <Text fx:id="adviceLabel" layoutX="46.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or just take a look at the most popular trainers in WeTrain:" />
+      <Button layoutX="328.0" layoutY="64.0" mnemonicParsing="false" onAction="#searchButtonAction" text="🔍" />
+      <HBox alignment="CENTER" layoutX="46.0" layoutY="121.0" prefHeight="231.0" prefWidth="308.0" style="-fx-background-color: rgba(121,47,224,0.6); -fx-background-radius: 50;">
          <padding>
-            <Insets bottom="12.0" left="12.0" right="36.0" top="12.0" />
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
          <children>
-            <ListView fx:id="trainerList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
+            <ListView fx:id="trainerList" prefHeight="207.0" prefWidth="328.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
          </children>
       </HBox>
       <Button fx:id="subscribeButton" disable="true" layoutX="431.0" layoutY="338.0" mnemonicParsing="false" onAction="#subscribeButtonAction" style="-fx-background-color: green;" text="Subscribe" />

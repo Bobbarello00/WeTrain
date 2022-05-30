@@ -3,6 +3,7 @@ package viewtwo.graphical_controllers.athletes;
 import controller.SubscribeToTrainerController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
+import exception.AlreadySubscribedException;
 import exception.DBUnreachableException;
 import exception.PaymentFailedException;
 import javafx.application.Platform;
@@ -78,11 +79,17 @@ public class FindTrainerGUIController implements Initializable {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+        } catch (AlreadySubscribedException e) {
+            AlertGenerator.newWarningAlert(
+                    "OOPS, SOMETHING WENT WRONG!",
+                    "Couldn't subscribe.",
+                    "You are already subscribed to this Trainer."
+            );
         }
     }
 
     @Override public void initialize(URL url, ResourceBundle resourceBundle) {
-        trainerList.setCellFactory(nodeListView -> new PersonListCellFactory(false));
+        trainerList.setCellFactory(nodeListView -> new PersonListCellFactory(true));
         trainerList.getSelectionModel().selectedItemProperty().
                 addListener(new ChangeListener<>() {
                     @Override public void changed(ObservableValue<? extends UserBean> observableValue, UserBean oldItem, UserBean newItem) {

@@ -1,6 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controller.SubscribeToTrainerController;
+import exception.AlreadySubscribedException;
 import exception.DBUnreachableException;
 import exception.PaymentFailedException;
 import exception.invalid_data_exception.InvalidIbanException;
@@ -158,6 +159,12 @@ public class YourPersonalTrainerGUIController extends HomeGUIControllerAthletes 
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+        } catch (AlreadySubscribedException e) {
+            AlertGenerator.newWarningAlert(
+                    "OOPS, SOMETHING WENT WRONG!",
+                    "Couldn't subscribe.",
+                    "You are already subscribed to this Trainer."
+            );
         }
 
     }

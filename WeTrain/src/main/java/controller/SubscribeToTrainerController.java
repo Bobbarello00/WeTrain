@@ -95,9 +95,12 @@ public class SubscribeToTrainerController {
         return setToUserBean(trainerList);
     }
 
-    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException, PaymentFailedException {
+    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException, PaymentFailedException, AlreadySubscribedException {
         Trainer trainer = new TrainerDAO().loadTrainer(trainerFc);
         Athlete athlete = (Athlete) loginController.getLoggedUser();
+        if(Objects.equals(athlete.getTrainer().getFiscalCode(), trainerFc)) {
+            throw new AlreadySubscribedException();
+        }
         new AthleteDAO().setTrainer(athlete, trainerFc);
         try {
             paypalSystemBoundary.pay(new PaymentBean(trainer.getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTION_FEE));
