@@ -11,6 +11,7 @@ import model.Course;
 import model.User;
 import model.notification.Notification;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -41,7 +42,7 @@ public class NotificationDAO {
 
     public List<Notification> loadAllNotifications(User user) throws SQLException, DBUnreachableException, ElementNotFoundException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadAllNotificationsQuery);ResultSet rs = Queries.loadAllNotifications(preparedStatement, user)){
+                Queries.loadAllNotificationsQuery); ResultSet rs = Queries.loadAllNotifications(preparedStatement, user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(NotificationFactorySingleton.getInstance().createNotification(
