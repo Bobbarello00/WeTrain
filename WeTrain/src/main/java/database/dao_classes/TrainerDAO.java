@@ -1,8 +1,8 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.Queries;
 import database.Queries.TrainerQueries;
+import database.Queries.UserQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.runtime_exception.ResultSetIsNullException;
@@ -42,7 +42,7 @@ public class TrainerDAO {
 
     public Trainer loadTrainer(String fc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(fc, preparedStatement)) {
+                UserQueries.LOAD_USER_2_QUERY); ResultSet rs = UserQueries.loadUser(fc, preparedStatement)) {
             if (rs.next()) {
                 Trainer trainer = new Trainer(
                         rs.getString(USERNAME),

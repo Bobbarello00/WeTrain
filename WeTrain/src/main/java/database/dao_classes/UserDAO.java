@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.Queries;
+import database.Queries.UserQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
@@ -19,7 +19,7 @@ public class UserDAO {
 
     public User loadUser(String email, String password) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_USER_1_QUERY); ResultSet rs = Queries.loadUser(preparedStatement, email, password)){
+                UserQueries.LOAD_USER_1_QUERY); ResultSet rs = UserQueries.loadUser(preparedStatement, email, password)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {
@@ -33,7 +33,7 @@ public class UserDAO {
 
     public User loadUser(String fc) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(fc, preparedStatement)){
+                UserQueries.LOAD_USER_2_QUERY); ResultSet rs = UserQueries.loadUser(fc, preparedStatement)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {
@@ -62,8 +62,8 @@ public class UserDAO {
 
     public void deleteUser(User user) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.DELETE_USER_QUERY)) {
-            Queries.deleteUser(preparedStatement, user.getFiscalCode());
+                UserQueries.DELETE_USER_QUERY)) {
+            UserQueries.deleteUser(preparedStatement, user.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
