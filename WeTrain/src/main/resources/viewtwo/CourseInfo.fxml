@@ -44,7 +44,7 @@
             <Insets bottom="5.0" left="18.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <HBox fx:id="timeSchedulerMo" alignment="CENTER" layoutX="60.0" layoutY="49.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerMo" alignment="CENTER" layoutX="60.0" layoutY="49.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -56,16 +56,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourMo" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteMo" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeMo" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -78,16 +69,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourMo" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteMo" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeMo" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -99,7 +81,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="timeSchedulerTu" alignment="CENTER" layoutX="60.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerTu" alignment="CENTER" layoutX="60.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -111,16 +93,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourTu" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteTu" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeTu" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -133,16 +106,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourTu" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteTu" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeTu" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -154,7 +118,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="timeSchedulerWe" alignment="CENTER" layoutX="60.0" layoutY="146.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerWe" alignment="CENTER" layoutX="60.0" layoutY="146.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -166,16 +130,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourWe" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteWe" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeWe" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -188,16 +143,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourWe" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteWe" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeWe" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -209,7 +155,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="timeSchedulerTh" alignment="CENTER" layoutX="60.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerTh" alignment="CENTER" layoutX="60.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -221,16 +167,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourTh" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteTh" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeTh" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -243,16 +180,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourTh" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteTh" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeTh" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -264,7 +192,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="timeSchedulerFr" alignment="CENTER" layoutX="60.0" layoutY="244.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerFr" alignment="CENTER" layoutX="60.0" layoutY="244.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -276,16 +204,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourFr" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteFr" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeFr" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -298,16 +217,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourFr" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteFr" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeFr" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -319,7 +229,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="timeSchedulerSa" alignment="CENTER" layoutX="60.0" layoutY="294.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerSa" alignment="CENTER" layoutX="60.0" layoutY="294.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -331,16 +241,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourSa" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteSa" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeSa" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -353,16 +254,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourSa" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteSa" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeSa" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -374,7 +266,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox fx:id="timeSchedulerSu" alignment="CENTER" layoutX="60.0" layoutY="342.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;">
+      <HBox fx:id="timeSchedulerSu" alignment="CENTER" layoutX="60.0" layoutY="342.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="370.0" scaleX="0.8" scaleY="0.8" spacing="10.0" style="-fx-border-radius: 50; -fx-background-color: transparent;" visible="false">
          <padding>
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
@@ -386,16 +278,7 @@
             </Text>
             <HBox alignment="CENTER" prefHeight="46.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="startHourSu" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="startMinuteSu" text="Label" textFill="#792fe0">
+                  <Label fx:id="startTimeSu" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -408,16 +291,7 @@
             <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
             <HBox alignment="CENTER" layoutX="130.0" layoutY="12.0" prefHeight="51.0" prefWidth="135.0" spacing="3.0">
                <children>
-                  <Label fx:id="endHourSu" text="Label" textFill="#792fe0">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-                  <Label fx:id="endMinuteSu" text="Label" textFill="#792fe0">
+                  <Label fx:id="endTimeSu" text="Label" textFill="#792fe0">
                      <font>
                         <Font size="16.0" />
                      </font>
