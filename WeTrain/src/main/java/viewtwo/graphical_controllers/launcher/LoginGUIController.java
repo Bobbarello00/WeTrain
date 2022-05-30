@@ -9,6 +9,8 @@ import exception.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import viewone.bean.AthleteBean;
 import viewone.bean.CredentialsBean;
 import viewone.bean.UserBean;
@@ -51,6 +53,15 @@ public class LoginGUIController {
             AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
                     "User not found.",
                     "Be sure that you have an account on WeTrain.");
+        }
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            loginAction();
+        }
+        if(event.getCode() == KeyCode.ESCAPE) {
+            backAction();
         }
     }
 
