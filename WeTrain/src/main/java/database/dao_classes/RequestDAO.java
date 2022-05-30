@@ -22,7 +22,7 @@ public class RequestDAO {
 
     public void deleteRequest(int idRequest) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.deleteRequestQuery)){
+                Queries.DELETE_REQUEST_QUERY)){
             Queries.deleteRequest(preparedStatement, idRequest);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -32,7 +32,7 @@ public class RequestDAO {
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadTrainerRequestsQuery); ResultSet rs = Queries.loadTrainerRequests(preparedStatement, trainer.getFiscalCode())){
+                Queries.LOAD_TRAINER_REQUESTS_QUERY); ResultSet rs = Queries.loadTrainerRequests(preparedStatement, trainer.getFiscalCode())){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -51,7 +51,7 @@ public class RequestDAO {
 
     public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertRequestQuery)){
+                Queries.INSERT_REQUEST_QUERY)){
             Queries.insertRequest(preparedStatement, requestDate, info, athleteFc, trainer);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

@@ -19,7 +19,7 @@ public class WorkoutPlanDAO {
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
         int idWorkoutPlan;
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertWorkoutPlanQuery,
+                Queries.INSERT_WORKOUT_PLAN_QUERY,
                 Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = Queries.insertWorkoutPlan(preparedStatement, athleteFc)) {
             if (generatedKeys.next()) {
                 idWorkoutPlan = generatedKeys.getInt(1);

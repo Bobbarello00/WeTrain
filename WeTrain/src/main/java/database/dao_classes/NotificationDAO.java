@@ -32,7 +32,7 @@ public class NotificationDAO {
 
     public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertNotificationQuery)) {
+                Queries.INSERT_NOTIFICATION_QUERY)) {
             Queries.insertNotification(preparedStatement, type, info, dateTime, sender, receiver);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -42,7 +42,7 @@ public class NotificationDAO {
 
     public List<Notification> loadAllNotifications(User user) throws SQLException, DBUnreachableException, ElementNotFoundException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadAllNotificationsQuery); ResultSet rs = Queries.loadAllNotifications(preparedStatement, user)){
+                Queries.LOAD_ALL_NOTIFICATIONS_QUERY); ResultSet rs = Queries.loadAllNotifications(preparedStatement, user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(NotificationFactorySingleton.getInstance().createNotification(
@@ -63,7 +63,7 @@ public class NotificationDAO {
 
     public void deleteNotification(int idNotification) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.deleteNotificationQuery)) {
+                Queries.DELETE_NOTIFICATION_QUERY)) {
             Queries.deleteNotification(preparedStatement, idNotification);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -73,7 +73,7 @@ public class NotificationDAO {
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadSubscribedQuery);ResultSet rs = Queries.loadSubscribed(preparedStatement, course.getId())) {
+                Queries.LOAD_SUBSCRIBED_QUERY); ResultSet rs = Queries.loadSubscribed(preparedStatement, course.getId())) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),

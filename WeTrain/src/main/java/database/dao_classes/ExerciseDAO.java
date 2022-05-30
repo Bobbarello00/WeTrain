@@ -23,7 +23,7 @@ public class ExerciseDAO {
 
     public void insertExerciseInWorkoutDay(Exercise exercise, int workoutDayId) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertExerciseInWorkoutDayQuery)) {
+                Queries.INSERT_EXERCISE_IN_WORKOUT_DAY_QUERY)) {
             Queries.insertExerciseInWorkoutDay(preparedStatement, exercise.getId(), workoutDayId);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -33,7 +33,7 @@ public class ExerciseDAO {
 
     public int saveExercise(Exercise exercise) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertExerciseQuery,
+                Queries.INSERT_EXERCISE_QUERY,
                 Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = Queries.insertExercise(preparedStatement, exercise)){
             if(generatedKeys.next()) {
                 return generatedKeys.getInt(1);
@@ -47,7 +47,7 @@ public class ExerciseDAO {
 
     public List<Exercise> loadExerciseInWorkoutPlan(int idWorkoutDay, Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadAllExerciseInWorkoutDaysQuery); ResultSet rs = Queries.loadAllExerciseInWorkoutDays(preparedStatement, idWorkoutDay)){
+                Queries.LOAD_ALL_EXERCISE_IN_WORKOUT_DAYS_QUERY); ResultSet rs = Queries.loadAllExerciseInWorkoutDays(preparedStatement, idWorkoutDay)){
             return getExercises(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -57,7 +57,7 @@ public class ExerciseDAO {
 
     public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadTrainerExercisesQuery); ResultSet rs = Queries.loadTrainerExercises(preparedStatement, trainer.getFiscalCode())){
+                Queries.LOAD_TRAINER_EXERCISES_QUERY); ResultSet rs = Queries.loadTrainerExercises(preparedStatement, trainer.getFiscalCode())){
             return getExercises(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -80,7 +80,7 @@ public class ExerciseDAO {
 
     public void removeExercise(Exercise exercise) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.deleteExerciseQuery)){
+                Queries.DELETE_EXERCISE_QUERY)){
             Queries.deleteExercise(preparedStatement, exercise.getId());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

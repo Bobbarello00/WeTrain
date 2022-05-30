@@ -19,7 +19,7 @@ public class UserDAO {
 
     public User loadUser(String email, String password) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadUser1Query);ResultSet rs = Queries.loadUser(preparedStatement, email, password)){
+                Queries.LOAD_USER_1_QUERY); ResultSet rs = Queries.loadUser(preparedStatement, email, password)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {
@@ -33,7 +33,7 @@ public class UserDAO {
 
     public User loadUser(String fc) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadUser2Query);ResultSet rs = Queries.loadUser(preparedStatement, fc)){
+                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(preparedStatement, fc)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {
@@ -62,7 +62,7 @@ public class UserDAO {
 
     public void deleteUser(User user) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.deleteUserQuery)) {
+                Queries.DELETE_USER_QUERY)) {
             Queries.deleteUser(preparedStatement, user.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

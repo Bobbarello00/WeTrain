@@ -18,7 +18,7 @@ public class LessonDAO {
 
     public void saveLesson(Lesson lesson, Course course) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertLessonQuery)){
+                Queries.INSERT_LESSON_QUERY)){
             Queries.insertLesson(preparedStatement, lesson, course.getId());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -28,7 +28,7 @@ public class LessonDAO {
 
     public List<Lesson> loadAllLessons(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadAllLessonsQuery); ResultSet rs = Queries.loadAllLessons(preparedStatement, idCourse)){
+                Queries.LOAD_ALL_LESSONS_QUERY); ResultSet rs = Queries.loadAllLessons(preparedStatement, idCourse)){
             List<Lesson> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(new Lesson(
@@ -48,7 +48,7 @@ public class LessonDAO {
 
     public String loadStartedLessonUrl(int idLesson) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.loadStartedLessonUrlQuery); ResultSet rs = Queries.loadStartedLessonUrl(preparedStatement, idLesson)){
+                Queries.LOAD_STARTED_LESSON_URL_QUERY); ResultSet rs = Queries.loadStartedLessonUrl(preparedStatement, idLesson)){
             if(rs.next()){
                 return rs.getString("StartedLessonUrl");
             }else{
@@ -62,7 +62,7 @@ public class LessonDAO {
 
     public void setStartedLessonUrl(String url, int idLesson) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.insertLessonStartedLessonUrlQuery)) {
+                Queries.INSERT_LESSON_STARTED_LESSON_URL_QUERY)) {
             Queries.insertLessonStartedLessonUrl(preparedStatement, idLesson, url);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -72,7 +72,7 @@ public class LessonDAO {
 
     public void deleteStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.removeLessonStartedLessonUrlQuery)){
+                Queries.REMOVE_LESSON_STARTED_LESSON_URL_QUERY)){
             Queries.removeLessonStartedLessonUrl(preparedStatement, idCourse);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

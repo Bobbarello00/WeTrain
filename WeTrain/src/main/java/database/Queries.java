@@ -25,7 +25,7 @@ public class Queries {
     public static final String FROM_MYDB_LESSON = "FROM mydb.Lesson ";
 
 
-    public static final String loadAllNotificationsQuery = SELECT_ALL +
+    public static final String LOAD_ALL_NOTIFICATIONS_QUERY = SELECT_ALL +
             "FROM mydb.Notification " +
             "WHERE Receiver = ? " +
             LIMIT_30;
@@ -35,7 +35,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertNotificationQuery = "INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
+    public static final String INSERT_NOTIFICATION_QUERY = "INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
             "VALUES (?, ?, ?, ?, ?)";
     public static void insertNotification(PreparedStatement preparedStatement, int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, type);
@@ -46,14 +46,14 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String deleteNotificationQuery = "DELETE FROM mydb.Notification " +
+    public static final String DELETE_NOTIFICATION_QUERY = "DELETE FROM mydb.Notification " +
             "WHERE idNotification = ?";
     public static void deleteNotification(PreparedStatement preparedStatement, int idNotification) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idNotification);
         preparedStatement.executeUpdate();
     }
 
-    public static final String loadAthleteQuery = SELECT_ALL +
+    public static final String LOAD_ATHLETE_QUERY = SELECT_ALL +
             FROM_MYDB_ATHLETE +
             WHERE_USER;
     public static ResultSet loadAthlete(PreparedStatement preparedStatement, String fc) throws SQLException {
@@ -61,9 +61,9 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertAthleteQuery1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
+    public static final String INSERT_ATHLETE_QUERY_1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    public static final String insertAthleteQuery2 = "INSERT INTO mydb.Athlete (User) VALUES (?)";
+    public static final String INSERT_ATHLETE_QUERY_2 = "INSERT INTO mydb.Athlete (User) VALUES (?)";
     public static void insertAthlete(PreparedStatement preparedStatement, PreparedStatement preparedStatement1, Athlete athlete) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, athlete.getFiscalCode());
         preparedStatement.setString(2, athlete.getName());
@@ -79,7 +79,7 @@ public class Queries {
         preparedStatement1.executeUpdate();
     }
 
-    public static final String updateCardInfoAthleteQuery = UPDATE_MYDB_ATHLETE +
+    public static final String UPDATE_CARD_INFO_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
             "SET CardNumber = ?, CardExpirationDate = ? " +
             WHERE_USER;
     public static void updateCardInfoAthlete(PreparedStatement preparedStatement, Athlete athlete, Card card) throws SQLException, DBConnectionFailedException {
@@ -89,7 +89,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String removeCardInfoAthleteQuery = UPDATE_MYDB_ATHLETE +
+    public static final String REMOVE_CARD_INFO_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
             "SET CardNumber = NULL, CardExpirationDate = NULL " +
             WHERE_USER;
     public static void removeCardInfoAthlete(PreparedStatement preparedStatement, String fc) throws SQLException {
@@ -97,7 +97,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String updateTrainerAthleteQuery = UPDATE_MYDB_ATHLETE +
+    public static final String UPDATE_TRAINER_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
             "SET Trainer = ? " +
             WHERE_USER;
     public static void updateTrainerAthlete(PreparedStatement preparedStatement, String athleteFc, String trainerFc) throws SQLException, DBConnectionFailedException {
@@ -106,7 +106,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String removeTrainerAthleteQuery = UPDATE_MYDB_ATHLETE +
+    public static final String REMOVE_TRAINER_ATHLETE_QUERY = UPDATE_MYDB_ATHLETE +
             "SET Trainer = NULL " +
             WHERE_USER;
     public static void removeTrainerAthlete(PreparedStatement preparedStatement, String athleteFc) throws SQLException, DBConnectionFailedException {
@@ -114,21 +114,21 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String countAthleteCoursesQuery = "SELECT COUNT(*) FROM mydb.Subscribe " +
+    public static final String COUNT_ATHLETE_COURSES_QUERY = "SELECT COUNT(*) FROM mydb.Subscribe " +
             "WHERE Athlete = ?";
     public static ResultSet countAthleteCourses(PreparedStatement preparedStatement, String athleteFc) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, athleteFc);
         return preparedStatement.executeQuery();
     }
 
-    public static final String deleteUserQuery = "DELETE FROM mydb.User " +
+    public static final String DELETE_USER_QUERY = "DELETE FROM mydb.User " +
             "WHERE FC = ?";
     public static void deleteUser(PreparedStatement preparedStatement, String userFc) throws SQLException, DBConnectionFailedException {
             preparedStatement.setString(1, userFc);
             preparedStatement.executeUpdate();
         }
 
-    public static final String addWorkoutPlanToAthleteQuery = "UPDATE mydb.Athlete SET WorkoutPlan = ? " +
+    public static final String ADD_WORKOUT_PLAN_TO_ATHLETE_QUERY = "UPDATE mydb.Athlete SET WorkoutPlan = ? " +
             WHERE_USER;
     public static void addWorkoutPlanToAthlete(PreparedStatement preparedStatement, int idWorkoutPlan, String athleteFc) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idWorkoutPlan);
@@ -136,7 +136,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String loadTrainerQuery = SELECT_ALL +
+    public static final String LOAD_TRAINER_QUERY = SELECT_ALL +
             "FROM mydb.Trainer " +
             WHERE_USER;
     public static ResultSet loadTrainer(PreparedStatement preparedStatement, String fc) throws SQLException, DBConnectionFailedException {
@@ -144,7 +144,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadAllTrainersQuery = SELECT_ALL +
+    public static final String LOAD_ALL_TRAINERS_QUERY = SELECT_ALL +
             "FROM mydb.Trainer join mydb.Athlete on Athlete.Trainer = Trainer.User " +
             "GROUP BY Trainer.User " +
             "ORDER BY COUNT(Athlete.User) DESC " +
@@ -153,7 +153,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String searchTrainerQuery = SELECT_ALL +
+    public static final String SEARCH_TRAINER_QUERY = SELECT_ALL +
             "FROM mydb.Trainer join mydb.User on Trainer.User = User.FC " +
             "WHERE (Name LIKE ? OR Surname LIKE ?) " +
             "GROUP BY User " +
@@ -166,9 +166,9 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertTrainerQuery1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) " +
+    public static final String INSERT_TRAINER_QUERY_1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Gender, Email, Password) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    public static final String insertTrainerQuery2 = "INSERT INTO mydb.Trainer (User) VALUES (?)";
+    public static final String INSERT_TRAINER_QUERY_2 = "INSERT INTO mydb.Trainer (User) VALUES (?)";
     public static void insertTrainer(PreparedStatement preparedStatement, PreparedStatement preparedStatement1, Trainer trainer) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, trainer.getFiscalCode());
         preparedStatement.setString(2, trainer.getName());
@@ -184,7 +184,7 @@ public class Queries {
         preparedStatement1.executeUpdate();
     }
 
-    public static final String updateIbanTrainerQuery = "UPDATE mydb.Trainer SET Iban = ? " +
+    public static final String UPDATE_IBAN_TRAINER_QUERY = "UPDATE mydb.Trainer SET Iban = ? " +
             WHERE_USER;
     public static void updateIbanTrainer(PreparedStatement preparedStatement, Trainer trainer) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, trainer.getIban());
@@ -192,7 +192,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String countTrainerSubscribersQuery = "SELECT COUNT(*) " +
+    public static final String COUNT_TRAINER_SUBSCRIBERS_QUERY = "SELECT COUNT(*) " +
             FROM_MYDB_ATHLETE +
             WHERE_TRAINER;
     public static ResultSet countTrainerSubscribers(PreparedStatement preparedStatement, String trainerFc) throws SQLException, DBConnectionFailedException {
@@ -200,7 +200,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadAllTrainerSubscribersQuery = SELECT_ALL +
+    public static final String LOAD_ALL_TRAINER_SUBSCRIBERS_QUERY = SELECT_ALL +
             FROM_MYDB_ATHLETE +
             "WHERE Trainer = ? " +
             LIMIT_30;
@@ -209,7 +209,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
     
-    public static final String loadUser1Query = SELECT_ALL +
+    public static final String LOAD_USER_1_QUERY = SELECT_ALL +
             " FROM mydb.User " +
             " WHERE Email = ? AND Password = ?";
     public static ResultSet loadUser(PreparedStatement preparedStatement, String email, String password) throws SQLException, DBConnectionFailedException {
@@ -218,7 +218,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadUser2Query = SELECT_ALL +
+    public static final String LOAD_USER_2_QUERY = SELECT_ALL +
             "FROM mydb.User " +
             "WHERE FC = ?";
     public static ResultSet loadUser(PreparedStatement preparedStatement, String fc) throws SQLException, DBConnectionFailedException {
@@ -226,7 +226,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadCourseQuery = SELECT_ALL +
+    public static final String LOAD_COURSE_QUERY = SELECT_ALL +
             FROM_MYDB_COURSE +
             WHERE_ID_COURSE;
     public static ResultSet loadCourse(PreparedStatement preparedStatement, int idCourse) throws SQLException, DBConnectionFailedException {
@@ -234,7 +234,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadPopularCourseQuery = "SELECT Course.* " +
+    public static final String LOAD_POPULAR_COURSE_QUERY = "SELECT Course.* " +
             "FROM mydb.Course join mydb.Subscribe on Course.idCourse = Subscribe.Course " +
             "GROUP BY idCourse " +
             "ORDER BY COUNT(idCourse) DESC " +
@@ -243,7 +243,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadAllCoursesAthleteQuery = SELECT_ALL +
+    public static final String LOAD_ALL_COURSES_ATHLETE_QUERY = SELECT_ALL +
             "FROM mydb.Course join mydb.Subscribe on Subscribe.Course = Course.idCourse " +
             "WHERE Subscribe.Athlete = ?";
     public static ResultSet loadAllCoursesAthlete(PreparedStatement preparedStatement, String athleteFc) throws SQLException, DBConnectionFailedException {
@@ -251,7 +251,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadAllCoursesTrainerQuery = SELECT_ALL +
+    public static final String LOAD_ALL_COURSES_TRAINER_QUERY = SELECT_ALL +
             FROM_MYDB_COURSE +
             WHERE_TRAINER;
     public static ResultSet loadAllCoursesTrainer(PreparedStatement preparedStatement, String trainerFc) throws SQLException, DBConnectionFailedException {
@@ -259,7 +259,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertCourseQuery = "INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
+    public static final String INSERT_COURSE_QUERY = "INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
             "VALUES (?, ?, ?, ?, ?)";
     public static int insertCourse(PreparedStatement preparedStatement, Course course) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, course.getName());
@@ -277,6 +277,19 @@ public class Queries {
         }
     }
 
+    public static final String SEARCH_COURSE_QUERY_QUERY_STRING = "AND Lesson.LessonDay != ? ";
+    public static final String SEARCH_COURSE_QUERY_NESTED_QUERY = "(SELECT * " +
+            FROM_MYDB_LESSON +
+            "WHERE Lesson.Course = Course.idCourse ";
+    public static final String SEARCH_COURSE_QUERY_FALSE = SELECT_ALL +
+            FROM_MYDB_COURSE +
+            "WHERE Name LIKE ? " +
+            "AND FitnessLevel = ? " +
+            "AND NOT EXISTS ";
+    public static final String SEARCH_COURSE_QUERY_TRUE = SELECT_ALL +
+            FROM_MYDB_COURSE +
+            "WHERE Name LIKE ? " +
+            "AND FitnessLevel = ?";
     public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, Boolean[] days, boolean condition, int index, List<String> dayStringList) throws SQLException, DBConnectionFailedException {
         String myString = "%%" + name + "%%";
         if (condition) {
@@ -290,7 +303,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadStartedLessonUrlQuery = "SELECT StartedLessonUrl " +
+    public static final String LOAD_STARTED_LESSON_URL_QUERY = "SELECT StartedLessonUrl " +
             FROM_MYDB_LESSON +
             "WHERE idLesson = ?";
     public static ResultSet loadStartedLessonUrl(PreparedStatement preparedStatement, int idLesson) throws SQLException, DBConnectionFailedException {
@@ -298,7 +311,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertLessonStartedLessonUrlQuery = "UPDATE mydb.Lesson " +
+    public static final String INSERT_LESSON_STARTED_LESSON_URL_QUERY = "UPDATE mydb.Lesson " +
             "SET StartedLessonUrl = ? " +
             "WHERE idLesson = ?";
     public static void insertLessonStartedLessonUrl(PreparedStatement preparedStatement, int idLesson, String url) throws SQLException, DBConnectionFailedException {
@@ -307,7 +320,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String removeLessonStartedLessonUrlQuery = "UPDATE mydb.Lesson " +
+    public static final String REMOVE_LESSON_STARTED_LESSON_URL_QUERY = "UPDATE mydb.Lesson " +
             "SET StartedLessonUrl = NULL " +
             WHERE_COURSE;
     public static void removeLessonStartedLessonUrl(PreparedStatement preparedStatement, int idCourse) throws SQLException, DBConnectionFailedException {
@@ -315,7 +328,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String modifyCourseQuery = UPDATE_MYDB_COURSE +
+    public static final String MODIFY_COURSE_QUERY = UPDATE_MYDB_COURSE +
             "SET Name = ?, Description = ?, FitnessLevel = ?, Equipment = ?, Trainer = ? " +
             WHERE_ID_COURSE;
     public static void modifyCourse(PreparedStatement preparedStatement, int idCourse, Course course) throws SQLException, DBConnectionFailedException {
@@ -328,14 +341,14 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String deleteCourseQuery = "DELETE FROM mydb.Course " +
+    public static final String DELETE_COURSE_QUERY = "DELETE FROM mydb.Course " +
             WHERE_ID_COURSE;
     public static void deleteCourse(PreparedStatement preparedStatement, int idCourse) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idCourse);
         preparedStatement.executeUpdate();
     }
 
-    public static final String loadTrainerExercisesQuery = "SELECT Exercise.* " +
+    public static final String LOAD_TRAINER_EXERCISES_QUERY = "SELECT Exercise.* " +
             "FROM mydb.Exercise " +
             WHERE_TRAINER;
     public static ResultSet loadTrainerExercises(PreparedStatement preparedStatement, String trainerFc) throws SQLException, DBConnectionFailedException {
@@ -343,7 +356,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertExerciseQuery = "INSERT INTO mydb.Exercise (Name, Info, Trainer) " +
+    public static final String INSERT_EXERCISE_QUERY = "INSERT INTO mydb.Exercise (Name, Info, Trainer) " +
             "VALUES (?, ?, ?)";
     public static ResultSet insertExercise(PreparedStatement preparedStatement, Exercise exercise) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, exercise.getName());
@@ -353,14 +366,14 @@ public class Queries {
         return preparedStatement.getGeneratedKeys();
     }
 
-    public static final String deleteExerciseQuery = "DELETE FROM mydb.Exercise " +
+    public static final String DELETE_EXERCISE_QUERY = "DELETE FROM mydb.Exercise " +
             "WHERE idExercise = ?";
     public static void deleteExercise(PreparedStatement preparedStatement, int idExercise) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idExercise);
         preparedStatement.executeUpdate();
     }
 
-    public static final String loadAllLessonsQuery = SELECT_ALL +
+    public static final String LOAD_ALL_LESSONS_QUERY = SELECT_ALL +
             FROM_MYDB_LESSON +
             WHERE_COURSE;
     public static ResultSet loadAllLessons(PreparedStatement preparedStatement, int idCourse) throws SQLException, DBConnectionFailedException {
@@ -368,7 +381,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertLessonQuery = "INSERT INTO mydb.Lesson (LessonDay, LessonStartTime, LessonEndTime, Course) " +
+    public static final String INSERT_LESSON_QUERY = "INSERT INTO mydb.Lesson (LessonDay, LessonStartTime, LessonEndTime, Course) " +
             "VALUES (?, ?, ?, ?)";
     public static void insertLesson(PreparedStatement preparedStatement, Lesson lesson, int idCourse) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, lesson.getLessonDay());
@@ -378,7 +391,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String insertRequestQuery = "INSERT INTO mydb.Request (RequestDate, Info, Athlete, Trainer) " +
+    public static final String INSERT_REQUEST_QUERY = "INSERT INTO mydb.Request (RequestDate, Info, Athlete, Trainer) " +
             "VALUES (?, ?, ?, ?)";
     public static void insertRequest(PreparedStatement preparedStatement, LocalDateTime requestDate, String info, String athleteFc, String trainerFc) throws SQLException, DBConnectionFailedException {
         preparedStatement.setTimestamp(1, Timestamp.valueOf(requestDate));
@@ -388,7 +401,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String loadTrainerRequestsQuery = "SELECT Request.* " +
+    public static final String LOAD_TRAINER_REQUESTS_QUERY = "SELECT Request.* " +
             "FROM mydb.Request join mydb.Trainer on Request.Trainer = Trainer.User " +
             "WHERE Trainer = ? " +
             LIMIT_30;
@@ -397,14 +410,14 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String deleteRequestQuery = "DELETE FROM mydb.Request " +
+    public static final String DELETE_REQUEST_QUERY = "DELETE FROM mydb.Request " +
             "WHERE idRequest = ?";
     public static void deleteRequest(PreparedStatement preparedStatement, int idRequest) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idRequest);
         preparedStatement.executeUpdate();
     }
 
-    public static final String insertExerciseInWorkoutDayQuery = "INSERT INTO mydb.Contains (WorkoutDay, Exercise) " +
+    public static final String INSERT_EXERCISE_IN_WORKOUT_DAY_QUERY = "INSERT INTO mydb.Contains (WorkoutDay, Exercise) " +
             "VALUES (?, ?)";
     public static void insertExerciseInWorkoutDay(PreparedStatement preparedStatement, int idExercise, int workoutDayKey) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, workoutDayKey);
@@ -412,7 +425,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String insertWorkoutDayQuery = "INSERT INTO mydb.WorkoutDay (WorkoutPlan, Day) VALUES (?, ?)";
+    public static final String INSERT_WORKOUT_DAY_QUERY = "INSERT INTO mydb.WorkoutDay (WorkoutPlan, Day) VALUES (?, ?)";
     public static ResultSet insertWorkoutDay(PreparedStatement preparedStatement, int workoutPlanKey, String day) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, workoutPlanKey);
         preparedStatement.setString(2, day);
@@ -420,7 +433,7 @@ public class Queries {
         return preparedStatement.getGeneratedKeys();
     }
 
-    public static final String loadAllWorkoutDaysQuery = "SELECT WorkoutDay.* " +
+    public static final String LOAD_ALL_WORKOUT_DAYS_QUERY = "SELECT WorkoutDay.* " +
             "FROM mydb.WorkoutDay " +
             "WHERE WorkoutDay.WorkoutPlan = ?";
     public static ResultSet loadAllWorkoutDays(PreparedStatement preparedStatement, int idWorkoutPlan) throws SQLException, DBConnectionFailedException {
@@ -428,7 +441,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String loadAllExerciseInWorkoutDaysQuery = "SELECT Exercise.* " +
+    public static final String LOAD_ALL_EXERCISE_IN_WORKOUT_DAYS_QUERY = "SELECT Exercise.* " +
             "FROM mydb.Contains join mydb.Exercise on Contains.Exercise = Exercise.idExercise " +
             "WHERE Contains.WorkoutDay = ?";
     public static ResultSet loadAllExerciseInWorkoutDays(PreparedStatement preparedStatement, int idWorkoutDay) throws SQLException, DBConnectionFailedException {
@@ -436,21 +449,21 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String insertWorkoutPlanQuery = "INSERT INTO mydb.WorkoutPlan (Athlete) VALUES (?)";
+    public static final String INSERT_WORKOUT_PLAN_QUERY = "INSERT INTO mydb.WorkoutPlan (Athlete) VALUES (?)";
     public static ResultSet insertWorkoutPlan(PreparedStatement preparedStatement, String athleteFc) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, athleteFc);
         preparedStatement.executeUpdate();
         return preparedStatement.getGeneratedKeys();
     }
 
-    public static final String removeWorkoutPlanQuery = "DELETE FROM mydb.WorkoutPlan " +
+    public static final String REMOVE_WORKOUT_PLAN_QUERY = "DELETE FROM mydb.WorkoutPlan " +
             "WHERE idWorkoutPlan = ?";
     public static void removeWorkoutPlan(PreparedStatement preparedStatement, int idWorkoutPlan) throws DBConnectionFailedException, SQLException {
         preparedStatement.setInt(1, idWorkoutPlan);
         preparedStatement.executeUpdate();
     }
 
-    public static final String insertCourseSubscriberQuery = "INSERT INTO mydb.Subscribe (Course, Athlete) " +
+    public static final String INSERT_COURSE_SUBSCRIBER_QUERY = "INSERT INTO mydb.Subscribe (Course, Athlete) " +
             "VALUES (?, ?)";
     public static void insertCourseSubscriber(PreparedStatement preparedStatement, int idCourse, String athleteFc) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idCourse);
@@ -458,7 +471,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String deleteCourseSubscriberQuery = "DELETE FROM mydb.Subscribe " +
+    public static final String DELETE_COURSE_SUBSCRIBER_QUERY = "DELETE FROM mydb.Subscribe " +
             "WHERE Course = ? and Athlete = ?";
     public static void deleteCourseSubscriber(PreparedStatement preparedStatement, int idCourse, String athleteFc) throws SQLException, DBConnectionFailedException {
         preparedStatement.setInt(1, idCourse);
@@ -466,7 +479,7 @@ public class Queries {
         preparedStatement.executeUpdate();
     }
 
-    public static final String loadSubscribedQuery = SELECT_ALL +
+    public static final String LOAD_SUBSCRIBED_QUERY = SELECT_ALL +
             "FROM mydb.Subscribe " +
             WHERE_COURSE;
     public static ResultSet loadSubscribed(PreparedStatement preparedStatement, int idCourse) throws SQLException, DBConnectionFailedException {
@@ -474,7 +487,7 @@ public class Queries {
         return preparedStatement.executeQuery();
     }
 
-    public static final String getSubscribersQuery = "SELECT Count(*)" +
+    public static final String GET_SUBSCRIBERS_QUERY = "SELECT Count(*)" +
             "FROM mydb.Subscribe " +
             WHERE_COURSE;
     public static ResultSet getSubscribers(PreparedStatement preparedStatement, int idCourse) throws SQLException, DBConnectionFailedException {
