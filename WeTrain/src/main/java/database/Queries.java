@@ -26,16 +26,15 @@ public class Queries {
     public static final String WHERE_TRAINER = "WHERE Trainer = ?";
     public static final String FROM_MYDB_LESSON = "FROM mydb.Lesson ";
 
-    private Queries(){}
-
     public static PreparedStatement loadAllNotifications(User receiver) throws SQLException, DBConnectionFailedException {
-        PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 SELECT_ALL +
                 "FROM mydb.Notification " +
                 "WHERE Receiver = ? " +
-                LIMIT_30);
-        preparedStatement.setString(1, receiver.getFiscalCode());
-        return preparedStatement;
+                LIMIT_30)) {
+            preparedStatement.setString(1, receiver.getFiscalCode());
+            return preparedStatement;
+        }
     }
 
     public static PreparedStatement insertNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
