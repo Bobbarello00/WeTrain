@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
@@ -12,6 +13,7 @@ import model.record.PersonalInfo;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.YearMonth;
@@ -32,8 +34,9 @@ public class AthleteDAO {
     private static final String WORKOUT_PLAN = "WorkoutPlan";
 
     public void updateCardInfo(Card card, Athlete athlete) throws SQLException, DBUnreachableException {
-        try {
-            Queries.updateCardInfoAthlete(athlete, card);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.updateCardInfoAthleteQuery)) {
+            Queries.updateCardInfoAthlete(preparedStatement, athlete, card);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -42,8 +45,11 @@ public class AthleteDAO {
     }
 
     public void saveAthlete(Athlete athlete) throws SQLException, DBUnreachableException {
-        try {
-            Queries.insertAthlete(athlete);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertAthleteQuery1);
+            PreparedStatement preparedStatement1 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                    Queries.insertAthleteQuery2)) {
+            Queries.insertAthlete(preparedStatement, preparedStatement1, athlete);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -79,7 +85,8 @@ public class AthleteDAO {
 
     @Nullable
     private Athlete completeAthleteInfo(String fc, Athlete athlete) throws SQLException, DBUnreachableException, DBConnectionFailedException {
-        try (ResultSet rs1 = Queries.loadAthlete(fc)) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadAthleteQuery);ResultSet rs1 = Queries.loadAthlete(preparedStatement, fc)) {
             if (rs1.next()) {
                 String cardNumber = rs1.getString(CARD_NUMBER);
                 Date temp = rs1.getDate(CARD_EXPIRATION_DATE);
@@ -102,7 +109,10 @@ public class AthleteDAO {
                 return null;
             }
         } catch (ExpiredCardException e) {
-            Queries.removeCardInfoAthlete(fc);
+            try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                    Queries.removeCardInfoAthleteQuery)) {
+                Queries.removeCardInfoAthlete(preparedStatement, fc);
+            }
             return loadAthlete(fc);
         }
     }
@@ -121,8 +131,9 @@ public class AthleteDAO {
     }
 
     public void setTrainer(Athlete athlete, String fc) throws SQLException, DBUnreachableException {
-        try {
-            Queries.updateTrainerAthlete(athlete.getFiscalCode(), fc);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.updateTrainerAthleteQuery)) {
+            Queries.updateTrainerAthlete(preparedStatement, athlete.getFiscalCode(), fc);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

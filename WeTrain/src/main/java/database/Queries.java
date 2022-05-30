@@ -31,7 +31,6 @@ public class Queries {
             "FROM mydb.Notification " +
             "WHERE Receiver = ? " +
             LIMIT_30;
-
     public static ResultSet loadAllNotifications(PreparedStatement preparedStatement, User receiver) throws SQLException, DBConnectionFailedException {
         preparedStatement.setString(1, receiver.getFiscalCode());
         preparedStatement.closeOnCompletion();
@@ -40,98 +39,73 @@ public class Queries {
 
     public static final String insertNotificationQuery = "INSERT INTO mydb.Notification (Type, Info, NotificationDate, Sender, Receiver) " +
             "VALUES (?, ?, ?, ?, ?)";
-    public static void insertNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                insertNotificationQuery)) {
-            preparedStatement.setInt(1, type);
-            preparedStatement.setString(2, info);
-            preparedStatement.setTimestamp(3, Timestamp.valueOf(dateTime));
-            preparedStatement.setString(4, sender);
-            preparedStatement.setString(5, receiver);
-            preparedStatement.executeUpdate();
-        }
+    public static void insertNotification(PreparedStatement preparedStatement, int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setInt(1, type);
+        preparedStatement.setString(2, info);
+        preparedStatement.setTimestamp(3, Timestamp.valueOf(dateTime));
+        preparedStatement.setString(4, sender);
+        preparedStatement.setString(5, receiver);
+        preparedStatement.executeUpdate();
     }
 
     public static final String deleteNotificationQuery = "DELETE FROM mydb.Notification " +
             "WHERE idNotification = ?";
-    public static void deleteNotification(int idNotification) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                deleteNotificationQuery)) {
-            preparedStatement.setInt(1, idNotification);
-            preparedStatement.executeUpdate();
-        }
+    public static void deleteNotification(PreparedStatement preparedStatement, int idNotification) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setInt(1, idNotification);
+        preparedStatement.executeUpdate();
     }
 
     public static final String loadAthleteQuery = SELECT_ALL +
             FROM_MYDB_ATHLETE +
             WHERE_USER;
-    public static ResultSet loadAthlete(String fc) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                loadAthleteQuery)) {
-            preparedStatement.setString(1, fc);
-            return preparedStatement.executeQuery();
-        }
+    public static ResultSet loadAthlete(PreparedStatement preparedStatement, String fc) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setString(1, fc);
+        return preparedStatement.executeQuery();
     }
 
     public static final String insertAthleteQuery1 = "INSERT INTO mydb.User (FC, Name, Surname, Username, Birth, Email, Gender, Password) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String insertAthleteQuery2 = "INSERT INTO mydb.Athlete (User) VALUES (?)";
-    public static void insertAthlete(Athlete athlete) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                insertAthleteQuery1);
-            PreparedStatement preparedStatement1 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                    insertAthleteQuery2)) {
-            preparedStatement.setString(1, athlete.getFiscalCode());
-            preparedStatement.setString(2, athlete.getName());
-            preparedStatement.setString(3, athlete.getSurname());
-            preparedStatement.setString(4, athlete.getUsername());
-            preparedStatement.setDate(5, Date.valueOf(athlete.getDateOfBirth()));
-            preparedStatement.setString(6, athlete.getEmail());
-            preparedStatement.setString(7, String.valueOf(athlete.getGender()));
-            preparedStatement.setString(8, athlete.getPassword());
+    public static void insertAthlete(PreparedStatement preparedStatement, PreparedStatement preparedStatement1, Athlete athlete) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setString(1, athlete.getFiscalCode());
+        preparedStatement.setString(2, athlete.getName());
+        preparedStatement.setString(3, athlete.getSurname());
+        preparedStatement.setString(4, athlete.getUsername());
+        preparedStatement.setDate(5, Date.valueOf(athlete.getDateOfBirth()));
+        preparedStatement.setString(6, athlete.getEmail());
+        preparedStatement.setString(7, String.valueOf(athlete.getGender()));
+        preparedStatement.setString(8, athlete.getPassword());
+        preparedStatement.executeUpdate();
 
-            preparedStatement.executeUpdate();
-
-            preparedStatement1.setString(1, athlete.getFiscalCode());
-
-            preparedStatement1.executeUpdate();
-        }
+        preparedStatement1.setString(1, athlete.getFiscalCode());
+        preparedStatement1.executeUpdate();
     }
 
     public static final String updateCardInfoAthleteQuery = UPDATE_MYDB_ATHLETE +
             "SET CardNumber = ?, CardExpirationDate = ? " +
             WHERE_USER;
-    public static void updateCardInfoAthlete(Athlete athlete, Card card) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                updateCardInfoAthleteQuery)) {
-            preparedStatement.setString(1, card.cardNumber());
-            preparedStatement.setDate(2, Date.valueOf((card.cardExpirationDate()).atDay(1)));
-            preparedStatement.setString(3, athlete.getFiscalCode());
-            preparedStatement.executeUpdate();
-        }
+    public static void updateCardInfoAthlete(PreparedStatement preparedStatement, Athlete athlete, Card card) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setString(1, card.cardNumber());
+        preparedStatement.setDate(2, Date.valueOf((card.cardExpirationDate()).atDay(1)));
+        preparedStatement.setString(3, athlete.getFiscalCode());
+        preparedStatement.executeUpdate();
     }
 
     public static final String removeCardInfoAthleteQuery = UPDATE_MYDB_ATHLETE +
             "SET CardNumber = NULL, CardExpirationDate = NULL " +
             WHERE_USER;
-    public static void removeCardInfoAthlete(String fc) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                removeCardInfoAthleteQuery)) {
-            preparedStatement.setString(1, fc);
-            preparedStatement.executeUpdate();
-        }
+    public static void removeCardInfoAthlete(PreparedStatement preparedStatement, String fc) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setString(1, fc);
+        preparedStatement.executeUpdate();
     }
 
     public static final String updateTrainerAthleteQuery = UPDATE_MYDB_ATHLETE +
             "SET Trainer = ? " +
             WHERE_USER;
-    public static void updateTrainerAthlete(String athleteFc, String trainerFc) throws SQLException, DBConnectionFailedException {
-        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                updateTrainerAthleteQuery)) {
-            preparedStatement.setString(1, trainerFc);
-            preparedStatement.setString(2, athleteFc);
-            preparedStatement.executeUpdate();
-        }
+    public static void updateTrainerAthlete(PreparedStatement preparedStatement, String athleteFc, String trainerFc) throws SQLException, DBConnectionFailedException {
+        preparedStatement.setString(1, trainerFc);
+        preparedStatement.setString(2, athleteFc);
+        preparedStatement.executeUpdate();
     }
 
     public static final String removeTrainerAthleteQuery = UPDATE_MYDB_ATHLETE +

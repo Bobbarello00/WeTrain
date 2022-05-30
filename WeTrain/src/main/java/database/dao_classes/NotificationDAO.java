@@ -30,8 +30,9 @@ public class NotificationDAO {
     }
 
     public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBUnreachableException {
-        try{
-            Queries.insertNotification(type, info, dateTime, sender, receiver);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertNotificationQuery)) {
+            Queries.insertNotification(preparedStatement, type, info, dateTime, sender, receiver);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -60,8 +61,9 @@ public class NotificationDAO {
     }
 
     public void deleteNotification(int idNotification) throws SQLException, DBUnreachableException {
-        try {
-            Queries.deleteNotification(idNotification);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.deleteNotificationQuery)) {
+            Queries.deleteNotification(preparedStatement, idNotification);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
