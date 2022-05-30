@@ -57,7 +57,8 @@ public class AthleteDAO {
     }
 
     public Athlete loadAthlete(String fc) throws SQLException, DBUnreachableException {
-        try (ResultSet rs = Queries.loadUser(fc)) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadUser2Query);ResultSet rs = Queries.loadUser(preparedStatement, fc)) {
             if (rs.next()) {
                 Athlete athlete = new Athlete(
                         rs.getString(USERNAME),
@@ -118,7 +119,8 @@ public class AthleteDAO {
     }
 
     public int getNumberOfCourses(String athleteFc) throws SQLException, DBUnreachableException {
-        try (ResultSet rs = Queries.countAthleteCourses(athleteFc)) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.countAthleteCoursesQuery);ResultSet rs = Queries.countAthleteCourses(preparedStatement, athleteFc)) {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -141,8 +143,9 @@ public class AthleteDAO {
     }
 
     public void removeTrainer(Athlete athlete) throws SQLException, DBUnreachableException {
-        try {
-            Queries.removeTrainerAthlete(athlete.getFiscalCode());
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.removeTrainerAthleteQuery)) {
+            Queries.removeTrainerAthlete(preparedStatement, athlete.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -159,8 +162,9 @@ public class AthleteDAO {
     }
 
     public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
-        try {
-            Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.addWorkoutPlanToAthleteQuery)) {
+            Queries.addWorkoutPlanToAthlete(preparedStatement, idWorkoutPlan, athleteFc);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

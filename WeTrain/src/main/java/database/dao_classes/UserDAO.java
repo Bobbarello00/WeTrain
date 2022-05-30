@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
@@ -10,13 +11,15 @@ import model.Trainer;
 import model.User;
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserDAO {
 
     public User loadUser(String email, String password) throws SQLException, DBUnreachableException, UserNotFoundException {
-        try(ResultSet rs = Queries.loadUser(email, password)){
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadUser1Query);ResultSet rs = Queries.loadUser(preparedStatement, email, password)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {
@@ -29,7 +32,8 @@ public class UserDAO {
     }
 
     public User loadUser(String fc) throws SQLException, DBUnreachableException, UserNotFoundException {
-        try(ResultSet rs = Queries.loadUser(fc)){
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadUser2Query);ResultSet rs = Queries.loadUser(preparedStatement, fc)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {
@@ -57,8 +61,9 @@ public class UserDAO {
     }
 
     public void deleteUser(User user) throws SQLException, DBUnreachableException {
-        try {
-            Queries.deleteUser(user.getFiscalCode());
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.deleteUserQuery)) {
+            Queries.deleteUser(preparedStatement, user.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

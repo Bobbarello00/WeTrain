@@ -1,6 +1,7 @@
 package database.dao_classes;
 
 import controller.LoginController;
+import database.DatabaseConnectionSingleton;
 import database.Queries;
 import exception.DBConnectionFailedException;
 import exception.DBUnreachableException;
@@ -42,8 +43,9 @@ public class CourseDAO {
     }
 
     public void saveCourse(Course course) throws SQLException, DBUnreachableException {
-        try {
-            int idCourse = Queries.insertCourse(course);
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.insertCourseQuery, Statement.RETURN_GENERATED_KEYS)) {
+            int idCourse = Queries.insertCourse(preparedStatement, course);
             course.setId(idCourse);
             for (Lesson lesson : course.getLessonList()) {
                 new LessonDAO().saveLesson(lesson, course);
@@ -73,7 +75,8 @@ public class CourseDAO {
     }
 
     public Course loadCourse(int idCourse) throws SQLException, DBUnreachableException, ElementNotFoundException {
-        try(ResultSet rs = Queries.loadCourse(idCourse)) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadCourseQuery);ResultSet rs = Queries.loadCourse(preparedStatement, idCourse)) {
             if(rs.next()){
                 return new Course(
                         rs.getInt(IDCOURSE),
@@ -94,7 +97,8 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.loadAllCoursesAthlete(athlete.getFiscalCode())) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadAllCoursesAthleteQuery);ResultSet rs = Queries.loadAllCoursesAthlete(preparedStatement, athlete.getFiscalCode())) {
             return loadAllCourses(athlete, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -102,7 +106,8 @@ public class CourseDAO {
         }
     }
     public List<Course> loadPopularCourses() throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.loadPopularCourse()) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadPopularCourseQuery);ResultSet rs = Queries.loadPopularCourse(preparedStatement)) {
             return loadAllCourses(null, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -111,7 +116,8 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.loadAllCoursesTrainer(trainer.getFiscalCode())) {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                Queries.loadAllCoursesTrainerQuery);ResultSet rs = Queries.loadAllCoursesTrainer(preparedStatement, trainer.getFiscalCode())) {
             return loadAllCourses(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
