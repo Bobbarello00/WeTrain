@@ -10,6 +10,7 @@ import exception.runtime_exception.ResultSetIsNullException;
 import model.*;
 
 import java.sql.*;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -164,8 +165,45 @@ public class CourseDAO {
     }
 
     public List<Course> searchCoursesByFilters(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBUnreachableException {
-        try(ResultSet rs = Queries.searchCourse(name, fitnessLevel, days)){
-            return loadAllCourses(loginController.getLoggedUser(), rs);
+        boolean condition = true;
+        int index = 0;
+        List<String> dayStringList = new ArrayList<>(7);
+        for (int i = 1; i <= 7; i++) {
+            dayStringList.add(DayOfWeek.of(i).name());
+        }
+
+        StringBuilder queryString = new StringBuilder();
+
+        for (int i = 0; i < 7; i++) {
+            if (Boolean.TRUE.equals(days[i])) {
+                condition = false;
+                index = i;
+                queryString.append("AND Lesson.LessonDay != ? ");
+            }
+        }
+
+        String nestedQuery = "(SELECT * " +
+                FROM_MYDB_LESSON +
+                "WHERE Lesson.Course = Course.idCourse " +
+                queryString + ")";
+        try{
+            if (condition) {
+                try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(SELECT_ALL +
+                        FROM_MYDB_COURSE +
+                        "WHERE Name LIKE ? " +
+                        "AND FitnessLevel = ?"); ResultSet rs = Queries.searchCourse(preparedStatement, name, fitnessLevel, days, true, index, dayStringList)){
+                    return loadAllCourses(loginController.getLoggedUser(), rs);
+                }
+            } else {
+                try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(SELECT_ALL +
+                        FROM_MYDB_COURSE +
+                        "WHERE Name LIKE ? " +
+                        "AND FitnessLevel = ? " +
+                        "AND NOT EXISTS " +
+                        nestedQuery); ResultSet rs = Queries.searchCourse(preparedStatement, name, fitnessLevel, days, false, index, dayStringList)){
+                    return loadAllCourses(loginController.getLoggedUser(), rs);
+                }
+            }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

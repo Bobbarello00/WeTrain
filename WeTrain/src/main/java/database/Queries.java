@@ -6,9 +6,7 @@ import model.*;
 import model.record.Card;
 
 import java.sql.*;
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Queries {
@@ -279,51 +277,17 @@ public class Queries {
         }
     }
 
-    public static ResultSet searchCourse(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBConnectionFailedException {
-        boolean condition = true;
-        int index = 0;
-        List<String> dayStringList = new ArrayList<>(7);
-        for (int i = 1; i <= 7; i++) {
-            dayStringList.add(DayOfWeek.of(i).name());
-        }
-
-        StringBuilder queryString = new StringBuilder();
-
-        for (int i = 0; i < 7; i++) {
-            if (Boolean.TRUE.equals(days[i])) {
-                condition = false;
-                index = i;
-                queryString.append("AND Lesson.LessonDay != ? ");
-            }
-        }
-
-        String nestedQuery = "(SELECT * " +
-                FROM_MYDB_LESSON +
-                "WHERE Lesson.Course = Course.idCourse " +
-                queryString + ")";
+    public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, Boolean[] days, boolean condition, int index, List<String> dayStringList) throws SQLException, DBConnectionFailedException {
         String myString = "%%" + name + "%%";
         if (condition) {
-            try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(SELECT_ALL +
-                    FROM_MYDB_COURSE +
-                    "WHERE Name LIKE ? " +
-                    "AND FitnessLevel = ?")){
-                preparedStatement.setString(1, myString);
-                preparedStatement.setString(2, fitnessLevel);
-                return preparedStatement.executeQuery();
-            }
+            preparedStatement.setString(1, myString);
+            preparedStatement.setString(2, fitnessLevel);
         } else {
-            try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(SELECT_ALL +
-                    FROM_MYDB_COURSE +
-                    "WHERE Name LIKE ? " +
-                    "AND FitnessLevel = ? " +
-                    "AND NOT EXISTS " +
-                    nestedQuery)){
-                preparedStatement.setString(1, myString);
-                preparedStatement.setString(2, fitnessLevel);
-                preparedStatement.setString(3, dayStringList.get(index));
-                return preparedStatement.executeQuery();
-            }
+            preparedStatement.setString(1, myString);
+            preparedStatement.setString(2, fitnessLevel);
+            preparedStatement.setString(3, dayStringList.get(index));
         }
+        return preparedStatement.executeQuery();
     }
 
     public static final String loadStartedLessonUrlQuery = "SELECT StartedLessonUrl " +
