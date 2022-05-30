@@ -30,8 +30,8 @@ public class NotificationDAO {
     }
 
     public void saveNotification(int type, String info, LocalDateTime dateTime, String sender, String receiver) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertNotification(type, info, dateTime, sender, receiver)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.insertNotification(type, info, dateTime, sender, receiver);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -39,8 +39,7 @@ public class NotificationDAO {
     }
 
     public List<Notification> loadAllNotifications(User user) throws SQLException, DBUnreachableException, ElementNotFoundException, UserNotFoundException {
-        try(PreparedStatement preparedStatement = Queries.loadAllNotifications(user)){
-            ResultSet rs = preparedStatement.executeQuery();
+        try(ResultSet rs = Queries.loadAllNotifications(user)){
             List<Notification> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(NotificationFactorySingleton.getInstance().createNotification(
@@ -60,8 +59,8 @@ public class NotificationDAO {
     }
 
     public void deleteNotification(int idNotification) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.deleteNotification(idNotification)){
-            preparedStatement.executeUpdate();
+        try {
+            Queries.deleteNotification(idNotification);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -69,7 +68,7 @@ public class NotificationDAO {
     }
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBUnreachableException {
-        try (PreparedStatement preparedStatement = Queries.loadSubscribed(course.getId()); ResultSet rs = preparedStatement.executeQuery()) {
+        try (ResultSet rs = Queries.loadSubscribed(course.getId())) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),

@@ -63,8 +63,8 @@ public class CourseDAO {
     }
 
     public void subscribeToCourse(Course course, Athlete athlete) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertCourseSubscriber(course.getId(), athlete.getFiscalCode())){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.insertCourseSubscriber(course.getId(), athlete.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -72,8 +72,8 @@ public class CourseDAO {
     }
 
     public void unsubscribeFromACourse(int idCourse) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.deleteCourseSubscriber(idCourse, loginController.getLoggedUser().getFiscalCode())){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.deleteCourseSubscriber(idCourse, loginController.getLoggedUser().getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -175,7 +175,7 @@ public class CourseDAO {
     }
 
     public int getSubscribersNumber(int idCourse) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.getSubscribers(idCourse); ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.getSubscribers(idCourse)){
             if(rs.next()) {
                 return rs.getInt(1);
             } else {
