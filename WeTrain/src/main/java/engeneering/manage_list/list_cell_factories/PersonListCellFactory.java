@@ -36,7 +36,7 @@ public class PersonListCellFactory extends ListCell<UserBean> {
                 ((Label)parentNode.lookup("#itemName")).setText(userBean.getName() + " " + userBean.getSurname());
                 ((Label)parentNode.lookup("#itemOwner")).setText(userBean.getUsername());
                 ((Label)parentNode.lookup("#itemCode")).setText(userBean.getFiscalCode());
-                setPicture(userBean, view);
+                setPicture(userBean);
                 setGraphic(parentNode);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -46,23 +46,23 @@ public class PersonListCellFactory extends ListCell<UserBean> {
         }
     }
 
-    private void setPicture(UserBean userBean, String view) {
+    private void setPicture(UserBean userBean) {
         if(Objects.equals(userBean.getType(), "Trainer")){
             if (userBean.getGender() == 'm'){
-                setImage("TrainerM", view);
+                setImage("TrainerM");
             } else {
-                setImage("TrainerF", view);
+                setImage("TrainerF");
             }
         }else {
             if (userBean.getGender() == 'm'){
-                setImage("AthleteM", view);
+                setImage("AthleteM");
             } else {
-                setImage("AthleteF", view);
+                setImage("AthleteF");
             }
         }
     }
 
-    private void setImage(String str, String view){
-        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/"+view+"/images/" + str + ".png").toURI().toString()));
+    private void setImage(String str){
+        ((ImageView) parentNode.lookup("#itemIcon")).setImage(new Image(new File("src/main/resources/viewone/images/" + str + ".png").toURI().toString()));
     }
 }

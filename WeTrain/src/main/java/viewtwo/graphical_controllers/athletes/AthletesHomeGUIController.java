@@ -1,6 +1,8 @@
 package viewtwo.graphical_controllers.athletes;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.NotificationsGUIController;
 import viewtwo.graphical_controllers.PersonalInfoGUIController;
@@ -45,5 +47,11 @@ public class AthletesHomeGUIController {
 
     @FXML void paymentMethodButtonAction() throws IOException {
         PageSwitchSimple.switchPage("PaymentMethod", ATHLETES);
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ESCAPE) {
+            logoutButtonAction();
+        }
     }
 }
