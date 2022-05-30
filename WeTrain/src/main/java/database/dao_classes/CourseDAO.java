@@ -42,16 +42,8 @@ public class CourseDAO {
     }
 
     public void saveCourse(Course course) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertCourse(course)) {
-            preparedStatement.executeUpdate();
-            int idCourse;
-            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    idCourse = generatedKeys.getInt(1);
-                } else {
-                    throw new ResultSetIsNullException();
-                }
-            }
+        try {
+            int idCourse = Queries.insertCourse(course);
             course.setId(idCourse);
             for (Lesson lesson : course.getLessonList()) {
                 new LessonDAO().saveLesson(lesson, course);
@@ -81,8 +73,7 @@ public class CourseDAO {
     }
 
     public Course loadCourse(int idCourse) throws SQLException, DBUnreachableException, ElementNotFoundException {
-        try(PreparedStatement preparedStatement = Queries.loadCourse(idCourse)) {
-            ResultSet rs = preparedStatement.executeQuery();
+        try(ResultSet rs = Queries.loadCourse(idCourse)) {
             if(rs.next()){
                 return new Course(
                         rs.getInt(IDCOURSE),
@@ -103,8 +94,7 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllCoursesAthlete(athlete.getFiscalCode());
-            ResultSet rs = preparedStatement.executeQuery()) {
+        try(ResultSet rs = Queries.loadAllCoursesAthlete(athlete.getFiscalCode())) {
             return loadAllCourses(athlete, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -112,8 +102,7 @@ public class CourseDAO {
         }
     }
     public List<Course> loadPopularCourses() throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadPopularCourse();
-            ResultSet rs = preparedStatement.executeQuery()) {
+        try(ResultSet rs = Queries.loadPopularCourse()) {
             return loadAllCourses(null, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -122,8 +111,7 @@ public class CourseDAO {
     }
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllCoursesTrainer(trainer.getFiscalCode());
-            ResultSet rs = preparedStatement.executeQuery()) {
+        try(ResultSet rs = Queries.loadAllCoursesTrainer(trainer.getFiscalCode())) {
             return loadAllCourses(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

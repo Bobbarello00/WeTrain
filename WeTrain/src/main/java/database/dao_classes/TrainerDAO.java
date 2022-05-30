@@ -9,7 +9,6 @@ import model.Trainer;
 import model.record.Credentials;
 import model.record.PersonalInfo;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,11 +27,7 @@ public class TrainerDAO {
 
     public void saveTrainer(Trainer trainer) throws SQLException, DBUnreachableException {
         try {
-            List<PreparedStatement> preparedStatementList = Queries.insertTrainer(trainer);
-            preparedStatementList.get(0).executeUpdate();
-            preparedStatementList.get(1).executeUpdate();
-            preparedStatementList.get(0).close();
-            preparedStatementList.get(1).close();
+            Queries.insertTrainer(trainer);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -40,8 +35,7 @@ public class TrainerDAO {
     }
 
     public Trainer loadTrainer(String fc) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadUser(fc)) {
-            ResultSet rs = preparedStatement.executeQuery();
+        try(ResultSet rs = Queries.loadUser(fc)) {
             if (rs.next()) {
                 Trainer trainer = new Trainer(
                         rs.getString(USERNAME),
@@ -57,8 +51,7 @@ public class TrainerDAO {
                                 rs.getString(PASSWORD)
                         )
                 );
-                try(PreparedStatement preparedStatement1 = Queries.loadTrainer(fc)) {
-                    ResultSet rs1 = preparedStatement1.executeQuery();
+                try(ResultSet rs1 = Queries.loadTrainer(fc)) {
                     if (rs1.next()) {
                         trainer.setIban(rs1.getString("Iban"));
                         return trainer;
@@ -76,8 +69,7 @@ public class TrainerDAO {
     }
 
     public int getNumberOfSubscribers(String trainerFc) throws SQLException, DBUnreachableException {
-        try (PreparedStatement preparedStatement = Queries.countTrainerSubscribers(trainerFc)) {
-            ResultSet rs = preparedStatement.executeQuery();
+        try (ResultSet rs = Queries.countTrainerSubscribers(trainerFc)) {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -108,8 +100,8 @@ public class TrainerDAO {
     }
 
     public List<Trainer> searchTrainers(String name) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.searchTrainer(name) ){
-            return getTrainersList(preparedStatement.executeQuery());
+        try(ResultSet rs = Queries.searchTrainer(name) ){
+            return getTrainersList(rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -117,8 +109,8 @@ public class TrainerDAO {
     }
 
     public List<Trainer> loadAllTrainers() throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllTrainers()){
-            return getTrainersList(preparedStatement.executeQuery());
+        try(ResultSet rs = Queries.loadAllTrainers()){
+            return getTrainersList(rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -126,8 +118,8 @@ public class TrainerDAO {
     }
 
     public List<Athlete> loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllTrainerSubscribers(trainerFc)){
-            return getSubscribersList(preparedStatement.executeQuery());
+        try(ResultSet rs = Queries.loadAllTrainerSubscribers(trainerFc)){
+            return getSubscribersList(rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -136,8 +128,8 @@ public class TrainerDAO {
 
     public void updateIban(String iban, Trainer trainer) throws SQLException, DBUnreachableException {
         trainer.setIban(iban);
-        try(PreparedStatement preparedStatement = Queries.updateIbanTrainer(trainer)) {
-                preparedStatement.executeUpdate();
+        try {
+            Queries.updateIbanTrainer(trainer);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

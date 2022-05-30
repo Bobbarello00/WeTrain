@@ -45,7 +45,7 @@ public class LessonDAO {
     }
 
     public String loadStartedLessonUrl(int idLesson) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadStartedLessonUrl(idLesson); ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.loadStartedLessonUrl(idLesson)){
             if(rs.next()){
                 return rs.getString("StartedLessonUrl");
             }else{
@@ -58,8 +58,8 @@ public class LessonDAO {
     }
 
     public void setStartedLessonUrl(String url, int idLesson) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertLessonStartedLessonUrl(idLesson, url)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.insertLessonStartedLessonUrl(idLesson, url);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

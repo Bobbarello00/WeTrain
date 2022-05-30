@@ -12,7 +12,6 @@ import model.record.PersonalInfo;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.YearMonth;
@@ -52,8 +51,7 @@ public class AthleteDAO {
     }
 
     public Athlete loadAthlete(String fc) throws SQLException, DBUnreachableException {
-        try (PreparedStatement preparedStatement = Queries.loadUser(fc)) {
-            ResultSet rs = preparedStatement.executeQuery();
+        try (ResultSet rs = Queries.loadUser(fc)) {
             if (rs.next()) {
                 Athlete athlete = new Athlete(
                         rs.getString(USERNAME),
@@ -150,8 +148,8 @@ public class AthleteDAO {
     }
 
     public void addWorkoutPlan(int idWorkoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);){
-            preparedStatement.executeUpdate();
+        try {
+            Queries.addWorkoutPlanToAthlete(idWorkoutPlan, athleteFc);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
