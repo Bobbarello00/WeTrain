@@ -20,7 +20,7 @@
             <Font size="45.0" />
          </font>
       </Text>
-      <Button layoutX="5.0" layoutY="256.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
+      <Button layoutX="4.0" layoutY="370.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
       <Text fill="#792fe0" layoutX="405.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🔍">
          <font>
             <Font size="30.0" />
@@ -43,15 +43,15 @@
          </children>
       </HBox>
       <Button layoutX="495.0" layoutY="58.0" mnemonicParsing="false" onAction="#searchCourseByFilters" prefHeight="32.0" prefWidth="36.0" text="🔎" />
-      <HBox alignment="CENTER" layoutX="66.0" layoutY="148.0" prefHeight="242.0" prefWidth="375.0" style="-fx-background-color: rgba(121,47,224,0.6); -fx-background-radius: 50;">
+      <HBox alignment="CENTER" layoutX="66.0" layoutY="148.0" prefHeight="216.0" prefWidth="312.0" style="-fx-background-color: rgba(121,47,224,0.6); -fx-background-radius: 50;">
          <padding>
-            <Insets bottom="12.0" left="12.0" right="36.0" top="12.0" />
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
          <children>
             <ListView fx:id="courseList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
          </children>
       </HBox>
-      <VBox fx:id="courseActions" alignment="CENTER" disable="true" layoutX="452.0" layoutY="148.0" prefHeight="242.0" prefWidth="144.0" spacing="25.0">
+      <VBox fx:id="courseActions" alignment="CENTER" disable="true" layoutX="385.0" layoutY="148.0" prefHeight="216.0" prefWidth="144.0" spacing="25.0">
          <children>
             <Button mnemonicParsing="false" onAction="#courseInfoButtonAction" text="ⓘ" />
             <Button mnemonicParsing="false" onAction="#subscribe" style="-fx-background-color: green;" text="Subscribe" />
