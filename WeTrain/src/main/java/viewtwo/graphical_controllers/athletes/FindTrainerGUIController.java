@@ -11,6 +11,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -29,6 +30,7 @@ public class FindTrainerGUIController implements Initializable {
     @FXML private TextArea trainerDataTextArea;
     @FXML private ListView<UserBean> trainerList;
     @FXML private TextField trainerNameText;
+    @FXML private Button subscribeButton;
 
     private UserBean selectedTrainer;
     private final SubscribeToTrainerController subscribeToTrainerController = new SubscribeToTrainerController();
@@ -107,6 +109,7 @@ public class FindTrainerGUIController implements Initializable {
                                     selectedTrainer.getEmail(),
                                     selectedTrainer.getFiscalCode())
                             );
+                            subscribeButton.setDisable(false);
                             Platform.runLater(() -> trainerList.getSelectionModel().clearSelection());
                         }
                     }

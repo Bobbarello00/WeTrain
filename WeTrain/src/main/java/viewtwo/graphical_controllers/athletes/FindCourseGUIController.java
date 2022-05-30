@@ -105,18 +105,18 @@ public class FindCourseGUIController implements Initializable {
 
     @FXML void subscribe() {
         try {
-            if(!checkIfAlreadySubscribed()){
-                if(AlertGenerator.newConfirmationAlert(
+            if(!checkIfAlreadySubscribed()) {
+                if (AlertGenerator.newConfirmationAlert(
                         "PURCHASE CONFIRMATION",
                         "Course subscription fee is 5$",
-                        "if you click ok a payment will be sent from your selected payment method")) {
+                        "If you click ok a payment will be sent from your selected payment method")) {
                     subscribeToCourseController.subscribeToCourse(selectedCourse);
                     PageSwitchSimple.switchPage("AthletesHome", "athletes");
-                }else {
-                    AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
-                            "You are already subscribed to this course.",
-                            null);
                 }
+            } else {
+                AlertGenerator.newWarningAlert("OOPS, SOMETHING WENT WRONG!",
+                        "You are already subscribed to this course.",
+                        null);
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();

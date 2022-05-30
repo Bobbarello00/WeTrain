@@ -10,6 +10,7 @@ import exception.NoScheduledLessonException;
 import exception.UrlNotInsertedYetException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -39,7 +40,7 @@ public class YourCoursesGUIController implements Initializable {
     }
 
     @FXML void courseInfoButtonAction() throws IOException {
-        CourseInfoGUIController controller = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", ATHLETES);
+        CourseInfoGUIController controller = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", "");
         if(controller!=null) {
             controller.setBackPathAndValues("YourCourses", ATHLETES, selectedCourse);
         }
@@ -95,5 +96,16 @@ public class YourCoursesGUIController implements Initializable {
               }
           }
         );
+        try {
+            courseList.setItems(FXCollections.observableList(subscribeToCourseController.getLoggedAthleteCourseList()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+        }
     }
 }

@@ -34,6 +34,7 @@ public class PageSwitchSimple {
             MainPane.getInstance().setCenter(view);
             return root.getController();
         } catch (FileNotFoundException e) {
+            e.printStackTrace();
             return null;
         } catch (LoadException e) {
             if(e.getCause() instanceof DBUnreachableException) {

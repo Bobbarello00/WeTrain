@@ -14,42 +14,27 @@ import java.util.List;
 
 public class CourseInfoGUIController {
 
-    @FXML private Label startHourWe;
     @FXML private Label courseNameLabel;
-    @FXML private Label trainerNameLabel;
-    @FXML private Label endHourFr;
-    @FXML private Label endHourMo;
-    @FXML private Label endHourSa;
-    @FXML private Label endHourSu;
-    @FXML private Label endHourTh;
-    @FXML private Label endHourTu;
-    @FXML private Label endHourWe;
-    @FXML private Label endMinuteFr;
-    @FXML private Label endMinuteMo;
-    @FXML private Label endMinuteSa;
-    @FXML private Label endMinuteSu;
-    @FXML private Label endMinuteTh;
-    @FXML private Label endMinuteTu;
-    @FXML private Label endMinuteWe;
+    @FXML private Label endTimeFr;
+    @FXML private Label endTimeMo;
+    @FXML private Label endTimeSa;
+    @FXML private Label endTimeSu;
+    @FXML private Label endTimeTh;
+    @FXML private Label endTimeTu;
+    @FXML private Label endTimeWe;
     @FXML private TextArea equipmentTextArea;
     @FXML private Label fitnessLevelLabel;
     @FXML private RadioButton fridayRadioButton;
     @FXML private TextArea infoTextArea;
     @FXML private RadioButton mondayRadioButton;
     @FXML private RadioButton saturdayRadioButton;
-    @FXML private Label startHourFr;
-    @FXML private Label startHourMo;
-    @FXML private Label startHourSa;
-    @FXML private Label startHourSu;
-    @FXML private Label startHourTh;
-    @FXML private Label startHourTu;
-    @FXML private Label startMinuteFr;
-    @FXML private Label startMinuteMo;
-    @FXML private Label startMinuteSa;
-    @FXML private Label startMinuteSu;
-    @FXML private Label startMinuteTh;
-    @FXML private Label startMinuteTu;
-    @FXML private Label startMinuteWe;
+    @FXML private Label startTimeFr;
+    @FXML private Label startTimeMo;
+    @FXML private Label startTimeSa;
+    @FXML private Label startTimeSu;
+    @FXML private Label startTimeTh;
+    @FXML private Label startTimeTu;
+    @FXML private Label startTimeWe;
     @FXML private RadioButton sundayRadioButton;
     @FXML private RadioButton thursdayRadioButton;
     @FXML private HBox timeSchedulerFr;
@@ -59,6 +44,7 @@ public class CourseInfoGUIController {
     @FXML private HBox timeSchedulerTh;
     @FXML private HBox timeSchedulerTu;
     @FXML private HBox timeSchedulerWe;
+    @FXML private Label trainerNameLabel;
     @FXML private RadioButton tuesdayRadioButton;
     @FXML private RadioButton wednesdayRadioButton;
 
@@ -81,29 +67,27 @@ public class CourseInfoGUIController {
     private void setScheduleLesson(List<LessonBean> lessonBeanList) {
         for(LessonBean lessonBean: lessonBeanList){
             switch (lessonBean.getLessonDay().toLowerCase()){
-                case ("monday") -> setDaySchedule(timeSchedulerMo, startHourMo, startMinuteMo,
-                        endHourMo, endMinuteMo, mondayRadioButton, lessonBean);
-                case ("tuesday") -> setDaySchedule(timeSchedulerTu, startHourTu, startMinuteTu,
-                        endHourTu, endMinuteTu, tuesdayRadioButton, lessonBean);
-                case ("wednesday") -> setDaySchedule(timeSchedulerWe, startHourWe, startMinuteWe,
-                        endHourWe, endMinuteWe, wednesdayRadioButton, lessonBean);
-                case ("thursday") -> setDaySchedule(timeSchedulerTh, startHourTh, startMinuteTh,
-                        endHourTh, endMinuteTh, thursdayRadioButton, lessonBean);
-                case ("friday") -> setDaySchedule(timeSchedulerFr, startHourFr, startMinuteFr,
-                        endHourFr, endMinuteFr, fridayRadioButton, lessonBean);
-                case ("saturday") -> setDaySchedule(timeSchedulerSa, startHourSa, startMinuteSa,
-                        endHourSa, endMinuteSa, saturdayRadioButton, lessonBean);
-                case ("sunday") -> setDaySchedule(timeSchedulerSu, startHourSu, startMinuteSu,
-                        endHourSu, endMinuteSu, sundayRadioButton, lessonBean);
+                case ("monday") -> setDaySchedule(timeSchedulerMo, startTimeMo,
+                        endTimeMo, mondayRadioButton, lessonBean);
+                case ("tuesday") -> setDaySchedule(timeSchedulerTu, startTimeTu,
+                        endTimeTu, tuesdayRadioButton, lessonBean);
+                case ("wednesday") -> setDaySchedule(timeSchedulerWe, startTimeWe,
+                       endTimeWe, wednesdayRadioButton, lessonBean);
+                case ("thursday") -> setDaySchedule(timeSchedulerTh, startTimeTh,
+                        endTimeTh, thursdayRadioButton, lessonBean);
+                case ("friday") -> setDaySchedule(timeSchedulerFr, startTimeFr,
+                        endTimeFr, fridayRadioButton, lessonBean);
+                case ("saturday") -> setDaySchedule(timeSchedulerSa, startTimeSa,
+                        endTimeSa, saturdayRadioButton, lessonBean);
+                case ("sunday") -> setDaySchedule(timeSchedulerSu, startTimeSu,
+                        endTimeSu, sundayRadioButton, lessonBean);
             }
         }
     }
 
-    private void setDaySchedule(HBox timeScheduler, Label startHour, Label startMinute, Label endHour, Label endMinute,RadioButton radioButton, LessonBean lessonBean) {
-        startHour.setText(String.valueOf(lessonBean.getLessonStartTime().getHour()));
-        startMinute.setText(String.valueOf(lessonBean.getLessonStartTime().getMinute()));
-        endHour.setText(String.valueOf(lessonBean.getLessonEndTime().getHour()));
-        endMinute.setText(String.valueOf(lessonBean.getLessonEndTime().getMinute()));
+    private void setDaySchedule(HBox timeScheduler, Label startLabel, Label endLabel, RadioButton radioButton, LessonBean lessonBean) {
+        startLabel.setText(lessonBean.getLessonStartTime().toString());
+        endLabel.setText(lessonBean.getLessonEndTime().toString());
         timeScheduler.setVisible(true);
         radioButton.selectedProperty().setValue(true);
     }
