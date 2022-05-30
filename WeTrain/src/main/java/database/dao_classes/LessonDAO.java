@@ -66,8 +66,8 @@ public class LessonDAO {
     }
 
     public void deleteStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.removeLessonStartedLessonUrl(idCourse)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.removeLessonStartedLessonUrl(idCourse);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

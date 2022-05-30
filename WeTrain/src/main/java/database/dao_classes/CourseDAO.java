@@ -24,8 +24,8 @@ public class CourseDAO {
     private final LoginController loginController = new LoginController();
 
     public void deleteCourse(int idCourse) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.deleteCourse(idCourse)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.deleteCourse(idCourse);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -33,8 +33,8 @@ public class CourseDAO {
     }
 
     public void modifyCourse(int idCourse, Course course) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.modifyCourse(idCourse, course)) {
-            preparedStatement.executeUpdate();
+        try{
+            Queries.modifyCourse(idCourse, course);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -154,8 +154,8 @@ public class CourseDAO {
     }
 
     public List<Course> searchCoursesByFilters(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.searchCourse(name, fitnessLevel, days)){
-            return loadAllCourses(loginController.getLoggedUser(), preparedStatement.executeQuery());
+        try(ResultSet rs = Queries.searchCourse(name, fitnessLevel, days)){
+            return loadAllCourses(loginController.getLoggedUser(), rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

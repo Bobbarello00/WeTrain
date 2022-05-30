@@ -50,8 +50,7 @@ public class ExerciseDAO {
     }
 
     public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadTrainerExercises(trainer.getFiscalCode());
-            ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.loadTrainerExercises(trainer.getFiscalCode())){
             return getExercises(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
