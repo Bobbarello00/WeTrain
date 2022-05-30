@@ -20,8 +20,8 @@ public class RequestDAO {
     public static final String ATHLETE = "Athlete";
 
     public void deleteRequest(int idRequest) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.deleteRequest(idRequest)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.deleteRequest(idRequest);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -29,7 +29,7 @@ public class RequestDAO {
     }
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadTrainerRequests(trainer.getFiscalCode()); ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.loadTrainerRequests(trainer.getFiscalCode())){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -47,8 +47,8 @@ public class RequestDAO {
     }
 
     public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertRequest(requestDate, info, athleteFc, trainer)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.insertRequest(requestDate, info, athleteFc, trainer);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

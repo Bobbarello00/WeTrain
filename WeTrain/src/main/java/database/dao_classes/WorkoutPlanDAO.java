@@ -15,15 +15,12 @@ import java.sql.SQLException;
 public class WorkoutPlanDAO {
 
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertWorkoutPlan(athleteFc)) {
-            preparedStatement.executeUpdate();
-            int idWorkoutPlan;
-            try(ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    idWorkoutPlan = generatedKeys.getInt(1);
-                } else {
-                    throw new NoGeneratedKeyException();
-                }
+        int idWorkoutPlan;
+        try(ResultSet generatedKeys = Queries.insertWorkoutPlan(athleteFc)) {
+            if (generatedKeys.next()) {
+                idWorkoutPlan = generatedKeys.getInt(1);
+            } else {
+                throw new NoGeneratedKeyException();
             }
             for (WorkoutDay workoutDay : workoutPlan.getWorkoutDayList()) {
                 new WorkoutDayDAO().saveWorkoutDay(workoutDay, idWorkoutPlan);

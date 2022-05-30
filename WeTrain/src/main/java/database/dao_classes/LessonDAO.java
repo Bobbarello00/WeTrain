@@ -16,8 +16,8 @@ import java.util.List;
 public class LessonDAO {
 
     public void saveLesson(Lesson lesson, Course course) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertLesson(lesson, course.getId())){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.insertLesson(lesson, course.getId());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -25,8 +25,7 @@ public class LessonDAO {
     }
 
     public List<Lesson> loadAllLessons(int idCourse) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllLessons(idCourse);
-            ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.loadAllLessons(idCourse)){
             List<Lesson> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(new Lesson(

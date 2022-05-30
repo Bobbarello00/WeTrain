@@ -18,15 +18,12 @@ import java.util.List;
 public class WorkoutDayDAO {
 
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertWorkoutDay(idWorkoutPlan, workoutDay.getDay())) {
-            int idWorkoutDay;
-            preparedStatement.executeUpdate();
-            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    idWorkoutDay = generatedKeys.getInt(1);
-                } else {
-                    throw new NoGeneratedKeyException();
-                }
+        int idWorkoutDay;
+        try (ResultSet generatedKeys = Queries.insertWorkoutDay(idWorkoutPlan, workoutDay.getDay())) {
+            if (generatedKeys.next()) {
+                idWorkoutDay = generatedKeys.getInt(1);
+            } else {
+                throw new NoGeneratedKeyException();
             }
             for (Exercise exercise : workoutDay.getExerciseList()){
                 new ExerciseDAO().insertExerciseInWorkoutDay(exercise, idWorkoutDay);
@@ -38,7 +35,7 @@ public class WorkoutDayDAO {
     }
 
     public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan, Trainer trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllWorkoutDays(workoutPlan.getId()); ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.loadAllWorkoutDays(workoutPlan.getId())){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
                 WorkoutDay workoutDay = new WorkoutDay(

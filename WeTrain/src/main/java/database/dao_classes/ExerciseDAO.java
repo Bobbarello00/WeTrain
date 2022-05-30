@@ -20,8 +20,8 @@ public class ExerciseDAO {
     private static final String IDEXERCISE = "idExercise";
 
     public void insertExerciseInWorkoutDay(Exercise exercise, int workoutDayId) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertExerciseInWorkoutDay(exercise.getId(), workoutDayId)){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.insertExerciseInWorkoutDay(exercise.getId(), workoutDayId);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -29,9 +29,7 @@ public class ExerciseDAO {
     }
 
     public int saveExercise(Exercise exercise) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.insertExercise(exercise)) {
-            preparedStatement.executeUpdate();
-            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        try (ResultSet generatedKeys = Queries.insertExercise(exercise)){
             if(generatedKeys.next()) {
                 return generatedKeys.getInt(1);
             }
@@ -43,7 +41,7 @@ public class ExerciseDAO {
     }
 
     public List<Exercise> loadExerciseInWorkoutPlan(int idWorkoutDay, Trainer trainer) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.loadAllExerciseInWorkoutDays(idWorkoutDay); ResultSet rs = preparedStatement.executeQuery()){
+        try(ResultSet rs = Queries.loadAllExerciseInWorkoutDays(idWorkoutDay)){
             return getExercises(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -75,8 +73,8 @@ public class ExerciseDAO {
     }
 
     public void removeExercise(Exercise exercise) throws SQLException, DBUnreachableException {
-        try(PreparedStatement preparedStatement = Queries.deleteExercise(exercise.getId())){
-            preparedStatement.executeUpdate();
+        try{
+            Queries.deleteExercise(exercise.getId());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
