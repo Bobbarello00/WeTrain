@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.launcher.RegistrationGUIController">
+<AnchorPane onKeyPressed="#keyHandler" prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.launcher.RegistrationGUIController">
    <children>
       <TextField fx:id="emailTextField" layoutX="38.0" layoutY="81.0" prefHeight="26.0" prefWidth="238.0" promptText="Email" />
       <TextField fx:id="passwordTextField" layoutX="336.0" layoutY="81.0" prefHeight="26.0" prefWidth="238.0" promptText="Password" />

@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
@@ -46,5 +48,14 @@ public class ProfileSelectionGUIController implements Initializable {
         trainerSelection.setToggleGroup(toggleGroup);
         athleteSelection.setToggleGroup(toggleGroup);
         notSelected.fire();
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            nextAction();
+        }
+        if(event.getCode() == KeyCode.ESCAPE) {
+            backAction();
+        }
     }
 }

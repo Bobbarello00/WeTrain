@@ -15,6 +15,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import viewone.bean.CredentialsBean;
 import viewone.bean.PersonalInfoBean;
 import viewone.bean.UserBean;
@@ -134,6 +136,15 @@ public class RegistrationGUIController implements Initializable {
                 }
             }
         });
+    }
+
+    @FXML void keyHandler(KeyEvent event) throws IOException {
+        if(event.getCode() == KeyCode.ENTER){
+            registerAction();
+        }
+        if(event.getCode() == KeyCode.ESCAPE) {
+            backAction();
+        }
     }
 
     private void setIntegerValueFactory(Spinner<Integer> spinner, int start, int end) {
