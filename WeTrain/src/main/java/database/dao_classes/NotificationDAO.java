@@ -1,8 +1,8 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
+import database.Queries.CourseQueries;
 import database.Queries.NotificationQueries;
-import database.Queries.Queries;
 import engeneering.NotificationFactorySingleton;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
@@ -74,7 +74,7 @@ public class NotificationDAO {
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_SUBSCRIBED_QUERY); ResultSet rs = Queries.loadSubscribed(preparedStatement, course.getId())) {
+                CourseQueries.LOAD_SUBSCRIBED_QUERY); ResultSet rs = CourseQueries.loadSubscribed(preparedStatement, course.getId())) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),
