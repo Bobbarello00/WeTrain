@@ -1,14 +1,14 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import exception.UserNotFoundException;
-import exception.runtime_exception.IsNeitherATrainerNorAnAthleteException;
-import model.Athlete;
-import model.Trainer;
-import model.User;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import exceptions.UserNotFoundException;
+import exceptions.runtime_exception.IsNeitherATrainerNorAnAthleteException;
+import models.Athlete;
+import models.Trainer;
+import models.User;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
@@ -33,7 +33,7 @@ public class UserDAO {
 
     public User loadUser(String fc) throws SQLException, DBUnreachableException, UserNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(preparedStatement, fc)){
+                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(fc, preparedStatement)){
             if(rs.next()) {
                 return getUser(rs.getString("FC"));
             } else {

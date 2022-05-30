@@ -1,15 +1,15 @@
 package viewone.graphical_controllers;
 
-import controller.SatisfyWorkoutRequestsController;
-import controller.SendEmailController;
-import exception.BrowsingNotSupportedException;
-import exception.DBUnreachableException;
+import controllers.SatisfyWorkoutRequestsController;
+import controllers.SendEmailController;
+import exceptions.BrowsingNotSupportedException;
+import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.AthleteBean;
-import viewone.bean.UserBean;
+import viewone.beans.AthleteBean;
+import viewone.beans.UserBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 

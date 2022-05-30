@@ -1,9 +1,9 @@
 package viewtwo.graphical_controllers.athletes;
 
-import controller.RequestWorkoutPlanController;
-import controller.SubscribeToCourseController;
+import controllers.RequestWorkoutPlanController;
+import controllers.SubscribeToCourseController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.*;
+import viewone.beans.*;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

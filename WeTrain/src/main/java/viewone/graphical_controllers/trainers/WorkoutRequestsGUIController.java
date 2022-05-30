@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.SatisfyWorkoutRequestsController;
-import exception.DBUnreachableException;
+import controllers.SatisfyWorkoutRequestsController;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.RequestBean;
+import viewone.beans.RequestBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageRequestList;
 import viewone.graphical_controllers.EmailFormGUIController;

@@ -1,14 +1,14 @@
 package viewtwo.graphical_controllers.athletes;
 
-import controller.SubscribeToTrainerController;
+import controllers.SubscribeToTrainerController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidIbanException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.InvalidIbanException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
-import viewone.bean.TrainerBean;
+import viewone.beans.TrainerBean;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.EmailFormGUIController;
 

@@ -1,14 +1,14 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import exception.runtime_exception.NoGeneratedKeyException;
-import model.Exercise;
-import model.Trainer;
-import model.WorkoutDay;
-import model.WorkoutPlan;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import exceptions.runtime_exception.NoGeneratedKeyException;
+import models.Exercise;
+import models.Trainer;
+import models.WorkoutDay;
+import models.WorkoutPlan;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

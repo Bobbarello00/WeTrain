@@ -1,11 +1,11 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.ProfileManagementController;
+import controllers.ProfileManagementController;
 import database.dao_classes.AthleteDAO;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.EmptyFieldsException;
-import exception.invalid_data_exception.ExpiredCardException;
-import exception.invalid_data_exception.InvalidCardInfoException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.EmptyFieldsException;
+import exceptions.invalid_data_exception.ExpiredCardException;
+import exceptions.invalid_data_exception.InvalidCardInfoException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -13,8 +13,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import viewone.WeTrain;
-import viewone.bean.AthleteBean;
-import viewone.bean.CardInfoBean;
+import viewone.beans.AthleteBean;
+import viewone.beans.CardInfoBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;

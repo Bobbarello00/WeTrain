@@ -1,10 +1,10 @@
 package viewone.graphical_controllers.launcher;
 
 
-import controller.LoginController;
-import exception.DBUnreachableException;
-import exception.UserNotFoundException;
-import exception.invalid_data_exception.InvalidDataException;
+import controllers.LoginController;
+import exceptions.DBUnreachableException;
+import exceptions.UserNotFoundException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,10 +14,10 @@ import engeneering.LoggedUserSingleton;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.AthleteBean;
-import viewone.bean.CredentialsBean;
+import viewone.beans.AthleteBean;
+import viewone.beans.CredentialsBean;
 import engeneering.AlertGenerator;
-import viewone.bean.UserBean;
+import viewone.beans.UserBean;
 
 import java.io.IOException;
 import java.sql.SQLException;

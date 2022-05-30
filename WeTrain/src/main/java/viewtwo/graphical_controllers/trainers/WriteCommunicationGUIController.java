@@ -1,14 +1,14 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.NotificationsController;
+import controllers.NotificationsController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.EmptyFieldsException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.EmptyFieldsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CommunicationBean;
-import viewone.bean.CourseBean;
+import viewone.beans.CommunicationBean;
+import viewone.beans.CourseBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

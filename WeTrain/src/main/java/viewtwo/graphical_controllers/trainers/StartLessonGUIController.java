@@ -1,13 +1,13 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.StartLessonController;
+import controllers.StartLessonController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.NoScheduledLessonException;
+import exceptions.DBUnreachableException;
+import exceptions.NoScheduledLessonException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import viewone.bean.CourseBean;
-import viewone.bean.StartLessonBean;
+import viewone.beans.CourseBean;
+import viewone.beans.StartLessonBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

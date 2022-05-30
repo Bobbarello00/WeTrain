@@ -1,8 +1,8 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.SatisfyWorkoutRequestsController;
-import exception.DBUnreachableException;
-import exception.ElementNotFoundException;
+import controllers.SatisfyWorkoutRequestsController;
+import exceptions.DBUnreachableException;
+import exceptions.ElementNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,10 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.DayBean;
-import viewone.bean.ExerciseBean;
-import viewone.bean.ExerciseForWorkoutPlanBean;
-import viewone.bean.WorkoutDayBean;
+import viewone.beans.DayBean;
+import viewone.beans.ExerciseBean;
+import viewone.beans.ExerciseForWorkoutPlanBean;
+import viewone.beans.WorkoutDayBean;
 import engeneering.AlertGenerator;
 
 import java.sql.SQLException;

@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers.athletes;
 
-import controller.RequestWorkoutPlanController;
+import controllers.RequestWorkoutPlanController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,9 +13,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
-import viewone.bean.ExerciseBean;
-import viewone.bean.WorkoutDayBean;
-import viewone.bean.WorkoutPlanBean;
+import viewone.beans.ExerciseBean;
+import viewone.beans.WorkoutDayBean;
+import viewone.beans.WorkoutPlanBean;
 import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
 import viewtwo.PageSwitchSimple;
 

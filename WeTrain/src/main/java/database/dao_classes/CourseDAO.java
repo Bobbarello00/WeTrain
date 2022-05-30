@@ -1,13 +1,13 @@
 package database.dao_classes;
 
-import controller.LoginController;
+import controllers.LoginController;
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import exception.ElementNotFoundException;
-import exception.runtime_exception.ResultSetIsNullException;
-import model.*;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import exceptions.ElementNotFoundException;
+import exceptions.runtime_exception.ResultSetIsNullException;
+import models.*;
 
 import java.sql.*;
 import java.time.DayOfWeek;
@@ -28,7 +28,7 @@ public class CourseDAO {
     public void deleteCourse(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 Queries.DELETE_COURSE_QUERY)){
-            Queries.deleteCourse(preparedStatement, idCourse);
+            Queries.deleteCourse(idCourse, preparedStatement);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -103,7 +103,7 @@ public class CourseDAO {
 
     public List<Course> loadAllCoursesAthlete(Athlete athlete) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_ALL_COURSES_ATHLETE_QUERY); ResultSet rs = Queries.loadAllCoursesAthlete(preparedStatement, athlete.getFiscalCode())) {
+                Queries.LOAD_ALL_COURSES_ATHLETE_QUERY); ResultSet rs = Queries.loadAllCoursesAthlete(athlete.getFiscalCode(), preparedStatement)) {
             return loadAllCourses(athlete, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
@@ -122,7 +122,7 @@ public class CourseDAO {
 
     public List<Course> loadAllCoursesTrainer(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_ALL_COURSES_TRAINER_QUERY); ResultSet rs = Queries.loadAllCoursesTrainer(preparedStatement, trainer.getFiscalCode())) {
+                Queries.LOAD_ALL_COURSES_TRAINER_QUERY); ResultSet rs = Queries.loadAllCoursesTrainer(trainer.getFiscalCode(), preparedStatement)) {
             return loadAllCourses(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

@@ -1,14 +1,14 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import exception.runtime_exception.ResultSetIsNullException;
-import model.Athlete;
-import model.Trainer;
-import model.record.Credentials;
-import model.record.PersonalInfo;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import exceptions.runtime_exception.ResultSetIsNullException;
+import models.Athlete;
+import models.Trainer;
+import models.record.Credentials;
+import models.record.PersonalInfo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +41,7 @@ public class TrainerDAO {
 
     public Trainer loadTrainer(String fc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(preparedStatement, fc)) {
+                Queries.LOAD_USER_2_QUERY); ResultSet rs = Queries.loadUser(fc, preparedStatement)) {
             if (rs.next()) {
                 Trainer trainer = new Trainer(
                         rs.getString(USERNAME),
@@ -58,7 +58,7 @@ public class TrainerDAO {
                         )
                 );
                 try(PreparedStatement preparedStatement1 = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                        Queries.LOAD_TRAINER_QUERY); ResultSet rs1 = Queries.loadTrainer(preparedStatement1, fc)) {
+                        Queries.LOAD_TRAINER_QUERY); ResultSet rs1 = Queries.loadTrainer(fc, preparedStatement1)) {
                     if (rs1.next()) {
                         trainer.setIban(rs1.getString("Iban"));
                         return trainer;
@@ -129,7 +129,7 @@ public class TrainerDAO {
 
     public List<Athlete> loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_ALL_TRAINER_SUBSCRIBERS_QUERY); ResultSet rs = Queries.loadAllTrainerSubscribers(preparedStatement, trainerFc)){
+                Queries.LOAD_ALL_TRAINER_SUBSCRIBERS_QUERY); ResultSet rs = Queries.loadAllTrainerSubscribers(trainerFc, preparedStatement)){
             return getSubscribersList(rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

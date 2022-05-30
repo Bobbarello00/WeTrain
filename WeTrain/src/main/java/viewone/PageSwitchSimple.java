@@ -1,6 +1,6 @@
 package viewone;
 
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.LoadException;
 import javafx.scene.layout.BorderPane;

@@ -1,17 +1,17 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.ProfileManagementController;
+import controllers.ProfileManagementController;
 import database.dao_classes.TrainerDAO;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidIbanException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.InvalidIbanException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import viewone.WeTrain;
-import viewone.bean.IbanBean;
-import viewone.bean.TrainerBean;
+import viewone.beans.IbanBean;
+import viewone.beans.TrainerBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;

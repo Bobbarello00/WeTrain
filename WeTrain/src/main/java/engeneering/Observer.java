@@ -1,6 +1,6 @@
 package engeneering;
 
-import model.Exercise;
+import models.Exercise;
 
 public interface Observer {
     void update(Exercise exercise);

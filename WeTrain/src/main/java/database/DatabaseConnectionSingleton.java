@@ -1,7 +1,7 @@
 package database;
 
 import com.mysql.cj.exceptions.CJCommunicationsException;
-import exception.DBConnectionFailedException;
+import exceptions.DBConnectionFailedException;
 
 import java.io.FileInputStream;
 import java.io.IOException;

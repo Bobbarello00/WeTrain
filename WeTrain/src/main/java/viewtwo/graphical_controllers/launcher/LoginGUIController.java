@@ -1,19 +1,19 @@
 package viewtwo.graphical_controllers.launcher;
 
-import controller.LoginController;
+import controllers.LoginController;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
-import exception.DBUnreachableException;
-import exception.UserNotFoundException;
-import exception.invalid_data_exception.InvalidDataException;
+import exceptions.DBUnreachableException;
+import exceptions.UserNotFoundException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import viewone.bean.AthleteBean;
-import viewone.bean.CredentialsBean;
-import viewone.bean.UserBean;
+import viewone.beans.AthleteBean;
+import viewone.beans.CredentialsBean;
+import viewone.beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

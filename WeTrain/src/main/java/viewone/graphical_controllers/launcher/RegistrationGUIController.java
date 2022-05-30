@@ -1,13 +1,13 @@
 package viewone.graphical_controllers.launcher;
 
-import exception.invalid_data_exception.InvalidDataException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
-import viewone.bean.CredentialsBean;
+import viewone.beans.CredentialsBean;
 import engeneering.AlertGenerator;
 
 import java.io.IOException;

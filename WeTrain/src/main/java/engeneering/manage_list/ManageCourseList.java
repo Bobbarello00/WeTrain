@@ -1,6 +1,6 @@
 package engeneering.manage_list;
 
-import controller.SubscribeToCourseController;
+import controllers.SubscribeToCourseController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
+import viewone.beans.CourseBean;
 import viewone.graphical_controllers.CourseOverviewGUIController;
 
 import java.io.IOException;

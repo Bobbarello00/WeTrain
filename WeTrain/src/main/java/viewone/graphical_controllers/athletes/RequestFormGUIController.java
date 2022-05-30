@@ -1,15 +1,15 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.RequestWorkoutPlanController;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidDataException;
+import controllers.RequestWorkoutPlanController;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.AthleteBean;
-import viewone.bean.RequestBean;
-import viewone.bean.UserBean;
+import viewone.beans.AthleteBean;
+import viewone.beans.RequestBean;
+import viewone.beans.UserBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import viewone.graphical_controllers.AbstractFormGUIController;

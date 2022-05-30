@@ -1,12 +1,12 @@
 package viewtwo.graphical_controllers.launcher;
 
-import controller.RegistrationController;
+import controllers.RegistrationController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.UserNotFoundException;
-import exception.invalid_data_exception.EmptyFieldsException;
-import exception.invalid_data_exception.InvalidBirthException;
-import exception.invalid_data_exception.InvalidDataException;
+import exceptions.DBUnreachableException;
+import exceptions.UserNotFoundException;
+import exceptions.invalid_data_exception.EmptyFieldsException;
+import exceptions.invalid_data_exception.InvalidBirthException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -17,9 +17,9 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import viewone.bean.CredentialsBean;
-import viewone.bean.PersonalInfoBean;
-import viewone.bean.UserBean;
+import viewone.beans.CredentialsBean;
+import viewone.beans.PersonalInfoBean;
+import viewone.beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

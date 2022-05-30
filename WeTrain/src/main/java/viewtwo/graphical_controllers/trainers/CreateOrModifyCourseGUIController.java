@@ -1,9 +1,9 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.ManageCoursesController;
+import controllers.ManageCoursesController;
 import engeneering.LoggedUserSingleton;
-import exception.invalid_data_exception.EmptyFieldsException;
-import exception.invalid_data_exception.TimeNotInsertedException;
+import exceptions.invalid_data_exception.EmptyFieldsException;
+import exceptions.invalid_data_exception.TimeNotInsertedException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,8 +15,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import org.jetbrains.annotations.NotNull;
-import viewone.bean.CourseBean;
-import viewone.bean.LessonBean;
+import viewone.beans.CourseBean;
+import viewone.beans.LessonBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

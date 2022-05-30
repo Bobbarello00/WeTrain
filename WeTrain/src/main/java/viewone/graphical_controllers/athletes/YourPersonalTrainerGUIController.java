@@ -1,10 +1,10 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.SubscribeToTrainerController;
-import exception.AlreadySubscribedException;
-import exception.DBUnreachableException;
-import exception.PaymentFailedException;
-import exception.invalid_data_exception.InvalidIbanException;
+import controllers.SubscribeToTrainerController;
+import exceptions.AlreadySubscribedException;
+import exceptions.DBUnreachableException;
+import exceptions.PaymentFailedException;
+import exceptions.invalid_data_exception.InvalidIbanException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -22,7 +22,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
-import viewone.bean.*;
+import viewone.beans.*;
 import engeneering.AlertGenerator;
 import viewone.graphical_controllers.EmailFormGUIController;
 import engeneering.manage_list.list_cell_factories.PersonListCellFactory;

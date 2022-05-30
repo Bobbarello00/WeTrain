@@ -1,7 +1,7 @@
 package engeneering.manage_list;
 
-import controller.NotificationsController;
-import exception.DBUnreachableException;
+import controllers.NotificationsController;
+import exceptions.DBUnreachableException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.NotificationBean;
+import viewone.beans.NotificationBean;
 import engeneering.AlertGenerator;
 
 import java.sql.SQLException;

@@ -1,6 +1,6 @@
 package engeneering.manage_list;
 
-import controller.SatisfyWorkoutRequestsController;
+import controllers.SatisfyWorkoutRequestsController;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,8 +10,8 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import viewone.DaysOfTheWeekButtonController;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.ExerciseBean;
-import viewone.bean.ExerciseForWorkoutPlanBean;
+import viewone.beans.ExerciseBean;
+import viewone.beans.ExerciseForWorkoutPlanBean;
 import viewone.graphical_controllers.trainers.ExerciseOverviewGUIController;
 import viewone.graphical_controllers.trainers.NewWorkoutPlanGUIController;
 

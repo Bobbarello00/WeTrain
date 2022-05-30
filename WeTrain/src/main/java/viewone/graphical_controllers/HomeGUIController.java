@@ -1,8 +1,8 @@
 package viewone.graphical_controllers;
 
-import controller.NotificationsController;
-import exception.DBUnreachableException;
-import exception.UserNotFoundException;
+import controllers.NotificationsController;
+import exceptions.DBUnreachableException;
+import exceptions.UserNotFoundException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,7 +14,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
-import viewone.bean.NotificationBean;
+import viewone.beans.NotificationBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import engeneering.UserInfoCarrier;

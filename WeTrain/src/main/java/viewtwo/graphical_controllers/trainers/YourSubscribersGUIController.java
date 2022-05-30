@@ -1,9 +1,9 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.SubscribersManagementController;
+import controllers.SubscribersManagementController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
-import viewone.bean.UserBean;
+import viewone.beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

@@ -1,10 +1,10 @@
 package viewtwo.graphical_controllers;
 
-import controller.NotificationsController;
+import controllers.NotificationsController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.NotificationListCellFactory;
-import exception.DBUnreachableException;
-import exception.UserNotFoundException;
+import exceptions.DBUnreachableException;
+import exceptions.UserNotFoundException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,7 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import viewone.bean.NotificationBean;
+import viewone.beans.NotificationBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

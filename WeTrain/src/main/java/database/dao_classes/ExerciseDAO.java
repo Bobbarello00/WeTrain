@@ -1,11 +1,11 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import model.Exercise;
-import model.Trainer;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import models.Exercise;
+import models.Trainer;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
@@ -57,7 +57,7 @@ public class ExerciseDAO {
 
     public List<Exercise> loadTrainerExercises(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_TRAINER_EXERCISES_QUERY); ResultSet rs = Queries.loadTrainerExercises(preparedStatement, trainer.getFiscalCode())){
+                Queries.LOAD_TRAINER_EXERCISES_QUERY); ResultSet rs = Queries.loadTrainerExercises(trainer.getFiscalCode(), preparedStatement)){
             return getExercises(trainer, rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();

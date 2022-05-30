@@ -1,13 +1,13 @@
 package viewtwo.graphical_controllers.athletes;
 
-import controller.JoinLessonController;
-import controller.SubscribeToCourseController;
+import controllers.JoinLessonController;
+import controllers.SubscribeToCourseController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
-import exception.BrowsingNotSupportedException;
-import exception.DBUnreachableException;
-import exception.NoScheduledLessonException;
-import exception.UrlNotInsertedYetException;
+import exceptions.BrowsingNotSupportedException;
+import exceptions.DBUnreachableException;
+import exceptions.NoScheduledLessonException;
+import exceptions.UrlNotInsertedYetException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,7 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import viewone.bean.CourseBean;
+import viewone.beans.CourseBean;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.CourseInfoGUIController;
 

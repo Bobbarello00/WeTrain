@@ -1,10 +1,10 @@
 package viewtwo.graphical_controllers.trainers;
 
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidDataException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
-import viewone.bean.CourseBean;
+import viewone.beans.CourseBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

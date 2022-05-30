@@ -1,8 +1,8 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.ManageCoursesController;
-import controller.SatisfyWorkoutRequestsController;
-import exception.DBUnreachableException;
+import controllers.ManageCoursesController;
+import controllers.SatisfyWorkoutRequestsController;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -11,8 +11,8 @@ import javafx.scene.control.ListView;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
-import viewone.bean.RequestBean;
+import viewone.beans.CourseBean;
+import viewone.beans.RequestBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import engeneering.manage_list.ManageNotificationList;

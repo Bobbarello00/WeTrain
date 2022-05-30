@@ -1,10 +1,10 @@
 package viewtwo.graphical_controllers.athletes;
 
-import controller.SubscribeToCourseController;
+import controllers.SubscribeToCourseController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
-import exception.DBUnreachableException;
-import exception.PaymentFailedException;
+import exceptions.DBUnreachableException;
+import exceptions.PaymentFailedException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,8 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import viewone.bean.CourseBean;
-import viewone.bean.CourseSearchBean;
+import viewone.beans.CourseBean;
+import viewone.beans.CourseSearchBean;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.CourseInfoGUIController;
 

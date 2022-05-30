@@ -1,11 +1,11 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import model.Request;
-import model.Trainer;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import models.Request;
+import models.Trainer;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +32,7 @@ public class RequestDAO {
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_TRAINER_REQUESTS_QUERY); ResultSet rs = Queries.loadTrainerRequests(preparedStatement, trainer.getFiscalCode())){
+                Queries.LOAD_TRAINER_REQUESTS_QUERY); ResultSet rs = Queries.loadTrainerRequests(trainer.getFiscalCode(), preparedStatement)){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(

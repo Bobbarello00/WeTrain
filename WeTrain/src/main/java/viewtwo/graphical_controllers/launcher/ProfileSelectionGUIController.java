@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.launcher;
 
 import engeneering.AlertGenerator;
-import exception.runtime_exception.FatalErrorException;
+import exceptions.runtime_exception.FatalErrorException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;

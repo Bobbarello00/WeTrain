@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.SatisfyWorkoutRequestsController;
-import exception.DBUnreachableException;
+import controllers.SatisfyWorkoutRequestsController;
+import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.ExerciseBean;
+import viewone.beans.ExerciseBean;
 import engeneering.AlertGenerator;
 
 import java.sql.SQLException;

@@ -1,12 +1,12 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries;
-import exception.DBConnectionFailedException;
-import exception.DBUnreachableException;
-import exception.runtime_exception.ResultSetIsNullException;
-import model.Course;
-import model.Lesson;
+import database.Queries.Queries;
+import exceptions.DBConnectionFailedException;
+import exceptions.DBUnreachableException;
+import exceptions.runtime_exception.ResultSetIsNullException;
+import models.Course;
+import models.Lesson;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +28,7 @@ public class LessonDAO {
 
     public List<Lesson> loadAllLessons(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_ALL_LESSONS_QUERY); ResultSet rs = Queries.loadAllLessons(preparedStatement, idCourse)){
+                Queries.LOAD_ALL_LESSONS_QUERY); ResultSet rs = Queries.loadAllLessons(idCourse, preparedStatement)){
             List<Lesson> myList = new ArrayList<>();
             while(rs.next()){
                 myList.add(new Lesson(

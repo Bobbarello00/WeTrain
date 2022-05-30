@@ -1,18 +1,18 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.ProfileManagementController;
+import controllers.ProfileManagementController;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidIbanException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.InvalidIbanException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import viewone.bean.IbanBean;
-import viewone.bean.TrainerBean;
+import viewone.beans.IbanBean;
+import viewone.beans.TrainerBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

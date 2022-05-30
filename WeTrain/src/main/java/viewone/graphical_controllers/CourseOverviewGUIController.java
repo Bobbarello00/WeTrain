@@ -1,8 +1,8 @@
 package viewone.graphical_controllers;
 
-import controller.JoinLessonController;
-import controller.SubscribeToCourseController;
-import exception.*;
+import controllers.JoinLessonController;
+import controllers.SubscribeToCourseController;
+import exceptions.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
-import viewone.bean.LessonBean;
+import viewone.beans.CourseBean;
+import viewone.beans.LessonBean;
 import engeneering.AlertGenerator;
 import viewone.graphical_controllers.athletes.MenuAthletesGUIController;
 import viewone.graphical_controllers.trainers.CommunicationFormGUIController;

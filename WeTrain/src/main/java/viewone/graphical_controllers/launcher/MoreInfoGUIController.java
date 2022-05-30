@@ -1,22 +1,22 @@
 package viewone.graphical_controllers.launcher;
 
 
-import controller.RegistrationController;
-import exception.*;
-import exception.invalid_data_exception.*;
+import controllers.RegistrationController;
+import exceptions.*;
+import exceptions.invalid_data_exception.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import viewone.bean.CredentialsBean;
-import viewone.bean.PersonalInfoBean;
+import viewone.beans.CredentialsBean;
+import viewone.beans.PersonalInfoBean;
 import engeneering.AlertGenerator;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.UserBean;
+import viewone.beans.UserBean;
 
 import java.io.IOException;
 import java.net.URL;

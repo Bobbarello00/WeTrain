@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.SatisfyWorkoutRequestsController;
-import exception.DBUnreachableException;
+import controllers.SatisfyWorkoutRequestsController;
+import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +12,7 @@ import viewone.DaysOfTheWeekButtonController;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.*;
+import viewone.beans.*;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageExerciseList;
 import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;

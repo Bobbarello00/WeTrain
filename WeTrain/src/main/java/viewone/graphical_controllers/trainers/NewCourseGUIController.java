@@ -1,10 +1,10 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.ManageCoursesController;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.EmptyFieldsException;
-import exception.invalid_data_exception.InvalidDataException;
-import exception.invalid_data_exception.TimeNotInsertedException;
+import controllers.ManageCoursesController;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.EmptyFieldsException;
+import exceptions.invalid_data_exception.InvalidDataException;
+import exceptions.invalid_data_exception.TimeNotInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,8 +17,8 @@ import javafx.scene.text.Text;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
-import viewone.bean.LessonBean;
+import viewone.beans.CourseBean;
+import viewone.beans.LessonBean;
 import engeneering.AlertGenerator;
 import engeneering.UserInfoCarrier;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;

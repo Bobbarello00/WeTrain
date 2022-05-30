@@ -1,8 +1,8 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.RequestWorkoutPlanController;
-import controller.SubscribeToCourseController;
-import exception.DBUnreachableException;
+import controllers.RequestWorkoutPlanController;
+import controllers.SubscribeToCourseController;
+import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.*;
+import viewone.beans.*;
 import engeneering.AlertGenerator;
 
 import java.net.URL;

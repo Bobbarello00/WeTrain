@@ -1,13 +1,13 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.NotificationsController;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.EmptyFieldsException;
+import controllers.NotificationsController;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.EmptyFieldsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CommunicationBean;
-import viewone.bean.CourseBean;
+import viewone.beans.CommunicationBean;
+import viewone.beans.CourseBean;
 import engeneering.AlertGenerator;
 import viewone.graphical_controllers.AbstractFormGUIController;
 

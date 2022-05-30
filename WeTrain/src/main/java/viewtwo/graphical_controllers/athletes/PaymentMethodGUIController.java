@@ -1,18 +1,18 @@
 package viewtwo.graphical_controllers.athletes;
 
-import controller.ProfileManagementController;
+import controllers.ProfileManagementController;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.InvalidDataException;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import viewone.bean.AthleteBean;
-import viewone.bean.CardInfoBean;
+import viewone.beans.AthleteBean;
+import viewone.beans.CardInfoBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

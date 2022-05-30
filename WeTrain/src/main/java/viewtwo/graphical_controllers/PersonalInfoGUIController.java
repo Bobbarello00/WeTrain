@@ -2,12 +2,11 @@ package viewtwo.graphical_controllers;
 
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import viewone.bean.UserBean;
+import viewone.beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

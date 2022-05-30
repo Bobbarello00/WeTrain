@@ -1,9 +1,9 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.SatisfyWorkoutRequestsController;
+import controllers.SatisfyWorkoutRequestsController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.RequestListCellFactory;
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import viewone.bean.RequestBean;
+import viewone.beans.RequestBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

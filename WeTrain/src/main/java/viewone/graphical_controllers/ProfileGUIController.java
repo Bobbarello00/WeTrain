@@ -1,9 +1,9 @@
 package viewone.graphical_controllers;
 
-import controller.ProfileManagementController;
+import controllers.ProfileManagementController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.invalid_data_exception.*;
+import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.*;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

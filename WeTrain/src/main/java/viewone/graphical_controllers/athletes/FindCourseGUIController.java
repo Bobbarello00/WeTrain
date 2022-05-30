@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.SubscribeToCourseController;
-import exception.DBUnreachableException;
+import controllers.SubscribeToCourseController;
+import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
-import viewone.bean.CourseSearchBean;
+import viewone.beans.CourseBean;
+import viewone.beans.CourseSearchBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;

@@ -1,12 +1,12 @@
 package viewone.graphical_controllers.athletes;
 
-import controller.SubscribeToCourseController;
-import exception.DBUnreachableException;
+import controllers.SubscribeToCourseController;
+import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
+import viewone.beans.CourseBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import engeneering.manage_list.ManageNotificationList;

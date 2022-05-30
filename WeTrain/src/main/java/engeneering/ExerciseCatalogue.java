@@ -1,6 +1,6 @@
 package engeneering;
 
-import model.Exercise;
+import models.Exercise;
 
 import java.util.List;
 

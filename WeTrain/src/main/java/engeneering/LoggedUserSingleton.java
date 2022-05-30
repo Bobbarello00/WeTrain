@@ -1,12 +1,12 @@
 package engeneering;
 
-import controller.LoginController;
-import exception.DBUnreachableException;
-import exception.runtime_exception.FatalErrorException;
-import model.Athlete;
-import model.Trainer;
-import model.User;
-import viewone.bean.*;
+import controllers.LoginController;
+import exceptions.DBUnreachableException;
+import exceptions.runtime_exception.FatalErrorException;
+import models.Athlete;
+import models.Trainer;
+import models.User;
+import viewone.beans.*;
 
 import java.sql.SQLException;
 import java.util.Arrays;

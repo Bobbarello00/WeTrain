@@ -1,16 +1,16 @@
 package engeneering;
 
 import database.dao_classes.CourseDAO;
-import exception.DBUnreachableException;
-import exception.runtime_exception.NotificationTypeNotFoundException;
-import model.Course;
-import model.User;
-import model.notification.*;
+import exceptions.DBUnreachableException;
+import exceptions.runtime_exception.NotificationTypeNotFoundException;
+import models.Course;
+import models.User;
+import models.notification.*;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
-import static model.notification.NotificationEnum.*;
+import static models.notification.NotificationEnum.*;
 
 public class NotificationFactorySingleton {
     private static final NotificationFactorySingleton instance = new NotificationFactorySingleton();

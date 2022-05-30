@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
-import controller.ManageCoursesController;
-import exception.DBUnreachableException;
+import controllers.ManageCoursesController;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -13,8 +13,8 @@ import javafx.scene.layout.VBox;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.bean.CourseBean;
-import viewone.bean.LessonBean;
+import viewone.beans.CourseBean;
+import viewone.beans.LessonBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;

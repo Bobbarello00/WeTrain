@@ -1,14 +1,14 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.SatisfyWorkoutRequestsController;
+import controllers.SatisfyWorkoutRequestsController;
 import engeneering.AlertGenerator;
-import exception.DBUnreachableException;
-import exception.ElementNotFoundException;
+import exceptions.DBUnreachableException;
+import exceptions.ElementNotFoundException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import viewone.bean.*;
+import viewone.beans.*;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

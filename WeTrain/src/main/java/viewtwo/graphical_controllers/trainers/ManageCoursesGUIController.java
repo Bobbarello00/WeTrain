@@ -1,9 +1,9 @@
 package viewtwo.graphical_controllers.trainers;
 
-import controller.ManageCoursesController;
+import controllers.ManageCoursesController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
-import exception.DBUnreachableException;
+import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-import viewone.bean.CourseBean;
+import viewone.beans.CourseBean;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.CourseInfoGUIController;
 
