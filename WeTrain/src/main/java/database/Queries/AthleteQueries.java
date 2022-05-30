@@ -8,12 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AthleteQueries {
-
-    private static final String SELECT_ALL = "SELECT * ";
-    private static final String WHERE_USER = "WHERE User = ?";
-    public static final String UPDATE_MYDB_ATHLETE = "UPDATE mydb.Athlete ";
-    public static final String FROM_MYDB_ATHLETE = "FROM mydb.Athlete ";
+public class AthleteQueries extends Queries{
 
     public static final String LOAD_ATHLETE_QUERY = SELECT_ALL +
             FROM_MYDB_ATHLETE +
