@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 public class LessonQueries extends Queries{
 
+    private LessonQueries() {}
+
     public static final String LOAD_STARTED_LESSON_URL_QUERY = "SELECT StartedLessonUrl " +
             FROM_MYDB_LESSON +
             "WHERE idLesson = ?";

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 
 public class AthleteQueries extends Queries{
 
+    private AthleteQueries() {}
+
     public static final String LOAD_ATHLETE_QUERY = SELECT_ALL +
             FROM_MYDB_ATHLETE +
             WHERE_USER;

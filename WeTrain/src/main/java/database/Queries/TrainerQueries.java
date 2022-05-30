@@ -9,6 +9,8 @@ import java.sql.SQLException;
 
 public class TrainerQueries extends Queries{
 
+    private TrainerQueries() {}
+
     public static final String LOAD_TRAINER_QUERY = SELECT_ALL +
             "FROM mydb.Trainer " +
             WHERE_USER;

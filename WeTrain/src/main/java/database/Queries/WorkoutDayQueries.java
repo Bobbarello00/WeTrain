@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 public class WorkoutDayQueries extends Queries{
 
+    private WorkoutDayQueries() {}
+
     public static final String INSERT_WORKOUT_DAY_QUERY = "INSERT INTO mydb.WorkoutDay (WorkoutPlan, Day) VALUES (?, ?)";
     public static ResultSet insertWorkoutDay(PreparedStatement preparedStatement, int workoutPlanKey, String day) throws SQLException {
         preparedStatement.setInt(1, workoutPlanKey);

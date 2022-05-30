@@ -10,6 +10,8 @@ import java.util.List;
 
 public class CourseQueries extends Queries{
 
+    private CourseQueries() {}
+
     public static final String LOAD_COURSE_QUERY = SELECT_ALL +
             FROM_MYDB_COURSE +
             WHERE_ID_COURSE;

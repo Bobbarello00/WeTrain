@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 public class ExerciseQueries extends Queries{
 
+    private ExerciseQueries() {}
+
     public static final String LOAD_TRAINER_EXERCISES_QUERY = "SELECT Exercise.* " +
             "FROM mydb.Exercise " +
             WHERE_TRAINER;

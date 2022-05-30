@@ -8,10 +8,9 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public class NotificationQueries {
+public class NotificationQueries extends Queries{
 
-    private static final String SELECT_ALL = "SELECT * ";
-    private static final String LIMIT_30 = "LIMIT 30";
+    private NotificationQueries() {}
 
     public static final String LOAD_ALL_NOTIFICATIONS_QUERY = SELECT_ALL +
             "FROM mydb.Notification " +

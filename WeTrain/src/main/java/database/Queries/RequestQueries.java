@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 public class RequestQueries extends Queries{
 
+    private RequestQueries() {}
+
     public static final String INSERT_REQUEST_QUERY = "INSERT INTO mydb.Request (RequestDate, Info, Athlete, Trainer) " +
             "VALUES (?, ?, ?, ?)";
     public static void insertRequest(PreparedStatement preparedStatement, LocalDateTime requestDate, String info, String athleteFc, String trainerFc) throws SQLException {

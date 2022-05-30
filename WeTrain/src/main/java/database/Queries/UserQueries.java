@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 public class UserQueries extends Queries{
 
+    private UserQueries() {}
+
     public static final String DELETE_USER_QUERY = "DELETE FROM mydb.User " +
             "WHERE FC = ?";
     public static void deleteUser(PreparedStatement preparedStatement, String userFc) throws SQLException {
