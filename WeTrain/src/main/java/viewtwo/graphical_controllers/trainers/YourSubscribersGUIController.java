@@ -75,6 +75,7 @@ public class YourSubscribersGUIController implements Initializable {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+            PageSwitchSimple.logOff();
         } catch (SQLException e) {
             e.printStackTrace();
         }

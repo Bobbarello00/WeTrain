@@ -42,7 +42,14 @@ public class StartLessonGUIController {
                 PageSwitchSimple.switchPage("TrainersHome", "trainers");
             } catch (SQLException e) {
                 e.printStackTrace();
-            } catch (DBUnreachableException | NoScheduledLessonException e) {
+            } catch (DBUnreachableException e) {
+                List<String> errorStrings = e.getErrorStrings();
+                AlertGenerator.newWarningAlert(
+                        errorStrings.get(0),
+                        errorStrings.get(1),
+                        errorStrings.get(2));
+                PageSwitchSimple.logOff();
+            } catch (NoScheduledLessonException e) {
                 List<String> errorStrings = e.getErrorStrings();
                 AlertGenerator.newWarningAlert(
                         errorStrings.get(0),

@@ -99,6 +99,7 @@ public class PaymentMethodGUIController implements Initializable {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+            PageSwitchSimple.logOff();
         }
         cardNumberLabel.setText(athlete.getCardNumber());
         cardExpirationDateLabel.setText(athlete.getCardExpirationDate().toString());

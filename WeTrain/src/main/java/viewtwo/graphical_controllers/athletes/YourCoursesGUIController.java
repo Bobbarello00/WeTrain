@@ -106,6 +106,7 @@ public class YourCoursesGUIController implements Initializable {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+            PageSwitchSimple.logOff();
         }
     }
 }

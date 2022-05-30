@@ -75,7 +75,7 @@ public class ManageCoursesGUIController implements Initializable {
     }
 
     @FXML void courseInfoButtonAction() throws IOException {
-        CourseInfoGUIController courseInfoGUIController = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", TRAINERS);
+        CourseInfoGUIController courseInfoGUIController = (CourseInfoGUIController) PageSwitchSimple.switchPage("CourseInfo", "");
         if(courseInfoGUIController != null) {
             courseInfoGUIController.setBackPathAndValues("ManageCourses", "trainers",selectedCourse);
         }
@@ -106,6 +106,7 @@ public class ManageCoursesGUIController implements Initializable {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+            PageSwitchSimple.logOff();
         } catch (SQLException e) {
             e.printStackTrace();
         }
