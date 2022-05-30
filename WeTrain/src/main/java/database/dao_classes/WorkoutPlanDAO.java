@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.Queries;
+import database.Queries.WorkoutPlanQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.runtime_exception.NoGeneratedKeyException;
@@ -19,8 +19,8 @@ public class WorkoutPlanDAO {
     public void saveWorkoutPlan(WorkoutPlan workoutPlan, String athleteFc) throws SQLException, DBUnreachableException {
         int idWorkoutPlan;
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.INSERT_WORKOUT_PLAN_QUERY,
-                Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = Queries.insertWorkoutPlan(preparedStatement, athleteFc)) {
+                WorkoutPlanQueries.INSERT_WORKOUT_PLAN_QUERY,
+                Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = WorkoutPlanQueries.insertWorkoutPlan(preparedStatement, athleteFc)) {
             if (generatedKeys.next()) {
                 idWorkoutPlan = generatedKeys.getInt(1);
             } else {

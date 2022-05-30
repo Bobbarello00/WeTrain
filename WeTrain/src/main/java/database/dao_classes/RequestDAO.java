@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.Queries;
+import database.Queries.RequestQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import models.Request;
@@ -22,8 +22,8 @@ public class RequestDAO {
 
     public void deleteRequest(int idRequest) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.DELETE_REQUEST_QUERY)){
-            Queries.deleteRequest(preparedStatement, idRequest);
+                RequestQueries.DELETE_REQUEST_QUERY)){
+            RequestQueries.deleteRequest(preparedStatement, idRequest);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -32,7 +32,7 @@ public class RequestDAO {
 
     public List<Request> loadTrainerRequests(Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_TRAINER_REQUESTS_QUERY); ResultSet rs = Queries.loadTrainerRequests(trainer.getFiscalCode(), preparedStatement)){
+                RequestQueries.LOAD_TRAINER_REQUESTS_QUERY); ResultSet rs = RequestQueries.loadTrainerRequests(trainer.getFiscalCode(), preparedStatement)){
             List<Request> myList = new ArrayList<>();
             while(rs.next()) {
                 myList.add(new Request(
@@ -51,8 +51,8 @@ public class RequestDAO {
 
     public void saveRequest(LocalDateTime requestDate, String info, String athleteFc, String trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.INSERT_REQUEST_QUERY)){
-            Queries.insertRequest(preparedStatement, requestDate, info, athleteFc, trainer);
+                RequestQueries.INSERT_REQUEST_QUERY)){
+            RequestQueries.insertRequest(preparedStatement, requestDate, info, athleteFc, trainer);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

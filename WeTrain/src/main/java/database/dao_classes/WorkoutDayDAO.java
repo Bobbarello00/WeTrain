@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.Queries;
+import database.Queries.WorkoutDayQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.runtime_exception.NoGeneratedKeyException;
@@ -22,8 +22,8 @@ public class WorkoutDayDAO {
     public void saveWorkoutDay(WorkoutDay workoutDay, int idWorkoutPlan) throws SQLException, DBUnreachableException {
         int idWorkoutDay;
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.INSERT_WORKOUT_DAY_QUERY,
-                Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = Queries.insertWorkoutDay(preparedStatement, idWorkoutPlan, workoutDay.getDay())) {
+                WorkoutDayQueries.INSERT_WORKOUT_DAY_QUERY,
+                Statement.RETURN_GENERATED_KEYS); ResultSet generatedKeys = WorkoutDayQueries.insertWorkoutDay(preparedStatement, idWorkoutPlan, workoutDay.getDay())) {
             if (generatedKeys.next()) {
                 idWorkoutDay = generatedKeys.getInt(1);
             } else {
@@ -40,7 +40,7 @@ public class WorkoutDayDAO {
 
     public List<WorkoutDay> loadAllWorkoutDays(WorkoutPlan workoutPlan, Trainer trainer) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                Queries.LOAD_ALL_WORKOUT_DAYS_QUERY); ResultSet rs = Queries.loadAllWorkoutDays(preparedStatement, workoutPlan.getId())){
+                WorkoutDayQueries.LOAD_ALL_WORKOUT_DAYS_QUERY); ResultSet rs = WorkoutDayQueries.loadAllWorkoutDays(preparedStatement, workoutPlan.getId())){
             List<WorkoutDay> myList = new ArrayList<>();
             while(rs.next()){
                 WorkoutDay workoutDay = new WorkoutDay(
