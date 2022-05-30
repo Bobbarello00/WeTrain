@@ -67,13 +67,13 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     }
 
     private void setListener(ListView<ExerciseBean> exerciseList) {
-        exerciseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ExerciseBean>() {
+        exerciseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
             @Override
             public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
                 try {
                     if (newItem != null) {
                         ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", TRAINERS);
-                        if(controller != null) {
+                        if (controller != null) {
                             controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()), getIntDay());
                         }
                     }

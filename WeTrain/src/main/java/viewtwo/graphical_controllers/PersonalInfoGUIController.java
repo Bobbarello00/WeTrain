@@ -22,7 +22,6 @@ public class PersonalInfoGUIController implements Initializable {
     @FXML private Label infoFiscalCode;
     @FXML private Label infoName;
     @FXML private Label infoSurname;
-    @FXML private VBox infoBox;
     @FXML private Label infoUsername;
 
     private String filename;

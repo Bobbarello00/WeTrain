@@ -47,7 +47,7 @@ public class TrainersHomeGUIControllers {
         PageSwitchSimple.switchPage("YourSubscribers", TRAINERS);
     }
 
-    @FXML void keyHandler(KeyEvent event) throws IOException {
+    @FXML void keyHandler(KeyEvent event) {
         if(event.getCode() == KeyCode.ESCAPE) {
             logoutButtonAction();
         }

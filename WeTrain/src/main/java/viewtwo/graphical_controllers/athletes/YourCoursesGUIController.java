@@ -84,17 +84,17 @@ public class YourCoursesGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         courseList.setCellFactory(nodeListView -> new CourseListCellFactory(true));
-        courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<CourseBean>() {
-              @Override
-              public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldCourse, CourseBean newCourse) {
-                  if(newCourse!=null) {
-                      selectedCourse = newCourse;
-                      courseActions.setDisable(false);
-                  }else{
-                      courseActions.setDisable(true);
-                  }
-              }
-          }
+        courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
+                                                                              @Override
+                                                                              public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldCourse, CourseBean newCourse) {
+                                                                                  if (newCourse != null) {
+                                                                                      selectedCourse = newCourse;
+                                                                                      courseActions.setDisable(false);
+                                                                                  } else {
+                                                                                      courseActions.setDisable(true);
+                                                                                  }
+                                                                              }
+                                                                          }
         );
         try {
             courseList.setItems(FXCollections.observableList(subscribeToCourseController.getLoggedAthleteCourseList()));

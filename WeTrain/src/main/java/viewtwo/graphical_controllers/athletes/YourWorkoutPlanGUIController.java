@@ -62,7 +62,7 @@ public class YourWorkoutPlanGUIController implements Initializable {
 
             exerciseListView.setCellFactory(nodeListView -> new ExerciseListCellFactory(true));
             exerciseListView.getSelectionModel().selectedItemProperty().
-                    addListener(new ChangeListener<ExerciseBean>() {
+                    addListener(new ChangeListener<>() {
                         @Override
                         public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
                             if (newItem != null) {
@@ -77,11 +77,11 @@ public class YourWorkoutPlanGUIController implements Initializable {
                         }
                     });
 
-            dayChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            dayChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
-                    for(WorkoutDayBean workoutDayBean: workoutPlanBean.getWorkoutDayList()) {
-                        if(Objects.equals(workoutDayBean.getDay(), newString)) {
+                    for (WorkoutDayBean workoutDayBean : workoutPlanBean.getWorkoutDayList()) {
+                        if (Objects.equals(workoutDayBean.getDay(), newString)) {
                             ObservableList<ExerciseBean> exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
                             exerciseListView.setItems(FXCollections.observableList(exerciseObservableList));
                             return;

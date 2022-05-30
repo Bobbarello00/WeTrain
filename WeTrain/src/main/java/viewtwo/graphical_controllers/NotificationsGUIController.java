@@ -43,10 +43,10 @@ public class NotificationsGUIController implements Initializable {
             notificationList.setCellFactory(nodeListView -> new NotificationListCellFactory(true));
             List<NotificationBean> notificationBeanList = notificationsController.getMyNotification();
             notificationList.setItems(FXCollections.observableList(notificationBeanList));
-            notificationList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<NotificationBean>() {
+            notificationList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
                 @Override
                 public void changed(ObservableValue<? extends NotificationBean> observableValue, NotificationBean oldItem, NotificationBean newItem) {
-                    if(newItem != null) {
+                    if (newItem != null) {
                         try {
                             AlertGenerator.newInformationAlert(
                                     "Notification",
