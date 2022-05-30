@@ -1,12 +1,15 @@
 package viewtwo.graphical_controllers.athletes;
 
+import controller.JoinLessonController;
 import controller.SubscribeToCourseController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
+import exception.BrowsingNotSupportedException;
 import exception.DBUnreachableException;
+import exception.NoScheduledLessonException;
+import exception.UrlNotInsertedYetException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -16,6 +19,7 @@ import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.CourseInfoGUIController;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -41,8 +45,23 @@ public class YourCoursesGUIController implements Initializable {
         }
     }
 
-    @FXML void joinLessonButtonAction(ActionEvent event) {
-
+    @FXML void joinLessonButtonAction() {
+        try {
+            new JoinLessonController().joinLesson(selectedCourse);
+        } catch (UrlNotInsertedYetException | BrowsingNotSupportedException | DBUnreachableException |
+                 NoScheduledLessonException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+        } catch (URISyntaxException e) {
+            AlertGenerator.newWarningAlert("EXCEPTION!",
+                    "Url not working",
+                    "The url inserted by the trainer is incorrect or not working anymore.");
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML void unsubscribeButtonAction() {
