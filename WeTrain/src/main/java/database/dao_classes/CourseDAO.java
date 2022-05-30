@@ -187,13 +187,13 @@ public class CourseDAO {
         try{
             if (condition) {
                 try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                        Queries.SEARCH_COURSE_QUERY_TRUE); ResultSet rs = Queries.searchCourse(preparedStatement, name, fitnessLevel, days, true, index, dayStringList)){
+                        Queries.SEARCH_COURSE_QUERY_TRUE); ResultSet rs = Queries.searchCourse(preparedStatement, name, fitnessLevel, true, index, dayStringList)){
                     return loadAllCourses(loginController.getLoggedUser(), rs);
                 }
             } else {
                 try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                         Queries.SEARCH_COURSE_QUERY_FALSE +
-                        nestedQuery); ResultSet rs = Queries.searchCourse(preparedStatement, name, fitnessLevel, days, false, index, dayStringList)){
+                        nestedQuery); ResultSet rs = Queries.searchCourse(preparedStatement, name, fitnessLevel, false, index, dayStringList)){
                     return loadAllCourses(loginController.getLoggedUser(), rs);
                 }
             }

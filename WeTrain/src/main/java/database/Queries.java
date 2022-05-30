@@ -290,7 +290,7 @@ public class Queries {
             FROM_MYDB_COURSE +
             "WHERE Name LIKE ? " +
             "AND FitnessLevel = ?";
-    public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, Boolean[] days, boolean condition, int index, List<String> dayStringList) throws SQLException, DBConnectionFailedException {
+    public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, boolean condition, int index, List<String> dayStringList) throws SQLException, DBConnectionFailedException {
         String myString = "%%" + name + "%%";
         if (condition) {
             preparedStatement.setString(1, myString);
