@@ -13,57 +13,38 @@ public class CourseQueries extends Queries{
     public static final String LOAD_COURSE_QUERY = SELECT_ALL +
             FROM_MYDB_COURSE +
             WHERE_ID_COURSE;
+    public static ResultSet loadCourse(PreparedStatement preparedStatement, int idCourse) throws SQLException {
+        preparedStatement.setInt(1, idCourse);
+        return preparedStatement.executeQuery();
+    }
 
     public static final String LOAD_POPULAR_COURSE_QUERY = "SELECT Course.* " +
             "FROM mydb.Course join mydb.Subscribe on Course.idCourse = Subscribe.Course " +
             "GROUP BY idCourse " +
             "ORDER BY COUNT(idCourse) DESC " +
             LIMIT_10;
-
-    public static final String LOAD_ALL_COURSES_ATHLETE_QUERY = SELECT_ALL +
-            "FROM mydb.Course join mydb.Subscribe on Subscribe.Course = Course.idCourse " +
-            "WHERE Subscribe.Athlete = ?";
-
-    public static final String LOAD_ALL_COURSES_TRAINER_QUERY = SELECT_ALL +
-            FROM_MYDB_COURSE +
-            WHERE_TRAINER;
-
-    public static final String INSERT_COURSE_QUERY = "INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
-            "VALUES (?, ?, ?, ?, ?)";
-
-    public static final String SEARCH_COURSE_QUERY_QUERY_STRING = "AND Lesson.LessonDay != ? ";
-    public static final String SEARCH_COURSE_QUERY_NESTED_QUERY = "(SELECT * " +
-            FROM_MYDB_LESSON +
-            "WHERE Lesson.Course = Course.idCourse ";
-    public static final String SEARCH_COURSE_QUERY_FALSE = SELECT_ALL +
-            FROM_MYDB_COURSE +
-            "WHERE Name LIKE ? " +
-            "AND FitnessLevel = ? " +
-            "AND NOT EXISTS ";
-    public static final String SEARCH_COURSE_QUERY_TRUE = SELECT_ALL +
-            FROM_MYDB_COURSE +
-            "WHERE Name LIKE ? " +
-            "AND FitnessLevel = ?";
-
-    public static ResultSet loadCourse(PreparedStatement preparedStatement, int idCourse) throws SQLException {
-        preparedStatement.setInt(1, idCourse);
-        return preparedStatement.executeQuery();
-    }
-
     public static ResultSet loadPopularCourse(PreparedStatement preparedStatement) throws SQLException {
         return preparedStatement.executeQuery();
     }
 
+    public static final String LOAD_ALL_COURSES_ATHLETE_QUERY = SELECT_ALL +
+            "FROM mydb.Course join mydb.Subscribe on Subscribe.Course = Course.idCourse " +
+            "WHERE Subscribe.Athlete = ?";
     public static ResultSet loadAllCoursesAthlete(String athleteFc, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, athleteFc);
         return preparedStatement.executeQuery();
     }
 
+    public static final String LOAD_ALL_COURSES_TRAINER_QUERY = SELECT_ALL +
+            FROM_MYDB_COURSE +
+            WHERE_TRAINER;
     public static ResultSet loadAllCoursesTrainer(String trainerFc, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, trainerFc);
         return preparedStatement.executeQuery();
     }
 
+    public static final String INSERT_COURSE_QUERY = "INSERT INTO mydb.Course (Name, Description, FitnessLevel, Equipment, Trainer) " +
+            "VALUES (?, ?, ?, ?, ?)";
     public static int insertCourse(PreparedStatement preparedStatement, Course course) throws SQLException {
         preparedStatement.setString(1, course.getName());
         preparedStatement.setString(2, course.getDescription());
@@ -80,6 +61,19 @@ public class CourseQueries extends Queries{
         }
     }
 
+    public static final String SEARCH_COURSE_QUERY_QUERY_STRING = "AND Lesson.LessonDay != ? ";
+    public static final String SEARCH_COURSE_QUERY_NESTED_QUERY = "(SELECT * " +
+            FROM_MYDB_LESSON +
+            "WHERE Lesson.Course = Course.idCourse ";
+    public static final String SEARCH_COURSE_QUERY_FALSE = SELECT_ALL +
+            FROM_MYDB_COURSE +
+            "WHERE Name LIKE ? " +
+            "AND FitnessLevel = ? " +
+            "AND NOT EXISTS ";
+    public static final String SEARCH_COURSE_QUERY_TRUE = SELECT_ALL +
+            FROM_MYDB_COURSE +
+            "WHERE Name LIKE ? " +
+            "AND FitnessLevel = ?";
     public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, boolean condition, int index, List<String> dayStringList) throws SQLException {
         String myString = "%%" + name + "%%";
         if (condition) {
