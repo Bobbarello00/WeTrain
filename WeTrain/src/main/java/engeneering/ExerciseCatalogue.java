@@ -2,12 +2,13 @@ package engeneering;
 
 import models.Exercise;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseCatalogue extends Observable{
-    private final List<Exercise> exerciseList;
+    private final ArrayList<Exercise> exerciseList;
 
-    public ExerciseCatalogue(List<Exercise> exerciseList) {
+    public ExerciseCatalogue(ArrayList<Exercise> exerciseList) {
         this.exerciseList = exerciseList;
     }
 
