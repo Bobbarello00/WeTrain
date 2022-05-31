@@ -2,7 +2,6 @@ package test;
 
 import controllers.SatisfyWorkoutRequestsController;
 import engeneering.ExerciseCatalogue;
-import exceptions.DBUnreachableException;
 import models.Exercise;
 import models.Trainer;
 import models.record.Credentials;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import viewone.beans.ExerciseBean;
 import viewone.beans.SearchBean;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +18,7 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SatisfyWorkoutRequestsControllerTest {
+class TestSatisfyWorkoutRequestsController {
     /*@author Testing:  Andrea De Filippis
                         Matricola 0285448
     */
@@ -68,8 +66,13 @@ class SatisfyWorkoutRequestsControllerTest {
 
     ExerciseCatalogue exerciseCatalogueTest = new ExerciseCatalogue(new ArrayList<>(Arrays.asList(exerciseTest1, exerciseTest2)));
 
-    @Test
-    void searchExercise() {
+    @Test void searchExercise() {
+        /*
+        In searchExercise() viene effettuata la ricerca degli esercizi in base al nome (passato tramite la SearchBean)
+        nell'ExerciseCatalogue. Questo test verifica che searchExercise() ritorni effettivamente l'esercizio cercato.
+        */
+
+
         SatisfyWorkoutRequestsController controller = new SatisfyWorkoutRequestsController(trainerTest, exerciseCatalogueTest);
 
         Exercise exerciseToSearch = exerciseTest2;
