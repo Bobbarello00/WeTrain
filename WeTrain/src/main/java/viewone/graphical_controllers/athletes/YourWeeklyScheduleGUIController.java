@@ -46,6 +46,9 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
     private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
 
+    public YourWeeklyScheduleGUIController() throws DBUnreachableException, SQLException {
+    }
+
     private void colorShift(Button button, Text text){
         if(previousButton!=null){
             previousButton.setStyle(null);

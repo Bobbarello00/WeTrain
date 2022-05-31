@@ -72,10 +72,10 @@ public class CourseDAO {
         }
     }
 
-    public void unsubscribeFromACourse(int idCourse) throws SQLException, DBUnreachableException {
+    public void unsubscribeFromACourse(Athlete athlete, int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 CourseQueries.DELETE_COURSE_SUBSCRIBER_QUERY)) {
-            CourseQueries.insertOrDeleteCourseSubscriber(preparedStatement, idCourse, loginController.getLoggedUser().getFiscalCode());
+            CourseQueries.insertOrDeleteCourseSubscriber(preparedStatement, idCourse, athlete.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();

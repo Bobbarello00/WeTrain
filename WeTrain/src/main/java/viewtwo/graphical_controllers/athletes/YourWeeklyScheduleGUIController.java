@@ -40,6 +40,9 @@ public class YourWeeklyScheduleGUIController implements Initializable{
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
     private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
 
+    public YourWeeklyScheduleGUIController() throws DBUnreachableException, SQLException {
+    }
+
     @FXML void backButtonAction() throws IOException {
         PageSwitchSimple.switchPage("TrainingPage", "athletes");
     }

@@ -4,6 +4,7 @@ import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import models.Athlete;
 import models.Trainer;
 import models.record.Credentials;
@@ -18,7 +19,7 @@ public class RegistrationController {
 
     private final LoginController loginController = new LoginController();
 
-    public void processUserInfo(UserBean bean) throws SQLException, DBUnreachableException, UserNotFoundException {
+    public void processUserInfo(UserBean bean) throws SQLException, DBUnreachableException, UserNotFoundException{
         if (Objects.equals(bean.getType(), "Athlete")) {
             AthleteDAO athleteDAO = new AthleteDAO();
             Athlete athlete = new Athlete(

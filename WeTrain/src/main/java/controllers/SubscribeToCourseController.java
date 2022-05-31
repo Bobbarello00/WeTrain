@@ -4,6 +4,7 @@ import boundaries.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import exceptions.runtime_exception.FatalErrorException;
 import models.Athlete;
 import models.Course;
@@ -13,57 +14,62 @@ import viewone.beans.CourseSearchBean;
 import viewone.beans.PaymentBean;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SubscribeToCourseController extends CourseManagementController{
 
     private static final float SUBSCRIPTIONTOTRAINERFEE = 5;
-    private List<Course> filteredCourseList;
+    private List<Course> filteredCourseList = new ArrayList<>();
+    private final Athlete loggedAthlete;
 
-    public void subscribeToCourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException {
-        LoginController loginController = new LoginController();
-        Course selectedCourse;
-        selectedCourse = getSelectedCourse(courseBean);
-        if(selectedCourse != null) {
-            Athlete athlete = (Athlete) loginController.getLoggedUser();
-            new CourseDAO().subscribeToCourse(selectedCourse, athlete);
-            try {
-                PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
-                paypalSystemBoundary.pay(
-                        new PaymentBean(selectedCourse.getOwner().getIban(), athlete.getCardNumber(), athlete.getCardExpirationDate(), SUBSCRIPTIONTOTRAINERFEE));
-            } catch (PaymentFailedException e) {
-                new CourseDAO().unsubscribeFromACourse(selectedCourse.getId());
-                throw new PaymentFailedException();
-            }
-            User sender = loginController.getLoggedUser();
-            User receiver = selectedCourse.getOwner();
-            NotificationsController notificationsController = new NotificationsController();
-            notificationsController.sendSubscriptionToACourseNotification(
-                    sender,
-                    receiver,
-                    selectedCourse
-            );
-        } else {
-            throw new FatalErrorException();
-        }
+    public SubscribeToCourseController(Athlete loggedAthlete){
+        this.loggedAthlete = loggedAthlete;
     }
 
-    private Course getSelectedCourse(CourseBean courseBean) {
+    public SubscribeToCourseController() throws DBUnreachableException, SQLException {
+        loggedAthlete = (Athlete) new LoginController().getLoggedUser();
+    }
+
+    public void subscribeToCourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException, NoCardInsertedException {
+        Course selectedCourse;
+        selectedCourse = getSelectedCourse(courseBean);
+        new CourseDAO().subscribeToCourse(selectedCourse, loggedAthlete);
+        try {
+            PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
+            paypalSystemBoundary.pay(
+                    new PaymentBean(selectedCourse.getOwner().getIban(), loggedAthlete.getCardNumber(), loggedAthlete.getCardExpirationDate(), SUBSCRIPTIONTOTRAINERFEE));
+        } catch (PaymentFailedException e) {
+            new CourseDAO().unsubscribeFromACourse(loggedAthlete, selectedCourse.getId());
+            throw new PaymentFailedException();
+        } catch (NoCardInsertedException e) {
+            new CourseDAO().unsubscribeFromACourse(loggedAthlete, selectedCourse.getId());
+            throw new NoCardInsertedException();
+        }
+        User receiver = selectedCourse.getOwner();
+        NotificationsController notificationsController = new NotificationsController();
+        notificationsController.sendSubscriptionToACourseNotification(
+                loggedAthlete,
+                receiver,
+                selectedCourse
+        );
+    }
+
+    private Course getSelectedCourse(CourseBean courseBean) throws DBUnreachableException, SQLException {
         for(Course course: filteredCourseList){
             if(courseBean.getId()==course.getId()){
                 return course;
             }
         }
-        return null;
+        return new CourseDAO().loadCourse(courseBean.getId());
     }
 
     public void unsubscribeFromCourse(CourseBean courseBean) throws SQLException, DBUnreachableException {
-        new CourseDAO().unsubscribeFromACourse(courseBean.getId());
+        new CourseDAO().unsubscribeFromACourse(loggedAthlete, courseBean.getId());
     }
 
     public List<CourseBean> getLoggedAthleteCourseList() throws SQLException, DBUnreachableException {
-        LoginController loginController = new LoginController();
-        List<Course> courseList = new CourseDAO().loadAllCoursesAthlete((Athlete) loginController.getLoggedUser());
+        List<Course> courseList = new CourseDAO().loadAllCoursesAthlete(loggedAthlete);
         return getCourseBeanList(courseList);
     }
 

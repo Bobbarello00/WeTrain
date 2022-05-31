@@ -3,6 +3,7 @@ package viewone.graphical_controllers;
 import controllers.JoinLessonController;
 import controllers.SubscribeToCourseController;
 import exceptions.*;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -241,7 +242,7 @@ public class CourseOverviewGUIController {
                     null);
         } catch (SQLException | IOException e) {
             e.printStackTrace();
-        } catch (DBUnreachableException | PaymentFailedException e) {
+        } catch (DBUnreachableException | PaymentFailedException | NoCardInsertedException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
                     errorStrings.get(0),

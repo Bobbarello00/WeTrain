@@ -6,6 +6,7 @@ import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
 import exceptions.AlreadySubscribedException;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -73,7 +74,7 @@ public class FindTrainerGUIController implements Initializable {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSimple.logOff();
-        } catch (PaymentFailedException e) {
+        } catch (PaymentFailedException | NoCardInsertedException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
                     errorStrings.get(0),

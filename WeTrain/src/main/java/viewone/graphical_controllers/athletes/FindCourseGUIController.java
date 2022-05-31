@@ -46,6 +46,9 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
     private final FitnessLevelFilterGUIController fitnessLevelFilter = new FitnessLevelFilterGUIController();
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
+    public FindCourseGUIController() throws DBUnreachableException, SQLException {
+    }
+
     @FXML void dayButtonAction(ActionEvent event) {
         String sourceId = ((Node) event.getSource()).getId();
         switch(sourceId){

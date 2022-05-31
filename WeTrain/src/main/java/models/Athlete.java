@@ -1,6 +1,8 @@
 package models;
 
 import exceptions.invalid_data_exception.ExpiredCardException;
+import exceptions.invalid_data_exception.InvalidCardInfoException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import models.record.Card;
 import models.record.Credentials;
 import models.record.PersonalInfo;
@@ -26,8 +28,12 @@ public class Athlete extends User implements Serializable {
         this.card = card;
     }
 
-    public String getCardNumber() {
-        return card.cardNumber();
+    public String getCardNumber() throws NoCardInsertedException {
+        if(card!=null) {
+            return card.cardNumber();
+        }else{
+            throw new NoCardInsertedException();
+        }
     }
 
     public void setCard(Card card) throws ExpiredCardException {

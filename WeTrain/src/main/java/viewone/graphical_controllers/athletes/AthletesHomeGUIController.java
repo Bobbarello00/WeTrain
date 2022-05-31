@@ -25,6 +25,9 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
 
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
 
+    public AthletesHomeGUIController() throws DBUnreachableException, SQLException {
+    }
+
     public void updateLists() {
         try {
             List<CourseBean> courseBeanList = subscribeToCourseController.getPopularCourseList();

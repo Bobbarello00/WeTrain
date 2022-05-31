@@ -5,6 +5,7 @@ import database.dao_classes.TrainerDAO;
 import database.dao_classes.UserDAO;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import exceptions.runtime_exception.IsNeitherATrainerNorAnAthleteException;
 import models.User;
 import engeneering.LoggedUserSingleton;
@@ -26,7 +27,7 @@ public class LoginController {
         return user;
     }
 
-    public UserBean login(CredentialsBean credentials) throws SQLException, DBUnreachableException, UserNotFoundException {
+    public UserBean login(CredentialsBean credentials) throws SQLException, DBUnreachableException, UserNotFoundException{
         User user = new UserDAO().loadUser(credentials.getEmail(), credentials.getPassword());
         return LoggedUserSingleton.getUserBean(user);
     }

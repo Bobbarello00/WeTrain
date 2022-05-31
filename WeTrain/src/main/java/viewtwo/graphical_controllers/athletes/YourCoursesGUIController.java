@@ -33,7 +33,10 @@ public class YourCoursesGUIController implements Initializable {
     @FXML private ListView<CourseBean> courseList;
 
     private CourseBean selectedCourse;
-    private static final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
+
+    public YourCoursesGUIController() throws DBUnreachableException, SQLException {
+    }
 
     @FXML void backButtonAction() throws IOException {
         PageSwitchSimple.switchPage("Courses", ATHLETES);

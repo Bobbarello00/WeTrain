@@ -8,6 +8,7 @@ import database.dao_classes.WorkoutPlanDAO;
 import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
 import exceptions.ElementNotFoundException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import models.*;
 import org.jetbrains.annotations.NotNull;
 import viewone.beans.*;
@@ -16,6 +17,7 @@ import engeneering.ExerciseCatalogue;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -112,23 +114,44 @@ public class SatisfyWorkoutRequestsController {
         List<RequestBean> requestBeanList = new ArrayList<>();
         for(Request request: requestList) {
             Athlete usr = request.getAthlete();
-            AthleteBean athleteBean = new AthleteBean(
-                    usr.getUsername(),
-                    new PersonalInfoBean(
-                            usr.getName(),
-                            usr.getSurname(),
-                            usr.getDateOfBirth(),
-                            usr.getFiscalCode(),
-                            usr.getGender()
-                    ),
-                    CredentialsBean.ctorWithoutSyntaxCheck(
-                            usr.getEmail(),
-                            usr.getPassword()
-                    ),
-                    new CardInfoBean(
-                            usr.getCardNumber(),
-                            usr.getCardExpirationDate()
-                    ));
+            AthleteBean athleteBean;
+            try {
+                athleteBean = new AthleteBean(
+                        usr.getUsername(),
+                        new PersonalInfoBean(
+                                usr.getName(),
+                                usr.getSurname(),
+                                usr.getDateOfBirth(),
+                                usr.getFiscalCode(),
+                                usr.getGender()
+                        ),
+                        CredentialsBean.ctorWithoutSyntaxCheck(
+                                usr.getEmail(),
+                                usr.getPassword()
+                        ),
+                        new CardInfoBean(
+                                usr.getCardNumber(),
+                                usr.getCardExpirationDate()
+                        ));
+            } catch (NoCardInsertedException e) {
+                athleteBean = new AthleteBean(
+                        usr.getUsername(),
+                        new PersonalInfoBean(
+                                usr.getName(),
+                                usr.getSurname(),
+                                usr.getDateOfBirth(),
+                                usr.getFiscalCode(),
+                                usr.getGender()
+                        ),
+                        CredentialsBean.ctorWithoutSyntaxCheck(
+                                usr.getEmail(),
+                                usr.getPassword()
+                        ),
+                        new CardInfoBean(
+                                null,
+                                (YearMonth) null
+                        ));
+            }
             requestBeanList.add(new RequestBean(
                     request.getId(),
                     request.getRequestDate(),

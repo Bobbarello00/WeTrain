@@ -3,6 +3,7 @@ package viewone.graphical_controllers;
 import controllers.NotificationsController;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -79,6 +80,13 @@ public abstract class HomeGUIController {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
+            return null;
+        } catch (NoCardInsertedException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
             return null;
         }
     }

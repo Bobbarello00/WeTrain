@@ -2,6 +2,7 @@ package engeneering;
 
 import controllers.LoginController;
 import exceptions.DBUnreachableException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import exceptions.runtime_exception.FatalErrorException;
 import models.Athlete;
 import models.Trainer;
@@ -9,6 +10,7 @@ import models.User;
 import viewone.beans.*;
 
 import java.sql.SQLException;
+import java.time.YearMonth;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -29,7 +31,7 @@ public class LoggedUserSingleton {
         LoggedUserSingleton.fc = fc;
     }
 
-    public static UserInfoCarrier getUserInfo() throws DBUnreachableException {
+    public static UserInfoCarrier getUserInfo() throws DBUnreachableException, NoCardInsertedException {
         if(userInfoCarrier == null){
             UserBean userBean = getInstance();
             userInfoCarrier = new UserInfoCarrier(
@@ -41,7 +43,7 @@ public class LoggedUserSingleton {
         return userInfoCarrier;
     }
 
-    public static List<UserBean> getAthleteAndTrainer() throws DBUnreachableException, SQLException {
+    public static List<UserBean> getAthleteAndTrainer() throws DBUnreachableException, SQLException, NoCardInsertedException {
         Athlete usr = (Athlete) loginController.getLoggedUser();
         Trainer trainer = usr.getTrainer();
         AthleteBean athleteBean = new AthleteBean(
@@ -78,25 +80,44 @@ public class LoggedUserSingleton {
         return Arrays.asList(athleteBean, trainerBean);
     }
 
-    public static UserBean getUserBean(User usr) {
+    public static UserBean getUserBean(User usr){
         if (usr instanceof Athlete) {
-            return new AthleteBean(
-                    usr.getUsername(),
-                    new PersonalInfoBean(
-                            usr.getName(),
-                            usr.getSurname(),
-                            usr.getDateOfBirth(),
-                            usr.getFiscalCode(),
-                            usr.getGender()
-                    ),
-                    CredentialsBean.ctorWithoutSyntaxCheck(
-                            usr.getEmail(),
-                            usr.getPassword()
-                    ),
-                    new CardInfoBean(
-                            ((Athlete) usr).getCardNumber(),
-                            ((Athlete) usr).getCardExpirationDate()
-                    ));
+            try {
+                return new AthleteBean(
+                        usr.getUsername(),
+                        new PersonalInfoBean(
+                                usr.getName(),
+                                usr.getSurname(),
+                                usr.getDateOfBirth(),
+                                usr.getFiscalCode(),
+                                usr.getGender()
+                        ),
+                        CredentialsBean.ctorWithoutSyntaxCheck(
+                                usr.getEmail(),
+                                usr.getPassword()
+                        ),
+                        new CardInfoBean(
+                                ((Athlete) usr).getCardNumber(),
+                                ((Athlete) usr).getCardExpirationDate()
+                        ));
+            } catch (NoCardInsertedException e) {
+                return new AthleteBean(
+                        usr.getUsername(),
+                        new PersonalInfoBean(
+                                usr.getName(),
+                                usr.getSurname(),
+                                usr.getDateOfBirth(),
+                                usr.getFiscalCode(),
+                                usr.getGender()
+                        ),
+                        CredentialsBean.ctorWithoutSyntaxCheck(
+                                usr.getEmail(),
+                                usr.getPassword()
+                        ),
+                        new CardInfoBean(
+                                null, (YearMonth) null
+                        ));
+            }
         } else {
             return new TrainerBean(
                     usr.getUsername(),
@@ -115,7 +136,7 @@ public class LoggedUserSingleton {
         }
     }
 
-    public static UserBean getInstance() throws DBUnreachableException {
+    public static UserBean getInstance() throws DBUnreachableException{
         try{
             User usr = loginController.getLoggedUser();
             return getUserBean(usr);

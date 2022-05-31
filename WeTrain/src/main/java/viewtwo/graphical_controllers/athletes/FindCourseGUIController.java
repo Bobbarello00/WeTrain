@@ -5,6 +5,7 @@ import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,7 +38,10 @@ public class FindCourseGUIController implements Initializable {
     private CourseBean selectedCourse;
     private int selectedFitnessLevel = 0;
     private final List<String> selectedDays = new ArrayList<>();
-    private static final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
+
+    public FindCourseGUIController() throws DBUnreachableException, SQLException {
+    }
 
     @FXML void backButtonAction() throws IOException {
         PageSwitchSimple.switchPage("Courses", "athletes");
@@ -120,7 +124,7 @@ public class FindCourseGUIController implements Initializable {
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();
-        } catch (PaymentFailedException e) {
+        } catch (PaymentFailedException | NoCardInsertedException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
                     errorStrings.get(0),

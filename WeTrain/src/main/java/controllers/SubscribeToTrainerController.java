@@ -1,5 +1,6 @@
 package controllers;
 
+import exceptions.invalid_data_exception.NoCardInsertedException;
 import viewone.beans.PaymentBean;
 import boundaries.PaypalSystemBoundary;
 import database.dao_classes.AthleteDAO;
@@ -95,7 +96,7 @@ public class SubscribeToTrainerController {
         return setToUserBean(trainerList);
     }
 
-    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException, PaymentFailedException, AlreadySubscribedException {
+    public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException, PaymentFailedException, AlreadySubscribedException, NoCardInsertedException {
         Trainer trainer = new TrainerDAO().loadTrainer(trainerFc);
         Athlete athlete = (Athlete) loginController.getLoggedUser();
         if(Objects.equals(athlete.getTrainer().getFiscalCode(), trainerFc)) {
@@ -107,6 +108,9 @@ public class SubscribeToTrainerController {
         }catch (PaymentFailedException e){
             new AthleteDAO().removeTrainer(athlete);
             throw new PaymentFailedException();
+        } catch (NoCardInsertedException e) {
+            new AthleteDAO().removeTrainer(athlete);
+            throw new NoCardInsertedException();
         }
         notificationsController.sendSubscriptionToTrainerNotification(trainer);
     }
