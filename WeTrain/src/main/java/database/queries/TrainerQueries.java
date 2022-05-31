@@ -70,16 +70,11 @@ public class TrainerQueries extends Queries{
     public static final String COUNT_TRAINER_SUBSCRIBERS_QUERY = "SELECT COUNT(*) " +
             FROM_MYDB_ATHLETE +
             WHERE_TRAINER;
-    public static ResultSet countTrainerSubscribers(PreparedStatement preparedStatement, String trainerFc) throws SQLException {
-        preparedStatement.setString(1, trainerFc);
-        return preparedStatement.executeQuery();
-    }
-
     public static final String LOAD_ALL_TRAINER_SUBSCRIBERS_QUERY = SELECT_ALL +
             FROM_MYDB_ATHLETE +
             "WHERE Trainer = ? " +
             LIMIT_30;
-    public static ResultSet loadAllTrainerSubscribers(String trainerFc, PreparedStatement preparedStatement) throws SQLException {
+    public static ResultSet countOrLoadAllTrainerSubscribers(PreparedStatement preparedStatement, String trainerFc) throws SQLException {
         preparedStatement.setString(1, trainerFc);
         return preparedStatement.executeQuery();
     }

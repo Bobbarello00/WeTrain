@@ -78,7 +78,7 @@ public class TrainerDAO {
 
     public int getNumberOfSubscribers(String trainerFc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                TrainerQueries.COUNT_TRAINER_SUBSCRIBERS_QUERY); ResultSet rs = TrainerQueries.countTrainerSubscribers(preparedStatement, trainerFc)) {
+                TrainerQueries.COUNT_TRAINER_SUBSCRIBERS_QUERY); ResultSet rs = TrainerQueries.countOrLoadAllTrainerSubscribers(preparedStatement, trainerFc)) {
             if(rs.next()){
                 return rs.getInt(1);
             }else{
@@ -130,7 +130,7 @@ public class TrainerDAO {
 
     public List<Athlete> loadAllTrainerSubscribers(String trainerFc) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                TrainerQueries.LOAD_ALL_TRAINER_SUBSCRIBERS_QUERY); ResultSet rs = TrainerQueries.loadAllTrainerSubscribers(trainerFc, preparedStatement)){
+                TrainerQueries.LOAD_ALL_TRAINER_SUBSCRIBERS_QUERY); ResultSet rs = TrainerQueries.countOrLoadAllTrainerSubscribers(preparedStatement, trainerFc)){
             return getSubscribersList(rs);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
