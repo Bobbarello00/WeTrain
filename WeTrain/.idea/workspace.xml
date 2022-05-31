@@ -48,7 +48,7 @@
       <recent name="viewone.beans" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CredentialsBeanTest">
+  <component name="RunManager" selected="JUnit.TestSubscribeToCourseController">
     <configuration name="WeTrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="viewtwo.WeTrain" />
       <module name="WeTrain" />
@@ -75,7 +75,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CredentialsBeanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestSubscribeToCourseController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="WeTrain" />
       <extension name="coverage">
         <pattern>
@@ -84,7 +84,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="test.CredentialsBeanTest" />
+      <option name="MAIN_CLASS_NAME" value="test.TestSubscribeToCourseController" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -92,7 +92,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CredentialsBeanTest" />
+        <item itemvalue="JUnit.TestSubscribeToCourseController" />
         <item itemvalue="Application.viewone.WeTrain" />
         <item itemvalue="Application.WeTrain" />
       </list>
