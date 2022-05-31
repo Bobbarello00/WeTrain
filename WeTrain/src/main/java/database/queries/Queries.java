@@ -14,4 +14,6 @@ public abstract class Queries {
     protected static final String FROM_MYDB_ATHLETE = "FROM mydb.Athlete ";
     protected static final String WHERE_TRAINER = "WHERE Trainer = ?";
     protected static final String FROM_MYDB_LESSON = "FROM mydb.Lesson ";
+
+    private Queries() {}
 }

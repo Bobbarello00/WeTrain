@@ -65,7 +65,7 @@ public class CourseDAO {
     public void subscribeToCourse(Course course, Athlete athlete) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 CourseQueries.INSERT_COURSE_SUBSCRIBER_QUERY)){
-            CourseQueries.insertCourseSubscriber(preparedStatement, course.getId(), athlete.getFiscalCode());
+            CourseQueries.insertOrDeleteCourseSubscriber(preparedStatement, course.getId(), athlete.getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -75,7 +75,7 @@ public class CourseDAO {
     public void unsubscribeFromACourse(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 CourseQueries.DELETE_COURSE_SUBSCRIBER_QUERY)) {
-            CourseQueries.deleteCourseSubscriber(preparedStatement, idCourse, loginController.getLoggedUser().getFiscalCode());
+            CourseQueries.insertOrDeleteCourseSubscriber(preparedStatement, idCourse, loginController.getLoggedUser().getFiscalCode());
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -84,7 +84,7 @@ public class CourseDAO {
 
     public Course loadCourse(int idCourse) throws SQLException, DBUnreachableException, ElementNotFoundException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                CourseQueries.LOAD_COURSE_QUERY); ResultSet rs = CourseQueries.loadCourse(preparedStatement, idCourse)) {
+                CourseQueries.LOAD_COURSE_QUERY); ResultSet rs = CourseQueries.loadCourseOrSubscribers(preparedStatement, idCourse)) {
             if(rs.next()){
                 return new Course(
                         rs.getInt(IDCOURSE),
@@ -208,7 +208,7 @@ public class CourseDAO {
 
     public int getSubscribersNumber(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                CourseQueries.GET_SUBSCRIBERS_QUERY); ResultSet rs = CourseQueries.getSubscribers(preparedStatement, idCourse)){
+                CourseQueries.GET_SUBSCRIBERS_QUERY); ResultSet rs = CourseQueries.loadCourseOrSubscribers(preparedStatement, idCourse)){
             if(rs.next()) {
                 return rs.getInt(1);
             } else {

@@ -135,7 +135,7 @@ public class SatisfyWorkoutRequestsController {
         return requestBeanList;
     }
 
-    public List<ExerciseBean> searchExercise(SearchBean searchBean) throws DBUnreachableException, SQLException {
+    public List<ExerciseBean> searchExercise(SearchBean searchBean) {
         List<Exercise> exerciseList = new ArrayList<>();
         for(Exercise exercise: exerciseCatalogue.getExerciseList()) {
             if((exercise.getName().toLowerCase()).contains(searchBean.getName().toLowerCase())) {

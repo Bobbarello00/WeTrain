@@ -15,7 +15,13 @@ public class CourseQueries extends Queries{
     public static final String LOAD_COURSE_QUERY = SELECT_ALL +
             FROM_MYDB_COURSE +
             WHERE_ID_COURSE;
-    public static ResultSet loadCourse(PreparedStatement preparedStatement, int idCourse) throws SQLException {
+    public static final String LOAD_SUBSCRIBED_QUERY = SELECT_ALL +
+            "FROM mydb.Subscribe " +
+            WHERE_COURSE;
+    public static final String GET_SUBSCRIBERS_QUERY = "SELECT Count(*)" +
+            "FROM mydb.Subscribe " +
+            WHERE_COURSE;
+    public static ResultSet loadCourseOrSubscribers(PreparedStatement preparedStatement, int idCourse) throws SQLException {
         preparedStatement.setInt(1, idCourse);
         return preparedStatement.executeQuery();
     }
@@ -111,33 +117,11 @@ public class CourseQueries extends Queries{
 
     public static final String INSERT_COURSE_SUBSCRIBER_QUERY = "INSERT INTO mydb.Subscribe (Course, Athlete) " +
             "VALUES (?, ?)";
-    public static void insertCourseSubscriber(PreparedStatement preparedStatement, int idCourse, String athleteFc) throws SQLException {
-        preparedStatement.setInt(1, idCourse);
-        preparedStatement.setString(2, athleteFc);
-        preparedStatement.executeUpdate();
-    }
-
     public static final String DELETE_COURSE_SUBSCRIBER_QUERY = "DELETE FROM mydb.Subscribe " +
             "WHERE Course = ? and Athlete = ?";
-    public static void deleteCourseSubscriber(PreparedStatement preparedStatement, int idCourse, String athleteFc) throws SQLException {
+    public static void insertOrDeleteCourseSubscriber(PreparedStatement preparedStatement, int idCourse, String athleteFc) throws SQLException {
         preparedStatement.setInt(1, idCourse);
         preparedStatement.setString(2, athleteFc);
         preparedStatement.executeUpdate();
-    }
-
-    public static final String LOAD_SUBSCRIBED_QUERY = SELECT_ALL +
-            "FROM mydb.Subscribe " +
-            WHERE_COURSE;
-    public static ResultSet loadSubscribed(PreparedStatement preparedStatement, int idCourse) throws SQLException {
-        preparedStatement.setInt(1, idCourse);
-        return preparedStatement.executeQuery();
-    }
-
-    public static final String GET_SUBSCRIBERS_QUERY = "SELECT Count(*)" +
-            "FROM mydb.Subscribe " +
-            WHERE_COURSE;
-    public static ResultSet getSubscribers(PreparedStatement preparedStatement, int idCourse) throws SQLException {
-        preparedStatement.setInt(1, idCourse);
-        return preparedStatement.executeQuery();
     }
 }

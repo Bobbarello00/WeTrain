@@ -74,7 +74,7 @@ public class NotificationDAO {
 
     public void sendCourseNotification(Course course, Notification notification) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                CourseQueries.LOAD_SUBSCRIBED_QUERY); ResultSet rs = CourseQueries.loadSubscribed(preparedStatement, course.getId())) {
+                CourseQueries.LOAD_SUBSCRIBED_QUERY); ResultSet rs = CourseQueries.loadCourseOrSubscribers(preparedStatement, course.getId())) {
             while(rs.next()) {
                 new NotificationDAO().saveNotification(
                         notification.getType().ordinal(),

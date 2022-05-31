@@ -37,19 +37,8 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
 
     @FXML public void searchButtonAction() {
-        try {
-            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.searchExercise(new SearchBean(searchExerciseText.getText()));
-            ManageExerciseList.updateList(exerciseList, exerciseBeanList);
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.searchExercise(new SearchBean(searchExerciseText.getText()));
+        ManageExerciseList.updateList(exerciseList, exerciseBeanList);
     }
 
     @FXML public void addExerciseTextAction() throws IOException {

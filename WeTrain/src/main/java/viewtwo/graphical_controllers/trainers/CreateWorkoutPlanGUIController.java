@@ -138,20 +138,9 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     }
 
     @FXML void searchButtonAction() {
-        try {
-            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.searchExercise(new SearchBean(searchExerciseText.getText()));
-            ObservableList<ExerciseBean> exerciseBeanObservableList = FXCollections.observableList(exerciseBeanList);
-            exerciseList.setItems(exerciseBeanObservableList);
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSimple.logOff();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.searchExercise(new SearchBean(searchExerciseText.getText()));
+        ObservableList<ExerciseBean> exerciseBeanObservableList = FXCollections.observableList(exerciseBeanList);
+        exerciseList.setItems(exerciseBeanObservableList);
     }
 
     @FXML void sendWorkoutPlanButtonAction() {
