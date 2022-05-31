@@ -16,10 +16,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SatisfyWorkoutRequestsControllerTest {
+    /*@author Testing:  Andrea De Filippis
+                        Matricola 0285448
+    */
 
     Trainer trainerTest = new Trainer(
             "andreaxdf",
@@ -74,7 +78,14 @@ class SatisfyWorkoutRequestsControllerTest {
 
         List<ExerciseBean> exerciseBeanList = controller.searchExercise(searchBean);
 
-        boolean flag = true;
-        if(exerciseBeanList.get(0).getId() != exerciseToSearch.getId())
+        boolean flag = exerciseBeanList.get(0).getId() == exerciseToSearch.getId();
+        if(!Objects.equals(exerciseBeanList.get(0).getName(), exerciseToSearch.getName())) {
+            flag = false;
+        }
+        if(!Objects.equals(exerciseBeanList.get(0).getInfo(), exerciseToSearch.getInfo())) {
+            flag = false;
+        }
+
+        assertTrue(flag);
     }
 }
