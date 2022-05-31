@@ -48,22 +48,13 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
 
     public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, int day) {
-        try {
-            this.selectedRequest = requestBean;
-            this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
-            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
-            exerciseList.setItems(FXCollections.observableList(exerciseBeanList));
-            setListener(exerciseList);
-            setListener(selectedExerciseList);
-            radioButtonList.get(day).fire();
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSimple.logOff();
-        }
+        this.selectedRequest = requestBean;
+        this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
+        List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
+        exerciseList.setItems(FXCollections.observableList(exerciseBeanList));
+        setListener(exerciseList);
+        setListener(selectedExerciseList);
+        radioButtonList.get(day).fire();
     }
 
     private void setListener(ListView<ExerciseBean> exerciseList) {

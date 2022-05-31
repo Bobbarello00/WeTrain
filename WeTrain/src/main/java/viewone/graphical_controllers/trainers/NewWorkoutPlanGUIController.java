@@ -85,21 +85,12 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     public void setValue(RequestBean request, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController) {
         requestBean = request;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
-        try {
-            ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController, this);
-            ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController, this);
-            List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
-            ManageExerciseList.updateList(exerciseList, exerciseBeanList);
-            setUserInfoTab();
-            mondayButton.fire();
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        }
+        ManageExerciseList.setListener(exerciseList, daysController, satisfyWorkoutRequestsController, this);
+        ManageExerciseList.setListener(selectedExerciseList, daysController, satisfyWorkoutRequestsController, this);
+        List<ExerciseBean> exerciseBeanList = satisfyWorkoutRequestsController.getTrainerExercises();
+        ManageExerciseList.updateList(exerciseList, exerciseBeanList);
+        setUserInfoTab();
+        mondayButton.fire();
     }
 
     public void updateLists() throws DBUnreachableException, SQLException {
