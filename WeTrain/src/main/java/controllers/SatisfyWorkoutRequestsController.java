@@ -33,6 +33,12 @@ public class SatisfyWorkoutRequestsController {
         exerciseCatalogue = new ExerciseCatalogue(new ExerciseDAO().loadTrainerExercises(trainer));
     }
 
+    public SatisfyWorkoutRequestsController(Trainer trainer, ExerciseCatalogue exerciseCatalogue) {
+        workoutPlan = new WorkoutPlan();
+        this.trainer = trainer;
+        this.exerciseCatalogue = exerciseCatalogue;
+    }
+
     public void rejectRequest(RequestBean requestBean) throws DBUnreachableException, SQLException {
         new RequestDAO().deleteRequest(requestBean.getId());
         notificationsController.sendRejectRequestNotification(requestBean.getAthleteBean().getFiscalCode());

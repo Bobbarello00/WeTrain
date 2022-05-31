@@ -43,7 +43,7 @@ public class SubscribeToCourseController extends CourseManagementController{
                     receiver,
                     selectedCourse
             );
-        }else{
+        } else {
             throw new FatalErrorException();
         }
     }

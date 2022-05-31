@@ -13,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="package-info" />
         <option value="module-info" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,10 +45,17 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="test" />
       <recent name="viewone.beans" />
     </key>
   </component>
+<<<<<<< .mine
+  <component name="RunManager" selected="JUnit.ExerciseCatalogueTest">
+||||||| .r736
+  <component name="RunManager" selected="JUnit.CredentialsBeanTest">
+=======
   <component name="RunManager" selected="JUnit.TestSubscribeToCourseController">
+>>>>>>> .r738
     <configuration name="WeTrain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="viewtwo.WeTrain" />
       <module name="WeTrain" />
@@ -90,9 +97,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ExerciseCatalogueTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="WeTrain" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.ExerciseCatalogueTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+<<<<<<< .mine
+        <item itemvalue="JUnit.ExerciseCatalogueTest" />
+        <item itemvalue="JUnit.CredentialsBeanTest" />
+||||||| .r736
+        <item itemvalue="JUnit.CredentialsBeanTest" />
+=======
         <item itemvalue="JUnit.TestSubscribeToCourseController" />
+>>>>>>> .r738
         <item itemvalue="Application.viewone.WeTrain" />
         <item itemvalue="Application.WeTrain" />
       </list>
@@ -108,6 +137,7 @@
       <updated>1654012719796</updated>
       <workItem from="1654012728163" duration="2312000" />
       <workItem from="1654017113788" duration="1145000" />
+      <workItem from="1654021779644" duration="1628000" />
     </task>
     <servers />
   </component>
