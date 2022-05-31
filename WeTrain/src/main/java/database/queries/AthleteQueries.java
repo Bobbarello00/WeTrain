@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AthleteQueries extends Queries{
+public class AthleteQueries extends Queries {
 
     private AthleteQueries() {}
 
