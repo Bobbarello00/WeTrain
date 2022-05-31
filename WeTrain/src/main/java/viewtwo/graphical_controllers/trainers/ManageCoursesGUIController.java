@@ -96,8 +96,13 @@ public class ManageCoursesGUIController implements Initializable {
             courseList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
                 @Override
                 public void changed(ObservableValue<? extends CourseBean> observableValue, CourseBean oldItem, CourseBean newItem) {
-                    selectedCourse = newItem;
-                    courseActions.setDisable(false);
+                    if(newItem != null){
+                        selectedCourse = newItem;
+                        courseActions.setDisable(false);
+                    } else {
+                        selectedCourse = null;
+                        courseActions.setDisable(true);
+                    }
                 }
             });
         } catch (DBUnreachableException e) {

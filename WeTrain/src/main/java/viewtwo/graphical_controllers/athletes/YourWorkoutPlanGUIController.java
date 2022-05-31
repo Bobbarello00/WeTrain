@@ -79,10 +79,12 @@ public class YourWorkoutPlanGUIController implements Initializable {
             dayChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
-                    for (WorkoutDayBean workoutDayBean : workoutPlanBean.getWorkoutDayList()) {
-                        if (Objects.equals(workoutDayBean.getDay(), newString)) {
-                            exerciseListView.setItems(FXCollections.observableList(workoutDayBean.getExerciseBeanList()));
-                            return;
+                    if(newString != null){
+                        for (WorkoutDayBean workoutDayBean : workoutPlanBean.getWorkoutDayList()) {
+                            if (Objects.equals(workoutDayBean.getDay(), newString)) {
+                                exerciseListView.setItems(FXCollections.observableList(workoutDayBean.getExerciseBeanList()));
+                                return;
+                            }
                         }
                     }
                     exerciseListView.setItems(FXCollections.observableList(new ArrayList<>()));

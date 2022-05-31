@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleGroup;
 import viewone.PageSwitchSizeChange;
 import viewone.beans.*;
 import viewtwo.PageSwitchSimple;
@@ -32,7 +31,6 @@ public class YourWeeklyScheduleGUIController implements Initializable{
     @FXML private RadioButton thursdayRadioButton;
     @FXML private RadioButton tuesdayRadioButton;
     @FXML private RadioButton wednesdayRadioButton;
-    @FXML private ToggleGroup weekToggleGroup;
     @FXML private TextArea scheduleTextArea;
 
     private List<CourseBean> courseBeanList;
