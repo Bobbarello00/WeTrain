@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../SimpleWeTrainStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewtwo.graphical_controllers.trainers.RequestsPageGUIController">
+   <children>
+      <HBox alignment="CENTER" layoutX="20.0" layoutY="92.0" prefHeight="247.0" prefWidth="429.0" style="-fx-background-color: rgba(121,47,224,0.6); -fx-background-radius: 50;">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="50.0" top="12.0" />
+         </padding>
+         <children>
+            <ListView fx:id="requestList" prefHeight="197.0" prefWidth="389.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" />
+         </children>
+      </HBox>
+      <Text layoutX="54.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Requests">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+      <Button layoutX="20.0" layoutY="361.0" mnemonicParsing="false" onAction="#backButtonAction" text="&lt; Back" />
+      <VBox fx:id="requestActions" alignment="CENTER" disable="true" layoutX="439.0" layoutY="88.0" prefHeight="247.0" prefWidth="150.0" spacing="40.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#infoButtonAction" text="ⓘ" />
+            <Button mnemonicParsing="false" onAction="#satisfyRequestAction" text="Satisfy Request" />
+            <Button mnemonicParsing="false" onAction="#rejectRequestAction" style="-fx-background-color: red;" text="Reject Request" />
+         </children>
+      </VBox>
+      <Text fill="#792fe0" layoutX="439.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📫">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
