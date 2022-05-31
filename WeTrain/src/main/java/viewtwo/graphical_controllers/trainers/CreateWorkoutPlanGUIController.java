@@ -63,22 +63,25 @@ public class CreateWorkoutPlanGUIController implements Initializable {
             public void changed(ObservableValue<? extends ExerciseBean> observableValue, ExerciseBean oldItem, ExerciseBean newItem) {
                 try {
                     if (newItem != null) {
-                        ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", TRAINERS);
-                        if (controller != null) {
-                            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()), getIntDay());
-                        }
+                        switchPage(newItem);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (NoDayIsSelectedException e) {
-                    List<String> errorStrings = e.getErrorStrings();
                     AlertGenerator.newWarningAlert(
-                            errorStrings.get(0),
-                            errorStrings.get(1),
-                            errorStrings.get(2));
+                            e.getErrorStrings().get(0),
+                            e.getErrorStrings().get(1),
+                            e.getErrorStrings().get(2));
                 }
             }
         });
+    }
+
+    private void switchPage(ExerciseBean newItem) throws IOException, NoDayIsSelectedException {
+        ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", TRAINERS);
+        if (controller != null) {
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()), getIntDay());
+        }
     }
 
     private int getIntDay() {

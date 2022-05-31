@@ -68,7 +68,7 @@ public class YourCoursesGUIController implements Initializable {
     @FXML void unsubscribeButtonAction() {
         try {
             subscribeToCourseController.unsubscribeFromCourse(selectedCourse);
-            PageSwitchSimple.switchPage("AthletesHome", "athletes");
+            PageSwitchSimple.switchPage("AthletesHome", ATHLETES);
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 
 public abstract class Notification implements Serializable {
     protected int id;
-    protected User sender;
-    protected User receiver;
+    protected transient User sender;
+    protected transient User receiver;
     protected LocalDateTime dateTime;
 
     protected Notification(int id, User sender, User receiver, LocalDateTime dateTime) {

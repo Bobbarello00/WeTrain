@@ -54,11 +54,10 @@ public class NotificationsGUIController implements Initializable {
                             notificationsController.deleteNotification(newItem);
                             Platform.runLater(() -> notificationList.getSelectionModel().clearSelection());
                         } catch (DBUnreachableException e) {
-                            List<String> errorStrings = e.getErrorStrings();
                             AlertGenerator.newWarningAlert(
-                                    errorStrings.get(0),
-                                    errorStrings.get(1),
-                                    errorStrings.get(2));
+                                    e.getErrorStrings().get(0),
+                                    e.getErrorStrings().get(1),
+                                    e.getErrorStrings().get(2));
                             PageSwitchSimple.logOff();
                         } catch (SQLException e) {
                             e.printStackTrace();

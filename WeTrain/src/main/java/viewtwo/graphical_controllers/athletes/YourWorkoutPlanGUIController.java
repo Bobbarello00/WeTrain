@@ -35,7 +35,6 @@ public class YourWorkoutPlanGUIController implements Initializable {
     @FXML private TextArea infoTextArea;
     @FXML private Text text;
 
-    private WorkoutPlanBean workoutPlanBean;
     private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
 
     @FXML void backButtonAction() throws IOException {
@@ -45,7 +44,7 @@ public class YourWorkoutPlanGUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            workoutPlanBean = requestWorkoutPlanController.getWorkoutPlan();
+            WorkoutPlanBean workoutPlanBean = requestWorkoutPlanController.getWorkoutPlan();
             if(workoutPlanBean == null) {
                 text.setVisible(true);
                 infoTextArea.setVisible(false);
@@ -82,8 +81,7 @@ public class YourWorkoutPlanGUIController implements Initializable {
                 public void changed(ObservableValue<? extends String> observableValue, String oldString, String newString) {
                     for (WorkoutDayBean workoutDayBean : workoutPlanBean.getWorkoutDayList()) {
                         if (Objects.equals(workoutDayBean.getDay(), newString)) {
-                            ObservableList<ExerciseBean> exerciseObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
-                            exerciseListView.setItems(FXCollections.observableList(exerciseObservableList));
+                            exerciseListView.setItems(FXCollections.observableList(workoutDayBean.getExerciseBeanList()));
                             return;
                         }
                     }
