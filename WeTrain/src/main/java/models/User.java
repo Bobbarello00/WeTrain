@@ -6,9 +6,11 @@ import models.record.PersonalInfo;
 import java.time.LocalDate;
 
 public abstract class User {
-    private final String username;
-    private final Credentials credentials;
-    private final PersonalInfo personalInfo;
+    private String username;
+    private Credentials credentials;
+    private PersonalInfo personalInfo;
+
+    protected User() {}
 
     protected User(String username, PersonalInfo personalInfo, Credentials credentials){
         this.personalInfo = personalInfo;

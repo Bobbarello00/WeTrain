@@ -1,7 +1,7 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.ExerciseQueries;
+import database.queries.ExerciseQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import models.Exercise;

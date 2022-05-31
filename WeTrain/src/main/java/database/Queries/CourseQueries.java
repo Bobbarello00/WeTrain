@@ -1,4 +1,4 @@
-package database.Queries;
+package database.queries;
 
 import exceptions.runtime_exception.ResultSetIsNullException;
 import models.Course;

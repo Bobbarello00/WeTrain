@@ -2,7 +2,7 @@ package database.dao_classes;
 
 import controllers.LoginController;
 import database.DatabaseConnectionSingleton;
-import database.Queries.CourseQueries;
+import database.queries.CourseQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.ElementNotFoundException;

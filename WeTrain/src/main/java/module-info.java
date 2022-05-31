@@ -51,6 +51,6 @@ module com.wetrain.wetrain {
     exports exceptions.invalid_data_exception;
     exports models.record;
     exports exceptions.runtime_exception;
-    exports database.Queries;
-    opens database.Queries to javafx.fxml;
+    exports database.queries;
+    opens database.queries to javafx.fxml;
 }

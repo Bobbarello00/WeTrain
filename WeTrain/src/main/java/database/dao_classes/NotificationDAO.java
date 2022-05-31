@@ -1,8 +1,8 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.CourseQueries;
-import database.Queries.NotificationQueries;
+import database.queries.CourseQueries;
+import database.queries.NotificationQueries;
 import engeneering.NotificationFactorySingleton;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;

@@ -1,4 +1,4 @@
-package database.Queries;
+package database.queries;
 
 public abstract class Queries {
 

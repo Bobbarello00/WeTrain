@@ -1,4 +1,4 @@
-package database.Queries;
+package database.queries;
 
 import models.Athlete;
 import models.record.Card;

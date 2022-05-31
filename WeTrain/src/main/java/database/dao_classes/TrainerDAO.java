@@ -1,8 +1,8 @@
 package database.dao_classes;
 
 import database.DatabaseConnectionSingleton;
-import database.Queries.TrainerQueries;
-import database.Queries.UserQueries;
+import database.queries.TrainerQueries;
+import database.queries.UserQueries;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.runtime_exception.ResultSetIsNullException;
