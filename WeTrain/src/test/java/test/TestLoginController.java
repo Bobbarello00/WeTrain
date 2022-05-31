@@ -3,7 +3,6 @@ package test;
 import controllers.LoginController;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
-import exceptions.invalid_data_exception.NoCardInsertedException;
 import org.junit.jupiter.api.Test;
 import viewone.beans.AthleteBean;
 import viewone.beans.CredentialsBean;
@@ -11,7 +10,7 @@ import viewone.beans.CredentialsBean;
 import java.sql.SQLException;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TestLoginController {
     private static final String EMAIL = "edo@gmail.com";
@@ -28,23 +27,23 @@ class TestLoginController {
         * Lo scopo del test è di verificare se il login con tali credenziali
         *  vada effettivamente a buon fine e restituisca l'atleta corretto.
          */
-        boolean flag = true;
+        int flag = 1;
         LoginController loginController = new LoginController();
         try {
             CredentialsBean credentialsBean = CredentialsBean.ctorWithoutSyntaxCheck(EMAIL, PASSWORD);
             AthleteBean returnedAthlete = (AthleteBean) loginController.login(credentialsBean);
             if(!Objects.equals(returnedAthlete.getEmail(), credentialsBean.getEmail()) || !Objects.equals(returnedAthlete.getPassword(), credentialsBean.getPassword())){
-                flag = false;
+                flag = 0;
             }
         } catch (SQLException | DBUnreachableException | UserNotFoundException e) {
             /*
             * NB: DBUnreachableException si verifica in assenza di connessione internet.
             * Verificare di essere connessi a internet prima di eseguire il test.
              */
-            flag = false;
+            flag = -1;
             e.printStackTrace();
         }
-        assertTrue(flag);
+        assertEquals(1, flag);
     }
 
 }
