@@ -1,0 +1,17 @@
+{
+  "id": "124ed61d-313b-4576-84f9-9968f4640e4c",
+  "version": "2.0",
+  "name": "TestSeleniumGUIManenti",
+  "url": "https://www.google.it",
+  "tests": [],
+  "suites": [{
+    "id": "e3e64a4d-43e2-48a5-92f6-35b40a41c670",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://www.google.it/"],
+  "plugins": []
+}
