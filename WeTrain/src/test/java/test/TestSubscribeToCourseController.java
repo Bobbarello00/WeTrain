@@ -69,13 +69,13 @@ public class TestSubscribeToCourseController {
         }
     }
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController(loggedAthlete);
+
     /*
     * Per questo test viene creata un'istanza di atleta e di corso che sappiamo essere presenti nel database.
-    * Lo scopo del primo test è quello di verificare la procedura d'iscrizione del suddetto corso dell'atleta in questione.
+    * Lo scopo del primo test è quello di verificare la procedura d'iscrizione dell'atleta in questione al suddetto corso.
     * Per verificare se l'iscrizione è avvenuta, si controlla se nella lista dei corsi dell'atleta è presente tale corso.
     * Subito dopo si verifica la procedura di disiscrizione verificando poi se nella lista dei corsi dell'atleta
     * il corso sia stato effettivamente rimosso.
-    * (rendendo inoltre possibile ripetere il test con lo stesso atleta che qualora già iscritto al corso ).
     */
 
     @Test void testSubscribeToCourse(){
@@ -92,7 +92,8 @@ public class TestSubscribeToCourseController {
         } catch (SQLException e) {
             /*
              * In caso di errore di primary key duplicata è possibile che nel test precedente sia stata
-             *  persa la connessione al database prima di effettuare la disiscrizione (eseguita nel secondo test).
+             *  persa la connessione al database prima di effettuare la disiscrizione (eseguita nel secondo test)
+             * e pertanto l'atleta risulta già iscritto a tale corso.
              * In tal caso (valore di flag = -2) avviare prima il testUnsubscribeToCourse() che disiscriverà
              * l'atleta dal corso per poi poter ripetere il test dall'inizio.
              */
