@@ -1,5 +1,0 @@
-1] As a person that travels a lot, i want online course lessons, so that I can train even when I am away.
-
-2] As a personal trainer, i want to keep track of my courses and my subscribers, so i can organize my job better.
-
-3] As a busy person, i want to see my weekly schedule, so i can organize better my time.
