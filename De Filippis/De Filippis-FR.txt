@@ -1,0 +1,5 @@
+1] The system shall provide a weekly schedule.
+
+2] The system shall provide to join a course.
+
+3] The system shall provide online course lessons support.

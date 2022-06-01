@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="752.0" prefWidth="1187.0" stylesheets="@WeTrainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="viewone.graphical_controllers.CourseOverviewGUIController">
+   <children>
+      <Text layoutX="109.0" layoutY="143.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Name" />
+      <Text layoutX="696.0" layoutY="252.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Fitness Level:" wrappingWidth="74.90380859375" />
+      <Text layoutX="694.0" layoutY="462.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="General Info" />
+      <HBox layoutX="75.0" layoutY="238.0" prefHeight="473.0" prefWidth="503.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="13.0">
+               <children>
+                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Training days" />
+                  <Button fx:id="mondayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="Mo" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="tuesdayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="Tu" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="wednesdayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="We" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="thursdayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="Th" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="fridayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="Fr" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="saturdayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="Sa" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="sundayButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="50.0" prefWidth="50.0" text="Su" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="ABeeZee Regular" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="474.0" prefWidth="396.0" spacing="13.0">
+               <children>
+                  <Text scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Time schedule" />
+                  <Label fx:id="mondayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="tuesdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="wednesdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="thursdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="fridayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="saturdayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+                  <Label fx:id="sundayTimeText" alignment="CENTER" prefHeight="50.0" prefWidth="341.0" scaleX="1.4" scaleY="1.4" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="805.0" layoutY="217.0" prefHeight="81.0" prefWidth="284.0" spacing="50.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+         <padding>
+            <Insets bottom="12.0" left="10.0" right="10.0" top="12.0" />
+         </padding>
+         <children>
+            <Button fx:id="baseFitnessLevelButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🛇" />
+            <Button fx:id="intermediateFitnessLevelButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🚶" />
+            <Button fx:id="advancedFitnessLevelButton" mnemonicParsing="false" mouseTransparent="true" prefHeight="30.0" prefWidth="30.0" scaleX="2.0" scaleY="2.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-text-fill: rgb(24,147,21);" text="🏋" />
+         </children>
+      </HBox>
+      <Button fx:id="subscribeButton" layoutX="988.0" layoutY="689.0" mnemonicParsing="false" onAction="#subscribe" prefHeight="23.0" prefWidth="91.0" scaleX="1.2" scaleY="1.2" text="Subscribe" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Button>
+      <Text layoutX="695.0" layoutY="359.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Required Equipment:" wrappingWidth="67.54795455932617" />
+      <HBox alignment="CENTER" layoutX="806.0" layoutY="317.0" prefHeight="125.0" prefWidth="284.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+         <children>
+            <Label fx:id="equipmentLabel" alignment="TOP_LEFT" prefHeight="188.0" prefWidth="381.0" style="-fx-text-fill: white;" wrapText="true" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="640.0" layoutY="472.0" prefHeight="197.0" prefWidth="450.0" style="-fx-background-color: rgba(21,147,24,0.7); -fx-background-radius: 30;">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+         <children>
+            <Label fx:id="infoLabel" alignment="TOP_LEFT" prefHeight="271.0" prefWidth="464.0" style="-fx-text-fill: white;" wrapText="true" />
+         </children>
+      </HBox>
+      <Text layoutX="671.0" layoutY="142.0" scaleX="1.4" scaleY="1.4" strokeType="OUTSIDE" strokeWidth="0.0" text="Trainer Name" />
+      <HBox alignment="CENTER" layoutX="113.0" layoutY="160.0" prefHeight="42.0" prefWidth="375.0" scaleX="1.2" scaleY="1.2" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 30;">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+         <children>
+            <Label fx:id="courseNameText" prefHeight="18.0" prefWidth="250.0" scaleX="1.4" scaleY="1.4" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="676.0" layoutY="160.0" prefHeight="42.0" prefWidth="375.0" scaleX="1.2" scaleY="1.2" style="-fx-background-color: rgba(24, 147, 21, 0.23); -fx-background-radius: 30;">
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+         </padding>
+         <children>
+            <Label fx:id="trainerNameText" prefHeight="18.0" prefWidth="250.0" scaleX="1.4" scaleY="1.4" />
+         </children>
+      </HBox>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1133.0" layoutY="14.0" onMouseClicked="#closeAction" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/cross.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text layoutX="176.0" layoutY="60.0" scaleX="3.5" scaleY="3.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Overview" />
+      <Button fx:id="modifyButton" disable="true" layoutX="988.0" layoutY="689.0" mnemonicParsing="false" onAction="#modifyButtonAction" prefHeight="23.0" prefWidth="91.0" scaleX="1.2" scaleY="1.2" text="Modify" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="sendCommunicationButton" disable="true" layoutX="661.0" layoutY="689.0" mnemonicParsing="false" onAction="#sendCommunicationButtonAction" prefHeight="23.0" prefWidth="153.0" scaleX="1.2" scaleY="1.2" text="Send Communication" textAlignment="CENTER" textFill="WHITE" visible="false" wrapText="true">
+         <font>
+            <Font name="ABeeZee Regular" size="12.0" />
+         </font>
+      </Button>
+      <Pane fx:id="startLessonPane" disable="true" layoutX="389.0" layoutY="11.0" prefHeight="102.0" prefWidth="99.0" visible="false">
+         <children>
+            <ImageView fitHeight="81.0" fitWidth="100.0" layoutX="10.0" layoutY="4.0" onMouseClicked="#meetAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Meet.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="lessonText" fill="#159318" layoutX="18.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Lesson" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
