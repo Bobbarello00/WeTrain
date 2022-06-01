@@ -33,10 +33,10 @@ public class Athlete extends User implements Serializable {
     }
 
     public String getCardNumber() throws NoCardInsertedException {
-        if(card!=null) {
-            return card.cardNumber();
-        } else {
+        if(card.cardNumber().isEmpty()) {
             throw new NoCardInsertedException();
+        }else{
+            return card.cardNumber();
         }
     }
 
@@ -45,8 +45,12 @@ public class Athlete extends User implements Serializable {
         this.card = card;
     }
 
-    public YearMonth getCardExpirationDate() {
-        return card.cardExpirationDate();
+    public YearMonth getCardExpirationDate() throws NoCardInsertedException {
+        if (card.cardExpirationDate() == null) {
+            throw new NoCardInsertedException();
+        } else {
+            return card.cardExpirationDate();
+        }
     }
 
     public void checkCardExpirationDate(YearMonth cardExpirationDate) throws ExpiredCardException {

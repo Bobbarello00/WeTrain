@@ -69,10 +69,11 @@ public class CourseQueries extends Queries{
         }
     }
 
-    public static final String SEARCH_COURSE_QUERY_QUERY_STRING = "AND Lesson.LessonDay != ? ";
+
     public static final String SEARCH_COURSE_QUERY_NESTED_QUERY = "(SELECT * " +
             FROM_MYDB_LESSON +
             "WHERE Lesson.Course = Course.idCourse ";
+    public static final String SEARCH_COURSE_QUERY_QUERY_STRING = "AND Lesson.LessonDay != ? ";
     public static final String SEARCH_COURSE_QUERY_FALSE = SELECT_ALL +
             FROM_MYDB_COURSE +
             "WHERE Name LIKE ? " +
@@ -82,15 +83,18 @@ public class CourseQueries extends Queries{
             FROM_MYDB_COURSE +
             "WHERE Name LIKE ? " +
             "AND FitnessLevel = ?";
-    public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, boolean condition, int index, List<String> dayStringList) throws SQLException {
+    public static ResultSet searchCourse(PreparedStatement preparedStatement, String name, String fitnessLevel, boolean condition, Boolean[] days, List<String> dayStringList) throws SQLException {
         String myString = "%%" + name + "%%";
-        if (condition) {
-            preparedStatement.setString(1, myString);
-            preparedStatement.setString(2, fitnessLevel);
-        } else {
-            preparedStatement.setString(1, myString);
-            preparedStatement.setString(2, fitnessLevel);
-            preparedStatement.setString(3, dayStringList.get(index));
+        preparedStatement.setString(1, myString);
+        preparedStatement.setString(2, fitnessLevel);
+        if (!condition) {
+            int j = 3;
+            for (int i = 0; i < 7; i++) {
+                if (Boolean.TRUE.equals(days[i])) {
+                    preparedStatement.setString(j, dayStringList.get(i));
+                    j++;
+                }
+            }
         }
         return preparedStatement.executeQuery();
     }

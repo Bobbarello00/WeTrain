@@ -169,7 +169,6 @@ public class CourseDAO {
 
     public List<Course> searchCoursesByFilters(String name, String fitnessLevel, Boolean[] days) throws SQLException, DBUnreachableException {
         boolean condition = true;
-        int index = 0;
         List<String> dayStringList = new ArrayList<>(7);
         for (int i = 1; i <= 7; i++) {
             dayStringList.add(DayOfWeek.of(i).name());
@@ -180,7 +179,6 @@ public class CourseDAO {
         for (int i = 0; i < 7; i++) {
             if (Boolean.TRUE.equals(days[i])) {
                 condition = false;
-                index = i;
                 queryString.append(CourseQueries.SEARCH_COURSE_QUERY_QUERY_STRING);
             }
         }
@@ -190,13 +188,13 @@ public class CourseDAO {
         try{
             if (condition) {
                 try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
-                        CourseQueries.SEARCH_COURSE_QUERY_TRUE); ResultSet rs = CourseQueries.searchCourse(preparedStatement, name, fitnessLevel, true, index, dayStringList)){
+                        CourseQueries.SEARCH_COURSE_QUERY_TRUE); ResultSet rs = CourseQueries.searchCourse(preparedStatement, name, fitnessLevel, true, days, dayStringList)){
                     return loadAllCourses(loginController.getLoggedUser(), rs);
                 }
             } else {
                 try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                         CourseQueries.SEARCH_COURSE_QUERY_FALSE +
-                        nestedQuery); ResultSet rs = CourseQueries.searchCourse(preparedStatement, name, fitnessLevel, false, index, dayStringList)){
+                        nestedQuery); ResultSet rs = CourseQueries.searchCourse(preparedStatement, name, fitnessLevel, false, days, dayStringList)){
                     return loadAllCourses(loginController.getLoggedUser(), rs);
                 }
             }

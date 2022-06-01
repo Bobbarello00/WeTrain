@@ -39,12 +39,12 @@ public class SubscribeToCourseController extends CourseManagementController{
             PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
             paypalSystemBoundary.pay(
                     new PaymentBean(selectedCourse.getOwner().getIban(), loggedAthlete.getCardNumber(), loggedAthlete.getCardExpirationDate(), SUBSCRIPTIONTOTRAINERFEE));
-        } catch (PaymentFailedException e) {
-            new CourseDAO().unsubscribeFromACourse(loggedAthlete, selectedCourse.getId());
-            throw new PaymentFailedException();
         } catch (NoCardInsertedException e) {
             new CourseDAO().unsubscribeFromACourse(loggedAthlete, selectedCourse.getId());
             throw new NoCardInsertedException();
+        } catch (PaymentFailedException e) {
+            new CourseDAO().unsubscribeFromACourse(loggedAthlete, selectedCourse.getId());
+            throw new PaymentFailedException();
         }
         User receiver = selectedCourse.getOwner();
         NotificationsController notificationsController = new NotificationsController();
