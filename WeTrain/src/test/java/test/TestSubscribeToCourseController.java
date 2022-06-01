@@ -21,8 +21,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestSubscribeToCourseController {
 
-    private static final String EMAIL = "edo@gmail.com";
-    private static final String PASSWORD = "Ciaociao00!";
+    /*@author Testing:  Edoardo Manenti
+     *                  Matricola 0278821
+     */
 
     private static final String COURSE_OWNER_FC = "RGNMAR00E21D662Q";
     private static final String COURSE_DESCRIPTION = "A form of high intensity interval training, " +
@@ -35,6 +36,8 @@ public class TestSubscribeToCourseController {
             "you are going to sweat a lot that's for sure!";
     private static final int COURSE_ID = 4;
     private static final String COURSE_NAME = "Crossfit";
+    private static final String LOGGED_ATHLETE_EMAIL = "edo@gmail.com";
+    private static final String LOGGED_ATHLETE_PASSWORD = "Ciaociao00!";
     private static final String LOGGED_ATHLETE_USERNAME = "EdoMan000";
     private static final String LOGGED_ATHLETE_NAME = "Edoardo";
     private static final String LOGGED_ATHLETE_SURNAME = "Manenti";
@@ -49,7 +52,6 @@ public class TestSubscribeToCourseController {
             COURSE_OWNER_FC,
             COURSE_EQUIPMENT);
     private Athlete loggedAthlete;
-
     {
         try {
             loggedAthlete = new Athlete(
@@ -59,17 +61,25 @@ public class TestSubscribeToCourseController {
                             LOGGED_ATHLETE_BIRTH_DATE,
                             LOGGED_ATHLETE_FC,
                             LOGGED_ATHLETE_GENDER),
-                    new Credentials(EMAIL, PASSWORD),
+                    new Credentials(LOGGED_ATHLETE_EMAIL, LOGGED_ATHLETE_PASSWORD),
                     new Card(LOGGED_ATHLETE_CARD_NUMBER,
                             LOGGED_ATHLETE_CARD_EXPIRATION_DATE));
         } catch (ExpiredCardException e) {
             e.printStackTrace();
         }
     }
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController(loggedAthlete);
+    /*
+    * Per questo test viene creata un'istanza di atleta e di corso che sappiamo essere presenti nel database.
+    * Lo scopo del primo test è quello di verificare la procedura d'iscrizione del suddetto corso dell'atleta in questione.
+    * Per verificare se l'iscrizione è avvenuta, si controlla se nella lista dei corsi dell'atleta è presente tale corso.
+    * Subito dopo si verifica la procedura di disiscrizione verificando poi se nella lista dei corsi dell'atleta
+    * il corso sia stato effettivamente rimosso.
+    * (rendendo inoltre possibile ripetere il test con lo stesso atleta che qualora già iscritto al corso ).
+    */
 
     @Test void testSubscribeToCourse(){
         int flag = 0;
-        SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController(loggedAthlete);
         try {
             subscribeToCourseController.subscribeToCourse(courseBean);
             List<CourseBean> loggedAthleteCourseList = subscribeToCourseController.getLoggedAthleteCourseList();
@@ -79,19 +89,50 @@ public class TestSubscribeToCourseController {
                     break;
                 }
             }
-        } catch (SQLException | DBUnreachableException | NoCardInsertedException | PaymentFailedException e) {
+        } catch (SQLException e) {
             /*
-            * Per scelte progettuali, nel mocking del pagamento, il metodo 'pay' che simula il pagamento fallisce un quarto delle volte.
-            * In caso di errore con valore di flag = -1 bisogna ripetere il test.
-            * NB: DBUnreachableException si verifica in assenza di connessione internet.
-            * Verificare quindi inoltre di essere connessi a internet prima di eseguire il test.
+             * In caso di errore di primary key duplicata è possibile che nel test precedente sia stata
+             *  persa la connessione al database prima di effettuare la disiscrizione (eseguita nel secondo test).
+             * In tal caso (valore di flag = -2) avviare prima il testUnsubscribeToCourse() che disiscriverà
+             * l'atleta dal corso per poi poter ripetere il test dall'inizio.
              */
+            flag = -2;
+            e.printStackTrace();
+        } catch (DBUnreachableException | NoCardInsertedException | PaymentFailedException e) {
+            /*
+            * Per scelte progettuali, nel mocking del pagamento, il metodo 'pay' che simula il pagamento fallisce
+            * una volta su quattro (vedere implementazione in src/main/java/boundaries/PaypalSystemBoundary.java).
+            * In caso di errore (valore di flag = -1) bisogna semplicemente ripetere il test.
+            * NB: DBUnreachableException si verifica in assenza di connessione internet.
+            * Verificare quindi inoltre di essere connessi a internet prima di rieseguire il test.
+            */
             flag = -1;
             e.printStackTrace();
         }
         assertEquals(1, flag);
     }
 
-    //TODO TEST DELL'UNSUBSCRIBE.
+    @Test void testUnsubscribeToCourse(){
+        int flag = 1;
+        try{
+            subscribeToCourseController.unsubscribeFromCourse(courseBean);
+            List<CourseBean> loggedAthleteCourseList = subscribeToCourseController.getLoggedAthleteCourseList();
+            for(CourseBean course: loggedAthleteCourseList){
+                if (course.getId() == courseBean.getId()) {
+                    flag = 0;
+                    break;
+                }
+            }
+        } catch (DBUnreachableException | SQLException e) {
+            /*
+             * NB: DBUnreachableException si verifica in assenza di connessione internet.
+             * Quindi in caso di errore (valore di flag = -1) verificare
+             * di essere connessi a internet prima di rieseguire il test.
+             */
+            flag = -1;
+            e.printStackTrace();
+        }
+        assertEquals(1, flag);
+    }
 
 }
