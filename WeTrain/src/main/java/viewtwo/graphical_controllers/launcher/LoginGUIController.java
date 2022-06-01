@@ -11,9 +11,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import viewone.beans.AthleteBean;
-import viewone.beans.CredentialsBean;
-import viewone.beans.UserBean;
+import beans.AthleteBean;
+import beans.CredentialsBean;
+import beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

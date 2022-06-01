@@ -11,7 +11,7 @@ import models.record.Card;
 import models.record.Credentials;
 import models.record.PersonalInfo;
 import org.junit.jupiter.api.Test;
-import viewone.beans.CourseBean;
+import beans.CourseBean;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

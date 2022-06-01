@@ -15,9 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import viewone.DaysOfTheWeekButtonController;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.ExerciseBean;
-import viewone.beans.WorkoutDayBean;
-import viewone.beans.WorkoutPlanBean;
+import beans.ExerciseBean;
+import beans.WorkoutDayBean;
+import beans.WorkoutPlanBean;
 import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;

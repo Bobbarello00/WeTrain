@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.RequestBean;
+import beans.RequestBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageRequestList;
 import viewone.graphical_controllers.EmailFormGUIController;

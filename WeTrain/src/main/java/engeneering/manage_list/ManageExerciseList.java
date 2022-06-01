@@ -10,8 +10,8 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import viewone.DaysOfTheWeekButtonController;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.ExerciseBean;
-import viewone.beans.ExerciseForWorkoutPlanBean;
+import beans.ExerciseBean;
+import viewone.beans_viewone.ExerciseForWorkoutPlanBeanA;
 import viewone.graphical_controllers.trainers.ExerciseOverviewGUIController;
 import viewone.graphical_controllers.trainers.NewWorkoutPlanGUIController;
 
@@ -40,7 +40,7 @@ public class ManageExerciseList {
                                 "ExerciseOverview",
                                 "trainers",
                                 false);
-                exerciseOverviewGUIController.setValues(new ExerciseForWorkoutPlanBean(
+                exerciseOverviewGUIController.setValues(new ExerciseForWorkoutPlanBeanA(
                         newItem,
                         daysController.getDay()),
                         satisfyWorkoutRequestsController,

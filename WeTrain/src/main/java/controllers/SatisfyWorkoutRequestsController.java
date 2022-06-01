@@ -1,18 +1,18 @@
 package controllers;
 
+import beans.*;
 import boundaries.EmailSystemBoundary;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.ExerciseDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
+import engeneering.ExerciseCatalogue;
 import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
 import exceptions.ElementNotFoundException;
 import exceptions.invalid_data_exception.NoCardInsertedException;
 import models.*;
 import org.jetbrains.annotations.NotNull;
-import viewone.beans.*;
-import engeneering.ExerciseCatalogue;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -65,9 +65,9 @@ public class SatisfyWorkoutRequestsController {
             workoutPlan.addWorkoutDay(workoutDay);
         }
         workoutDay.addExercise(new Exercise(
-                bean.getId(),
-                bean.getName(),
-                bean.getInfo(),
+                bean.getExerciseBean().getId(),
+                bean.getExerciseBean().getName(),
+                bean.getExerciseBean().getInfo(),
                 trainer
         ));
     }
@@ -77,7 +77,7 @@ public class SatisfyWorkoutRequestsController {
         if(workoutDay == null){
             throw new ElementNotFoundException();
         }
-        workoutDay.removeExercise(bean.getName(), bean.getInfo());
+        workoutDay.removeExercise(bean.getExerciseBean().getName(), bean.getExerciseBean().getInfo());
     }
 
     public void sendWorkoutPlan(RequestBean requestBean) throws DBUnreachableException, SQLException {

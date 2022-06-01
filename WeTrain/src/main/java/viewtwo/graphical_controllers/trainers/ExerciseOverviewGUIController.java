@@ -1,5 +1,8 @@
 package viewtwo.graphical_controllers.trainers;
 
+import beans.ExerciseBean;
+import beans.RequestBean;
+import beans.WorkoutDayBean;
 import controllers.SatisfyWorkoutRequestsController;
 import engeneering.AlertGenerator;
 import exceptions.DBUnreachableException;
@@ -8,11 +11,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import viewone.beans.*;
 import viewtwo.PageSwitchSimple;
+import viewtwo.beans_viewtwo.DayBeanB;
+import viewtwo.beans_viewtwo.ExerciseForWorkoutPlanBeanB;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Objects;
 
@@ -23,15 +28,15 @@ public class ExerciseOverviewGUIController {
     @FXML private Button addButton;
 
     private RequestBean selectedRequest;
-    private ExerciseForWorkoutPlanBean exercise;
+    private ExerciseForWorkoutPlanBeanB exercise;
     private SatisfyWorkoutRequestsController satisfyWorkoutRequestsController;
     private boolean alreadyAdded = false;
     private int day;
 
-    public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
-        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(exerciseForWorkoutPlanBean.getDay()));
+    public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBeanB exerciseForWorkoutPlanBean) {
+        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBeanB(DayOfWeek.valueOf(exerciseForWorkoutPlanBean.getDay()).getValue()));
         for (ExerciseBean exerciseBean : workoutDayBean.getExerciseBeanList()) {
-            if (Objects.equals(exerciseBean.getName(), exerciseForWorkoutPlanBean.getName())) {
+            if (Objects.equals(exerciseBean.getName(), exerciseForWorkoutPlanBean.getExerciseBean().getName())) {
                 return true;
             }
         }
@@ -74,7 +79,7 @@ public class ExerciseOverviewGUIController {
 
     @FXML void deleteExerciseButtonAction() throws IOException {
         try {
-            satisfyWorkoutRequestsController.removeExerciseFromTrainer(exercise);
+            satisfyWorkoutRequestsController.removeExerciseFromTrainer(exercise.getExerciseBean());
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -90,7 +95,7 @@ public class ExerciseOverviewGUIController {
         closeAction();
     }
 
-    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, ExerciseForWorkoutPlanBean exercise, int intDay) {
+    public void setValue(RequestBean requestBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, ExerciseForWorkoutPlanBeanB exercise, int intDay) {
         selectedRequest = requestBean;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
         this.exercise = exercise;
@@ -99,7 +104,7 @@ public class ExerciseOverviewGUIController {
             addButton.setText("Remove from Plan");
             alreadyAdded = true;
         }
-        exerciseName.setText(exercise.getName());
-        exerciseInfoTextArea.setText(exercise.getInfo());
+        exerciseName.setText(exercise.getExerciseBean().getName());
+        exerciseInfoTextArea.setText(exercise.getExerciseBean().getInfo());
     }
 }

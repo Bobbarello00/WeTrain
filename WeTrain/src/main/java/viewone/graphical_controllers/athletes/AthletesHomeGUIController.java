@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.CourseBean;
+import beans.CourseBean;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import engeneering.manage_list.ManageNotificationList;

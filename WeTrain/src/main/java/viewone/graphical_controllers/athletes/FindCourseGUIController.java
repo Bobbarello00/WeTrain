@@ -12,8 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.CourseBean;
-import viewone.beans.CourseSearchBean;
+import beans.CourseBean;
+import viewone.beans_viewone.CourseSearchBeanA;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
@@ -82,7 +82,7 @@ public class FindCourseGUIController extends HomeGUIControllerAthletes implement
         String fitnessLevel = fitnessLevelFilter.getSelectedFitnessLevelString();
         String courseName = courseNameText.getText();
         try {
-            List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
+            List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBeanA(
                     courseName,
                     fitnessLevel,
                     selectedDays

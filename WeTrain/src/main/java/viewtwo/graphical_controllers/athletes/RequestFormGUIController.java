@@ -7,9 +7,9 @@ import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import viewone.beans.AthleteBean;
-import viewone.beans.RequestBean;
-import viewone.beans.UserBean;
+import beans.AthleteBean;
+import beans.RequestBean;
+import beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

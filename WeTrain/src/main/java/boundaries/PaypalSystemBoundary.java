@@ -3,7 +3,7 @@ package boundaries;
 import exceptions.PaymentFailedException;
 import exceptions.invalid_data_exception.NoCardInsertedException;
 import exceptions.invalid_data_exception.NoIbanInsertedException;
-import viewone.beans.PaymentBean;
+import beans.PaymentBean;
 
 public class PaypalSystemBoundary {
 

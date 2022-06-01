@@ -16,9 +16,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import viewone.beans.CourseBean;
-import viewone.beans.CourseSearchBean;
+import beans.CourseBean;
+import viewone.beans_viewone.CourseSearchBeanA;
 import viewtwo.PageSwitchSimple;
+import viewtwo.beans_viewtwo.CourseSearchBeanB;
 import viewtwo.graphical_controllers.CourseInfoGUIController;
 
 import java.io.IOException;
@@ -65,24 +66,12 @@ public class FindCourseGUIController implements Initializable {
     }
 
     @FXML void searchCourseByFilters() {
-        String fitnessLevel = null;
-        switch (selectedFitnessLevel){
-            case 0 -> fitnessLevel = "Base";
-            case 1 -> fitnessLevel = "Intermediate";
-            case 2 -> fitnessLevel = "Advanced";
-        }
         String name = courseNameText.getText();
-        Boolean[] days = new Boolean[7];
-        Arrays.fill(days, Boolean.FALSE);
-        List<String> stringList = Arrays.asList("mo","tu","we","th","fr","sa","su");
-        for(int i=0; i<6; i++){
-            days[i] = selectedDays.contains(stringList.get(i));
-        }
         try {
-            List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBean(
+            List<CourseBean> courseBeanList = subscribeToCourseController.searchCourse(new CourseSearchBeanB(
                     name,
-                    fitnessLevel,
-                    days
+                    selectedFitnessLevel,
+                    selectedDays
             ));
             ObservableList<CourseBean> courseObservableList = FXCollections.observableList(courseBeanList);
             courseList.setItems(FXCollections.observableList(courseObservableList));

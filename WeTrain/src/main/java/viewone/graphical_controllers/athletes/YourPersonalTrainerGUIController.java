@@ -1,5 +1,9 @@
 package viewone.graphical_controllers.athletes;
 
+import beans.FcBean;
+import beans.SearchBean;
+import beans.TrainerBean;
+import beans.UserBean;
 import controllers.SubscribeToTrainerController;
 import exceptions.AlreadySubscribedException;
 import exceptions.DBUnreachableException;
@@ -24,7 +28,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
-import viewone.beans.*;
 import engeneering.AlertGenerator;
 import viewone.graphical_controllers.EmailFormGUIController;
 import engeneering.manage_list.list_cell_factories.PersonListCellFactory;

@@ -6,10 +6,10 @@ import models.Athlete;
 import models.Exercise;
 import models.WorkoutDay;
 import models.WorkoutPlan;
-import viewone.beans.ExerciseBean;
-import viewone.beans.RequestBean;
-import viewone.beans.WorkoutDayBean;
-import viewone.beans.WorkoutPlanBean;
+import beans.ExerciseBean;
+import beans.RequestBean;
+import beans.WorkoutDayBean;
+import beans.WorkoutPlanBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

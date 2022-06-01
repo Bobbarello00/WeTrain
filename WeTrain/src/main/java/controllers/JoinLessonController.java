@@ -5,8 +5,8 @@ import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
 import exceptions.NoScheduledLessonException;
 import exceptions.UrlNotInsertedYetException;
-import viewone.beans.CourseBean;
-import viewone.beans.LessonBean;
+import beans.CourseBean;
+import beans.LessonBean;
 import engeneering.AlertGenerator;
 
 import java.awt.*;

@@ -5,9 +5,9 @@ import exceptions.DBUnreachableException;
 import exceptions.NoScheduledLessonException;
 import exceptions.invalid_data_exception.EmptyFieldsException;
 import exceptions.runtime_exception.FatalErrorException;
-import viewone.beans.CommunicationBean;
-import viewone.beans.LessonBean;
-import viewone.beans.StartLessonBean;
+import beans.CommunicationBean;
+import beans.LessonBean;
+import beans.StartLessonBean;
 
 import java.sql.SQLException;
 import java.time.DayOfWeek;

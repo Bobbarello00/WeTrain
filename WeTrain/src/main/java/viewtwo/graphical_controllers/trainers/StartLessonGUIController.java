@@ -6,8 +6,8 @@ import exceptions.DBUnreachableException;
 import exceptions.NoScheduledLessonException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import viewone.beans.CourseBean;
-import viewone.beans.StartLessonBean;
+import beans.CourseBean;
+import beans.StartLessonBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

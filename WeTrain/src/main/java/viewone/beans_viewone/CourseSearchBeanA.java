@@ -1,11 +1,13 @@
-package viewone.beans;
+package viewone.beans_viewone;
 
-public class CourseSearchBean {
+import beans.CourseSearchBean;
+
+public class CourseSearchBeanA implements CourseSearchBean {
     private final String fitnessLevel;
     private final Boolean[] days;
     private final String name;
 
-    public CourseSearchBean(String name, String fitnessLevel, Boolean[] days) {
+    public CourseSearchBeanA(String name, String fitnessLevel, Boolean[] days) {
         this.fitnessLevel = fitnessLevel;
         this.name = name;
         this.days = days;

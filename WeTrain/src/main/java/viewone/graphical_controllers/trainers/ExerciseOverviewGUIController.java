@@ -13,10 +13,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.DayBean;
-import viewone.beans.ExerciseBean;
-import viewone.beans.ExerciseForWorkoutPlanBean;
-import viewone.beans.WorkoutDayBean;
+import viewone.beans_viewone.DayBeanA;
+import beans.ExerciseBean;
+import viewone.beans_viewone.ExerciseForWorkoutPlanBeanA;
+import beans.WorkoutDayBean;
 import engeneering.AlertGenerator;
 
 import java.sql.SQLException;
@@ -29,7 +29,7 @@ public class ExerciseOverviewGUIController {
     @FXML private TextField nameText;
     @FXML private Button addButton;
 
-    private ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean;
+    private ExerciseForWorkoutPlanBeanA exerciseForWorkoutPlanBean;
     private boolean alreadyAdded = false;
 
     private NewWorkoutPlanGUIController newWorkoutPlanGUIController;
@@ -62,7 +62,7 @@ public class ExerciseOverviewGUIController {
 
     @FXML void deleteAction(ActionEvent event) {
         try {
-            satisfyWorkoutRequestsController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean);
+            satisfyWorkoutRequestsController.removeExerciseFromTrainer(exerciseForWorkoutPlanBean.getExerciseBean());
             newWorkoutPlanGUIController.updateLists();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
@@ -86,17 +86,17 @@ public class ExerciseOverviewGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
-    public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBean exerciseForWorkoutPlanBean) {
-        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(exerciseForWorkoutPlanBean.getDay()));
+    public boolean checkAlreadyAdded(ExerciseForWorkoutPlanBeanA exerciseForWorkoutPlanBean) {
+        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBeanA(exerciseForWorkoutPlanBean.getDay()));
         for (ExerciseBean exercise : workoutDayBean.getExerciseBeanList()) {
-            if (Objects.equals(exercise.getName(), exerciseForWorkoutPlanBean.getName())) {
+            if (Objects.equals(exercise.getName(), exerciseForWorkoutPlanBean.getExerciseBean().getName())) {
                 return true;
             }
         }
         return false;
     }
 
-    public void setValues(ExerciseForWorkoutPlanBean exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController){
+    public void setValues(ExerciseForWorkoutPlanBeanA exerciseBean, SatisfyWorkoutRequestsController satisfyWorkoutRequestsController, NewWorkoutPlanGUIController newWorkoutPlanGUIController){
         this.exerciseForWorkoutPlanBean = exerciseBean;
         this.newWorkoutPlanGUIController = newWorkoutPlanGUIController;
         this.satisfyWorkoutRequestsController = satisfyWorkoutRequestsController;
@@ -105,9 +105,9 @@ public class ExerciseOverviewGUIController {
             addButton.setText("Remove from Selected Day");
             alreadyAdded = true;
         }
-        nameText.setText(exerciseBean.getName());
+        nameText.setText(exerciseBean.getExerciseBean().getName());
         nameText.setEditable(false);
-        infoTextArea.setText(exerciseBean.getInfo());
+        infoTextArea.setText(exerciseBean.getExerciseBean().getInfo());
         infoTextArea.setEditable(false);
     }
 

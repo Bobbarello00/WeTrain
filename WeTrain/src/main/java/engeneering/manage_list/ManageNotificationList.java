@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.NotificationBean;
+import beans.NotificationBean;
 import engeneering.AlertGenerator;
 
 import java.sql.SQLException;

@@ -8,8 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.AthleteBean;
-import viewone.beans.UserBean;
+import beans.AthleteBean;
+import beans.UserBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 

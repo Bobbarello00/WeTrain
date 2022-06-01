@@ -8,9 +8,9 @@ import exceptions.invalid_data_exception.InvalidTimeException;
 import models.Course;
 import models.Lesson;
 import models.Trainer;
-import viewone.beans.CommunicationBean;
-import viewone.beans.CourseBean;
-import viewone.beans.LessonBean;
+import beans.CommunicationBean;
+import beans.CourseBean;
+import beans.LessonBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

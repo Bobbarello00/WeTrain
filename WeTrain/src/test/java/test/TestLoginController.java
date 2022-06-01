@@ -4,8 +4,8 @@ import controllers.LoginController;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
 import org.junit.jupiter.api.Test;
-import viewone.beans.AthleteBean;
-import viewone.beans.CredentialsBean;
+import beans.AthleteBean;
+import beans.CredentialsBean;
 
 import java.sql.SQLException;
 import java.util.Objects;

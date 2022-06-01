@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import viewone.beans.CourseBean;
+import beans.CourseBean;
 
 import java.io.File;
 import java.io.IOException;

@@ -7,7 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
-import viewone.beans.CredentialsBean;
+import beans.CredentialsBean;
 import engeneering.AlertGenerator;
 
 import java.io.IOException;

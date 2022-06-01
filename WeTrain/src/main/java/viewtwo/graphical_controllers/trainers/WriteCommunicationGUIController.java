@@ -7,8 +7,8 @@ import exceptions.invalid_data_exception.EmptyFieldsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.CommunicationBean;
-import viewone.beans.CourseBean;
+import beans.CommunicationBean;
+import beans.CourseBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

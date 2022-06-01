@@ -3,8 +3,8 @@ package controllers;
 import boundaries.EmailSystemBoundary;
 import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
-import viewone.beans.EmailBean;
-import viewone.beans.UserBean;
+import beans.EmailBean;
+import beans.UserBean;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

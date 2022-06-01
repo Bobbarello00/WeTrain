@@ -2,8 +2,8 @@ package controllers;
 
 import models.Course;
 import models.Lesson;
-import viewone.beans.CourseBean;
-import viewone.beans.LessonBean;
+import beans.CourseBean;
+import beans.LessonBean;
 
 import java.util.ArrayList;
 import java.util.List;

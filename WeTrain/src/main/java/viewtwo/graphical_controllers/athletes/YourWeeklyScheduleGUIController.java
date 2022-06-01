@@ -1,5 +1,6 @@
 package viewtwo.graphical_controllers.athletes;
 
+import beans.*;
 import controllers.RequestWorkoutPlanController;
 import controllers.SubscribeToCourseController;
 import engeneering.AlertGenerator;
@@ -10,7 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.*;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

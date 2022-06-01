@@ -1,18 +1,17 @@
 package controllers;
 
+import beans.CourseBean;
+import beans.CourseSearchBean;
+import beans.PaymentBean;
 import boundaries.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
 import exceptions.invalid_data_exception.NoCardInsertedException;
 import exceptions.invalid_data_exception.NoIbanInsertedException;
-import exceptions.runtime_exception.FatalErrorException;
 import models.Athlete;
 import models.Course;
 import models.User;
-import viewone.beans.CourseBean;
-import viewone.beans.CourseSearchBean;
-import viewone.beans.PaymentBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

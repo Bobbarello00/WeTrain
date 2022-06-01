@@ -1,8 +1,8 @@
 package controllers;
 
+import beans.*;
 import exceptions.invalid_data_exception.NoCardInsertedException;
 import exceptions.invalid_data_exception.NoIbanInsertedException;
-import viewone.beans.PaymentBean;
 import boundaries.PaypalSystemBoundary;
 import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
@@ -11,7 +11,6 @@ import exceptions.invalid_data_exception.InvalidIbanException;
 import models.Athlete;
 import models.Trainer;
 import models.User;
-import viewone.beans.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

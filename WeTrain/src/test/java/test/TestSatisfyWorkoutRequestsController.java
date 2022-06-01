@@ -7,8 +7,8 @@ import models.Trainer;
 import models.record.Credentials;
 import models.record.PersonalInfo;
 import org.junit.jupiter.api.Test;
-import viewone.beans.ExerciseBean;
-import viewone.beans.SearchBean;
+import beans.ExerciseBean;
+import beans.SearchBean;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

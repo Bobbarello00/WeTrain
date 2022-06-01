@@ -6,7 +6,7 @@ import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import viewone.beans.UserBean;
+import beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

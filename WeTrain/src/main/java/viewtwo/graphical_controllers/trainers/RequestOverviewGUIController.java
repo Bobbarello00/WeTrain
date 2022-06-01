@@ -3,7 +3,7 @@ package viewtwo.graphical_controllers.trainers;
 import controllers.SatisfyWorkoutRequestsController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import viewone.beans.RequestBean;
+import beans.RequestBean;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.EmailFormGUIController;
 

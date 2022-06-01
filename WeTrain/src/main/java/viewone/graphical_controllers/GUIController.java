@@ -4,7 +4,7 @@ import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.UserBean;
+import beans.UserBean;
 
 import java.util.List;
 import java.util.Objects;

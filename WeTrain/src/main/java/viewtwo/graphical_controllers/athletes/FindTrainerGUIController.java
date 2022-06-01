@@ -16,8 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
-import viewone.beans.SearchBean;
-import viewone.beans.UserBean;
+import beans.SearchBean;
+import beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

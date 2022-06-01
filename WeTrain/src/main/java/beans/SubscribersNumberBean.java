@@ -1,4 +1,4 @@
-package viewone.beans;
+package beans;
 
 public class SubscribersNumberBean {
     private final int subscribersNumber;

@@ -5,8 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
-import viewone.beans.CourseBean;
-import viewone.beans.LessonBean;
+import beans.CourseBean;
+import beans.LessonBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

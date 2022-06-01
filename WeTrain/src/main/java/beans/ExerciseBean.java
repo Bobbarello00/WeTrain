@@ -1,4 +1,4 @@
-package viewone.beans;
+package beans;
 
 public class ExerciseBean {
     private int id;

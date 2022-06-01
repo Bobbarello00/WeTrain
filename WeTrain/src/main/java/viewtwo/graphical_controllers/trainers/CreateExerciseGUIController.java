@@ -6,8 +6,8 @@ import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import viewone.beans.ExerciseBean;
-import viewone.beans.RequestBean;
+import beans.ExerciseBean;
+import beans.RequestBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

@@ -5,10 +5,10 @@ import engeneering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import models.Athlete;
 import models.User;
-import viewone.beans.CredentialsBean;
-import viewone.beans.PersonalInfoBean;
-import viewone.beans.SubscribersNumberBean;
-import viewone.beans.UserBean;
+import beans.CredentialsBean;
+import beans.PersonalInfoBean;
+import beans.SubscribersNumberBean;
+import beans.UserBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

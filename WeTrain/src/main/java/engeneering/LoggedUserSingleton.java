@@ -1,5 +1,6 @@
 package engeneering;
 
+import beans.*;
 import controllers.LoginController;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.NoCardInsertedException;
@@ -7,7 +8,6 @@ import exceptions.runtime_exception.FatalErrorException;
 import models.Athlete;
 import models.Trainer;
 import models.User;
-import viewone.beans.*;
 
 import java.sql.SQLException;
 import java.time.YearMonth;

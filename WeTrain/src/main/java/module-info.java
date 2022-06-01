@@ -22,8 +22,8 @@ module com.wetrain.wetrain {
     opens viewone.graphical_controllers.trainers to javafx.fxml;
     exports viewone.graphical_controllers.launcher;
     opens viewone.graphical_controllers.launcher to javafx.fxml;
-    exports viewone.beans;
-    opens viewone.beans to javafx.fxml;
+    exports viewone.beans_viewone;
+    opens viewone.beans_viewone to javafx.fxml;
     exports engeneering;
     opens engeneering to javafx.fxml;
     exports viewone;
@@ -37,6 +37,8 @@ module com.wetrain.wetrain {
     opens viewtwo.graphical_controllers.athletes to javafx.fxml;
     exports viewtwo.graphical_controllers.trainers;
     opens viewtwo.graphical_controllers.trainers to javafx.fxml;
+    exports viewtwo.beans_viewtwo;
+    opens viewtwo.beans_viewtwo to javafx.fxml;
     exports viewtwo;
     opens viewtwo to javafx.fxml;
     exports database;
@@ -53,4 +55,6 @@ module com.wetrain.wetrain {
     exports exceptions.runtime_exception;
     exports database.queries;
     opens database.queries to javafx.fxml;
+    exports beans;
+    opens beans to javafx.fxml;
 }

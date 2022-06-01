@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
-import viewone.beans.TrainerBean;
+import beans.TrainerBean;
 import viewtwo.PageSwitchSimple;
 import viewtwo.graphical_controllers.EmailFormGUIController;
 

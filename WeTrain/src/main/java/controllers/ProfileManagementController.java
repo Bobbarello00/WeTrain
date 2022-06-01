@@ -9,8 +9,8 @@ import models.Athlete;
 import models.Trainer;
 import models.User;
 import models.record.Card;
-import viewone.beans.CardInfoBean;
-import viewone.beans.IbanBean;
+import beans.CardInfoBean;
+import beans.IbanBean;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

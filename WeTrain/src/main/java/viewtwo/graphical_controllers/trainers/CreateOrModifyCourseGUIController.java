@@ -15,8 +15,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import org.jetbrains.annotations.NotNull;
-import viewone.beans.CourseBean;
-import viewone.beans.LessonBean;
+import beans.CourseBean;
+import beans.LessonBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

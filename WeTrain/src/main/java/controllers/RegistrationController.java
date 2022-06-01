@@ -4,13 +4,12 @@ import database.dao_classes.AthleteDAO;
 import database.dao_classes.TrainerDAO;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
-import exceptions.invalid_data_exception.NoCardInsertedException;
 import models.Athlete;
 import models.Trainer;
 import models.record.Credentials;
 import models.record.PersonalInfo;
 import engeneering.LoggedUserSingleton;
-import viewone.beans.UserBean;
+import beans.UserBean;
 
 import java.sql.SQLException;
 import java.util.Objects;

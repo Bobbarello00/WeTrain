@@ -1,5 +1,6 @@
 package viewtwo.graphical_controllers.trainers;
 
+import beans.*;
 import controllers.SatisfyWorkoutRequestsController;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
@@ -16,8 +17,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import viewone.beans.*;
+import viewone.beans_viewone.ExerciseForWorkoutPlanBeanA;
 import viewtwo.PageSwitchSimple;
+import viewtwo.beans_viewtwo.DayBeanB;
+import viewtwo.beans_viewtwo.ExerciseForWorkoutPlanBeanB;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,7 +83,7 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     private void switchPage(ExerciseBean newItem) throws IOException, NoDayIsSelectedException {
         ExerciseOverviewGUIController controller = (ExerciseOverviewGUIController) PageSwitchSimple.switchPage("ExerciseOverview", TRAINERS);
         if (controller != null) {
-            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBean(newItem, getDay()), getIntDay());
+            controller.setValue(selectedRequest, satisfyWorkoutRequestsController, new ExerciseForWorkoutPlanBeanB(newItem, getDay()), getIntDay());
         }
     }
 
@@ -126,15 +129,15 @@ public class CreateWorkoutPlanGUIController implements Initializable {
     }
 
     public void updateSelectedExerciseList() throws NoDayIsSelectedException {
-        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(getDay()));
+        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBeanB(getDay()));
         ObservableList<ExerciseBean> exerciseBeanObservableList = FXCollections.observableList(workoutDayBean.getExerciseBeanList());
         selectedExerciseList.setItems(exerciseBeanObservableList);
     }
 
-    private String getDay() throws NoDayIsSelectedException {
+    private int getDay() throws NoDayIsSelectedException {
         for(int i = 0; i < 7; i++) {
             if(radioButtonList.get(i).isSelected()) {
-                return dayList.get(i);
+                return i+1;
             }
         }
         throw new NoDayIsSelectedException();

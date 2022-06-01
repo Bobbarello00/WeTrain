@@ -1,4 +1,4 @@
-package viewone.beans;
+package beans;
 
 import exceptions.invalid_data_exception.EmptyFieldsException;
 import exceptions.invalid_data_exception.InvalidCardInfoException;

@@ -1,4 +1,4 @@
-package viewone.beans;
+package beans;
 
 public class EmailBean {
     private final UserBean sender;

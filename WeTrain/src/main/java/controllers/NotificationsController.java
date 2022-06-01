@@ -1,5 +1,6 @@
 package controllers;
 
+import beans.*;
 import database.dao_classes.CourseDAO;
 import database.dao_classes.NotificationDAO;
 import database.dao_classes.TrainerDAO;
@@ -11,7 +12,6 @@ import models.Trainer;
 import models.User;
 import models.notification.Notification;
 import models.notification.NotificationEnum;
-import viewone.beans.*;
 import engeneering.NotificationFactorySingleton;
 
 import java.sql.SQLException;

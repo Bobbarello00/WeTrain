@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import viewone.PageSwitchSizeChange;
 import viewone.WeTrain;
-import viewone.beans.NotificationBean;
+import beans.NotificationBean;
 import engeneering.AlertGenerator;
 import engeneering.LoggedUserSingleton;
 import engeneering.UserInfoCarrier;

@@ -14,10 +14,10 @@ import engeneering.LoggedUserSingleton;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.AthleteBean;
-import viewone.beans.CredentialsBean;
+import beans.AthleteBean;
+import beans.CredentialsBean;
 import engeneering.AlertGenerator;
-import viewone.beans.UserBean;
+import beans.UserBean;
 
 import java.io.IOException;
 import java.sql.SQLException;

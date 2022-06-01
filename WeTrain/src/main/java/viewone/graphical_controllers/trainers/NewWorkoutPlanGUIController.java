@@ -1,5 +1,6 @@
 package viewone.graphical_controllers.trainers;
 
+import beans.*;
 import controllers.SatisfyWorkoutRequestsController;
 import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
@@ -12,10 +13,10 @@ import viewone.DaysOfTheWeekButtonController;
 import engeneering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.*;
 import engeneering.AlertGenerator;
 import engeneering.manage_list.ManageExerciseList;
 import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
+import viewone.beans_viewone.DayBeanA;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,7 +89,7 @@ public class NewWorkoutPlanGUIController extends HomeGUIControllerTrainers imple
     }
 
     public void updateSelectedExerciseList() {
-        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBean(daysController.getDay()));
+        WorkoutDayBean workoutDayBean = satisfyWorkoutRequestsController.getWorkoutDayBean(new DayBeanA(daysController.getDay()));
         ManageExerciseList.updateList(
                 selectedExerciseList,
                 workoutDayBean.getExerciseBeanList());

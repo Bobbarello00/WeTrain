@@ -1,7 +1,7 @@
 package boundaries;
 
 import exceptions.BrowsingNotSupportedException;
-import viewone.beans.EmailBean;
+import beans.EmailBean;
 
 import java.awt.*;
 import java.io.IOException;

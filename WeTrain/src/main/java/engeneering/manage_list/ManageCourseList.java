@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.CourseBean;
+import beans.CourseBean;
 import viewone.graphical_controllers.CourseOverviewGUIController;
 
 import java.io.IOException;

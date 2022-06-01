@@ -4,7 +4,7 @@ import engeneering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;
-import viewone.beans.CourseBean;
+import beans.CourseBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

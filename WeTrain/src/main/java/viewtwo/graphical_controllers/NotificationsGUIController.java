@@ -12,7 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import viewone.beans.NotificationBean;
+import beans.NotificationBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;

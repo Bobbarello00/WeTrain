@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import engeneering.MainPane;
 import viewone.PageSwitchSizeChange;
-import viewone.beans.ExerciseBean;
+import beans.ExerciseBean;
 import engeneering.AlertGenerator;
 
 import java.sql.SQLException;

@@ -13,9 +13,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
-import viewone.beans.ExerciseBean;
-import viewone.beans.WorkoutDayBean;
-import viewone.beans.WorkoutPlanBean;
+import beans.ExerciseBean;
+import beans.WorkoutDayBean;
+import beans.WorkoutPlanBean;
 import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
 import viewtwo.PageSwitchSimple;
 

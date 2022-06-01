@@ -1,4 +1,4 @@
-package viewone.beans;
+package beans;
 
 import exceptions.invalid_data_exception.TextOutOfBoundException;
 import exceptions.invalid_data_exception.EmptyFieldsException;

@@ -1,4 +1,4 @@
-package viewone.beans;
+package beans;
 
 import java.time.YearMonth;
 public class PaymentBean {
