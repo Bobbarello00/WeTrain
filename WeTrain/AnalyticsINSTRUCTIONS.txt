@@ -1,0 +1,3 @@
+svn log -v --xml > repository_log.xml
+
+poi aprire Excel>Dati>RecuperaDati>DaFile>...

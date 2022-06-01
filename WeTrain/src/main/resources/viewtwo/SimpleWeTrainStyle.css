@@ -1,0 +1,165 @@
+.button{
+    -fx-background-color: rgb(124, 47, 221);
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.button:hover {
+    -fx-background-color: rgb(124, 0, 221);
+}
+.button:pressed {
+    -fx-background-color: rgb(124, 97, 221);
+}
+.check-box{
+    -fx-cursor: hand;
+}
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-border-color:rgb(124, 47, 221);
+    -fx-border-radius:3px;
+}
+.check-box:selected .mark {
+    -fx-background-color: rgb(124, 47, 221);
+}
+.check-box:selected .box {
+    -fx-background-color: transparent;
+}
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color: rgba(255,255,255,0.5);
+}
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-bar:horizontal .track, .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+.scroll-bar:horizontal .thumb, .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(124,47,221,0.7);
+    -fx-background-radius: 5em;
+    -fx-cursor: hand;
+}
+.scroll-bar:horizontal .thumb:pressed, .scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: rgba(124, 77, 221, 0.7);
+    -fx-background-radius: 5em;
+    -fx-cursor: hand;
+}
+.list-view ,.list-view .list-cell{
+    -fx-background-color: transparent;
+    -fx-background-radius: 50;
+}
+
+.list-view .list-cell:filled:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+}
+
+.list-view .scroll-bar {
+    -fx-background-radius: 5em;
+}
+.radio-button .radio{
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(124, 47, 221) ;
+    -fx-border-radius:20;
+}
+.radio-button .dot{
+    -fx-color: rgb(255, 0, 255) ;
+}
+.text-field{
+    -fx-border-color: rgb(124, 47, 221);
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-Prompt-text-fill: #707070;
+}
+
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: rgb(121,47,224);
+    -fx-Prompt-text-fill: #707070;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.text-area .scroll-bar{
+    -fx-background-radius: 20;
+    -fx-background-color: rgba(255,255,255,0.2);
+}
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.spinner {
+    -fx-background-color: transparent;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-radius: 50;
+    -fx-background-color: rgb(124, 47, 221);
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-radius: 50;
+    -fx-background-color: rgb(124, 0, 221);
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-background-radius: 50;
+    -fx-background-color: rgb(124, 97, 221);
+    -fx-cursor: hand;
+}
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color:white;
+}
+
+.combo-box{
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(124,47,221);
+    -fx-prompt-text-fill: black;
+    -fx-border-radius: 50;
+}
+.combo-box-popup .list-view{
+    -fx-background-color: rgba(255,255,255,0.8);
+    -fx-background-radius: 10;
+    -fx-border-color: rgb(124,47,221);
+    -fx-border-radius: 10;
+}
+.combo-box-popup .list-cell:hover,.combo-box-popup .list-cell:selected{
+    -fx-text-fill: rgb(124,47,221);
+    -fx-background-color: rgba(124,47,221,0.1) ;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: white;
+    -fx-border-color: rgb(124,47,221);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+
+}
+.choice-box .menu-item:focused {
+    -fx-background-color: rgb(124,47,221);
+    -fx-background-radius: 10;}
+.choice-box .menu-item > .label { -fx-text-fill: black; }
+.choice-box .menu-item:focused > .label { -fx-text-fill: white; }
+.choice-box {
+    -fx-background-color: white;
+    -fx-border-color: rgb(124,47,221);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-mark-color: rgb(124,47,221);
+    -fx-cursor: hand;
+}
