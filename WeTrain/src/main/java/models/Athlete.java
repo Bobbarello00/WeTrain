@@ -20,6 +20,10 @@ public class Athlete extends User implements Serializable {
 
     public Athlete(String username, PersonalInfo personalInfo, Credentials credentials) {
         super(username, personalInfo, credentials);
+        card = new Card(
+                "",
+                null
+        );
     }
 
     public Athlete(String username, PersonalInfo personalInfo, Credentials credentials, Card card) throws ExpiredCardException {
@@ -31,7 +35,7 @@ public class Athlete extends User implements Serializable {
     public String getCardNumber() throws NoCardInsertedException {
         if(card!=null) {
             return card.cardNumber();
-        }else{
+        } else {
             throw new NoCardInsertedException();
         }
     }
