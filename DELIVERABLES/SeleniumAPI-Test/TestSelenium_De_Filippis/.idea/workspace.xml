@@ -25,14 +25,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Andrea/Desktop/TestSelenium/TestSelenium&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Andrea/Desktop/Università/ISPW_PROJECT/WeTrainProject/trunk/DELIVERABLES/SeleniumAPI-Test/TestSelenium_De_Filippis"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Andrea\Desktop\TestSelenium\TestSelenium\src\test\java\com\example\testselenium" />
@@ -40,7 +40,7 @@
       <recent name="C:\Users\Andrea\IdeaProjects\TestSelenium\src\test\java\com\example\testselenium" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestOriginalTitle.testCompareValue">
+  <component name="RunManager" selected="JUnit.TestOriginalTitle">
     <configuration name="com.example.testselenium.OriginalTitle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.testselenium.OriginalTitle" />
       <module name="TestSelenium" />
@@ -102,8 +102,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestOriginalTitle.testCompareValue" />
         <item itemvalue="JUnit.TestOriginalTitle" />
+        <item itemvalue="JUnit.TestOriginalTitle.testCompareValue" />
         <item itemvalue="Application.com.example.testselenium.OriginalTitle" />
         <item itemvalue="JUnit.MainPageTest" />
       </list>
@@ -124,6 +124,7 @@
       <workItem from="1654166483714" duration="23000" />
       <workItem from="1654166701033" duration="826000" />
       <workItem from="1654167545732" duration="12000" />
+      <workItem from="1654176448162" duration="32000" />
     </task>
     <servers />
   </component>
