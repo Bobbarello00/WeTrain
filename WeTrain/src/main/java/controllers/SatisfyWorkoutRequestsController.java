@@ -32,7 +32,7 @@ public class SatisfyWorkoutRequestsController {
     public SatisfyWorkoutRequestsController() throws DBUnreachableException, SQLException {
         workoutPlan = new WorkoutPlan();
         trainer = (Trainer) new LoginController().getLoggedUser();
-        exerciseCatalogue = new ExerciseCatalogue(new ExerciseDAO().loadTrainerExercises(trainer));
+        exerciseCatalogue = new ExerciseCatalogue(new ArrayList<>(new ExerciseDAO().loadTrainerExercises(trainer)));
     }
 
     public SatisfyWorkoutRequestsController(Trainer trainer, ExerciseCatalogue exerciseCatalogue) {

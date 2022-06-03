@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseCatalogue extends Observable{
-    private final ArrayList<Exercise> exerciseList;
+    private final List<Exercise> exerciseList;
 
-    public ExerciseCatalogue(ArrayList<Exercise> exerciseList) {
+    public ExerciseCatalogue(List<Exercise> exerciseList) {
         this.exerciseList = exerciseList;
     }
 
