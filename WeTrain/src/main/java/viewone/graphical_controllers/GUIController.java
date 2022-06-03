@@ -1,7 +1,7 @@
 package viewone.graphical_controllers;
 
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import viewone.PageSwitchSizeChange;
 import beans.UserBean;

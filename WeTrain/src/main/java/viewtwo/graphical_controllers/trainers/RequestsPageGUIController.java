@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers.trainers;
 
 import controllers.SatisfyWorkoutRequestsController;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.list_cell_factories.RequestListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.list_cell_factories.RequestListCellFactory;
 import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;

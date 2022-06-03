@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.trainers;
 
 import controllers.SatisfyWorkoutRequestsController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;

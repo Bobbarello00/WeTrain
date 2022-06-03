@@ -14,13 +14,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import beans.CourseBean;
 import beans.LessonBean;
-import engeneering.AlertGenerator;
-import engeneering.UserInfoCarrier;
+import engineering.AlertGenerator;
+import engineering.UserInfoCarrier;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
 import viewone.graphical_controllers.TimeSchedulerGUIController;
 

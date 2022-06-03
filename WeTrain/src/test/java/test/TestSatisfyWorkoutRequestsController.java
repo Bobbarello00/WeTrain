@@ -1,7 +1,7 @@
 package test;
 
 import controllers.SatisfyWorkoutRequestsController;
-import engeneering.ExerciseCatalogue;
+import engineering.ExerciseCatalogue;
 import models.Exercise;
 import models.Trainer;
 import models.record.Credentials;

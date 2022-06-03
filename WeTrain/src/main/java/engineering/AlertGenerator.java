@@ -1,4 +1,4 @@
-package engeneering;
+package engineering;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

@@ -7,11 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import viewone.PageSwitchSizeChange;
 import beans.CourseBean;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.ManageCourseList;
-import engeneering.manage_list.ManageNotificationList;
-import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
-import engeneering.manage_list.list_cell_factories.NotificationListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.ManageCourseList;
+import engineering.manage_list.ManageNotificationList;
+import engineering.manage_list.list_cell_factories.CourseListCellFactory;
+import engineering.manage_list.list_cell_factories.NotificationListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;

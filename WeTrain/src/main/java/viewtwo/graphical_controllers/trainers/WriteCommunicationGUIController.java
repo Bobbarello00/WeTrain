@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.trainers;
 
 import controllers.NotificationsController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.EmptyFieldsException;
 import javafx.fxml.FXML;

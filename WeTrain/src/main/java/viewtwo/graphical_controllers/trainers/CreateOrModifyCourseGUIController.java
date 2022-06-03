@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.trainers;
 
 import controllers.ManageCoursesController;
-import engeneering.LoggedUserSingleton;
+import engineering.LoggedUserSingleton;
 import exceptions.invalid_data_exception.EmptyFieldsException;
 import exceptions.invalid_data_exception.TimeNotInsertedException;
 import javafx.collections.FXCollections;

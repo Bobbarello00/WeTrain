@@ -15,8 +15,8 @@ import javafx.scene.text.Text;
 import viewone.WeTrain;
 import beans.AthleteBean;
 import beans.CardInfoBean;
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import viewone.graphical_controllers.ProfileGUIController;
 
 import java.net.URISyntaxException;

@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers.athletes;
 
 import controllers.SubscribeToTrainerController;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.list_cell_factories.PersonListCellFactory;
 import exceptions.AlreadySubscribedException;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;

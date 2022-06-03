@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers.trainers;
 
 import controllers.ProfileManagementController;
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.InvalidIbanException;
 import javafx.fxml.FXML;

@@ -10,14 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import beans.CourseBean;
 import beans.LessonBean;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.ManageCourseList;
-import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.ManageCourseList;
+import engineering.manage_list.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;

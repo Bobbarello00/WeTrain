@@ -12,7 +12,7 @@ import models.Trainer;
 import models.User;
 import models.notification.Notification;
 import models.notification.NotificationEnum;
-import engeneering.NotificationFactorySingleton;
+import engineering.NotificationFactorySingleton;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;

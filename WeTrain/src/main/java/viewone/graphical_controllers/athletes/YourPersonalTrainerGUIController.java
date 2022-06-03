@@ -28,9 +28,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import viewone.WeTrain;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import viewone.graphical_controllers.EmailFormGUIController;
-import engeneering.manage_list.list_cell_factories.PersonListCellFactory;
+import engineering.manage_list.list_cell_factories.PersonListCellFactory;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

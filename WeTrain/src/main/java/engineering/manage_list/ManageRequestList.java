@@ -1,4 +1,4 @@
-package engeneering.manage_list;
+package engineering.manage_list;
 
 import controllers.SatisfyWorkoutRequestsController;
 import exceptions.DBUnreachableException;
@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import beans.RequestBean;
-import engeneering.manage_list.list_cell_factories.RequestListCellFactory;
+import engineering.manage_list.list_cell_factories.RequestListCellFactory;
 
 import java.sql.SQLException;
 

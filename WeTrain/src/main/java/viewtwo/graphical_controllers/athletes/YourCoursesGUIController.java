@@ -2,8 +2,8 @@ package viewtwo.graphical_controllers.athletes;
 
 import controllers.JoinLessonController;
 import controllers.SubscribeToCourseController;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.list_cell_factories.CourseListCellFactory;
 import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
 import exceptions.NoScheduledLessonException;

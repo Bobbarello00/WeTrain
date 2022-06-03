@@ -1,7 +1,7 @@
 package viewone.graphical_controllers;
 
 import controllers.ProfileManagementController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.*;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSizeChange;
 
 import java.sql.SQLException;

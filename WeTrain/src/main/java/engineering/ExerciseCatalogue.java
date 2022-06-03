@@ -1,8 +1,7 @@
-package engeneering;
+package engineering;
 
 import models.Exercise;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseCatalogue extends Observable{

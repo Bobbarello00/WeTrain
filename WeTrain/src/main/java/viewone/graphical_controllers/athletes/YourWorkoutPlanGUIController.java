@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.athletes;
 
 import controllers.RequestWorkoutPlanController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,7 +18,7 @@ import viewone.PageSwitchSizeChange;
 import beans.ExerciseBean;
 import beans.WorkoutDayBean;
 import beans.WorkoutPlanBean;
-import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
+import engineering.manage_list.list_cell_factories.ExerciseListCellFactory;
 
 import java.net.URL;
 import java.sql.SQLException;

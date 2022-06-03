@@ -7,7 +7,7 @@ import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
 import exceptions.runtime_exception.IsNeitherATrainerNorAnAthleteException;
 import models.User;
-import engeneering.LoggedUserSingleton;
+import engineering.LoggedUserSingleton;
 import beans.CredentialsBean;
 import beans.UserBean;
 

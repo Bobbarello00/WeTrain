@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.trainers;
 
 import controllers.StartLessonController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.NoScheduledLessonException;
 import javafx.fxml.FXML;

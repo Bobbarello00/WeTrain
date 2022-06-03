@@ -6,7 +6,7 @@ import database.dao_classes.AthleteDAO;
 import database.dao_classes.ExerciseDAO;
 import database.dao_classes.RequestDAO;
 import database.dao_classes.WorkoutPlanDAO;
-import engeneering.ExerciseCatalogue;
+import engineering.ExerciseCatalogue;
 import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
 import exceptions.ElementNotFoundException;

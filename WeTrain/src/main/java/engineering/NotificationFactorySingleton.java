@@ -1,4 +1,4 @@
-package engeneering;
+package engineering;
 
 import database.dao_classes.CourseDAO;
 import exceptions.DBUnreachableException;

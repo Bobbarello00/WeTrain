@@ -1,6 +1,6 @@
 package viewtwo.graphical_controllers.launcher;
 
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.runtime_exception.FatalErrorException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

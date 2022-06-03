@@ -3,7 +3,7 @@ package viewtwo.graphical_controllers.athletes;
 import beans.*;
 import controllers.RequestWorkoutPlanController;
 import controllers.SubscribeToCourseController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

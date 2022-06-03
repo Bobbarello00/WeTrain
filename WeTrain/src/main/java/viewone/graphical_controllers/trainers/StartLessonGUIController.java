@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import beans.CourseBean;
 import beans.StartLessonBean;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package engeneering;
+package engineering;
 
 import exceptions.runtime_exception.MainPaneNotExistException;
 import javafx.scene.layout.BorderPane;

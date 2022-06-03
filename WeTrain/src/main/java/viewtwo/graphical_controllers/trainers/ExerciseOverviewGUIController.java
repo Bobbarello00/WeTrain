@@ -4,7 +4,7 @@ import beans.ExerciseBean;
 import beans.RequestBean;
 import beans.WorkoutDayBean;
 import controllers.SatisfyWorkoutRequestsController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.ElementNotFoundException;
 import javafx.fxml.FXML;

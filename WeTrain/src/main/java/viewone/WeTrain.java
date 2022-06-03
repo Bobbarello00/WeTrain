@@ -1,6 +1,6 @@
 package viewone;
 
-import engeneering.MainPane;
+import engineering.MainPane;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

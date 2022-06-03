@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.athletes;
 
 import controllers.SubscribeToTrainerController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.InvalidIbanException;
 import javafx.fxml.FXML;

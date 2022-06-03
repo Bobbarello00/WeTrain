@@ -2,8 +2,8 @@ package viewtwo.graphical_controllers;
 
 import controllers.SatisfyWorkoutRequestsController;
 import controllers.SendEmailController;
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import exceptions.BrowsingNotSupportedException;
 import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;

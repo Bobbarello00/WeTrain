@@ -10,8 +10,8 @@ import viewone.PageSwitchSizeChange;
 import beans.AthleteBean;
 import beans.RequestBean;
 import beans.UserBean;
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import viewone.graphical_controllers.AbstractFormGUIController;
 
 import java.sql.SQLException;

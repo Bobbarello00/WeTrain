@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers;
 
 import controllers.NotificationsController;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.list_cell_factories.NotificationListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.list_cell_factories.NotificationListCellFactory;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
 import javafx.application.Platform;

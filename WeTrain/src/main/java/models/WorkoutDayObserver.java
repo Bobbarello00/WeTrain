@@ -1,7 +1,7 @@
 package models;
 
-import engeneering.ExerciseCatalogue;
-import engeneering.Observer;
+import engineering.ExerciseCatalogue;
+import engineering.Observer;
 
 public class WorkoutDayObserver extends WorkoutDay implements Observer {
     private final transient ExerciseCatalogue exerciseCatalogue;

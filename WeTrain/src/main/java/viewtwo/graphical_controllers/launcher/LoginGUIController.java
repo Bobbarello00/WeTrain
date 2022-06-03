@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers.launcher;
 
 import controllers.LoginController;
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
 import exceptions.invalid_data_exception.InvalidDataException;

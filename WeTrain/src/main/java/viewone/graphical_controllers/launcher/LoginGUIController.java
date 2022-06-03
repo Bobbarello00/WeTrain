@@ -10,13 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import engeneering.LoggedUserSingleton;
-import engeneering.MainPane;
+import engineering.LoggedUserSingleton;
+import engineering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
 import beans.AthleteBean;
 import beans.CredentialsBean;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import beans.UserBean;
 
 import java.io.IOException;

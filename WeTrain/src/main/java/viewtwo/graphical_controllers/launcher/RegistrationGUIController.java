@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers.launcher;
 
 import controllers.RegistrationController;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.UserNotFoundException;
 import exceptions.invalid_data_exception.EmptyFieldsException;

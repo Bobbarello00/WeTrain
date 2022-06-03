@@ -8,10 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSizeChange;
 import beans.ExerciseBean;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;

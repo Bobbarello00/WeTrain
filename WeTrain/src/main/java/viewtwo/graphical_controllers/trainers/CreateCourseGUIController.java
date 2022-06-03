@@ -1,6 +1,6 @@
 package viewtwo.graphical_controllers.trainers;
 
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;

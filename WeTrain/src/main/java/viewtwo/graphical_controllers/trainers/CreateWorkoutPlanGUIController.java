@@ -2,8 +2,8 @@ package viewtwo.graphical_controllers.trainers;
 
 import beans.*;
 import controllers.SatisfyWorkoutRequestsController;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.list_cell_factories.ExerciseListCellFactory;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.NoDayIsSelectedException;
 import javafx.beans.value.ChangeListener;
@@ -17,7 +17,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import viewone.beans_viewone.ExerciseForWorkoutPlanBeanA;
 import viewtwo.PageSwitchSimple;
 import viewtwo.beans_viewtwo.DayBeanB;
 import viewtwo.beans_viewtwo.ExerciseForWorkoutPlanBeanB;

@@ -1,4 +1,4 @@
-package engeneering.manage_list;
+package engineering.manage_list;
 
 import controllers.SubscribeToCourseController;
 import javafx.application.Platform;

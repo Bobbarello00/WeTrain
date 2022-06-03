@@ -1,7 +1,7 @@
 package controllers;
 
 import database.dao_classes.TrainerDAO;
-import engeneering.LoggedUserSingleton;
+import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import models.Athlete;
 import models.User;

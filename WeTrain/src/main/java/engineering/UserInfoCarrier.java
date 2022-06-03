@@ -1,4 +1,4 @@
-package engeneering;
+package engineering;
 
 public class UserInfoCarrier {
     private String username;

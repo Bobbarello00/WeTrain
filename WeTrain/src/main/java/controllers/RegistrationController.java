@@ -8,7 +8,7 @@ import models.Athlete;
 import models.Trainer;
 import models.record.Credentials;
 import models.record.PersonalInfo;
-import engeneering.LoggedUserSingleton;
+import engineering.LoggedUserSingleton;
 import beans.UserBean;
 
 import java.sql.SQLException;

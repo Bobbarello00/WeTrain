@@ -10,14 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSizeChange;
 import beans.CourseBean;
 import viewone.beans_viewone.CourseSearchBeanA;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.ManageCourseList;
+import engineering.AlertGenerator;
+import engineering.manage_list.ManageCourseList;
 import viewone.graphical_controllers.FitnessLevelFilterGUIController;
-import engeneering.manage_list.list_cell_factories.CourseListCellFactory;
+import engineering.manage_list.list_cell_factories.CourseListCellFactory;
 
 import java.io.IOException;
 import java.net.URL;

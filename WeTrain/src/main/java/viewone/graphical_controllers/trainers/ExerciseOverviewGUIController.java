@@ -11,13 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSizeChange;
 import viewone.beans_viewone.DayBeanA;
 import beans.ExerciseBean;
 import viewone.beans_viewone.ExerciseForWorkoutPlanBeanA;
 import beans.WorkoutDayBean;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -1,8 +1,8 @@
 package viewtwo.graphical_controllers.athletes;
 
 import controllers.ProfileManagementController;
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import exceptions.invalid_data_exception.InvalidDataException;
 import javafx.fxml.FXML;

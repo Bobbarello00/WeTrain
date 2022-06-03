@@ -3,7 +3,7 @@ package database.dao_classes;
 import database.DatabaseConnectionSingleton;
 import database.queries.CourseQueries;
 import database.queries.NotificationQueries;
-import engeneering.NotificationFactorySingleton;
+import engineering.NotificationFactorySingleton;
 import exceptions.DBConnectionFailedException;
 import exceptions.DBUnreachableException;
 import exceptions.ElementNotFoundException;

@@ -1,4 +1,4 @@
-package engeneering.manage_list;
+package engineering.manage_list;
 
 import controllers.NotificationsController;
 import exceptions.DBUnreachableException;
@@ -11,7 +11,7 @@ import javafx.scene.control.ListView;
 import org.jetbrains.annotations.NotNull;
 import viewone.PageSwitchSizeChange;
 import beans.NotificationBean;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 
 import java.sql.SQLException;
 import java.util.List;

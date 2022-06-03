@@ -1,7 +1,7 @@
 package viewone.graphical_controllers.trainers;
 
 import viewone.ButtonBehavior;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSimple;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -1,7 +1,7 @@
 package viewtwo;
 
-import engeneering.LoggedUserSingleton;
-import engeneering.MainPane;
+import engineering.LoggedUserSingleton;
+import engineering.MainPane;
 import exceptions.DBUnreachableException;
 import exceptions.runtime_exception.FatalErrorException;
 import javafx.fxml.FXMLLoader;

@@ -1,7 +1,7 @@
 package viewtwo.graphical_controllers;
 
-import engeneering.AlertGenerator;
-import engeneering.LoggedUserSingleton;
+import engineering.AlertGenerator;
+import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

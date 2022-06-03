@@ -1,4 +1,4 @@
-package engeneering;
+package engineering;
 
 import models.Exercise;
 

@@ -1,4 +1,4 @@
-package engeneering;
+package engineering;
 
 import beans.*;
 import controllers.LoginController;

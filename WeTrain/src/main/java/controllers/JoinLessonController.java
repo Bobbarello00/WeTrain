@@ -7,7 +7,7 @@ import exceptions.NoScheduledLessonException;
 import exceptions.UrlNotInsertedYetException;
 import beans.CourseBean;
 import beans.LessonBean;
-import engeneering.AlertGenerator;
+import engineering.AlertGenerator;
 
 import java.awt.*;
 import java.io.IOException;

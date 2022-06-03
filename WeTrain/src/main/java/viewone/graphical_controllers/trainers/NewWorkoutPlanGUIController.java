@@ -10,12 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import viewone.DaysOfTheWeekButtonController;
-import engeneering.MainPane;
+import engineering.MainPane;
 import viewone.PageSwitchSimple;
 import viewone.PageSwitchSizeChange;
-import engeneering.AlertGenerator;
-import engeneering.manage_list.ManageExerciseList;
-import engeneering.manage_list.list_cell_factories.ExerciseListCellFactory;
+import engineering.AlertGenerator;
+import engineering.manage_list.ManageExerciseList;
+import engineering.manage_list.list_cell_factories.ExerciseListCellFactory;
 import viewone.beans_viewone.DayBeanA;
 
 import java.io.IOException;
