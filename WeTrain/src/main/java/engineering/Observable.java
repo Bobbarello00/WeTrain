@@ -16,7 +16,7 @@ public abstract class Observable {
         this.observers.remove(observer);
     }
 
-    public void notifyObservers(Exercise exerciseToDelete){
+    public synchronized void notifyObservers(Exercise exerciseToDelete){
         for (Observer observer : this.observers) {
             observer.update(exerciseToDelete);
         }
