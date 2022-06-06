@@ -1,16 +1,18 @@
 package viewtwo.graphical_controllers;
 
+import beans.UserBean;
+import controllers.ProfileManagementController;
 import engineering.AlertGenerator;
 import engineering.LoggedUserSingleton;
 import exceptions.DBUnreachableException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import beans.UserBean;
 import viewtwo.PageSwitchSimple;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -53,5 +55,27 @@ public class PersonalInfoGUIController implements Initializable {
             PageSwitchSimple.logOff();
         }
 
+    }
+
+    public void deleteButtonAction() {
+        try {
+            if(AlertGenerator.newConfirmationAlert(
+                    "ATTENTION!",
+                    "CONFIRMATION",
+                    "Do you want delete your account? " +
+                            "The operation can't be undone.")) {
+                new ProfileManagementController().deleteUser();
+                PageSwitchSimple.logOff();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (DBUnreachableException e) {
+            List<String> errorStrings = e.getErrorStrings();
+            AlertGenerator.newWarningAlert(
+                    errorStrings.get(0),
+                    errorStrings.get(1),
+                    errorStrings.get(2));
+            PageSwitchSimple.logOff();
+        }
     }
 }
