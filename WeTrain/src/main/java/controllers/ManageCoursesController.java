@@ -65,6 +65,7 @@ public class ManageCoursesController extends CourseManagementController{
         Trainer trainer = (Trainer) loginController.getLoggedUser();
         new CourseDAO().modifyCourse(
                 new Course(
+                        courseToModify.getId(),
                         courseToModify.getName(),
                         courseToModify.getDescription(),
                         courseToModify.getFitnessLevel(),
@@ -73,6 +74,7 @@ public class ManageCoursesController extends CourseManagementController{
                         getLessonFromBean(courseToModify.getLessonBeanList())
                 ),
                 new Course(
+                        courseToModify.getId(),
                         courseBean.getName(),
                         courseBean.getDescription(),
                         courseBean.getFitnessLevel(),

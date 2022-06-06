@@ -36,6 +36,7 @@ public class WriteCommunicationGUIController {
                     communicationText.getText(),
                     courseBean
             ));
+            backButtonAction();
         } catch (EmptyFieldsException e) {
             List<String> errorStrings = e.getErrorStrings();
             AlertGenerator.newWarningAlert(
@@ -49,7 +50,7 @@ public class WriteCommunicationGUIController {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSizeChange.logOff();
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }

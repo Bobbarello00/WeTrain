@@ -102,6 +102,7 @@ public abstract class CreateOrModifyCourseGUIController implements Initializable
                     setLessonLabel(startHourBoxList.get(i), lessonBean.getLessonStartTime().getHour());
                     setLessonLabel(endMinuteBoxList.get(i), lessonBean.getLessonEndTime().getMinute());
                     setLessonLabel(endHourBoxList.get(i), lessonBean.getLessonEndTime().getHour());
+                    break;
                 }
             }
         }
@@ -244,6 +245,7 @@ public abstract class CreateOrModifyCourseGUIController implements Initializable
                 endHourSu
         );
         fitnessLevelSpinner.setItems(fitnessLevelList);
+        fitnessLevelSpinner.getSelectionModel().select("Select fitness level");
         for(int i = 0; i < 7; i++) {
             setChoiceBox(startMinuteBoxList.get(i), startHourBoxList.get(i));
             setChoiceBox(endMinuteBoxList.get(i), endHourBoxList.get(i));
