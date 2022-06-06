@@ -85,19 +85,25 @@ public class ManageCoursesGUIController extends HomeGUIControllerTrainers implem
     }
 
     @FXML public void deleteCourseButtonAction() {
-        try {
-            manageCoursesController.deleteCourse(selectedCourse);
-            setVisible(false);
-            ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
-        } catch (DBUnreachableException e) {
-            List<String> errorStrings = e.getErrorStrings();
-            AlertGenerator.newWarningAlert(
-                    errorStrings.get(0),
-                    errorStrings.get(1),
-                    errorStrings.get(2));
-            PageSwitchSizeChange.logOff();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if(AlertGenerator.newConfirmationAlert(
+                "ATTENTION!",
+                "CONFIRMATION",
+                "If you click 'ok' the selected course will be deleted!\n " +
+                        "This operation can't be undone.")) {
+            try {
+                manageCoursesController.deleteCourse(selectedCourse);
+                setVisible(false);
+                ManageCourseList.updateList(courseList, manageCoursesController.getCourseList());
+            } catch (DBUnreachableException e) {
+                List<String> errorStrings = e.getErrorStrings();
+                AlertGenerator.newWarningAlert(
+                        errorStrings.get(0),
+                        errorStrings.get(1),
+                        errorStrings.get(2));
+                PageSwitchSizeChange.logOff();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

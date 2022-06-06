@@ -76,10 +76,11 @@ public abstract class ProfileGUIController extends GUIController {
             if(AlertGenerator.newConfirmationAlert(
                     "ATTENTION!",
                     "CONFIRMATION",
-                    "Do you want delete your account? " +
-                            "The operation can't be undone.")) {
+                    "If you click 'ok' your account will be deleted!\n " +
+                            "This operation can't be undone.")) {
                 profileManagementController.deleteUser();
                 PageSwitchSizeChange.logOff();
+                ((Stage)editButton.getScene().getWindow()).close();
             }
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();
