@@ -16,10 +16,10 @@ import java.util.List;
 
 public class LessonDAO {
 
-    public void saveLesson(Lesson lesson, Course course) throws SQLException, DBUnreachableException {
+    public void saveLesson(Lesson lesson, int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 LessonQueries.INSERT_LESSON_QUERY)){
-            LessonQueries.insertLesson(preparedStatement, lesson, course.getId());
+            LessonQueries.insertLesson(preparedStatement, lesson, idCourse);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -78,5 +78,20 @@ public class LessonDAO {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
         }
+    }
+
+    public void modifyAllLessons(Course courseToModify, Course course) throws SQLException, DBUnreachableException {
+        try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
+                LessonQueries.REMOVE_ALL_LESSONS)){
+            LessonQueries.removeAllLessons(preparedStatement, courseToModify.getId());
+            for(Lesson lesson: course.getLessonList()){
+                saveLesson(lesson, course.getId());
+            }
+        } catch (DBConnectionFailedException e) {
+            e.deleteDatabaseConn();
+            throw new DBUnreachableException();
+        }
+
+
     }
 }

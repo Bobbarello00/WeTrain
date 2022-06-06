@@ -24,7 +24,7 @@ public class ModifyCourseGUIController extends CreateOrModifyCourseGUIController
         try{
             CourseBean courseBean = getCourseBean();
             courseBean.setId(courseToModify.getId());
-            manageCoursesController.modifyCourse(courseBean, courseToModify.getId());
+            manageCoursesController.modifyCourse(courseBean, courseToModify);
             PageSwitchSimple.switchPage("ManageCourses", "trainers");
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();

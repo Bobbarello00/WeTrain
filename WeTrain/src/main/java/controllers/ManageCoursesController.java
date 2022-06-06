@@ -61,14 +61,22 @@ public class ManageCoursesController extends CourseManagementController{
         new CourseDAO().deleteCourse(courseBean.getId());
     }
 
-    public void modifyCourse(CourseBean courseBean, int id) throws SQLException, DBUnreachableException, EmptyFieldsException, InvalidTimeException {
+    public void modifyCourse(CourseBean courseBean, CourseBean courseToModify) throws SQLException, DBUnreachableException, EmptyFieldsException, InvalidTimeException {
+        Trainer trainer = (Trainer) loginController.getLoggedUser();
         new CourseDAO().modifyCourse(
-                id,
+                new Course(
+                        courseToModify.getName(),
+                        courseToModify.getDescription(),
+                        courseToModify.getFitnessLevel(),
+                        trainer,
+                        courseToModify.getEquipment(),
+                        getLessonFromBean(courseToModify.getLessonBeanList())
+                ),
                 new Course(
                         courseBean.getName(),
                         courseBean.getDescription(),
                         courseBean.getFitnessLevel(),
-                        (Trainer) loginController.getLoggedUser(),
+                        trainer,
                         courseBean.getEquipment(),
                         getLessonFromBean(courseBean.getLessonBeanList())
                 ));

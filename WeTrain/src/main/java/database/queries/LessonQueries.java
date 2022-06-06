@@ -18,6 +18,13 @@ public class LessonQueries extends Queries{
         return preparedStatement.executeQuery();
     }
 
+    public static final String REMOVE_ALL_LESSONS = "DELETE FROM mydb.Lesson " +
+            "WHERE Course = ?";
+    public static void removeAllLessons(PreparedStatement preparedStatement, int idCourse) throws SQLException {
+        preparedStatement.setInt(1, idCourse);
+        preparedStatement.executeUpdate();
+    }
+
     public static final String INSERT_LESSON_STARTED_LESSON_URL_QUERY = "UPDATE mydb.Lesson " +
             "SET StartedLessonUrl = ? " +
             "WHERE idLesson = ?";

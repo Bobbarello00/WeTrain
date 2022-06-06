@@ -91,7 +91,7 @@ public class NewCourseGUIController extends HomeGUIControllerTrainers implements
                 manageCoursesController.createCourse(courseBean);
             } else {
                 courseBean.setId(courseToModify.getId());
-                manageCoursesController.modifyCourse(courseBean, courseToModify.getId());
+                manageCoursesController.modifyCourse(courseBean, courseToModify);
             }
             PageSwitchSimple.switchPage(MainPane.getInstance(),"TrainersHome", "trainers");
             MenuTrainersGUIController.resetSelectedButton();

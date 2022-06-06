@@ -1,5 +1,6 @@
 package database.dao_classes;
 
+import beans.CourseBean;
 import controllers.LoginController;
 import database.DatabaseConnectionSingleton;
 import database.queries.CourseQueries;
@@ -38,10 +39,11 @@ public class CourseDAO {
         }
     }
 
-    public void modifyCourse(int idCourse, Course course) throws SQLException, DBUnreachableException {
+    public void modifyCourse(Course courseToModify, Course course) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 CourseQueries.MODIFY_COURSE_QUERY)){
-            CourseQueries.modifyCourse(preparedStatement, idCourse, course);
+            CourseQueries.modifyCourse(preparedStatement, courseToModify.getId(), course);
+            new LessonDAO().modifyAllLessons(courseToModify, course);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -54,7 +56,7 @@ public class CourseDAO {
             int idCourse = CourseQueries.insertCourse(preparedStatement, course);
             course.setId(idCourse);
             for (Lesson lesson : course.getLessonList()) {
-                new LessonDAO().saveLesson(lesson, course);
+                new LessonDAO().saveLesson(lesson, course.getId());
             }
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
