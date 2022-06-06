@@ -98,13 +98,23 @@ public abstract class CreateOrModifyCourseGUIController implements Initializable
             for(int i = 0; i < 7; i++) {
                 if(DayOfWeek.of(i + 1).name().equals(lessonBean.getLessonDay())) {
                     radioButtonList.get(i).fire();
-                    startMinuteBoxList.get(i).getSelectionModel().select(String.valueOf(lessonBean.getLessonStartTime().getMinute()));
-                    startHourBoxList.get(i).getSelectionModel().select(String.valueOf(lessonBean.getLessonStartTime().getHour()));
-                    endMinuteBoxList.get(i).getSelectionModel().select(String.valueOf(lessonBean.getLessonEndTime().getMinute()));
-                    endHourBoxList.get(i).getSelectionModel().select(String.valueOf(lessonBean.getLessonStartTime().getHour()));
+                    setLessonLabel(startMinuteBoxList.get(i), lessonBean.getLessonStartTime().getMinute());
+                    setLessonLabel(startHourBoxList.get(i), lessonBean.getLessonStartTime().getHour());
+                    setLessonLabel(endMinuteBoxList.get(i), lessonBean.getLessonEndTime().getMinute());
+                    setLessonLabel(endHourBoxList.get(i), lessonBean.getLessonEndTime().getHour());
                 }
             }
         }
+    }
+
+    private void setLessonLabel(ChoiceBox<String> startMinuteBoxList, int lessonTime) {
+        String time;
+        if(lessonTime < 10) {
+            time = "0" + lessonTime;
+        } else {
+            time = Integer.toString(lessonTime);
+        }
+        startMinuteBoxList.getSelectionModel().select(time);
     }
 
     @FXML void cancelButtonAction() throws IOException {
