@@ -65,8 +65,9 @@ public class FindTrainerGUIController implements Initializable {
                     "Trainer subscription fee is 5$",
                     "if you click ok a payment will be sent from your selected payment method")) {
                 subscribeToTrainerController.subscribeToTrainer(selectedTrainer.getFiscalCode());
+                PageSwitchSimple.switchPage("YourTrainer", "athletes");
             }
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {
             List<String> errorStrings = e.getErrorStrings();

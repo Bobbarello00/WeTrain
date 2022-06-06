@@ -55,6 +55,7 @@ public class EmailFormGUIController {
                         emailBody.getText()
                 );
             }
+            backButtonAction();
         } catch (SQLException | URISyntaxException | IOException e) {
             e.printStackTrace();
         } catch (DBUnreachableException e) {

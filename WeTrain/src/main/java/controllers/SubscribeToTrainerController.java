@@ -99,8 +99,10 @@ public class SubscribeToTrainerController {
     public void subscribeToTrainer(String trainerFc) throws SQLException, DBUnreachableException, PaymentFailedException, AlreadySubscribedException, NoCardInsertedException, NoIbanInsertedException {
         Trainer trainer = new TrainerDAO().loadTrainer(trainerFc);
         Athlete athlete = (Athlete) loginController.getLoggedUser();
-        if(Objects.equals(athlete.getTrainer().getFiscalCode(), trainerFc)) {
-            throw new AlreadySubscribedException();
+        if(athlete.getTrainer() != null) {
+            if (Objects.equals(athlete.getTrainer().getFiscalCode(), trainerFc)) {
+                throw new AlreadySubscribedException();
+            }
         }
         new AthleteDAO().setTrainer(athlete, trainerFc);
         try {
