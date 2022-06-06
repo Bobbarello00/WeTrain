@@ -232,6 +232,6 @@
          </children>
       </HBox>
       <Button layoutX="413.0" layoutY="367.0" mnemonicParsing="false" onAction="#cancelButtonAction" style="-fx-background-color: red;" text="Cancel" />
-      <Button layoutX="498.0" layoutY="367.0" mnemonicParsing="false" onAction="#createCourseButtonAction" text="Create Course" />
+      <Button layoutX="498.0" layoutY="367.0" mnemonicParsing="false" onAction="#createCourseButtonAction" text="Modify Course" />
    </children>
 </AnchorPane>

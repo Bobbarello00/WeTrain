@@ -20,8 +20,7 @@ public class ModifyCourseGUIController extends CreateOrModifyCourseGUIController
         setValue(courseToModify);
     }
 
-    @FXML
-    void createCourseButtonAction() {
+    @FXML void createCourseButtonAction() {
         try{
             CourseBean courseBean = getCourseBean();
             courseBean.setId(courseToModify.getId());
