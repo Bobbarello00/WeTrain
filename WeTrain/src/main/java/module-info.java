@@ -14,6 +14,9 @@ module com.wetrain.wetrain {
     requires java.desktop;
     requires org.junit.jupiter.api;
 
+    exports start;
+    opens start to javafx.fxml;
+
     exports viewone.graphical_controllers;
     opens viewone.graphical_controllers to javafx.fxml;
     exports viewone.graphical_controllers.athletes;
