@@ -107,7 +107,7 @@ public class CourseOverviewGUIController {
         MainPane.getInstance().setDisable(false);
     }
 
-    private boolean checkIfAlreadySubscribed(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
+    private boolean isAlreadySubscribed(CourseBean courseBean) throws SQLException, DBUnreachableException, ImATrainerException {
         if(subscribeToCourseController==null){
             throw new ImATrainerException();
         }
@@ -123,7 +123,7 @@ public class CourseOverviewGUIController {
     public void setValues(CourseBean courseBean, SubscribeToCourseController subscribeToCourseController) throws SQLException, IOException {
         try {
             this.subscribeToCourseController = subscribeToCourseController;
-            if(checkIfAlreadySubscribed(courseBean)){
+            if(isAlreadySubscribed(courseBean)){
                 startLessonPane.setDisable(false);
                 startLessonPane.setVisible(true);
                 subscribeButton.setStyle("-fx-background-color:  rgb(200, 0, 0)");

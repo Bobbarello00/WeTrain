@@ -31,14 +31,14 @@ public class IbanBean {
         iban = iban.replace(" ","");
         iban = iban.replace("-","");
         iban = iban.toUpperCase();
-        if(checkAndReturnValidIban(iban)){
+        if(isValidIban(iban)){
             this.iban = iban.toUpperCase();
         }else{
             throw new InvalidIbanException();
         }
     }
 
-    private boolean checkAndReturnValidIban(String iban) {
+    private boolean isValidIban(String iban) {
         return Pattern.matches("^(it|IT)\\d{2}[A-Za-z]\\d{10}[\\dA-Za-z]{12}$", iban);
     }
 }
