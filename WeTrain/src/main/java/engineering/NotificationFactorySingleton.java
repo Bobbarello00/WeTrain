@@ -61,9 +61,9 @@ public class NotificationFactorySingleton {
     }
 
     public Notification createNotification(int idNotification, int type, String info, LocalDateTime dateTime, User sender, User receiver) throws DBUnreachableException, SQLException {
-        NotificationEnum type1 = NotificationEnum.of(type);
+        NotificationEnum notificationType = NotificationEnum.of(type);
         String[] params = info.split("-");
-        if(type1 == SUBSCRIPTIONTOTRAINER) {
+        if(notificationType == SUBSCRIPTIONTOTRAINER) {
             return new SubscriptionToTrainerNotification(
                     idNotification,
                     sender,
@@ -71,7 +71,7 @@ public class NotificationFactorySingleton {
                     Integer.parseInt(params[0]),
                     dateTime
             );
-        } else if (type1 == SUBSCRIPTIONTOCOURSE) {
+        } else if (notificationType == SUBSCRIPTIONTOCOURSE) {
             return new SubscriptionToCourseNotification(
                     idNotification,
                     sender,
@@ -80,21 +80,21 @@ public class NotificationFactorySingleton {
                     new CourseDAO().loadCourse(Integer.parseInt(params[0])),
                     dateTime
             );
-        } else if (type1 == REJECTEDREQUEST) {
+        } else if (notificationType == REJECTEDREQUEST) {
             return new RejectedRequestNotification(
                     idNotification,
                     sender,
                     receiver,
                     dateTime
             );
-        } else if (type1 == WORKOUTPLANREADY) {
+        } else if (notificationType == WORKOUTPLANREADY) {
             return new WorkoutPlanReadyNotification(
                     idNotification,
                     sender,
                     receiver,
                     dateTime
             );
-        } else if (type1 == COMMUNICATION) {
+        } else if (notificationType == COMMUNICATION) {
             return new CommunicationNotification(
                     idNotification,
                     sender,
@@ -103,7 +103,7 @@ public class NotificationFactorySingleton {
                     new CourseDAO().loadCourse(Integer.parseInt(params[0])),
                     dateTime
             );
-        } else if(type1 == EMAILRECEIVED) {
+        } else if(notificationType == EMAILRECEIVED) {
             return new EmailReceivedNotification(
                     idNotification,
                     sender,
