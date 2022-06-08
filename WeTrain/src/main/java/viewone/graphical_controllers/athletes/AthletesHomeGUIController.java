@@ -23,9 +23,10 @@ public class AthletesHomeGUIController extends HomeGUIControllerAthletes impleme
     @FXML private ListView<CourseBean> courseList;
     @FXML private ListView<CourseBean> popularList;
 
-    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
+    private final SubscribeToCourseController subscribeToCourseController;
 
     public AthletesHomeGUIController() throws DBUnreachableException, SQLException {
+        subscribeToCourseController = new SubscribeToCourseController();
     }
 
     public void updateLists() {

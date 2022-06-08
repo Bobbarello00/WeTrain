@@ -53,7 +53,17 @@ public class TestSubscribeToCourseController {
             COURSE_OWNER_FC,
             COURSE_EQUIPMENT);
     private Athlete loggedAthlete;
-    {
+    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController(loggedAthlete);
+
+    /*
+    * Per questo test viene creata un'istanza di atleta e di corso che sappiamo essere presenti nel database.
+    * Lo scopo del primo test è quello di verificare la procedura d'iscrizione dell'atleta in questione al suddetto corso.
+    * Per verificare se l'iscrizione è avvenuta, si controlla se nella lista dei corsi dell'atleta è presente tale corso.
+    * Subito dopo si verifica la procedura di disiscrizione verificando poi se nella lista dei corsi dell'atleta
+    * il corso sia stato effettivamente rimosso.
+    */
+
+    public TestSubscribeToCourseController() {
         try {
             loggedAthlete = new Athlete(
                     LOGGED_ATHLETE_USERNAME,
@@ -69,15 +79,6 @@ public class TestSubscribeToCourseController {
             e.printStackTrace();
         }
     }
-    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController(loggedAthlete);
-
-    /*
-    * Per questo test viene creata un'istanza di atleta e di corso che sappiamo essere presenti nel database.
-    * Lo scopo del primo test è quello di verificare la procedura d'iscrizione dell'atleta in questione al suddetto corso.
-    * Per verificare se l'iscrizione è avvenuta, si controlla se nella lista dei corsi dell'atleta è presente tale corso.
-    * Subito dopo si verifica la procedura di disiscrizione verificando poi se nella lista dei corsi dell'atleta
-    * il corso sia stato effettivamente rimosso.
-    */
 
     @Test void testSubscribeToCourse(){
         int flag = 0;

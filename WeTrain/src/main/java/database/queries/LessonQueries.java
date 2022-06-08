@@ -20,7 +20,10 @@ public class LessonQueries extends Queries{
 
     public static final String REMOVE_ALL_LESSONS = "DELETE FROM mydb.Lesson " +
             "WHERE Course = ?";
-    public static void removeAllLessons(PreparedStatement preparedStatement, int idCourse) throws SQLException {
+    public static final String REMOVE_LESSON_STARTED_LESSON_URL_QUERY = "UPDATE mydb.Lesson " +
+            "SET StartedLessonUrl = NULL " +
+            WHERE_COURSE;
+    public static void removeAllLessonsOrRemoveStartedLessonUrl(PreparedStatement preparedStatement, int idCourse) throws SQLException {
         preparedStatement.setInt(1, idCourse);
         preparedStatement.executeUpdate();
     }
@@ -28,17 +31,9 @@ public class LessonQueries extends Queries{
     public static final String INSERT_LESSON_STARTED_LESSON_URL_QUERY = "UPDATE mydb.Lesson " +
             "SET StartedLessonUrl = ? " +
             "WHERE idLesson = ?";
-    public static void insertLessonStartedLessonUrl(PreparedStatement preparedStatement, int idLesson, String url) throws SQLException {
+    public static void insertStartedLessonUrl(PreparedStatement preparedStatement, int idLesson, String url) throws SQLException {
         preparedStatement.setString(1, url);
         preparedStatement.setInt(2, idLesson);
-        preparedStatement.executeUpdate();
-    }
-
-    public static final String REMOVE_LESSON_STARTED_LESSON_URL_QUERY = "UPDATE mydb.Lesson " +
-            "SET StartedLessonUrl = NULL " +
-            WHERE_COURSE;
-    public static void removeLessonStartedLessonUrl(PreparedStatement preparedStatement, int idCourse) throws SQLException {
-        preparedStatement.setInt(1, idCourse);
         preparedStatement.executeUpdate();
     }
 

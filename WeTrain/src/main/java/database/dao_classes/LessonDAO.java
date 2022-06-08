@@ -63,7 +63,7 @@ public class LessonDAO {
     public void setStartedLessonUrl(String url, int idLesson) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 LessonQueries.INSERT_LESSON_STARTED_LESSON_URL_QUERY)) {
-            LessonQueries.insertLessonStartedLessonUrl(preparedStatement, idLesson, url);
+            LessonQueries.insertStartedLessonUrl(preparedStatement, idLesson, url);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -73,7 +73,7 @@ public class LessonDAO {
     public void deleteStartedLessonUrl(int idCourse) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 LessonQueries.REMOVE_LESSON_STARTED_LESSON_URL_QUERY)){
-            LessonQueries.removeLessonStartedLessonUrl(preparedStatement, idCourse);
+            LessonQueries.removeAllLessonsOrRemoveStartedLessonUrl(preparedStatement, idCourse);
         } catch (DBConnectionFailedException e) {
             e.deleteDatabaseConn();
             throw new DBUnreachableException();
@@ -83,7 +83,7 @@ public class LessonDAO {
     public void modifyAllLessons(Course courseToModify, Course course) throws SQLException, DBUnreachableException {
         try(PreparedStatement preparedStatement = DatabaseConnectionSingleton.getInstance().getConn().prepareStatement(
                 LessonQueries.REMOVE_ALL_LESSONS)){
-            LessonQueries.removeAllLessons(preparedStatement, courseToModify.getId());
+            LessonQueries.removeAllLessonsOrRemoveStartedLessonUrl(preparedStatement, courseToModify.getId());
             for(Lesson lesson: course.getLessonList()){
                 saveLesson(lesson, course.getId());
             }

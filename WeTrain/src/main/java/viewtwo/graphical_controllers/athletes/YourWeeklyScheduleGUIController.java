@@ -37,10 +37,12 @@ public class YourWeeklyScheduleGUIController implements Initializable{
     private WorkoutPlanBean workoutPlanBean;
     private List<RadioButton> radioButtonList;
 
-    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
-    private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
+    private final SubscribeToCourseController subscribeToCourseController;
+    private final RequestWorkoutPlanController requestWorkoutPlanController;
 
     public YourWeeklyScheduleGUIController() throws DBUnreachableException, SQLException {
+        subscribeToCourseController = new SubscribeToCourseController();
+        requestWorkoutPlanController = new RequestWorkoutPlanController();
     }
 
     @FXML void backButtonAction() throws IOException {

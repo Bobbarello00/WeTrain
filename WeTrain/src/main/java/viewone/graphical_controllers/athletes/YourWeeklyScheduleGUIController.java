@@ -43,10 +43,12 @@ public class YourWeeklyScheduleGUIController extends HomeGUIControllerAthletes i
     private List<CourseBean> courseBeanList;
     private WorkoutPlanBean workoutPlanBean;
 
-    private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController();
-    private final RequestWorkoutPlanController requestWorkoutPlanController = new RequestWorkoutPlanController();
+    private final SubscribeToCourseController subscribeToCourseController;
+    private final RequestWorkoutPlanController requestWorkoutPlanController;
 
     public YourWeeklyScheduleGUIController() throws DBUnreachableException, SQLException {
+        subscribeToCourseController = new SubscribeToCourseController();
+        requestWorkoutPlanController = new RequestWorkoutPlanController();
     }
 
     private void colorShift(Button button, Text text){
