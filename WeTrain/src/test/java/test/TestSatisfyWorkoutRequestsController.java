@@ -19,8 +19,8 @@ import java.util.Objects;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TestSatisfyWorkoutRequestsController {
-    /*@author Testing:  Andrea De Filippis
-                        Matricola 0285448
+    /**Author of the test:  Andrea De Filippis
+    *                    Matricola 0285448
     */
 
     Trainer trainerTest = new Trainer(
