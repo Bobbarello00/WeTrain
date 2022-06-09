@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestSubscribeToCourseController {
 
-    /*@author Testing:  Edoardo Manenti
+    /**Author of the test:  Edoardo Manenti
      *                  Matricola 0278821
      */
 
@@ -55,7 +55,7 @@ public class TestSubscribeToCourseController {
     private Athlete loggedAthlete;
     private final SubscribeToCourseController subscribeToCourseController = new SubscribeToCourseController(loggedAthlete);
 
-    /*
+    /**
     * Per questo test viene creata un'istanza di atleta e di corso che sappiamo essere presenti nel database.
     * Lo scopo del primo test è quello di verificare la procedura d'iscrizione dell'atleta in questione al suddetto corso.
     * Per verificare se l'iscrizione è avvenuta, si controlla se nella lista dei corsi dell'atleta è presente tale corso.
