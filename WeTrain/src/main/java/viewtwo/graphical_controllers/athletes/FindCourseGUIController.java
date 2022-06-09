@@ -85,7 +85,7 @@ public class FindCourseGUIController implements Initializable {
         }
     }
 
-    private boolean checkIfAlreadySubscribed() throws DBUnreachableException, SQLException {
+    private boolean isAlreadySubscribed() throws DBUnreachableException, SQLException {
         List<CourseBean> courseBeanList = subscribeToCourseController.getLoggedAthleteCourseList();
         for(CourseBean course: courseBeanList){
             if(course.getId() == selectedCourse.getId()){
@@ -97,7 +97,7 @@ public class FindCourseGUIController implements Initializable {
 
     @FXML void subscribe() {
         try {
-            if(!checkIfAlreadySubscribed()) {
+            if(!isAlreadySubscribed()) {
                 if (AlertGenerator.newConfirmationAlert(
                         "PURCHASE CONFIRMATION",
                         "Course subscription fee is 5$",
