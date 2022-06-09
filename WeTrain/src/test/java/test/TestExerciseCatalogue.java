@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ExerciseCatalogueTest {
+class TestExerciseCatalogue {
     /**Author of the test:  Andrea De Filippis
      *                    Matricola 0285448
      */
