@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestLoginController {
 
-    /**Author of the test: Testing:  Edoardo Manenti
+    /**Author of the test:  Edoardo Manenti
      *                  Matricola 0278821
      */
 
