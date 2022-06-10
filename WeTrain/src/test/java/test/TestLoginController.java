@@ -24,7 +24,7 @@ class TestLoginController {
     /**
      * Nel database è stato precedentemente registrato l'atleta
      *  con email 'edo@gmail.com' e password 'Ciaociao00!'.
-     * Lo scopo del test è di verificare se il login con tali credenziali
+     * Lo scopo del seguente test è di verificare se il login con tali credenziali
      *  vada effettivamente a buon fine e restituisca l'atleta corretto.
      */
     @Test void testLogin() {

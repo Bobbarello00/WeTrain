@@ -60,11 +60,10 @@ class TestExerciseCatalogue {
             trainerTest
     );
 
-    @Test void removeExercise() {
-        /*
-        Questo test verifica se la rimozione di un esercizio dal catalogo viene effettuata correttamente.
+    /**
+        Il seguente test verifica se la rimozione di un esercizio dal catalogo viene effettuata correttamente.
          */
-
+    @Test void removeExercise() {
         ArrayList<Exercise> list = new ArrayList<>(Arrays.asList(exerciseTest1, exerciseTest2));
 
         ExerciseCatalogue exerciseCatalogue = new ExerciseCatalogue(list);
@@ -88,11 +87,10 @@ class TestExerciseCatalogue {
         assertTrue(flag);
     }
 
-    @Test void addExercise() {
-        /*
-        Questo test verifica se l'aggiunta di un esercizio al catalogo viene effettuata correttamente.
+    /**
+        Il seguente test verifica se l'aggiunta di un esercizio al catalogo viene effettuata correttamente.
          */
-
+    @Test void addExercise() {
         ArrayList<Exercise> list = new ArrayList<>(List.of(exerciseTest1));
 
         ExerciseCatalogue exerciseCatalogue = new ExerciseCatalogue(list);

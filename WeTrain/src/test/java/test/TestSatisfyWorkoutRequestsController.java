@@ -66,13 +66,11 @@ class TestSatisfyWorkoutRequestsController {
 
     ExerciseCatalogue exerciseCatalogueTest = new ExerciseCatalogue(new ArrayList<>(Arrays.asList(exerciseTest1, exerciseTest2)));
 
-    @Test void searchExercise() {
-        /*
+    /**
         In searchExercise() viene effettuata la ricerca degli esercizi in base al nome (passato tramite la SearchBean)
         nell'ExerciseCatalogue. Questo test verifica che searchExercise() ritorni effettivamente l'esercizio cercato.
         */
-
-
+    @Test void searchExercise() {
         SatisfyWorkoutRequestsController controller = new SatisfyWorkoutRequestsController(trainerTest, exerciseCatalogueTest);
 
         Exercise exerciseToSearch = exerciseTest2;
