@@ -1,6 +1,7 @@
 package test;
 
 import controllers.SubscribeToCourseController;
+import exceptions.AlreadySubscribedException;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
 import exceptions.invalid_data_exception.ExpiredCardException;
@@ -91,16 +92,15 @@ public class TestSubscribeToCourseController {
                     break;
                 }
             }
-        } catch (SQLException e) {
+        } catch (AlreadySubscribedException e) {
             /*
-             * In caso di errore di primary key duplicata è possibile che nel test precedente sia stata
+             * Se si entra in questa catch è possibile che nel test precedente sia stata
              *  persa la connessione al database prima di effettuare la disiscrizione (eseguita nel secondo test)
              * e pertanto l'atleta risulta già iscritto a tale corso.
              * In tal caso (valore di flag = -2) avviare prima il testUnsubscribeToCourse() per assicurarsi di
              * disiscrivere l'atleta dal corso e poi ripetere il test dall'inizio.
              */
             flag = -2;
-            e.printStackTrace();
         } catch (DBUnreachableException | NoCardInsertedException | NoIbanInsertedException | PaymentFailedException e) {
             /*
             * Per scelte progettuali, nel mocking del pagamento, il metodo 'pay' che simula il pagamento fallisce
@@ -110,6 +110,8 @@ public class TestSubscribeToCourseController {
             * Verificare quindi inoltre di essere connessi a internet prima di rieseguire il test.
             */
             flag = -1;
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         assertEquals(1, flag);

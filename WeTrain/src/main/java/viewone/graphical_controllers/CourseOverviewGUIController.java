@@ -249,6 +249,13 @@ public class CourseOverviewGUIController {
                     errorStrings.get(0),
                     errorStrings.get(1),
                     errorStrings.get(2));
+        } catch (AlreadySubscribedException e) {
+            AlertGenerator.newWarningAlert(
+                    "OOPS, SOMETHING WENT WRONG!",
+                    "Couldn't subscribe.",
+                    "You are already subscribed to this Course."
+            );
+            return;
         }
         ((Stage) ((Button) event.getSource()).getScene().getWindow()).close();
         MainPane.getInstance().setDisable(false);

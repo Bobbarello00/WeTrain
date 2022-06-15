@@ -5,6 +5,7 @@ import beans.CourseSearchBean;
 import beans.PaymentBean;
 import boundaries.PaypalSystemBoundary;
 import database.dao_classes.CourseDAO;
+import exceptions.AlreadySubscribedException;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
 import exceptions.invalid_data_exception.NoCardInsertedException;
@@ -31,9 +32,12 @@ public class SubscribeToCourseController extends CourseManagementController{
         loggedAthlete = (Athlete) new LoginController().getLoggedUser();
     }
 
-    public void subscribeToCourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException, NoCardInsertedException, NoIbanInsertedException {
+    public void subscribeToCourse(CourseBean courseBean) throws SQLException, DBUnreachableException, PaymentFailedException, NoCardInsertedException, NoIbanInsertedException, AlreadySubscribedException {
         Course selectedCourse;
         selectedCourse = getSelectedCourse(courseBean);
+        if(isSubscribed(selectedCourse)) {
+            throw new AlreadySubscribedException();
+        }
         new CourseDAO().subscribeToCourse(selectedCourse, loggedAthlete);
         try {
             PaypalSystemBoundary paypalSystemBoundary = new PaypalSystemBoundary();
@@ -56,6 +60,18 @@ public class SubscribeToCourseController extends CourseManagementController{
                 receiver,
                 selectedCourse
         );
+    }
+
+    private boolean isSubscribed(Course selectedCourse) {
+        List<Course> courseList = loggedAthlete.getCourseList();
+        if(courseList!=null) {
+            for (Course course : courseList) {
+                if (course.getId() == selectedCourse.getId()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private Course getSelectedCourse(CourseBean courseBean) throws DBUnreachableException, SQLException {

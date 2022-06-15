@@ -3,6 +3,7 @@ package viewtwo.graphical_controllers.athletes;
 import controllers.SubscribeToCourseController;
 import engineering.AlertGenerator;
 import engineering.manage_list.list_cell_factories.CourseListCellFactory;
+import exceptions.AlreadySubscribedException;
 import exceptions.DBUnreachableException;
 import exceptions.PaymentFailedException;
 import exceptions.invalid_data_exception.NoCardInsertedException;
@@ -125,6 +126,12 @@ public class FindCourseGUIController implements Initializable {
                     errorStrings.get(1),
                     errorStrings.get(2));
             PageSwitchSimple.logOff();
+        } catch (AlreadySubscribedException e) {
+            AlertGenerator.newWarningAlert(
+                    "OOPS, SOMETHING WENT WRONG!",
+                    "Couldn't subscribe.",
+                    "You are already subscribed to this Course."
+            );
         }
     }
 
