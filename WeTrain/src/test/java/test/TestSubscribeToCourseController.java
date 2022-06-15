@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import beans.CourseBean;
 
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
@@ -92,7 +93,7 @@ public class TestSubscribeToCourseController {
                     break;
                 }
             }
-        } catch (AlreadySubscribedException e) {
+        } catch (AlreadySubscribedException | SQLIntegrityConstraintViolationException e) {
             /*
              * Se si entra in questa catch è possibile che nel test precedente sia stata
              *  persa la connessione al database prima di effettuare la disiscrizione (eseguita nel secondo test)
