@@ -43,7 +43,7 @@ public class DatabaseConnectionSingleton {
         return conn;
     }
 
-    public static DatabaseConnectionSingleton getInstance() throws DBConnectionFailedException {
+    public synchronized static DatabaseConnectionSingleton getInstance() throws DBConnectionFailedException {
         if(dbConn == null){
             dbConn = new DatabaseConnectionSingleton();
         }
