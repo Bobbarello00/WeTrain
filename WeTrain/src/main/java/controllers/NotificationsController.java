@@ -84,11 +84,7 @@ public class NotificationsController {
                 receiver
         );
         new NotificationDAO().saveNotification(
-                notification.getType().ordinal(),
-                notification.getDescription(),
-                LocalDateTime.now(),
-                notification.getSender().getFiscalCode(),
-                notification.getReceiver().getFiscalCode()
+                notification
         );
     }
 
@@ -99,11 +95,7 @@ public class NotificationsController {
                 new TrainerDAO().getNumberOfSubscribers(trainer.getFiscalCode())
         );
         new NotificationDAO().saveNotification(
-                notification.getType().ordinal(),
-                notification.getDescription(),
-                LocalDateTime.now(),
-                notification.getSender().getFiscalCode(),
-                notification.getReceiver().getFiscalCode()
+                notification
         );
     }
 

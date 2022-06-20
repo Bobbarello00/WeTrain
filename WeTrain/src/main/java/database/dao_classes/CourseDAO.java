@@ -1,6 +1,5 @@
 package database.dao_classes;
 
-import beans.CourseBean;
 import controllers.LoginController;
 import database.DatabaseConnectionSingleton;
 import database.queries.CourseQueries;
